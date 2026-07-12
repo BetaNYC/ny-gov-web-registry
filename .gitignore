@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Local source-data cache — downloaded source exports live here and are NOT committed
+# (the registry commits its own built dataset, not third-party raw dumps).
+data/cache/
+
+# OS
+.DS_Store
+
+# Transient build report
+data/build_proposals.json

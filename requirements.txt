@@ -1,0 +1,8 @@
+# Runtime deps for the source-sync + build scripts.
+# NOTE: the sync scripts are NOT yet wired to fetch live data — live external
+# data pulls are gated pending explicit operator authorization. `requests` is
+# declared for when that gate opens; nothing here fetches on import.
+requests>=2.31
+
+# Offline validation (tests validate the seed against schema/property.schema.json).
+jsonschema>=4.21

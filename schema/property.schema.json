@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/BetaNYC/ny-gov-web-registry/schema/property.schema.json",
+  "title": "NY Government Web-Property Registry — Entity Record",
+  "description": "One record describes a NYC or NYS government / public-authority ENTITY (not a single domain). An entity carries a stable BetaNYC id, a government-level classification, parent/child links, a list of web properties it has owned over its life, crosswalk ids into authoritative upstreams, and a jurisdiction pointer (by reference to BetaNYC/nyc-boundaries — never embedded geometry). Faithful to team/research/mayoral-executive-orders/2026-07-11-property-registry-design.md §2.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "betanyc_id",
+    "name",
+    "government_level",
+    "web_properties",
+    "crosswalk",
+    "jurisdiction",
+    "status"
+  ],
+  "properties": {
+    "betanyc_id": {
+      "type": "string",
+      "pattern": "^BNYC-ORG-[0-9]{6}$",
+      "description": "Our own stable key, because no single upstream spans city + state + bi-state + authority. Format BNYC-ORG-NNNNNN. Immutable, never reused (same discipline as MODA's record_id and the EO project's synthetic eo_id)."
+    },
+    "name": {
+      "type": "string",
+      "description": "Official / preferred name of the entity."
+    },
+    "short_name": {
+      "type": ["string", "null"],
+      "description": "Common short name or acronym (e.g. 'MTA')."
+    },
+    "government_level": {
+      "type": "string",
+      "enum": ["nyc", "nys", "bi-state", "authority", "pbc"],
+      "description": "Coarse classification, LOCKED enum (STATUS.md, 2026-07-11). nyc = NYC city entity; nys = NYS state executive agency; bi-state = entity whose jurisdiction spans NY and another state (e.g. PANYNJ); authority = public authority (state/local/IDA/LDC); pbc = public-benefit corporation. NOTE: authority and pbc overlap by design; entity_type carries the finer legal-instrument detail. See docs/schema.md § government_level for the reconciliation with the design doc's richer vocab and open question O1."
+    },
+    "entity_type": {
+      "type": ["string", "null"],
+      "description": "Finer legal / organizational classification, free-text or upstream-derived (e.g. 'public-benefit-corporation', 'mayoral-agency', 'local-development-corporation', 'public-university'). Mirrors MODA's organization_type where the entity is a city org."
+    },
+    "parent_id": {
+      "type": ["string", "null"],
+      "pattern": "^BNYC-ORG-[0-9]{6}$",
+      "description": "betanyc_id of the parent entity (e.g. the MTA is parent of LIRR / Metro-North / NYCT / TBTA), or null for a top-level entity."
+    },
+    "child_ids": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^BNYC-ORG-[0-9]{6}$" },
+      "description": "betanyc_ids of subsidiary entities. Bidirectional with parent_id."
+    },
+    "crosswalk": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The interoperability core. Every field may be null. Values are populated ONLY when verified against the upstream — never invented (see CONTRIBUTING.md).",
+      "properties": {
+        "moda_govid": {
+          "type": ["string", "null"],
+          "description": "MODA record_id (the immutable primary key of MODA-NYC/nyc-governance-organizations). Joins the city registry. Null for non-city entities."
+        },
+        "abo_id": {
+          "type": ["string", "null"],
+          "description": "Stable authority id from the ABO Directory of Public Authorities. NOTE: the documented 9-column dataset 4vym-q77x does NOT expose an explicit id column; abo_id resolution is unconfirmed (see docs/sources.md § ABO). Null until confirmed."
+        },
+        "wikidata_qid": {
+          "type": ["string", "null"],
+          "pattern": "^Q[0-9]+$",
+          "description": "Wikidata QID (joins the open-knowledge graph; often carries P856 official-website). Null until verified."
+        },
+        "irs_ein": {
+          "type": ["string", "null"],
+          "description": "IRS Employer Identification Number for the .org public-benefit corps (H+H, some LDCs). Joins IRS/Candid nonprofit data. Null until verified. Never invented."
+        },
+        "opendata_dataset": {
+          "type": ["string", "null"],
+          "description": "Optional: the entity's own Socrata dataset id where one exists (design doc §2). Null where none."
+        }
+      }
+    },
+    "web_properties": {
+      "type": "array",
+      "description": "The heart of the harvester config: the domains/subdomains an entity has owned over its life. A list because entities accrete and retire domains.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["domain", "role"],
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Registrable domain or subdomain (e.g. 'mta.info', 'web.mta.info'). Not a full URL and not a path."
+          },
+          "role": {
+            "type": "string",
+            "enum": ["primary", "legacy", "microsite"],
+            "description": "primary = the entity's current canonical site; legacy = a retired/superseded host; microsite = a campaign/sub-brand site."
+          },
+          "valid_from": {
+            "type": ["string", "null"],
+            "description": "Year 'YYYY' or ISO date the property came into use, or null if unknown."
+          },
+          "valid_to": {
+            "type": ["string", "null"],
+            "description": "Year 'YYYY' or ISO date the property was retired, or null if still active / unknown."
+          },
+          "notes": {
+            "type": ["string", "null"],
+            "description": "Free-text provenance for this property."
+          }
+        }
+      }
+    },
+    "url_conventions": {
+      "type": "array",
+      "description": "Per-era path patterns under a domain (the harvester reads these to know WHERE under a domain documents historically lived).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["pattern"],
+        "properties": {
+          "era": {
+            "type": ["string", "null"],
+            "description": "Year range the pattern applied, e.g. '2003-2020'."
+          },
+          "pattern": {
+            "type": "string",
+            "description": "Path template, e.g. 'web.mta.info/{subsidiary}/'."
+          },
+          "notes": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "jurisdiction": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Geography by REFERENCE only. Geometry is never embedded here (design doc §3).",
+      "properties": {
+        "boundary_ref": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "description": "Pointer into BetaNYC/nyc-boundaries: {layer, id}. Set ONLY for entities that map cleanly onto an existing nyc-boundaries layer; null otherwise. Never invent a boundary id.",
+          "properties": {
+            "layer": {
+              "type": "string",
+              "description": "nyc-boundaries layer code (e.g. 'cc' council district, 'cd' community district, or 'citywide')."
+            },
+            "id": {
+              "type": ["string", "null"],
+              "description": "District Unique Identifier within the layer; null for a whole-layer / 'citywide' reference."
+            }
+          },
+          "required": ["layer"]
+        },
+        "coverage": {
+          "type": ["string", "null"],
+          "enum": ["citywide", "borough", "district", "regional", "statewide", "bi-state", "national", null],
+          "description": "Coarse jurisdictional extent, used where boundary_ref cannot map cleanly to nyc-boundaries."
+        },
+        "boundary_note": {
+          "type": ["string", "null"],
+          "description": "For jurisdictions that EXCEED nyc-boundaries (MTA regional service area, bi-state PANYNJ, statewide agencies): a note naming the candidate external geometry source. No geometry is stored."
+        }
+      }
+    },
+    "established_by_eo": {
+      "type": "array",
+      "description": "EO linkage. Where an executive order created or established this entity, each element references the order by the LOCKED cross-link field names (STATUS.md 'Cross-link field names — LOCKED'). The reciprocal direction lives on the EO record as establishes_entity = this entity's betanyc_id.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["eo_id"],
+        "properties": {
+          "eo_id": {
+            "type": "string",
+            "description": "LOCKED: stable synthetic identifier for a single executive order (per-mayor numbering resets, so the raw EO number is not unique across administrations)."
+          },
+          "source_pdf_url": {
+            "type": ["string", "null"],
+            "description": "LOCKED: resolved live-or-Wayback URL of the order's source PDF; the canonical PDF pointer in the EO corpus."
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "dissolved", "merged", "renamed", "planned"],
+      "description": "Lifecycle state. Removals/renames from an upstream are recorded as status changes + valid_to, never silent deletes (design doc §4)."
+    },
+    "valid_from": {
+      "type": ["string", "null"],
+      "description": "Year 'YYYY' or ISO date the entity was established, or null if unknown."
+    },
+    "valid_to": {
+      "type": ["string", "null"],
+      "description": "Year 'YYYY' or ISO date the entity was dissolved/merged/renamed, or null if still active."
+    },
+    "succeeds_ids": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^BNYC-ORG-[0-9]{6}$" },
+      "description": "betanyc_ids of predecessor entities this one succeeds (e.g. OTI succeeds DoITT)."
+    },
+    "succeeded_by_ids": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^BNYC-ORG-[0-9]{6}$" },
+      "description": "betanyc_ids of successor entities."
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sources"],
+      "description": "Which upstreams asserted this record and when it was last verified, so a hand-curated record and an auto-synced record are distinguishable.",
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["moda", "abo", "nygov", "wikidata", "manual"]
+          },
+          "description": "Upstream(s) that asserted this record."
+        },
+        "last_verified": {
+          "type": ["string", "null"],
+          "description": "ISO date (YYYY-MM-DD) this record was last verified."
+        }
+      }
+    }
+  }
+}
