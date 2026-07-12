@@ -138,7 +138,8 @@
       "child_ids": [],
       "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
       "web_properties": [
-        { "domain": "nycedc.com", "role": "primary", "valid_from": null, "valid_to": null, "notes": ".com — a local development corporation, easy to miss on a .gov sweep." }
+        { "domain": "edc.nyc", "role": "primary", "valid_from": null, "valid_to": null, "notes": "Current canonical site (verified 2026-07-11: title 'NYCEDC…', canonical https://edc.nyc/). A .nyc gTLD, invisible to a .gov sweep." },
+        { "domain": "nycedc.com", "role": "legacy", "valid_from": null, "valid_to": null, "notes": "Former primary; verified 2026-07-11 to 301-redirect to edc.nyc. Wayback holds the pre-rebrand history under this host — exactly why legacy domains are tracked." }
       ],
       "url_conventions": [],
       "jurisdiction": { "boundary_ref": null, "coverage": "citywide", "boundary_note": null },

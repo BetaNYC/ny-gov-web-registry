@@ -6,10 +6,11 @@ Source: MODA-NYC/nyc-governance-organizations (MIT)
         ~434 city entities incl. boards/commissions/advisory bodies; has a `url` field
         (current site only — no legacy-domain history) and an immutable record id.
 
-⚠️ FIELD MAP UNVERIFIED. The exact upstream column names below are NOT yet confirmed
-against MODA's published data dictionary. Confirm each against the repo's data
-dictionary before the first real run, and do not guess — leave a field null if the
-upstream column can't be identified. (Build-against-docs rule.)
+FIELD MAP VERIFIED 2026-07-11 against MODA's Phase II published schema
+(schemas/nycgo_published_dataset.tableschema.json, 25 public fields): the columns
+record_id, name, url, organization_type exist as named below. NOTE: record_id is a
+6-digit numeric in Phase II (NYC_GOID_XXXXXX in Phase I) — crosswalk.moda_govid stores
+it verbatim as a string. Still do not guess if MODA revises the schema; re-verify.
 
 ACCESS GATE: this script does NOT fetch. Place a MODA export at
 data/cache/moda_nyc-governance-organizations.csv first.
@@ -26,7 +27,7 @@ CACHE = pathlib.Path(__file__).resolve().parent.parent / "data" / "cache"
 SOURCE = CACHE / "moda_nyc-governance-organizations.csv"
 OUT = CACHE / "records_moda.json"
 
-# TODO(verify against MODA data dictionary): confirm these column names before running.
+# Verified 2026-07-11 against MODA Phase II published schema (see module docstring).
 FIELD = {
     "record_id": "record_id",       # immutable MODA primary key -> crosswalk.moda_govid
     "name": "name",                 # entity name
