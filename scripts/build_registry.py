@@ -36,6 +36,8 @@ SCHEMA = ROOT / "schema" / "property.schema.json"
 CURATION = ROOT / "data" / "curation.json"
 GREENBOOK_ENRICHMENT = ROOT / "data" / "greenbook_enrichment.json"
 WIKIDATA_ENRICHMENT = ROOT / "data" / "wikidata_enrichment.json"
+BOUNDARIES_MAPPING = ROOT / "data" / "boundaries_mapping.json"
+BOUNDARIES_VOCAB = ROOT / "data" / "nyc_boundaries_layers.json"
 
 SOURCE_FILES = ("records_moda.json", "records_abo.json", "records_nygov.json")
 
@@ -236,6 +238,68 @@ def apply_wikidata_enrichment(entities: list[dict], enrichment: dict) -> tuple[l
     return entities, skipped
 
 
+def _add_area(entity: dict, area: dict) -> bool:
+    """Add an areas[] reference if an equivalent one isn't already present. Equivalence is the
+    (scheme, layer, id, role) tuple, so a rebuild never duplicates a reference. Returns True if
+    added. Pure helper over one entity."""
+    key = (area["scheme"], area["layer"], area.get("id"), area["role"])
+    have = {(a.get("scheme"), a.get("layer"), a.get("id"), a.get("role"))
+            for a in entity.get("areas", [])}
+    if key in have:
+        return False
+    entity.setdefault("areas", []).append(area)
+    return True
+
+
+def apply_boundaries_mapping(entities: list[dict], mapping: dict,
+                            layer_vocab: list[dict]) -> tuple[list[dict], list[dict]]:
+    """Attach geography-by-reference areas[] from the operator-curated boundaries mapping.
+
+    Returns (entities, skipped). Two attaching sections (both idempotent, deduped, additive):
+      - `operates_layer`: whole-layer references {scheme:"nyc-boundaries", layer, id:null,
+        role:"operates_layer"} for entities that administer a district system (NYPD->pp, DSNY->dsny,
+        FDNY->fb, DOE->sd, City Council->cc, Community Boards->cd, Board of Elections->ed).
+      - `jurisdictions`: county-footprint references {scheme:"us_census_geoid", layer, id:<FIPS>,
+        role:"jurisdiction"} for the 5 borough-president offices (nyc-boundaries has no borough
+        layer, so the national scheme carries the footprint).
+    Every attach adds the 'manual' provenance source. Non-attaching sections
+    (defines_not_operates / no_registry_entity / deferred) are documentation only.
+
+    Fails LOUD (raises ValueError) on any {scheme:"nyc-boundaries"} layer id not in `layer_vocab`
+    (the committed vocabulary from sync_boundaries.py) — a typo'd or removed layer id is a build
+    error, never a silent bad reference. us_census_geoid layers are Census summary levels, not
+    nyc-boundaries ids, so they are not checked against this vocabulary.
+    """
+    valid_layers = {row["id"] for row in layer_vocab}
+    by_id = {e["id"]: e for e in entities}
+    skipped: list[dict] = []
+
+    def _attach(section_key: str, role: str) -> None:
+        for ref in mapping.get(section_key, []):
+            if ref.get("scheme") == "nyc-boundaries" and ref["layer"] not in valid_layers:
+                raise ValueError(
+                    f"boundaries mapping references unknown nyc-boundaries layer "
+                    f"'{ref['layer']}' (entity {ref.get('entity_id')}); valid layers: "
+                    f"{sorted(valid_layers)}. Re-run sync_boundaries.py or fix the mapping."
+                )
+            target = by_id.get(ref["entity_id"])
+            if target is None:
+                skipped.append({"entity_id": ref["entity_id"], "layer": ref.get("layer"),
+                                "reason": "entity_id not in registry"})
+                continue
+            area = {"scheme": ref["scheme"], "layer": ref["layer"],
+                    "id": ref.get("id"), "role": role}
+            _add_area(target, area)
+            prov = target.setdefault("provenance", {"sources": []})
+            prov.setdefault("sources", [])
+            if "manual" not in prov["sources"]:
+                prov["sources"].append("manual")
+
+    _attach("operates_layer", "operates_layer")
+    _attach("jurisdictions", "jurisdiction")
+    return entities, skipped
+
+
 def _load(path: pathlib.Path, key: str) -> list[dict]:
     if not path.exists():
         return []
@@ -277,6 +341,19 @@ def main() -> int:
     wikidata = _load_obj(WIKIDATA_ENRICHMENT)
     entities, wd_skipped = apply_wikidata_enrichment(entities, wikidata)
 
+    # Boundaries areas[] (operator-curated mapping; layer ids validated against the committed
+    # vocabulary). Additive + idempotent; raises on an unknown nyc-boundaries layer id.
+    boundaries = _load_obj(BOUNDARIES_MAPPING)
+    bd_skipped: list[dict] = []
+    if boundaries.get("operates_layer") or boundaries.get("jurisdictions"):
+        vocab = _load_obj(BOUNDARIES_VOCAB).get("layers", [])
+        if not vocab:
+            raise SystemExit(
+                f"error: boundaries mapping present but no layer vocabulary at {BOUNDARIES_VOCAB}. "
+                "Run scripts/sync_boundaries.py to extract it from the cached index.ts."
+            )
+        entities, bd_skipped = apply_boundaries_mapping(entities, boundaries, vocab)
+
     OUT.write_text(json.dumps({"_generated_from": "build_registry.py", "entities": entities},
                               indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     PROPOSALS.write_text(json.dumps({"proposals": proposals}, indent=2) + "\n", encoding="utf-8")
@@ -288,7 +365,13 @@ def main() -> int:
     if wikidata.get("enrichments"):
         wd_note = (f"; wikidata QIDs attached to {len(wikidata['enrichments']) - len(wd_skipped)}"
                    f" entities" + (f" ({len(wd_skipped)} skipped)" if wd_skipped else ""))
-    print(f"wrote {len(entities)} entities -> {OUT}  ({len(proposals)} proposal(s)){gb_note}{wd_note}")
+    bd_note = ""
+    n_areas = len(boundaries.get("operates_layer", [])) + len(boundaries.get("jurisdictions", []))
+    if n_areas:
+        bd_note = (f"; boundaries areas attached to {n_areas - len(bd_skipped)} entity refs"
+                   + (f" ({len(bd_skipped)} skipped)" if bd_skipped else ""))
+    print(f"wrote {len(entities)} entities -> {OUT}  ({len(proposals)} proposal(s))"
+          f"{gb_note}{wd_note}{bd_note}")
 
     # Best-effort schema validation (skip cleanly if jsonschema isn't installed).
     try:
