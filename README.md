@@ -4,7 +4,7 @@ A curated, machine-readable registry of **New York City + New York State governm
 
 Built by [BetaNYC](https://beta.nyc). MIT-licensed.
 
-> **Status: populated from the city source (phase 1, 2026-07-15).** The registry now carries **318 entities** — the 17-entity anchor seed merged with **306 Active NYC governance organizations** from MODA / NYC Open Data `t3jq-9nkf` (5 seeds matched by name and gained a `nyc_goid`; 301 minted new). All external data is still access-gated: the sync reads an operator-placed cache file and never fetches. Cross-source enrichment (Greenbook/nyc.gov directory, Wikidata, boundaries, about-crawler) is phased and pending. See *Data sources & access* and [`docs/freshness.md`](docs/freshness.md).
+> **Status: crosswalk + curation (phase 2, 2026-07-15).** The registry carries **317 entities** — the 17-entity anchor seed merged with **306 Active NYC governance organizations** from MODA / NYC Open Data `t3jq-9nkf`, less the operator-confirmed EDC merge (the separately-minted "Economic Development Corporation" folded into seed `nycedc`). Phase 2 also: reconciles the stale-but-rich **NYC Greenbook** (`mdcw-n682`, 2023-12) against the registry via **MODA's nycresolver** — attaching agency contact scaffolding (staleness-flagged) to 27 exact-matched city entities and routing fuzzy/cross-level/unmatched agencies to a review report, never minting new entities; and validates the **nyc.gov agency directory** (found to be the same `t3jq` upstream — 306 ⊆ 306, zero drift). All external data is still access-gated: syncs read operator-placed cache files and never fetch. Remaining enrichment (Wikidata, boundaries, about-crawler) is phased and pending. See *Data sources & access* and [`docs/freshness.md`](docs/freshness.md).
 
 ## Why this exists
 
@@ -15,12 +15,15 @@ The immediate consumer is a forthcoming **NYC/NYS Wayback Machine harvester** (w
 ## What's here
 
 ```
-schema/property.schema.json   JSON Schema for one entity record (the contract; steward-neutral, standards-aligned)
-data/registry.seed.json       provisional hand-authored anchor set (17 entities)
-data/registry.json            the BUILT dataset — produced by build_registry.py
-scripts/                      source-sync + build + migration pipeline (see below)
-docs/                         schema reference, scheme catalog, EAC-CPF crosswalk, source provenance, freshness
-tests/                        offline validation (schema, lossless migration, build-seam invariants)
+schema/property.schema.json          JSON Schema for one entity record (the contract; steward-neutral, standards-aligned)
+data/registry.seed.json              provisional hand-authored anchor set (17 entities; carries only the legacy id)
+data/curation.json                   operator-confirmed merges + name-variant guards applied at build time
+data/registry.json                   the BUILT dataset — produced by build_registry.py
+data/greenbook_enrichment.json       entity-keyed Greenbook contact scaffolding (applied by the build)
+data/greenbook_reconciliation.json   Greenbook match review report (attached / fuzzy / cross-level / unmatched)
+scripts/                             source-sync + reconcile + build + migration pipeline (see below)
+docs/                                schema reference, scheme catalog, EAC-CPF crosswalk, source provenance, freshness
+tests/                               offline validation (schema, migration, build seam, reconciliation, curation)
 ```
 
 ## The data model (one record = one entity)
@@ -41,6 +44,8 @@ Full field reference: [`docs/schema.md`](docs/schema.md). Scheme catalog: [`docs
 | Source | Provides | Access | Notes |
 |---|---|---|---|
 | [MODA `nyc-governance-organizations`](https://github.com/MODA-NYC/nyc-governance-organizations) | City entities + current `url` | GitHub / NYC Open Data `t3jq-9nkf` | MIT. `url` is current-site only. |
+| **NYC Greenbook** (`mdcw-n682`) | Agency website/address/phone **scaffolding** | NYC Open Data | **Stale (2023-12)** — structure donor only; reconciled via [nycresolver](https://github.com/MODA-NYC/nyc-entity-resolver), staleness-flagged; officers never imported. |
+| **nyc.gov agency directory** | Directory-listing flag (**validation**) | nyc.gov JSON | **Same upstream as `t3jq-9nkf`** — a consistency check (record_ids ⊆ registry nyc_goids), not new entities. |
 | ABO **Directory of Public Authorities** | 608 authorities (State/Local/IDA/LDC) + `Website` | data.ny.gov `4vym-q77x` | `Website` column added 2026-01-15; self-reported, **blank where not provided**. License "unspecified". No explicit id column. |
 | `ny.gov/agencies` | State executive agencies | HTML directory | No bulk export → hand-curate. |
 | Wikidata / IRS | identifiers (`wikidata`, `us_irs_ein`) | — | Verified values only. |

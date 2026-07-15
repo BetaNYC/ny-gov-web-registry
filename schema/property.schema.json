@@ -269,9 +269,9 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["moda", "abo", "nygov", "wikidata", "manual"]
+            "enum": ["moda", "abo", "nygov", "greenbook", "wikidata", "manual"]
           },
-          "description": "Upstream(s) that asserted this record. This enum is part of the NYC/NYS configuration layer (a fork adjusts it)."
+          "description": "Upstream(s) that asserted this record. This enum is part of the NYC/NYS configuration layer (a fork adjusts it). `greenbook` marks a record carrying Greenbook-derived contact scaffolding (staleness flagged in the contact_details note)."
         },
         "last_verified": {
           "type": ["string", "null"],

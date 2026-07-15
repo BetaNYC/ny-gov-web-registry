@@ -216,7 +216,12 @@
       "id": "nycedc",
       "name": "New York City Economic Development Corporation",
       "short_name": "NYCEDC",
-      "other_names": [],
+      "other_names": [
+        {
+          "name": "Economic Development Corporation",
+          "note": "MODA t3jq canonical name for NYC_GOID_000177; operator-confirmed merge into this record 2026-07-15 (PR #5 guidance)."
+        }
+      ],
       "government_level": "authority",
       "classification": "local-development-corporation",
       "parent_id": null,
@@ -225,6 +230,10 @@
         {
           "scheme": "betanyc_org_legacy",
           "identifier": "BNYC-ORG-000007"
+        },
+        {
+          "scheme": "nyc_goid",
+          "identifier": "NYC_GOID_000177"
         }
       ],
       "web_properties": [
@@ -253,7 +262,8 @@
       "dissolution_date": null,
       "provenance": {
         "sources": [
-          "manual"
+          "manual",
+          "moda"
         ],
         "last_verified": "2026-07-11"
       }
@@ -508,7 +518,16 @@
       "id": "esd",
       "name": "Empire State Development",
       "short_name": "ESD",
-      "other_names": [],
+      "other_names": [
+        {
+          "name": "Empire State Development Corporation",
+          "note": "False-positive guard (PR #5, 2026-07-15): classic collision against NYC 'Economic Development Corporation'; ESD is a NYS state authority and must never merge with the city EDC."
+        },
+        {
+          "name": "New York State Urban Development Corporation",
+          "note": "Former name / false-positive guard (PR #5, 2026-07-15): the UDC lineage under which ESD's public-benefit corporation was chartered."
+        }
+      ],
       "government_level": "authority",
       "classification": "public-benefit-corporation",
       "parent_id": null,
@@ -581,10 +600,23 @@
       "dissolution_date": null,
       "provenance": {
         "sources": [
-          "manual"
+          "manual",
+          "greenbook"
         ],
         "last_verified": "2026-07-11"
-      }
+      },
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "375 Pearl St., New York, NY 10038",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 403-8500",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "id": "nyc-doe",
@@ -1631,11 +1663,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "fire-department-of-the-city-of-new-york"
+      "id": "fire-department-of-the-city-of-new-york",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "9 MetroTech Center, Brooklyn, NY 11201",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 999-2000",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Advisory Council on Procurement Lobbying",
@@ -1902,11 +1947,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "city-planning-commission"
+      "id": "city-planning-commission",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "120 Broadway, New York, NY 10271",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 720-3300",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "New York City Department of Transportation",
@@ -2168,11 +2226,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "campaign-finance-board"
+      "id": "campaign-finance-board",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "100 Church St., New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 409-1800",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Landmarks Preservation Commission",
@@ -2205,11 +2276,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "landmarks-preservation-commission"
+      "id": "landmarks-preservation-commission",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "253 Broadway, New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 669-7700",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Financial Information Services Agency",
@@ -2242,11 +2326,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "financial-information-services-agency"
+      "id": "financial-information-services-agency",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "5 Manhattan West, New York, NY 10001",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 857-1000",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Office of Administrative Trials and Hearings",
@@ -3206,11 +3303,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "city-university-construction-fund"
+      "id": "city-university-construction-fund",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "555 W. 57th St., New York, NY 10019",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(646) 664-2609",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Green Economy Advisory Council",
@@ -4101,11 +4211,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "educational-construction-fund"
+      "id": "educational-construction-fund",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "25-01 Jackson Ave., Long Island City, NY 11101",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 472-8287",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Board of Standards and Appeals",
@@ -4296,11 +4419,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "mayor-s-office-of-equity-and-racial-justice"
+      "id": "mayor-s-office-of-equity-and-racial-justice",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "253 Broadway, New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 748-0395",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Mayor's Office of Ethnic and Community Media",
@@ -5341,11 +5477,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "new-york-city-police-department"
+      "id": "new-york-city-police-department",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "1 Police Plaza, New York, NY 10038",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "911",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Fire Department Pension Fund and Related Funds",
@@ -5564,11 +5713,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "department-of-housing-preservation-and-development"
+      "id": "department-of-housing-preservation-and-development",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "100 Gold St., New York, NY 10038",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) NEW-YORK",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Wildlife Conservation Society",
@@ -5712,43 +5874,6 @@
         "last_verified": null
       },
       "id": "independent-budget-office"
-    },
-    {
-      "name": "Economic Development Corporation",
-      "short_name": "NYCEDC",
-      "other_names": [
-        {
-          "name": "NYCEDC",
-          "note": "acronym (MODA)"
-        }
-      ],
-      "government_level": "nyc",
-      "classification": "Public Benefit or Development Organization",
-      "identifiers": [
-        {
-          "scheme": "nyc_goid",
-          "identifier": "NYC_GOID_000177"
-        }
-      ],
-      "web_properties": [
-        {
-          "domain": "edc.nyc",
-          "role": "primary",
-          "valid_from": null,
-          "valid_to": null,
-          "notes": "From MODA `url` field (current site only)."
-        }
-      ],
-      "areas": [],
-      "area_note": null,
-      "status": "active",
-      "provenance": {
-        "sources": [
-          "moda"
-        ],
-        "last_verified": null
-      },
-      "id": "economic-development-corporation"
     },
     {
       "name": "Queens Theatre in the Park",
@@ -6176,11 +6301,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "office-of-the-new-york-city-comptroller"
+      "id": "office-of-the-new-york-city-comptroller",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "1 Centre St., New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 669-3500",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Mayor's Office of Talent and Workforce Development",
@@ -6685,11 +6823,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "equal-employment-practices-commission"
+      "id": "equal-employment-practices-commission",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "253 Broadway, New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 615-8939",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Brooklyn Navy Yard Development Corporation",
@@ -6722,11 +6873,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "brooklyn-navy-yard-development-corporation"
+      "id": "brooklyn-navy-yard-development-corporation",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "141 Flushing Avenue, Suite 801, Brooklyn, NY 11205",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 907-5900",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "New York City Public Housing Preservation Trust",
@@ -7054,11 +7218,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "civilian-complaint-review-board"
+      "id": "civilian-complaint-review-board",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "100 Church St., New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "311",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Jamaica Center for Arts and Learning",
@@ -7917,11 +8094,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "new-york-public-library"
+      "id": "new-york-public-library",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "Fifth Ave. & 42nd St., New York, NY 10018",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(917) 275-6975",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Flushing Meadows Corona Park Alliance",
@@ -8455,11 +8645,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "grownyc"
+      "id": "grownyc",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "100 Gold St., New York, NY 10038",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 788-7900",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Sheriff",
@@ -8791,11 +8994,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "brooklyn-bridge-park-corporation"
+      "id": "brooklyn-bridge-park-corporation",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "334 Furman St., Brooklyn, NY 11201",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 222-9939",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Office of the Public Realm",
@@ -9003,11 +9219,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "united-nations-development-corporation"
+      "id": "united-nations-development-corporation",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "2 United Nations Plaza, New York, NY 10017",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 888-1618",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Public Administrator of Queens County",
@@ -9141,11 +9370,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "business-integrity-commission"
+      "id": "business-integrity-commission",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "100 Church St., New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "311",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "New York City Employee Retirement System",
@@ -9412,11 +9654,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "lower-manhattan-development-corporation"
+      "id": "lower-manhattan-development-corporation",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "22 Cortlandt St., New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 962-2300",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Central Park Conservancy",
@@ -9526,11 +9781,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "new-york-city-council"
+      "id": "new-york-city-council",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "250 Broadway, New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 788-7210",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Convention Center Operating Corporation (Javits)",
@@ -9674,11 +9942,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "brooklyn-public-library"
+      "id": "brooklyn-public-library",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "10 Grand Army Plaza, Brooklyn, NY 11238",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 230-2100",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Mayor's Office of Citywide Events Coordination and Management",
@@ -9862,11 +10143,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "queens-public-library"
+      "id": "queens-public-library",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "89-11 Merrick Blvd., Jamaica, NY 11432",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 990-0700",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Board of Education Retirement System",
@@ -10275,11 +10569,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "new-york-city-taxi-and-limousine-commission"
+      "id": "new-york-city-taxi-and-limousine-commission",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "33 Beaver St., New York, NY 10004",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "212 NEW YORK",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Audit Committee",
@@ -10524,11 +10831,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "conflicts-of-interest-board"
+      "id": "conflicts-of-interest-board",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "2 Lafayette St., New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 442-1400",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "El Museo del Barrio",
@@ -11150,6 +11470,13 @@
           "valid_from": null,
           "valid_to": null,
           "notes": "From MODA `url` field (current site only)."
+        },
+        {
+          "domain": "www.nyc.gov",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency website field. Differs from current primary 'rentguidelinesboard.cityofnewyork.us' — UNVERIFIED legacy-domain lead, verify before treating as canonical."
         }
       ],
       "areas": [],
@@ -11157,11 +11484,24 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "greenbook"
         ],
         "last_verified": null
       },
-      "id": "rent-guidelines-board"
+      "id": "rent-guidelines-board",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "1 Centre St., New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 669-7480",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ]
     },
     {
       "name": "Workforce Development Board",
