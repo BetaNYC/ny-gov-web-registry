@@ -1,0 +1,24 @@
+{
+  "_comment": "Operator-confirmed curation directives applied by build_registry.py AFTER the seed loads and BEFORE/AFTER the source merge. Keeps the seed file pristine (seed carries only betanyc_org_legacy identifiers; test_no_fabricated_verified_identifiers_in_seed) while recording operator-confirmed merges and name-variant additions in one auditable place. Source of authority: PR #5 entity-resolution guidance comment (operator: Noel, 2026-07-15). See docs/sources.md and the Phase 2 journal.",
+  "confirmed_merges": [
+    {
+      "seed_id": "nycedc",
+      "match": { "scheme": "nyc_goid", "identifier": "NYC_GOID_000177" },
+      "add_other_names": [
+        { "name": "Economic Development Corporation", "note": "MODA t3jq canonical name for NYC_GOID_000177; operator-confirmed merge into this record 2026-07-15 (PR #5 guidance)." }
+      ],
+      "add_provenance_source": "moda",
+      "note": "Operator-confirmed (Noel, PR #5, 2026-07-15): seed nycedc = t3jq economic-development-corporation. Per merge discipline the seed keeps its id; it gains the nyc_goid identifier and the MODA name in other_names[]. Collapses what phase 1 minted as a separate 'economic-development-corporation' entity."
+    }
+  ],
+  "other_names_additions": [
+    {
+      "entity_id": "esd",
+      "names": [
+        { "name": "Empire State Development Corporation", "note": "False-positive guard (PR #5, 2026-07-15): classic collision against NYC 'Economic Development Corporation'; ESD is a NYS state authority and must never merge with the city EDC." },
+        { "name": "New York State Urban Development Corporation", "note": "Former name / false-positive guard (PR #5, 2026-07-15): the UDC lineage under which ESD's public-benefit corporation was chartered." }
+      ],
+      "note": "Documents the ambiguity in-data so name matching can be audited; MUST NOT merge with nycedc (cross-government_level: authority vs the city EDC)."
+    }
+  ]
+}
