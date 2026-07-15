@@ -7,9 +7,20 @@ inferred. Each scheme's authority, format, and verification rule is catalogued i
 ## MODA — city entities (primary city source)
 - **Repo:** https://github.com/MODA-NYC/nyc-governance-organizations · **Open Data:** `t3jq-9nkf`
 - **License:** MIT.
-- **Coverage:** ~434 NYC governance organizations (broader than mayoral agencies — boards, commissions, advisory/regulatory bodies). Immutable record id. Has a `url` field (**current site only**, no legacy-domain history). Notably records what *established* each org (Charter provision / Mayoral EO / statute) — a hook for the EO project.
+- **Coverage:** NYC governance organizations (broader than mayoral agencies — boards, commissions, advisory/regulatory bodies). The 2026-07-15 export (`t3jq-9nkf` rows.csv) has **306 rows, all `operational_status = Active`**. Immutable record id. Has a `url` field (**current site only**, no legacy-domain history).
 - **Caveat:** the multi-domain / legacy history is ours to build; MODA only carries the current URL.
-- **Sync:** `scripts/sync_moda.py` — field map verified 2026-07-11 against MODA's Phase II published schema. Emits v2 records: `record_id` → `identifiers[] {scheme: "nyc_goid"}`, `organization_type` → `classification`. Re-verify if MODA revises the schema.
+- **`record_id` format:** the export carries the **`NYC_GOID_XXXXXX`** form (e.g. `NYC_GOID_000476`), not a bare 6-digit numeric. Stored **verbatim as a string** under scheme `nyc_goid` (see [`schemes.md`](schemes.md)); do not strip the prefix.
+- **Sync:** `scripts/sync_moda.py` — field map verified **2026-07-15** against the actual 17-column export. Emits v2 records:
+  - `record_id` → `identifiers[] {scheme: "nyc_goid"}` (verbatim)
+  - `organization_type` → `classification`
+  - `acronym` → `short_name` **and** `other_names[]` (noted `acronym`)
+  - `alternate_or_former_names` / `alternate_or_former_acronyms` (`;`-delimited) → `other_names[]` (noted `alternate or former name` / `alternate or former acronym`)
+  - `url` → `web_properties[] {role: "primary"}` (host only)
+  - `operational_status` → **Active-only gate**; emitted `status` is `active`.
+  - **Deferred (no phase-0 schema home; do not invent fields):** `principal_officer_*` (personnel identity — no person/officer structure; `contact_details[]` is for contact points, not identity → **phase 2**), `listed_in_nyc_gov_agency_directory` (the flag phase 2 validates against the nyc.gov scrape, user story 13), `reports_to` (hierarchy-by-name; needs a second pass to resolve to minted ids), `name_alphabetized` / `in_org_chart` (display-only).
+  - **No mandate seed:** this export has no establishing-authority / Charter / EO column, so `mandates[]` cannot be seeded from it (contrary to earlier assumption). Left to City Record archive curation.
+  - **Matching:** the build seam matches identifier-scheme-first then **exact normalized name** — nycresolver tier-gated fuzzy matching is not yet wired, so near-duplicate names (e.g. seed "New York City Economic Development Corporation" vs export "Economic Development Corporation") are minted separately and are candidates for a later nycresolver reconciliation pass.
+  - Re-verify the field map if MODA revises the schema.
 
 ## ABO — public authorities (primary authority source)
 - **Dataset:** https://data.ny.gov/Transparency/Directory-of-Public-Authorities/4vym-q77x

@@ -4,7 +4,7 @@ A curated, machine-readable registry of **New York City + New York State governm
 
 Built by [BetaNYC](https://beta.nyc). MIT-licensed.
 
-> **Status: scaffold (2026-07-11).** The schema, a hand-authored anchor-set seed, and the source-sync scripts exist. The registry has **not** yet been populated from live sources — the sync scripts are written but not run (see *Data sources & access*). This repo is safe to read and build on; the dataset is provisional.
+> **Status: populated from the city source (phase 1, 2026-07-15).** The registry now carries **318 entities** — the 17-entity anchor seed merged with **306 Active NYC governance organizations** from MODA / NYC Open Data `t3jq-9nkf` (5 seeds matched by name and gained a `nyc_goid`; 301 minted new). All external data is still access-gated: the sync reads an operator-placed cache file and never fetches. Cross-source enrichment (Greenbook/nyc.gov directory, Wikidata, boundaries, about-crawler) is phased and pending. See *Data sources & access* and [`docs/freshness.md`](docs/freshness.md).
 
 ## Why this exists
 
@@ -54,9 +54,11 @@ Full provenance, licenses, and cadence: [`docs/sources.md`](docs/sources.md).
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-# 1. place source exports in data/cache/ (manual, gated)
-# 2. python scripts/build_registry.py   # merges sources + seed -> data/registry.json
-python -m pytest    # offline: validates the seed against the schema
+# 1. place source exports in data/cache/ (manual, gated) — e.g. t3jq-9nkf rows.csv
+#    at data/cache/moda_nyc-governance-organizations.csv
+# 2. python scripts/sync_moda.py        # normalize the export -> data/cache/records_moda.json (Active-only)
+# 3. python scripts/build_registry.py   # merges sources + seed -> data/registry.json (idempotent)
+python -m pytest    # offline: validates seed, migration, sync mappings, and build invariants
 ```
 
 ## Contributing
