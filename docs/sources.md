@@ -19,8 +19,24 @@ inferred. Each scheme's authority, format, and verification rule is catalogued i
   - `operational_status` → **Active-only gate**; emitted `status` is `active`.
   - **Deferred (no phase-0 schema home; do not invent fields):** `principal_officer_*` (personnel identity — no person/officer structure; `contact_details[]` is for contact points, not identity → **phase 2**), `listed_in_nyc_gov_agency_directory` (the flag phase 2 validates against the nyc.gov scrape, user story 13), `reports_to` (hierarchy-by-name; needs a second pass to resolve to minted ids), `name_alphabetized` / `in_org_chart` (display-only).
   - **No mandate seed:** this export has no establishing-authority / Charter / EO column, so `mandates[]` cannot be seeded from it (contrary to earlier assumption). Left to City Record archive curation.
-  - **Matching:** the build seam matches identifier-scheme-first then **exact normalized name** — nycresolver tier-gated fuzzy matching is not yet wired, so near-duplicate names (e.g. seed "New York City Economic Development Corporation" vs export "Economic Development Corporation") are minted separately and are candidates for a later nycresolver reconciliation pass.
+  - **Matching:** the build seam matches identifier-scheme-first then **exact normalized name**. Operator-confirmed near-duplicate merges (e.g. seed `nycedc` = export "Economic Development Corporation", `NYC_GOID_000177`) are recorded in `data/curation.json` and injected onto the seed at build time, so the identifier match enriches instead of minting a duplicate (phase 2). Messy *external-source* names (Greenbook) are reconciled via **nycresolver** — see below.
   - Re-verify the field map if MODA revises the schema.
+
+## Greenbook — city contact scaffolding (structure donor, STALE)
+- **Source:** NYC Greenbook (Official Directory of the City of New York) · NYC Open Data `mdcw-n682`.
+- **Shape:** one row **per officer** (2,555 rows in the 2026-07-15 export), each carrying the agency's name/acronym/website plus an office address + phones. `sync_greenbook.py` aggregates to **123 distinct agencies**.
+- **Staleness:** last refreshed **2023-12**. Used as a **structure donor only** — agency-level website/address/phone scaffolding — **never** as current-officer data. Officer identities (names, titles) are **deliberately dropped**; every attached value is stamped `Greenbook 2023-12 (stale…)` in its `contact_details` note.
+- **Matching:** aggregated agency names are reconciled against the registry with **nycresolver** (MODA's own matcher, github.com/MODA-NYC/nyc-entity-resolver, Apache-2.0), built **offline** from registry entities (no Socrata fetch). Tier-gated per PR #5:
+  - **exact + same `government_level`** → contact scaffolding attached to the matched entity (`provenance.sources` gains `greenbook`);
+  - **fuzzy / cross-`government_level` / no-match** → written to `data/greenbook_reconciliation.json` for human review, **never applied**. Cross-level is the guard that keeps a NYS authority (ESD) out of the city-EDC candidate set — it also holds legitimate marquee authorities/PBCs (CUNY, NYCHA, H+H, NYCEDC) for human confirmation rather than auto-attaching.
+  - **Unmatched Greenbook agencies are never minted as entities** (a Greenbook division is not an entity).
+- **Website leads:** an agency website whose registrable host (www/www1 normalized) **differs** from every domain the entity already owns is added as an **unverified `legacy` web-property lead** — never overwriting the current primary.
+- **Sync:** `scripts/sync_greenbook.py` → `data/greenbook_enrichment.json` (applied by `build_registry.py`) + `data/greenbook_reconciliation.json` (review report).
+
+## nyc.gov agency directory — same-upstream VALIDATION (not a new source)
+- **Endpoint:** the nyc.gov agency-directory JSON (306 records; export fetched **2026-07-15**).
+- **Discovery (2026-07-15):** this is the **same upstream** as the canonical dataset — identical `record_id` values (`NYC_GOID_XXXXXX`), i.e. the directory page is powered by the governance registry (`t3jq-9nkf`). It is therefore a **validation input, not new entities**.
+- **Check:** `scripts/validate_nycgov_directory.py` asserts directory `record_id`s ⊆ registry `nyc_goid`s and reports drift both ways; it also surfaces the `listed_in_nyc_gov_agency` flag `sync_moda` deferred (user story 13). 2026-07-15 result: **306 ⊆ 306, zero drift**; 177 records flagged `listed_in_nyc_gov_agency = true`.
 
 ## ABO — public authorities (primary authority source)
 - **Dataset:** https://data.ny.gov/Transparency/Directory-of-Public-Authorities/4vym-q77x

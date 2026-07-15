@@ -24,8 +24,8 @@ The schema is **steward-neutral and standards-aligned** — vocabulary is drawn 
 | `status` | enum | `active` \| `dissolved` \| `merged` \| `renamed` \| `planned`. Removals are status changes, not deletes. |
 | `founding_date` / `dissolution_date` | string\|null | Lifecycle dates (Popolo; EAC-CPF `<existDates>`). Formerly `valid_from` / `valid_to`. |
 | `links[]` | array | Related non-owned URLs (`{url, note?}`; Popolo `links`). Owned domains go in `web_properties[]`. |
-| `contact_details[]` | array | Contact points (`{type, value, note?}`; Popolo `contact_details`). Greenbook scaffolding lands here in phase 2, staleness flagged in `note`. |
-| `provenance` | object | `sources[]` (`moda`\|`abo`\|`nygov`\|`wikidata`\|`manual`; configuration-layer enum) + `last_verified`. |
+| `contact_details[]` | array | Contact points (`{type, value, note?}`; Popolo `contact_details`). Greenbook scaffolding lands here (phase 2): `type` is `address` or `voice`, and every Greenbook-derived value is staleness-flagged in `note` (`Greenbook 2023-12 (stale…)`). Attached only to entities the tier-gated reconciliation matched exactly at the same `government_level`; officer identities are never imported. |
+| `provenance` | object | `sources[]` (`moda`\|`abo`\|`nygov`\|`greenbook`\|`wikidata`\|`manual`; configuration-layer enum) + `last_verified`. `greenbook` marks a record carrying Greenbook contact scaffolding. |
 
 `id`, `name`, `government_level`, `web_properties`, and `status` are **required**; every other field is optional and additive.
 

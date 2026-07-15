@@ -10,3 +10,12 @@ jsonschema>=4.21,<5
 
 # Test runner (offline suite in tests/).
 pytest>=8,<9
+
+# Entity resolution — MODA's nycresolver (the City's own agency-name matcher), used by
+# scripts/reconcile.py for the phase-2 Greenbook crosswalk. Not on PyPI (pre-release,
+# "work in progress"), so pinned to an exact commit for reproducibility (the SHA is the pin —
+# there is no PyPI version to bound). Apache-2.0, stdlib-only, requires-python >=3.9. We build
+# the Matcher OFFLINE from registry entities (never call build_matcher(), which fetches Socrata).
+# reconcile.py degrades to exact-only matching if this import is absent, so the offline suite
+# still passes without it. Re-pin the SHA when adopting an upstream fix.
+nycresolver @ git+https://github.com/MODA-NYC/nyc-entity-resolver@20bc5d97c6c10329f50f533e4d7d1f5528169b49
