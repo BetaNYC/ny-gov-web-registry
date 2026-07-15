@@ -35,6 +35,7 @@ PROPOSALS = ROOT / "data" / "build_proposals.json"
 SCHEMA = ROOT / "schema" / "property.schema.json"
 CURATION = ROOT / "data" / "curation.json"
 GREENBOOK_ENRICHMENT = ROOT / "data" / "greenbook_enrichment.json"
+WIKIDATA_ENRICHMENT = ROOT / "data" / "wikidata_enrichment.json"
 
 SOURCE_FILES = ("records_moda.json", "records_abo.json", "records_nygov.json")
 
@@ -204,6 +205,37 @@ def apply_greenbook_enrichment(entities: list[dict], enrichment: dict) -> tuple[
     return entities, skipped
 
 
+def apply_wikidata_enrichment(entities: list[dict], enrichment: dict) -> tuple[list[dict], list[dict]]:
+    """Attach domain-anchored Wikidata QIDs to matched entities (idempotent, deduped, additive).
+
+    Returns (entities, skipped). Each enrichment is keyed by entity_id (produced by
+    sync_wikidata.py's distinctive-domain auto tier — NEVER a name-only match). Adds
+    identifiers[]{scheme:"wikidata"} (dedup by the {scheme, identifier} pair) and the 'wikidata'
+    provenance source. Never overwrites an existing identifier. Re-running is safe.
+    """
+    by_id = {e["id"]: e for e in entities}
+    skipped: list[dict] = []
+    for enr in enrichment.get("enrichments", []):
+        target = by_id.get(enr["entity_id"])
+        if target is None:
+            skipped.append({"entity_id": enr["entity_id"], "reason": "entity_id not in registry"})
+            continue
+        ids = target.setdefault("identifiers", [])
+        have = {(i.get("scheme"), i.get("identifier")) for i in ids}
+        for ident in enr.get("identifiers", []):
+            pair = (ident.get("scheme"), ident.get("identifier"))
+            if pair not in have:
+                ids.append({"scheme": pair[0], "identifier": pair[1]})
+                have.add(pair)
+        src = enr.get("add_provenance_source")
+        if src:
+            prov = target.setdefault("provenance", {"sources": []})
+            prov.setdefault("sources", [])
+            if src not in prov["sources"]:
+                prov["sources"].append(src)
+    return entities, skipped
+
+
 def _load(path: pathlib.Path, key: str) -> list[dict]:
     if not path.exists():
         return []
@@ -241,6 +273,10 @@ def main() -> int:
     greenbook = _load_obj(GREENBOOK_ENRICHMENT)
     entities, gb_skipped = apply_greenbook_enrichment(entities, greenbook)
 
+    # Wikidata QIDs (optional; produced by sync_wikidata.py, domain-anchored auto tier). Additive.
+    wikidata = _load_obj(WIKIDATA_ENRICHMENT)
+    entities, wd_skipped = apply_wikidata_enrichment(entities, wikidata)
+
     OUT.write_text(json.dumps({"_generated_from": "build_registry.py", "entities": entities},
                               indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     PROPOSALS.write_text(json.dumps({"proposals": proposals}, indent=2) + "\n", encoding="utf-8")
@@ -248,7 +284,11 @@ def main() -> int:
     if greenbook.get("enrichments"):
         gb_note = (f"; greenbook enrichment applied to {len(greenbook['enrichments']) - len(gb_skipped)}"
                    f" entities" + (f" ({len(gb_skipped)} skipped)" if gb_skipped else ""))
-    print(f"wrote {len(entities)} entities -> {OUT}  ({len(proposals)} proposal(s)){gb_note}")
+    wd_note = ""
+    if wikidata.get("enrichments"):
+        wd_note = (f"; wikidata QIDs attached to {len(wikidata['enrichments']) - len(wd_skipped)}"
+                   f" entities" + (f" ({len(wd_skipped)} skipped)" if wd_skipped else ""))
+    print(f"wrote {len(entities)} entities -> {OUT}  ({len(proposals)} proposal(s)){gb_note}{wd_note}")
 
     # Best-effort schema validation (skip cleanly if jsonschema isn't installed).
     try:
