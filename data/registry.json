@@ -3479,10 +3479,6 @@
         {
           "scheme": "nyc_goid",
           "identifier": "NYC_GOID_000028"
-        },
-        {
-          "scheme": "wikidata",
-          "identifier": "Q11299"
         }
       ],
       "web_properties": [
@@ -3499,8 +3495,7 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda",
-          "wikidata"
+          "moda"
         ],
         "last_verified": null
       },
@@ -6483,10 +6478,6 @@
         {
           "scheme": "nyc_goid",
           "identifier": "NYC_GOID_000027"
-        },
-        {
-          "scheme": "wikidata",
-          "identifier": "Q18419"
         }
       ],
       "web_properties": [
@@ -6503,8 +6494,7 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda",
-          "wikidata"
+          "moda"
         ],
         "last_verified": null
       },
@@ -8212,10 +8202,6 @@
         {
           "scheme": "nyc_goid",
           "identifier": "NYC_GOID_000026"
-        },
-        {
-          "scheme": "wikidata",
-          "identifier": "Q18426"
         }
       ],
       "web_properties": [
@@ -8232,8 +8218,7 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda",
-          "wikidata"
+          "moda"
         ],
         "last_verified": null
       },
@@ -8400,10 +8385,6 @@
         {
           "scheme": "nyc_goid",
           "identifier": "NYC_GOID_000030"
-        },
-        {
-          "scheme": "wikidata",
-          "identifier": "Q18432"
         }
       ],
       "web_properties": [
@@ -8420,8 +8401,7 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda",
-          "wikidata"
+          "moda"
         ],
         "last_verified": null
       },

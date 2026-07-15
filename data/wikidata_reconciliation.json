@@ -4,49 +4,19 @@
   "distinct_qids": 109,
   "qids_with_website": 88,
   "stats": {
-    "auto_attached": 7,
+    "auto_attached": 3,
     "proposals": 22,
+    "re_pointed": 4,
+    "no_suitable_item": 4,
     "review_domain_conflict": 0,
     "review_ambiguous_name": 1,
     "review_apex_shared": 20,
     "unmatched": 59,
     "legacy_domain_leads": 1,
-    "name_divergent_caveats": 5
+    "name_divergent_caveats": 1
   },
   "report": {
     "auto_attached": [
-      {
-        "qid": "Q18432",
-        "label": "Staten Island",
-        "entity_id": "office-of-the-borough-president-of-staten-island",
-        "matched_name": "Office of the Borough President of Staten Island",
-        "matched_via_host": "statenislandusa.com",
-        "name_divergent": true
-      },
-      {
-        "qid": "Q18426",
-        "label": "The Bronx",
-        "entity_id": "office-of-the-borough-president-of-the-bronx",
-        "matched_name": "Office of the Borough President of The Bronx",
-        "matched_via_host": "bronxboropres.nyc.gov",
-        "name_divergent": true
-      },
-      {
-        "qid": "Q11299",
-        "label": "Manhattan",
-        "entity_id": "office-of-the-borough-president-of-manhattan",
-        "matched_name": "Office of the Borough President of Manhattan",
-        "matched_via_host": "manhattanbp.nyc.gov",
-        "name_divergent": true
-      },
-      {
-        "qid": "Q18419",
-        "label": "Brooklyn",
-        "entity_id": "office-of-the-borough-president-of-brooklyn",
-        "matched_name": "Office of the Borough President of Brooklyn",
-        "matched_via_host": "brooklynbp.nyc.gov",
-        "name_divergent": true
-      },
       {
         "qid": "Q564793",
         "label": "Jacob K. Javits Convention Center",
@@ -248,6 +218,78 @@
         "matched_name": "Fire Department of the City of New York",
         "reason": "exact_name",
         "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      }
+    ],
+    "re_pointed": [
+      {
+        "entity_id": "office-of-the-borough-president-of-staten-island",
+        "rejected_qid": "Q18432",
+        "rejected_label": "Staten Island",
+        "rejected_class": "Staten Island — borough of New York City / Richmond County (place)",
+        "matched_via_host": "statenislandusa.com",
+        "action": "drop",
+        "attached_qid": null,
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): Q18432 is the Staten Island borough (P856 statenislandusa.com — a tourism site), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
+      },
+      {
+        "entity_id": "office-of-the-borough-president-of-the-bronx",
+        "rejected_qid": "Q18426",
+        "rejected_label": "The Bronx",
+        "rejected_class": "The Bronx — borough of New York City / Bronx County (place)",
+        "matched_via_host": "bronxboropres.nyc.gov",
+        "action": "drop",
+        "attached_qid": null,
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): an office is not a place. Q18426 is the Bronx borough, not the BP office; it merely carries the office site bronxboropres.nyc.gov as P856. Wikidata has NO per-borough Borough-President OFFICE item (0 instances/subclasses of Q4946327 'borough president'; the domains are claimed only by borough/county place items). The generic Q4946327 is the office TYPE, not this specific office, so it fails the 'the QID's item is this entity' rule. Dropped rather than attach the place."
+      },
+      {
+        "entity_id": "office-of-the-borough-president-of-manhattan",
+        "rejected_qid": "Q11299",
+        "rejected_label": "Manhattan",
+        "rejected_class": "Manhattan — borough of New York City / New York County (place)",
+        "matched_via_host": "manhattanbp.nyc.gov",
+        "action": "drop",
+        "attached_qid": null,
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): Q11299 is the Manhattan borough (P856 manhattanbp.nyc.gov, also on Q500416 New York County), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
+      },
+      {
+        "entity_id": "office-of-the-borough-president-of-brooklyn",
+        "rejected_qid": "Q18419",
+        "rejected_label": "Brooklyn",
+        "rejected_class": "Brooklyn — borough of New York City / Kings County (place)",
+        "matched_via_host": "brooklynbp.nyc.gov",
+        "action": "drop",
+        "attached_qid": null,
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): Q18419 is the Brooklyn borough (P856 brooklynbp.nyc.gov), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
+      }
+    ],
+    "no_suitable_item": [
+      {
+        "entity_id": "office-of-the-borough-president-of-staten-island",
+        "rejected_qid": "Q18432",
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): Q18432 is the Staten Island borough (P856 statenislandusa.com — a tourism site), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
+      },
+      {
+        "entity_id": "office-of-the-borough-president-of-the-bronx",
+        "rejected_qid": "Q18426",
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): an office is not a place. Q18426 is the Bronx borough, not the BP office; it merely carries the office site bronxboropres.nyc.gov as P856. Wikidata has NO per-borough Borough-President OFFICE item (0 instances/subclasses of Q4946327 'borough president'; the domains are claimed only by borough/county place items). The generic Q4946327 is the office TYPE, not this specific office, so it fails the 'the QID's item is this entity' rule. Dropped rather than attach the place."
+      },
+      {
+        "entity_id": "office-of-the-borough-president-of-manhattan",
+        "rejected_qid": "Q11299",
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): Q11299 is the Manhattan borough (P856 manhattanbp.nyc.gov, also on Q500416 New York County), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
+      },
+      {
+        "entity_id": "office-of-the-borough-president-of-brooklyn",
+        "rejected_qid": "Q18419",
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): Q18419 is the Brooklyn borough (P856 brooklynbp.nyc.gov), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
       }
     ],
     "review_domain_conflict": [],
@@ -800,38 +842,6 @@
       }
     ],
     "name_divergent_caveats": [
-      {
-        "qid": "Q18432",
-        "label": "Staten Island",
-        "entity_id": "office-of-the-borough-president-of-staten-island",
-        "matched_name": "Office of the Borough President of Staten Island",
-        "matched_via_host": "statenislandusa.com",
-        "note": "distinctive-domain auto-attach whose Wikidata label does not match the entity name — likely a place/office conflation; operator review recommended before treating the QID as an identity assertion."
-      },
-      {
-        "qid": "Q18426",
-        "label": "The Bronx",
-        "entity_id": "office-of-the-borough-president-of-the-bronx",
-        "matched_name": "Office of the Borough President of The Bronx",
-        "matched_via_host": "bronxboropres.nyc.gov",
-        "note": "distinctive-domain auto-attach whose Wikidata label does not match the entity name — likely a place/office conflation; operator review recommended before treating the QID as an identity assertion."
-      },
-      {
-        "qid": "Q11299",
-        "label": "Manhattan",
-        "entity_id": "office-of-the-borough-president-of-manhattan",
-        "matched_name": "Office of the Borough President of Manhattan",
-        "matched_via_host": "manhattanbp.nyc.gov",
-        "note": "distinctive-domain auto-attach whose Wikidata label does not match the entity name — likely a place/office conflation; operator review recommended before treating the QID as an identity assertion."
-      },
-      {
-        "qid": "Q18419",
-        "label": "Brooklyn",
-        "entity_id": "office-of-the-borough-president-of-brooklyn",
-        "matched_name": "Office of the Borough President of Brooklyn",
-        "matched_via_host": "brooklynbp.nyc.gov",
-        "note": "distinctive-domain auto-attach whose Wikidata label does not match the entity name — likely a place/office conflation; operator review recommended before treating the QID as an identity assertion."
-      },
       {
         "qid": "Q564793",
         "label": "Jacob K. Javits Convention Center",

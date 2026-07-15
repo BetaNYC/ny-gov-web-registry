@@ -16,9 +16,11 @@ import pytest
 from build_registry import apply_wikidata_enrichment
 from sync_wikidata import (
     QID_RE,
+    apply_repoint,
     build_indexes,
     classify,
     legacy_domain_leads,
+    load_repoints,
     norm_host,
     parse_candidates,
     qid_of,
@@ -259,6 +261,73 @@ def test_enrichment_skips_unknown_entity_id():
     assert skipped and skipped[0]["entity_id"] == "ghost"
 
 
+# --- operator re-point guard (place is not an office) --------------------------------------
+
+def _auto_place_decision():
+    """A raw domain auto-match of a PLACE QID onto an office entity (the pre-guard state)."""
+    entities = [_entity("bp-bronx", "Office of the Borough President of the Bronx",
+                        domains=["bronxboropres.nyc.gov"])]
+    domain_index, name_index = build_indexes(entities)
+    by_id = {e["id"]: e for e in entities}
+    cand = parse_candidates([_binding("Q18426", "The Bronx",
+                                      website="https://bronxboropres.nyc.gov/")])[0]
+    d = classify(cand, domain_index, name_index, by_id)
+    assert d["decision"] == "auto"  # domain rule alone WOULD attach the place — the guard overrides
+    return d
+
+
+def test_load_repoints_keys_by_entity_id():
+    curation = {"wikidata_repoints": [
+        {"entity_id": "bp-bronx", "reject_qid": "Q18426", "action": "drop"}]}
+    rp = load_repoints(curation)
+    assert rp["bp-bronx"]["reject_qid"] == "Q18426"
+    assert load_repoints({}) == {}
+
+
+def test_repoint_drop_overrides_raw_domain_automatch():
+    # THE guard: an operator drop directive takes precedence over the domain auto-match, so the
+    # place QID is NOT attached. Domain rule alone is insufficient when the item is a place.
+    d = apply_repoint(_auto_place_decision(),
+                      {"bp-bronx": {"entity_id": "bp-bronx", "reject_qid": "Q18426",
+                                    "action": "drop", "reason": "no_suitable_item"}})
+    assert d["decision"] == "re_pointed"
+    assert d["action"] == "drop"
+    assert d["rejected_qid"] == "Q18426"
+    assert d.get("attach_qid") is None
+
+
+def test_repoint_attach_swaps_place_qid_for_office_qid():
+    # When an operator-verified office QID exists, re-point attaches IT, never the place QID.
+    d = apply_repoint(_auto_place_decision(),
+                      {"bp-bronx": {"entity_id": "bp-bronx", "reject_qid": "Q18426",
+                                    "action": "attach", "attach_qid": "Q9999999"}})
+    assert d["decision"] == "re_pointed"
+    assert d["action"] == "attach"
+    assert d["rejected_qid"] == "Q18426" and d["attach_qid"] == "Q9999999"
+
+
+def test_repoint_ignores_non_matching_qid():
+    # A directive whose reject_qid does not equal the matched QID must not fire (safety).
+    d = apply_repoint(_auto_place_decision(),
+                      {"bp-bronx": {"entity_id": "bp-bronx", "reject_qid": "Q999", "action": "drop"}})
+    assert d["decision"] == "auto"  # untouched
+
+
+def test_repoint_ignores_non_auto_decisions():
+    proposal = {"decision": "proposal", "entity_id": "x", "qid": "Q1"}
+    assert apply_repoint(proposal, {"x": {"reject_qid": "Q1", "action": "drop"}}) == proposal
+
+
+def test_dropped_repoint_yields_no_enrichment():
+    # Integration of the guard through apply_wikidata_enrichment: a dropped re-point produces no
+    # enrichment record, so the entity never gains the place QID.
+    ent = {"id": "bp-bronx", "name": "Office of the Borough President of the Bronx",
+           "government_level": "nyc", "web_properties": [{"domain": "bronxboropres.nyc.gov"}],
+           "status": "active", "identifiers": [], "provenance": {"sources": ["moda"]}}
+    apply_wikidata_enrichment([ent], {"enrichments": []})  # drop path emits nothing
+    assert not any(i["scheme"] == "wikidata" for i in ent["identifiers"])
+
+
 # --- outcome assertions on the committed build ---------------------------------------------
 
 @pytest.fixture(scope="module")
@@ -271,10 +340,28 @@ def report():
     return json.loads((ROOT / "data" / "wikidata_reconciliation.json").read_text(encoding="utf-8"))
 
 
-def test_committed_registry_has_seven_wikidata_qids(registry):
-    attached = [e for e in registry
-                if any(i["scheme"] == "wikidata" for i in e.get("identifiers", []))]
-    assert len(attached) == 7
+def test_committed_registry_has_three_wikidata_qids(registry):
+    # 3 kept (Parks, H+H, Javits); the 4 borough place QIDs were re-pointed -> dropped.
+    attached = {e["id"] for e in registry
+                if any(i["scheme"] == "wikidata" for i in e.get("identifiers", []))}
+    assert attached == {"department-of-parks-and-recreation", "nyc-health-hospitals",
+                        "convention-center-operating-corporation-javits"}
+
+
+def test_committed_no_borough_office_carries_a_wikidata_qid(registry):
+    # Operator decision (PR #8): an office is not a place — no borough-president office entity may
+    # carry a place QID, and Wikidata has no per-borough office item, so none carry any wikidata id.
+    boroughs = [e for e in registry if "borough-president" in e["id"]]
+    assert boroughs  # sanity: the entities exist
+    for e in boroughs:
+        assert not any(i["scheme"] == "wikidata" for i in e.get("identifiers", [])), e["id"]
+
+
+def test_committed_report_records_four_dropped_repoints(report):
+    rp = report["report"]["re_pointed"]
+    assert {x["rejected_qid"] for x in rp} == {"Q18426", "Q18419", "Q11299", "Q18432"}
+    assert all(x["action"] == "drop" for x in rp)
+    assert len(report["report"]["no_suitable_item"]) == 4
 
 
 def test_every_committed_wikidata_identifier_is_verbatim_qid(registry):
@@ -291,7 +378,8 @@ def test_wikidata_attached_entities_carry_provenance(registry):
 
 
 def test_committed_report_stats_and_count_unchanged(registry, report):
-    assert report["stats"]["auto_attached"] == 7
+    assert report["stats"]["auto_attached"] == 3
+    assert report["stats"]["re_pointed"] == 4
     assert report["distinct_qids"] == 109
     assert len(registry) == 317  # QID attachment never mints entities
 

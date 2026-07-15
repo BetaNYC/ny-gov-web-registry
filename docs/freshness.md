@@ -65,11 +65,28 @@ result back to `data/cache/wikidata_nyc_gov_orgs.json`, and update the fetch dat
 **only** when its `P856` host (scheme/path stripped, `www`-normalized, host-only) is owned by exactly
 one registry entity — a *distinctive* domain. Apex-shared hosts (`nyc.gov`, owned host-only by 154
 entities) are never a match; they fall through to exact name/alias matching, which produces **review
-proposals**, never auto-attachments. Phase-3 outcome: **7 auto-attached, 22 proposals, 1
-ambiguous-name, 20 apex-only, 59 unmatched**; `data/wikidata_reconciliation.json` carries proposals,
-legacy-domain leads, and name-divergence caveats (Wikidata conflates the four borough *place* items
-with their borough-president *office* websites — auto-attached on the domain rule, flagged for
-operator review).
+proposals**, never auto-attachments.
+
+**Place-vs-organization guard (operator re-point, 2026-07-15, PR #8).** A distinctive domain match is
+still *not* sufficient when the `P856` item's class is a **place** rather than the office/organization
+— Wikidata routinely lists an office's website as the `P856` of the *place* it administers. Operator
+re-point directives in `data/curation.json § wikidata_repoints` override the raw domain match by
+`entity_id + reject_qid`, applied by `sync_wikidata.apply_repoint` (which takes precedence over the
+domain auto-match). The four borough-president office entities were auto-matched to their **borough
+place** QIDs (Q18426 The Bronx, Q18419 Brooklyn, Q11299 Manhattan, Q18432 Staten Island) purely via
+the office site in `P856`. Verified against Wikidata (raw results:
+`data/cache/wikidata_borough_president_probe.json`) that **no per-borough Borough-President office
+item exists** (0 instances/subclasses of the generic office `Q4946327`; the domains are claimed only
+by borough/county place items), so all four were **dropped** (`no_suitable_item`) rather than attach
+a place. Q564793 (Jacob K. Javits Convention Center) stays attached — it is dual-classed *convention
+center* **and** *state agency of New York* with no separate operating-corporation item, so it is a
+genuine organization match (flagged name-divergent, kept with note).
+
+Phase-3 outcome (after re-point): **3 auto-attached** (NYC Parks Q1894232, H+H Q7013226, Javits
+CCOC Q564793), **4 re-pointed → dropped**, **22 proposals, 1 ambiguous-name, 20 apex-only, 59
+unmatched**; `data/wikidata_reconciliation.json` carries the `re_pointed` / `no_suitable_item`
+decision trail (rejected QID + place class), proposals, and legacy-domain leads. **Coverage: 3 of
+317 entities carry a `wikidata` identifier.**
 
 ## Three-tier refresh
 1. **Auto (city):** re-sync from MODA (`sync_moda.py`) — MODA maintains its own QA pipeline; we track its record ids. Population landed 2026-07-15 (phase 1): 306 Active orgs merged with the 17-entity seed → 318 entities. **Phase 2 (2026-07-15):** the operator-confirmed EDC merge (`data/curation.json`) collapses the separately-minted "Economic Development Corporation" into seed `nycedc` → **317 entities** (5 seeds matched by name + 1 by curated identifier gained a `nyc_goid`; 300 minted new). Greenbook contact scaffolding then attaches to 27 exact-matched city entities (no change to the count).

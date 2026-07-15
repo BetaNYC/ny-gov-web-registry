@@ -40,10 +40,19 @@ TIER GATING (mirrors reconcile.py's philosophy; domain replaces nycresolver as t
   report (never written to web_properties by this script).
 
   NAME-DIVERGENCE CAVEAT: a distinctive-domain auto-attach whose Wikidata label/aliases do not
-  normalize-match the entity's name/aliases is auto-attached (domain is the strong signal) but
-  ALSO flagged `name_divergent` in the report — this surfaces Wikidata's systematic conflation of
-  a PLACE item with an OFFICE's website (the four borough items carry their borough-president
-  office site as P856), so the operator can review those specific attachments.
+  normalize-match the entity's name/aliases is flagged `name_divergent` — this surfaces Wikidata's
+  systematic conflation of a PLACE item with an OFFICE's website (the four borough items carry
+  their borough-president office site as P856).
+
+  OPERATOR RE-POINT GUARD (place is not an office): the domain rule alone is NOT sufficient when the
+  P856 item's class is a place. Operator-confirmed directives in data/curation.json § wikidata_repoints
+  OVERRIDE a raw domain match by entity_id + reject_qid — either dropping the attachment
+  ("no_suitable_item", when Wikidata has no office/organization item) or re-pointing it to an
+  operator-verified office QID. Applied by `apply_repoint`, which takes precedence over `classify`'s
+  domain auto-match. Decision 2026-07-15 (PR #8): the four borough place QIDs (Q18426/Q18419/Q11299/
+  Q18432) are DROPPED — Wikidata has no per-borough Borough-President office item (verified:
+  data/cache/wikidata_borough_president_probe.json). The place QIDs move to the reconciliation
+  report's `re_pointed`/`no_suitable_item` sections so the decision trail survives.
 
 OUTPUTS (committed; parallel to the Greenbook seam):
   - data/wikidata_enrichment.json     — entity-id-keyed auto attachments the build applies.
@@ -67,6 +76,7 @@ from build_registry import build_unenriched
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CACHE = ROOT / "data" / "cache"
 SOURCE = CACHE / "wikidata_nyc_gov_orgs.json"
+CURATION = ROOT / "data" / "curation.json"
 ENRICHMENT_OUT = ROOT / "data" / "wikidata_enrichment.json"
 REPORT_OUT = ROOT / "data" / "wikidata_reconciliation.json"
 
@@ -243,6 +253,45 @@ def legacy_domain_leads(decision: dict, by_id: dict[str, dict],
     return leads
 
 
+def _load_curation() -> dict:
+    """Load data/curation.json (the operator-directive file), or {} if absent."""
+    if not CURATION.exists():
+        return {}
+    return json.loads(CURATION.read_text(encoding="utf-8"))
+
+
+def load_repoints(curation: dict) -> dict[str, dict]:
+    """entity_id -> operator re-point directive (data/curation.json § wikidata_repoints).
+
+    A directive OVERRIDES a raw domain auto-match: the domain rule alone is not sufficient when
+    the P856 item's class is a place (a place is not an office). Each directive has:
+      reject_qid  — the QID the raw domain match would have attached (a place item)
+      action      — "drop" (no attachment; the correct office item does not exist on Wikidata) or
+                    "attach" with attach_qid (an operator-verified office/organization QID)
+    Verified online (see verified_from cache) and pinned here so the guard is deterministic +
+    testable offline. Keyed by entity_id."""
+    return {r["entity_id"]: r for r in curation.get("wikidata_repoints", [])}
+
+
+def apply_repoint(decision: dict, repoints: dict[str, dict]) -> dict:
+    """Operator re-point guard: takes PRECEDENCE over a raw domain auto-match. Pure.
+
+    If `decision` is a domain auto-match for an entity with a re-point directive whose reject_qid
+    equals the matched QID, rewrite it to decision "re_pointed" carrying the rejected QID and the
+    directive's action (drop | attach). Non-auto decisions and entities without a matching directive
+    pass through unchanged. This is the encoded guard: the presence of an operator override in
+    curation beats the domain rule, so a place QID is never attached to an office entity."""
+    if decision.get("decision") != "auto":
+        return decision
+    directive = repoints.get(decision.get("entity_id"))
+    if directive is None or directive.get("reject_qid") != decision["qid"]:
+        return decision
+    return {**decision, "decision": "re_pointed", "reason": directive.get("reason", "re_pointed"),
+            "rejected_qid": decision["qid"], "action": directive.get("action", "drop"),
+            "attach_qid": directive.get("attach_qid"), "reject_class": directive.get("reject_class"),
+            "directive_note": directive.get("note")}
+
+
 def main() -> int:
     if not SOURCE.exists():
         print(f"[gated] no Wikidata SPARQL cache at {SOURCE}\n"
@@ -256,17 +305,39 @@ def main() -> int:
     entities, _ = build_unenriched()
     by_id = {e["id"]: e for e in entities}
     domain_index, name_index = build_indexes(entities)
+    repoints = load_repoints(_load_curation())
 
     enrichments: list[dict] = []
-    report = {"auto_attached": [], "proposals": [], "review_domain_conflict": [],
-              "review_ambiguous_name": [], "review_apex_shared": [], "unmatched": [],
-              "legacy_domain_leads": [], "name_divergent_caveats": []}
+    report = {"auto_attached": [], "proposals": [], "re_pointed": [], "no_suitable_item": [],
+              "review_domain_conflict": [], "review_ambiguous_name": [], "review_apex_shared": [],
+              "unmatched": [], "legacy_domain_leads": [], "name_divergent_caveats": []}
 
     for cand in candidates:
         d = classify(cand, domain_index, name_index, by_id)
+        d = apply_repoint(d, repoints)  # operator guard: precedence over the raw domain match
         report["legacy_domain_leads"].extend(legacy_domain_leads(d, by_id, domain_index))
 
-        if d["decision"] == "auto":
+        if d["decision"] == "re_pointed":
+            entry = {"entity_id": d["entity_id"], "rejected_qid": d["rejected_qid"],
+                     "rejected_label": d["label"], "rejected_class": d.get("reject_class"),
+                     "matched_via_host": d.get("matched_via_host"), "action": d["action"],
+                     "attached_qid": d.get("attach_qid"), "reason": d["reason"],
+                     "note": d.get("directive_note")}
+            report["re_pointed"].append(entry)
+            if d["action"] == "attach" and d.get("attach_qid"):
+                enrichments.append({
+                    "entity_id": d["entity_id"],
+                    "matched_from": {"source": "wikidata", "qid": d["attach_qid"],
+                                     "match_type": "operator_repoint",
+                                     "rejected_qid": d["rejected_qid"], "as_of": WIKIDATA_ASOF},
+                    "add_provenance_source": "wikidata",
+                    "identifiers": [{"scheme": "wikidata", "identifier": d["attach_qid"]}],
+                })
+            else:  # drop
+                report["no_suitable_item"].append(
+                    {"entity_id": d["entity_id"], "rejected_qid": d["rejected_qid"],
+                     "reason": d["reason"], "note": d.get("directive_note")})
+        elif d["decision"] == "auto":
             enrichments.append({
                 "entity_id": d["entity_id"],
                 "matched_from": {"source": "wikidata", "qid": d["qid"], "label": d["label"],
@@ -323,6 +394,7 @@ def main() -> int:
 
     print(f"wikidata: {len(bindings)} bindings -> {len(candidates)} QIDs "
           f"({stats['auto_attached']} auto, {stats['proposals']} proposals, "
+          f"{stats['re_pointed']} re-pointed ({stats['no_suitable_item']} dropped/no-item), "
           f"{stats['review_domain_conflict']} domain-conflict, "
           f"{stats['review_ambiguous_name']} ambiguous-name, "
           f"{stats['review_apex_shared']} apex-only, {stats['unmatched']} unmatched; "
