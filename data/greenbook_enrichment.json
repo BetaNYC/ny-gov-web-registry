@@ -1,0 +1,691 @@
+{
+  "_generated_from": "sync_greenbook.py",
+  "source": "NYC Greenbook mdcw-n682",
+  "greenbook_as_of": "2023-12",
+  "nycresolver_available": true,
+  "enrichments": [
+    {
+      "entity_id": "brooklyn-bridge-park-corporation",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Brooklyn Bridge Park Corporation",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "334 Furman St., Brooklyn, NY 11201",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 222-9939",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "brooklyn-navy-yard-development-corporation",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Brooklyn Navy Yard Development Corporation",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "141 Flushing Avenue, Suite 801, Brooklyn, NY 11205",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 907-5900",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "brooklyn-public-library",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Brooklyn Public Library",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "10 Grand Army Plaza, Brooklyn, NY 11238",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 230-2100",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "business-integrity-commission",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Business Integrity Commission",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "100 Church St., New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "311",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "campaign-finance-board",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Campaign Finance Board",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "100 Church St., New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 409-1800",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "new-york-city-council",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "City Council",
+        "match_type": "exact_alternate_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "250 Broadway, New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 788-7210",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "city-planning-commission",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "City Planning Commission",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "120 Broadway, New York, NY 10271",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 720-3300",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "city-university-construction-fund",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "City University Construction Fund",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "555 W. 57th St., New York, NY 10019",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(646) 664-2609",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "civilian-complaint-review-board",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Civilian Complaint Review Board",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "100 Church St., New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "311",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "office-of-the-new-york-city-comptroller",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Comptroller",
+        "match_type": "exact_alternate_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "1 Centre St., New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 669-3500",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "conflicts-of-interest-board",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Conflicts of Interest Board",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "2 Lafayette St., New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 442-1400",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "educational-construction-fund",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Educational Construction Fund",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "25-01 Jackson Ave., Long Island City, NY 11101",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 472-8287",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "equal-employment-practices-commission",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Equal Employment Practices Commission",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "253 Broadway, New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 615-8939",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "financial-information-services-agency",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Financial Information Services Agency",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "5 Manhattan West, New York, NY 10001",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 857-1000",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "fire-department-of-the-city-of-new-york",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Fire Department",
+        "match_type": "exact_alternate_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "9 MetroTech Center, Brooklyn, NY 11201",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 999-2000",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "grownyc",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "GrowNYC",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "100 Gold St., New York, NY 10038",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 788-7900",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "department-of-housing-preservation-and-development",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Housing Preservation & Development",
+        "match_type": "exact_alternate_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "100 Gold St., New York, NY 10038",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) NEW-YORK",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "landmarks-preservation-commission",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Landmarks Preservation Commission",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "253 Broadway, New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 669-7700",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "lower-manhattan-development-corporation",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Lower Manhattan Development Corporation",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "22 Cortlandt St., New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 962-2300",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "mayor-s-office-of-equity-and-racial-justice",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Mayor's Office of Equity & Racial Justice",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "253 Broadway, New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 748-0395",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "new-york-public-library",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "New York Public Library",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "Fifth Ave. & 42nd St., New York, NY 10018",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(917) 275-6975",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "oti",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Office of Technology & Innovation",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "375 Pearl St., New York, NY 10038",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 403-8500",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "new-york-city-police-department",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Police Department",
+        "match_type": "exact_alternate_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "1 Police Plaza, New York, NY 10038",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "911",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "queens-public-library",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Queens Public Library",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "89-11 Merrick Blvd., Jamaica, NY 11432",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 990-0700",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "rent-guidelines-board",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Rent Guidelines Board",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "1 Centre St., New York, NY 10007",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 669-7480",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency website field. Differs from current primary 'rentguidelinesboard.cityofnewyork.us' — UNVERIFIED legacy-domain lead, verify before treating as canonical."
+        }
+      ]
+    },
+    {
+      "entity_id": "new-york-city-taxi-and-limousine-commission",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "Taxi & Limousine Commission",
+        "match_type": "exact_alternate_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "33 Beaver St., New York, NY 10004",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "212 NEW YORK",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    },
+    {
+      "entity_id": "united-nations-development-corporation",
+      "matched_from": {
+        "source": "greenbook",
+        "agency_name": "United Nations Development Corporation",
+        "match_type": "exact_name",
+        "confidence_score": 100.0,
+        "confidence_tier": "exact",
+        "as_of": "2023-12"
+      },
+      "add_provenance_source": "greenbook",
+      "contact_details": [
+        {
+          "type": "address",
+          "value": "2 United Nations Plaza, New York, NY 10017",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); office address"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 888-1618",
+          "note": "Greenbook 2023-12 (stale; agency scaffolding, not current officer data); agency primary phone"
+        }
+      ],
+      "web_candidates": []
+    }
+  ]
+}
