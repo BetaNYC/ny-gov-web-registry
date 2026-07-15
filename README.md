@@ -4,7 +4,7 @@ A curated, machine-readable registry of **New York City + New York State governm
 
 Built by [BetaNYC](https://beta.nyc). MIT-licensed.
 
-> **Status: crosswalk + curation (phase 2, 2026-07-15).** The registry carries **317 entities** — the 17-entity anchor seed merged with **306 Active NYC governance organizations** from MODA / NYC Open Data `t3jq-9nkf`, less the operator-confirmed EDC merge (the separately-minted "Economic Development Corporation" folded into seed `nycedc`). Phase 2 also: reconciles the stale-but-rich **NYC Greenbook** (`mdcw-n682`, 2023-12) against the registry via **MODA's nycresolver** — attaching agency contact scaffolding (staleness-flagged) to 27 exact-matched city entities and routing fuzzy/cross-level/unmatched agencies to a review report, never minting new entities; and validates the **nyc.gov agency directory** (found to be the same `t3jq` upstream — 306 ⊆ 306, zero drift). All external data is still access-gated: syncs read operator-placed cache files and never fetch. Remaining enrichment (Wikidata, boundaries, about-crawler) is phased and pending. See *Data sources & access* and [`docs/freshness.md`](docs/freshness.md).
+> **Status: crosswalk + curation (phase 2, 2026-07-15).** The registry carries **317 entities** — the 17-entity anchor seed merged with **306 Active NYC governance organizations** from MODA / NYC Open Data `t3jq-9nkf`, less the operator-confirmed EDC merge (the separately-minted "Economic Development Corporation" folded into seed `nycedc`). Phase 2 also: reconciles the stale-but-rich **NYC Greenbook** (`mdcw-n682`, 2023-12) against the registry via **MODA's nycresolver** — attaching agency contact scaffolding (staleness-flagged) to 27 exact-matched city entities and routing fuzzy/cross-level/unmatched agencies to a review report, never minting new entities; and validates the **nyc.gov agency directory** (found to be the same `t3jq` upstream — 306 ⊆ 306, zero drift). **Phase 3 (2026-07-15)** attaches **Wikidata QIDs** by *domain-anchored* matching — a QID auto-attaches only when its `P856` official-website host is owned by exactly one entity (apex-shared hosts like `nyc.gov` never auto-match; exact-name matches become review proposals, never auto): **7 QIDs auto-attached, 22 name proposals** to a review report. All external data is still access-gated: syncs read operator-placed cache files and never fetch. Remaining enrichment (boundaries, about-crawler) is phased and pending. See *Data sources & access* and [`docs/freshness.md`](docs/freshness.md).
 
 ## Why this exists
 
@@ -21,6 +21,8 @@ data/curation.json                   operator-confirmed merges + name-variant gu
 data/registry.json                   the BUILT dataset — produced by build_registry.py
 data/greenbook_enrichment.json       entity-keyed Greenbook contact scaffolding (applied by the build)
 data/greenbook_reconciliation.json   Greenbook match review report (attached / fuzzy / cross-level / unmatched)
+data/wikidata_enrichment.json        entity-keyed Wikidata QIDs, domain-anchored (applied by the build)
+data/wikidata_reconciliation.json    Wikidata match review report (auto / proposals / conflicts / leads / caveats)
 scripts/                             source-sync + reconcile + build + migration pipeline (see below)
 docs/                                schema reference, scheme catalog, EAC-CPF crosswalk, source provenance, freshness
 tests/                               offline validation (schema, migration, build seam, reconciliation, curation)
@@ -48,7 +50,8 @@ Full field reference: [`docs/schema.md`](docs/schema.md). Scheme catalog: [`docs
 | **nyc.gov agency directory** | Directory-listing flag (**validation**) | nyc.gov JSON | **Same upstream as `t3jq-9nkf`** — a consistency check (record_ids ⊆ registry nyc_goids), not new entities. |
 | ABO **Directory of Public Authorities** | 608 authorities (State/Local/IDA/LDC) + `Website` | data.ny.gov `4vym-q77x` | `Website` column added 2026-01-15; self-reported, **blank where not provided**. License "unspecified". No explicit id column. |
 | `ny.gov/agencies` | State executive agencies | HTML directory | No bulk export → hand-curate. |
-| Wikidata / IRS | identifiers (`wikidata`, `us_irs_ein`) | — | Verified values only. |
+| **Wikidata** | `wikidata` QID identifiers | WDQS SPARQL (CC0) | **Domain-anchored:** auto-attach only on a *distinctive* `P856` host match; name matches are review proposals. Query + fetch date in [`docs/freshness.md`](docs/freshness.md). |
+| IRS | `us_irs_ein` identifiers | — | Verified values only. |
 
 Full provenance, licenses, and cadence: [`docs/sources.md`](docs/sources.md).
 
@@ -63,6 +66,9 @@ pip install -r requirements.txt
 #    at data/cache/moda_nyc-governance-organizations.csv
 # 2. python scripts/sync_moda.py        # normalize the export -> data/cache/records_moda.json (Active-only)
 # 3. python scripts/build_registry.py   # merges sources + seed -> data/registry.json (idempotent)
+# 4. python scripts/sync_greenbook.py    # reconcile Greenbook -> greenbook_enrichment.json + report
+# 5. python scripts/sync_wikidata.py     # domain-anchor Wikidata -> wikidata_enrichment.json + report
+# 6. python scripts/build_registry.py    # re-build to fold in greenbook + wikidata enrichment (idempotent)
 python -m pytest    # offline: validates seed, migration, sync mappings, and build invariants
 ```
 

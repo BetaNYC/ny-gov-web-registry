@@ -52,7 +52,8 @@ inferred. Each scheme's authority, format, and verification rule is catalogued i
 - **Sync:** `scripts/sync_nygov.py` — **stub, not implemented** (gated + brittle). Curate manually for now.
 
 ## Wikidata / IRS — identifier enrichment
-- `wikidata` (the QID often carries P856 official-website) and `us_irs_ein` (for `.org` PBCs like H+H). Verified values only. See `schemes.md`.
+- `wikidata` — QIDs from the WDQS SPARQL endpoint (CC0). **Sync:** `scripts/sync_wikidata.py` (phase 3, 2026-07-15), **domain-anchored**: auto-attaches a QID only when its `P856` official-website host is owned by exactly one entity (a *distinctive* domain); apex-shared hosts like `nyc.gov` never match, and exact name/alias matches become review proposals, never auto-attachments. Reads the operator-placed cache `data/cache/wikidata_nyc_gov_orgs.json` (does not fetch); query + fetch date in `freshness.md § Wikidata`.
+- `us_irs_ein` (for `.org` PBCs like H+H). Verified values only. See `schemes.md`.
 
 ## nyc-boundaries — geography by reference
 - https://github.com/BetaNYC/nyc-boundaries — the registry's `areas[]` point into this by `{scheme: "nyc-boundaries", layer, id}`; geometry is never copied here. Jurisdictions that exceed it (MTA region, bi-state PANYNJ, statewide) carry an `area_note` naming a candidate external source (Census TIGER / NYS GIS Clearinghouse) instead. `us_census_geoid` is the documented national geographic scheme.
