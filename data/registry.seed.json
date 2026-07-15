@@ -1,375 +1,652 @@
 {
-  "_about": "PROVISIONAL hand-authored anchor-set SEED — this is NOT the built dataset. It is a small, hand-authored starting set used to (a) exercise the schema and build pipeline and (b) anchor the v1 marquee-authority scope. Only values that can be stated with confidence are populated: entity names, well-known primary domains, and parent/child structure. ALL crosswalk ids (moda_govid, abo_id, wikidata_qid, irs_ein) are null because none have been verified against their upstream in this build (guardrail: never invent an EIN, QID, or boundary id). boundary_ref is null for every record because no marquee authority maps cleanly onto an existing nyc-boundaries layer (design doc §3). The built registry.json is produced by scripts/build_registry.py from the sync sources + this seed.",
-  "_generated": "2026-07-11",
+  "_about": "Provisional hand-authored anchor-set SEED (schema v2, steward-neutral) — NOT the built dataset. Exercises the schema and build pipeline and anchors the v1 marquee-authority scope. Only confidently-stateable values are populated: names, well-known primary domains, parent/child structure. External keys are carried as identifiers[] {scheme, identifier}; the only populated scheme here is betanyc_org_legacy (the retired BNYC-ORG id, preserved so migration loses nothing). All verified-only schemes (nyc_goid, wikidata, us_irs_ein, ...) are absent because none were verified in this build (guardrail: never invent an id, EIN, or boundary id).",
+  "_generated": "2026-07-15",
   "_schema": "../schema/property.schema.json",
-  "_scope": "v1 anchor set: MTA family + marquee NYC/NYS authorities & PBCs + a few obvious city entities (STATUS.md registry decision 1).",
+  "_migrated_by": "scripts/migrate_seed.py (v1 -> v2, lossless)",
+  "_scope": "v1 anchor set: MTA family + marquee NYC/NYS authorities & PBCs + a few obvious city entities.",
   "entities": [
     {
-      "betanyc_id": "BNYC-ORG-000001",
+      "id": "mta",
       "name": "Metropolitan Transportation Authority",
       "short_name": "MTA",
+      "other_names": [],
       "government_level": "authority",
-      "entity_type": "public-benefit-corporation",
+      "classification": "public-benefit-corporation",
       "parent_id": null,
-      "child_ids": ["BNYC-ORG-000002", "BNYC-ORG-000003", "BNYC-ORG-000004", "BNYC-ORG-000005"],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "child_ids": [
+        "lirr",
+        "mnr",
+        "nyct",
+        "tbta"
+      ],
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000001"
+        }
+      ],
       "web_properties": [
-        { "domain": "mta.info", "role": "primary", "valid_from": null, "valid_to": null, "notes": "Umbrella site for the MTA and its subsidiaries." }
+        {
+          "domain": "mta.info",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Umbrella site for the MTA and its subsidiaries."
+        }
       ],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "regional", "boundary_note": "12-county MTA service area (NYC + Long Island + Hudson Valley + CT Metro-North territory) — EXCEEDS nyc-boundaries. Candidate geometry: MTA-published service region / Census TIGER counties. Deferred per design doc §3." },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: regional. 12-county MTA service area (NYC + Long Island + Hudson Valley + CT Metro-North territory) — EXCEEDS nyc-boundaries. Candidate geometry: MTA-published service region / Census TIGER counties. Deferred per design doc §3.",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": "1965",
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": "1965",
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000002",
+      "id": "lirr",
       "name": "Long Island Rail Road",
       "short_name": "LIRR",
+      "other_names": [],
       "government_level": "authority",
-      "entity_type": "mta-subsidiary",
-      "parent_id": "BNYC-ORG-000001",
+      "classification": "mta-subsidiary",
+      "parent_id": "mta",
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000002"
+        }
+      ],
       "web_properties": [],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "regional", "boundary_note": "Served under mta.info subpaths; a distinct apex domain is not confidently known and is left uncurated rather than fabricated." },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: regional. Served under mta.info subpaths; a distinct apex domain is not confidently known and is left uncurated rather than fabricated.",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": null,
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000003",
+      "id": "mnr",
       "name": "Metro-North Railroad",
       "short_name": "MNR",
+      "other_names": [],
       "government_level": "authority",
-      "entity_type": "mta-subsidiary",
-      "parent_id": "BNYC-ORG-000001",
+      "classification": "mta-subsidiary",
+      "parent_id": "mta",
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000003"
+        }
+      ],
       "web_properties": [],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "regional", "boundary_note": "Served under mta.info subpaths; distinct apex domain not confidently known — left uncurated." },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: regional. Served under mta.info subpaths; distinct apex domain not confidently known — left uncurated.",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": null,
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000004",
+      "id": "nyct",
       "name": "New York City Transit Authority",
       "short_name": "NYCT",
+      "other_names": [],
       "government_level": "authority",
-      "entity_type": "mta-subsidiary",
-      "parent_id": "BNYC-ORG-000001",
+      "classification": "mta-subsidiary",
+      "parent_id": "mta",
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000004"
+        }
+      ],
       "web_properties": [],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "citywide", "boundary_note": "Served under mta.info subpaths; distinct apex domain not confidently known — left uncurated." },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: citywide. Served under mta.info subpaths; distinct apex domain not confidently known — left uncurated.",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": null,
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000005",
+      "id": "tbta",
       "name": "Triborough Bridge and Tunnel Authority",
       "short_name": "TBTA (MTA Bridges and Tunnels)",
+      "other_names": [],
       "government_level": "authority",
-      "entity_type": "mta-subsidiary",
-      "parent_id": "BNYC-ORG-000001",
+      "classification": "mta-subsidiary",
+      "parent_id": "mta",
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000005"
+        }
+      ],
       "web_properties": [],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "regional", "boundary_note": "Served under mta.info subpaths; distinct apex domain not confidently known — left uncurated." },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: regional. Served under mta.info subpaths; distinct apex domain not confidently known — left uncurated.",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": null,
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000006",
+      "id": "panynj",
       "name": "Port Authority of New York and New Jersey",
       "short_name": "PANYNJ",
+      "other_names": [],
       "government_level": "bi-state",
-      "entity_type": "bi-state-authority",
+      "classification": "bi-state-authority",
       "parent_id": null,
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000006"
+        }
+      ],
       "web_properties": [
-        { "domain": "panynj.gov", "role": "primary", "valid_from": null, "valid_to": null, "notes": ".gov but bi-state — jurisdiction exceeds NY entirely." }
+        {
+          "domain": "panynj.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": ".gov but bi-state — jurisdiction exceeds NY entirely."
+        }
       ],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "bi-state", "boundary_note": "~25-mile bi-state district around the Statue of Liberty — EXCEEDS nyc-boundaries. Candidate geometry: Census TIGER (NY+NJ counties) / PA-published district. Deferred per design doc §3." },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: bi-state. ~25-mile bi-state district around the Statue of Liberty — EXCEEDS nyc-boundaries. Candidate geometry: Census TIGER (NY+NJ counties) / PA-published district. Deferred per design doc §3.",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": "1921",
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": "1921",
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000007",
+      "id": "nycedc",
       "name": "New York City Economic Development Corporation",
       "short_name": "NYCEDC",
+      "other_names": [],
       "government_level": "authority",
-      "entity_type": "local-development-corporation",
+      "classification": "local-development-corporation",
       "parent_id": null,
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000007"
+        }
+      ],
       "web_properties": [
-        { "domain": "edc.nyc", "role": "primary", "valid_from": null, "valid_to": null, "notes": "Current canonical site (verified 2026-07-11: title 'NYCEDC…', canonical https://edc.nyc/). A .nyc gTLD, invisible to a .gov sweep." },
-        { "domain": "nycedc.com", "role": "legacy", "valid_from": null, "valid_to": null, "notes": "Former primary; verified 2026-07-11 to 301-redirect to edc.nyc. Wayback holds the pre-rebrand history under this host — exactly why legacy domains are tracked." }
+        {
+          "domain": "edc.nyc",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Current canonical site (verified 2026-07-11: title 'NYCEDC…', canonical https://edc.nyc/). A .nyc gTLD, invisible to a .gov sweep."
+        },
+        {
+          "domain": "nycedc.com",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Former primary; verified 2026-07-11 to 301-redirect to edc.nyc. Wayback holds the pre-rebrand history under this host — exactly why legacy domains are tracked."
+        }
       ],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "citywide", "boundary_note": null },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: citywide",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": null,
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000008",
+      "id": "nyc-health-hospitals",
       "name": "NYC Health + Hospitals",
       "short_name": "H+H",
+      "other_names": [],
       "government_level": "pbc",
-      "entity_type": "public-benefit-corporation",
+      "classification": "public-benefit-corporation",
       "parent_id": null,
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000008"
+        }
+      ],
       "web_properties": [
-        { "domain": "nychealthandhospitals.org", "role": "primary", "valid_from": null, "valid_to": null, "notes": ".org public-benefit corporation." }
+        {
+          "domain": "nychealthandhospitals.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": ".org public-benefit corporation."
+        }
       ],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "citywide", "boundary_note": null },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: citywide",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": null,
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000009",
+      "id": "cuny",
       "name": "City University of New York",
       "short_name": "CUNY",
+      "other_names": [],
       "government_level": "authority",
-      "entity_type": "public-university",
+      "classification": "public-university",
       "parent_id": null,
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000009"
+        }
+      ],
       "web_properties": [
-        { "domain": "cuny.edu", "role": "primary", "valid_from": null, "valid_to": null, "notes": ".edu — city university, state-chartered." }
+        {
+          "domain": "cuny.edu",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": ".edu — city university, state-chartered."
+        }
       ],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "citywide", "boundary_note": "Campus points, not a polygon; CUNY is state-chartered. Deferred per design doc §3." },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: citywide. Campus points, not a polygon; CUNY is state-chartered. Deferred per design doc §3.",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": null,
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000010",
+      "id": "nycha",
       "name": "New York City Housing Authority",
       "short_name": "NYCHA",
+      "other_names": [],
       "government_level": "authority",
-      "entity_type": "public-housing-authority",
+      "classification": "public-housing-authority",
       "parent_id": null,
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000010"
+        }
+      ],
       "web_properties": [
-        { "domain": "nyc.gov", "role": "primary", "valid_from": null, "valid_to": null, "notes": "Public housing authority hosted under the CITY domain at nyc.gov/nycha (the inverse case — a state-authorized authority on a city domain). Design doc §1 also notes on.nyc.gov and nychanow.nyc; left uncurated pending verification." }
+        {
+          "domain": "nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Public housing authority hosted under the CITY domain at nyc.gov/nycha (the inverse case — a state-authorized authority on a city domain). Design doc §1 also notes on.nyc.gov and nychanow.nyc; left uncurated pending verification."
+        }
       ],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "citywide", "boundary_note": null },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: citywide",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": "1934",
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": "1934",
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000011",
+      "id": "nyserda",
       "name": "New York State Energy Research and Development Authority",
       "short_name": "NYSERDA",
+      "other_names": [],
       "government_level": "authority",
-      "entity_type": "public-benefit-corporation",
+      "classification": "public-benefit-corporation",
       "parent_id": null,
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000011"
+        }
+      ],
       "web_properties": [
-        { "domain": "nyserda.ny.gov", "role": "primary", "valid_from": null, "valid_to": null, "notes": "On the ny.gov tree but a public-benefit corp, not an executive agency." }
+        {
+          "domain": "nyserda.ny.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "On the ny.gov tree but a public-benefit corp, not an executive agency."
+        }
       ],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "statewide", "boundary_note": "Statewide. Candidate geometry: NYS GIS Clearinghouse / Census TIGER state boundary. Deferred per design doc §3." },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: statewide. Statewide. Candidate geometry: NYS GIS Clearinghouse / Census TIGER state boundary. Deferred per design doc §3.",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": null,
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000012",
+      "id": "nys-thruway",
       "name": "New York State Thruway Authority",
       "short_name": "Thruway Authority",
+      "other_names": [],
       "government_level": "authority",
-      "entity_type": "public-benefit-corporation",
+      "classification": "public-benefit-corporation",
       "parent_id": null,
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000012"
+        }
+      ],
       "web_properties": [
-        { "domain": "thruway.ny.gov", "role": "primary", "valid_from": null, "valid_to": null, "notes": null }
+        {
+          "domain": "thruway.ny.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": null
+        }
       ],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "statewide", "boundary_note": "Multi-county corridor / statewide. Candidate geometry: NYS GIS Clearinghouse. Deferred per design doc §3." },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: statewide. Multi-county corridor / statewide. Candidate geometry: NYS GIS Clearinghouse. Deferred per design doc §3.",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": null,
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000013",
+      "id": "dasny",
       "name": "Dormitory Authority of the State of New York",
       "short_name": "DASNY",
+      "other_names": [],
       "government_level": "authority",
-      "entity_type": "public-benefit-corporation",
+      "classification": "public-benefit-corporation",
       "parent_id": null,
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000013"
+        }
+      ],
       "web_properties": [
-        { "domain": "dasny.org", "role": "primary", "valid_from": null, "valid_to": null, "notes": ".org." }
+        {
+          "domain": "dasny.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": ".org."
+        }
       ],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "statewide", "boundary_note": "Statewide. Deferred per design doc §3." },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: statewide. Statewide. Deferred per design doc §3.",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": null,
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000014",
+      "id": "esd",
       "name": "Empire State Development",
       "short_name": "ESD",
+      "other_names": [],
       "government_level": "authority",
-      "entity_type": "public-benefit-corporation",
+      "classification": "public-benefit-corporation",
       "parent_id": null,
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000014"
+        }
+      ],
       "web_properties": [
-        { "domain": "esd.ny.gov", "role": "primary", "valid_from": null, "valid_to": null, "notes": "Umbrella brand for the Urban Development Corp / NYS Job Development Authority family." }
+        {
+          "domain": "esd.ny.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Umbrella brand for the Urban Development Corp / NYS Job Development Authority family."
+        }
       ],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "statewide", "boundary_note": "Statewide. Deferred per design doc §3." },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: statewide. Statewide. Deferred per design doc §3.",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": null,
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000015",
+      "id": "oti",
       "name": "Office of Technology and Innovation",
       "short_name": "OTI",
+      "other_names": [],
       "government_level": "nyc",
-      "entity_type": "mayoral-agency",
+      "classification": "mayoral-agency",
       "parent_id": null,
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000015"
+        }
+      ],
       "web_properties": [
-        { "domain": "nyc.gov", "role": "primary", "valid_from": "2022", "valid_to": null, "notes": "Hosted under the city domain at nyc.gov/oti. Consolidated NYC's technology agencies in 2022." }
+        {
+          "domain": "nyc.gov",
+          "role": "primary",
+          "valid_from": "2022",
+          "valid_to": null,
+          "notes": "Hosted under the city domain at nyc.gov/oti. Consolidated NYC's technology agencies in 2022."
+        }
       ],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "citywide", "boundary_note": null },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: citywide",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": "2022",
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": "2022",
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000016",
+      "id": "nyc-doe",
       "name": "New York City Department of Education",
       "short_name": "DOE",
+      "other_names": [],
       "government_level": "nyc",
-      "entity_type": "mayoral-agency",
+      "classification": "mayoral-agency",
       "parent_id": null,
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000016"
+        }
+      ],
       "web_properties": [
-        { "domain": "schools.nyc.gov", "role": "primary", "valid_from": null, "valid_to": null, "notes": "Distinct subdomain rather than a nyc.gov subpath." }
+        {
+          "domain": "schools.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Distinct subdomain rather than a nyc.gov subpath."
+        }
       ],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "citywide", "boundary_note": null },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: citywide",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": null,
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     },
     {
-      "betanyc_id": "BNYC-ORG-000017",
+      "id": "nyc-mayor",
       "name": "Office of the Mayor of the City of New York",
       "short_name": "Mayor's Office",
+      "other_names": [],
       "government_level": "nyc",
-      "entity_type": "mayoral-office",
+      "classification": "mayoral-office",
       "parent_id": null,
       "child_ids": [],
-      "crosswalk": { "moda_govid": null, "abo_id": null, "wikidata_qid": null, "irs_ein": null, "opendata_dataset": null },
+      "identifiers": [
+        {
+          "scheme": "betanyc_org_legacy",
+          "identifier": "BNYC-ORG-000017"
+        }
+      ],
       "web_properties": [
-        { "domain": "nyc.gov", "role": "primary", "valid_from": null, "valid_to": null, "notes": "Hosted under the city domain at nyc.gov/office-of-the-mayor." }
+        {
+          "domain": "nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Hosted under the city domain at nyc.gov/office-of-the-mayor."
+        }
       ],
       "url_conventions": [],
-      "jurisdiction": { "boundary_ref": null, "coverage": "citywide", "boundary_note": null },
-      "established_by_eo": [],
+      "areas": [],
+      "area_note": "coverage: citywide",
+      "mandates": [],
+      "relations": [],
       "status": "active",
-      "valid_from": null,
-      "valid_to": null,
-      "succeeds_ids": [],
-      "succeeded_by_ids": [],
-      "provenance": { "sources": ["manual"], "last_verified": "2026-07-11" }
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-07-11"
+      }
     }
   ]
 }

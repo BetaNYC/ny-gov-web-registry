@@ -9,8 +9,13 @@ Source: MODA-NYC/nyc-governance-organizations (MIT)
 FIELD MAP VERIFIED 2026-07-11 against MODA's Phase II published schema
 (schemas/nycgo_published_dataset.tableschema.json, 25 public fields): the columns
 record_id, name, url, organization_type exist as named below. NOTE: record_id is a
-6-digit numeric in Phase II (NYC_GOID_XXXXXX in Phase I) — crosswalk.moda_govid stores
-it verbatim as a string. Still do not guess if MODA revises the schema; re-verify.
+6-digit numeric in Phase II (NYC_GOID_XXXXXX in Phase I) — it is stored verbatim as a
+string in an identifiers[] entry under scheme "nyc_goid" (docs/schemes.md). Still do
+not guess if MODA revises the schema; re-verify.
+
+OUTPUT SHAPE: schema v2 (issue #1, phase 0). record_id -> identifiers[{scheme:"nyc_goid"}];
+organization_type -> classification. This emits valid v2 records; full phase-1 population
+(mandates from establishing-authority fields, areas, nycresolver matching) is out of scope.
 
 ACCESS GATE: this script does NOT fetch. Place a MODA export at
 data/cache/moda_nyc-governance-organizations.csv first.
@@ -45,14 +50,19 @@ def to_record(row: dict) -> dict:
             web_properties.append({"domain": host, "role": "primary",
                                    "valid_from": None, "valid_to": None,
                                    "notes": "From MODA `url` field (current site only)."})
+    record_id = (row.get(FIELD["record_id"]) or "").strip()
+    identifiers = []
+    if record_id:
+        identifiers.append({"scheme": "nyc_goid", "identifier": record_id})
     return {
+        # `id` is minted by build_registry.py during merge, not here.
         "name": (row.get(FIELD["name"]) or "").strip(),
         "government_level": "nyc",
-        "entity_type": (row.get(FIELD["org_type"]) or "").strip() or None,
-        "crosswalk": {"moda_govid": (row.get(FIELD["record_id"]) or "").strip() or None,
-                      "abo_id": None, "wikidata_qid": None, "irs_ein": None, "opendata_dataset": None},
+        "classification": (row.get(FIELD["org_type"]) or "").strip() or None,
+        "identifiers": identifiers,
         "web_properties": web_properties,
-        "jurisdiction": {"boundary_ref": None, "coverage": "citywide", "boundary_note": None},
+        "areas": [],
+        "area_note": None,
         "status": "active",
         "provenance": {"sources": ["moda"], "last_verified": None},
     }

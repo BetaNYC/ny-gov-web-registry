@@ -15,26 +15,26 @@ The immediate consumer is a forthcoming **NYC/NYS Wayback Machine harvester** (w
 ## What's here
 
 ```
-schema/property.schema.json   JSON Schema for one entity record (the contract)
+schema/property.schema.json   JSON Schema for one entity record (the contract; steward-neutral, standards-aligned)
 data/registry.seed.json       provisional hand-authored anchor set (17 entities)
-data/registry.json            the BUILT dataset — produced by build_registry.py (not yet generated)
-scripts/                      source-sync + build pipeline (see below)
-docs/                         schema reference, source provenance, freshness design
-tests/                        offline validation (seed conforms to schema)
+data/registry.json            the BUILT dataset — produced by build_registry.py
+scripts/                      source-sync + build + migration pipeline (see below)
+docs/                         schema reference, scheme catalog, EAC-CPF crosswalk, source provenance, freshness
+tests/                        offline validation (schema, lossless migration, build-seam invariants)
 ```
 
 ## The data model (one record = one entity)
 
-A record describes an **entity**, not a domain — because one entity accretes and retires many domains over time. Each record carries:
+A record describes an **entity**, not a domain — because one entity accretes and retires many domains over time. The schema is **steward-neutral and standards-aligned** (Popolo / W3C ORG / schema.org GovernmentOrganization) so any municipality can adopt it. Each record carries:
 
-- `betanyc_id` — our own stable key (`BNYC-ORG-NNNNNN`), because no single upstream spans city + state + bi-state + authority.
-- `government_level` — `nyc | nys | bi-state | authority | pbc`.
-- `web_properties[]` — the domains the entity has owned, each tagged `primary | legacy | microsite` with valid dates. **This is the harvester's crawl set.**
-- `crosswalk` — ids into authoritative upstreams (`moda_govid`, `abo_id`, `wikidata_qid`, `irs_ein`). Interoperability core. **Every value is null until verified against its upstream — never invented.**
-- `jurisdiction` — geography **by reference** to [`BetaNYC/nyc-boundaries`](https://github.com/BetaNYC/nyc-boundaries) (`boundary_ref`), never embedded geometry. Where a jurisdiction exceeds nyc-boundaries (MTA's regional footprint, the bi-state Port Authority, statewide agencies), a `boundary_note` names the candidate external source instead.
-- `established_by_eo[]` / `status` / lifecycle dates — including EO linkage via the project-wide locked field names `eo_id` and `source_pdf_url`.
+- `id` — an opaque, stable, steward-neutral slug (no org prefix). The retired `BNYC-ORG-NNNNNN` key is preserved as an `identifiers[]` entry under the legacy scheme `betanyc_org_legacy`.
+- `government_level` / `classification` — coarse (`nyc | nys | bi-state | authority | pbc`) and fine organizational class.
+- `web_properties[]` — the domains the entity has owned, each tagged `primary | legacy | microsite` with valid dates. **The harvester's crawl set and the Internet Archive join surface.**
+- `identifiers[]` — external keys as `{scheme, identifier}` pairs (`nyc_goid`, `wikidata`, `us_irs_ein`, …). New upstreams add **scheme values, never fields**. **Populated only when verified — never invented.** Catalog: [`docs/schemes.md`](docs/schemes.md).
+- `areas[]` — geography **by reference** (`{scheme, layer, id, role}`) into [`BetaNYC/nyc-boundaries`](https://github.com/BetaNYC/nyc-boundaries) or `us_census_geoid`, never embedded geometry. `area_note` covers jurisdictions that exceed the available layers.
+- `mandates[]` — the legal authority (charter / local law / executive order / statute) creating or empowering the entity. `relations[]` — predecessor/successor lineage. `status` / lifecycle dates.
 
-Full field reference: [`docs/schema.md`](docs/schema.md).
+Full field reference: [`docs/schema.md`](docs/schema.md). Scheme catalog: [`docs/schemes.md`](docs/schemes.md). EAC-CPF crosswalk: [`docs/eac-cpf-crosswalk.md`](docs/eac-cpf-crosswalk.md).
 
 ## Data sources & access
 
@@ -43,7 +43,7 @@ Full field reference: [`docs/schema.md`](docs/schema.md).
 | [MODA `nyc-governance-organizations`](https://github.com/MODA-NYC/nyc-governance-organizations) | City entities + current `url` | GitHub / NYC Open Data `t3jq-9nkf` | MIT. `url` is current-site only. |
 | ABO **Directory of Public Authorities** | 608 authorities (State/Local/IDA/LDC) + `Website` | data.ny.gov `4vym-q77x` | `Website` column added 2026-01-15; self-reported, **blank where not provided**. License "unspecified". No explicit id column. |
 | `ny.gov/agencies` | State executive agencies | HTML directory | No bulk export → hand-curate. |
-| Wikidata / IRS | crosswalk (`wikidata_qid`, `irs_ein`) | — | Verified values only. |
+| Wikidata / IRS | identifiers (`wikidata`, `us_irs_ein`) | — | Verified values only. |
 
 Full provenance, licenses, and cadence: [`docs/sources.md`](docs/sources.md).
 
