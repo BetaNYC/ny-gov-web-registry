@@ -40,8 +40,31 @@ Authority-file schemes (`snac_ark`, `viaf`, `lcnaf`) support the archival-intero
 
 | Scheme | Authority | Layer / id | Verification rule |
 |---|---|---|---|
-| `nyc-boundaries` | [BetaNYC/nyc-boundaries](https://github.com/BetaNYC/nyc-boundaries) | `layer` = the map's published layer id (`cd`, `cc`, `sa`, `ss`, `nycongress`, `zipcode`, `pp`, `dsny`, `fb`, `sd`, `ed`, `bid`, `nta`, `puma`, …); `id` = a district id within the layer, or `null` for a whole-layer reference | The `{layer, id}` exists in nyc-boundaries. **No geometry is copied** — the map is the single home for boundaries. |
-| `us_census_geoid` | US Census Bureau | `layer` = summary-level name (e.g. `county`, `place`, `state`); `id` = the GEOID | The GEOID resolves in Census TIGER / the Gazetteer for the named summary level. |
+| `nyc-boundaries` | [BetaNYC/nyc-boundaries](https://github.com/BetaNYC/nyc-boundaries) | `layer` = the map's published `BoundaryId` (see the full list below); `id` = a district id within the layer, or `null` for a whole-layer reference (an entity that operates the entire layer) | The `layer` is a member of the extracted vocabulary (`data/nyc_boundaries_layers.json`); the build **rejects** an unknown layer id. The `{layer, id}` exists in nyc-boundaries. **No geometry is copied** — the map is the single home for boundaries. |
+| `us_census_geoid` | US Census Bureau | `layer` = summary-level name (e.g. `county`, `place`, `state`); `id` = the GEOID | The GEOID resolves in Census TIGER / the Gazetteer for the named summary level. NYC county GEOIDs (state FIPS `36` + 3-digit county): `36061` New York/Manhattan, `36005` Bronx, `36047` Kings/Brooklyn, `36081` Queens, `36085` Richmond/Staten Island. |
 
-If nyc-boundaries adds a layer, this catalog gains a layer value — no schema change. `us_census_geoid`
-is documented so the geographic axis generalizes beyond one city's map.
+**`nyc-boundaries` layer vocabulary (the `BoundaryId` union, extracted 2026-07-15).** The authority
+is the Boundaries Map's own `frontend/src/assets/boundaries/index.ts`. `scripts/sync_boundaries.py`
+parses that file (placed at `data/cache/nyc-boundaries_layers_index.ts`) and emits the committed
+`data/nyc_boundaries_layers.json`; the build validates every `{scheme:"nyc-boundaries"}` `areas[]`
+layer against it. The 22 published ids:
+
+`bid`, `cc`, `cd`, `cdta`, `dsny`, `ed`, `fb`, `hc`, `hd`, `ibz`, `mc`, `nda`, `nta`, `nycongress`,
+`pp`, `ps`, `puma`, `sa`, `sd`, `ss`, `uhf`, `zipcode`.
+
+**Which entities carry which layer** is an operator-curated assertion in
+`data/boundaries_mapping.json` (hand-authored, parallel to `data/curation.json`), applied by
+`build_registry.apply_boundaries_mapping`. `operates_layer` refs (whole-layer, `id:null`) go to the
+administering agency — NYPD→`pp`+`ps`, DSNY→`dsny`, FDNY→`fb`, DOE→`sd`, City Council→`cc`, Community
+Boards→`cd`, Board of Elections→`ed`. The 5 borough-president offices get `jurisdiction` refs under
+`us_census_geoid` (`county`) because nyc-boundaries has **no borough layer**. The mapping file also
+records, for coverage, every layer that was *not* attached and why (`defines_not_operates` for
+statistical/reporting geographies like `nta`/`cdta`/`hc`/`uhf` that DCP/DOHMH *define* but do not
+operate as a governed district system; `no_registry_entity` for state/federal layers whose operator
+is not in this NYC registry — `sa`/`ss`/`nycongress`/`puma`/`zipcode`/`mc`; `deferred` for
+`bid`/`hd`/`ibz`/`nda`). Statistical geographies are **defined**, not **operated** — `operates_layer`
+is deliberately not stretched to cover them.
+
+If nyc-boundaries adds a layer, re-run `sync_boundaries.py` and this catalog gains a layer value —
+no schema change. `us_census_geoid` is documented so the geographic axis generalizes beyond one
+city's map.
