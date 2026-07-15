@@ -285,6 +285,10 @@
         {
           "scheme": "nyc_goid",
           "identifier": "NYC_GOID_000318"
+        },
+        {
+          "scheme": "wikidata",
+          "identifier": "Q7013226"
         }
       ],
       "web_properties": [
@@ -306,7 +310,8 @@
       "dissolution_date": null,
       "provenance": {
         "sources": [
-          "manual"
+          "manual",
+          "wikidata"
         ],
         "last_verified": "2026-07-11"
       }
@@ -7398,6 +7403,10 @@
         {
           "scheme": "nyc_goid",
           "identifier": "NYC_GOID_000149"
+        },
+        {
+          "scheme": "wikidata",
+          "identifier": "Q1894232"
         }
       ],
       "web_properties": [
@@ -7414,7 +7423,8 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "wikidata"
         ],
         "last_verified": null
       },
@@ -9815,6 +9825,10 @@
         {
           "scheme": "nyc_goid",
           "identifier": "NYC_GOID_000126"
+        },
+        {
+          "scheme": "wikidata",
+          "identifier": "Q564793"
         }
       ],
       "web_properties": [
@@ -9831,7 +9845,8 @@
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "wikidata"
         ],
         "last_verified": null
       },

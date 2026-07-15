@@ -1,5 +1,5 @@
 {
-  "_comment": "Operator-confirmed curation directives applied by build_registry.py AFTER the seed loads and BEFORE/AFTER the source merge. Keeps the seed file pristine (seed carries only betanyc_org_legacy identifiers; test_no_fabricated_verified_identifiers_in_seed) while recording operator-confirmed merges and name-variant additions in one auditable place. Source of authority: PR #5 entity-resolution guidance comment (operator: Noel, 2026-07-15). See docs/sources.md and the Phase 2 journal.",
+  "_comment": "Operator-confirmed curation directives. confirmed_merges + other_names_additions are applied by build_registry.py around the source merge; wikidata_repoints is read by sync_wikidata.py and OVERRIDES raw domain matches (an operator-driven place-vs-organization guard: a Wikidata item whose class is a place must not be attached to an office/org entity even when its P856 domain matches). Keeps the seed file pristine while recording operator-confirmed decisions in one auditable place. Source of authority: PR #5 (2026-07-15) + PR #8 borough re-point decision (operator: Noel, 2026-07-15). See docs/sources.md and the Phase 2/3 journals.",
   "confirmed_merges": [
     {
       "seed_id": "nycedc",
@@ -9,6 +9,44 @@
       ],
       "add_provenance_source": "moda",
       "note": "Operator-confirmed (Noel, PR #5, 2026-07-15): seed nycedc = t3jq economic-development-corporation. Per merge discipline the seed keeps its id; it gains the nyc_goid identifier and the MODA name in other_names[]. Collapses what phase 1 minted as a separate 'economic-development-corporation' entity."
+    }
+  ],
+  "wikidata_repoints": [
+    {
+      "entity_id": "office-of-the-borough-president-of-the-bronx",
+      "reject_qid": "Q18426",
+      "reject_class": "The Bronx — borough of New York City / Bronx County (place)",
+      "action": "drop",
+      "reason": "no_suitable_item",
+      "verified_from": "data/cache/wikidata_borough_president_probe.json",
+      "note": "Operator decision 2026-07-15 (PR #8): an office is not a place. Q18426 is the Bronx borough, not the BP office; it merely carries the office site bronxboropres.nyc.gov as P856. Wikidata has NO per-borough Borough-President OFFICE item (0 instances/subclasses of Q4946327 'borough president'; the domains are claimed only by borough/county place items). The generic Q4946327 is the office TYPE, not this specific office, so it fails the 'the QID's item is this entity' rule. Dropped rather than attach the place."
+    },
+    {
+      "entity_id": "office-of-the-borough-president-of-brooklyn",
+      "reject_qid": "Q18419",
+      "reject_class": "Brooklyn — borough of New York City / Kings County (place)",
+      "action": "drop",
+      "reason": "no_suitable_item",
+      "verified_from": "data/cache/wikidata_borough_president_probe.json",
+      "note": "Operator decision 2026-07-15 (PR #8): Q18419 is the Brooklyn borough (P856 brooklynbp.nyc.gov), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
+    },
+    {
+      "entity_id": "office-of-the-borough-president-of-manhattan",
+      "reject_qid": "Q11299",
+      "reject_class": "Manhattan — borough of New York City / New York County (place)",
+      "action": "drop",
+      "reason": "no_suitable_item",
+      "verified_from": "data/cache/wikidata_borough_president_probe.json",
+      "note": "Operator decision 2026-07-15 (PR #8): Q11299 is the Manhattan borough (P856 manhattanbp.nyc.gov, also on Q500416 New York County), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
+    },
+    {
+      "entity_id": "office-of-the-borough-president-of-staten-island",
+      "reject_qid": "Q18432",
+      "reject_class": "Staten Island — borough of New York City / Richmond County (place)",
+      "action": "drop",
+      "reason": "no_suitable_item",
+      "verified_from": "data/cache/wikidata_borough_president_probe.json",
+      "note": "Operator decision 2026-07-15 (PR #8): Q18432 is the Staten Island borough (P856 statenislandusa.com — a tourism site), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
     }
   ],
   "other_names_additions": [

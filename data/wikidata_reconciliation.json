@@ -1,0 +1,855 @@
+{
+  "_generated_from": "sync_wikidata.py",
+  "wikidata_as_of": "2026-07-15",
+  "distinct_qids": 109,
+  "qids_with_website": 88,
+  "stats": {
+    "auto_attached": 3,
+    "proposals": 22,
+    "re_pointed": 4,
+    "no_suitable_item": 4,
+    "review_domain_conflict": 0,
+    "review_ambiguous_name": 1,
+    "review_apex_shared": 20,
+    "unmatched": 59,
+    "legacy_domain_leads": 1,
+    "name_divergent_caveats": 1
+  },
+  "report": {
+    "auto_attached": [
+      {
+        "qid": "Q564793",
+        "label": "Jacob K. Javits Convention Center",
+        "entity_id": "convention-center-operating-corporation-javits",
+        "matched_name": "Convention Center Operating Corporation (Javits)",
+        "matched_via_host": "javitscenter.com",
+        "name_divergent": true
+      },
+      {
+        "qid": "Q1894232",
+        "label": "New York City Department of Parks and Recreation",
+        "entity_id": "department-of-parks-and-recreation",
+        "matched_name": "Department of Parks and Recreation",
+        "matched_via_host": "nycgovparks.org",
+        "name_divergent": false
+      },
+      {
+        "qid": "Q7013226",
+        "label": "NYC Health + Hospitals",
+        "entity_id": "nyc-health-hospitals",
+        "matched_name": "NYC Health + Hospitals",
+        "matched_via_host": "nychealthandhospitals.org",
+        "name_divergent": false
+      }
+    ],
+    "proposals": [
+      {
+        "qid": "Q137771038",
+        "label": "Mayor's Office of Media and Entertainment",
+        "entity_id": "mayor-s-office-of-media-and-entertainment",
+        "matched_name": "Mayor's Office of Media and Entertainment",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q137793823",
+        "label": "Mayor's Office of Equity & Racial Justice",
+        "entity_id": "mayor-s-office-of-equity-and-racial-justice",
+        "matched_name": "Mayor's Office of Equity and Racial Justice",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q137669905",
+        "label": "Mayor's Office of Mass Engagement",
+        "entity_id": "mayor-s-office-of-mass-engagement",
+        "matched_name": "Mayor's Office of Mass Engagement",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q967276",
+        "label": "New York City Landmarks Preservation Commission",
+        "entity_id": "landmarks-preservation-commission",
+        "matched_name": "Landmarks Preservation Commission",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q762266",
+        "label": "City University of New York",
+        "entity_id": "cuny",
+        "matched_name": "City University of New York",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q2015755",
+        "label": "New York City Office of Emergency Management",
+        "entity_id": "new-york-city-emergency-management",
+        "matched_name": "New York City Emergency Management",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q3339045",
+        "label": "New York City Department of Cultural Affairs",
+        "entity_id": "department-of-cultural-affairs",
+        "matched_name": "Department of Cultural Affairs",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q1325591",
+        "label": "New York City Transit Authority",
+        "entity_id": "nyct",
+        "matched_name": "New York City Transit Authority",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q1058767",
+        "label": "New York City Department of Transportation",
+        "entity_id": "new-york-city-department-of-transportation",
+        "matched_name": "New York City Department of Transportation",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q8354833",
+        "label": "New York City Department of Sanitation",
+        "entity_id": "new-york-city-department-of-sanitation",
+        "matched_name": "New York City Department of Sanitation",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q16995038",
+        "label": "New York City Department of Health and Mental Hygiene",
+        "entity_id": "department-of-health-and-mental-hygiene",
+        "matched_name": "Department of Health and Mental Hygiene",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q16956375",
+        "label": "New York City Department for the Aging",
+        "entity_id": "department-for-the-aging",
+        "matched_name": "Department for the Aging",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q17058879",
+        "label": "New York City Law Department",
+        "entity_id": "new-york-city-law-department",
+        "matched_name": "New York City Law Department",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q48742915",
+        "label": "Mayor's Office of Management and Budget",
+        "entity_id": "mayor-s-office-of-management-and-budget",
+        "matched_name": "Mayor's Office of Management and Budget",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q111462675",
+        "label": "New York City Office of Environmental Remediation",
+        "entity_id": "mayor-s-office-of-environmental-remediation",
+        "matched_name": "Mayor's Office of Environmental Remediation",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q20657186",
+        "label": "New York City Taxi and Limousine Commission",
+        "entity_id": "new-york-city-taxi-and-limousine-commission",
+        "matched_name": "New York City Taxi and Limousine Commission",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q138663471",
+        "label": "Mayor's Office of LGBTQIA+ Affairs",
+        "entity_id": "mayor-s-office-of-lgbtqia-affairs",
+        "matched_name": "Mayor's Office of LGBTQIA+ Affairs",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q28186752",
+        "label": "New York City Business Integrity Commission",
+        "entity_id": "business-integrity-commission",
+        "matched_name": "Business Integrity Commission",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q328473",
+        "label": "New York City Police Department",
+        "entity_id": "new-york-city-police-department",
+        "matched_name": "New York City Police Department",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q20657421",
+        "label": "New York City Administration for Children's Services",
+        "entity_id": "administration-for-children-s-services",
+        "matched_name": "Administration for Children's Services",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q137669844",
+        "label": "Mayor's Office to Protect Tenants",
+        "entity_id": "mayor-s-office-to-protect-tenants",
+        "matched_name": "Mayor's Office to Protect Tenants",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      },
+      {
+        "qid": "Q283207",
+        "label": "New York City Fire Department",
+        "entity_id": "fire-department-of-the-city-of-new-york",
+        "matched_name": "Fire Department of the City of New York",
+        "reason": "exact_name",
+        "note": "exact name/alias match, no distinctive domain — operator-confirm before attaching."
+      }
+    ],
+    "re_pointed": [
+      {
+        "entity_id": "office-of-the-borough-president-of-staten-island",
+        "rejected_qid": "Q18432",
+        "rejected_label": "Staten Island",
+        "rejected_class": "Staten Island — borough of New York City / Richmond County (place)",
+        "matched_via_host": "statenislandusa.com",
+        "action": "drop",
+        "attached_qid": null,
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): Q18432 is the Staten Island borough (P856 statenislandusa.com — a tourism site), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
+      },
+      {
+        "entity_id": "office-of-the-borough-president-of-the-bronx",
+        "rejected_qid": "Q18426",
+        "rejected_label": "The Bronx",
+        "rejected_class": "The Bronx — borough of New York City / Bronx County (place)",
+        "matched_via_host": "bronxboropres.nyc.gov",
+        "action": "drop",
+        "attached_qid": null,
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): an office is not a place. Q18426 is the Bronx borough, not the BP office; it merely carries the office site bronxboropres.nyc.gov as P856. Wikidata has NO per-borough Borough-President OFFICE item (0 instances/subclasses of Q4946327 'borough president'; the domains are claimed only by borough/county place items). The generic Q4946327 is the office TYPE, not this specific office, so it fails the 'the QID's item is this entity' rule. Dropped rather than attach the place."
+      },
+      {
+        "entity_id": "office-of-the-borough-president-of-manhattan",
+        "rejected_qid": "Q11299",
+        "rejected_label": "Manhattan",
+        "rejected_class": "Manhattan — borough of New York City / New York County (place)",
+        "matched_via_host": "manhattanbp.nyc.gov",
+        "action": "drop",
+        "attached_qid": null,
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): Q11299 is the Manhattan borough (P856 manhattanbp.nyc.gov, also on Q500416 New York County), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
+      },
+      {
+        "entity_id": "office-of-the-borough-president-of-brooklyn",
+        "rejected_qid": "Q18419",
+        "rejected_label": "Brooklyn",
+        "rejected_class": "Brooklyn — borough of New York City / Kings County (place)",
+        "matched_via_host": "brooklynbp.nyc.gov",
+        "action": "drop",
+        "attached_qid": null,
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): Q18419 is the Brooklyn borough (P856 brooklynbp.nyc.gov), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
+      }
+    ],
+    "no_suitable_item": [
+      {
+        "entity_id": "office-of-the-borough-president-of-staten-island",
+        "rejected_qid": "Q18432",
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): Q18432 is the Staten Island borough (P856 statenislandusa.com — a tourism site), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
+      },
+      {
+        "entity_id": "office-of-the-borough-president-of-the-bronx",
+        "rejected_qid": "Q18426",
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): an office is not a place. Q18426 is the Bronx borough, not the BP office; it merely carries the office site bronxboropres.nyc.gov as P856. Wikidata has NO per-borough Borough-President OFFICE item (0 instances/subclasses of Q4946327 'borough president'; the domains are claimed only by borough/county place items). The generic Q4946327 is the office TYPE, not this specific office, so it fails the 'the QID's item is this entity' rule. Dropped rather than attach the place."
+      },
+      {
+        "entity_id": "office-of-the-borough-president-of-manhattan",
+        "rejected_qid": "Q11299",
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): Q11299 is the Manhattan borough (P856 manhattanbp.nyc.gov, also on Q500416 New York County), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
+      },
+      {
+        "entity_id": "office-of-the-borough-president-of-brooklyn",
+        "rejected_qid": "Q18419",
+        "reason": "no_suitable_item",
+        "note": "Operator decision 2026-07-15 (PR #8): Q18419 is the Brooklyn borough (P856 brooklynbp.nyc.gov), not the BP office. No per-borough office item on Wikidata. Dropped rather than attach the place."
+      }
+    ],
+    "review_domain_conflict": [],
+    "review_ambiguous_name": [
+      {
+        "qid": "Q408230",
+        "label": "New York City Public Schools",
+        "candidate_entities": [
+          {
+            "entity_id": "new-york-city-public-schools",
+            "name": "New York City Public Schools"
+          },
+          {
+            "entity_id": "nyc-doe",
+            "name": "New York City Department of Education"
+          }
+        ]
+      }
+    ],
+    "review_apex_shared": [
+      {
+        "qid": "Q3339046",
+        "label": "New York City Department of Correction",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q7013162",
+        "label": "New York City Department of Environmental Protection",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q7013174",
+        "label": "New York City Office of Technology Innovation",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q7013185",
+        "label": "New York City Department of Records and Information Services",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q7013165",
+        "label": "New York City Department of Finance",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q7013228",
+        "label": "New York City Human Resources Administration",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q7013171",
+        "label": "New York City Department of Housing Preservation and Development",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q13358874",
+        "label": "New York City Department of Buildings",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q16956378",
+        "label": "New York City Department of Consumer and Worker Protection",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q131444745",
+        "label": "Mayor's Community Affairs Unit",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q14707129",
+        "label": "Office of Chief Medical Examiner of the City of New York",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q8354830",
+        "label": "New York City Department of City Planning",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q16991705",
+        "label": "New York City Department of Design & Construction",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q7013168",
+        "label": "New York City Department of Homeless Services",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q7013181",
+        "label": "New York City Department of Investigation",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q7013184",
+        "label": "New York City Department of Probation",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q7013190",
+        "label": "New York City Department of Small Business Services",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q7013192",
+        "label": "New York City Department of Youth & Community Development",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q137460498",
+        "label": "New York City Department of Veterans' Services",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      },
+      {
+        "qid": "Q137669845",
+        "label": "Mayor's Office of Child Care",
+        "apex_shared_hosts": [
+          "nyc.gov"
+        ]
+      }
+    ],
+    "unmatched": [
+      {
+        "qid": "Q18424",
+        "label": "Queens",
+        "hosts": [
+          "queensbp.org"
+        ]
+      },
+      {
+        "qid": "Q7014063",
+        "label": "New York State Council on the Arts",
+        "hosts": [
+          "arts.ny.gov"
+        ]
+      },
+      {
+        "qid": "Q4689842",
+        "label": "African Leaders Malaria Alliance",
+        "hosts": [
+          "alma2030.org"
+        ]
+      },
+      {
+        "qid": "Q5527268",
+        "label": "Gateway National Recreation Area",
+        "hosts": [
+          "nps.gov"
+        ]
+      },
+      {
+        "qid": "Q5069535",
+        "label": "Chamber of Commerce of the State of New York",
+        "hosts": []
+      },
+      {
+        "qid": "Q7209895",
+        "label": "Consulate General of the Republic of Poland in New York",
+        "hosts": [
+          "nowyjork.msz.gov.pl"
+        ]
+      },
+      {
+        "qid": "Q9344792",
+        "label": "Permanent Mission of Poland to the United Nations in New York",
+        "hosts": [
+          "nowyjorkonz.msz.gov.pl"
+        ]
+      },
+      {
+        "qid": "Q17109959",
+        "label": "New York State Office of Mental Retardation and Developmental Disabilities Police",
+        "hosts": []
+      },
+      {
+        "qid": "Q14707388",
+        "label": "Success Academy Charter Schools",
+        "hosts": [
+          "successacademies.org"
+        ]
+      },
+      {
+        "qid": "Q16968907",
+        "label": "Delegation of the European Union to the United Nations",
+        "hosts": [
+          "eeas.europa.eu"
+        ]
+      },
+      {
+        "qid": "Q103899794",
+        "label": "Permanent Mission of North Korea to the United Nations",
+        "hosts": []
+      },
+      {
+        "qid": "Q80566127",
+        "label": "Consulate General of the United Arab Emirates, New York",
+        "hosts": [
+          "mofaic.gov.ae",
+          "newyork.uae-embassy.org"
+        ]
+      },
+      {
+        "qid": "Q110853416",
+        "label": "Consulate General of Spain in New York",
+        "hosts": [
+          "exteriores.gob.es"
+        ]
+      },
+      {
+        "qid": "Q49167127",
+        "label": "Consulate General of Norway in New York",
+        "hosts": []
+      },
+      {
+        "qid": "Q59290384",
+        "label": "British Consulate General New York",
+        "hosts": []
+      },
+      {
+        "qid": "Q56326903",
+        "label": "Permanent Mission of the Russian Federation to the United Nations in New York",
+        "hosts": [
+          "russiaun.ru"
+        ]
+      },
+      {
+        "qid": "Q51717920",
+        "label": "Permanent Mission of Japan to the United Nations",
+        "hosts": [
+          "un.emb-japan.go.jp"
+        ]
+      },
+      {
+        "qid": "Q80566946",
+        "label": "Permanent Mission of the United Arab Emirates to the United Nations, New York",
+        "hosts": [
+          "mofaic.gov.ae",
+          "newyork.uae-embassy.org",
+          "un.int"
+        ]
+      },
+      {
+        "qid": "Q111182740",
+        "label": "Consulate General of Ukraine, New York",
+        "hosts": [
+          "ny.mfa.gov.ua"
+        ]
+      },
+      {
+        "qid": "Q111192419",
+        "label": "Permanent Mission of Germany to the United Nations in New York",
+        "hosts": [
+          "new-york-vn.diplo.de"
+        ]
+      },
+      {
+        "qid": "Q122876283",
+        "label": "General Consulate of Morocco, New-York",
+        "hosts": []
+      },
+      {
+        "qid": "Q130633768",
+        "label": "Permanent Mission of the Republic of Korea to the United Nations",
+        "hosts": []
+      },
+      {
+        "qid": "Q123707616",
+        "label": "The Permanent Mission of Ghana to the United Nations",
+        "hosts": []
+      },
+      {
+        "qid": "Q111040768",
+        "label": "Permanent Mission of Ukraine to the United Nations",
+        "hosts": [
+          "ukraineun.org"
+        ]
+      },
+      {
+        "qid": "Q122039761",
+        "label": "Permanent Representation of Belgium to the United Nations (New York)",
+        "hosts": [
+          "newyorkun.diplomatie.belgium.be"
+        ]
+      },
+      {
+        "qid": "Q124618434",
+        "label": "Australian Consulate-General, New York",
+        "hosts": []
+      },
+      {
+        "qid": "Q10872054",
+        "label": "Permanent Mission of the People's Republic of China to the United Nations",
+        "hosts": [
+          "un.china-mission.gov.cn"
+        ]
+      },
+      {
+        "qid": "Q5398479",
+        "label": "Permanent Mission of Mexico to the United Nations",
+        "hosts": []
+      },
+      {
+        "qid": "Q42254439",
+        "label": "Permanent Mission of Estonia to the United Nations",
+        "hosts": [
+          "un.mfa.ee"
+        ]
+      },
+      {
+        "qid": "Q7013250",
+        "label": "New York City Police Academy",
+        "hosts": []
+      },
+      {
+        "qid": "Q2995343",
+        "label": "Consulate General of France in New York",
+        "hosts": [
+          "newyork.consulfrance.org"
+        ]
+      },
+      {
+        "qid": "Q65160490",
+        "label": "Permanent Mission of Indonesia to the United Nations in New York",
+        "hosts": [
+          "kemlu.go.id"
+        ]
+      },
+      {
+        "qid": "Q19854364",
+        "label": "Consulate General of China, New York",
+        "hosts": [
+          "newyork.china-consulate.gov.cn"
+        ]
+      },
+      {
+        "qid": "Q56326934",
+        "label": "Permanent Mission of the United Kingdom to the United Nations",
+        "hosts": [
+          "gov.uk"
+        ]
+      },
+      {
+        "qid": "Q19978223",
+        "label": "Consulate General of Sweden in New York City",
+        "hosts": [
+          "swedenabroad.se"
+        ]
+      },
+      {
+        "qid": "Q11422613",
+        "label": "Permanent Mission of Canada to the United Nations",
+        "hosts": [
+          "international.gc.ca"
+        ]
+      },
+      {
+        "qid": "Q54954322",
+        "label": "Permanent Mission of India to the United Nations",
+        "hosts": []
+      },
+      {
+        "qid": "Q63616520",
+        "label": "Consulate General of Hungary, New York",
+        "hosts": [
+          "newyork.mfa.gov.hu"
+        ]
+      },
+      {
+        "qid": "Q65060593",
+        "label": "Permanent Mission of Afghanistan to the United Nations",
+        "hosts": []
+      },
+      {
+        "qid": "Q16507667",
+        "label": "Quebec Government Office in New York",
+        "hosts": [
+          "international.gouv.qc.ca"
+        ]
+      },
+      {
+        "qid": "Q60746833",
+        "label": "Permanent Mission of Bangladesh to the United Nations",
+        "hosts": [
+          "nypm.mofa.gov.bd"
+        ]
+      },
+      {
+        "qid": "Q86669251",
+        "label": "Permanent Mission of Saudi Arabia to the United Nations",
+        "hosts": []
+      },
+      {
+        "qid": "Q86669316",
+        "label": "Permanent Mission of Serbia to the United Nations",
+        "hosts": []
+      },
+      {
+        "qid": "Q125305510",
+        "label": "Permanent Mission of Denmark to the UN in New York",
+        "hosts": [
+          "fnnewyork.um.dk"
+        ]
+      },
+      {
+        "qid": "Q132732453",
+        "label": "Province of the Immaculate Conception in New York",
+        "hosts": [
+          "icprovince.org"
+        ]
+      },
+      {
+        "qid": "Q76009978",
+        "label": "Permanent Mission of New Zealand to the United Nations, New York",
+        "hosts": [
+          "mfat.govt.nz"
+        ]
+      },
+      {
+        "qid": "Q65160498",
+        "label": "Permanent Mission of Nepal to the United Nations",
+        "hosts": [
+          "un.int"
+        ]
+      },
+      {
+        "qid": "Q86669337",
+        "label": "Permanent Mission of Hungary to the United Nations",
+        "hosts": [
+          "ensz-newyork.mfa.gov.hu"
+        ]
+      },
+      {
+        "qid": "Q135792408",
+        "label": "The Bahamas Consulate General  New York City",
+        "hosts": []
+      },
+      {
+        "qid": "Q114324226",
+        "label": "Spain-US Chamber of Commerce",
+        "hosts": [
+          "spainuscc.org"
+        ]
+      },
+      {
+        "qid": "Q134876068",
+        "label": "Consulate General of Finland, New York",
+        "hosts": [
+          "finlandabroad.fi"
+        ]
+      },
+      {
+        "qid": "Q111678021",
+        "label": "Permanent Mission of Turkey to the United Nations",
+        "hosts": [
+          "turkuno-dt.mfa.gov.tr"
+        ]
+      },
+      {
+        "qid": "Q112300348",
+        "label": "Permanent Mission of Armenia to the United Nations",
+        "hosts": []
+      },
+      {
+        "qid": "Q19937098",
+        "label": "Permanent Mission of Slovenia to the United Nations",
+        "hosts": [
+          "newyork.predstavnistvo.si"
+        ]
+      },
+      {
+        "qid": "Q134887256",
+        "label": "Permanent Mission of Finland to the United Nations, New York",
+        "hosts": [
+          "finlandabroad.fi"
+        ]
+      },
+      {
+        "qid": "Q133449731",
+        "label": "New York City Citywide District 79",
+        "hosts": []
+      },
+      {
+        "qid": "Q131598749",
+        "label": "Permanent Mission of Latvia to the United Nations",
+        "hosts": [
+          "mfa.gov.lv"
+        ]
+      },
+      {
+        "qid": "Q250479",
+        "label": "United States Court of Appeals for the Second Circuit",
+        "hosts": [
+          "ca2.uscourts.gov"
+        ]
+      },
+      {
+        "qid": "Q133449723",
+        "label": "New York City Citywide District 75",
+        "hosts": [
+          "district75nyc.org"
+        ]
+      }
+    ],
+    "legacy_domain_leads": [
+      {
+        "entity_id": "nyct",
+        "qid": "Q1325591",
+        "lead_domain": "new.mta.info",
+        "note": "Wikidata P856 host 'new.mta.info' for Q1325591 is not among [] owned by 'nyct' — UNVERIFIED legacy-domain lead, verify before adding to web_properties."
+      }
+    ],
+    "name_divergent_caveats": [
+      {
+        "qid": "Q564793",
+        "label": "Jacob K. Javits Convention Center",
+        "entity_id": "convention-center-operating-corporation-javits",
+        "matched_name": "Convention Center Operating Corporation (Javits)",
+        "matched_via_host": "javitscenter.com",
+        "note": "distinctive-domain auto-attach whose Wikidata label does not match the entity name — likely a place/office conflation; operator review recommended before treating the QID as an identity assertion."
+      }
+    ]
+  }
+}
