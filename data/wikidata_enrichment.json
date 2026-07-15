@@ -1,0 +1,133 @@
+{
+  "_generated_from": "sync_wikidata.py",
+  "source": "Wikidata Query Service (WDQS) — NYC gov orgs",
+  "wikidata_as_of": "2026-07-15",
+  "enrichments": [
+    {
+      "entity_id": "office-of-the-borough-president-of-staten-island",
+      "matched_from": {
+        "source": "wikidata",
+        "qid": "Q18432",
+        "label": "Staten Island",
+        "match_type": "distinctive_domain",
+        "matched_via_host": "statenislandusa.com",
+        "as_of": "2026-07-15"
+      },
+      "add_provenance_source": "wikidata",
+      "identifiers": [
+        {
+          "scheme": "wikidata",
+          "identifier": "Q18432"
+        }
+      ]
+    },
+    {
+      "entity_id": "office-of-the-borough-president-of-the-bronx",
+      "matched_from": {
+        "source": "wikidata",
+        "qid": "Q18426",
+        "label": "The Bronx",
+        "match_type": "distinctive_domain",
+        "matched_via_host": "bronxboropres.nyc.gov",
+        "as_of": "2026-07-15"
+      },
+      "add_provenance_source": "wikidata",
+      "identifiers": [
+        {
+          "scheme": "wikidata",
+          "identifier": "Q18426"
+        }
+      ]
+    },
+    {
+      "entity_id": "office-of-the-borough-president-of-manhattan",
+      "matched_from": {
+        "source": "wikidata",
+        "qid": "Q11299",
+        "label": "Manhattan",
+        "match_type": "distinctive_domain",
+        "matched_via_host": "manhattanbp.nyc.gov",
+        "as_of": "2026-07-15"
+      },
+      "add_provenance_source": "wikidata",
+      "identifiers": [
+        {
+          "scheme": "wikidata",
+          "identifier": "Q11299"
+        }
+      ]
+    },
+    {
+      "entity_id": "office-of-the-borough-president-of-brooklyn",
+      "matched_from": {
+        "source": "wikidata",
+        "qid": "Q18419",
+        "label": "Brooklyn",
+        "match_type": "distinctive_domain",
+        "matched_via_host": "brooklynbp.nyc.gov",
+        "as_of": "2026-07-15"
+      },
+      "add_provenance_source": "wikidata",
+      "identifiers": [
+        {
+          "scheme": "wikidata",
+          "identifier": "Q18419"
+        }
+      ]
+    },
+    {
+      "entity_id": "convention-center-operating-corporation-javits",
+      "matched_from": {
+        "source": "wikidata",
+        "qid": "Q564793",
+        "label": "Jacob K. Javits Convention Center",
+        "match_type": "distinctive_domain",
+        "matched_via_host": "javitscenter.com",
+        "as_of": "2026-07-15"
+      },
+      "add_provenance_source": "wikidata",
+      "identifiers": [
+        {
+          "scheme": "wikidata",
+          "identifier": "Q564793"
+        }
+      ]
+    },
+    {
+      "entity_id": "department-of-parks-and-recreation",
+      "matched_from": {
+        "source": "wikidata",
+        "qid": "Q1894232",
+        "label": "New York City Department of Parks and Recreation",
+        "match_type": "distinctive_domain",
+        "matched_via_host": "nycgovparks.org",
+        "as_of": "2026-07-15"
+      },
+      "add_provenance_source": "wikidata",
+      "identifiers": [
+        {
+          "scheme": "wikidata",
+          "identifier": "Q1894232"
+        }
+      ]
+    },
+    {
+      "entity_id": "nyc-health-hospitals",
+      "matched_from": {
+        "source": "wikidata",
+        "qid": "Q7013226",
+        "label": "NYC Health + Hospitals",
+        "match_type": "distinctive_domain",
+        "matched_via_host": "nychealthandhospitals.org",
+        "as_of": "2026-07-15"
+      },
+      "add_provenance_source": "wikidata",
+      "identifiers": [
+        {
+          "scheme": "wikidata",
+          "identifier": "Q7013226"
+        }
+      ]
+    }
+  ]
+}
