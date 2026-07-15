@@ -8,9 +8,9 @@ The registry is designed to **stay current**, not be a one-time dump (design doc
 3. **Hand-curated (state agencies, non-.gov marquee entities, legacy domains):** editorial additions with `provenance.sources = ["manual"]`.
 
 ## Diff-as-proposals
-`build_registry.py` never deletes. Adds and crosswalk enrichments are written to
+`build_registry.py` never deletes. Adds and identifier enrichments are written to
 `data/build_proposals.json` for human confirmation. Removals/renames upstream become
-`status` changes + `valid_to`, preserving defunct-entity history.
+`status` changes + `dissolution_date`, preserving defunct-entity history.
 
 ## Versioning & cadence
 - The built `data/registry.json` is committed; each rebuild is a reviewable diff.
