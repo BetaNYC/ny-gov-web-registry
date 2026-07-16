@@ -805,6 +805,62 @@
    "method": "browser-pane",
    "status": "ok",
    "truncated": false
+  },
+  "office-of-data-analytics": {
+   "text": "OTI's Office of Data Analytics (ODA) works with City agencies and their data to help serve New Yorkers more equitably and efficiently. Our work takes three main forms: analyzing data to improve City agency operations; operating the NYC Open Data program; and advancing Citywide data analytics, infrastructure, integration, and sharing.",
+   "source_url": "https://www.nyc.gov/content/oti/pages/data-analytics",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-investigation": {
+   "text": "DOI is one of the oldest law-enforcement agencies in the country, formed in the 1870s following a scandal in which the corrupt William “Boss” Tweed and his unscrupulous cronies skimmed millions from the City coffers. Investigations may involve any agency, officer, elected official or employee of the City, as well as those who do business with or receive benefits from the City. As New York City's Inspector General, DOI's strategy attacks corruption comprehensively through systemic investigations that lead to high-impact arrests, preventive controls and operational reforms that improve the way the City runs.",
+   "source_url": "https://www.nyc.gov/site/doi/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-nightlife": {
+   "text": "The Office of Nightlife (ONL) at the NYC Department of Small Business Services (SBS) serves as a central point of contact among the nightlife industry, community, and city agencies. Our goal is to help ensure a more vibrant, viable, safe, fair, and well managed nightlife environment in New York City.\n\nNightlife is a vital part of the city's economy, culture, and identity, supporting nearly 300,000 jobs and generating $35.1 billion in economic impact. New York's nightlife has also long been an important incubator of cultural movements and continues to provide spaces for connection, creativity, and personal expression.",
+   "source_url": "https://www.nyc.gov/site/sbs/businesses/nightlife.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "kings-county-public-administrator": {
+   "text": "The Public Administrator administers estates of deceased persons. There is a Public Administrator in every county in the City of New York. The Public Administrator's primary duty is to administer estates that would otherwise remain unadministered; to protect the decedent's property from waste, loss, or theft; to make appropriate burial arrangements when no close relative is available to make the decisions; to conduct thorough investigations to discover all assets; to liquidate assets at public sale or distribute assets to heirs; to pay the decedent's bills and taxes; and to locate persons entitled to inherit from the estate and ensure that the legal distributees receive their inheritance.",
+   "source_url": "https://www.nyc.gov/site/kcpa/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-management-and-budget": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/omb/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-for-economic-opportunity": {
+   "text": "The Mayor’s Office for Economic Opportunity helps the City use evidence and innovation to reduce poverty and increase equity.",
+   "source_url": "https://www.nyc.gov/site/opportunity/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "procurement-policy-board": {
+   "text": "The Procurement Policy Board is authorized to promote and put into effect rules governing the procurement of goods, services, and construction by the City of New York.",
+   "source_url": "https://www.nyc.gov/site/mocs/regulations/ppb.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   }
  }
 }
