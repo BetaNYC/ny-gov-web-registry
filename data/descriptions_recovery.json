@@ -405,6 +405,462 @@
    "method": null,
    "status": "no_about_found",
    "truncated": false
+  },
+  "civil-service-commission": {
+   "text": "The City Civil Service Commission (\"CSC\") is an independent, non-mayoral city agency authorized by section 813 of the New York City Charter, to hear and decide appeals from certain determinations made by other City agencies under the New York State Civil Service Law.\n\nThe CSC is made up of five Commissioners appointed by the Mayor to six-year terms upon approval by the City Council. The Mayor may designate one of the Commissioners as Chair and one as Vice Chair on a yearly basis. No more than three Commissioners may be affiliated with the same political party.",
+   "source_url": "https://www.nyc.gov/site/csc/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "cyber-command": {
+   "text": "Cyber Command is charged with protecting all City systems against cyber threats, including systems that deliver vital services to New Yorkers. Headed by the Chief Information Security Officer of the City of New York, we provide in-depth support to over 100 agencies and offices to protect, detect, identify, respond to, and recover from cyber threats.",
+   "source_url": "https://www.nyc.gov/content/oti/pages/meet-the-team/cyber-command",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "board-of-standards-and-appeals": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/bsa/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "new-york-city-emergency-management": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/em/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-of-equity-and-racial-justice": {
+   "text": "Launched in October 2023, the NYC Mayor's Office of Equity and Racial Justice (MOERJ) is the City's centralized equity office that takes an intersectional approach to advancing change across our city. This new body expands on the city's extensive equity efforts and fulfills the promise made in November 2022, when New York City residents voted in favor of an office dedicated to racial equity.\n\nMOERJ continues the innovative work of the NYC Mayor's Office of Equity while playing an integral role in the city's new racial equity planning process. This newly enshrined office includes NYC Her Future (NHF), the NYC Commission on Gender Equity (CGE), the NYC Unity Project (UP), and the NYC Young Men's Initiative (YMI) as well as multi-agency bodies like the NYC Pay Equity Cabinet (PEC) and the NYC Taskforce on Racial Inclusion & Equity (TRIE). Together, this body of offices and commissions engage New York City's diverse communities and constituencies to advance equity and create transformative change to promote racial justice within New York City.",
+   "source_url": "https://www.nyc.gov/site/equity/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-ethnic-and-community-media": {
+   "text": "New York City is one of the most diverse cities in the world, and the news publications its residents read and consume reflect that diversity. The Mayor's Office of Ethnic and Community Media (MOECM) promotes City services and programs through partnerships with a diverse array of media outlets and CBOs/Nonprofits that serve people across the five boroughs.\n\nThe MOECM, the first Mayoral Office of its kind in the United States, was established by Local Law 83 of 2021, which requires that each mayoral agency shall seek to direct at least fifty percent of its total spending on advertising to Ethnic and Community Media (ECM) outlets.\n\nThe MOECM facilitates connections between Ethnic and Community Media outlets, and City agencies, and Mayoral offices; advises the Mayor on communicating information to the public; oversees the Local Law 83 ECM advertising spending requirement; manages the citywide marketing directory, and publishes an annual report on advertising spending by Mayoral Agencies for the Mayor, the Speaker and the public.",
+   "source_url": "https://www.nyc.gov/site/ethnicmedia/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-for-nonprofit-services": {
+   "text": "At the Mayor's Office of Nonprofit Services (MONS), we're committed to more efficient, transparent, and collaborative nonprofit procurement.\n\nDuring the 2021 transition, the previous administration convened a joint task force of nonprofit leaders, City and oversight agencies, and funders to identify solutions to the longstanding challenges in the nonprofit contracting process. This collaborative effort resulted in 19 recommendations, published in the report, A Better Contract for New York: The Joint Taskforce to Get Nonprofits Paid on Time.\n\nSince then, MONS has worked across offices and agencies to implement the Joint Task Force's recommendations with a focus on accountability and measurable results.",
+   "source_url": "https://www.nyc.gov/site/nonprofits/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "taskforce-on-racial-inclusion-and-equity": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/trie/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "archives-reference-and-research-advisory-board": {
+   "text": "The Archives, Reference, and Research Advisory Board (ARRAB) consults with the Commissioner of the Department of Records and Information Services on matters regarding the Municipal Library and Archives. The board shall consist of fifteen members who shall be appointed by the mayor, and which shall advise the Commissioner in matters at his or her request and render annually to the mayor a report regarding the development of municipal archives, reference and research services in the government and administration of the city.",
+   "source_url": "https://www.nyc.gov/site/records/about/archives-reference-and-research-advisory-board.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "commission-on-racial-equity": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/content/core/pages/",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-of-urban-agriculture": {
+   "text": "The Mayor's Office of Urban Agriculture (MOUA) leads the City's efforts to increase access to and production of locally grown food, strengthen climate resiliency, and spur economic activity throughout the five boroughs. Through research, policy development, advocacy, and community outreach, MOUA aims to address the climate, health, and food disparities in our natural and built environments. Through collaboration with other city agencies, MOUA advances urban agriculture on several fronts: environmental justice, gardens, urban farms, food equity, workforce development, and building a green, resilient economy.\n\nThe Office of Urban Agriculture is an integral component of the Mayor's Office of Climate and Environmental Justice. The Office of Urban Agriculture is responsible for developing and implementing climate-based urban agriculture and food system strategies in New York City.",
+   "source_url": "https://www.nyc.gov/site/agriculture/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-to-prevent-gun-violence": {
+   "text": "The anti-gun violence initiatives that combine community-centered law enforcement with engaged residents and community-based organizations will work to make our city safe.",
+   "source_url": "https://www.nyc.gov/site/peacenyc/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-appointments": {
+   "text": "We are excited for you to learn more about the extraordinary work that we do every day to promote diversity, equity, and inclusion across city agencies and boards and commissions. Working across all city agencies and mayoral offices, the Mayor's Office of Appointments serves a critical, supportive role in the placement of candidates for senior leadership positions within the Administration.",
+   "source_url": "https://www.nyc.gov/content/appointments/pages/",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-districting-commission": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/districting/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-of-strategic-partnerships": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/partnerships/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-of-animal-welfare": {
+   "text": "In 2015, a position was created within the Mayor’s Office that would serve as a dedicated liaison between City Hall and the animal advocacy community. In November 2019, this position became permanent with the creation of an Office of Animal Welfare – the first office of its kind in the United States. This law went into effect on March 25, 2020. As stated in Chapter 23 of the New York City Charter, the Office has the power to advise and assist the Mayor in the coordination and cooperation among City agencies that are involved in animal welfare administration, regulation, management or programs.\n\nThe Mayor's Office of Animal Welfare recognizes the many connections between human and (non-human) animal well-being, aims to foster a more humane city for all.",
+   "source_url": "https://www.nyc.gov/site/animalwelfare/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-police-department": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/nypd/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "board-of-correction": {
+   "text": "The New York City Board of Correction (BOC) is a nine-person, non-judicial oversight board that regulates, monitors, and inspects the correctional facilities of the City.\n\nThe Board of Correction carries out independent oversight and enacts regulations to support safer, fairer, smaller, and more humane NYC jails.\n\nIt is one of the earliest independent oversight Boards of custodial and detention settings in the United States. Its original Board members were appointed in 1957. In 1977, the Board's role was expanded and it became more independent, gaining its own staff and budget.",
+   "source_url": "https://www.nyc.gov/site/boc/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-housing-preservation-and-development": {
+   "text": "Our mission is to promote quality and affordability in the city's housing, and diversity and strength in the city’s neighborhoods.\n\nWe do this by maintaining building and resident safety and health, creating opportunities for New Yorkers through housing affordability, and engaging New Yorkers to build and sustain neighborhood strength and diversity.\n\nBecause every New Yorker deserves a safe, affordable place to live in a neighborhood they love.",
+   "source_url": "https://www.nyc.gov/site/hpd/about/about-hpd.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "hiv-aids-services-advisory-board": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/hra/help/hiv-aids-services.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-fund-to-advance-new-york-city": {
+   "text": "The Mayor's Fund to Advance New York City cultivates partnerships that combine the incomparable reach of government with the entrepreneurial spirit of the private sector to create a stronger and more just city for all New Yorkers.\n\nThe Mayor's Fund to Advance New York City is a 501(c)(3) not-for-profit organization working with 50 City agencies and offices, 300 institutional funders, and 100 community-based partners.\n\nThe Mayor's Fund and its partners advance initiatives that improve the lives of New Yorkers from all walks of life and across all five boroughs. In particular, the Mayor's Fund has made strategic investments to promote mental health services for all New Yorkers, increase workforce development opportunities for young New Yorkers, and meet the needs of New York City's diverse immigrant community.",
+   "source_url": "https://www.nyc.gov/site/fund/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "senior-advisory-council": {
+   "text": "The Department for the Aging’s Advisory Council advises the Department and the Commissioner on policies and programs.\n\nThe Advisory Council has 31 members. The City Council recommends 10 of the members - two from each borough - to better represent the City's diversity. At least 16 members come from nonprofit organizations that serve older New Yorkers. Other members have experience and knowledge in social services, health, and the academic community.\n\nThe Older Americans Act and City charter require Department for the Aging to have an Advisory Council. The Mayor appoints all members, who serve for three years and aren't paid for their work.",
+   "source_url": "https://www.nyc.gov/site/dfta/about/advisory-council.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "bronx-county-public-administrator": {
+   "text": "The Public Administrator’s agency is a legally mandated office of the City of New York. Each of the 5 boroughs has a Public Administrator. The Public Administrator of the County of the Bronx administers the estates of Bronx County residents who die and no one else is eligible or willing to administer the estates. The Public Administrator's primary duty is to administer estates that would otherwise remain unadministered; to protect the decedent's property from waste, loss, or theft; to make appropriate burial arrangements when no close relative is available to make the decisions; to conduct thorough investigations to discover all assets; to liquidate assets at public sale or distribute assets to heirs; to pay the decedent's bills and taxes; and to locate persons entitled to inherit from the estate and ensure that the legal distributees receive their inheritance.",
+   "source_url": "https://www.nyc.gov/site/bronxpa/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-youth-employment": {
+   "text": "Center for Employment (CYE) serves to expand, improve, and align publicly funded programs that help young New Yorkers build skills, gain experience, explore potential career paths, and prepare for success in the world of work. In partnership with stakeholders in City government, the private sector, philanthropy, and the provider community, CYE provides subject matter expertise and capacity and resource support within New York City's career readiness ecosystem. CYE works with its partners to coordinate classroom education, career exploration, work readiness, and personal development to provide young New Yorkers with the tools they need to build the lives they want.",
+   "source_url": "https://www.nyc.gov/site/youthemployment/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-immigrant-affairs": {
+   "text": "New York City is a sanctuary city. Under these principles, MOIA’s mission is to ensure that immigrant New Yorkers across all five boroughs are supported, empowered, and protected. We achieve this by providing immigration legal assistance through the largest municipal legal support network in the nation, establishing English language learning hubs in partnership with libraries and community organizations, and expanding language access so that all New Yorkers can meaningfully participate in their communities. MOIA regularly advances policy reforms that champion the rights of immigrant New Yorkers, coordinates citywide strategies to better serve our immigrant communities, and drives strategic communications to ensure immigrant New Yorkers know their rights, can access critical services, and can deepen their connections to the city.\n\nTo meet widespread challenges, MOIA employs a citywide, inter-agency, and multi-sector strategy to translate advocacy into effective policies and operations across city government, build language and cultural competence into city infrastructure, develop scalable crisis-response models, and partner with trusted nonprofits and non-governmental organizations to holistically serve immigrant communities across the city.",
+   "source_url": "https://www.nyc.gov/site/immigrants/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "tax-appeals-tribunal": {
+   "text": "The New York City Tax Appeals Tribunal (the \"Tribunal\") is an independent agency created by the New York City Charter.  The Tribunal is a fair, impartial, efficient and knowledgeable forum in which disputes between taxpayers and the New York City Department of Finance (\"DOF\") involving taxes administered by the City of New York other than the New York City Real Property Tax are resolved.\n\nThe Tribunal consists of two divisions:  an Administrative Law Judge Division and an Appeals Division.  The Appeals Division consists of three Commissioners appointed by the Mayor who review Administrative Law Judge Determinations upon the filing of exceptions by a taxpayer and/or the Commissioner of Finance.  One of the three Commissioners of the Appeals Division is designated as President of the Tribunal by the Mayor and serves as such during his or her term.  The Administrative Law Judge Division consists of a Chief Administrative Law Judge and other Administrative Law Judges who conduct formal hearings and render Determinations.",
+   "source_url": "https://www.nyc.gov/site/taxappeals/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-correction": {
+   "text": "The New York City Department of Correction (DOC) is dedicated to creating a safe and supportive environment while providing individuals in our care with a path to successfully re-enter their communities. The Department provides for the care and custody of people ordered to be held by the courts and awaiting trial or who are convicted and sentenced to one year or less of jail time. Our dedicated workforce of both uniformed and non-uniformed staff members represents the city’s BOLDEST.",
+   "source_url": "https://www.nyc.gov/site/doc/about/about-doc.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-the-mayor": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/mayors-office",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "department-of-design-and-construction": {
+   "text": "From the pedestrian plaza in Times Square to the Far Rockaway Library, the Department of Design and Construction is building for you.\n\nAs the City's primary capital construction project manager, we build many of the civic facilities New Yorkers use every day. We provide communities with new or renovated structures such as firehouses, libraries, police precincts, courthouses, senior centers and more. To successfully manage our portfolio, we collaborate with other City agencies, as well as with emerging and world-renowned architects and consultants.\n\nOur work doesn’t stop at buildings—we also design and improve vital infrastructure. Our staff delivers roadway, sewer and water main construction projects in all five boroughs. We provide sidewalks, street reconstruction, water mains, sewers, and pedestrian ramps—quality infrastructure that is essential for a healthy, resilient city.",
+   "source_url": "https://www.nyc.gov/site/ddc/about/about-ddc.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-advisory-committee-on-the-judiciary": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/macj/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-of-talent-and-workforce-development": {
+   "text": "The mission of the Office of Talent and Workforce Development (NYC Talent) is to ensure all New Yorkers can access good paying careers and employers can access New York City's talent so they can thrive today and in the future.\n\nTo achieve this mission, NYC Talent aligns efforts across the city's public-private workforce development ecosystem, provides data and policy expertise, and supports program innovations and process improvements for services offered by the City of New York and other workforce stakeholders. NYC Talent works in partnership with government, employers, industry professionals, educational institutions, nonprofits, and philanthropic organizations to ensure the City's workforce development strategy aligns with employer demand, jobseeker needs, and the rapidly changing economy.",
+   "source_url": "https://www.nyc.gov/site/wkdev/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-buildings": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/buildings/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "new-york-city-children-s-cabinet": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/childrenscabinet/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "community-boards": {
+   "text": "Community boards are the most local, grassroots form of City government, and the connection we provide between our communities and our elected officials and City agencies is important for a healthy democracy. We have always been small but mighty, accomplishing a lot with a little.",
+   "source_url": "https://www.nyc.gov/site/communityboards/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "unity-project": {
+   "text": "At the Mayor's Office, the NYC Unity Project advances LGBTQ+ programs, policies, press and communications, engagement, and interagency collaboration.",
+   "source_url": "https://www.nyc.gov/content/unityproject/pages/",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-social-services": {
+   "text": "The Department of Social Services (DSS) is comprised of the administrative units of the NYC Human Resources Administration (HRA) and the Department of Homeless Services (DHS). Through integrated management for HRA and DHS, client services can be provided more seamlessly and effectively. The City leverages shared services functions across agencies, which results in better day-to-day management and building an integrated mission across agencies.",
+   "source_url": "https://www.nyc.gov/site/dss/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "community-services-board": {
+   "text": "The CSB is formed pursuant to New York State Mental Hygiene Law and New York City Charter to advise the NYC Commissioner of Health and Mental Hygiene’s Executive Deputy Commissioner in all areas related to the City's facilities, services, and programs for mental health and mental/developmental disabilities. The CSB also advises on the City's alcohol and drug prevention and treatment facilities, services, and programs.",
+   "source_url": "https://www.nyc.gov/site/doh/health/health-topics/mh-community-services-board.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "equal-employment-practices-commission": {
+   "text": "In 1989, voters established the Equal Employment Practices Commission (EEPC) to champion overdue efforts to diversify City government as an independent, non-mayoral oversight entity. The City Charter empowers the EEPC to monitor, audit, and evaluate all City agencies, officials, and entities for their employment practices and procedures.\n\nWe ensure they follow the law and best practices for fair and effective equal employment opportunity for current public servants and those seeking to work for the City.",
+   "source_url": "https://www.nyc.gov/site/eepc/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "public-design-commission": {
+   "text": "As New York City’s design review agency, the Public Design Commission (PDC) has jurisdiction over permanent structures, landscape architecture, and art proposed on or over City-owned property. The mission of the PDC is to advocate for innovative, sustainable, and equitable design of public spaces and civic structures, with a goal of improving the public realm and therefore related services for all New Yorkers throughout the five boroughs.\n\nThe Commission is made up of 11 members who serve pro bono and meet once per month to review and vote on projects submitted by City agencies. Members include an architect, landscape architect, painter, sculptor, and three lay members, as well as representatives of the Brooklyn Museum, Metropolitan Museum of Art, New York Public Library, and the Mayor. The PDC staff assists the Commission members in their duties and guides submitting agencies through the design review process.",
+   "source_url": "https://www.nyc.gov/site/designcommission/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-for-prevention-of-hate-crimes": {
+   "text": "The Office for the Prevention of Hate Crimes (OPHC) was created through New York City Council passage of NYC Local Law 46 and Local Law 47 in January 2019. While the legislation provided for the opening of the office in November 2019, OPHC launched in the summer of 2019 in response to an escalation of hate crimes. OPHC takes a holistic approach to preventing hate crimes, developing and coordinating community-driven prevention strategies to address biases fueling such crimes, and fostering healing for victims and their communities.\n\nOPHC is strategic in using non-law enforcement deterrence, including public education, outreach and community safety models and preventative best practices. It also works with partners to develop responses for when hate crimes occur, including developing strategies so that the criminal justice system has options beyond arrest and prosecution. The office coordinates the City’s efforts to prevent and respond to hate crimes through an Interagency Committee on Hate Crimes comprised of city agencies and all the District Attorneys’ offices in New York City.",
+   "source_url": "https://www.nyc.gov/site/stophate/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "administration-for-children-s-services": {
+   "text": "The Administration for Children's Services (ACS) protects and promotes the safety and well-being of children, youth and families through child welfare and juvenile justice services and community supports.",
+   "source_url": "https://www.nyc.gov/site/acs/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-police-pension-fund": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/content/nycppf/pages/",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "veterans-advisory-board": {
+   "text": "The NYC Veterans Advisory Board (VAB) functions through the contributions of 13 veterans who have been appointed to three-year terms by either the Mayor or the Speaker of the New York City Council. The members represent the five Boroughs of New York City. The VAB's main activities include advising the New York City Department of Veterans' Services on all matters concerning veterans; meeting at least quarterly; keeping records of all deliberations; determining its own rules of procedure; and submitting annual reports for the Mayor and the Speaker of the New York City Council.",
+   "source_url": "https://www.nyc.gov/site/veterans/community/veterans-advisory-board.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-homeless-services": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/dhs/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "civilian-complaint-review-board": {
+   "text": "The New York City Civilian Complaint Review Board (CCRB) is an independent agency. It is empowered to receive, investigate, mediate, hear, make findings, and recommend action on complaints against New York City police officers alleging the use of excessive or unnecessary force, abuse of authority, discourtesy, or the use of offensive language. The Board’s investigative staff, composed entirely of civilian employees, conducts investigations in an impartial fashion. The Board forwards its findings to the police commissioner.",
+   "source_url": "https://www.nyc.gov/site/ccrb/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-special-projects-and-community-events": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/mospce/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-to-end-domestic-and-gender-based-violence": {
+   "text": "The Mayor’s Office to End Domestic and Gender-Based Violence (ENDGBV) envisions a City free from domestic and gender-based violence to improve health and safety for all New Yorkers.",
+   "source_url": "https://www.nyc.gov/site/ocdv/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "youth-board": {
+   "text": "The New York City Youth Board advises DYCD on the development of youth programs. The board is comprised of leaders from business, academia, government, foundations, and the non-profit sector.",
+   "source_url": "https://www.nyc.gov/site/dycd/involved/boards-and-councils/nyc-youth-board.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "domestic-violence-fatality-review-committee": {
+   "text": "The NYC Domestic Violence Fatality Review Committee (FRC) was established through Local Law 61, in June 2005. Annually, the Committee reviews and analyzes family-related homicide data to gain an understanding of the circumstances surrounding the occurrence of these crimes and to ascertain the level to which victims accessed victim assistance and prevention services.",
+   "source_url": "https://www.nyc.gov/site/ocdv/press-resources/fatality-review-committee.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-sports-wellness-and-recreation": {
+   "text": "At the Mayor's Office of Sports, Wellness and Recreation (MOSWR), our mission is to enhance equitable access to competitive sports programs, promote overall wellness, and foster a sense of community through recreation.\n\nThe MOSWR is dedicated to collaborating with a diverse network of Community-Based Organizations (CBOs), sports, wellness, and recreation groups across New York City. Our primary objective is to oversee and manage The Mayor's Cup brand and events while continuously seeking out innovative, practical, and high-quality programs that empower youth and uplift communities.",
+   "source_url": "https://www.nyc.gov/content/sports/pages/about-office-of-sports-wellness-and-recreation",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-data-analytics": {
+   "text": "OTI's Office of Data Analytics (ODA) works with City agencies and their data to help serve New Yorkers more equitably and efficiently. Our work takes three main forms: analyzing data to improve City agency operations; operating the NYC Open Data program; and advancing Citywide data analytics, infrastructure, integration, and sharing.",
+   "source_url": "https://www.nyc.gov/content/oti/pages/data-analytics",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-investigation": {
+   "text": "DOI is one of the oldest law-enforcement agencies in the country, formed in the 1870s following a scandal in which the corrupt William “Boss” Tweed and his unscrupulous cronies skimmed millions from the City coffers. Investigations may involve any agency, officer, elected official or employee of the City, as well as those who do business with or receive benefits from the City. As New York City's Inspector General, DOI's strategy attacks corruption comprehensively through systemic investigations that lead to high-impact arrests, preventive controls and operational reforms that improve the way the City runs.",
+   "source_url": "https://www.nyc.gov/site/doi/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-nightlife": {
+   "text": "The Office of Nightlife (ONL) at the NYC Department of Small Business Services (SBS) serves as a central point of contact among the nightlife industry, community, and city agencies. Our goal is to help ensure a more vibrant, viable, safe, fair, and well managed nightlife environment in New York City.\n\nNightlife is a vital part of the city's economy, culture, and identity, supporting nearly 300,000 jobs and generating $35.1 billion in economic impact. New York's nightlife has also long been an important incubator of cultural movements and continues to provide spaces for connection, creativity, and personal expression.",
+   "source_url": "https://www.nyc.gov/site/sbs/businesses/nightlife.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "kings-county-public-administrator": {
+   "text": "The Public Administrator administers estates of deceased persons. There is a Public Administrator in every county in the City of New York. The Public Administrator's primary duty is to administer estates that would otherwise remain unadministered; to protect the decedent's property from waste, loss, or theft; to make appropriate burial arrangements when no close relative is available to make the decisions; to conduct thorough investigations to discover all assets; to liquidate assets at public sale or distribute assets to heirs; to pay the decedent's bills and taxes; and to locate persons entitled to inherit from the estate and ensure that the legal distributees receive their inheritance.",
+   "source_url": "https://www.nyc.gov/site/kcpa/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-management-and-budget": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/omb/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-for-economic-opportunity": {
+   "text": "The Mayor’s Office for Economic Opportunity helps the City use evidence and innovation to reduce poverty and increase equity.",
+   "source_url": "https://www.nyc.gov/site/opportunity/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "procurement-policy-board": {
+   "text": "The Procurement Policy Board is authorized to promote and put into effect rules governing the procurement of goods, services, and construction by the City of New York.",
+   "source_url": "https://www.nyc.gov/site/mocs/regulations/ppb.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   }
  }
 }

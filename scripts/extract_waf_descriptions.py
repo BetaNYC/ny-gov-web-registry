@@ -54,7 +54,11 @@ _STOP_PREFIXES = (
 _DROP_EXACT = {"share", "(opens in new tab)", "select", "print", "translate", "text size"}
 
 # Signals that the captured page is the nyc.gov "We're Sorry" 404 shell.
-_NOT_FOUND_MARKERS = ("we're sorry.", "you have reached an outdated or non-existing page")
+_NOT_FOUND_MARKERS = (
+    "we're sorry.",
+    "you have reached an outdated or non-existing page",
+    "that page was not found",  # nyc.gov FSE soft-404 (section title stays, body is a 404)
+)
 
 
 def truncate(text: str, limit: int = MAX_TEXT_CHARS) -> tuple[str, bool]:
