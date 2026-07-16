@@ -1,0 +1,1854 @@
+{
+  "_generated_from": "crawl_targets.py",
+  "inputs_as_of": "2026-07-15",
+  "counts": {
+    "targets": 285,
+    "no_url": 32,
+    "by_derivation": {
+      "moda_csv_url": 278,
+      "web_property_primary": 7
+    }
+  },
+  "targets": [
+    {
+      "id": "mta",
+      "name": "Metropolitan Transportation Authority",
+      "start_url": "https://new.mta.info/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "panynj",
+      "name": "Port Authority of New York and New Jersey",
+      "start_url": "https://panynj.gov/",
+      "derivation": "web_property_primary"
+    },
+    {
+      "id": "nycedc",
+      "name": "New York City Economic Development Corporation",
+      "start_url": "https://edc.nyc/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "nyc-health-hospitals",
+      "name": "NYC Health + Hospitals",
+      "start_url": "https://www.nychealthandhospitals.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "cuny",
+      "name": "City University of New York",
+      "start_url": "https://www.cuny.edu/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "nycha",
+      "name": "New York City Housing Authority",
+      "start_url": "https://www.nyc.gov/site/nycha/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "nyserda",
+      "name": "New York State Energy Research and Development Authority",
+      "start_url": "https://nyserda.ny.gov/",
+      "derivation": "web_property_primary"
+    },
+    {
+      "id": "nys-thruway",
+      "name": "New York State Thruway Authority",
+      "start_url": "https://thruway.ny.gov/",
+      "derivation": "web_property_primary"
+    },
+    {
+      "id": "dasny",
+      "name": "Dormitory Authority of the State of New York",
+      "start_url": "https://dasny.org/",
+      "derivation": "web_property_primary"
+    },
+    {
+      "id": "esd",
+      "name": "Empire State Development",
+      "start_url": "https://esd.ny.gov/",
+      "derivation": "web_property_primary"
+    },
+    {
+      "id": "oti",
+      "name": "Office of Technology and Innovation",
+      "start_url": "https://www.nyc.gov/content/oti/pages/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "nyc-doe",
+      "name": "New York City Department of Education",
+      "start_url": "https://schools.nyc.gov/",
+      "derivation": "web_property_primary"
+    },
+    {
+      "id": "nyc-mayor",
+      "name": "Office of the Mayor of the City of New York",
+      "start_url": "https://nyc.gov/",
+      "derivation": "web_property_primary"
+    },
+    {
+      "id": "new-york-city-school-bus-umbrella-services-inc",
+      "name": "New York City School Bus Umbrella Services, Inc.",
+      "start_url": "https://www.nycsbus.com/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "primary-care-development-corporation",
+      "name": "Primary Care Development Corporation",
+      "start_url": "https://www.pcdc.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-department-of-sanitation",
+      "name": "New York City Department of Sanitation",
+      "start_url": "https://www.nyc.gov/site/dsny/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-housing-recovery-operations",
+      "name": "Mayor's Office of Housing Recovery Operations",
+      "start_url": "https://www1.nyc.gov/site/housingrecovery/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "museum-of-modern-art",
+      "name": "Museum of Modern Art",
+      "start_url": "https://www.moma.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "prospect-park-alliance",
+      "name": "Prospect Park Alliance",
+      "start_url": "https://www.prospectpark.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "fire-department-of-the-city-of-new-york",
+      "name": "Fire Department of the City of New York",
+      "start_url": "https://www.nyc.gov/site/fdny/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "advisory-council-on-procurement-lobbying",
+      "name": "Advisory Council on Procurement Lobbying",
+      "start_url": "https://ogs.ny.gov/ACPL/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "trust-for-governors-island",
+      "name": "Trust for Governors Island",
+      "start_url": "https://www.govisland.com/about/the-trust-for-governors-island",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "workforce-development-council",
+      "name": "Workforce Development Council",
+      "start_url": "https://www.nyc.gov/site/wkdev/workforce-board/about-the-council.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "richmond-county-public-administrator",
+      "name": "Richmond County Public Administrator",
+      "start_url": "https://www.nyc.gov/site/rcpa/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "pay-equity-cabinet",
+      "name": "Pay Equity Cabinet",
+      "start_url": "https://www.nyc.gov/content/genderequity/pages/economic-mobility-opportunity",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mwbe-advisory-board",
+      "name": "MWBE Advisory Board",
+      "start_url": "https://www.nyc.gov/assets/mwbe/?page=mwbe-advisory-council",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "sales-tax-asset-receivable-corporation",
+      "name": "Sales Tax Asset Receivable Corporation",
+      "start_url": "https://www.nyc.gov/site/starcorp/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "city-planning-commission",
+      "name": "City Planning Commission",
+      "start_url": "https://www.nyc.gov/content/planning/pages/commission",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-department-of-transportation",
+      "name": "New York City Department of Transportation",
+      "start_url": "https://www.nyc.gov/html/dot/html/home/home.shtml",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-operations",
+      "name": "Mayor's Office of Operations",
+      "start_url": "https://www.nyc.gov/site/operations/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "human-resources-administration",
+      "name": "Human Resources Administration",
+      "start_url": "https://www.nyc.gov/site/hra/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-records-and-information-services",
+      "name": "Department of Records and Information Services",
+      "start_url": "https://www.nyc.gov/site/records/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "community-action-board-at-the-nyc-department-of-youth-and-community-development",
+      "name": "Community Action Board at the NYC Department of Youth and Community Development",
+      "start_url": "https://www1.nyc.gov/site/dycd/involved/boards-and-councils/community-action-board.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-to-combat-antisemitism",
+      "name": "Mayor's Office to Combat Antisemitism",
+      "start_url": "https://www.nyc.gov/main/combat-antisemitism",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "campaign-finance-board",
+      "name": "Campaign Finance Board",
+      "start_url": "https://www.nyccfb.info/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "landmarks-preservation-commission",
+      "name": "Landmarks Preservation Commission",
+      "start_url": "https://www1.nyc.gov/site/lpc/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "financial-information-services-agency",
+      "name": "Financial Information Services Agency",
+      "start_url": "https://www.nyc.gov/site/opa/about/opa-history.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-administrative-trials-and-hearings",
+      "name": "Office of Administrative Trials and Hearings",
+      "start_url": "https://www.nyc.gov/site/oath/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-municipal-water-finance-authority",
+      "name": "New York City Municipal Water Finance Authority",
+      "start_url": "https://www.nyc.gov/site/nyw/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "tobacco-settlement-asset-securitization-corporation",
+      "name": "Tobacco Settlement Asset Securitization Corporation",
+      "start_url": "https://www1.nyc.gov/site/tsasc/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "commission-to-combat-police-corruption",
+      "name": "Commission to Combat Police Corruption",
+      "start_url": "https://www.nyc.gov/site/ccpc/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "nyc311",
+      "name": "NYC311",
+      "start_url": "https://portal.311.nyc.gov/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-intergovernmental-affairs",
+      "name": "Office of Intergovernmental Affairs",
+      "start_url": "https://www.nyc.gov/site/intergovernmental/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-law-department",
+      "name": "New York City Law Department",
+      "start_url": "https://www.nyc.gov/site/law/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-for-people-with-disabilities",
+      "name": "Mayor's Office for People with Disabilities",
+      "start_url": "https://www.nyc.gov/site/mopd/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-loft-board",
+      "name": "New York City Loft Board",
+      "start_url": "https://www.nyc.gov/site/loftboard/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-faith-based-and-community-partnerships",
+      "name": "Mayor's Office of Faith-Based and Community Partnerships",
+      "start_url": "https://www.nyc.gov/site/cfcp/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "queens-botanical-garden",
+      "name": "Queens Botanical Garden",
+      "start_url": "https://queensbotanical.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-community-mental-health",
+      "name": "Mayor's Office of Community Mental Health",
+      "start_url": "https://mentalhealth.cityofnewyork.us/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "trust-for-cultural-resources",
+      "name": "Trust for Cultural Resources",
+      "start_url": "https://www.tcrnyc.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "get-stuff-built-advisory-board",
+      "name": "Get Stuff Built Advisory Board",
+      "start_url": "https://www.nyc.gov/site/getstuffbuilt/initiatives/get-stuff-built.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-housing-authority-board",
+      "name": "New York City Housing Authority Board",
+      "start_url": "https://www1.nyc.gov/site/nycha/about/nycha-board.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "nonprofit-advisory-council",
+      "name": "Nonprofit Advisory Council",
+      "start_url": "https://www.nyc.gov/site/nonprofits/about/advisory-council.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-city-planning",
+      "name": "Department of City Planning",
+      "start_url": "https://www.nyc.gov/site/planning/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-to-protect-tenants",
+      "name": "Mayor's Office to Protect Tenants",
+      "start_url": "https://www.nyc.gov/content/tenantprotection/pages/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "civic-engagement-commission",
+      "name": "Civic Engagement Commission",
+      "start_url": "https://www.nyc.gov/site/civicengagement/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-veterans-services",
+      "name": "Department of Veterans' Services",
+      "start_url": "https://www.nyc.gov/site/veterans/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "nyc-her-future",
+      "name": "NYC HER Future",
+      "start_url": "https://www.nyc.gov/content/nycherfuture/pages/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-tourism-conventions",
+      "name": "New York City Tourism + Conventions",
+      "start_url": "https://www.nyctourism.com/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "board-of-health",
+      "name": "Board of Health",
+      "start_url": "https://www1.nyc.gov/site/doh/about/about-doh/board-of-health.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "charter-revision-commission",
+      "name": "Charter Revision Commission",
+      "start_url": "https://www.nyc.gov/site/charter/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "special-commissioner-of-investigation-for-the-new-york-city-school-district",
+      "name": "Special Commissioner of Investigation for the New York City School District",
+      "start_url": "https://nycsci.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "city-university-construction-fund",
+      "name": "City University Construction Fund",
+      "start_url": "https://www.cuny.edu/about/administration/offices/fpcm/cucf/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "green-economy-advisory-council",
+      "name": "Green Economy Advisory Council",
+      "start_url": "https://edc.nyc/press-release/nycedc-announces-new-york-citys-first-ever-green-economy-advisory-council",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-special-enforcement",
+      "name": "Mayor's Office of Special Enforcement",
+      "start_url": "https://www.nyc.gov/site/specialenforcement/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "juvenile-justice-advisory-board",
+      "name": "Juvenile Justice Advisory Board",
+      "start_url": "https://www.nyc.gov/site/acs/about/data-analysis.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "center-for-innovation-through-data-intelligence",
+      "name": "Center for Innovation through Data Intelligence",
+      "start_url": "https://www.nyc.gov/site/cidi/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-the-borough-president-of-manhattan",
+      "name": "Office of the Borough President of Manhattan",
+      "start_url": "https://www.manhattanbp.nyc.gov/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "staten-island-museum",
+      "name": "Staten Island Museum",
+      "start_url": "https://www.statenislandmuseum.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "museum-of-jewish-heritage",
+      "name": "Museum of Jewish Heritage",
+      "start_url": "https://mjhnyc.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-climate-and-environmental-justice",
+      "name": "Mayor's Office of Climate and Environmental Justice",
+      "start_url": "https://climate.cityofnewyork.us/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "city-commission-on-human-rights",
+      "name": "City Commission on Human Rights",
+      "start_url": "https://www.nyc.gov/site/cchr/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "nyc-service",
+      "name": "NYC Service",
+      "start_url": "https://www.nycservice.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "national-september-11-memorial-and-museum",
+      "name": "National September 11 Memorial and Museum",
+      "start_url": "https://www.911memorial.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-media-and-entertainment",
+      "name": "Mayor's Office of Media and Entertainment",
+      "start_url": "https://www.nyc.gov/site/mome/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-office-of-the-actuary",
+      "name": "New York City Office of the Actuary",
+      "start_url": "https://www.nyc.gov/site/actuary/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "moma-ps1",
+      "name": "MoMA PS1",
+      "start_url": "https://www.momaps1.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-information-privacy",
+      "name": "Office of Information Privacy",
+      "start_url": "https://www.nyc.gov/content/oti/pages/meet-the-team/information-privacy",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-food-policy",
+      "name": "Mayor's Office of Food Policy",
+      "start_url": "https://www.nyc.gov/site/foodpolicy/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-the-utility-consumer-advocate",
+      "name": "Mayor's Office of the Utility Consumer Advocate",
+      "start_url": "https://www.nyc.gov/content/climate/pages/utility-consumer-advocate",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-conversion-accelerator",
+      "name": "Office Conversion Accelerator",
+      "start_url": "https://www.nyc.gov/site/officeconversions/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-payroll-administration",
+      "name": "Office of Payroll Administration",
+      "start_url": "https://www.nyc.gov/site/opa/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-for-childcare-and-early-childhood-education",
+      "name": "Mayor's Office for Childcare and Early Childhood Education",
+      "start_url": "https://www.nyc.gov/site/childcare/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "jazz-at-lincoln-center",
+      "name": "Jazz at Lincoln Center",
+      "start_url": "https://www.jazz.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "civil-service-commission",
+      "name": "Civil Service Commission",
+      "start_url": "https://www.nyc.gov/site/csc/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "wave-hill",
+      "name": "Wave Hill",
+      "start_url": "https://www.wavehill.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "cyber-command",
+      "name": "Cyber Command",
+      "start_url": "https://www.nyc.gov/content/oti/pages/meet-the-team/cyber-command",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "educational-construction-fund",
+      "name": "Educational Construction Fund",
+      "start_url": "https://infohub.nyced.org/reports/financial/educational-construction-fund",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "board-of-standards-and-appeals",
+      "name": "Board of Standards and Appeals",
+      "start_url": "https://www.nyc.gov/site/bsa/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-the-special-narcotics-prosecutor",
+      "name": "Office of the Special Narcotics Prosecutor",
+      "start_url": "https://www.snpnyc.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-emergency-management",
+      "name": "New York City Emergency Management",
+      "start_url": "https://www.nyc.gov/site/em/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "fund-for-public-schools",
+      "name": "Fund for Public Schools",
+      "start_url": "https://www.fundforpublicschools.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-equity-and-racial-justice",
+      "name": "Mayor's Office of Equity and Racial Justice",
+      "start_url": "https://www.nyc.gov/site/equity/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-ethnic-and-community-media",
+      "name": "Mayor's Office of Ethnic and Community Media",
+      "start_url": "https://www.nyc.gov/site/ethnicmedia/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "panel-on-educational-policy",
+      "name": "Panel on Educational Policy",
+      "start_url": "https://www.schools.nyc.gov/about-us/leadership/panel-for-education-policy",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-for-nonprofit-services",
+      "name": "Mayor's Office for Nonprofit Services",
+      "start_url": "https://www.nyc.gov/site/nonprofits/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "gracie-mansion-conservancy",
+      "name": "Gracie Mansion Conservancy",
+      "start_url": "https://www.graciemansion.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "bronx-museum-of-the-arts",
+      "name": "Bronx Museum of the Arts",
+      "start_url": "https://www.bronxmuseum.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "lincoln-center-theater",
+      "name": "Lincoln Center Theater",
+      "start_url": "https://www.lct.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "housing-development-corporation",
+      "name": "Housing Development Corporation",
+      "start_url": "https://www.nychdc.com/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "convention-center-development-corporation",
+      "name": "Convention Center Development Corporation",
+      "start_url": "https://esd.ny.gov/new-york-convention-center-development-corporation-0",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "taskforce-on-racial-inclusion-and-equity",
+      "name": "Taskforce on Racial Inclusion and Equity",
+      "start_url": "https://www.nyc.gov/site/trie/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "teachers-retirement-system-of-city-of-new-york",
+      "name": "Teachers' Retirement System of City of New York",
+      "start_url": "https://www.trsnyc.org",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "queens-district-attorney-s-office",
+      "name": "Queens District Attorney's Office",
+      "start_url": "https://queensda.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "brooklyn-children-s-museum",
+      "name": "Brooklyn Children's Museum",
+      "start_url": "https://www.brooklynkids.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "cultural-institutions-retirement-system",
+      "name": "Cultural Institutions Retirement System",
+      "start_url": "https://cirsplans.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "forest-park-trust",
+      "name": "Forest Park Trust",
+      "start_url": "https://forestparktrust.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "archives-reference-and-research-advisory-board",
+      "name": "Archives, Reference and Research Advisory Board",
+      "start_url": "https://www.nyc.gov/site/records/about/archives-reference-and-research-advisory-board.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "commission-on-racial-equity",
+      "name": "Commission on Racial Equity",
+      "start_url": "https://www.nyc.gov/content/core/pages/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-urban-agriculture",
+      "name": "Mayor's Office of Urban Agriculture",
+      "start_url": "https://www1.nyc.gov/site/agriculture/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-center",
+      "name": "New York City Center",
+      "start_url": "https://www.nycitycenter.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-to-prevent-gun-violence",
+      "name": "Mayor's Office to Prevent Gun Violence",
+      "start_url": "https://www1.nyc.gov/site/peacenyc/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "flushing-council-on-culture-and-the-arts-flushing-town-hall",
+      "name": "Flushing Council on Culture and the Arts / Flushing Town Hall",
+      "start_url": "https://www.flushingtownhall.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-appointments",
+      "name": "Mayor's Office of Appointments",
+      "start_url": "https://www.nyc.gov/content/appointments/pages/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-ballet",
+      "name": "New York City Ballet",
+      "start_url": "https://www.nycballet.com/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "bronx-county-historical-society",
+      "name": "Bronx County Historical Society",
+      "start_url": "https://bronxhistoricalsociety.org",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-hall-of-science",
+      "name": "New York Hall of Science",
+      "start_url": "https://nysci.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-districting-commission",
+      "name": "New York City Districting Commission",
+      "start_url": "https://www.nyc.gov/site/districting/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-strategic-partnerships",
+      "name": "Mayor's Office of Strategic Partnerships",
+      "start_url": "https://www.nyc.gov/site/partnerships/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "board-of-elections",
+      "name": "Board of Elections",
+      "start_url": "https://vote.nyc/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-animal-welfare",
+      "name": "Mayor's Office of Animal Welfare",
+      "start_url": "https://www.nyc.gov/site/animalwelfare/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-police-department",
+      "name": "New York City Police Department",
+      "start_url": "https://www.nyc.gov/site/nypd/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "fire-department-pension-fund-and-related-funds",
+      "name": "Fire Department Pension Fund and Related Funds",
+      "start_url": "https://nycfirepension.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "studio-museum-in-harlem",
+      "name": "Studio Museum in Harlem",
+      "start_url": "https://studiomuseum.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "board-of-correction",
+      "name": "Board of Correction",
+      "start_url": "https://www.nyc.gov/site/boc/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-public-schools",
+      "name": "New York City Public Schools",
+      "start_url": "https://www.schools.nyc.gov/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-the-borough-president-of-queens",
+      "name": "Office of the Borough President of Queens",
+      "start_url": "https://www.queensbp.nyc.gov/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-housing-preservation-and-development",
+      "name": "Department of Housing Preservation and Development",
+      "start_url": "https://www.nyc.gov/site/hpd/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "wildlife-conservation-society",
+      "name": "Wildlife Conservation Society",
+      "start_url": "https://www.wcs.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "hiv-aids-services-advisory-board",
+      "name": "HIV/AIDS Services Advisory Board",
+      "start_url": "https://www1.nyc.gov/site/hra/help/hiv-aids-services.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-fund-to-advance-new-york-city",
+      "name": "Mayor's Fund to Advance New York City",
+      "start_url": "https://www.nyc.gov/site/fund/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "independent-budget-office",
+      "name": "Independent Budget Office",
+      "start_url": "https://www.ibo.nyc.ny.us/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "queens-theatre-in-the-park",
+      "name": "Queens Theatre in the Park",
+      "start_url": "https://queenstheatre.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "senior-advisory-council",
+      "name": "Senior Advisory Council",
+      "start_url": "https://www1.nyc.gov/site/dfta/about/advisory-council.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "bronx-county-public-administrator",
+      "name": "Bronx County Public Administrator",
+      "start_url": "https://www.nyc.gov/site/bronxpa/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-youth-employment",
+      "name": "Mayor's Office of Youth Employment",
+      "start_url": "https://www.nyc.gov/site/youthemployment/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-immigrant-affairs",
+      "name": "Mayor's Office of Immigrant Affairs",
+      "start_url": "https://www.nyc.gov/site/immigrants/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "tax-appeals-tribunal",
+      "name": "Tax Appeals Tribunal",
+      "start_url": "https://www1.nyc.gov/site/taxappeals/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-correction",
+      "name": "Department of Correction",
+      "start_url": "https://www.nyc.gov/site/doc/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-the-mayor",
+      "name": "Office of the Mayor",
+      "start_url": "https://www.nyc.gov/mayors-office",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-design-and-construction",
+      "name": "Department of Design and Construction",
+      "start_url": "https://www.nyc.gov/site/ddc/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-advisory-committee-on-the-judiciary",
+      "name": "Mayor's Advisory Committee on the Judiciary",
+      "start_url": "https://www1.nyc.gov/site/macj/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-botanical-garden",
+      "name": "New York Botanical Garden",
+      "start_url": "https://www.nybg.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-the-new-york-city-comptroller",
+      "name": "Office of the New York City Comptroller",
+      "start_url": "https://comptroller.nyc.gov/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-talent-and-workforce-development",
+      "name": "Mayor's Office of Talent and Workforce Development",
+      "start_url": "https://www.nyc.gov/site/wkdev/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-buildings",
+      "name": "Department of Buildings",
+      "start_url": "https://www.nyc.gov/site/buildings/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-children-s-cabinet",
+      "name": "New York City Children's Cabinet",
+      "start_url": "https://www.nyc.gov/site/childrenscabinet/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "community-boards",
+      "name": "Community Boards",
+      "start_url": "https://www.nyc.gov/site/communityboards/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-the-borough-president-of-brooklyn",
+      "name": "Office of the Borough President of Brooklyn",
+      "start_url": "https://www.brooklynbp.nyc.gov/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-the-city-clerk",
+      "name": "Office of the City Clerk",
+      "start_url": "https://www.cityclerk.nyc.gov/content/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "weeksville-heritage-center",
+      "name": "Weeksville Heritage Center",
+      "start_url": "https://www.weeksvillesociety.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "unity-project",
+      "name": "Unity Project",
+      "start_url": "https://www.nyc.gov/content/unityproject/pages/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "perelman-performing-arts-center",
+      "name": "Perelman Performing Arts Center",
+      "start_url": "https://pacnyc.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "build-nyc-resource-corporation",
+      "name": "Build NYC Resource Corporation",
+      "start_url": "https://edc.nyc/build-nyc",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "snug-harbor-cultural-center-and-botanical-garden",
+      "name": "Snug Harbor Cultural Center and Botanical Garden",
+      "start_url": "https://snug-harbor.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-social-services",
+      "name": "Department of Social Services",
+      "start_url": "https://www.nyc.gov/site/dss/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "community-services-board",
+      "name": "Community Services Board",
+      "start_url": "https://www.nyc.gov/site/doh/health/health-topics/mh-community-services-board.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "equal-employment-practices-commission",
+      "name": "Equal Employment Practices Commission",
+      "start_url": "https://www.nyc.gov/site/eepc/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "brooklyn-navy-yard-development-corporation",
+      "name": "Brooklyn Navy Yard Development Corporation",
+      "start_url": "https://www.brooklynnavyyard.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-public-housing-preservation-trust",
+      "name": "New York City Public Housing Preservation Trust",
+      "start_url": "https://www.preservationtrust.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "public-design-commission",
+      "name": "Public Design Commission",
+      "start_url": "https://www.nyc.gov/site/designcommission/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-for-prevention-of-hate-crimes",
+      "name": "Mayor's Office for Prevention of Hate Crimes",
+      "start_url": "https://www.nyc.gov/site/stophate/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "administration-for-children-s-services",
+      "name": "Administration for Children's Services",
+      "start_url": "https://www.nyc.gov/site/acs/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-police-pension-fund",
+      "name": "New York City Police Pension Fund",
+      "start_url": "https://www.nyc.gov/content/nycppf/pages/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "veterans-advisory-board",
+      "name": "Veterans Advisory Board",
+      "start_url": "https://www1.nyc.gov/site/veterans/community/veterans-advisory-board.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "staten-island-district-attorney-s-office",
+      "name": "Staten Island District Attorney's Office",
+      "start_url": "https://www.statenislandda.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-homeless-services",
+      "name": "Department of Homeless Services",
+      "start_url": "https://www.nyc.gov/site/dhs/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "civilian-complaint-review-board",
+      "name": "Civilian Complaint Review Board",
+      "start_url": "https://www.nyc.gov/site/ccrb/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "jamaica-center-for-arts-and-learning",
+      "name": "Jamaica Center for Arts and Learning",
+      "start_url": "https://www.jcal.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "staten-island-children-s-museum",
+      "name": "Staten Island Children's Museum",
+      "start_url": "https://www.sichildrensmuseum.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "staten-island-historical-society",
+      "name": "Staten Island Historical Society",
+      "start_url": "https://www.historicrichmondtown.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-special-projects-and-community-events",
+      "name": "Mayor's Office of Special Projects and Community Events",
+      "start_url": "https://www.nyc.gov/site/mospce/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-parks-and-recreation",
+      "name": "Department of Parks and Recreation",
+      "start_url": "https://www.nycgovparks.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "land-development-corporation",
+      "name": "Land Development Corporation",
+      "start_url": "https://www.nycldc.com/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "voter-assistance-advisory-committee",
+      "name": "Voter Assistance Advisory Committee",
+      "start_url": "https://nyccfb.info/about/vaac",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-to-end-domestic-and-gender-based-violence",
+      "name": "Mayor's Office to End Domestic and Gender-Based Violence",
+      "start_url": "https://www.nyc.gov/site/ocdv/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "carnegie-hall",
+      "name": "Carnegie Hall",
+      "start_url": "https://www.carnegiehall.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "randall-s-island-park-alliance",
+      "name": "Randall's Island Park Alliance",
+      "start_url": "https://randallsisland.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "youth-board",
+      "name": "Youth Board",
+      "start_url": "https://www.nyc.gov/site/dycd/involved/boards-and-councils/nyc-youth-board.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "domestic-violence-fatality-review-committee",
+      "name": "Domestic Violence Fatality Review Committee",
+      "start_url": "https://www1.nyc.gov/site/ocdv/press-resources/fatality-review-committee.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-sports-wellness-and-recreation",
+      "name": "Mayor's Office of Sports, Wellness and Recreation",
+      "start_url": "https://www.nyc.gov/content/sports/pages/about-office-of-sports-wellness-and-recreation",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-data-analytics",
+      "name": "Office of Data Analytics",
+      "start_url": "https://www.nyc.gov/content/oti/pages/data-analytics",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-investigation",
+      "name": "Department of Investigation",
+      "start_url": "https://www.nyc.gov/site/doi/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-nightlife",
+      "name": "Office of Nightlife",
+      "start_url": "https://www.nyc.gov/site/sbs/businesses/nightlife.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "kings-county-public-administrator",
+      "name": "Kings County Public Administrator",
+      "start_url": "https://www.nyc.gov/site/kcpa/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-management-and-budget",
+      "name": "Mayor's Office of Management and Budget",
+      "start_url": "https://www.nyc.gov/site/omb/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "bronx-district-attorney-s-office",
+      "name": "Bronx District Attorney's Office",
+      "start_url": "https://www.bronxda.nyc.gov/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-the-public-advocate",
+      "name": "Office of the Public Advocate",
+      "start_url": "https://advocate.nyc.gov/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-for-economic-opportunity",
+      "name": "Mayor's Office for Economic Opportunity",
+      "start_url": "https://www.nyc.gov/site/opportunity/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-watershed-protection-and-partnership-council",
+      "name": "New York City Watershed Protection and Partnership Council",
+      "start_url": "https://dos.ny.gov/new-york-city-watershed-program",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-public-library",
+      "name": "New York Public Library",
+      "start_url": "https://www.nypl.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "flushing-meadows-corona-park-alliance",
+      "name": "Flushing Meadows Corona Park Alliance",
+      "start_url": "https://allianceforfmcp.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "procurement-policy-board",
+      "name": "Procurement Policy Board",
+      "start_url": "https://www.nyc.gov/site/mocs/regulations/ppb.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-the-borough-president-of-the-bronx",
+      "name": "Office of the Borough President of The Bronx",
+      "start_url": "https://bronxboropres.nyc.gov/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-for-the-aging",
+      "name": "Department for the Aging",
+      "start_url": "https://www.nyc.gov/site/dfta/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "banking-commission",
+      "name": "Banking Commission",
+      "start_url": "https://www.nyc.gov/site/finance/about/banking-commission.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "residential-mortgage-insurance-corporation",
+      "name": "Residential Mortgage Insurance Corporation",
+      "start_url": "https://www.nychdc.com/subsidiaries/remic",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-criminal-justice",
+      "name": "Mayor's Office of Criminal Justice",
+      "start_url": "https://criminaljustice.cityofnewyork.us/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-the-borough-president-of-staten-island",
+      "name": "Office of the Borough President of Staten Island",
+      "start_url": "https://www.statenislandusa.com/bp-office.html",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "commission-on-gender-equity",
+      "name": "Commission on Gender Equity",
+      "start_url": "https://www.nyc.gov/content/genderequity/pages/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-youth-and-community-development",
+      "name": "Department of Youth and Community Development",
+      "start_url": "https://www.nyc.gov/site/dycd/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-the-administrative-justice-coordinator",
+      "name": "Office of the Administrative Justice Coordinator",
+      "start_url": "https://www.nyc.gov/site/ajc/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "museum-of-the-city-of-new-york",
+      "name": "Museum of the City of New York",
+      "start_url": "https://www.mcny.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-probation",
+      "name": "Department of Probation",
+      "start_url": "https://www.nyc.gov/site/probation/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-environmental-remediation",
+      "name": "Mayor's Office of Environmental Remediation",
+      "start_url": "https://www.nyc.gov/site/oer/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "grownyc",
+      "name": "GrowNYC",
+      "start_url": "https://www.grownyc.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "sheriff",
+      "name": "Sheriff",
+      "start_url": "https://www.nyc.gov/site/finance/sheriff-courts/sheriff.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-public-engagement-unit",
+      "name": "Mayor's Public Engagement Unit",
+      "start_url": "https://www.nyc.gov/site/mayorspeu/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-contract-services",
+      "name": "Mayor's Office of Contract Services",
+      "start_url": "https://www.nyc.gov/site/mocs/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "brooklyn-museum",
+      "name": "Brooklyn Museum",
+      "start_url": "https://www.brooklynmuseum.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "center-for-brooklyn-history",
+      "name": "Center for Brooklyn History",
+      "start_url": "https://www.bklynlibrary.org/cbh/about/history",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "industrial-development-agency",
+      "name": "Industrial Development Agency",
+      "start_url": "https://edc.nyc/nycida",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-the-inspector-general-for-the-nypd",
+      "name": "Office of the Inspector General for the NYPD",
+      "start_url": "https://www1.nyc.gov/site/doi/offices/oignypd.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "council-for-airport-opportunity",
+      "name": "Council for Airport Opportunity",
+      "start_url": "https://www.caonynj.com/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "brooklyn-bridge-park-corporation",
+      "name": "Brooklyn Bridge Park Corporation",
+      "start_url": "https://brooklynbridgepark.org/about/brooklyn-bridge-park-corporation/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-the-public-realm",
+      "name": "Office of the Public Realm",
+      "start_url": "https://www.nyc.gov/site/publicrealm/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-mass-engagement",
+      "name": "Mayor's Office of Mass Engagement",
+      "start_url": "https://www.nyc.gov/content/organize/pages/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "hudson-yards-infrastructure-corporation",
+      "name": "Hudson Yards Infrastructure Corporation",
+      "start_url": "https://www.nyc.gov/site/hyic/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "brooklyn-botanic-garden",
+      "name": "Brooklyn Botanic Garden",
+      "start_url": "https://www.bbg.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "animal-care-centers-of-nyc",
+      "name": "Animal Care Centers of NYC",
+      "start_url": "https://www.nycacc.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "united-nations-development-corporation",
+      "name": "United Nations Development Corporation",
+      "start_url": "https://undc.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "public-administrator-of-queens-county",
+      "name": "Public Administrator of Queens County",
+      "start_url": "https://www.queenscountypa.com/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-community-hiring",
+      "name": "Office of Community Hiring",
+      "start_url": "https://www.nyc.gov/site/communityhiring/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "jamaica-bay-rockaway-parks-conservancy-inc",
+      "name": "Jamaica Bay - Rockaway Parks Conservancy, Inc.",
+      "start_url": "http://www.jbrpc.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "business-integrity-commission",
+      "name": "Business Integrity Commission",
+      "start_url": "https://www.nyc.gov/site/bic/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-employee-retirement-system",
+      "name": "New York City Employee Retirement System",
+      "start_url": "https://www.nycers.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "metropolitan-museum-of-art",
+      "name": "Metropolitan Museum of Art",
+      "start_url": "https://www.metmuseum.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-county-public-administrator",
+      "name": "New York County Public Administrator",
+      "start_url": "https://www.nyc.gov/site/nycountypa/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "public-theater",
+      "name": "Public Theater",
+      "start_url": "https://publictheater.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-environmental-coordination",
+      "name": "Mayor's Office of Environmental Coordination",
+      "start_url": "https://www.nyc.gov/site/oec/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "queens-museum",
+      "name": "Queens Museum",
+      "start_url": "https://queensmuseum.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "staten-island-zoological-society",
+      "name": "Staten Island Zoological Society",
+      "start_url": "https://www.statenislandzoo.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "lower-manhattan-development-corporation",
+      "name": "Lower Manhattan Development Corporation",
+      "start_url": "http://www.renewnyc.com/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "central-park-conservancy",
+      "name": "Central Park Conservancy",
+      "start_url": "https://www.centralparknyc.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-young-men-s-initiative",
+      "name": "New York City Young Men's Initiative",
+      "start_url": "https://www.nyc.gov/site/ymi/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-council",
+      "name": "New York City Council",
+      "start_url": "https://council.nyc.gov/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "convention-center-operating-corporation-javits",
+      "name": "Convention Center Operating Corporation (Javits)",
+      "start_url": "https://www.javitscenter.com/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "manhattan-district-attorney-s-office",
+      "name": "Manhattan District Attorney's Office",
+      "start_url": "https://manhattanda.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-water-board",
+      "name": "New York City Water Board",
+      "start_url": "https://www.nyc.gov/site/nycwaterboard/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "brooklyn-public-library",
+      "name": "Brooklyn Public Library",
+      "start_url": "https://www.bklynlibrary.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-citywide-events-coordination-and-management",
+      "name": "Mayor's Office of Citywide Events Coordination and Management",
+      "start_url": "https://www.nyc.gov/site/cecm/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "economic-development-corporation-life-sciences-advisory-council",
+      "name": "Economic Development Corporation Life Sciences Advisory Council",
+      "start_url": "https://edc.nyc/advisory-council",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-consumer-and-worker-protection",
+      "name": "Department of Consumer and Worker Protection",
+      "start_url": "https://www.nyc.gov/site/dca/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-school-support-services",
+      "name": "New York City School Support Services",
+      "start_url": "https://www.nycsss.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "queens-public-library",
+      "name": "Queens Public Library",
+      "start_url": "https://www.queenslibrary.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "board-of-education-retirement-system",
+      "name": "Board of Education Retirement System",
+      "start_url": "https://www.bers.nyc.gov/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "museum-of-the-moving-image",
+      "name": "Museum of the Moving Image",
+      "start_url": "https://movingimage.us/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-tax-commission",
+      "name": "New York City Tax Commission",
+      "start_url": "https://www1.nyc.gov/site/taxcommission/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-small-business-services",
+      "name": "Department of Small Business Services",
+      "start_url": "https://www.nyc.gov/site/sbs/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "greenbelt-conservancy",
+      "name": "Greenbelt Conservancy",
+      "start_url": "https://sigreenbelt.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "three-quarter-housing-task-force",
+      "name": "Three Quarter Housing Task Force",
+      "start_url": "https://www1.nyc.gov/content/tenantprotection/pages/tqh-task-force",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "american-museum-of-natural-history",
+      "name": "American Museum of Natural History",
+      "start_url": "https://www.amnh.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "environmental-control-board",
+      "name": "Environmental Control Board",
+      "start_url": "https://www.nyc.gov/site/oath/hearings/about-ecb.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "cultural-affairs-advisory-commission",
+      "name": "Cultural Affairs Advisory Commission",
+      "start_url": "https://www1.nyc.gov/site/dcla/about/advisory-commission.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-finance",
+      "name": "Department of Finance",
+      "start_url": "https://www.nyc.gov/site/finance/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-taxi-and-limousine-commission",
+      "name": "New York City Taxi and Limousine Commission",
+      "start_url": "https://www.nyc.gov/site/tlc/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "audit-committee",
+      "name": "Audit Committee",
+      "start_url": "https://nycauditcommittee.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-committee-on-city-marshals",
+      "name": "Mayor's Committee on City Marshals",
+      "start_url": "https://www.nyc.gov/site/marshals/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "brooklyn-district-attorney-s-office",
+      "name": "Brooklyn District Attorney's Office",
+      "start_url": "http://www.brooklynda.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-collective-bargaining",
+      "name": "Office of Collective Bargaining",
+      "start_url": "https://www.ocb-nyc.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-administrative-tax-appeals",
+      "name": "Office of Administrative Tax Appeals",
+      "start_url": "https://www.nyc.gov/site/oata/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "hiv-planning-council",
+      "name": "HIV Planning Council",
+      "start_url": "https://nyhiv.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "conflicts-of-interest-board",
+      "name": "Conflicts of Interest Board",
+      "start_url": "https://www.nyc.gov/site/coib/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "el-museo-del-barrio",
+      "name": "El Museo del Barrio",
+      "start_url": "https://www.elmuseo.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-for-international-affairs",
+      "name": "Mayor's Office for International Affairs",
+      "start_url": "https://www.nyc.gov/site/international/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-environmental-protection",
+      "name": "Department of Environmental Protection",
+      "start_url": "https://www.nyc.gov/site/dep/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "school-construction-authority",
+      "name": "School Construction Authority",
+      "start_url": "https://www.nycsca.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-transit-riders-council",
+      "name": "New York City Transit Riders Council",
+      "start_url": "https://pcac.org/nyctrc/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "roosevelt-island-operating-corporation",
+      "name": "Roosevelt Island Operating Corporation",
+      "start_url": "https://rioc.ny.gov/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "street-harassment-prevention-advisory-board",
+      "name": "Street Harassment Prevention Advisory Board",
+      "start_url": "https://www.nyc.gov/site/ocdv/programs/end-street-harassment.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "hudson-river-park-trust",
+      "name": "Hudson River Park Trust",
+      "start_url": "https://hudsonriverpark.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-labor-relations",
+      "name": "Office of Labor Relations",
+      "start_url": "https://www1.nyc.gov/site/olr/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "archival-review-board",
+      "name": "Archival Review Board",
+      "start_url": "https://www.nyc.gov/site/records/about/archival-review-board.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-health-and-mental-hygiene",
+      "name": "Department of Health and Mental Hygiene",
+      "start_url": "https://www.nyc.gov/site/doh/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-transitional-finance-authority",
+      "name": "New York City Transitional Finance Authority",
+      "start_url": "https://www.nyc.gov/site/transitionalfinance/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-cultural-affairs",
+      "name": "Department of Cultural Affairs",
+      "start_url": "https://www.nyc.gov/site/dcla/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "brooklyn-academy-of-music",
+      "name": "Brooklyn Academy of Music",
+      "start_url": "https://www.bam.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "new-york-city-panel-on-climate-change",
+      "name": "New York City Panel on Climate Change",
+      "start_url": "https://www.nyc.gov/content/climate/pages/reports-and-publications/new-york-city-panel-on-climate-change-npcc",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "mayor-s-office-of-minority-and-women-owned-business-enterprises",
+      "name": "Mayor's Office of Minority and Women-Owned Business Enterprises",
+      "start_url": "https://www.nyc.gov/assets/mwbe/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "rent-guidelines-board",
+      "name": "Rent Guidelines Board",
+      "start_url": "https://rentguidelinesboard.cityofnewyork.us/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "workforce-development-board",
+      "name": "Workforce Development Board",
+      "start_url": "https://www1.nyc.gov/site/wkdev/workforce-board/about-the-board.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "catskill-watershed-corporation",
+      "name": "Catskill Watershed Corporation",
+      "start_url": "https://cwconline.org/",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "office-of-the-chief-medical-examiner",
+      "name": "Office of the Chief Medical Examiner",
+      "start_url": "https://www1.nyc.gov/site/ocme/index.page",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "advisory-council-for-the-nyc-civil-court-housing-part",
+      "name": "Advisory Council for the NYC Civil Court Housing Part",
+      "start_url": "https://ww2.nycourts.gov/courts/nyc/housing/advisory.shtml",
+      "derivation": "moda_csv_url"
+    },
+    {
+      "id": "department-of-citywide-administrative-services",
+      "name": "Department of Citywide Administrative Services",
+      "start_url": "https://www.nyc.gov/site/dcas/index.page",
+      "derivation": "moda_csv_url"
+    }
+  ],
+  "no_url": [
+    {
+      "id": "lirr",
+      "name": "Long Island Rail Road"
+    },
+    {
+      "id": "mnr",
+      "name": "Metro-North Railroad"
+    },
+    {
+      "id": "nyct",
+      "name": "New York City Transit Authority"
+    },
+    {
+      "id": "tbta",
+      "name": "Triborough Bridge and Tunnel Authority"
+    },
+    {
+      "id": "mayor-s-advance-team",
+      "name": "Mayor's Advance Team"
+    },
+    {
+      "id": "mayor-s-office-of-administrative-services",
+      "name": "Mayor's Office of Administrative Services"
+    },
+    {
+      "id": "mayor-s-office-of-policy-and-planning",
+      "name": "Mayor's Office of Policy and Planning"
+    },
+    {
+      "id": "mayor-s-office-of-municipal-services-assessment",
+      "name": "Mayor's Office of Municipal Services Assessment"
+    },
+    {
+      "id": "office-of-capital-project-development",
+      "name": "Office of Capital Project Development"
+    },
+    {
+      "id": "office-of-scheduling-and-executive-operations",
+      "name": "Office of Scheduling and Executive Operations"
+    },
+    {
+      "id": "borough-boards",
+      "name": "Borough Boards"
+    },
+    {
+      "id": "office-of-creative-communications",
+      "name": "Office of Creative Communications"
+    },
+    {
+      "id": "mayor-s-office-of-rodent-mitigation",
+      "name": "Mayor's Office of Rodent Mitigation"
+    },
+    {
+      "id": "mayor-s-office-of-community-safety",
+      "name": "Mayor's Office of Community Safety"
+    },
+    {
+      "id": "municipal-division-of-transitional-services",
+      "name": "Municipal Division of Transitional Services"
+    },
+    {
+      "id": "mayor-s-office-senior-advisor-for-policy-and-strategy",
+      "name": "Mayor's Office - Senior Advisor for Policy and Strategy"
+    },
+    {
+      "id": "office-of-healthcare-accountability",
+      "name": "Office of Healthcare Accountability"
+    },
+    {
+      "id": "deputy-mayor-for-operations",
+      "name": "Deputy Mayor for Operations"
+    },
+    {
+      "id": "deputy-mayor-for-health-and-human-services",
+      "name": "Deputy Mayor for Health and Human Services"
+    },
+    {
+      "id": "mayor-s-office-director-of-communications",
+      "name": "Mayor's Office - Director of Communications"
+    },
+    {
+      "id": "first-deputy-mayor",
+      "name": "First Deputy Mayor"
+    },
+    {
+      "id": "deputy-mayor-for-housing-and-planning",
+      "name": "Deputy Mayor for Housing and Planning"
+    },
+    {
+      "id": "chief-counsel-to-the-mayor-and-city-hall",
+      "name": "Chief Counsel to the Mayor and City Hall"
+    },
+    {
+      "id": "deputy-mayor-for-economic-justice",
+      "name": "Deputy Mayor for Economic Justice"
+    },
+    {
+      "id": "mayor-s-office-press-office",
+      "name": "Mayor's Office - Press Office"
+    },
+    {
+      "id": "mayor-s-office-correspondence",
+      "name": "Mayor's Office - Correspondence"
+    },
+    {
+      "id": "mayor-s-office-of-lgbtqia-affairs",
+      "name": "Mayor's Office of LGBTQIA+ Affairs"
+    },
+    {
+      "id": "deputy-mayor-for-community-safety",
+      "name": "Deputy Mayor for Community Safety"
+    },
+    {
+      "id": "mayor-s-office-of-risk-management-and-compliance",
+      "name": "Mayor's Office of Risk Management and Compliance"
+    },
+    {
+      "id": "chief-of-staff-to-the-mayor",
+      "name": "Chief of Staff to the Mayor"
+    },
+    {
+      "id": "mayor-s-office-of-deed-theft-prevention",
+      "name": "Mayor's Office of Deed Theft Prevention"
+    },
+    {
+      "id": "mayor-s-office-of-pensions-and-investments",
+      "name": "Mayor's Office of Pensions and Investments"
+    }
+  ]
+}
