@@ -877,6 +877,126 @@
    "method": "browser-pane",
    "status": "ok",
    "truncated": false
+  },
+  "commission-on-gender-equity": {
+   "text": "CGE is a city agency created by Local Law 45 of 2020 and is a part of the NYC Mayor's Office of Equity & Racial Justice. CGE is leading the city's efforts to make sure every girl, woman, intersex, transgender and gender-nonconforming and gender-nonbinary person throughout the five boroughs is treated equally and feels safe. We are putting the full force of the municipal government, the city's largest employer, to work on behalf of this cause. CGE works collaboratively with city agencies on three focus areas: economic justice, health and reproductive justice, and safety.",
+   "source_url": "https://www.nyc.gov/content/genderequity/pages/",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-youth-and-community-development": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/dycd/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "office-of-the-administrative-justice-coordinator": {
+   "text": "The Office of the Administrative Justice Coordinator works to improve the professionalism, efficiency, transparency, and accountability of the City's administrative tribunals. The Office achieves its mandate by working with the tribunals to establish and implement Rules of Conduct for Administrative Law Judges; to improve the training and recruitment of Administrative Law Judges; and to enhance the public's understanding of, and access to, the administrative justice system.",
+   "source_url": "https://www.nyc.gov/site/ajc/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-probation": {
+   "text": "The New York City Department of Probation helps make our neighborhoods safer by supporting individuals on probation as they work toward a better future. We stay involved in the community and partner with others to give people the tools, guidance, and structure they need to succeed. By using proven methods and offering both support and accountability, we help people leave the justice system behind and build stronger lives for themselves and their communities.",
+   "source_url": "https://www.nyc.gov/site/probation/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-environmental-remediation": {
+   "text": "The New York City Mayor’s Office of Environmental Remediation (OER) is a team of scientists and engineers that design and operate programs to promote the cleanup and redevelopment of underutilized and contaminated land in NYC. Through the NYC Voluntary Cleanup Program, the nation’s only full service municipally-run land cleanup program, OER prepares vacant, underutilized properties for redevelopment.\n\nOver 1,100 properties have been remediated through OER’s programs, and in the process, over 620 acres of new developable land has been created.\n\nIn addition, OER has established the NYC Clean Soil Bank, a municipal clean soil exchange that recovers clean, native soil from deep excavations at construction sites and redirects it to the City’s Forbell Street stockpile, public and private NYC construction sites, and community and school gardens. Since its inception, the Clean Soil Bank has transferred over 850,000 tons of clean, native soil.\n\nOER also plays other important roles. Through the E-Designation Program, we ensure compliance with environmental standards before new buildings are erected on rezoned land. And OER provides resources to community-based organizations to support their efforts to plan the future of their neighborhoods.\n\nAt OER, we are proud to serve the residents of New York City, to work with you in the cleanup of vacant land, and make our city a safer place to live, work, and play.",
+   "source_url": "https://www.nyc.gov/site/oer/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "sheriff": {
+   "text": "The sheriff is an officer of the court whose main job is to serve and execute legal processes and mandates issued by state courts, the legal community, and the general public.",
+   "source_url": "https://www.nyc.gov/site/finance/sheriff-courts/sheriff.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-public-engagement-unit": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/mayorspeu/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-of-contract-services": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/mocs/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "office-of-the-inspector-general-for-the-nypd": {
+   "text": "DOI's Office of the Inspector General for the New York City Police Department (OIG-NYPD) is independent of the NYPD and charged with investigating, reviewing, studying, auditing and making recommendations relating to the operations, policies, programs and practices of the New York City Police Department (NYPD).",
+   "source_url": "https://www.nyc.gov/site/doi/oignypd/web/oignypd.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-the-public-realm": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/publicrealm/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-of-mass-engagement": {
+   "text": "The Office of Mass Engagement is bringing the people-powered movement that elected Mayor Mamdani to the work of governance.\n\nThrough trainings and grassroots campaigns, Organize NYC will help sustain momentum around the issues that matter most to working New Yorkers.\n\nOrganize NYC will build lasting power for working-class New Yorkers that outlives any one administration, because we know any government only works when it is accountable to those it serves.",
+   "source_url": "https://www.nyc.gov/content/organize/pages/",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "hudson-yards-infrastructure-corporation": {
+   "text": "The Hudson Yards Infrastructure Corporation (the \"Corporation\") is a local development corporation created in 2005 by the City of New York (the \"City\") under the Not-For-Profit Corporation Law of the State of New York. The Corporation was created to finance certain property acquisition and infrastructure work (the \"Project\"), including the extension of the No. 7 subway line, as part of the development of the Hudson Yards Financing District, the approximately 45 square block area generally bounded by Seventh and Eighth Avenues on the east, West 43rd Street on the north, Eleventh and Twelfth Avenues on the west, and West 29th and 30th Streets on the south. The Corporation's bonds are secured by revenues of the Corporation, including payments in lieu of taxes and payments in lieu of mortgage recording tax collected within the Hudson Yards Financing District and certain payments from the City, subject to annual appropriation. On May 30, 2017, the Corporation issued approximately $2.1 billion of refunding bonds which refinanced all of its initial $2 billion bond issue and a portion of its second bond issue under a new legal structure. This enabled the Corporation to transfer to the City in the future any excess revenues over and above amounts needed for debt service requirements.",
+   "source_url": "https://www.nyc.gov/site/hyic/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-community-hiring": {
+   "text": "The City of New York provides a wide range of services for New Yorkers – from designing parks and playgrounds, to providing health services and childcare, to repairing roads and bridges. To make this possible, the City contracts with vendors, which include businesses and nonprofits. These vendors provide billions of dollars' worth of services every year.\n\nCommunity Hiring is a new initiative that allows the City to set workforce goals for City vendors to provide employment and apprenticeship opportunities to low-income individuals and those living in low-income communities. Community Hiring will enable qualified job seekers to connect with opportunities and City vendors to access a pipeline of talent more easily. By embedding opportunity into City procurement, Community Hiring aims to strengthen the City's workforce, uplift communities, and drive more inclusive economic growth. To learn more, please see the Community Hiring FAQ.\n\nAbout the Office of Community Hiring (OCH)\n\nOCH's mission is to use the City's purchasing power to drive economic mobility by connecting City vendors with a pipeline of talent and creating pathways to careers for our community.\n\nOCH is part of the NYC Office of Talent and Workforce Development (NYC Talent). OCH is responsible for managing the rollout and implementation of Community Hiring, supporting City agencies and vendors, and reporting on Community Hiring goals. To design this new initiative, OCH worked closely with City agencies, City vendors, industry representatives, workforce development organizations, labor, and community partners. OCH is currently in the early stages of implementing Community Hiring goals on City procurements in partnership with City agencies. To learn more about what's next for Community Hiring, contact OCH.",
+   "source_url": "https://www.nyc.gov/site/communityhiring/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "business-integrity-commission": {
+   "text": "The mission of the Business Integrity Commission (BIC) is to protect New York City consumers through regulation of the “trade waste” (or commercial waste) industry and the City’s public wholesale markets (e.g., Fulton Fish Market, Hunts Point Produce Market, Hunts Point Meat Market, etc.).",
+   "source_url": "https://www.nyc.gov/site/bic/about/about-bic.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-county-public-administrator": {
+   "text": "The Public Administrator is an agency of the City of New York. Each borough of the City of New York has its own Public Administrator. The Public Administrator of the County of New York administers the estates of New York County residents who die without a will and no one else is eligible or willing to administer the estates.\n\nThe Public Administrator’s primary duties include collecting and distributing the assets of the deceased person, arranging appropriate funerals, and administering estates that would otherwise remain un-administered. The agency is primarily charged with protecting the assets of any estate it is administering.",
+   "source_url": "https://www.nyc.gov/site/nycountypa/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   }
  }
 }

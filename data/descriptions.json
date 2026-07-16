@@ -1851,31 +1851,28 @@
    "truncated": false
   },
   "commission-on-gender-equity": {
-   "text": null,
+   "text": "CGE is a city agency created by Local Law 45 of 2020 and is a part of the NYC Mayor's Office of Equity & Racial Justice. CGE is leading the city's efforts to make sure every girl, woman, intersex, transgender and gender-nonconforming and gender-nonbinary person throughout the five boroughs is treated equally and feels safe. We are putting the full force of the municipal government, the city's largest employer, to work on behalf of this cause. CGE works collaboratively with city agencies on three focus areas: economic justice, health and reproductive justice, and safety.",
    "source_url": "https://www.nyc.gov/content/genderequity/pages/",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "department-of-youth-and-community-development": {
    "text": null,
    "source_url": "https://www.nyc.gov/site/dycd/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "office-of-the-administrative-justice-coordinator": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/ajc/index.page",
+   "text": "The Office of the Administrative Justice Coordinator works to improve the professionalism, efficiency, transparency, and accountability of the City's administrative tribunals. The Office achieves its mandate by working with the tribunals to establish and implement Rules of Conduct for Administrative Law Judges; to improve the training and recruitment of Administrative Law Judges; and to enhance the public's understanding of, and access to, the administrative justice system.",
+   "source_url": "https://www.nyc.gov/site/ajc/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "museum-of-the-city-of-new-york": {
    "text": "About the Museum\n\nVisit MCNY on Instagram\n\nVisit MCNY on TikTok\n\nVisit MCNY on Facebook\n\nVisit MCNY on Threads\n\nVisit MCNY on Youtube\n\nSign up for our mailing list\n\nOur Mission\n\nThe Museum of the City of New York explores the people, places, and ideas that shape New York’s iconic character. We invite New Yorkers and visitors alike to discover their place in the city’s evolving story.\n\nVision Statement\n\nWe foster civic pride through experiences that champion New York’s creativity, ambition, and resilience. We connect visitors of all backgrounds to the city’s past and present, inspiring people to participate in shaping the future of our city and our world.\n\nStrategic Plan 2026–2034\n\nThe Museum of the City of New York celebrated its centennial in 2023. In the years leading up to this milestone, the Museum made significant investments in capital improvements, experimented with new exhibition formats, and tested innovative marketing and advertising strategies. Now, informed by data and insights from our two-year centennial program, MCNY stands at a pivotal moment as we prepare for our next 100 years—beginning with a strategic plan that articulates the Museum’s priorities for the next decade.\n\nRead the Strategic Plan\n\nLand Acknowledgement\n\nThe Museum of the City of New York is situated in the center of the New York metropolitan area, traditionally the lands of the Lenape, Manahatin, Canarsie, Shinnecock, Munsee, Mattinecock, Setauket, Unkechaug, Montauket, and others, all of whom have descendants living today. Native communities across the Americas have demonstrated resilience and resistance in the face of violent efforts to separate them from their land, culture, and each other. We offer recognition and respect to the Indigenous inhabitants of this land. New York City has always been and continues to be a place for gathering and exchange for Indigenous peoples, many of whom choose to call this city home.\n\nOur History\n\nThe Museum of the City of New York was founded in 1923 by Henry Collins Brown, a Scottish-born writer with a vision for a populist approach to the city. The Museum was originally housed in Gracie Mansion, the future residence of the Mayor of New York. Hardinge Scholle succeeded Henry Brown in 1926 and began planning a new home for the Museum. The City offered land on Fifth Avenue on 103rd-104th Streets and construction for Joseph H. Freedlander’s Georgian Colonial-Revival design for the building started in 1929 and was completed in 1932. During the next few decades, the Museum amassed a considerable collection of exceptional items, including several of Eugene O’Neill’s handwritten manuscripts, a complete room of Duncan Phyfe furniture, 412 glass negatives taken by Jacob Riis and donated by his son, a man’s suit worn to George Washington’s Inaugural Ball, and the Carrie Walter Stettheimer dollhouse, which contains a miniature work by Marcel Duchamp. Today the Museum’s collection contains approximately 750,000 objects, including prints, photographs, decorative arts, costumes, paintings, sculpture, toys, and theatrical memorabilia.\n\nStay Connected. Get our Newsletter.\n\nGet the latest on events, upcoming exhibitions, and more.\n\nWant free or discounted tickets, special event invites, and more?\n\nVisit Us at the Museum Today",
@@ -1886,22 +1883,20 @@
    "truncated": false
   },
   "department-of-probation": {
-   "text": null,
+   "text": "The New York City Department of Probation helps make our neighborhoods safer by supporting individuals on probation as they work toward a better future. We stay involved in the community and partner with others to give people the tools, guidance, and structure they need to succeed. By using proven methods and offering both support and accountability, we help people leave the justice system behind and build stronger lives for themselves and their communities.",
    "source_url": "https://www.nyc.gov/site/probation/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "mayor-s-office-of-environmental-remediation": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/oer/index.page",
+   "text": "The New York City Mayor’s Office of Environmental Remediation (OER) is a team of scientists and engineers that design and operate programs to promote the cleanup and redevelopment of underutilized and contaminated land in NYC. Through the NYC Voluntary Cleanup Program, the nation’s only full service municipally-run land cleanup program, OER prepares vacant, underutilized properties for redevelopment.\n\nOver 1,100 properties have been remediated through OER’s programs, and in the process, over 620 acres of new developable land has been created.\n\nIn addition, OER has established the NYC Clean Soil Bank, a municipal clean soil exchange that recovers clean, native soil from deep excavations at construction sites and redirects it to the City’s Forbell Street stockpile, public and private NYC construction sites, and community and school gardens. Since its inception, the Clean Soil Bank has transferred over 850,000 tons of clean, native soil.\n\nOER also plays other important roles. Through the E-Designation Program, we ensure compliance with environmental standards before new buildings are erected on rezoned land. And OER provides resources to community-based organizations to support their efforts to plan the future of their neighborhoods.\n\nAt OER, we are proud to serve the residents of New York City, to work with you in the cleanup of vacant land, and make our city a safer place to live, work, and play.",
+   "source_url": "https://www.nyc.gov/site/oer/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "grownyc": {
    "text": "About Us Who We Are\n\nMission & Vision We Are GrowNYC\n\nOur mission is to empower all New Yorkers with equitable access to fresh, locally grown food, neighborhood green spaces, waste reduction opportunities, and care for the environment.\n\nWe envision a New York City where fresh, nutritious food is ensured as a basic human right. Where our foodshed is protected and local farmers prosper. Where all have access to places to gather and grow. Where we handle our waste responsibly. And where all New Yorkers, especially those within frontline communities*, are empowered to enact their vision of a thriving community.\n\n*Frontline identities/communities is a term used to describe communities of color, Indigenous peoples, immigrants and refugees, and people with lower incomes who are impacted first and worst by environmental hazards and climate change.\n\nOur History & Victories Founded in 1970 and evolving ever since\n\nGrowNYC was born from the ideals of the first Earth Day in 1970 as the Council on the Environment of New York City, originally as a policy-based organization, writing comprehensive reports about quality of life issues.\n\nToday, GrowNYC is a 501(c)(3) environmental nonprofit serving New Yorkers across the five borough with environmental and food access programs that promote fresh produce from farmers, community gardens, and education to foster collective action for environmental, climate, and food justice.\n\n1970\n\nMayor John Lindsay taps Marian Heiskell to establish the Mayor’s Council on the Environment, in response to New Yorkers’ concerns about quality of life in the city.\n\nToday, GrowNYC is an independent environmental nonprofit, serving more than 3 million New Yorkers every year. Our programs encourage all New Yorkers to eat seasonal produce grown by small farmers, conserve resources, preserve green spaces, and take better care of our planet.\n\n1975\n\nGrowNYC builds its first community garden, All People’s Garden on East 3rd Street on the Lower East Side.\n\nAt the time, New York City had approximately 40 community gardens. These gardens were part of a grassroots movement to reclaim and beautify vacant lots and derelict spaces in the city, particularly in neighborhoods that had been neglected and were suffering from urban decay. The movement grew significantly in the following years, leading to the establishment of many more community gardens across the city.\n\nNYC now has over 550 community gardens, 180+ built by GrowNYC! As a result, we’ve created over 1.3 million square feet of green space to the NYC landscape.\n\n1976\n\nGrowNYC’s first Greenmarket opens on 59th Street and 2nd Ave, reigniting the urban farmer’s market movement nationally. Farmers remember wondering if there was a food shortage in the city, as crowds rushed their tables for the fresh corn and tomatoes.\n\nToday, GrowNYC operates the largest network of open-air farmers markets in the U.S. with 60+ Greenmarkets and Farmstands featuring more than 230 producers across the five boroughs.\n\n1981\n\nGrowNYC launched the Farm Survival Study to research why the New York region is losing farms and what can be done to prevent it.\n\nToday, GrowNYC supports Greenmarket and Wholesale farmers each year with free technical assistance services such as marketing and legal assistance, to help them maintain profitable, secure businesses.\n\n1988\n\nGrowNYC successfully advocates to incorporate environmental education into the NYC Department of Education syllabus.\n\nEnvironmental education was formally integrated into the New York City public school curriculum in the early 2000s. The establishment of environmental education as a key component of the curriculum was part of broader efforts to enhance environmental awareness and stewardship among students.\n\nToday, GrowNYC’s hands-on education programs reach more than 360,000 youth and adults annually.\n\n1989\n\nWe launch the Waste Prevention Recycling Service, designing recycling programs for companies like HBO and IBM.\n\nBetween 2011-2023, we partnered with the NYC Department of Sanitation to increase recycling and composting throughout the five boroughs, reaching hundreds of thousands of New Yorkers, in schools, apartment buildings, and households – proving New Yorkers were ready to compost. Collectively, we collected 20 million pounds of food scraps that were diverted for composting.\n\nToday, New York City now has the largest residential food scrap collection program in the United States.\n\n2002\n\nDrought had decimated the NYC water supply from upstate reservoirs, and community gardens were being fined hundreds of dollars if they watered their plants. GrowNYC teamed up with community groups to research how to build rainwater harvesting systems and navigate unclear New York City Department of Environmental Protection regulations on water diversion. At the time, the only systems highlighted online were used on small tropical islands and by US cattle ranchers.\n\nToday, there are more than 150 rainwater harvesting systems in New York Cit",
@@ -1912,31 +1907,28 @@
    "truncated": true
   },
   "sheriff": {
-   "text": null,
+   "text": "The sheriff is an officer of the court whose main job is to serve and execute legal processes and mandates issued by state courts, the legal community, and the general public.",
    "source_url": "https://www.nyc.gov/site/finance/sheriff-courts/sheriff.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "mayor-s-public-engagement-unit": {
    "text": null,
    "source_url": "https://www.nyc.gov/site/mayorspeu/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "mayor-s-office-of-contract-services": {
    "text": null,
    "source_url": "https://www.nyc.gov/site/mocs/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "brooklyn-museum": {
    "text": null,
@@ -1964,13 +1956,12 @@
    "note": "host_waf_blocked (skipped after 4 consecutive 403s from edc.nyc)"
   },
   "office-of-the-inspector-general-for-the-nypd": {
-   "text": null,
-   "source_url": "https://www1.nyc.gov/site/doi/offices/oignypd.page",
+   "text": "DOI's Office of the Inspector General for the New York City Police Department (OIG-NYPD) is independent of the NYPD and charged with investigating, reviewing, studying, auditing and making recommendations relating to the operations, policies, programs and practices of the New York City Police Department (NYPD).",
+   "source_url": "https://www.nyc.gov/site/doi/oignypd/web/oignypd.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "council-for-airport-opportunity": {
    "text": "About Us\n\nOur History and Services\n\nCAO The Airport Connection\n\nCouncil for Airport Opportunity (CAO) is a nonprofit trade association created in 1972 in collaboration with airline companies, the Port Authority of New York and New Jersey, the Mayor’s Offices of the City of Newark, and City of New York, and the Federal Aviation Administration.\n\nThe mission of CAO is to identify and address the critical employment needs of the communities surrounding the New York and New Jersey Metropolitan airports, while at the same time responding to the hiring needs of the airport tenants and the aviation industry.\n\nThe aviation industry is responsible for over 700,000 jobs in the NY/NJ region. CAO is a bridge between individuals seeking employment in the industry and employers seeking qualified, motivated talent. Since it’s founding, CAO has placed over 65,000 local residents in aviation jobs, with no cost to the employee or employer.\n\nCAO offers free services to our many different constituents — the residents of the localities surrounding the New York/New Jersey Metropolitan airports, businesses/employers in the aviation industry, and community partner organizations.\n\nCAO does more than just place people in jobs. CAO’s range of services includes job training programs for unemployed individuals, summer employment opportunities for young people, hosting the Senior Community Service Employment program to train mature workers, ongoing customer service training for job seekers, and hospitality and food handling training to over 10,000 residents of the communities surrounding the metropolitan area airports. In addition, CAO New Jersey is certified to operate an Online Performance Assessment Test Center, in addition to a seasonal temporary staffing entity called Academy Staffers.\n\nCAO is easily accessible with offices in downtown Jamaica, New York, Corona, New York, Far Rockaway, New York and Newark, New Jersey. On-site career centers operate at John F. Kennedy International Airport and Newark Liberty International Airport where specialized training, small group seminars, and interview sessions can be conducted.",
@@ -1993,27 +1984,24 @@
    "source_url": "https://www.nyc.gov/site/publicrealm/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "mayor-s-office-of-mass-engagement": {
-   "text": null,
+   "text": "The Office of Mass Engagement is bringing the people-powered movement that elected Mayor Mamdani to the work of governance.\n\nThrough trainings and grassroots campaigns, Organize NYC will help sustain momentum around the issues that matter most to working New Yorkers.\n\nOrganize NYC will build lasting power for working-class New Yorkers that outlives any one administration, because we know any government only works when it is accountable to those it serves.",
    "source_url": "https://www.nyc.gov/content/organize/pages/",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "hudson-yards-infrastructure-corporation": {
-   "text": null,
+   "text": "The Hudson Yards Infrastructure Corporation (the \"Corporation\") is a local development corporation created in 2005 by the City of New York (the \"City\") under the Not-For-Profit Corporation Law of the State of New York. The Corporation was created to finance certain property acquisition and infrastructure work (the \"Project\"), including the extension of the No. 7 subway line, as part of the development of the Hudson Yards Financing District, the approximately 45 square block area generally bounded by Seventh and Eighth Avenues on the east, West 43rd Street on the north, Eleventh and Twelfth Avenues on the west, and West 29th and 30th Streets on the south. The Corporation's bonds are secured by revenues of the Corporation, including payments in lieu of taxes and payments in lieu of mortgage recording tax collected within the Hudson Yards Financing District and certain payments from the City, subject to annual appropriation. On May 30, 2017, the Corporation issued approximately $2.1 billion of refunding bonds which refinanced all of its initial $2 billion bond issue and a portion of its second bond issue under a new legal structure. This enabled the Corporation to transfer to the City in the future any excess revenues over and above amounts needed for debt service requirements.",
    "source_url": "https://www.nyc.gov/site/hyic/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "brooklyn-botanic-garden": {
    "text": "About\n\nOur Mission\n\nBrooklyn Botanic Garden is an urban botanic garden that connects people to the world of plants, fostering delight and curiosity while inspiring an appreciation and sense of stewardship of the environment.\n\nHistory\n\nBrooklyn Botanic Garden was founded in 1910. Learn more about the Garden's history and see photos from its archives.\n\nThe Land of the Lenape\n\nBrooklyn Botanic Garden occupies part of the unceded homeland of the Lenape people. We acknowledge today’s Lenape communities. Informed by their knowledge, we seek to educate ourselves and the public in ways that challenge the dominant colonial worldview of science, botany, and horticulture.\n\nJobs & Internships\n\nLearn about job and internship opportunities at the Garden. Jobs & Internships ›\n\nPress Room\n\nAccess recent press releases, photo resources, and other information about the Garden.\n\nContact Us\n\nCall or email the Garden with your comments, questions, and suggestions.",
@@ -2048,13 +2036,12 @@
    "truncated": false
   },
   "office-of-community-hiring": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/communityhiring/index.page",
+   "text": "The City of New York provides a wide range of services for New Yorkers – from designing parks and playgrounds, to providing health services and childcare, to repairing roads and bridges. To make this possible, the City contracts with vendors, which include businesses and nonprofits. These vendors provide billions of dollars' worth of services every year.\n\nCommunity Hiring is a new initiative that allows the City to set workforce goals for City vendors to provide employment and apprenticeship opportunities to low-income individuals and those living in low-income communities. Community Hiring will enable qualified job seekers to connect with opportunities and City vendors to access a pipeline of talent more easily. By embedding opportunity into City procurement, Community Hiring aims to strengthen the City's workforce, uplift communities, and drive more inclusive economic growth. To learn more, please see the Community Hiring FAQ.\n\nAbout the Office of Community Hiring (OCH)\n\nOCH's mission is to use the City's purchasing power to drive economic mobility by connecting City vendors with a pipeline of talent and creating pathways to careers for our community.\n\nOCH is part of the NYC Office of Talent and Workforce Development (NYC Talent). OCH is responsible for managing the rollout and implementation of Community Hiring, supporting City agencies and vendors, and reporting on Community Hiring goals. To design this new initiative, OCH worked closely with City agencies, City vendors, industry representatives, workforce development organizations, labor, and community partners. OCH is currently in the early stages of implementing Community Hiring goals on City procurements in partnership with City agencies. To learn more about what's next for Community Hiring, contact OCH.",
+   "source_url": "https://www.nyc.gov/site/communityhiring/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "jamaica-bay-rockaway-parks-conservancy-inc": {
    "text": "WHO WE ARE\n\nA public-private partnership dedicated to improving public parklands throughout Jamaica Bay and the Rockaway peninsula\n\nJamaica Bay-Rockaway Parks Conservancy (JBRPC) is a public-private partnership established in 2013 dedicated to improving 10,000 acres of public parklands throughout Jamaica Bay and the Rockaway peninsula, 18,000 acres of open water and marshlands within Jamaica Bay itself, and 11 miles of Atlantic Ocean beaches along the Rockaway peninsula. With its partners at the National Park Service, the New York City Department of Parks and Recreation, and the New York State Office of Parks, Recreation and Historic Preservation, JBRPC works to expand public access to parks; increase recreational and educational opportunities; foster community stewardship and volunteerism; preserve and restore natural areas, including wetlands and wildlife habitat; enhance cultural resources; and ensure the long-term sustainability of the parklands for local residents and visitors alike.\n\nIn July 2012, Mayor Michael R. Bloomberg and Secretary of the Interior Ken Salazar signed a cooperative management agreement and announced the formation of the Jamaica Bay-Rockaway Parks Conservancy, Inc. (JBRPC) to support the unique relationship between the City of New York and the National Park Service. JBRPC was formally established in 2013 as a public-private partnership dedicated to improving public parklands throughout Jamaica Bay and the Rockaway peninsula for local residents and visitors alike.\n\nSince our founding, JBRPC has removed more than 50 tons of trash and debris from shorelines and parks, planted more than 420,000 native plants and trees, and hosted more than 120,000 people at public programs and events – including our signature Jamaica Bay Festival and Discover Jamaica Bay series. We've organized more than 250 stewardship events that drew support from more than 13,000 dedicated volunteers, and welcomed more than 15,000 students into our environmental education programs.\n\nWe created the Rockaway! Public Arts Festival , featuring works by artists Patti Smith, Katharina Grosse, and Yayoi Kusama. In 2024, JBRPC willexpand the Festival and present the first Floyd Bennett Field! Public Arts Festival featuring original site-specific projection mapping works on the façade of historic Hangars 3 & 4.\n\nFrom 2017 - 2018, JBRPC worked with New York State Parks to help plan the new Shirley Chisholm State Park at the former Penn and Fountain Landfill, which opened in phases from 2019 to 2021. From 2019 to 2021, JBRPC led the design and construction of a living shoreline at West Pond in the Jamaica Bay Wildlife Refuge. JBRPC has implemented and funded various other projects which can be found under the Our Impact section of this website.\n\nOther projects included creating a 3.25-acre native plant nursery at Floyd Bennett Field to provide beach grass for restoration projects and to stabilize the dunes that buffer the Rockaway coastline from storms and sea level rise; organizing volunteers to plant beach grass, clean up debris, and spruce up buildings with fresh coats of paint; restore marsh and forest; build new trails; and successfully advocating for the expansion of the US Army Corps of Engineers’ sand replenishment project to Jacob Riis Park.\n\nIn 2023 JBRPC launched the Jamaica Bay Wetlands Fellowship to train the next generation of wetlands managers and advance nature-based solutions and the jobs to sustain them over the long-term. JBRPC is also focused on community planning and engagement for the rehabilitation and activation of Floyd Bennett Field as a hub for community and climate resilience.\n\nWorkforce Development\n\nLooking ahead to the next decade, JBRPC is poised and uniquely positioned to build on prior success to realize greater impact in our public parklands. Work is already underway to expand our education programs for younger students and family audiences, increase stewardship opportunities and grow our Wetlands Fellowship program, and transform Floyd Bennett Field into a hub for community and climate resilience.\n\nJBRPC is proud to partner with governmental agencies, elected officials, non-profit organizations, the business community, and the public to improve public parkland throughout Jamaica Bay and the Rockaway peninsula.\n\nJamaica Bay-Rockaway Parks Conservancy, Inc. is a partner project of the Fund for the City of New York ( FCNY), which serves as its fiscal sponsor. Both JBRPC and the FCNY are tax-exempt organizations under section 501(c)(3) of the federal tax code. JBRPC’s office is located in the Rockaway Park section of Queens, New York.\n\nFor more information, please email info@jbrpc.org .",
@@ -2065,13 +2052,12 @@
    "truncated": false
   },
   "business-integrity-commission": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/bic/index.page",
+   "text": "The mission of the Business Integrity Commission (BIC) is to protect New York City consumers through regulation of the “trade waste” (or commercial waste) industry and the City’s public wholesale markets (e.g., Fulton Fish Market, Hunts Point Produce Market, Hunts Point Meat Market, etc.).",
+   "source_url": "https://www.nyc.gov/site/bic/about/about-bic.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "new-york-city-employee-retirement-system": {
    "text": "About\n\nTrusted Partner of NYC Employees for More Than 100 Years\n\nThe New York City Employees’ Retirement System (NYCERS) was founded by the New York State Legislature in 1920 with 13,331 members. Today, NYCERS has grown into the largest municipal public employee retirement system in the United States with more than 430,000 active members and retirees, including civilian employees such as clerical workers and Health + Hospital employees; NYC Transit employees; and uniformed employees such as NYC Correction Officers, Sanitation Workers and Emergency Medical Technicians.\n\nDefined Benefit Plan\n\nNYCERS is a defined benefit retirement plan. Defined benefit retirement plans for public sector employees offer benefits which are defined in law. Generally, retirement allowances payable from such plans are based on a member’s years of service, age and compensation base. Other types of benefits such as loans, disability and death benefits are also offered and specified in law. All benefits payable are funded by employee and employer contributions and from earnings on the invested assets of the system.\n\nMultiple-Employer System\n\nNYCERS is a cost-sharing, multiple employer public employee retirement system. In addition to the City of New York (various agencies, boards and commissions), members are employed by public benefit corporations such as the NYC Transit Authority and the NYC Health and Hospitals Corporation.\n\nCustomer Services\n\nNYCERS performs many functions for active members and retirees alike. Among other things, each year NYCERS issues approximately 50,000 loans and processes thousands of refunds and buy-back applications. For retirees, NYCERS verifies retirement allowances, calculates Cost-of-Living-Adjustments, and much more.\n\nClient-Centered Approach\n\nNYCERS is dedicated to a client-centered approach to quality service delivery. Whether it’s upgrading Information Technology infrastructure, facilitating access to information, developing customer service upgrades or instituting advanced security measures, NYCERS is committed to sustaining quality service delivery for all our members, retirees and beneficiaries.\n\nNYCERS’ Mission Statement\n\nThe prime function of the New York City Employees’ Retirement System is to administer the statutory pension benefits of its members, retirees, and beneficiaries.\n\nOur talented, professional, and dedicated employees are committed to providing a superior service by:\n\nMaking correct benefit payments in a timely manner.\n\nLeveraging modern technology to set new standards of excellence in the services we provide.\n\nMaximizing investment returns on the funds of the system with an appropriate level of risk.\n\nBoard of Trustees\n\nThe Board of Trustees is the governing body of NYCERS. Its responsibilities include investing the assets of the retirement system, establishing the administrative budget of the system and promulgating rules and regulations necessary to carry out provisions of law.\n\nThe NYCERS Board of Trustees, as prescribed by law, consists of eleven members: the Mayor’s Representative, the City Comptroller, the Public Advocate, the heads of the three unions with the largest number of participating employees, and the five Borough Presidents.\n\nBoard Meeting Calendar\n\nNext Board Meeting: Thursday, August 13, 2026 at 9:30 am 335 Adams Street, 22nd Floor, Brooklyn, NY 11201 Join the webcast\n\nAnnual Comprehensive Financial Report\n\nNYCERS’ Annual Comprehensive Financial Report (ACFR) contains fiscal year financial reports as well as information regarding each retirement plan and plan provisions.\n\nLegislation\n\nBecause legislative changes affect NYCERS members, we actively monitor state and city activities and keep you posted as to how they may, or may not, affect you. This section is intended to give you the most up-to-date laws and regulations pertaining to your retirement benefit. To find out if your plan has been affected by changes, be sure to visit this section often.\n\nCareer Opportunities\n\nThe City of New York is an inclusive equal opportunity employer committed to recruiting and retaining a diverse workforce and providing a work environment that is free from discrimination and harassment based upon any legally protected status or protected characteristic, including but not limited to an individual’s sex, race, color, ethnicity, national origin, age, religion, disability, sexual orientation, veteran status, gender identity, or pregnancy.\n\nNYCERS is the largest retirement system in New York City. There is a lot to be done and we are always looking for talented and enthusiastic people to assist in providing world-class service to our customers. We offer competitive salaries, benefit packages, and advancement opportunities.\n\nAccessibility\n\nIt is NYCERS’ policy to comply with all applicable laws including, but not limited to, the Americans with Disabilities Act (ADA), Rehabilitation Act, the New York State Human Rights Law and the New York City Human Rights Law. NYCERS does not disc",
@@ -2090,13 +2076,12 @@
    "truncated": false
   },
   "new-york-county-public-administrator": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/nycountypa/index.page",
+   "text": "The Public Administrator is an agency of the City of New York. Each borough of the City of New York has its own Public Administrator. The Public Administrator of the County of New York administers the estates of New York County residents who die without a will and no one else is eligible or willing to administer the estates.\n\nThe Public Administrator’s primary duties include collecting and distributing the assets of the deceased person, arranging appropriate funerals, and administering estates that would otherwise remain un-administered. The agency is primarily charged with protecting the assets of any estate it is administering.",
+   "source_url": "https://www.nyc.gov/site/nycountypa/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "public-theater": {
    "text": null,
@@ -2587,6 +2572,6 @@
  "crawl_started_at": "2026-07-16T01:16:30+00:00",
  "user_agent": "ny-gov-web-registry crawler; https://github.com/BetaNYC/ny-gov-web-registry; noel@beta.nyc",
  "crawl_finished_at": "2026-07-16T01:40:46+00:00",
- "_recovery_merged_at": "2026-07-16T04:13:52+00:00",
+ "_recovery_merged_at": "2026-07-16T07:06:16+00:00",
  "_recovery_source": "extract_waf_descriptions.py (browser-pane, operator-authorized)"
 }
