@@ -87,6 +87,27 @@ def test_candidates_index_page_uses_about_conventions():
     assert c[-1] == "https://www.nyc.gov/site/nycha/index.page"  # landing fallback last
 
 
+def test_candidates_include_overview_conventions():
+    # FDNY's About lives at /about/overview/overview.page — the deeper convention must be probed.
+    c = pl.candidate_urls("https://www.nyc.gov/site/fdny/index.page")
+    assert "https://www.nyc.gov/site/fdny/about/overview/overview.page" in c
+    assert "https://www.nyc.gov/site/fdny/about/overview.page" in c
+
+
+def test_candidates_include_legacy_html_fallback():
+    # A /site/ target also gets one legacy /html/ About fallback (same slug).
+    c = pl.candidate_urls("https://www.nyc.gov/site/dsny/index.page")
+    assert "https://www.nyc.gov/html/dsny/html/about/about.shtml" in c
+
+
+def test_candidates_legacy_start_url_probes_legacy_family():
+    # DOT's start URL is already legacy; derive the legacy slug from it and probe the legacy About.
+    c = pl.candidate_urls("https://www.nyc.gov/html/dot/html/home/home.shtml")
+    assert c[0] == "https://www.nyc.gov/html/dot/html/about/about.shtml"
+    assert "https://www.nyc.gov/html/dot/html/about/about.html" in c
+    assert "https://www.nyc.gov/html/dot/html/home/home.shtml" in c  # start preserved
+
+
 def test_candidates_specific_subpage_tried_first():
     c = pl.candidate_urls("https://www.nyc.gov/site/wkdev/workforce-board/about-the-council.page")
     assert c[0] == "https://www.nyc.gov/site/wkdev/workforce-board/about-the-council.page"
@@ -210,6 +231,15 @@ def test_merge_never_overwrites_existing_ok():
     merged, stats = mg.merge(base, recovery)
     assert merged["descriptions"]["a"]["text"] == "original"
     assert stats["skipped_protected"] == 1
+
+
+def test_merge_ok_upgrades_no_about_found():
+    # A later batch finds a deeper/legacy about URL for an entity previously marked no_about_found.
+    base = _base({"a": {"status": "no_about_found", "text": None}})
+    recovery = {"descriptions": {"a": _ok("found at last")}}
+    merged, stats = mg.merge(base, recovery)
+    assert merged["descriptions"]["a"]["text"] == "found at last"
+    assert stats["recovered_ok"] == 1
 
 
 def test_merge_non_ok_recovery_reclassifies_fetch_failed():

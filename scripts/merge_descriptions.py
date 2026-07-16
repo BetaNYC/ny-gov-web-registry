@@ -9,13 +9,15 @@ This pass re-examined exactly the phase-5 `fetch_failed` WAF bucket with a real 
 findings are newer, better evidence for those entities specifically.
 
 Merge rule (per entity id present in the recovery file):
-  * a recovery record REPLACES a base record whose status is `fetch_failed` (the WAF bucket this
-    pass targets) — whether the recovery is `ok` (verbatim text recovered) or `no_about_found` /
-    `extraction_empty` (browser reached the site but found no clean about prose). The latter is
-    strictly more honest than leaving `fetch_failed`, which implies the WAF is still blocking;
+  * a recovered `ok` (verbatim text) REPLACES a base record whose status is a non-terminal failure
+    — `fetch_failed`, `no_about_found`, or `extraction_empty`. Finding real prose is always strictly
+    better; this is how a previously `no_about_found` entity (FDNY, DOT) gets upgraded once a deeper
+    `/about/overview/` or legacy `/html/` about URL is found in a later batch;
+  * a non-`ok` recovery (`no_about_found` / `extraction_empty`) only REPLACES a `fetch_failed` base
+    (reclassifying the WAF bucket — more honest than leaving `fetch_failed`, which implies the WAF is
+    still blocking). It never downgrades an existing `no_about_found` / `extraction_empty`;
   * a recovery record also fills an id ABSENT from the base;
-  * every other existing base status is left untouched — an `ok`, `no_url`, `robots_disallowed`,
-    or `no_about_found` base record is NEVER overwritten (phase-5 results outside the WAF bucket win).
+  * `ok`, `no_url`, and `robots_disallowed` base records are NEVER overwritten.
 
 Re-running on an already-merged file is a no-op. The base wrapper (`_generated_from`,
 `crawl_started_at`, `user_agent`, `crawl_finished_at`) is kept; a `_recovery_merged_at` note is
@@ -39,20 +41,31 @@ def merge(base: dict, recovery: dict, merged_at: str | None = None) -> tuple[dic
     base_desc = out.setdefault("descriptions", {})
     rec_desc = recovery.get("descriptions", {})
 
+    # Non-terminal failures this pass is allowed to improve. A recovered `ok` may override any of
+    # these (finding verbatim text is always strictly better — this is how FDNY/DOT, previously
+    # `no_about_found`, get upgraded once a deeper/legacy about URL is found). A non-`ok` recovery
+    # only reclassifies `fetch_failed` (the WAF bucket), never downgrading an existing failure.
+    OVERRIDABLE_BY_OK = {"fetch_failed", "no_about_found", "extraction_empty"}
+
     stats = {"recovered_ok": 0, "reclassified": 0, "filled_new": 0, "skipped_protected": 0}
 
     for entity_id, rec in rec_desc.items():
         existing = base_desc.get(entity_id)
         rec_ok = rec.get("status") == "ok"
+        base_status = existing.get("status") if existing else None
 
         if existing is None:
             base_desc[entity_id] = rec
             stats["recovered_ok" if rec_ok else "filled_new"] += 1
-        elif existing.get("status") == "fetch_failed":
+        elif rec_ok and base_status in OVERRIDABLE_BY_OK:
             base_desc[entity_id] = rec
-            stats["recovered_ok" if rec_ok else "reclassified"] += 1
+            stats["recovered_ok"] += 1
+        elif not rec_ok and base_status == "fetch_failed":
+            base_desc[entity_id] = rec
+            stats["reclassified"] += 1
         else:
-            # ok / no_url / robots_disallowed / already-recovered — never overwritten.
+            # ok / no_url / robots_disallowed protected; a non-ok recovery never downgrades an
+            # existing no_about_found / extraction_empty.
             stats["skipped_protected"] += 1
 
     if merged_at is not None:
