@@ -648,7 +648,14 @@
         }
       ],
       "url_conventions": [],
-      "areas": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "sd",
+          "id": null,
+          "role": "operates_layer"
+        }
+      ],
       "area_note": "coverage: citywide",
       "mandates": [],
       "relations": [],
@@ -1516,12 +1523,20 @@
           "notes": "From MODA `url` field (current site only)."
         }
       ],
-      "areas": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "dsny",
+          "id": null,
+          "role": "operates_layer"
+        }
+      ],
       "area_note": null,
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "manual"
         ],
         "last_verified": null
       },
@@ -1663,13 +1678,21 @@
           "notes": "From MODA `url` field (current site only)."
         }
       ],
-      "areas": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "fb",
+          "id": null,
+          "role": "operates_layer"
+        }
+      ],
       "area_note": null,
       "status": "active",
       "provenance": {
         "sources": [
           "moda",
-          "greenbook"
+          "greenbook",
+          "manual"
         ],
         "last_verified": null
       },
@@ -3490,12 +3513,20 @@
           "notes": "From MODA `url` field (current site only)."
         }
       ],
-      "areas": [],
+      "areas": [
+        {
+          "scheme": "us_census_geoid",
+          "layer": "county",
+          "id": "36061",
+          "role": "jurisdiction"
+        }
+      ],
       "area_note": null,
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "manual"
         ],
         "last_verified": null
       },
@@ -5399,12 +5430,20 @@
           "notes": "From MODA `url` field (current site only)."
         }
       ],
-      "areas": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "ed",
+          "id": null,
+          "role": "operates_layer"
+        }
+      ],
       "area_note": null,
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "manual"
         ],
         "last_verified": null
       },
@@ -5477,13 +5516,27 @@
           "notes": "From MODA `url` field (current site only)."
         }
       ],
-      "areas": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "pp",
+          "id": null,
+          "role": "operates_layer"
+        },
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "ps",
+          "id": null,
+          "role": "operates_layer"
+        }
+      ],
       "area_note": null,
       "status": "active",
       "provenance": {
         "sources": [
           "moda",
-          "greenbook"
+          "greenbook",
+          "manual"
         ],
         "last_verified": null
       },
@@ -5672,12 +5725,20 @@
           "notes": "From MODA `url` field (current site only)."
         }
       ],
-      "areas": [],
+      "areas": [
+        {
+          "scheme": "us_census_geoid",
+          "layer": "county",
+          "id": "36081",
+          "role": "jurisdiction"
+        }
+      ],
       "area_note": null,
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "manual"
         ],
         "last_verified": null
       },
@@ -6457,12 +6518,20 @@
           "notes": "From MODA `url` field (current site only)."
         }
       ],
-      "areas": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": null,
+          "role": "operates_layer"
+        }
+      ],
       "area_note": null,
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "manual"
         ],
         "last_verified": null
       },
@@ -6489,12 +6558,20 @@
           "notes": "From MODA `url` field (current site only)."
         }
       ],
-      "areas": [],
+      "areas": [
+        {
+          "scheme": "us_census_geoid",
+          "layer": "county",
+          "id": "36047",
+          "role": "jurisdiction"
+        }
+      ],
       "area_note": null,
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "manual"
         ],
         "last_verified": null
       },
@@ -8213,12 +8290,20 @@
           "notes": "From MODA `url` field (current site only)."
         }
       ],
-      "areas": [],
+      "areas": [
+        {
+          "scheme": "us_census_geoid",
+          "layer": "county",
+          "id": "36005",
+          "role": "jurisdiction"
+        }
+      ],
       "area_note": null,
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "manual"
         ],
         "last_verified": null
       },
@@ -8396,12 +8481,20 @@
           "notes": "From MODA `url` field (current site only)."
         }
       ],
-      "areas": [],
+      "areas": [
+        {
+          "scheme": "us_census_geoid",
+          "layer": "county",
+          "id": "36085",
+          "role": "jurisdiction"
+        }
+      ],
       "area_note": null,
       "status": "active",
       "provenance": {
         "sources": [
-          "moda"
+          "moda",
+          "manual"
         ],
         "last_verified": null
       },
@@ -9786,13 +9879,21 @@
           "notes": "From MODA `url` field (current site only)."
         }
       ],
-      "areas": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cc",
+          "id": null,
+          "role": "operates_layer"
+        }
+      ],
       "area_note": null,
       "status": "active",
       "provenance": {
         "sources": [
           "moda",
-          "greenbook"
+          "greenbook",
+          "manual"
         ],
         "last_verified": null
       },

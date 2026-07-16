@@ -1,0 +1,161 @@
+{
+  "_generated_from": "sync_boundaries.py",
+  "source": "BetaNYC/nyc-boundaries — frontend/src/assets/boundaries/index.ts",
+  "boundaries_as_of": "2026-07-15",
+  "layers": [
+    {
+      "id": "cd",
+      "name": "Community District",
+      "name_plural": "Community Districts",
+      "description": "Community Boards advise on land use and zoning, participate in the city budget process, and address service delivery in their district. They have up to 50 volunteer members, half of which are appointed by the borough president. The other half are appointed the council members whose districts intersect with the community district.",
+      "description_url": "https://communityprofiles.planning.nyc.gov/"
+    },
+    {
+      "id": "cc",
+      "name": "City Council Districts",
+      "name_plural": "City Council Districts",
+      "description": "The New York City Council is the lawmaking body of New York City. It has 51 members from 51 council districts throughout the five boroughs. The district lines have been updated in 2024.",
+      "description_url": "https://council.nyc.gov/"
+    },
+    {
+      "id": "sa",
+      "name": "State Assembly District",
+      "name_plural": "State Assembly Districts",
+      "description": "The New York State Assembly is the lower house of the New York State Legislature, with the New York State Senate being the upper house. There are 150 seats in the Assembly.",
+      "description_url": "https://nyassembly.gov/"
+    },
+    {
+      "id": "ss",
+      "name": "State Senate District",
+      "name_plural": "State Senate Districts",
+      "description": "The New York State Senate is the upper house of the New York State Legislature; the New York State Assembly is its lower house. Its members are elected to two-year terms; there are no term limits. There are 63 seats in the Senate.",
+      "description_url": "https://www.nysenate.gov/"
+    },
+    {
+      "id": "nycongress",
+      "name": "Congressional District",
+      "name_plural": "Congressional Districts",
+      "description": "Congressional Districts are the 435 regions from which voting representatives are elected to the U.S. House of Representatives.",
+      "description_url": "https://www.house.gov/"
+    },
+    {
+      "id": "sd",
+      "name": "School District",
+      "name_plural": "School Districts",
+      "description": "A School District is a geographical area with multiple schools.",
+      "description_url": "https://www.schools.nyc.gov/"
+    },
+    {
+      "id": "pp",
+      "name": "Police Precinct",
+      "name_plural": "Police Precincts",
+      "description": "A police precinct is a geographical area patrolled by the NYPD. The term \"precinct\" may also refer to the main police station for such a geographical area.",
+      "description_url": "https://www1.nyc.gov/site/nypd/index.page"
+    },
+    {
+      "id": "ps",
+      "name": "Police Sector",
+      "name_plural": "Police Sectors",
+      "description": "A police sector is a subdivision of a police precinct. Each precinct approximates a neighborhood within a precinct.",
+      "description_url": "https://www.nyc.gov/site/nypd/bureaus/patrol/find-your-precinct.page"
+    },
+    {
+      "id": "dsny",
+      "name": "Sanitation District",
+      "name_plural": "Sanitation Districts",
+      "description": "For operations management, the Department of Sanitation (DSNY) divides the city into 59 Sanitation Districts. The boundary for each district is congruent with the Community District boundary.",
+      "description_url": "https://www1.nyc.gov/assets/dsny/site/home"
+    },
+    {
+      "id": "fb",
+      "name": "Fire Battalion",
+      "name_plural": "Fire Battalions",
+      "description": "A Fire Battalion consists of several fire stations and multiple fire companies, and is led by a Battalion Chief.",
+      "description_url": null
+    },
+    {
+      "id": "hc",
+      "name": "Health Center District",
+      "name_plural": "Health Center Districts",
+      "description": "Health Center Districts are aggregates of health areas and are used for reporting health statistics. They were created by the NYC Department of Health and Mental Hygiene (DOHMH).",
+      "description_url": null
+    },
+    {
+      "id": "uhf",
+      "name": "UHF 42 Neighborhood",
+      "name_plural": "UHF 42 Neighborhoods",
+      "description": "In the 1980s, NYC city agencies and the United Hospital Fund (UHF) defined neighborhood schemes for health research. There are versions with 34 and 42 neighborhoods. The 42-neighborhood version is included here.",
+      "description_url": "https://a816-dohbesp.nyc.gov/IndicatorPublic/data-stories/geographies/"
+    },
+    {
+      "id": "nta",
+      "name": "Neighborhood Tabulation Area",
+      "name_plural": "Neighborhood Tabulation Areas",
+      "description": "Neighborhood Tabulation Areas are aggregations of census tracts, adapted as a method of presenting the U.S. Census Bureau’s American Community Survey (ACS).",
+      "description_url": null
+    },
+    {
+      "id": "hd",
+      "name": "Historic District",
+      "name_plural": "Historic Districts",
+      "description": null,
+      "description_url": null
+    },
+    {
+      "id": "mc",
+      "name": "Municipal Court District",
+      "name_plural": "Municipal Court Districts",
+      "description": "Municipal Court Districts are the geographic areas in which municipal courts have jurisdiction.",
+      "description_url": null
+    },
+    {
+      "id": "bid",
+      "name": "Business Improvement District",
+      "name_plural": "Business Improvement Districts",
+      "description": "A Business Improvement District (BID) is a geographical area where local stakeholders oversee and fund the maintenance, improvement, and promotion of their commercial district, going above and beyond those typically provided by the city.",
+      "description_url": "https://www1.nyc.gov/site/sbs/neighborhoods/bids.page"
+    },
+    {
+      "id": "nda",
+      "name": "Neighborhood Development Area",
+      "name_plural": "Neighborhood Development Areas",
+      "description": "A Neighborhood Development Area (NDA) is a designated area where developers can receive tax incentives for building affordable housing and community facilities.",
+      "description_url": "https://www.nyc.gov/site/dycd/involved/boards-and-councils/nab-nda-maps.page"
+    },
+    {
+      "id": "ibz",
+      "name": "Industrial Business Zone",
+      "name_plural": "Industrial Business Zones",
+      "description": "An Industrial Business Zone (IBZ) is a geographic area that serve as safe havens for manufacturing and industrial firms.",
+      "description_url": "https://edc.nyc/industry/industrial-and-manufacturing"
+    },
+    {
+      "id": "puma",
+      "name": "Public Use Microdata Area",
+      "name_plural": "Public Use Microdata Areas",
+      "description": "The Census Bureau defines Public Use Microdata Areas (PUMAs) for the dissemination of Public Use Microdata Sample (PUMS) data. Each PUMA contains at least 100,000 people.",
+      "description_url": "https://www.census.gov/programs-surveys/geography/guidance/geo-areas/pumas.html"
+    },
+    {
+      "id": "cdta",
+      "name": "Citywide District Tabulation Area",
+      "name_plural": "Citywide District Tabulation Areas",
+      "description": "Citywide District Tabulation Areas (CDTAs) approximate Community Districts by aggregating Census tracts. They are defined by the NYC Department of City Planning in order to report American Community Survey (ACS) data.",
+      "description_url": "https://www.nyc.gov/content/planning/pages/resources/datasets/community-district-tabulation"
+    },
+    {
+      "id": "zipcode",
+      "name": "Zipcode",
+      "name_plural": "Zipcodes",
+      "description": "A ZIP Code is a postal code used by the United States Postal Service (USPS).",
+      "description_url": null
+    },
+    {
+      "id": "ed",
+      "name": "Election District",
+      "name_plural": "Election Districts",
+      "description": "Election Districts are the smallest electoral units in New York City, used for the purpose of conducting elections.",
+      "description_url": "https://vote.nyc/"
+    }
+  ]
+}

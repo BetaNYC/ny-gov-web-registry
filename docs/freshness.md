@@ -9,10 +9,13 @@ The registry is designed to **stay current**, not be a one-time dump (design doc
 | NYC Greenbook `mdcw-n682` | `data/cache/greenbook_mdcw-n682.csv` | **2026-07-15** (source last refreshed **2023-12**) | 2,555 officer rows → 123 agencies |
 | nyc.gov agency directory (same upstream as `t3jq-9nkf`) | `data/cache/nycgov_agencydirectory.json` | **2026-07-15** | 306 (validation only) |
 | Wikidata NYC gov orgs (WDQS SPARQL) | `data/cache/wikidata_nyc_gov_orgs.json` | **2026-07-15** | 232 bindings → 109 QIDs (88 with `P856`) |
+| nyc-boundaries layer index (`BoundaryId` union + `layers`) | `data/cache/nyc-boundaries_layers_index.ts` | **2026-07-15** | 22 published layer ids |
 
 Cache files are git-ignored (`data/cache/`); only the built `data/registry.json` — plus the
-committed, derived `data/curation.json`, `data/greenbook_enrichment.json`, and
-`data/greenbook_reconciliation.json` — travel in git.
+committed, derived `data/curation.json`, `data/greenbook_enrichment.json`,
+`data/greenbook_reconciliation.json`, `data/wikidata_enrichment.json`,
+`data/nyc_boundaries_layers.json` (extracted layer vocabulary), and `data/boundaries_mapping.json`
+(hand-authored layer→operator assertions) — travel in git.
 
 Full phase-2 pipeline (offline; caches placed manually, access-gated):
 
@@ -22,7 +25,8 @@ python scripts/sync_moda.py                 # t3jq rows.csv -> records_moda.json
 python scripts/build_registry.py            # seed + moda + curation -> registry.json (317)
 python scripts/sync_greenbook.py            # aggregate + nycresolver reconcile -> greenbook_enrichment.json + reconciliation.json
 python scripts/sync_wikidata.py             # domain-anchor Wikidata QIDs -> wikidata_enrichment.json + reconciliation.json
-python scripts/build_registry.py            # re-apply with Greenbook + Wikidata enrichment attached (idempotent)
+python scripts/sync_boundaries.py           # extract nyc-boundaries layer vocabulary -> nyc_boundaries_layers.json
+python scripts/build_registry.py            # re-apply with Greenbook + Wikidata + boundaries areas attached (idempotent)
 python scripts/validate_nycgov_directory.py # assert directory record_ids ⊆ registry nyc_goids
 ```
 
@@ -87,6 +91,25 @@ CCOC Q564793), **4 re-pointed → dropped**, **22 proposals, 1 ambiguous-name, 2
 unmatched**; `data/wikidata_reconciliation.json` carries the `re_pointed` / `no_suitable_item`
 decision trail (rejected QID + place class), proposals, and legacy-domain leads. **Coverage: 3 of
 317 entities carry a `wikidata` identifier.**
+
+## nyc-boundaries — layer vocabulary & areas linkage (phase 4, 2026-07-15)
+
+Cache `data/cache/nyc-boundaries_layers_index.ts` is the Boundaries Map's
+`frontend/src/assets/boundaries/index.ts`, placed by the operator on **2026-07-15** (this is the
+authoritative layer vocabulary — the `BoundaryId` union of 22 published layer ids plus each layer's
+human-readable name/description). `scripts/sync_boundaries.py` reads it only (never fetches) and
+emits the committed `data/nyc_boundaries_layers.json`. To refresh, re-fetch `index.ts` from
+BetaNYC/nyc-boundaries into the cache, re-run `sync_boundaries.py`, and rebuild.
+
+`data/boundaries_mapping.json` (hand-authored) asserts the layer→operator and borough-president→
+county links; `build_registry.apply_boundaries_mapping` applies them, validating every
+`{scheme:"nyc-boundaries"}` layer against the extracted vocabulary (**unknown layer = build
+error**). Phase-4 outcome: **13 area refs attached** across **12 entities** — 8 `operates_layer`
+whole-layer refs (NYPD→`pp`+`ps`, DSNY→`dsny`, FDNY→`fb`, DOE→`sd`, City Council→`cc`, Community
+Boards→`cd`, Board of Elections→`ed`) + 5 `us_census_geoid` `jurisdiction` refs (the borough
+presidents). Entity count unchanged (**317** — no entities minted; per-board `cd` linkage deferred).
+Each `areas[]`-attached entity's `provenance.sources` gains `manual`. Idempotent: build → syncs →
+build is byte-identical.
 
 ## Three-tier refresh
 1. **Auto (city):** re-sync from MODA (`sync_moda.py`) — MODA maintains its own QA pipeline; we track its record ids. Population landed 2026-07-15 (phase 1): 306 Active orgs merged with the 17-entity seed → 318 entities. **Phase 2 (2026-07-15):** the operator-confirmed EDC merge (`data/curation.json`) collapses the separately-minted "Economic Development Corporation" into seed `nycedc` → **317 entities** (5 seeds matched by name + 1 by curated identifier gained a `nyc_goid`; 300 minted new). Greenbook contact scaffolding then attaches to 27 exact-matched city entities (no change to the count).
