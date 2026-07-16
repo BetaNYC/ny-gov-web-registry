@@ -117,6 +117,20 @@ gaps are visible, not silent**. A consumer that wants only usable descriptions f
   are recorded `fetch_failed` (note `host_waf_blocked`). `nyc.gov` sits behind Akamai and 403s
   automation — we record and report that, never fight the WAF.
 
+### WAF recovery via a human-context browser (2026-07-16, operator-authorized)
+
+The 152 `www.nyc.gov` / `www1.nyc.gov` targets the Akamai WAF 403'd in phase 5 were recovered
+through the app's **Browser pane**, a real browser context that passes the WAF where `urllib` does
+not. This is the *sanctioned* path, not WAF evasion: no header-spoofing or `curl` tricks — a human
+browser loading public pages, **explicitly authorized by the operator (Noel, 2026-07-15)**, read-only,
+sequential, ~2s between navigations. Tooling (`plan_waf_candidates.py` → browser loop →
+`assemble_waf_captures.py` → `extract_waf_descriptions.py` → `merge_descriptions.py`) is all offline
+except the browser loop itself; extraction is verbatim-or-nothing (records `no_about_found` /
+`extraction_empty` rather than guessing). The recovered gap is folded into `data/descriptions.json`
+under the same schema and consumer contract; `method: "browser-pane"` distinguishes these records
+from the phase-5 `link-scan` / `path-probe` ones. See `docs/freshness.md` for the run log and
+batch coverage.
+
 ## Access gate
 Live pulls from any of these wait for explicit operator authorization. The sync scripts read
 from a local `data/cache/` and never fetch on their own. The about-crawler is the one component
