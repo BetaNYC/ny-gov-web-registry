@@ -1851,31 +1851,28 @@
    "truncated": false
   },
   "commission-on-gender-equity": {
-   "text": null,
+   "text": "CGE is a city agency created by Local Law 45 of 2020 and is a part of the NYC Mayor's Office of Equity & Racial Justice. CGE is leading the city's efforts to make sure every girl, woman, intersex, transgender and gender-nonconforming and gender-nonbinary person throughout the five boroughs is treated equally and feels safe. We are putting the full force of the municipal government, the city's largest employer, to work on behalf of this cause. CGE works collaboratively with city agencies on three focus areas: economic justice, health and reproductive justice, and safety.",
    "source_url": "https://www.nyc.gov/content/genderequity/pages/",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "department-of-youth-and-community-development": {
    "text": null,
    "source_url": "https://www.nyc.gov/site/dycd/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "office-of-the-administrative-justice-coordinator": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/ajc/index.page",
+   "text": "The Office of the Administrative Justice Coordinator works to improve the professionalism, efficiency, transparency, and accountability of the City's administrative tribunals. The Office achieves its mandate by working with the tribunals to establish and implement Rules of Conduct for Administrative Law Judges; to improve the training and recruitment of Administrative Law Judges; and to enhance the public's understanding of, and access to, the administrative justice system.",
+   "source_url": "https://www.nyc.gov/site/ajc/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "museum-of-the-city-of-new-york": {
    "text": "About the Museum\n\nVisit MCNY on Instagram\n\nVisit MCNY on TikTok\n\nVisit MCNY on Facebook\n\nVisit MCNY on Threads\n\nVisit MCNY on Youtube\n\nSign up for our mailing list\n\nOur Mission\n\nThe Museum of the City of New York explores the people, places, and ideas that shape New York’s iconic character. We invite New Yorkers and visitors alike to discover their place in the city’s evolving story.\n\nVision Statement\n\nWe foster civic pride through experiences that champion New York’s creativity, ambition, and resilience. We connect visitors of all backgrounds to the city’s past and present, inspiring people to participate in shaping the future of our city and our world.\n\nStrategic Plan 2026–2034\n\nThe Museum of the City of New York celebrated its centennial in 2023. In the years leading up to this milestone, the Museum made significant investments in capital improvements, experimented with new exhibition formats, and tested innovative marketing and advertising strategies. Now, informed by data and insights from our two-year centennial program, MCNY stands at a pivotal moment as we prepare for our next 100 years—beginning with a strategic plan that articulates the Museum’s priorities for the next decade.\n\nRead the Strategic Plan\n\nLand Acknowledgement\n\nThe Museum of the City of New York is situated in the center of the New York metropolitan area, traditionally the lands of the Lenape, Manahatin, Canarsie, Shinnecock, Munsee, Mattinecock, Setauket, Unkechaug, Montauket, and others, all of whom have descendants living today. Native communities across the Americas have demonstrated resilience and resistance in the face of violent efforts to separate them from their land, culture, and each other. We offer recognition and respect to the Indigenous inhabitants of this land. New York City has always been and continues to be a place for gathering and exchange for Indigenous peoples, many of whom choose to call this city home.\n\nOur History\n\nThe Museum of the City of New York was founded in 1923 by Henry Collins Brown, a Scottish-born writer with a vision for a populist approach to the city. The Museum was originally housed in Gracie Mansion, the future residence of the Mayor of New York. Hardinge Scholle succeeded Henry Brown in 1926 and began planning a new home for the Museum. The City offered land on Fifth Avenue on 103rd-104th Streets and construction for Joseph H. Freedlander’s Georgian Colonial-Revival design for the building started in 1929 and was completed in 1932. During the next few decades, the Museum amassed a considerable collection of exceptional items, including several of Eugene O’Neill’s handwritten manuscripts, a complete room of Duncan Phyfe furniture, 412 glass negatives taken by Jacob Riis and donated by his son, a man’s suit worn to George Washington’s Inaugural Ball, and the Carrie Walter Stettheimer dollhouse, which contains a miniature work by Marcel Duchamp. Today the Museum’s collection contains approximately 750,000 objects, including prints, photographs, decorative arts, costumes, paintings, sculpture, toys, and theatrical memorabilia.\n\nStay Connected. Get our Newsletter.\n\nGet the latest on events, upcoming exhibitions, and more.\n\nWant free or discounted tickets, special event invites, and more?\n\nVisit Us at the Museum Today",
@@ -1886,22 +1883,20 @@
    "truncated": false
   },
   "department-of-probation": {
-   "text": null,
+   "text": "The New York City Department of Probation helps make our neighborhoods safer by supporting individuals on probation as they work toward a better future. We stay involved in the community and partner with others to give people the tools, guidance, and structure they need to succeed. By using proven methods and offering both support and accountability, we help people leave the justice system behind and build stronger lives for themselves and their communities.",
    "source_url": "https://www.nyc.gov/site/probation/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "mayor-s-office-of-environmental-remediation": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/oer/index.page",
+   "text": "The New York City Mayor’s Office of Environmental Remediation (OER) is a team of scientists and engineers that design and operate programs to promote the cleanup and redevelopment of underutilized and contaminated land in NYC. Through the NYC Voluntary Cleanup Program, the nation’s only full service municipally-run land cleanup program, OER prepares vacant, underutilized properties for redevelopment.\n\nOver 1,100 properties have been remediated through OER’s programs, and in the process, over 620 acres of new developable land has been created.\n\nIn addition, OER has established the NYC Clean Soil Bank, a municipal clean soil exchange that recovers clean, native soil from deep excavations at construction sites and redirects it to the City’s Forbell Street stockpile, public and private NYC construction sites, and community and school gardens. Since its inception, the Clean Soil Bank has transferred over 850,000 tons of clean, native soil.\n\nOER also plays other important roles. Through the E-Designation Program, we ensure compliance with environmental standards before new buildings are erected on rezoned land. And OER provides resources to community-based organizations to support their efforts to plan the future of their neighborhoods.\n\nAt OER, we are proud to serve the residents of New York City, to work with you in the cleanup of vacant land, and make our city a safer place to live, work, and play.",
+   "source_url": "https://www.nyc.gov/site/oer/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "grownyc": {
    "text": "About Us Who We Are\n\nMission & Vision We Are GrowNYC\n\nOur mission is to empower all New Yorkers with equitable access to fresh, locally grown food, neighborhood green spaces, waste reduction opportunities, and care for the environment.\n\nWe envision a New York City where fresh, nutritious food is ensured as a basic human right. Where our foodshed is protected and local farmers prosper. Where all have access to places to gather and grow. Where we handle our waste responsibly. And where all New Yorkers, especially those within frontline communities*, are empowered to enact their vision of a thriving community.\n\n*Frontline identities/communities is a term used to describe communities of color, Indigenous peoples, immigrants and refugees, and people with lower incomes who are impacted first and worst by environmental hazards and climate change.\n\nOur History & Victories Founded in 1970 and evolving ever since\n\nGrowNYC was born from the ideals of the first Earth Day in 1970 as the Council on the Environment of New York City, originally as a policy-based organization, writing comprehensive reports about quality of life issues.\n\nToday, GrowNYC is a 501(c)(3) environmental nonprofit serving New Yorkers across the five borough with environmental and food access programs that promote fresh produce from farmers, community gardens, and education to foster collective action for environmental, climate, and food justice.\n\n1970\n\nMayor John Lindsay taps Marian Heiskell to establish the Mayor’s Council on the Environment, in response to New Yorkers’ concerns about quality of life in the city.\n\nToday, GrowNYC is an independent environmental nonprofit, serving more than 3 million New Yorkers every year. Our programs encourage all New Yorkers to eat seasonal produce grown by small farmers, conserve resources, preserve green spaces, and take better care of our planet.\n\n1975\n\nGrowNYC builds its first community garden, All People’s Garden on East 3rd Street on the Lower East Side.\n\nAt the time, New York City had approximately 40 community gardens. These gardens were part of a grassroots movement to reclaim and beautify vacant lots and derelict spaces in the city, particularly in neighborhoods that had been neglected and were suffering from urban decay. The movement grew significantly in the following years, leading to the establishment of many more community gardens across the city.\n\nNYC now has over 550 community gardens, 180+ built by GrowNYC! As a result, we’ve created over 1.3 million square feet of green space to the NYC landscape.\n\n1976\n\nGrowNYC’s first Greenmarket opens on 59th Street and 2nd Ave, reigniting the urban farmer’s market movement nationally. Farmers remember wondering if there was a food shortage in the city, as crowds rushed their tables for the fresh corn and tomatoes.\n\nToday, GrowNYC operates the largest network of open-air farmers markets in the U.S. with 60+ Greenmarkets and Farmstands featuring more than 230 producers across the five boroughs.\n\n1981\n\nGrowNYC launched the Farm Survival Study to research why the New York region is losing farms and what can be done to prevent it.\n\nToday, GrowNYC supports Greenmarket and Wholesale farmers each year with free technical assistance services such as marketing and legal assistance, to help them maintain profitable, secure businesses.\n\n1988\n\nGrowNYC successfully advocates to incorporate environmental education into the NYC Department of Education syllabus.\n\nEnvironmental education was formally integrated into the New York City public school curriculum in the early 2000s. The establishment of environmental education as a key component of the curriculum was part of broader efforts to enhance environmental awareness and stewardship among students.\n\nToday, GrowNYC’s hands-on education programs reach more than 360,000 youth and adults annually.\n\n1989\n\nWe launch the Waste Prevention Recycling Service, designing recycling programs for companies like HBO and IBM.\n\nBetween 2011-2023, we partnered with the NYC Department of Sanitation to increase recycling and composting throughout the five boroughs, reaching hundreds of thousands of New Yorkers, in schools, apartment buildings, and households – proving New Yorkers were ready to compost. Collectively, we collected 20 million pounds of food scraps that were diverted for composting.\n\nToday, New York City now has the largest residential food scrap collection program in the United States.\n\n2002\n\nDrought had decimated the NYC water supply from upstate reservoirs, and community gardens were being fined hundreds of dollars if they watered their plants. GrowNYC teamed up with community groups to research how to build rainwater harvesting systems and navigate unclear New York City Department of Environmental Protection regulations on water diversion. At the time, the only systems highlighted online were used on small tropical islands and by US cattle ranchers.\n\nToday, there are more than 150 rainwater harvesting systems in New York Cit",
@@ -1912,31 +1907,28 @@
    "truncated": true
   },
   "sheriff": {
-   "text": null,
+   "text": "The sheriff is an officer of the court whose main job is to serve and execute legal processes and mandates issued by state courts, the legal community, and the general public.",
    "source_url": "https://www.nyc.gov/site/finance/sheriff-courts/sheriff.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "mayor-s-public-engagement-unit": {
    "text": null,
    "source_url": "https://www.nyc.gov/site/mayorspeu/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "mayor-s-office-of-contract-services": {
    "text": null,
    "source_url": "https://www.nyc.gov/site/mocs/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "brooklyn-museum": {
    "text": null,
@@ -1964,13 +1956,12 @@
    "note": "host_waf_blocked (skipped after 4 consecutive 403s from edc.nyc)"
   },
   "office-of-the-inspector-general-for-the-nypd": {
-   "text": null,
-   "source_url": "https://www1.nyc.gov/site/doi/offices/oignypd.page",
+   "text": "DOI's Office of the Inspector General for the New York City Police Department (OIG-NYPD) is independent of the NYPD and charged with investigating, reviewing, studying, auditing and making recommendations relating to the operations, policies, programs and practices of the New York City Police Department (NYPD).",
+   "source_url": "https://www.nyc.gov/site/doi/oignypd/web/oignypd.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "council-for-airport-opportunity": {
    "text": "About Us\n\nOur History and Services\n\nCAO The Airport Connection\n\nCouncil for Airport Opportunity (CAO) is a nonprofit trade association created in 1972 in collaboration with airline companies, the Port Authority of New York and New Jersey, the Mayor’s Offices of the City of Newark, and City of New York, and the Federal Aviation Administration.\n\nThe mission of CAO is to identify and address the critical employment needs of the communities surrounding the New York and New Jersey Metropolitan airports, while at the same time responding to the hiring needs of the airport tenants and the aviation industry.\n\nThe aviation industry is responsible for over 700,000 jobs in the NY/NJ region. CAO is a bridge between individuals seeking employment in the industry and employers seeking qualified, motivated talent. Since it’s founding, CAO has placed over 65,000 local residents in aviation jobs, with no cost to the employee or employer.\n\nCAO offers free services to our many different constituents — the residents of the localities surrounding the New York/New Jersey Metropolitan airports, businesses/employers in the aviation industry, and community partner organizations.\n\nCAO does more than just place people in jobs. CAO’s range of services includes job training programs for unemployed individuals, summer employment opportunities for young people, hosting the Senior Community Service Employment program to train mature workers, ongoing customer service training for job seekers, and hospitality and food handling training to over 10,000 residents of the communities surrounding the metropolitan area airports. In addition, CAO New Jersey is certified to operate an Online Performance Assessment Test Center, in addition to a seasonal temporary staffing entity called Academy Staffers.\n\nCAO is easily accessible with offices in downtown Jamaica, New York, Corona, New York, Far Rockaway, New York and Newark, New Jersey. On-site career centers operate at John F. Kennedy International Airport and Newark Liberty International Airport where specialized training, small group seminars, and interview sessions can be conducted.",
@@ -1993,27 +1984,24 @@
    "source_url": "https://www.nyc.gov/site/publicrealm/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "mayor-s-office-of-mass-engagement": {
-   "text": null,
+   "text": "The Office of Mass Engagement is bringing the people-powered movement that elected Mayor Mamdani to the work of governance.\n\nThrough trainings and grassroots campaigns, Organize NYC will help sustain momentum around the issues that matter most to working New Yorkers.\n\nOrganize NYC will build lasting power for working-class New Yorkers that outlives any one administration, because we know any government only works when it is accountable to those it serves.",
    "source_url": "https://www.nyc.gov/content/organize/pages/",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "hudson-yards-infrastructure-corporation": {
-   "text": null,
+   "text": "The Hudson Yards Infrastructure Corporation (the \"Corporation\") is a local development corporation created in 2005 by the City of New York (the \"City\") under the Not-For-Profit Corporation Law of the State of New York. The Corporation was created to finance certain property acquisition and infrastructure work (the \"Project\"), including the extension of the No. 7 subway line, as part of the development of the Hudson Yards Financing District, the approximately 45 square block area generally bounded by Seventh and Eighth Avenues on the east, West 43rd Street on the north, Eleventh and Twelfth Avenues on the west, and West 29th and 30th Streets on the south. The Corporation's bonds are secured by revenues of the Corporation, including payments in lieu of taxes and payments in lieu of mortgage recording tax collected within the Hudson Yards Financing District and certain payments from the City, subject to annual appropriation. On May 30, 2017, the Corporation issued approximately $2.1 billion of refunding bonds which refinanced all of its initial $2 billion bond issue and a portion of its second bond issue under a new legal structure. This enabled the Corporation to transfer to the City in the future any excess revenues over and above amounts needed for debt service requirements.",
    "source_url": "https://www.nyc.gov/site/hyic/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "brooklyn-botanic-garden": {
    "text": "About\n\nOur Mission\n\nBrooklyn Botanic Garden is an urban botanic garden that connects people to the world of plants, fostering delight and curiosity while inspiring an appreciation and sense of stewardship of the environment.\n\nHistory\n\nBrooklyn Botanic Garden was founded in 1910. Learn more about the Garden's history and see photos from its archives.\n\nThe Land of the Lenape\n\nBrooklyn Botanic Garden occupies part of the unceded homeland of the Lenape people. We acknowledge today’s Lenape communities. Informed by their knowledge, we seek to educate ourselves and the public in ways that challenge the dominant colonial worldview of science, botany, and horticulture.\n\nJobs & Internships\n\nLearn about job and internship opportunities at the Garden. Jobs & Internships ›\n\nPress Room\n\nAccess recent press releases, photo resources, and other information about the Garden.\n\nContact Us\n\nCall or email the Garden with your comments, questions, and suggestions.",
@@ -2048,13 +2036,12 @@
    "truncated": false
   },
   "office-of-community-hiring": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/communityhiring/index.page",
+   "text": "The City of New York provides a wide range of services for New Yorkers – from designing parks and playgrounds, to providing health services and childcare, to repairing roads and bridges. To make this possible, the City contracts with vendors, which include businesses and nonprofits. These vendors provide billions of dollars' worth of services every year.\n\nCommunity Hiring is a new initiative that allows the City to set workforce goals for City vendors to provide employment and apprenticeship opportunities to low-income individuals and those living in low-income communities. Community Hiring will enable qualified job seekers to connect with opportunities and City vendors to access a pipeline of talent more easily. By embedding opportunity into City procurement, Community Hiring aims to strengthen the City's workforce, uplift communities, and drive more inclusive economic growth. To learn more, please see the Community Hiring FAQ.\n\nAbout the Office of Community Hiring (OCH)\n\nOCH's mission is to use the City's purchasing power to drive economic mobility by connecting City vendors with a pipeline of talent and creating pathways to careers for our community.\n\nOCH is part of the NYC Office of Talent and Workforce Development (NYC Talent). OCH is responsible for managing the rollout and implementation of Community Hiring, supporting City agencies and vendors, and reporting on Community Hiring goals. To design this new initiative, OCH worked closely with City agencies, City vendors, industry representatives, workforce development organizations, labor, and community partners. OCH is currently in the early stages of implementing Community Hiring goals on City procurements in partnership with City agencies. To learn more about what's next for Community Hiring, contact OCH.",
+   "source_url": "https://www.nyc.gov/site/communityhiring/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "jamaica-bay-rockaway-parks-conservancy-inc": {
    "text": "WHO WE ARE\n\nA public-private partnership dedicated to improving public parklands throughout Jamaica Bay and the Rockaway peninsula\n\nJamaica Bay-Rockaway Parks Conservancy (JBRPC) is a public-private partnership established in 2013 dedicated to improving 10,000 acres of public parklands throughout Jamaica Bay and the Rockaway peninsula, 18,000 acres of open water and marshlands within Jamaica Bay itself, and 11 miles of Atlantic Ocean beaches along the Rockaway peninsula. With its partners at the National Park Service, the New York City Department of Parks and Recreation, and the New York State Office of Parks, Recreation and Historic Preservation, JBRPC works to expand public access to parks; increase recreational and educational opportunities; foster community stewardship and volunteerism; preserve and restore natural areas, including wetlands and wildlife habitat; enhance cultural resources; and ensure the long-term sustainability of the parklands for local residents and visitors alike.\n\nIn July 2012, Mayor Michael R. Bloomberg and Secretary of the Interior Ken Salazar signed a cooperative management agreement and announced the formation of the Jamaica Bay-Rockaway Parks Conservancy, Inc. (JBRPC) to support the unique relationship between the City of New York and the National Park Service. JBRPC was formally established in 2013 as a public-private partnership dedicated to improving public parklands throughout Jamaica Bay and the Rockaway peninsula for local residents and visitors alike.\n\nSince our founding, JBRPC has removed more than 50 tons of trash and debris from shorelines and parks, planted more than 420,000 native plants and trees, and hosted more than 120,000 people at public programs and events – including our signature Jamaica Bay Festival and Discover Jamaica Bay series. We've organized more than 250 stewardship events that drew support from more than 13,000 dedicated volunteers, and welcomed more than 15,000 students into our environmental education programs.\n\nWe created the Rockaway! Public Arts Festival , featuring works by artists Patti Smith, Katharina Grosse, and Yayoi Kusama. In 2024, JBRPC willexpand the Festival and present the first Floyd Bennett Field! Public Arts Festival featuring original site-specific projection mapping works on the façade of historic Hangars 3 & 4.\n\nFrom 2017 - 2018, JBRPC worked with New York State Parks to help plan the new Shirley Chisholm State Park at the former Penn and Fountain Landfill, which opened in phases from 2019 to 2021. From 2019 to 2021, JBRPC led the design and construction of a living shoreline at West Pond in the Jamaica Bay Wildlife Refuge. JBRPC has implemented and funded various other projects which can be found under the Our Impact section of this website.\n\nOther projects included creating a 3.25-acre native plant nursery at Floyd Bennett Field to provide beach grass for restoration projects and to stabilize the dunes that buffer the Rockaway coastline from storms and sea level rise; organizing volunteers to plant beach grass, clean up debris, and spruce up buildings with fresh coats of paint; restore marsh and forest; build new trails; and successfully advocating for the expansion of the US Army Corps of Engineers’ sand replenishment project to Jacob Riis Park.\n\nIn 2023 JBRPC launched the Jamaica Bay Wetlands Fellowship to train the next generation of wetlands managers and advance nature-based solutions and the jobs to sustain them over the long-term. JBRPC is also focused on community planning and engagement for the rehabilitation and activation of Floyd Bennett Field as a hub for community and climate resilience.\n\nWorkforce Development\n\nLooking ahead to the next decade, JBRPC is poised and uniquely positioned to build on prior success to realize greater impact in our public parklands. Work is already underway to expand our education programs for younger students and family audiences, increase stewardship opportunities and grow our Wetlands Fellowship program, and transform Floyd Bennett Field into a hub for community and climate resilience.\n\nJBRPC is proud to partner with governmental agencies, elected officials, non-profit organizations, the business community, and the public to improve public parkland throughout Jamaica Bay and the Rockaway peninsula.\n\nJamaica Bay-Rockaway Parks Conservancy, Inc. is a partner project of the Fund for the City of New York ( FCNY), which serves as its fiscal sponsor. Both JBRPC and the FCNY are tax-exempt organizations under section 501(c)(3) of the federal tax code. JBRPC’s office is located in the Rockaway Park section of Queens, New York.\n\nFor more information, please email info@jbrpc.org .",
@@ -2065,13 +2052,12 @@
    "truncated": false
   },
   "business-integrity-commission": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/bic/index.page",
+   "text": "The mission of the Business Integrity Commission (BIC) is to protect New York City consumers through regulation of the “trade waste” (or commercial waste) industry and the City’s public wholesale markets (e.g., Fulton Fish Market, Hunts Point Produce Market, Hunts Point Meat Market, etc.).",
+   "source_url": "https://www.nyc.gov/site/bic/about/about-bic.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "new-york-city-employee-retirement-system": {
    "text": "About\n\nTrusted Partner of NYC Employees for More Than 100 Years\n\nThe New York City Employees’ Retirement System (NYCERS) was founded by the New York State Legislature in 1920 with 13,331 members. Today, NYCERS has grown into the largest municipal public employee retirement system in the United States with more than 430,000 active members and retirees, including civilian employees such as clerical workers and Health + Hospital employees; NYC Transit employees; and uniformed employees such as NYC Correction Officers, Sanitation Workers and Emergency Medical Technicians.\n\nDefined Benefit Plan\n\nNYCERS is a defined benefit retirement plan. Defined benefit retirement plans for public sector employees offer benefits which are defined in law. Generally, retirement allowances payable from such plans are based on a member’s years of service, age and compensation base. Other types of benefits such as loans, disability and death benefits are also offered and specified in law. All benefits payable are funded by employee and employer contributions and from earnings on the invested assets of the system.\n\nMultiple-Employer System\n\nNYCERS is a cost-sharing, multiple employer public employee retirement system. In addition to the City of New York (various agencies, boards and commissions), members are employed by public benefit corporations such as the NYC Transit Authority and the NYC Health and Hospitals Corporation.\n\nCustomer Services\n\nNYCERS performs many functions for active members and retirees alike. Among other things, each year NYCERS issues approximately 50,000 loans and processes thousands of refunds and buy-back applications. For retirees, NYCERS verifies retirement allowances, calculates Cost-of-Living-Adjustments, and much more.\n\nClient-Centered Approach\n\nNYCERS is dedicated to a client-centered approach to quality service delivery. Whether it’s upgrading Information Technology infrastructure, facilitating access to information, developing customer service upgrades or instituting advanced security measures, NYCERS is committed to sustaining quality service delivery for all our members, retirees and beneficiaries.\n\nNYCERS’ Mission Statement\n\nThe prime function of the New York City Employees’ Retirement System is to administer the statutory pension benefits of its members, retirees, and beneficiaries.\n\nOur talented, professional, and dedicated employees are committed to providing a superior service by:\n\nMaking correct benefit payments in a timely manner.\n\nLeveraging modern technology to set new standards of excellence in the services we provide.\n\nMaximizing investment returns on the funds of the system with an appropriate level of risk.\n\nBoard of Trustees\n\nThe Board of Trustees is the governing body of NYCERS. Its responsibilities include investing the assets of the retirement system, establishing the administrative budget of the system and promulgating rules and regulations necessary to carry out provisions of law.\n\nThe NYCERS Board of Trustees, as prescribed by law, consists of eleven members: the Mayor’s Representative, the City Comptroller, the Public Advocate, the heads of the three unions with the largest number of participating employees, and the five Borough Presidents.\n\nBoard Meeting Calendar\n\nNext Board Meeting: Thursday, August 13, 2026 at 9:30 am 335 Adams Street, 22nd Floor, Brooklyn, NY 11201 Join the webcast\n\nAnnual Comprehensive Financial Report\n\nNYCERS’ Annual Comprehensive Financial Report (ACFR) contains fiscal year financial reports as well as information regarding each retirement plan and plan provisions.\n\nLegislation\n\nBecause legislative changes affect NYCERS members, we actively monitor state and city activities and keep you posted as to how they may, or may not, affect you. This section is intended to give you the most up-to-date laws and regulations pertaining to your retirement benefit. To find out if your plan has been affected by changes, be sure to visit this section often.\n\nCareer Opportunities\n\nThe City of New York is an inclusive equal opportunity employer committed to recruiting and retaining a diverse workforce and providing a work environment that is free from discrimination and harassment based upon any legally protected status or protected characteristic, including but not limited to an individual’s sex, race, color, ethnicity, national origin, age, religion, disability, sexual orientation, veteran status, gender identity, or pregnancy.\n\nNYCERS is the largest retirement system in New York City. There is a lot to be done and we are always looking for talented and enthusiastic people to assist in providing world-class service to our customers. We offer competitive salaries, benefit packages, and advancement opportunities.\n\nAccessibility\n\nIt is NYCERS’ policy to comply with all applicable laws including, but not limited to, the Americans with Disabilities Act (ADA), Rehabilitation Act, the New York State Human Rights Law and the New York City Human Rights Law. NYCERS does not disc",
@@ -2090,13 +2076,12 @@
    "truncated": false
   },
   "new-york-county-public-administrator": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/nycountypa/index.page",
+   "text": "The Public Administrator is an agency of the City of New York. Each borough of the City of New York has its own Public Administrator. The Public Administrator of the County of New York administers the estates of New York County residents who die without a will and no one else is eligible or willing to administer the estates.\n\nThe Public Administrator’s primary duties include collecting and distributing the assets of the deceased person, arranging appropriate funerals, and administering estates that would otherwise remain un-administered. The agency is primarily charged with protecting the assets of any estate it is administering.",
+   "source_url": "https://www.nyc.gov/site/nycountypa/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "public-theater": {
    "text": null,
@@ -2107,13 +2092,12 @@
    "truncated": false
   },
   "mayor-s-office-of-environmental-coordination": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/oec/index.page",
+   "text": "Established by Section 192(e) of the New York City Charter, the Office assists City agencies in carrying out their environmental review responsibilities. In addition to being the repository for all City Environmental Quality Review (CEQR) documents, the Mayor's Office of Environmental Coordination (MOEC) serves as the City's liaison to state and federal agencies on environmental matters and advises the Mayor on matters of environmental policy. Executive Order 149 of 2011 further defines MOEC’s responsibilities to include implementation of the City’s green building law, including authorizing the Director to exercise the powers and duties of the Mayor granted by the law.\n\nMOEC’s mission is to be a resource for city agencies and private applicants by providing information and assistance in completing the environmental review process and to help the city to lead by example in applying state-of-the-art green building requirements.",
+   "source_url": "https://www.nyc.gov/site/oec/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "queens-museum": {
    "text": "About\n\nThe Queens Museum Connects the Borough’s Past to the Present\n\nLearn About the Museum’s History\n\nImage: The New York City Building and parking lot, c. 1939. Vintage silver gelatin print. Provenance research in-progress.\n\nFounded in 1972, the Queens Museum is located in the nation’s most culturally diverse county, on the grounds of the 1939-40 and 1964-65 and New York World’s Fairs, and in a building that formerly housed the United Nations from 1946 to 1950. Browse our historical timeline and learn about the key moments that marked the history of our site.\n\nHonoring the History of Our Site & the Diversity of Our Communities\n\nThe Queens Museum is dedicated to presenting the highest quality visual arts and educational programming for people in the New York metropolitan area, and particularly for the residents of Queens, a uniquely diverse, ethnic, cultural, and international community.\n\nThe Museum fulfills its mission by designing and providing art exhibitions, public programs and educational experiences that promote the appreciation and enjoyment of art, support the creative efforts of artists, and enhance the quality of life through interpreting, collecting, and exhibiting art, architecture, and design.\n\nThe Queens Museum presents artistic and educational programs and exhibitions that directly relate to the contemporary urban life of its constituents, while maintaining the highest standards of professional, intellectual, and ethical responsibility.\n\nLooking Ahead: A New Future for Queens Museum\n\nFor over fifty years, Queens Museum has served one of the most diverse communities in the world. Now, we’re building the institution our borough deserves by reimagining our space and deepening our impact. Central to this vision is the Suna Children’s Museum, new programming for all ages, and a transformed visitor experience.\n\nLiving Land Acknowledgement\n\nThe Queens Museum would like to acknowledge the past, present, and future generations of Matinecock, Canarsie, Lekawe (Rockaway), Munsee Lenape, and the interconnected Matouwac communities across the Greater Long Island region, as stewards of the land.\n\nAs both a museum of art and a historic site built on unceded Indigenous lands, the Queens Museum is committed to working towards a living land acknowledgment built on listening, collaboration, and action together with Indigenous communities. We recognize the ongoing impacts of the violent colonial displacement of Native people–as well as the displacement of animal relatives and the disruption of natural ecosystems–by the United States.\n\nWe invite our communities to join us in taking action now by devoting time to taking care of the land, whether this be cleaning up your local park or donating to an Indigenous-led advocacy group.\n\nMeet Our Team & Board of Trustees\n\nWe Thank Our Community of Supporters\n\nThe Queens Museum is housed in the New York City Building, which is owned by the City of New York. With the assistance of the Queens Borough President and the New York City Council, the Museum is supported in part by public funds from the New York City Department of Cultural Affairs. Additional funding is provided by the New York State Council on the Arts, Queens Museum Board of Trustees, members, and friends.\n\nGet in Touch With Us\n\nPhone and Fax\n\n– T +1 718 592 9700 / F +1 718 592 5778\n\nEmail\n\n– General inquiries: info@queensmuseum.org\n\n– Press inquiries: press@queensmuseum.org\n\nMailing Address\n\n– Queens Museum New York City Building Flushing Meadows Corona Park Queens, NY 11368\n\nHost Your Event at the Queens Museum\n\nOur historic venue–the site of two World’s Fairs and the temporary headquarters of the United Nations–is available to rent for your next wedding, meeting, film shoot or important event.\n\nJoin Our Team\n\nThank you for your interest in joining the Queens Museum team. There are no open positions at this time.",
@@ -2148,13 +2132,12 @@
    "truncated": false
   },
   "new-york-city-young-men-s-initiative": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/ymi/index.page",
+   "text": "In August 2011, New York City Young Men’s Initiative (YMI) was created as a public-private partnership to address increasing disparities among black and Latino men between the ages of 16 and 24 in education, employment, health and justice. The YMI mission is to develop and champion policies, programs and partnerships that holistically support the success of young men of color throughout NYC. The budget and scope of YMI has expanded since its inception.\n\nYMI accomplishes its mission through broad policy recommendations, changes and agency reforms and by connecting the city’s young men of color to individuals, opportunities and organizations that improve the quality of their lives and lead them to a more successful future.",
+   "source_url": "https://www.nyc.gov/site/ymi/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "new-york-city-council": {
    "text": "What we do\n\nTogether, we…\n\nIntroduce and vote on legislation (proposed laws) having to do with all aspects of City life.\n\nNegotiate the City’s budget with the Mayor and approve its adoption.\n\nMonitor City agencies such as the Department of Education and the NYPD to make sure they’re effectively serving New Yorkers.\n\nReview land use and make decisions about the growth and development of our city.\n\nSimilar to Congress at the federal level, we are New York City’s legislative body. The Council is separate from the Mayor’s administration but an equal partner in how our City is run.\n\nSo, for example, while the Mayor has the option of vetoing legislation that we have approved, the Council can respond with a two-thirds or more vote enacting a law over the objection of the Mayor to turn a bill into a law. The Council negotiates to ensure that certain services are included in the City’s budget.\n\nLeadership\n\nThe Speaker\n\nThe Speaker is elected by Council Members and leads us in setting priorities, passing laws, and directing public money for the benefit of New Yorkers. Currently, Speaker Julie Menin heads the Council.\n\nThe Deputy Speaker Council Member Nantasha Williams\n\nThe Deputy Speaker Council Member Nantasha Williams\n\nThe Majority Leader Council Member Shaun Abreu\n\nThe Majority Whip Council Member Kamillah Hanks\n\nThe Minority Leader Council Member David M. Carr\n\nThe Minority Whip Council Member Inna Vernikov\n\nHow we work\n\nHearings\n\nMost of our legislative work happens in committee meetings and hearings focused on human services, infrastructure, and government affairs. These committees discuss proposed laws, receive updates from agency representatives, and hear feedback from New Yorkers like you.\n\nCommittees\n\nEach committee is chaired by a Council Member and meets at least once every other month, except in July and August. Every Council Member is assigned — through a voting process by all Council Members to – serve on various committees and subcommittees, a committee that considers specific matters and reports back to the standing committee.\n\nCaucuses\n\nThe Council also meets in caucuses, a group of Members with shared concerns, to ensure that the needs of specific communities are represented. There are currently eight caucuses: Black, Latino and Asian (BLA) Caucus; Common-Sense Caucus; Irish Caucus; Italian Caucus; Jewish Caucus; LGBTQ Caucus; Progressive Caucus; and Women’s Caucus.\n\nWant to know more? Check out the complete rules of the Council here .\n\n(updated 01/29/2026)\n\nvia BRIC TV\n\nWhere we meet, vote, and listen\n\nMembers have offices in each of their districts, and also a legislative office at 250 Broadway. We discuss issues in the Council side of City Hall and hold Stated Meetings, meetings held twice every month, and at Council Members’ discretion during July and August, in the Council Chambers to vote on legislation.\n\nHearings are generally held at City Hall or 250 Broadway. And we spend a great deal of time in each of our districts, ensuring your needs are being met and your voice is being heard.",
@@ -2182,12 +2165,11 @@
   },
   "new-york-city-water-board": {
    "text": null,
-   "source_url": "https://www.nyc.gov/site/nycwaterboard/index.page",
+   "source_url": "https://www.nyc.gov/site/nycwaterboard/about/about.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "brooklyn-public-library": {
    "text": "Brooklyn Public Library is among the borough’s most democratic civic institutions, serving patrons in every neighborhood and from every walk of life. Established in 1896, BPL is one of the nation’s largest public library systems and currently has more than 620,000 active cardholders. With a branch library within a half-mile of the majority of Brooklyn’s 2.7 million residents, BPL is a recognized leader in cultural offerings, literacy, out-of-school-time services, workforce development programs, and digital literacy. In a borough of wide economic disparity, where the costs of basic necessities often take priority over spending on cultural enrichment opportunities, BPL provides a democratic space where patrons of all economic standings can avail themselves and their children of cultural and educational programs in a broad range of disciplines.\n\nIn 2016, BPL was awarded an IMLS National Medal for Museum and Library Service, the nation’s highest honor for museum and libraries, in large part due to the work of its Outreach Services department and its efforts to serve Brooklyn’s most vulnerable populations.\n\nThe majority of Brooklyn’s 2.7 million residents live within a half-mile of a BPL branch.\n\nOur collection holds more than 2.4 million physical items and 700,000 digital materials.\n\nIn Fiscal Year 2024, BPL:\n\nOffered over 73,000 free programs, with over 816,000 attendees.\n\nCirculated materials 9.6 million times, including books and electronic media.\n\nProvided 790,000 computer sessions on 3,200 devices.\n\nLogged a total of 30,000 volunteer hours contributed by over 900 volunteers.\n\nWelcomed 5.98 million visits to our branches.\n\nIt is the mission of Brooklyn Public Library to ensure the preservation and transmission of society's knowledge, history and culture, and to provide the people of Brooklyn with free and open access to information for education, recreation and reference.\n\nBrooklyn Public Library will be a vital center of knowledge for all, accessible 24 hours a day, and will be a leader in traditional and innovative library services which reflect the diverse and dynamic spirit of the people of Brooklyn.\n\nWe unequivocally condemn all forms of violence against Black people, Indigenous people, and people of color (BIPOC). Loud and clear, we believe that Black lives matter.\n\nBrooklyn Public Library’s founding dates to an 1892 act of the state legislature “to establish and to maintain a public library and reading room” in the independent city of Brooklyn. Following the consolidation of Greater New York, the library system grew along with the borough it served.\n\nLibrary construction boomed in Brooklyn in the early 20th century thanks to a $1.6 million investment from industrialist Andrew Carnegie. His legacy is visible today in neighborhoods throughout the borough, as 18 of Brooklyn’s 21 original Carnegie libraries remain in service. These buildings are architectural gems, stately and ornate, many situated in the heart of residential areas.\n\nConstruction began on a grand Central Library in 1912, but the project was shelved for nearly three decades as a result of financial issues brought on by the First World War and the Great Depression. Central Library finally opened on Grand Army Plaza in 1941, becoming the system’s hub and by far its largest facility.\n\nLibrary service expanded in the middle of the twentieth century with the construction of branches to serve both new and underserved neighborhoods. Many of the new libraries were constructed during the administration of Mayor John Lindsay and are identifiable by their functional, no-frills design and open floorplans.\n\nToday Brooklyn Public Library is one of the nation’s largest library systems, with 61 locations serving a borough of 2.7 million people. The Library is one of New York City’s pre-eminent civic, cultural and educational institutions, with a collection of four million materials and annual attendance approaching nine million.\n\nOne of Brooklyn Public Library’s most important functions is to provide accessible and inspiring spaces open to all. BPL is now entering one of the largest periods of rebuilding in its history.\n\nLearn About BPL's Capital Projects",
@@ -2202,9 +2184,8 @@
    "source_url": "https://www.nyc.gov/site/cecm/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "economic-development-corporation-life-sciences-advisory-council": {
    "text": null,
@@ -2216,13 +2197,12 @@
    "note": "host_waf_blocked (skipped after 4 consecutive 403s from edc.nyc)"
   },
   "department-of-consumer-and-worker-protection": {
-   "text": null,
+   "text": "The NYC Department of Consumer and Worker Protection (DCWP) protects and enhances the daily economic lives of New Yorkers to create thriving communities.",
    "source_url": "https://www.nyc.gov/site/dca/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "new-york-city-school-support-services": {
    "text": null,
@@ -2257,22 +2237,20 @@
    "truncated": true
   },
   "new-york-city-tax-commission": {
-   "text": null,
-   "source_url": "https://www1.nyc.gov/site/taxcommission/index.page",
+   "text": "The Tax Commission is the City of New York's forum for independent administrative review of annual real property tax assessments set by the NYC Department of Finance. The Tax Commission is a separate agency independent of the Department of Finance.\n\nThe Tax Commission comprises a president and six Commissioners appointed by the Mayor, with advice and consent of the City Council, to staggered six-year terms. As the head of the agency, the President serves full-time; the six Commissioners serve part-time. Each member of the Commission must have at least three years of business experience in real estate or real estate law. The Commission must include at least one resident of each borough.\n\nIn accordance with New York State and local law, the Tax Commission reviews and determines annual applications for correction of assessment that the applicants claim are incorrectly assessed or improperly denied an exemption from real property tax.",
+   "source_url": "https://www.nyc.gov/site/taxcommission/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "department-of-small-business-services": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/sbs/index.page",
+   "text": "The NYC Department of Small Business Services (SBS) helps unlock economic potential and create economic security for all New Yorkers by connecting New Yorkers to good jobs, creating stronger businesses, and building thriving neighborhoods across the five boroughs.",
+   "source_url": "https://www.nyc.gov/site/sbs/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "greenbelt-conservancy": {
    "text": "The view from atop Moses’ Mountain in the Greenbelt\n\nThe Greenbelt\n\nStaten Island holds in its heart 2,800-acres of nature’s rugged beauty – the Greenbelt. Discover “ Forever Wild sites ” – mature forests, wetlands, meadows, wildlife and over 35-miles of marked hiking trails. Walk for a while to experience nature’s beauty while taking a break from the hustle and bustle of daily life.\n\nA Wild Place\n\nThe Greenbelt includes New York City’s largest remaining forest preserve, offering an oasis of peace, quiet, and solitude. It is also home to tidal and fresh water wetlands, oak and beech forests, open meadows, and rolling hills that offer visitors a glimpse into the natural and pastoral heritage of Staten Island. The Greenbelt is an extraordinary natural resource visited by over one million people annually.\n\nPlay and Exercise\n\nRecreational activities ranging from trail races to fitness classes and group hikes are offered for every age and fitness level. Golf, archery, baseball, hiking, tennis, soccer, birding and enchanting carousel rides are also available in the Greenbelt. Volunteer opportunities – outdoors as well as indoors – abound for people of all ages\n\nNew York City Parkland\n\nMost of the Greenbelt is New York City parkland featuring natural areas as well as traditional parks. LaTourette, Willowbrook and High Rock feature different environments and activities. Several privately-owned parcels of land, such as Pouch Boy Scout Camp, Richmond Country Country Club golf course and Moravian Cemetery, are within Greenbelt boundaries. Other parcels, such as Seaview Hospital and Home are designated City properties, yet not parkland.\n\nFacilities\n\nThe Greenbelt is home to the Greenbelt Nature and Recreation Centers. These state-of-the art public facilities serve visitors in myriad ways while showcasing Greenbelt scenery and fostering environmental education, park stewardship and a healthy lifestyle.\n\nTrails\n\nThe Greenbelt features over 35-miles of rugged trails as well as a two- mike long perimeter multi-use path. Interior, woodland trails are primarily rated easy to moderate, and serve hikers and runners (cycling is only permitted on the perimeter trail). The trail system traverses diverse ecosystems and offers visitors a refuge from the hustle and bustle of daily life.\n\nEnvironmental Education\n\nThe Greenbelt Environmental Education Department hosts programs for school and scout groups, senior citizens, families and the general public. Summer camp and mini-camp sessions are a warm weather tradition for legions of local children. New programs have been added to serve the home school community.\n\n“Into the Outdoors,” programs, workshops and special events, sponsored, in part, by Con Edison, take place throughout the year at the Nature Center and in our great outdoors\n\nExplore our website, calendar of events, trail map to acquaint yourself with the Greenbelt as you plan your visit. We look forward to seeing you soon and often in Staten Island’s “great outdoors!”\n\nPartnering with New York City Parks\n\nThe Greenbelt Conservancy works in partnership with the NYC Parks to support, promote and protect the Greenbelt.\n\nGreenbelt Conservancy: A Not-for-Profit Partner\n\nThe Greenbelt Conservancy is a 501 (c)(3) not-for profit organization overseen by the Greenbelt Conservancy Board of Directors, executive director and a professional staff.\n\nThe Conservancy raises funds for many purposes, including maintenance and operation of the Carousel for All Children; natural resource management, which includes trail maintenance, mapping; and the exhibits and operations at our Nature Center and environmental education programs for PreK-school age students during the school year and in summer camp. The Board of Directors is responsible for the wise management of its endowment, increasing funds and public participation, protection and management of Greenbelt lands and expanding public programs.\n\nThe Conservancy raises money to support\n\nEnvironmental Education Programs in High Rock Park and the Greenbelt Nature Center including summer camp, school visit programs\n\nNatural Resource Management including trail maintenance, mapping, forestry and wetland management, plant and wildlife monitoring, invasive plant management and the planting of native trees and shrubs\n\nGreenbelt Nature Center exhibits, operations and a wide array of environmental education programs\n\nCarousel for All Children maintenance and operation, The Carousel is located in the Greenbelt’s Willowbrook Park\n\nSpecial Community Events that encourage enjoyment of the Greenbelt including the High Rock Challenge 10k Adventure Race, Blue Jean Ball, Shakespeare in the Greenbelt, Annual Pumpkin Festival and many more.",
@@ -2284,12 +2262,11 @@
   },
   "three-quarter-housing-task-force": {
    "text": null,
-   "source_url": "https://www1.nyc.gov/content/tenantprotection/pages/tqh-task-force",
+   "source_url": "https://www.nyc.gov/content/tenantprotection/pages/tqh-task-force",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "american-museum-of-natural-history": {
    "text": "Skip to Page Content\n\nSkip to Navigation\n\nSkip to Navigation\n\nSkip to Search\n\nSkip to Footer\n\nOverview\n\nAdmissions and Ticketing\n\nHours\n\nTemporary Hall Closures\n\nMuseum Map\n\nAccessibility\n\nLanguages & Translations\n\nA Night at the Museum: The Overnight Experience\n\nField Trips\n\nAdult Group Visits\n\nDining\n\nTours\n\nTransportation\n\nShops\n\nDavis Family Butterfly Vivarium\n\nEncounters in the Milky Way\n\nGoal Zone\n\nImpact: The End of the Age of Dinosaurs\n\nInvisible Worlds: Immersive Experience\n\nApex Stegosaurus Fossil\n\nBlack in Natural History Museums\n\nExtinct and Endangered: Insects in Peril\n\nEyes on the Universe\n\nFor the Win: Objects of Sports Excellence\n\nFossils of the Flaming Cliffs\n\nOpulent Oceans\n\nShaping the Future Through Tradition\n\nThe Changing Museum\n\nWhat's in a Name?\n\nChildren & Family Programs\n\nTeen Programs\n\nHigher Education\n\nEducator Programs\n\nEvaluation, Research, & Policy\n\nMaster of Arts in Teaching\n\nOnline Courses for Educators\n\nUrban Advantage\n\nField Trips\n\nWorld Cup, World Cultures\n\nVideos\n\nNews & Blogs\n\nOLogy: The Science Website for Kids\n\nNew Approaches to Representing Culture\n\nScience Topics\n\nAstrophysics\n\nEarth and Planetary Sciences\n\nHerpetology\n\nIchthyology\n\nMammalogy\n\nOrnithology\n\nRichard Gilder Graduate School\n\nHayden Planetarium\n\nCenter for Biodiversity and Conservation\n\nInstitute for Comparative Genomics\n\nSouthwestern Research Station\n\nResearch Library\n\nDarwin Manuscripts Project\n\nMicroscopy and Imaging Facility\n\nScience Conservation\n\nComputational Sciences\n\nStaff Directory\n\nScientific Publications\n\nCalendar\n\nMembership\n\nRenew Now\n\nMembership FAQ\n\nJunior Council\n\nPatrons Circle\n\nCorporate Engagement\n\nDonate\n\nPlanned Giving\n\nRecognition Opportunities\n\nBenefit Events\n\nMain Shop\n\nToys\n\nClothing\n\nBooks\n\nHome Decor\n\nMy Account\n\nContact Us\n\nDelete My Information\n\nBoard of Trustees\n\nVolunteer\n\nCollections Policy and Procedures\n\nCultural Resources Office\n\nDiversity, Equity, and Inclusion at the American Museum of Natural History\n\nFinancial Statements\n\nGovernance Policy\n\nHuman Remains Stewardship\n\nMuseum Statement on Eugenics\n\nNotice of Non-Discrimination and Harassment and How to File a Complaint\n\nPress Center\n\nFebruary 2025 Update from the President\n\nAugust 2025 Update from the President\n\nJuly 2026 Update from the President\n\nJuly 2024 Update from the President\n\nAbout the Museum\n\nSince its founding in 1869, the Museum has advanced its global mission to discover, interpret, and disseminate information about human cultures, the natural world, and the universe through a wide-ranging program of scientific research, education, and exhibition.\n\nOur mission: To discover, interpret, and disseminate—through scientific research and education—knowledge about human cultures, the natural world, and the universe.\n\nThe American Museum of Natural History is located within Lenapehoking, the ancestral land of the Lenape. We acknowledge and honor the present-day Lenape for their ongoing, restorative relationship with their homeland and important contributions to the cultural life of the City of New York and the region.\n\nIn 2006, the Museum established the Richard Gilder Graduate School , which includes a Ph.D.-degree granting program in comparative biology.\n\nAccordingly, the Museum’s Charter was amended by the Board of Regents of the State of New York as follows:\n\n“to confer the degrees of Doctor of Philosophy (Ph.D.), and Master of Philosophy (M. Phil.) to duly qualified graduates completing registered curricula at the Graduate School of the American Museum of Natural History, and to award from the Graduate School the Honorary Degrees of Science (D.Sc.), Doctor of Laws (LL.D.), Doctor of Humane Letters (L.H.D.) and Master of Humane Letters (L.H.M.) to those selected by the Board of Trustees.”\n\nIn 2015, the Museum began granting a Master of Arts in Teaching degree, and its Charter was further amended by the Board of Regents of the State of New York as follows:\n\n“to confer the degree of Master of Arts in Teaching (M.A.T.) to duly qualified graduates completing registered curricula at the Graduate School of the American Museum of Natural History, and to change the name of the Graduate School to the “Richard Gilder Graduate School.”\n\n1869\n\nAlbert Smith Bickmore, one-time student of Harvard zoologist Louis Agassiz, is successful in his proposal to create a natural history museum in New York City, winning the support of William E. Dodge, Jr., Theodore Roosevelt, Sr., Joseph Choate, and J. Pierpont Morgan. The Governor of New York, John Thompson Hoffman, signs the Act of Incorporation officially creating the American Museum of Natural History on April 6. John David Wolfe becomes President of the Museum the same year.\n\n1871\n\nA series of exhibits of the Museum's collection goes on view for the first time in the Central Park Arsenal, the Museum's original home on the eastern side of Central Park.\n\n1872\n\nRobert L. Stuart becomes President of the Museum.\n\nThe Museum quickly outgrows the Arsenal and secures Manhattan Square, a",
@@ -2300,40 +2277,36 @@
    "truncated": true
   },
   "environmental-control-board": {
-   "text": null,
+   "text": "The OATH Hearings Division holds hearings on what are called Environmental Control Board, or ECB cases. These cases involve summonses that are issued by more than 25 different City enforcement agencies responsible for protecting the public's health and safety and ensuring it has a clean environment. OATH Hearing Officers' decisions on these summonses are final unless an appeal from the hearing decision is filed and accepted. Either side (the respondent or the City agency) can appeal. If an appeal has been accepted, the OATH Appeals Division reviews the arguments made on appeal, as well as the hearing record, to determine whether the hearing decision is supported by the law and by a preponderance of the evidence in the record. It then drafts a decision on the appeal and presents it to a monthly panel composed of three rotating members of the ECB. The panel reviews the draft decision and votes to adopt or modify it. If the panel members are unable to reach an agreement on a particular decision, the appeal is referred to the full ECB to discuss and vote on the outcome. Appeal decisions issued after review by a panel or the full ECB are final.",
    "source_url": "https://www.nyc.gov/site/oath/hearings/about-ecb.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "cultural-affairs-advisory-commission": {
    "text": null,
-   "source_url": "https://www1.nyc.gov/site/dcla/about/advisory-commission.page",
+   "source_url": "https://www.nyc.gov/site/dcla/about/advisory-commission.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "department-of-finance": {
-   "text": null,
+   "text": "The Department of Finance collects the revenues that make every city service possible.",
    "source_url": "https://www.nyc.gov/site/finance/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "new-york-city-taxi-and-limousine-commission": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/tlc/index.page",
+   "text": "The New York City Taxi and Limousine Commission (TLC), created in 1971, is the agency responsible for licensing and regulating New York City's Medallion (Yellow) taxi cabs, for-hire vehicles (community-based liveries, black cars and luxury limousines), commuter vans, and paratransit vehicles. The Commission's Board consists of nine members, eight of whom are unsalaried Commissioners. The salaried Chair/ Commissioner presides over regularly scheduled public commission meetings and is the head of the agency, which maintains a staff of approximately 600 TLC employees.\n\nOver 200,000 TLC licensees complete approximately 1,000,000 trips each day. To operate for hire, drivers must first undergo a background check, have a safe driving record, and complete 24 hours of driver training. TLC-licensed vehicles are inspected for safety and emissions at TLC's Woodside Inspection Facility.",
+   "source_url": "https://www.nyc.gov/site/tlc/about/about-tlc.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "audit-committee": {
    "text": null,
@@ -2344,13 +2317,12 @@
    "truncated": false
   },
   "mayor-s-committee-on-city-marshals": {
-   "text": null,
+   "text": "The Mayor's Committee on City Marshals is established by State law, Section 1601 of the New York City Civil Court Act. The Committee's four functions are to (1) establish and publish qualifying criteria for appointment to the office of City marshal, (2) recruit and receive names of candidates for that office, (3) determine which of the qualified candidates are best qualified to serve as City marshals, and (4) recommend to the Mayor up to three qualified persons for appointment to the office of City marshal upon the occurrence of a vacancy. Mayoral Executive Order No. 44, February 13, 1980. By law, the Committee's proceedings, records, and communications, including all applications submitted to it, are confidential and exempt from public disclosure.",
    "source_url": "https://www.nyc.gov/site/marshals/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "brooklyn-district-attorney-s-office": {
    "text": null,
@@ -2369,13 +2341,12 @@
    "truncated": false
   },
   "office-of-administrative-tax-appeals": {
-   "text": null,
+   "text": "The Office of Administrative Tax Appeals was established to bring together the agencies that provide fair, independent and efficient appeals of the taxes administered by the City of New York.",
    "source_url": "https://www.nyc.gov/site/oata/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "hiv-planning-council": {
    "text": "About the Council\n\nPlanning Council\n\nExecutive Committee\n\nConsumers Committee\n\nIntegration of Care Committee\n\nPriority Setting and Resource Allocation Committee\n\nNeeds Assessment Committee\n\nTri-County Steering Committee\n\nMayor’s Executive Order\n\nCouncil By-laws\n\nCouncil Grievance Procedures\n\nGrantee Grievance Procedures\n\nCouncil/Recipient Memorandum of Agreement\n\nContact the Council\n\nOur Impact\n\nPlanning Council Events\n\nCommunity Events\n\nMaps for Ryan White and other HIV Services\n\nNYC HealthMap\n\nHRSA Ryan White Data Warehouse\n\nTransAtlas by Callen-Lorde\n\nHIV Data, Reports & Resources\n\nConsumer Resources\n\nRecipient Resources\n\nNY HIV Planning Council\n\nAbout the Council\n\nPlanning Council\n\nExecutive Committee\n\nConsumers Committee\n\nIntegration of Care Committee\n\nPriority Setting and Resource Allocation Committee\n\nNeeds Assessment Committee\n\nTri-County Steering Committee\n\nMayor’s Executive Order\n\nCouncil By-laws\n\nCouncil Grievance Procedures\n\nGrantee Grievance Procedures\n\nCouncil/Recipient Memorandum of Agreement\n\nContact the Council\n\nOur Impact\n\nPlanning Council Events\n\nCommunity Events\n\nMaps for Ryan White and other HIV Services\n\nNYC HealthMap\n\nHRSA Ryan White Data Warehouse\n\nTransAtlas by Callen-Lorde\n\nHIV Data, Reports & Resources\n\nConsumer Resources\n\nRecipient Resources\n\nCaring for People Living with HIV\n\nIt is the mission of the HIV Health and Human Services Planning Council of New York to ensure that people living with HIV have access to and maintain appropriate, quality services across the continuum of care, resulting in the best possible health and quality of life.\n\nWho We Are\n\nHIV Health & Human Services Planning Council of New York\n\nThe Planning Council is a community group that has been appointed by the NYC Mayor, to plan the organization and delivery of HIV services funded by Part A of the Ryan White HIV/AIDS Treatment Extension Act. Each Council member is a caring, dedicated volunteer who has been carefully selected to reflect the diversity of our community. Members represent the general public, people living with HIV, funded service providers, and other health and social service organizations. Planning Council members work together to identify the care needs of people living with HIV. The Council then determines which services are of the highest priority, and how much funding should be committed to each service. Council members also evaluate the cost effectiveness and the quality of the services provided.\n\nThe Planning Council’s Executive Committee serves as the “board of directors” of the Council. Comprised of the Council leadership, including all committee chairs, the EC provides overall leadership and guidance, sets work plans and agendas for the Council, and oversees the work of the other Council committees.\n\nThe Tri-County Steering Committee is a committee of the Planning Council. The Steering Committee conducts all planning activities (needs assessment, service directives, priority setting and resource allocation) for the Tri-County region (Westchester, Rockland and Putnam Counties). The Committee is comprised of consumers, providers and community members from the Tri-County region.\n\nThe goal of the NYC DOHMH Bureau of HIV/AIDS is to control the HIV epidemic and minimize its impact on New Yorkers by preventing new HIV infections. Additionally, the department promotes HIV Testing, monitors trends in the HIV epidemic through surveillance for HIV/AIDS, allocates prevention resources within the DOHMH and the community to those populations at greatest need, and promotes access to medical care, treatment, and support of HIV infected persons.\n\nMeet The Council\n\nGovernmental Co-Chair\n\nCommunity Co-chair\n\nThis Is How We Do It\n\nIdentify Needs\n\nUsing data, testimony and analyses of the healthcare landscape, the Council identifies emerging needs and service gaps.\n\nDevelop Service Models\n\nBased on the assessment of needs and gaps in care, service models incorporate best practices and technological advancements are established.\n\nSet Priorities\n\nThe entire portfolio is ranked annually to determine funding allocations that are aligned with need and cost of delivering quality services.\n\nAdministrative Assessment\n\nDecide how best to divide Ryan White Part A funding to provide services for people living with HIV.\n\nApply to Become a Member Today\n\nAnnually appointed by the Mayor of the City of New York, our members are a diverse group of people living with HIV/AIDS, service providers, and government representatives working to make a difference in the lives of PLWHA in New York City and the Tri-County Region.\n\nClick here for the website of the NYC Department of Health and Mental Hygiene\n\nNYHIV.org Archives\n\nSitemap\n\nTerms of Use\n\nPrivacy Policy",
@@ -2386,13 +2357,12 @@
    "truncated": false
   },
   "conflicts-of-interest-board": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/coib/index.page",
+   "text": "The Conflicts of Interest Board is the independent New York City agency tasked with administering, enforcing, and interpreting the City’s Conflicts of Interest Law, Annual Disclosure Law, Lobbyist Gift Law, Affiliated Not-for-Profits Law, and Legal Defense Trusts Law. We hope you'll enjoy learning more about this agency, and government ethics in general, by exploring the tabs on the left and the other offerings on our site.\n\nThrough a combination of engaging training, confidential advice, and vigorous enforcement, the Board seeks to prevent ethics questions from becoming ethics problems for public servants. Ultimately, however, integrity in City government rests upon all of us, public servant and private citizen alike. Only when each of us plays their part will the public trust inherent in public service be ensured.",
+   "source_url": "https://www.nyc.gov/site/coib/about/about-coib.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "el-museo-del-barrio": {
    "text": null,
@@ -2403,22 +2373,20 @@
    "truncated": false
   },
   "mayor-s-office-for-international-affairs": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/international/index.page",
+   "text": "The New York City Mayor's Office for International Affairs fosters positive relations and encourages collaborations between the international community and New York City's agencies and local neighborhoods. The Office is focused on sharing New York City's policies and best practices globally, as well as responding to requests from foreign governments, the United Nations, and the U.S. Department of State. International Affairs also advises City agencies on diplomatic and consular matters and provides guidance to the diplomatic and consular community on City-related issues. The office also administers the City of New York/U.S. Department of State Diplomatic and Consular Parking Program.",
+   "source_url": "https://www.nyc.gov/site/international/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "department-of-environmental-protection": {
    "text": null,
    "source_url": "https://www.nyc.gov/site/dep/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "school-construction-authority": {
    "text": null,
@@ -2445,13 +2413,12 @@
    "truncated": true
   },
   "street-harassment-prevention-advisory-board": {
-   "text": null,
+   "text": "The Street Harassment Prevention Advisory Board was established by Local Law 46 of 2022. The Mayor's Office to End Domestic and Gender-Based Violence (ENDGBV) and the NYC Commission on Gender Equity (CGE) co-chair this advisory board. CGE sits within the Mayor's Office of Equity (MOE). The goals of the advisory board are to:\n\nstudy the occurrence of street harassment in New York City; identify people and communities most at risk of and most impacted by street harassment via a citywide survey; develop programming, training, and a resource guide to prevent and respond to street harassment; and promote public awareness of street harassment, including supportive services and resources for those who have experienced harassment.",
    "source_url": "https://www.nyc.gov/site/ocdv/programs/end-street-harassment.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "hudson-river-park-trust": {
    "text": "Homepage\n\nFew clouds\n\nSunrise / Sunset\n\n5:38 AM / 8:25 PM\n\nWind Conditions\n\n0 MPH / N\n\nHighlights\n\nUpcoming Events\n\nGuided Gallery Thursday, July 16 3:00PM–6:00PM Pier 57\n\nSunset Salsa Thursday, July 16 6:30PM Pier 76\n\nYoga Thursday, July 16 6:30PM Pier 64\n\nGuided Gallery Friday, July 17 3:00PM–6:00PM Pier 57\n\nPlan Your Adventure\n\nTribeca\n\nMeatpacking District\n\nGreenwich Village\n\nChelsea\n\nHell’s Kitchen\n\nClinton\n\nEspecially For Kids\n\nCatch a Hudson River Park Sunset\n\nDiscovery Tank\n\nSports & Play\n\nSign up for our newsletter\n\nFacebook\n\nInstagram",
@@ -2463,48 +2430,43 @@
   },
   "office-of-labor-relations": {
    "text": null,
-   "source_url": "https://www1.nyc.gov/site/olr/index.page",
+   "source_url": "https://www.nyc.gov/site/olr/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "archival-review-board": {
-   "text": null,
+   "text": "The Archival Review Board (ARB) can monitor the processing of City governments archival collections by an outside organization and review the processing of City archival records. The board shall render annually to the mayor a report reviewing the archival processing of any city papers during the year for which the report has been written. The ARB shall consist of five members; two of whom shall be appointed by the speaker, two of whom shall be appointed by the mayor, and one of whom shall be the Commissioner, who shall serve ex officio as chairperson of the board. At least one such appointment shall be a professional archivist and at least one other such appointment shall be a professional historian. All appointed members of the commission shall be residents of the city.",
    "source_url": "https://www.nyc.gov/site/records/about/archival-review-board.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "department-of-health-and-mental-hygiene": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/doh/index.page",
+   "text": "Welcome to the New York City Department of Health and Mental Hygiene.\n\nWith an annual budget of $2.5 billion and more than 7,000 employees throughout the five boroughs, we are one of the largest public health agencies in the world. We are also the nation's oldest municipal public health agency, with over two centuries of leadership in the field.\n\nEvery day, we protect and promote the health of more than 8 million New Yorkers by providing essential health services, promoting public health initiatives, preventing the spread of disease, and many other unseen efforts that keep our city safe and healthy.",
+   "source_url": "https://www.nyc.gov/site/doh/about/about-doh.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "new-york-city-transitional-finance-authority": {
-   "text": null,
+   "text": "The TFA is a public benefit corporation whose primary purpose is to finance a portion of New York City’s capital program. The New York State Legislature approved the law authorizing the creation of the NYC Transitional Finance Authority on March 5, 1997 (Chapter 16 of the Laws of 1997, the “Act”). The Act included governance by a Board of five directors consisting of the following officials of the City: the Director of Management & Budget (who also serves as Chairperson), the Commissioner of Finance, the Commissioner of Design & Construction, the Comptroller, and the Speaker of the City Council.",
    "source_url": "https://www.nyc.gov/site/transitionalfinance/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "department-of-cultural-affairs": {
-   "text": null,
+   "text": "The New York City Department of Cultural Affairs (DCLA) is the largest municipal funder of culture in the country and is committed to providing access to art and culture for all New Yorkers.",
    "source_url": "https://www.nyc.gov/site/dcla/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "brooklyn-academy-of-music": {
    "text": "About\n\nContact Us\n\nVenue Rentals\n\nCareers at BAM\n\nPress Info\n\nThe Shelby White & Leon Levy BAM Digital Archive\n\nBAM Coronavirus Updates\n\nLEADERSHIP\n\nTamara McCaw, President\n\nTamara McCaw, President\n\nTamara McCaw, President\n\nTamara McCaw, a seasoned executive leader, returns to BAM as President.\n\nAmy Cassello, Artistic Director\n\nAmy Cassello, Artistic Director\n\nA programming veteran with a background in arts administration, Amy Cassello joined BAM in 2012 as the associate producer for the Next Wave Festival and was officially named BAM's artistic director in June of 2024.\n\nAmy Cassello, Artistic Director\n\nA programming veteran with a background in arts administration, Cassello joined BAM in 2012.\n\nBoard of Trustees\n\nBoard of Trustees\n\nBAM’s Board of Trustees is a diverse mix of New York City’s corporate, civic, cultural, and educational leaders.\n\nBoard of Trustees\n\nBAM’s Board of Trustees is a diverse mix of New York City’s corporate, civic, cultural, and educational leaders.\n\nARCHIVES / SHOP\n\nWelcome to The Shelby White & Leon Levy BAM Digital Archive\n\nWelcome to The Shelby White & Leon Levy BAM Digital Archive\n\nA curated collection of highlights from BAM’s history, including Next Wave shows, DanceAfrica performances, and Artist Talks.\n\nWelcome to The Shelby White & Leon Levy BAM Digital Archive\n\nA curated collection of highlights from BAM’s history, including Next Wave shows, DanceAfrica performances, and Artist Talks.\n\nBAM Hamm Archives\n\nBAM Hamm Archives\n\nThe BAM Hamm Archives Center houses more than 150 years of BAM history and is a rich resource for research and education. The collection ranges from 19th century playbills to videos of defining artistic moments.\n\nBAM Hamm Archives\n\nThe BAM Hamm Archives is a rich resource documenting more than 150 years of BAM history.\n\nPurchasing BAM Merchandise\n\nPurchasing BAM Merchandise\n\nPurchasing BAM Merchandise\n\nDiscounted Ticketing\n\nSeniors at BAM\n\nSeniors at BAM\n\nSeniors at BAM\n\nVeterans at BAM\n\nVeterans at BAM\n\nBAM recognizes the contributions of US service members by offering discounted tickets to veterans and active duty.\n\nVeterans at BAM\n\nBAM offers discounted tickets to veterans and active duty members.\n\nOrganizational Transparency\n\nHouse and Ticket Policies\n\nPrivacy Policy\n\nBAM 990 Forms\n\n2022\n\n2021\n\n2020\n\n2019\n\n2018\n\n2017\n\n2016\n\nBAM Endowment Trust 990 Forms\n\n2023\n\n2022\n\n2021\n\n2020\n\n2019\n\n2018\n\n2017\n\n2016\n\nBAM Annual Reports\n\n2019\n\n2018\n\n2017\n\n2016\n\n2015\n\n2014\n\n2013\n\n2012\n\n2011\n\n2010\n\n2009\n\n2008\n\nBAM Audited Financial Statements\n\n2023\n\n2022\n\n2021\n\n2020\n\n2019\n\n2018\n\n2017\n\n2016\n\nBAM Endowment Trust Financial Statements\n\n2023\n\n2022\n\n2021\n\n2020\n\n2019\n\n2018\n\n2017\n\n2016",
@@ -2515,22 +2477,20 @@
    "truncated": false
   },
   "new-york-city-panel-on-climate-change": {
-   "text": null,
+   "text": "NYC's independent advisory body that synthesizes scientific information on climate change to inform City policy.\n\nThe New York City Panel on Climate Change (NPCC) started in 2009 and was codified in Local Law 42 of 2012 with a mandate to provide an authoritative and actionable source of scientific information on future climate change and its potential impacts.\n\nThe NPCC is an independent advisory body that regularly publishes assessment reports that synthesize several years of scientific research and analysis on climate change and advises City policymakers on local resiliency and adaptation strategies to protect against rising temperatures, increased flooding, and other hazards. Each NPCC assessment provides climate projections of record for New York City and covers other relevant, climate-related topics.",
    "source_url": "https://www.nyc.gov/content/climate/pages/reports-and-publications/new-york-city-panel-on-climate-change-npcc",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "mayor-s-office-of-minority-and-women-owned-business-enterprises": {
-   "text": null,
+   "text": "The Mayor's Office of Minority and Women-owned Business Enterprises (M/WBE) was created to address historic disparities in City contracting and provide minority and women entrepreneurs increased opportunities to do business with the City. The Office is responsible for developing policy, enhancing coordination among City agencies, and providing oversight and accountability of the City's M/WBE Program. It serves as a One-Stop-Shop for M/WBEs interested in doing business with the city and its agencies.",
    "source_url": "https://www.nyc.gov/assets/mwbe/",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "rent-guidelines-board": {
    "text": "About\n\nAbout the RGB\n\nThe NYC Rent Guidelines Board (RGB) is mandated to establish rent adjustments for the approximately one million dwelling units subject to the Rent Stabilization Law in New York City. The Board holds an annual series of public meetings and hearings to consider research from staff and testimony from tenants, owners, advocacy groups, elected officials, and industry experts.\n\nThe RGB staff is responsible for providing administrative support to the Board and prepares research regarding the economic condition of the stabilized residential real estate industry, including operating and maintenance costs, the cost of financing, housing supply, and cost of living indices. The RGB staff engages in year-round research efforts, publishes its reports for public use, other governmental agencies, and private organizations, and provides information to the public on housing-related questions. For information on the how the RGB annually determines the guidelines, see the Explanation of the Rent Guidelines Process section. For a comprehensive look at the RGB, read An Introduction to the NYC Rent Guidelines Board and the Rent Stabilization System which looks at the structure, function and history of the Board and its role in the rent stabilization system.\n\nEmail Updates\n\nSign up to receive periodic updates about upcoming meetings, hearings and votes via email from the RGB .\n\nBack to Top\n\nBoard and Staff\n\nThe RGB consists of nine members , all of whom are appointed by the Mayor, as well as a research and support staff of four employees.\n\nHistory: Rent Regulation and the RGB\n\nAn introduction to the New York City Rent Guidelines Board covers the structure, function and history of the Board and its role in the rent stabilization system.\n\nBack to Top\n\nContact the RGB\n\nHow to contact the RGB board and staff.\n\nRGB Accessibility Plan\n\nThe NYC Rent Guidelines Board is committed to ensuring accessibility . We are continually improving the user experience for everyone and applying the relevant accessibility standards.\n\nMemoranda of Understanding\n\nLocal Law 40 of 2011 requires agencies to post certain memoranda of understanding and similar agreements (“MOUs”) entered into among governmental agencies. The NYC Rent Guidelines Board has not identified any covered MOUs or similar agreements to date. Please check back for future updates.\n\nBack to Top",
@@ -2541,13 +2501,12 @@
    "truncated": false
   },
   "workforce-development-board": {
-   "text": null,
-   "source_url": "https://www1.nyc.gov/site/wkdev/workforce-board/about-the-board.page",
+   "text": "The New York City Workforce Development Board (the \"Board\") is a federally mandated body whose members are appointed by the Mayor. Several of the City's workforce development programs receive federal funding authorized by the Workforce Innovation and Opportunity Act (WIOA), landmark legislation that passed in 2014 that helps strengthen and improve the nation's public workforce system. With essential staffing support from NYC Talent, the Board is responsible for ensuring that investments of federal WIOA dollars in adult and youth workforce development services are strategic, fiscally sound, and effective. The Board is comprised of 27 members who represent private sector employers, labor unions, nonprofit organizations, and government agencies.",
+   "source_url": "https://www.nyc.gov/site/wkdev/workforce-board/about-the-board.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "catskill-watershed-corporation": {
    "text": "About CWC\n\nThe CWC was born out of the landmark 1997 New York City Watershed Memorandum of Agreement (MOA) between City, State, Federal, USEPA, environmental groups, the Coalition of Watershed Towns, and every Watershed municipality. The CWC is a not for profit Local Development Corporation which administers numerous environmental protection, economic development and education programs throughout the New York City Watershed West of the Hudson River.\n\nWith headquarters in Arkville, New York, CWC is comprised of 25 local staff and is governed by a 15 member Board of Directors, 12 of which are elected by the local watershed towns. Of the remaining three, one is a representative of the Governor, one is a representative of the environmental advocacy organizations (and lives in a watershed town) and one is a representative of the City of New York.\n\nThe CWC’s programs are intended to protect the quality of the water which sustains 9 million residents of New York City and its suburbs, while at the same time preserving and strengthening the rural communities within the five counties of the Catskill and Delaware Watershed.",
@@ -2558,13 +2517,12 @@
    "truncated": false
   },
   "office-of-the-chief-medical-examiner": {
-   "text": null,
-   "source_url": "https://www1.nyc.gov/site/ocme/index.page",
+   "text": "The New York City Office of Chief Medical Examiner (OCME) protects public health and serves impartial justice through forensic science and medicine. OCME provides answers in support of families, victims, and communities during times of profound need.",
+   "source_url": "https://www.nyc.gov/site/ocme/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "advisory-council-for-the-nyc-civil-court-housing-part": {
    "text": null,
@@ -2575,18 +2533,17 @@
    "truncated": false
   },
   "department-of-citywide-administrative-services": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/dcas/index.page",
+   "text": "The NYC Department of Citywide Administrative Services (DCAS) makes city government work for all New Yorkers. Our commitment to equity, effectiveness, and sustainability guides our work providing City agencies with the resources and support needed to succeed, including:\n\nRecruiting, hiring, and training City employees Managing 55 public buildings Acquiring, selling, and leasing City property Purchasing over $1 billion in goods and services for City agencies Overseeing the greenest municipal vehicle fleet in the country Leading the City’s efforts to reduce carbon emissions from government operations",
+   "source_url": "https://www.nyc.gov/site/dcas/about/who-we-are.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   }
  },
  "crawl_started_at": "2026-07-16T01:16:30+00:00",
  "user_agent": "ny-gov-web-registry crawler; https://github.com/BetaNYC/ny-gov-web-registry; noel@beta.nyc",
  "crawl_finished_at": "2026-07-16T01:40:46+00:00",
- "_recovery_merged_at": "2026-07-16T04:13:52+00:00",
+ "_recovery_merged_at": "2026-07-16T07:19:03+00:00",
  "_recovery_source": "extract_waf_descriptions.py (browser-pane, operator-authorized)"
 }

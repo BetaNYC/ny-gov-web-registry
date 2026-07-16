@@ -877,6 +877,350 @@
    "method": "browser-pane",
    "status": "ok",
    "truncated": false
+  },
+  "commission-on-gender-equity": {
+   "text": "CGE is a city agency created by Local Law 45 of 2020 and is a part of the NYC Mayor's Office of Equity & Racial Justice. CGE is leading the city's efforts to make sure every girl, woman, intersex, transgender and gender-nonconforming and gender-nonbinary person throughout the five boroughs is treated equally and feels safe. We are putting the full force of the municipal government, the city's largest employer, to work on behalf of this cause. CGE works collaboratively with city agencies on three focus areas: economic justice, health and reproductive justice, and safety.",
+   "source_url": "https://www.nyc.gov/content/genderequity/pages/",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-youth-and-community-development": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/dycd/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "office-of-the-administrative-justice-coordinator": {
+   "text": "The Office of the Administrative Justice Coordinator works to improve the professionalism, efficiency, transparency, and accountability of the City's administrative tribunals. The Office achieves its mandate by working with the tribunals to establish and implement Rules of Conduct for Administrative Law Judges; to improve the training and recruitment of Administrative Law Judges; and to enhance the public's understanding of, and access to, the administrative justice system.",
+   "source_url": "https://www.nyc.gov/site/ajc/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-probation": {
+   "text": "The New York City Department of Probation helps make our neighborhoods safer by supporting individuals on probation as they work toward a better future. We stay involved in the community and partner with others to give people the tools, guidance, and structure they need to succeed. By using proven methods and offering both support and accountability, we help people leave the justice system behind and build stronger lives for themselves and their communities.",
+   "source_url": "https://www.nyc.gov/site/probation/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-environmental-remediation": {
+   "text": "The New York City Mayor’s Office of Environmental Remediation (OER) is a team of scientists and engineers that design and operate programs to promote the cleanup and redevelopment of underutilized and contaminated land in NYC. Through the NYC Voluntary Cleanup Program, the nation’s only full service municipally-run land cleanup program, OER prepares vacant, underutilized properties for redevelopment.\n\nOver 1,100 properties have been remediated through OER’s programs, and in the process, over 620 acres of new developable land has been created.\n\nIn addition, OER has established the NYC Clean Soil Bank, a municipal clean soil exchange that recovers clean, native soil from deep excavations at construction sites and redirects it to the City’s Forbell Street stockpile, public and private NYC construction sites, and community and school gardens. Since its inception, the Clean Soil Bank has transferred over 850,000 tons of clean, native soil.\n\nOER also plays other important roles. Through the E-Designation Program, we ensure compliance with environmental standards before new buildings are erected on rezoned land. And OER provides resources to community-based organizations to support their efforts to plan the future of their neighborhoods.\n\nAt OER, we are proud to serve the residents of New York City, to work with you in the cleanup of vacant land, and make our city a safer place to live, work, and play.",
+   "source_url": "https://www.nyc.gov/site/oer/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "sheriff": {
+   "text": "The sheriff is an officer of the court whose main job is to serve and execute legal processes and mandates issued by state courts, the legal community, and the general public.",
+   "source_url": "https://www.nyc.gov/site/finance/sheriff-courts/sheriff.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-public-engagement-unit": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/mayorspeu/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-of-contract-services": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/mocs/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "office-of-the-inspector-general-for-the-nypd": {
+   "text": "DOI's Office of the Inspector General for the New York City Police Department (OIG-NYPD) is independent of the NYPD and charged with investigating, reviewing, studying, auditing and making recommendations relating to the operations, policies, programs and practices of the New York City Police Department (NYPD).",
+   "source_url": "https://www.nyc.gov/site/doi/oignypd/web/oignypd.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-the-public-realm": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/publicrealm/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-of-mass-engagement": {
+   "text": "The Office of Mass Engagement is bringing the people-powered movement that elected Mayor Mamdani to the work of governance.\n\nThrough trainings and grassroots campaigns, Organize NYC will help sustain momentum around the issues that matter most to working New Yorkers.\n\nOrganize NYC will build lasting power for working-class New Yorkers that outlives any one administration, because we know any government only works when it is accountable to those it serves.",
+   "source_url": "https://www.nyc.gov/content/organize/pages/",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "hudson-yards-infrastructure-corporation": {
+   "text": "The Hudson Yards Infrastructure Corporation (the \"Corporation\") is a local development corporation created in 2005 by the City of New York (the \"City\") under the Not-For-Profit Corporation Law of the State of New York. The Corporation was created to finance certain property acquisition and infrastructure work (the \"Project\"), including the extension of the No. 7 subway line, as part of the development of the Hudson Yards Financing District, the approximately 45 square block area generally bounded by Seventh and Eighth Avenues on the east, West 43rd Street on the north, Eleventh and Twelfth Avenues on the west, and West 29th and 30th Streets on the south. The Corporation's bonds are secured by revenues of the Corporation, including payments in lieu of taxes and payments in lieu of mortgage recording tax collected within the Hudson Yards Financing District and certain payments from the City, subject to annual appropriation. On May 30, 2017, the Corporation issued approximately $2.1 billion of refunding bonds which refinanced all of its initial $2 billion bond issue and a portion of its second bond issue under a new legal structure. This enabled the Corporation to transfer to the City in the future any excess revenues over and above amounts needed for debt service requirements.",
+   "source_url": "https://www.nyc.gov/site/hyic/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-community-hiring": {
+   "text": "The City of New York provides a wide range of services for New Yorkers – from designing parks and playgrounds, to providing health services and childcare, to repairing roads and bridges. To make this possible, the City contracts with vendors, which include businesses and nonprofits. These vendors provide billions of dollars' worth of services every year.\n\nCommunity Hiring is a new initiative that allows the City to set workforce goals for City vendors to provide employment and apprenticeship opportunities to low-income individuals and those living in low-income communities. Community Hiring will enable qualified job seekers to connect with opportunities and City vendors to access a pipeline of talent more easily. By embedding opportunity into City procurement, Community Hiring aims to strengthen the City's workforce, uplift communities, and drive more inclusive economic growth. To learn more, please see the Community Hiring FAQ.\n\nAbout the Office of Community Hiring (OCH)\n\nOCH's mission is to use the City's purchasing power to drive economic mobility by connecting City vendors with a pipeline of talent and creating pathways to careers for our community.\n\nOCH is part of the NYC Office of Talent and Workforce Development (NYC Talent). OCH is responsible for managing the rollout and implementation of Community Hiring, supporting City agencies and vendors, and reporting on Community Hiring goals. To design this new initiative, OCH worked closely with City agencies, City vendors, industry representatives, workforce development organizations, labor, and community partners. OCH is currently in the early stages of implementing Community Hiring goals on City procurements in partnership with City agencies. To learn more about what's next for Community Hiring, contact OCH.",
+   "source_url": "https://www.nyc.gov/site/communityhiring/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "business-integrity-commission": {
+   "text": "The mission of the Business Integrity Commission (BIC) is to protect New York City consumers through regulation of the “trade waste” (or commercial waste) industry and the City’s public wholesale markets (e.g., Fulton Fish Market, Hunts Point Produce Market, Hunts Point Meat Market, etc.).",
+   "source_url": "https://www.nyc.gov/site/bic/about/about-bic.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-county-public-administrator": {
+   "text": "The Public Administrator is an agency of the City of New York. Each borough of the City of New York has its own Public Administrator. The Public Administrator of the County of New York administers the estates of New York County residents who die without a will and no one else is eligible or willing to administer the estates.\n\nThe Public Administrator’s primary duties include collecting and distributing the assets of the deceased person, arranging appropriate funerals, and administering estates that would otherwise remain un-administered. The agency is primarily charged with protecting the assets of any estate it is administering.",
+   "source_url": "https://www.nyc.gov/site/nycountypa/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-environmental-coordination": {
+   "text": "Established by Section 192(e) of the New York City Charter, the Office assists City agencies in carrying out their environmental review responsibilities. In addition to being the repository for all City Environmental Quality Review (CEQR) documents, the Mayor's Office of Environmental Coordination (MOEC) serves as the City's liaison to state and federal agencies on environmental matters and advises the Mayor on matters of environmental policy. Executive Order 149 of 2011 further defines MOEC’s responsibilities to include implementation of the City’s green building law, including authorizing the Director to exercise the powers and duties of the Mayor granted by the law.\n\nMOEC’s mission is to be a resource for city agencies and private applicants by providing information and assistance in completing the environmental review process and to help the city to lead by example in applying state-of-the-art green building requirements.",
+   "source_url": "https://www.nyc.gov/site/oec/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-young-men-s-initiative": {
+   "text": "In August 2011, New York City Young Men’s Initiative (YMI) was created as a public-private partnership to address increasing disparities among black and Latino men between the ages of 16 and 24 in education, employment, health and justice. The YMI mission is to develop and champion policies, programs and partnerships that holistically support the success of young men of color throughout NYC. The budget and scope of YMI has expanded since its inception.\n\nYMI accomplishes its mission through broad policy recommendations, changes and agency reforms and by connecting the city’s young men of color to individuals, opportunities and organizations that improve the quality of their lives and lead them to a more successful future.",
+   "source_url": "https://www.nyc.gov/site/ymi/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-water-board": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/nycwaterboard/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-of-citywide-events-coordination-and-management": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/cecm/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "department-of-consumer-and-worker-protection": {
+   "text": "The NYC Department of Consumer and Worker Protection (DCWP) protects and enhances the daily economic lives of New Yorkers to create thriving communities.",
+   "source_url": "https://www.nyc.gov/site/dca/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-tax-commission": {
+   "text": "The Tax Commission is the City of New York's forum for independent administrative review of annual real property tax assessments set by the NYC Department of Finance. The Tax Commission is a separate agency independent of the Department of Finance.\n\nThe Tax Commission comprises a president and six Commissioners appointed by the Mayor, with advice and consent of the City Council, to staggered six-year terms. As the head of the agency, the President serves full-time; the six Commissioners serve part-time. Each member of the Commission must have at least three years of business experience in real estate or real estate law. The Commission must include at least one resident of each borough.\n\nIn accordance with New York State and local law, the Tax Commission reviews and determines annual applications for correction of assessment that the applicants claim are incorrectly assessed or improperly denied an exemption from real property tax.",
+   "source_url": "https://www.nyc.gov/site/taxcommission/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-small-business-services": {
+   "text": "The NYC Department of Small Business Services (SBS) helps unlock economic potential and create economic security for all New Yorkers by connecting New Yorkers to good jobs, creating stronger businesses, and building thriving neighborhoods across the five boroughs.",
+   "source_url": "https://www.nyc.gov/site/sbs/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "three-quarter-housing-task-force": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/content/tenantprotection/pages/tqh-task-force",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "environmental-control-board": {
+   "text": "The OATH Hearings Division holds hearings on what are called Environmental Control Board, or ECB cases. These cases involve summonses that are issued by more than 25 different City enforcement agencies responsible for protecting the public's health and safety and ensuring it has a clean environment. OATH Hearing Officers' decisions on these summonses are final unless an appeal from the hearing decision is filed and accepted. Either side (the respondent or the City agency) can appeal. If an appeal has been accepted, the OATH Appeals Division reviews the arguments made on appeal, as well as the hearing record, to determine whether the hearing decision is supported by the law and by a preponderance of the evidence in the record. It then drafts a decision on the appeal and presents it to a monthly panel composed of three rotating members of the ECB. The panel reviews the draft decision and votes to adopt or modify it. If the panel members are unable to reach an agreement on a particular decision, the appeal is referred to the full ECB to discuss and vote on the outcome. Appeal decisions issued after review by a panel or the full ECB are final.",
+   "source_url": "https://www.nyc.gov/site/oath/hearings/about-ecb.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "cultural-affairs-advisory-commission": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/dcla/about/advisory-commission.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "department-of-finance": {
+   "text": "The Department of Finance collects the revenues that make every city service possible.",
+   "source_url": "https://www.nyc.gov/site/finance/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-taxi-and-limousine-commission": {
+   "text": "The New York City Taxi and Limousine Commission (TLC), created in 1971, is the agency responsible for licensing and regulating New York City's Medallion (Yellow) taxi cabs, for-hire vehicles (community-based liveries, black cars and luxury limousines), commuter vans, and paratransit vehicles. The Commission's Board consists of nine members, eight of whom are unsalaried Commissioners. The salaried Chair/ Commissioner presides over regularly scheduled public commission meetings and is the head of the agency, which maintains a staff of approximately 600 TLC employees.\n\nOver 200,000 TLC licensees complete approximately 1,000,000 trips each day. To operate for hire, drivers must first undergo a background check, have a safe driving record, and complete 24 hours of driver training. TLC-licensed vehicles are inspected for safety and emissions at TLC's Woodside Inspection Facility.",
+   "source_url": "https://www.nyc.gov/site/tlc/about/about-tlc.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-committee-on-city-marshals": {
+   "text": "The Mayor's Committee on City Marshals is established by State law, Section 1601 of the New York City Civil Court Act. The Committee's four functions are to (1) establish and publish qualifying criteria for appointment to the office of City marshal, (2) recruit and receive names of candidates for that office, (3) determine which of the qualified candidates are best qualified to serve as City marshals, and (4) recommend to the Mayor up to three qualified persons for appointment to the office of City marshal upon the occurrence of a vacancy. Mayoral Executive Order No. 44, February 13, 1980. By law, the Committee's proceedings, records, and communications, including all applications submitted to it, are confidential and exempt from public disclosure.",
+   "source_url": "https://www.nyc.gov/site/marshals/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-administrative-tax-appeals": {
+   "text": "The Office of Administrative Tax Appeals was established to bring together the agencies that provide fair, independent and efficient appeals of the taxes administered by the City of New York.",
+   "source_url": "https://www.nyc.gov/site/oata/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "conflicts-of-interest-board": {
+   "text": "The Conflicts of Interest Board is the independent New York City agency tasked with administering, enforcing, and interpreting the City’s Conflicts of Interest Law, Annual Disclosure Law, Lobbyist Gift Law, Affiliated Not-for-Profits Law, and Legal Defense Trusts Law. We hope you'll enjoy learning more about this agency, and government ethics in general, by exploring the tabs on the left and the other offerings on our site.\n\nThrough a combination of engaging training, confidential advice, and vigorous enforcement, the Board seeks to prevent ethics questions from becoming ethics problems for public servants. Ultimately, however, integrity in City government rests upon all of us, public servant and private citizen alike. Only when each of us plays their part will the public trust inherent in public service be ensured.",
+   "source_url": "https://www.nyc.gov/site/coib/about/about-coib.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-for-international-affairs": {
+   "text": "The New York City Mayor's Office for International Affairs fosters positive relations and encourages collaborations between the international community and New York City's agencies and local neighborhoods. The Office is focused on sharing New York City's policies and best practices globally, as well as responding to requests from foreign governments, the United Nations, and the U.S. Department of State. International Affairs also advises City agencies on diplomatic and consular matters and provides guidance to the diplomatic and consular community on City-related issues. The office also administers the City of New York/U.S. Department of State Diplomatic and Consular Parking Program.",
+   "source_url": "https://www.nyc.gov/site/international/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-environmental-protection": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/dep/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "street-harassment-prevention-advisory-board": {
+   "text": "The Street Harassment Prevention Advisory Board was established by Local Law 46 of 2022. The Mayor's Office to End Domestic and Gender-Based Violence (ENDGBV) and the NYC Commission on Gender Equity (CGE) co-chair this advisory board. CGE sits within the Mayor's Office of Equity (MOE). The goals of the advisory board are to:\n\nstudy the occurrence of street harassment in New York City; identify people and communities most at risk of and most impacted by street harassment via a citywide survey; develop programming, training, and a resource guide to prevent and respond to street harassment; and promote public awareness of street harassment, including supportive services and resources for those who have experienced harassment.",
+   "source_url": "https://www.nyc.gov/site/ocdv/programs/end-street-harassment.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-labor-relations": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/olr/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "archival-review-board": {
+   "text": "The Archival Review Board (ARB) can monitor the processing of City governments archival collections by an outside organization and review the processing of City archival records. The board shall render annually to the mayor a report reviewing the archival processing of any city papers during the year for which the report has been written. The ARB shall consist of five members; two of whom shall be appointed by the speaker, two of whom shall be appointed by the mayor, and one of whom shall be the Commissioner, who shall serve ex officio as chairperson of the board. At least one such appointment shall be a professional archivist and at least one other such appointment shall be a professional historian. All appointed members of the commission shall be residents of the city.",
+   "source_url": "https://www.nyc.gov/site/records/about/archival-review-board.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-health-and-mental-hygiene": {
+   "text": "Welcome to the New York City Department of Health and Mental Hygiene.\n\nWith an annual budget of $2.5 billion and more than 7,000 employees throughout the five boroughs, we are one of the largest public health agencies in the world. We are also the nation's oldest municipal public health agency, with over two centuries of leadership in the field.\n\nEvery day, we protect and promote the health of more than 8 million New Yorkers by providing essential health services, promoting public health initiatives, preventing the spread of disease, and many other unseen efforts that keep our city safe and healthy.",
+   "source_url": "https://www.nyc.gov/site/doh/about/about-doh.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-transitional-finance-authority": {
+   "text": "The TFA is a public benefit corporation whose primary purpose is to finance a portion of New York City’s capital program. The New York State Legislature approved the law authorizing the creation of the NYC Transitional Finance Authority on March 5, 1997 (Chapter 16 of the Laws of 1997, the “Act”). The Act included governance by a Board of five directors consisting of the following officials of the City: the Director of Management & Budget (who also serves as Chairperson), the Commissioner of Finance, the Commissioner of Design & Construction, the Comptroller, and the Speaker of the City Council.",
+   "source_url": "https://www.nyc.gov/site/transitionalfinance/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-cultural-affairs": {
+   "text": "The New York City Department of Cultural Affairs (DCLA) is the largest municipal funder of culture in the country and is committed to providing access to art and culture for all New Yorkers.",
+   "source_url": "https://www.nyc.gov/site/dcla/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-panel-on-climate-change": {
+   "text": "NYC's independent advisory body that synthesizes scientific information on climate change to inform City policy.\n\nThe New York City Panel on Climate Change (NPCC) started in 2009 and was codified in Local Law 42 of 2012 with a mandate to provide an authoritative and actionable source of scientific information on future climate change and its potential impacts.\n\nThe NPCC is an independent advisory body that regularly publishes assessment reports that synthesize several years of scientific research and analysis on climate change and advises City policymakers on local resiliency and adaptation strategies to protect against rising temperatures, increased flooding, and other hazards. Each NPCC assessment provides climate projections of record for New York City and covers other relevant, climate-related topics.",
+   "source_url": "https://www.nyc.gov/content/climate/pages/reports-and-publications/new-york-city-panel-on-climate-change-npcc",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-minority-and-women-owned-business-enterprises": {
+   "text": "The Mayor's Office of Minority and Women-owned Business Enterprises (M/WBE) was created to address historic disparities in City contracting and provide minority and women entrepreneurs increased opportunities to do business with the City. The Office is responsible for developing policy, enhancing coordination among City agencies, and providing oversight and accountability of the City's M/WBE Program. It serves as a One-Stop-Shop for M/WBEs interested in doing business with the city and its agencies.",
+   "source_url": "https://www.nyc.gov/assets/mwbe/",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "workforce-development-board": {
+   "text": "The New York City Workforce Development Board (the \"Board\") is a federally mandated body whose members are appointed by the Mayor. Several of the City's workforce development programs receive federal funding authorized by the Workforce Innovation and Opportunity Act (WIOA), landmark legislation that passed in 2014 that helps strengthen and improve the nation's public workforce system. With essential staffing support from NYC Talent, the Board is responsible for ensuring that investments of federal WIOA dollars in adult and youth workforce development services are strategic, fiscally sound, and effective. The Board is comprised of 27 members who represent private sector employers, labor unions, nonprofit organizations, and government agencies.",
+   "source_url": "https://www.nyc.gov/site/wkdev/workforce-board/about-the-board.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-the-chief-medical-examiner": {
+   "text": "The New York City Office of Chief Medical Examiner (OCME) protects public health and serves impartial justice through forensic science and medicine. OCME provides answers in support of families, victims, and communities during times of profound need.",
+   "source_url": "https://www.nyc.gov/site/ocme/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-citywide-administrative-services": {
+   "text": "The NYC Department of Citywide Administrative Services (DCAS) makes city government work for all New Yorkers. Our commitment to equity, effectiveness, and sustainability guides our work providing City agencies with the resources and support needed to succeed, including:\n\nRecruiting, hiring, and training City employees Managing 55 public buildings Acquiring, selling, and leasing City property Purchasing over $1 billion in goods and services for City agencies Overseeing the greenest municipal vehicle fleet in the country Leading the City’s efforts to reduce carbon emissions from government operations",
+   "source_url": "https://www.nyc.gov/site/dcas/about/who-we-are.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   }
  }
 }
