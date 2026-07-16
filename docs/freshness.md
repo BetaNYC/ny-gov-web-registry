@@ -11,7 +11,7 @@ The registry is designed to **stay current**, not be a one-time dump (design doc
 | Wikidata NYC gov orgs (WDQS SPARQL) | `data/cache/wikidata_nyc_gov_orgs.json` | **2026-07-15** | 232 bindings → 109 QIDs (88 with `P856`) |
 | nyc-boundaries layer index (`BoundaryId` union + `layers`) | `data/cache/nyc-boundaries_layers_index.ts` | **2026-07-15** | 22 published layer ids |
 | About-page crawl (live agency sites) | *(no cache — `data/descriptions.json` is the output)* | **2026-07-15** | 285 targets crawled + 32 `no_url` |
-| WAF recovery (browser-pane, operator-authorized) | `data/cache/waf_captures_raw/` + `waf_capture_meta.json` (git-ignored) | **2026-07-16** | batches 1–2: 50 of 152 (41 `ok`, 9 `no_about_found`); 102 remaining |
+| WAF recovery (human-context browser, operator-authorized) | `data/cache/waf_captures_raw/` + `waf_capture_meta.json` (git-ignored) | **2026-07-16** | **COMPLETE — 152 of 152** (116 `ok`, 36 `no_about_found`). Batches 1–6 via the app's Browser pane; the final 43 (entities 110–152) via the operator's personal Chrome (`claude-in-chrome` MCP) after the pane's cookie jar 400'd |
 
 Cache files are git-ignored (`data/cache/`); only the built `data/registry.json` — plus the
 committed, derived `data/curation.json`, `data/greenbook_enrichment.json`,
@@ -210,6 +210,39 @@ The **description review queue** (`docs/description-review-queue.md`) is regener
 (preserves human-edited resolution notes; `--check` mode gates staleness). Raw captures and the meta
 manifest live in git-ignored `data/cache/`; `data/descriptions_recovery.json`, the merged
 `data/descriptions.json`, and the review queue are the committed artifacts.
+
+## About-page descriptions — WAF recovery COMPLETE (2026-07-16, final 43 via operator Chrome)
+
+Batches 3–6 (the app's Browser pane) carried recovery to **109 of 152** processed / **174 `ok`** on
+`main`, then halted at a hard blocker: after ~50 nyc.gov page loads the pane's persistent profile
+cookie jar caused nginx to return a domain-wide **`400 Request Header Or Cookie Too Large`**, and no
+reachable control could clear it (a preview stop/start does not reset the jar; JS cookie-deletion is
+safety-blocked, correctly; an idle drain bought only ~1–2 loads before the header re-crossed nginx's
+~8KB limit). The final 43 (entities 110–152) could not be finished in that context.
+
+**Browser-context switch (operator-authorized).** The final 43 were captured through the **operator's
+personal Chrome** via the `claude-in-chrome` MCP — a normally-managed cookie jar immune to the pane's
+accumulation. Noel explicitly authorized these specific nyc.gov URLs in his own browser (2026-07-16).
+Mechanics were **identical and unchanged**: read-only (navigate + `get_page_text` only, no clicks/JS),
+sequential, ~2s pacing, verbatim-or-nothing extraction, work confined to a dedicated MCP tab closed on
+completion. The extractor's `_strip_wrapper` handles both capture formats (the `Title:/URL:/---/…/Tab
+Context:` wrapper is the same shape), so no tooling changed. The recovery `method` label stays
+`browser-pane` (the extraction contract, not the specific browser).
+
+**Final coverage — WAF-152 fully disposed:** **116 recovered `ok`** (verbatim agency prose) +
+**36 `no_about_found`**; **0 remain `fetch_failed`**. Cumulative registry movement across all batches:
+**91 `ok` (phase-5 baseline) → 207 `ok`**; `fetch_failed` **173 → 21** (the 21 remaining are all
+**non-WAF** failures — different cause, never in the WAF-152 set). Global status reconciles at **317**:
+`ok` 207, `no_about_found` 48, `no_url` 32, `fetch_failed` 21, `extraction_empty` 7,
+`robots_disallowed` 2. Review queue: **57 rows**. Tests: **171 passed**, `ruff` clean (Python 3.14).
+
+**Government-site defects surfaced this final pass** (logged in `docs/site-anomalies.md`): NYC Water
+Board `about.page` is **Lorem ipsum** placeholder; TLC `about.page` serves a **stale 2018 driver
+newsletter** (real content at `about-tlc.page`); Office of the Public Realm site **fully 404s** (both
+`index.page` and `about.page`); the Three-Quarter Housing Task Force page **soft-404s**; DCAS
+`about/about.page` **renders only nav** (real content at `about/who-we-are.page`). Entity-mismatch and
+missing-about cases (DYCD, MOCS, DEP, OLR, CECM landing hubs; CAAC member-roster-only) were recorded
+`no_about_found`, never mis-attributed.
 
 ## Three-tier refresh
 1. **Auto (city):** re-sync from MODA (`sync_moda.py`) — MODA maintains its own QA pipeline; we track its record ids. Population landed 2026-07-15 (phase 1): 306 Active orgs merged with the 17-entity seed → 318 entities. **Phase 2 (2026-07-15):** the operator-confirmed EDC merge (`data/curation.json`) collapses the separately-minted "Economic Development Corporation" into seed `nycedc` → **317 entities** (5 seeds matched by name + 1 by curated identifier gained a `nyc_goid`; 300 minted new). Greenbook contact scaffolding then attaches to 27 exact-matched city entities (no change to the count).

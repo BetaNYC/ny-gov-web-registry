@@ -2373,22 +2373,20 @@
    "truncated": false
   },
   "mayor-s-office-for-international-affairs": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/international/index.page",
+   "text": "The New York City Mayor's Office for International Affairs fosters positive relations and encourages collaborations between the international community and New York City's agencies and local neighborhoods. The Office is focused on sharing New York City's policies and best practices globally, as well as responding to requests from foreign governments, the United Nations, and the U.S. Department of State. International Affairs also advises City agencies on diplomatic and consular matters and provides guidance to the diplomatic and consular community on City-related issues. The office also administers the City of New York/U.S. Department of State Diplomatic and Consular Parking Program.",
+   "source_url": "https://www.nyc.gov/site/international/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "department-of-environmental-protection": {
    "text": null,
    "source_url": "https://www.nyc.gov/site/dep/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "school-construction-authority": {
    "text": null,
@@ -2415,13 +2413,12 @@
    "truncated": true
   },
   "street-harassment-prevention-advisory-board": {
-   "text": null,
+   "text": "The Street Harassment Prevention Advisory Board was established by Local Law 46 of 2022. The Mayor's Office to End Domestic and Gender-Based Violence (ENDGBV) and the NYC Commission on Gender Equity (CGE) co-chair this advisory board. CGE sits within the Mayor's Office of Equity (MOE). The goals of the advisory board are to:\n\nstudy the occurrence of street harassment in New York City; identify people and communities most at risk of and most impacted by street harassment via a citywide survey; develop programming, training, and a resource guide to prevent and respond to street harassment; and promote public awareness of street harassment, including supportive services and resources for those who have experienced harassment.",
    "source_url": "https://www.nyc.gov/site/ocdv/programs/end-street-harassment.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "hudson-river-park-trust": {
    "text": "Homepage\n\nFew clouds\n\nSunrise / Sunset\n\n5:38 AM / 8:25 PM\n\nWind Conditions\n\n0 MPH / N\n\nHighlights\n\nUpcoming Events\n\nGuided Gallery Thursday, July 16 3:00PM–6:00PM Pier 57\n\nSunset Salsa Thursday, July 16 6:30PM Pier 76\n\nYoga Thursday, July 16 6:30PM Pier 64\n\nGuided Gallery Friday, July 17 3:00PM–6:00PM Pier 57\n\nPlan Your Adventure\n\nTribeca\n\nMeatpacking District\n\nGreenwich Village\n\nChelsea\n\nHell’s Kitchen\n\nClinton\n\nEspecially For Kids\n\nCatch a Hudson River Park Sunset\n\nDiscovery Tank\n\nSports & Play\n\nSign up for our newsletter\n\nFacebook\n\nInstagram",
@@ -2433,48 +2430,43 @@
   },
   "office-of-labor-relations": {
    "text": null,
-   "source_url": "https://www1.nyc.gov/site/olr/index.page",
+   "source_url": "https://www.nyc.gov/site/olr/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "archival-review-board": {
-   "text": null,
+   "text": "The Archival Review Board (ARB) can monitor the processing of City governments archival collections by an outside organization and review the processing of City archival records. The board shall render annually to the mayor a report reviewing the archival processing of any city papers during the year for which the report has been written. The ARB shall consist of five members; two of whom shall be appointed by the speaker, two of whom shall be appointed by the mayor, and one of whom shall be the Commissioner, who shall serve ex officio as chairperson of the board. At least one such appointment shall be a professional archivist and at least one other such appointment shall be a professional historian. All appointed members of the commission shall be residents of the city.",
    "source_url": "https://www.nyc.gov/site/records/about/archival-review-board.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "department-of-health-and-mental-hygiene": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/doh/index.page",
+   "text": "Welcome to the New York City Department of Health and Mental Hygiene.\n\nWith an annual budget of $2.5 billion and more than 7,000 employees throughout the five boroughs, we are one of the largest public health agencies in the world. We are also the nation's oldest municipal public health agency, with over two centuries of leadership in the field.\n\nEvery day, we protect and promote the health of more than 8 million New Yorkers by providing essential health services, promoting public health initiatives, preventing the spread of disease, and many other unseen efforts that keep our city safe and healthy.",
+   "source_url": "https://www.nyc.gov/site/doh/about/about-doh.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "new-york-city-transitional-finance-authority": {
-   "text": null,
+   "text": "The TFA is a public benefit corporation whose primary purpose is to finance a portion of New York City’s capital program. The New York State Legislature approved the law authorizing the creation of the NYC Transitional Finance Authority on March 5, 1997 (Chapter 16 of the Laws of 1997, the “Act”). The Act included governance by a Board of five directors consisting of the following officials of the City: the Director of Management & Budget (who also serves as Chairperson), the Commissioner of Finance, the Commissioner of Design & Construction, the Comptroller, and the Speaker of the City Council.",
    "source_url": "https://www.nyc.gov/site/transitionalfinance/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "department-of-cultural-affairs": {
-   "text": null,
+   "text": "The New York City Department of Cultural Affairs (DCLA) is the largest municipal funder of culture in the country and is committed to providing access to art and culture for all New Yorkers.",
    "source_url": "https://www.nyc.gov/site/dcla/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "brooklyn-academy-of-music": {
    "text": "About\n\nContact Us\n\nVenue Rentals\n\nCareers at BAM\n\nPress Info\n\nThe Shelby White & Leon Levy BAM Digital Archive\n\nBAM Coronavirus Updates\n\nLEADERSHIP\n\nTamara McCaw, President\n\nTamara McCaw, President\n\nTamara McCaw, President\n\nTamara McCaw, a seasoned executive leader, returns to BAM as President.\n\nAmy Cassello, Artistic Director\n\nAmy Cassello, Artistic Director\n\nA programming veteran with a background in arts administration, Amy Cassello joined BAM in 2012 as the associate producer for the Next Wave Festival and was officially named BAM's artistic director in June of 2024.\n\nAmy Cassello, Artistic Director\n\nA programming veteran with a background in arts administration, Cassello joined BAM in 2012.\n\nBoard of Trustees\n\nBoard of Trustees\n\nBAM’s Board of Trustees is a diverse mix of New York City’s corporate, civic, cultural, and educational leaders.\n\nBoard of Trustees\n\nBAM’s Board of Trustees is a diverse mix of New York City’s corporate, civic, cultural, and educational leaders.\n\nARCHIVES / SHOP\n\nWelcome to The Shelby White & Leon Levy BAM Digital Archive\n\nWelcome to The Shelby White & Leon Levy BAM Digital Archive\n\nA curated collection of highlights from BAM’s history, including Next Wave shows, DanceAfrica performances, and Artist Talks.\n\nWelcome to The Shelby White & Leon Levy BAM Digital Archive\n\nA curated collection of highlights from BAM’s history, including Next Wave shows, DanceAfrica performances, and Artist Talks.\n\nBAM Hamm Archives\n\nBAM Hamm Archives\n\nThe BAM Hamm Archives Center houses more than 150 years of BAM history and is a rich resource for research and education. The collection ranges from 19th century playbills to videos of defining artistic moments.\n\nBAM Hamm Archives\n\nThe BAM Hamm Archives is a rich resource documenting more than 150 years of BAM history.\n\nPurchasing BAM Merchandise\n\nPurchasing BAM Merchandise\n\nPurchasing BAM Merchandise\n\nDiscounted Ticketing\n\nSeniors at BAM\n\nSeniors at BAM\n\nSeniors at BAM\n\nVeterans at BAM\n\nVeterans at BAM\n\nBAM recognizes the contributions of US service members by offering discounted tickets to veterans and active duty.\n\nVeterans at BAM\n\nBAM offers discounted tickets to veterans and active duty members.\n\nOrganizational Transparency\n\nHouse and Ticket Policies\n\nPrivacy Policy\n\nBAM 990 Forms\n\n2022\n\n2021\n\n2020\n\n2019\n\n2018\n\n2017\n\n2016\n\nBAM Endowment Trust 990 Forms\n\n2023\n\n2022\n\n2021\n\n2020\n\n2019\n\n2018\n\n2017\n\n2016\n\nBAM Annual Reports\n\n2019\n\n2018\n\n2017\n\n2016\n\n2015\n\n2014\n\n2013\n\n2012\n\n2011\n\n2010\n\n2009\n\n2008\n\nBAM Audited Financial Statements\n\n2023\n\n2022\n\n2021\n\n2020\n\n2019\n\n2018\n\n2017\n\n2016\n\nBAM Endowment Trust Financial Statements\n\n2023\n\n2022\n\n2021\n\n2020\n\n2019\n\n2018\n\n2017\n\n2016",
@@ -2485,22 +2477,20 @@
    "truncated": false
   },
   "new-york-city-panel-on-climate-change": {
-   "text": null,
+   "text": "NYC's independent advisory body that synthesizes scientific information on climate change to inform City policy.\n\nThe New York City Panel on Climate Change (NPCC) started in 2009 and was codified in Local Law 42 of 2012 with a mandate to provide an authoritative and actionable source of scientific information on future climate change and its potential impacts.\n\nThe NPCC is an independent advisory body that regularly publishes assessment reports that synthesize several years of scientific research and analysis on climate change and advises City policymakers on local resiliency and adaptation strategies to protect against rising temperatures, increased flooding, and other hazards. Each NPCC assessment provides climate projections of record for New York City and covers other relevant, climate-related topics.",
    "source_url": "https://www.nyc.gov/content/climate/pages/reports-and-publications/new-york-city-panel-on-climate-change-npcc",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "mayor-s-office-of-minority-and-women-owned-business-enterprises": {
-   "text": null,
+   "text": "The Mayor's Office of Minority and Women-owned Business Enterprises (M/WBE) was created to address historic disparities in City contracting and provide minority and women entrepreneurs increased opportunities to do business with the City. The Office is responsible for developing policy, enhancing coordination among City agencies, and providing oversight and accountability of the City's M/WBE Program. It serves as a One-Stop-Shop for M/WBEs interested in doing business with the city and its agencies.",
    "source_url": "https://www.nyc.gov/assets/mwbe/",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "rent-guidelines-board": {
    "text": "About\n\nAbout the RGB\n\nThe NYC Rent Guidelines Board (RGB) is mandated to establish rent adjustments for the approximately one million dwelling units subject to the Rent Stabilization Law in New York City. The Board holds an annual series of public meetings and hearings to consider research from staff and testimony from tenants, owners, advocacy groups, elected officials, and industry experts.\n\nThe RGB staff is responsible for providing administrative support to the Board and prepares research regarding the economic condition of the stabilized residential real estate industry, including operating and maintenance costs, the cost of financing, housing supply, and cost of living indices. The RGB staff engages in year-round research efforts, publishes its reports for public use, other governmental agencies, and private organizations, and provides information to the public on housing-related questions. For information on the how the RGB annually determines the guidelines, see the Explanation of the Rent Guidelines Process section. For a comprehensive look at the RGB, read An Introduction to the NYC Rent Guidelines Board and the Rent Stabilization System which looks at the structure, function and history of the Board and its role in the rent stabilization system.\n\nEmail Updates\n\nSign up to receive periodic updates about upcoming meetings, hearings and votes via email from the RGB .\n\nBack to Top\n\nBoard and Staff\n\nThe RGB consists of nine members , all of whom are appointed by the Mayor, as well as a research and support staff of four employees.\n\nHistory: Rent Regulation and the RGB\n\nAn introduction to the New York City Rent Guidelines Board covers the structure, function and history of the Board and its role in the rent stabilization system.\n\nBack to Top\n\nContact the RGB\n\nHow to contact the RGB board and staff.\n\nRGB Accessibility Plan\n\nThe NYC Rent Guidelines Board is committed to ensuring accessibility . We are continually improving the user experience for everyone and applying the relevant accessibility standards.\n\nMemoranda of Understanding\n\nLocal Law 40 of 2011 requires agencies to post certain memoranda of understanding and similar agreements (“MOUs”) entered into among governmental agencies. The NYC Rent Guidelines Board has not identified any covered MOUs or similar agreements to date. Please check back for future updates.\n\nBack to Top",
@@ -2511,13 +2501,12 @@
    "truncated": false
   },
   "workforce-development-board": {
-   "text": null,
-   "source_url": "https://www1.nyc.gov/site/wkdev/workforce-board/about-the-board.page",
+   "text": "The New York City Workforce Development Board (the \"Board\") is a federally mandated body whose members are appointed by the Mayor. Several of the City's workforce development programs receive federal funding authorized by the Workforce Innovation and Opportunity Act (WIOA), landmark legislation that passed in 2014 that helps strengthen and improve the nation's public workforce system. With essential staffing support from NYC Talent, the Board is responsible for ensuring that investments of federal WIOA dollars in adult and youth workforce development services are strategic, fiscally sound, and effective. The Board is comprised of 27 members who represent private sector employers, labor unions, nonprofit organizations, and government agencies.",
+   "source_url": "https://www.nyc.gov/site/wkdev/workforce-board/about-the-board.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "catskill-watershed-corporation": {
    "text": "About CWC\n\nThe CWC was born out of the landmark 1997 New York City Watershed Memorandum of Agreement (MOA) between City, State, Federal, USEPA, environmental groups, the Coalition of Watershed Towns, and every Watershed municipality. The CWC is a not for profit Local Development Corporation which administers numerous environmental protection, economic development and education programs throughout the New York City Watershed West of the Hudson River.\n\nWith headquarters in Arkville, New York, CWC is comprised of 25 local staff and is governed by a 15 member Board of Directors, 12 of which are elected by the local watershed towns. Of the remaining three, one is a representative of the Governor, one is a representative of the environmental advocacy organizations (and lives in a watershed town) and one is a representative of the City of New York.\n\nThe CWC’s programs are intended to protect the quality of the water which sustains 9 million residents of New York City and its suburbs, while at the same time preserving and strengthening the rural communities within the five counties of the Catskill and Delaware Watershed.",
@@ -2528,13 +2517,12 @@
    "truncated": false
   },
   "office-of-the-chief-medical-examiner": {
-   "text": null,
-   "source_url": "https://www1.nyc.gov/site/ocme/index.page",
+   "text": "The New York City Office of Chief Medical Examiner (OCME) protects public health and serves impartial justice through forensic science and medicine. OCME provides answers in support of families, victims, and communities during times of profound need.",
+   "source_url": "https://www.nyc.gov/site/ocme/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "advisory-council-for-the-nyc-civil-court-housing-part": {
    "text": null,
@@ -2545,18 +2533,17 @@
    "truncated": false
   },
   "department-of-citywide-administrative-services": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/dcas/index.page",
+   "text": "The NYC Department of Citywide Administrative Services (DCAS) makes city government work for all New Yorkers. Our commitment to equity, effectiveness, and sustainability guides our work providing City agencies with the resources and support needed to succeed, including:\n\nRecruiting, hiring, and training City employees Managing 55 public buildings Acquiring, selling, and leasing City property Purchasing over $1 billion in goods and services for City agencies Overseeing the greenest municipal vehicle fleet in the country Leading the City’s efforts to reduce carbon emissions from government operations",
+   "source_url": "https://www.nyc.gov/site/dcas/about/who-we-are.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   }
  },
  "crawl_started_at": "2026-07-16T01:16:30+00:00",
  "user_agent": "ny-gov-web-registry crawler; https://github.com/BetaNYC/ny-gov-web-registry; noel@beta.nyc",
  "crawl_finished_at": "2026-07-16T01:40:46+00:00",
- "_recovery_merged_at": "2026-07-16T07:12:58+00:00",
+ "_recovery_merged_at": "2026-07-16T07:19:03+00:00",
  "_recovery_source": "extract_waf_descriptions.py (browser-pane, operator-authorized)"
 }
