@@ -1,0 +1,207 @@
+{
+ "_generated_from": "extract_waf_descriptions.py",
+ "_note": "Browser-pane recovery of WAF-blocked www.nyc.gov / www1.nyc.gov agencies (operator-authorized, Noel 2026-07-15). Verbatim agency prose; never generated.",
+ "method": "browser-pane",
+ "descriptions": {
+  "nycha": {
+   "text": "The New York City Housing Authority (NYCHA), the largest public housing authority in North America, was created in 1934 to provide decent, affordable housing for low- and moderate-income New Yorkers. NYCHA is home to 1 in 16* New Yorkers, providing affordable housing to 511,384 authorized residents through public housing and Permanent Affordability Commitment Together (PACT) programs as well as Section 8 housing. NYCHA has 177,565 apartments in 2,410 buildings across 335 conventional public housing and PACT developments. In addition, NYCHA connects residents to critical programs and services from external and internal partners, with a focus on economic opportunity, youth, seniors, and social services. With a housing stock that spans all five boroughs, NYCHA is a city within a city. View NYCHA’s Fact Sheet (PDF).\n\n*As per July 2023 U.S. Census Population Estimate",
+   "source_url": "https://www.nyc.gov/site/nycha/about/about-nycha.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "oti": {
+   "text": "Our mission is to deliver user-centered technology solutions that simplify access to City services and drive innovation.",
+   "source_url": "https://www.nyc.gov/content/oti/pages/",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-department-of-sanitation": {
+   "text": "The NYC Department of Sanitation (DSNY) keeps New York City clean, safe, and healthy by collecting, recycling, and disposing of waste, cleaning streets, attacking the scourge of illegal dumping, and clearing snow and ice. DSNY collects 24 million pounds of trash, recycling, and compostable material every day.\n\nWe operate 59 district garages and manage a fleet of more than 2,000 rear-loading collection trucks, 450 mechanical brooms, 705 salt spreaders, and several dozen specialized machines to clean and plow bike lanes.\n\nDSNY is aggressively cleaning more parts of the City than ever before, including over 1,000 long-ignored areas spread across every neighborhood. With the highest wintertime uniformed headcount in 20 years, we are more equipped than ever to remove snow and ice from the approximately 19,000 lane-miles of city streets.",
+   "source_url": "https://www.nyc.gov/site/dsny/about/about-dsny.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-housing-recovery-operations": {
+   "text": "The Mayor’s Office of Housing Recovery Operations (HRO) supports New Yorkers when disasters disrupt their homes and communities. Building on expertise developed responding to Hurricane Sandy and Hurricane Ida, as well as insights learned from providing housing and supportive services during the COVID-19 crisis and the emergency sheltering of asylum seekers, HRO partners across city government to help residents recover, remain in their communities, and return to safe, permanent, and resilient housing.\n\nAbout HRO\n\nThe Mayor’s Office of Housing Recovery Operations (HRO) serves as New York City’s lead housing recovery office, helping New Yorkers prepare for and recover from disasters that impact their housing. This work includes large-scale natural disasters, such as hurricanes, as well as more localized emergencies, including heavy rainfall events and fires.\n\nHRO was created by Executive Order 175, dated November 13, 2012 (as amended by Executive Order 459, dated December 20, 2013), to assist homeowners, landlords, renters, and tenants affected by Hurricane Sandy within the five boroughs of New York City.\n\nHRO initially administered the Rapid Repairs program, a first-of-its-kind emergency shelter-in-place initiative that provided essential repairs to thousands of homeowners left without heat, power, or hot water in the aftermath of the storm. Developed in collaboration with and funded by the Federal Emergency Management Agency (FEMA), Rapid Repairs enabled residents to safely remain in their homes during the immediate recovery period.\n\nBuilding on this work, HRO subsequently launched the Build It Back Program, funded through Community Development Block Grant–Disaster Recovery (CDBG-DR) allocations from the U.S. Department of Housing and Urban Development (HUD). The program offered multiple pathways of assistance, including rehabilitation or reconstruction of damaged properties, reimbursement for eligible repairs already completed, and acquisition of severely damaged homes.\n\nOn November 22, 2021, pursuant to Executive Order 87, HRO's mission was expanded to coordinate or assist in the coordination of City operations related to housing issues for City residents impacted by major disasters, including but not limited to those related to extreme weather or disease.\n\nAcross all of our work, our goal is to enable residents to return to safe, resilient homes. Prioritizing this approach rather than relocating people to costly temporary housing in hotels or shelters supports long-term affordability, promotes neighborhood-scale economic recovery, and demonstrates that government can work effectively for New Yorkers.",
+   "source_url": "https://www.nyc.gov/site/housingrecovery/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "fire-department-of-the-city-of-new-york": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/fdny/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "workforce-development-council": {
+   "text": "The New York City Workforce Development Council (The \"Council\") is an advisory group comprised of leaders from businesses, educational institutions, non-profit organizations, and philanthropy. The Council establishes a centralized opportunity for communication and collaboration to create and implement public-private talent and workforce development strategies in New York City. The Council provides the City of New York and the New York City Workforce Development Board with recommendations about priorities, strategies, and budgeting related to talent and workforce development.\n\nRob Speyer, CEO of Tishman Speyer, serves as the inaugural Chair of the Council.",
+   "source_url": "https://www.nyc.gov/site/wkdev/workforce-board/about-the-council.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "richmond-county-public-administrator": {
+   "text": "First and foremost, the public administrator is a fiduciary. According to Black’s Law Dictionary, a fiduciary is a “person or institution who manages money or property for another and who must exercise a standard of care in such management activity imposed by law . . . .  The status of being a fiduciary gives rise to certain legal incidents and obligations, including the prohibition against investing the money or property in investments which are speculative or otherwise imprudent.”\n\nIn New York, the public administrator is a public official provided for by statute (New York law). The person for whom the public administrator manages money or property has died, and there is no one else available to administer the decedent’s estate, that is, the decedent left no will, and there is no qualified person to administer the decedent’s estate. One is said to administer the estate of a decedent when he or she manages, or takes charge of, the assets and liabilities of the deceased.\n\nWhat are the duties of a Public Administrator? The Public Administrator's duties include protecting the decedent’s property from waste, loss or theft; making appropriate burial arrangements when no close relative is available to make the decisions; conducting thorough investigations to discover all assets; liquidating assets at estate sales or distributing assets to heirs; paying the decedent’s bills and taxes; and locating persons entitled to inherit from the estate and ensuring that the legal distributees receive their inheritance.",
+   "source_url": "https://www.nyc.gov/site/rcpa/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "pay-equity-cabinet": {
+   "text": "The cabinet was established to create a roadmap to achieve pay equity and to address occupational segregation within the municipal workforce. CGE and the Department of Citywide Administrative Services co-chair the cabinet, which includes representatives from several different city agencies and offices.",
+   "source_url": "https://www.nyc.gov/content/genderequity/pages/economic-mobility-opportunity",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mwbe-advisory-board": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/assets/mwbe/?page=mwbe-advisory-council",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "sales-tax-asset-receivable-corporation": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/starcorp/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "city-planning-commission": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/content/planning/pages/commission",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "new-york-city-department-of-transportation": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/html/dot/html/home/home.shtml",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-of-operations": {
+   "text": "The Mayor’s Office of Operations (Operations) was created in 1977 to plan, coordinate, and direct governmental operations while holding City agencies and offices accountable for delivering core services. Operations has grown into a project and performance management engine using research, data, and customer service as drivers of good government. Operations is responsible for coordinating multiagency signature initiatives and helping City Hall make informed policy decisions and strategic, targeted investments.",
+   "source_url": "https://www.nyc.gov/site/operations/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "human-resources-administration": {
+   "text": "The New York City Department of Social Services (DSS) is comprised of the administrative units of the NYC Human Resources Administration (HRA) and the Department of Homeless Services (DHS). Through integrated management for HRA and DHS, client services can be provided more seamlessly and effectively. The City leverages shared services functions across agencies, which results in better day‐to‐day management and building an integrated mission across agencies.\n\nAbout the Human Resources Administration\n\nThe Human Resources Administration (HRA) is dedicated to fighting poverty and income inequality by providing New Yorkers in need with essential benefits such as Food Assistance and Emergency Rental Assistance. As the largest local social services agency in the country, HRA helps more than three million New Yorkers annually through the administration of more than 15 major public assistance programs.",
+   "source_url": "https://www.nyc.gov/site/hra/about/about-hra.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-records-and-information-services": {
+   "text": "Established in 1977, the Department of Records and Information Services (DORIS) preserves and provides public access to historical and contemporary records and information about New York City government. We operate the Municipal Archives, the Municipal Library, and the Records Center.",
+   "source_url": "https://www.nyc.gov/site/records/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "community-action-board-at-the-nyc-department-of-youth-and-community-development": {
+   "text": "The Community Action Board (CAB) is a Citywide body that oversees community action initiatives under the federal Community Services Block Grant (CSBG). The CAB is comprised of 22 residents of low-income communities, 15 elected public officials, and eight representatives from the private sector. CAB members participate in the development of program priorities and advise in the allocation of CSBG funds.",
+   "source_url": "https://www1.nyc.gov/site/dycd/involved/boards-and-councils/community-action-board.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-to-combat-antisemitism": {
+   "text": "The Mayor’s Office to Combat Antisemitism (MOCA) is tasked with identifying and developing efforts to combat antisemitism and anti-Jewish hate crimes, support victims of antisemitism, and celebrate Jewish culture and traditions using the resources of the City of New York.\n\nMOCA liaises with an Interagency Task Force to Combat Antisemitism, composed of representatives of the Office for the Prevention of Hate Crimes, New York City Police Department, New York City Commission on Human Rights, and other City agencies to fulfill its mission and deliver for the City’s more than one million Jewish New Yorkers.\n\nAdditionally, MOCA coordinates non-law enforcement responses to incidents of antisemitism on behalf of the Office of the Mayor, and serves as a liaison with the Jewish community to address issues related to services for victims of hate crimes and bias incidents motivated by antisemitism, and security for vulnerable populations and institutions.\n\nThe Mayor’s Office to Combat Antisemitism is led by Phylisa Wisdom.",
+   "source_url": "https://www.nyc.gov/main/combat-antisemitism",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "landmarks-preservation-commission": {
+   "text": "The Landmarks Preservation Commission (LPC) is the largest municipal preservation agency in the nation. It is responsible for protecting New York City's architecturally, historically, and culturally significant buildings and sites by granting them landmark or historic district status, and regulating them after designation.\n\nThe agency is comprised of a panel of 11 commissioners who are appointed by the Mayor and supported by a staff of approximately 80 preservationists, researchers, architects, historians, attorneys, archaeologists, and administrative employees.\n\nThere are more than 38,000 landmark properties in New York City, most of which are located in 157 historic districts and historic district extensions in all five boroughs. The total number of protected sites also includes 1,470 individual landmarks, 125 interior landmarks, and 12 scenic landmarks.\n\nHistory of LPC & the Landmarks Law\n\nThe Landmarks Preservation Commission is a charter-mandated New York City commission. The Commission was created in 1965 through groundbreaking legislation signed by the late Mayor Robert F. Wagner in response to the losses of historically significant buildings in New York City, most notably, Pennsylvania Station.",
+   "source_url": "https://www.nyc.gov/site/lpc/about/about-lpc.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "financial-information-services-agency": {
+   "text": "The Office of Payroll Administration (OPA) was established by Executive Order No. 77 on June 29, 1984.\n\nOPA was created to administer the functions related to payroll administration previously performed separately by the Department of Finance and the Office of the Comptroller. The creation of OPA centralized payroll functions and ensured uniform payroll procedures for the City of New York.\n\nSince 2015, OPA has been the payroll operations division of FISA-OPA.",
+   "source_url": "https://www.nyc.gov/site/opa/about/opa-history.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-administrative-trials-and-hearings": {
+   "text": "The Office of Administrative Trials and Hearings (OATH) is the City’s central, independent administrative law court. OATH has three divisions that are responsible for adjudicating City matters: the OATH Trials Division, the OATH Hearings Division and the OATH Special Education Hearings Division.\n\nThe OATH Trials Division adjudicates a wide range of issues that can be referred by any City agency, board or commission. Its caseload includes employee discipline and disability hearings for civil servants, Conflicts of Interest Board cases, proceedings related to the retention of seized vehicles by the police, City-issued license and regulatory enforcement, real estate, zoning and loft law violations, City contract disputes and human rights violations under the City Human Rights Law. OATH Trials are conducted by Administrative Law Judges (ALJs) who are appointed to five-year terms.\n\nIn the OATH Hearings Division, hearings are conducted on summonses issued by more than 25 different City enforcement agencies for alleged violations of law or City rules. These summonses are issued by the Departments of Buildings, Sanitation, Environmental Protection, Consumer and Worker Protection, Health and Mental Hygiene and the Taxi and Limousine Commission, among others. OATH hearings are conducted by Hearing Officers. The OATH Help Center assists self-represented litigants to understand the law, the hearing process and other processes to correctly respond and resolve summonses.\n\nThe OATH Special Education Hearings Division adjudicates disputes about special education services provided to New York City children.\n\nOATH also houses the Center for Creative Conflict Resolution, which provides mediation and restorative justice support to City government agencies and the public, and the Judicial Institute, a resource center that provides training, continuing education, research and support services for the various administrative law judges and tribunals throughout New York City.",
+   "source_url": "https://www.nyc.gov/site/oath/about/about-oath.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-municipal-water-finance-authority": {
+   "text": "The New York City Municipal Water Finance Authority (“NYW”) is a public benefit corporation created in 1984 pursuant to the New York City Municipal Water Finance Authority Act. NYW’s purpose is to finance the capital needs of the water and sewer system of the City of New York (the “System”) which is operated by the New York City Department of Environmental Protection.",
+   "source_url": "https://www.nyc.gov/site/nyw/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "tobacco-settlement-asset-securitization-corporation": {
+   "text": "TSASC is an instrumentality of, but separate and apart from, The City of New York (the \"City\"). TSASC has purchased all of the City's right, title and interest under (i) the Master Settlement Agreement (the \"MSA\") that was entered into by participating tobacco product manufacturers, 46 states and six other U.S. jurisdictions in November 1998 in settlement of certain smoking-related litigation and (ii) the Consent Decree and Final Judgment related thereto, including the City's right to receive certain annual payments to be made by the participating manufacturers under the MSA.\n\nTSASC does not have the power to pledge the credit, the revenues or the taxing power of the State or the City, and neither the credit, the revenues nor the taxing power of the State or the City is pledged to the payment of any of the Bonds. TSASC has no taxing power.\n\nTSASC is a special purpose, bankruptcy-remote local development corporation incorporated under the provisions of Section 1411 of the New York Not-For-Profit Corporation Law.\n\nTSASC is a non-stock, membership corporation governed by a board of directors. The board of directors of TSASC will have not less than five nor more than seven directors, a majority of whom will be officials of the City.",
+   "source_url": "https://www.nyc.gov/site/tsasc/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "commission-to-combat-police-corruption": {
+   "text": "On July 7, 1994, the Commission To Investigate Allegations of Police Corruption and the Anti-Corruption Procedures of the Police Department (the \"Mollen Commission\") issued its final report. The Mollen Commission found that the New York City Police Department had undergone alternating cycles of corruption and reform. They believed that the creation of an independent commission to monitor the anti-corruption activities of the Police Department, and help keep the NYPD vigilant in that area, would help break the cycles of corruption.\n\nBased upon their recommendation, former Mayor Rudy Giuliani, with the support of the Police Commissioner, created the Commission to Combat Police Corruption (the \"Commission\") on February 27, 1995 by Executive Order No. 18.",
+   "source_url": "https://www.nyc.gov/site/ccpc/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-intergovernmental-affairs": {
+   "text": "The Office of Intergovernmental Affairs coordinates the City's interaction with the City, State and Federal Legislative Affairs Offices, as well as the offices of the City Comptroller, Public Advocate and Borough Presidents. The office keeps the Mayor and the First Deputy Mayor informed about intergovernmental issues and is the liaison between the City and other governments, seeking to foster constructive links between the Administration and these entities.",
+   "source_url": "https://www.nyc.gov/site/intergovernmental/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-law-department": {
+   "text": "The Law Department is one of the largest law offices in the country with approximately 800 attorneys in 18 legal divisions.\n\nEvery day the New York City Law Department's approximately 760 lawyers and 685 support professionals work collaboratively to pursue justice while providing the City with the highest quality legal representation. The Law Department represents the City, the Mayor, other elected officials, and the City's many agencies in all affirmative and defensive civil litigation, as well as juvenile delinquency proceedings brought in Family Court and Administrative Code enforcement proceedings brought in Criminal Court.\n\nLaw Department attorneys draft and review local and State legislation, real estate leases, procurement contracts, and financial instruments for the sale of municipal bonds. The Department also provides legal counsel to City officials on a wide range of issues such as immigration, education, and environmental policy. There is rarely a major City initiative that is not molded by the Law Department's staff.\n\nThe Law Department is led by the Corporation Counsel who is nominated by the Mayor and subject to confirmation by the City Council.",
+   "source_url": "https://www.nyc.gov/site/law/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  }
+ }
+}

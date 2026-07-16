@@ -11,6 +11,7 @@ The registry is designed to **stay current**, not be a one-time dump (design doc
 | Wikidata NYC gov orgs (WDQS SPARQL) | `data/cache/wikidata_nyc_gov_orgs.json` | **2026-07-15** | 232 bindings → 109 QIDs (88 with `P856`) |
 | nyc-boundaries layer index (`BoundaryId` union + `layers`) | `data/cache/nyc-boundaries_layers_index.ts` | **2026-07-15** | 22 published layer ids |
 | About-page crawl (live agency sites) | *(no cache — `data/descriptions.json` is the output)* | **2026-07-15** | 285 targets crawled + 32 `no_url` |
+| WAF recovery (browser-pane, operator-authorized) | `data/cache/waf_captures_raw/` + `waf_capture_meta.json` (git-ignored) | **2026-07-16** | batch 1: 25 of 152 (20 `ok`, 5 `no_about_found`); 127 remaining |
 
 Cache files are git-ignored (`data/cache/`); only the built `data/registry.json` — plus the
 committed, derived `data/curation.json`, `data/greenbook_enrichment.json`,
@@ -142,6 +143,50 @@ WAF-walled — `ibo.nyc.gov`, `cityclerk.nyc.gov` extracted fine. Entities on th
 domains (authorities, PBCs, `.org`/`.edu`/`.com` marquee entities) are where the crawl actually
 yields descriptions. 15 `ok` texts hit the 5,000-char cap (`truncated: true`). Run wall-clock:
 ~24 min for the networked portion.
+
+## About-page descriptions — WAF recovery, browser-pane pass (2026-07-16, batch 1)
+
+The 152 `www.nyc.gov` / `www1.nyc.gov` targets the phase-5 Akamai circuit-breaker recorded
+(`host_waf_blocked`, never fetched) are being recovered through a **human-context browser** (the
+app's Browser pane), which passes the WAF where stdlib/`urllib` gets a 403. This pass was
+**explicitly operator-authorized (Noel, 2026-07-15)** — the standing rule is that no registry
+component fetches without operator action, and a browser-driven crawl of live agency sites is a
+fetch. The pass is **read-only, sequential, and politely paced** (~2s between navigations, one page
+at a time); it defeats nothing — the browser pane *is* the sanctioned path, so no header-spoofing or
+WAF-evasion was attempted.
+
+**Method (offline-reproducible tooling around the browser):**
+```bash
+python scripts/plan_waf_candidates.py       # offline: waf_blocked.json -> ordered about-page candidates
+# (browser-pane loop navigates candidates, saves raw page text to data/cache/waf_captures_raw/<id>.txt,
+#  records the winning URL + status hint in data/cache/waf_capture_meta.json)
+python scripts/assemble_waf_captures.py      # offline: raw txt + meta -> data/cache/waf_page_captures.json
+python scripts/extract_waf_descriptions.py   # offline: verbatim prose -> data/descriptions_recovery.json
+python scripts/merge_descriptions.py         # offline: fold recovery into data/descriptions.json (deterministic)
+```
+Candidate order per `/site/<slug>/` target: the nyc.gov Full Site Editing about conventions
+`/about/about-<slug>.page` then `/about/about.page` (canonical `www` host), with a start URL that is
+already a specific subpage tried first and the bare `index.page` landing last. A 404 is detected from
+the tab title (`"NYC"` + the "We're Sorry / non-existing page" shell) with no extra fetch.
+Extraction is **verbatim-or-nothing**: it isolates the agency's own about prose (dropping the nav
+column, social-media / audio-description / playback boilerplate) and records `extraction_empty` /
+`no_about_found` rather than guessing when a page has no clean descriptive block (link-farm homepages
+like FDNY/DOT, or member rosters). `read_page`'s a11y tree comes back empty on nyc.gov's FSE pages,
+so href-based link-scanning is unavailable — recovery relies on the deterministic path conventions.
+
+**Merge rule:** a recovery record overrides a base record **only** when the base status is
+`fetch_failed` (the exact WAF bucket this pass re-examined) — `ok` overrides it with recovered text,
+and `no_about_found` / `extraction_empty` reclassify it (more honest than leaving `fetch_failed`,
+which implies the WAF is still blocking). Any other base status (`ok`, `no_url`, `robots_disallowed`)
+is never overwritten. Idempotent.
+
+**Batch 1 coverage (25 of 152 targets):** **20 recovered `ok`** (verbatim agency prose) +
+**5 reclassified `no_about_found`** (browser reached the site; no clean about block — FDNY, DOT,
+the M/WBE advisory roster, City Planning Commission hub, and a fully-removed STAR Corp site). Registry
+totals moved **91 → 111 `ok`**; `fetch_failed` 173 → 148; `no_about_found` 12 → 17. **Remaining: 127
+WAF targets** to process in follow-on batches (2–6) with the identical mechanical loop. Raw captures
+and the meta manifest live in git-ignored `data/cache/`; `data/descriptions_recovery.json` and the
+merged `data/descriptions.json` are the committed artifacts.
 
 ## Three-tier refresh
 1. **Auto (city):** re-sync from MODA (`sync_moda.py`) — MODA maintains its own QA pipeline; we track its record ids. Population landed 2026-07-15 (phase 1): 306 Active orgs merged with the 17-entity seed → 318 entities. **Phase 2 (2026-07-15):** the operator-confirmed EDC merge (`data/curation.json`) collapses the separately-minted "Economic Development Corporation" into seed `nycedc` → **317 entities** (5 seeds matched by name + 1 by curated identifier gained a `nyc_goid`; 300 minted new). Greenbook contact scaffolding then attaches to 27 exact-matched city entities (no change to the count).
