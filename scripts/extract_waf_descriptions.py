@@ -179,9 +179,12 @@ def record_for(capture: dict) -> dict:
 def build_recovery(captures: dict, fetched_at: str = "2026-07-16") -> dict:
     """Produce the descriptions_recovery.json structure from the captures map."""
     descriptions = {}
+    legacy_entities = []
     for entity_id, cap in captures.items():
         cap = dict(cap)
         cap.setdefault("fetched_at", fetched_at)
+        if cap.get("path_family") == "legacy":
+            legacy_entities.append(entity_id)
         descriptions[entity_id] = record_for(cap)
     return {
         "_generated_from": "extract_waf_descriptions.py",
@@ -190,6 +193,9 @@ def build_recovery(captures: dict, fetched_at: str = "2026-07-16") -> dict:
             "(operator-authorized, Noel 2026-07-15). Verbatim agency prose; never generated."
         ),
         "method": METHOD,
+        # Web-history data: entities whose About page is still served from the pre-CMS /html/
+        # generation. Carried here so reconciliation / the Wayback harvester can inherit it.
+        "_legacy_path_entities": sorted(legacy_entities),
         "descriptions": descriptions,
     }
 

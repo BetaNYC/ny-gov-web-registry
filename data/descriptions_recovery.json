@@ -2,6 +2,9 @@
  "_generated_from": "extract_waf_descriptions.py",
  "_note": "Browser-pane recovery of WAF-blocked www.nyc.gov / www1.nyc.gov agencies (operator-authorized, Noel 2026-07-15). Verbatim agency prose; never generated.",
  "method": "browser-pane",
+ "_legacy_path_entities": [
+  "new-york-city-department-of-transportation"
+ ],
  "descriptions": {
   "nycha": {
    "text": "The New York City Housing Authority (NYCHA), the largest public housing authority in North America, was created in 1934 to provide decent, affordable housing for low- and moderate-income New Yorkers. NYCHA is home to 1 in 16* New Yorkers, providing affordable housing to 511,384 authorized residents through public housing and Permanent Affordability Commitment Together (PACT) programs as well as Section 8 housing. NYCHA has 177,565 apartments in 2,410 buildings across 335 conventional public housing and PACT developments. In addition, NYCHA connects residents to critical programs and services from external and internal partners, with a focus on economic opportunity, youth, seniors, and social services. With a housing stock that spans all five boroughs, NYCHA is a city within a city. View NYCHA’s Fact Sheet (PDF).\n\n*As per July 2023 U.S. Census Population Estimate",
@@ -36,11 +39,11 @@
    "truncated": false
   },
   "fire-department-of-the-city-of-new-york": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/fdny/index.page",
+   "text": "The Fire Department of the City of New York (FDNY) is the largest Fire Department in the United States and is universally recognized as the world's busiest and most highly skilled emergency response agency. Annually, FDNY responds to millions of emergency calls.\n\nThe Department's primary mission is to provide fire protection, emergency medical care, fire prevention, and other critical public safety services to both residents and visitors in New York City's five boroughs. It also responds outside of the City's borders to assist neighboring municipalities, and nationally/internationally on special assignments.\n\nSince its inception in 1865, the FDNY has helped lead efforts to make New York the safest large city in the country. This accomplishment requires a steadfast and daily commitment to maintaining the Department's core values. FDNY members are sworn to serve and protect life and property. They aim to prevent emergencies by continually educating the public in fire and life safety, and disaster preparedness, as well as enforcing public safety codes.",
+   "source_url": "https://www.nyc.gov/site/fdny/about/overview/overview.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "no_about_found",
+   "method": "browser-pane",
+   "status": "ok",
    "truncated": false
   },
   "workforce-development-council": {
@@ -92,11 +95,11 @@
    "truncated": false
   },
   "new-york-city-department-of-transportation": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/html/dot/html/home/home.shtml",
+   "text": "The New York City Department of Transportation's (NYC DOT) mission is to provide for the safe, equitable, and sustainable movement of people and goods and create public spaces that strengthen our communities.\n\nThe agency's vision is a transportation system that provides equitable mobility for all residents and visitors, is environmentally sustainable and built to adapt to the threat of climate change, and is driven by human power and clean energy.\n\nEvery time you go outside, you interact with NYC DOT. We are responsible for a vast network of public infrastructure, including planning, design, construction, maintenance, and management of roads, sidewalks, bridges, traffic signals and signs, crosswalks, bus stops, bike lanes, streetlights, plazas – even the Staten Island Ferry. We are here to help all New Yorkers and millions of visitors get around our city.\n\nThis is possible thanks to our approximately 6,000 employees, an annual operating budget of $1.6 billion and a ten-year $33 billion capital program, and the continued input and involvement of the public.",
+   "source_url": "https://www.nyc.gov/html/dot/html/about/about.shtml",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "no_about_found",
+   "method": "browser-pane",
+   "status": "ok",
    "truncated": false
   },
   "mayor-s-office-of-operations": {
@@ -201,6 +204,206 @@
    "fetched_at": "2026-07-16",
    "method": "browser-pane",
    "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-for-people-with-disabilities": {
+   "text": "For half a century, the Mayor's Office for People with Disabilities (MOPD) has been the liaison between New York City government and the disability community. In partnership with City offices and agencies, MOPD ensures City initiatives, programs and policies address the needs and interests of people with disabilities. The office regularly engages in advocacy and policymaking at the local, state, national, and international levels to make certain accessibility and full inclusion are key priorities for all public and private stakeholders alike.",
+   "source_url": "https://www.nyc.gov/site/mopd/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-loft-board": {
+   "text": "In 1982, the New York State legislature passed Article 7-C of the Multiple Dwelling Law (MDL), also known as the Loft Law. The law created a new class of buildings in New York City. These buildings are known as interim multiple dwellings (IMD). Generally, these buildings are former commercial and manufacturing spaces that were used as residences by at least three or more families living independently from April 1, 1980 through December 1, 1981. The Loft Law also established the Loft Board to coordinate the legal conversion of these spaces to safe, rent-stabilized residential units.",
+   "source_url": "https://www.nyc.gov/site/loftboard/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-faith-based-and-community-partnerships": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/cfcp/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "get-stuff-built-advisory-board": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/getstuffbuilt/initiatives/get-stuff-built.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "new-york-city-housing-authority-board": {
+   "text": "The NYCHA Board is comprised of six (6) members, to include three (3) resident members.",
+   "source_url": "https://www.nyc.gov/site/nycha/about/nycha-board.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "nonprofit-advisory-council": {
+   "text": "In 2024, MONS launched the first ever Advisory Council on Nonprofits.  The Advisory Council is a voluntary, non-governing body of nonprofit leaders that provides input to inform the focus and priorities of MONS. The Council helps shape policy, legislative agendas, and responses to programmatic and administrative issues within government that impact nonprofits. By helping MONS address the needs of nonprofit organizations, the Council supports MONS in its mission to promote thriving communities.\n\nThe members of the advisory council represent a broad spectrum of nonprofit organizations, including those focused on social services, education, arts and culture, and advocacy. Their diverse backgrounds and perspectives will ensure that the advisory council effectively addresses the needs of the nonprofit sector. The Nonprofit Advisory Council is co-chaired by Mayor’s Office of Nonprofit Services Executive Director Michael Sedillo, Good Shepherd Services Vice President Annie Minguez, and Urban Pathways Chief Executive Officer Frederick Shack.",
+   "source_url": "https://www.nyc.gov/site/nonprofits/about/advisory-council.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-city-planning": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/planning/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-to-protect-tenants": {
+   "text": "The Mayor’s Office to Protect Tenants was revitalized by Mayor Mamdani on the first day of his administration to coordinate across agencies coordinate the work of the City to protect the rights of tenants and to improve affordability and quality of housing for tenants by working with tenants in New York City.",
+   "source_url": "https://www.nyc.gov/content/tenantprotection/pages/",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "civic-engagement-commission": {
+   "text": "In November 2018, New York City voters approved three ballot initiatives proposed by the 2018 Charter Revision Commission. This established the NYC CEC, which can be found in Chapter 76 of the NYC Charter. The Commission will run a citywide participatory budgeting program with guidance from a participatory budgeting advisory committee; partner with community-based organizations and civic leaders, increase awareness of City services, and assist New York City agencies in developing civic engagement initiatives; develop a plan to consider the language access needs of limited English proficient New Yorkers with regards to the Commission's programs and services and provide language interpreters at poll sites by the 2020 general election, with advice from a language assistance advisory committee; and provide assistance to community boards.",
+   "source_url": "https://www.nyc.gov/site/civicengagement/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-veterans-services": {
+   "text": "To honor the sacrifice of New York City Veterans, Mayor Bill de Blasio created the Department of Veterans' Services (DVS) on April 8th, 2016, making DVS the first standalone City agency in the country dedicated to serving Veterans and their families.\n\nSince that time, the agency has moved to connect, mobilize, and empower New York City's Veteran community in order to foster purpose-driven lives for US Military Service Members – past and present – in addition to their caregivers, survivors, and families.\n\nDVS fulfills this mission by providing New York City's Veterans with essential services and programs focused on pivotal areas such as economic empowerment, housing security, benefits, health and wellness, and culture.",
+   "source_url": "https://www.nyc.gov/site/veterans/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "nyc-her-future": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/content/nycherfuture/pages/",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "board-of-health": {
+   "text": "Yellow Fever was plaguing New York City when the Board of Health held its first meeting in 1805. Led by Mayor De Witt Clinton, the board evacuated stricken neighborhoods and started collecting mortality statistics, to \"furnish data for reflection and calculation.\" Yellow Jack swept the city for the last time in 1822, but cholera, typhus and tuberculosis persisted, fueled by crowding and a lack of sanitation.",
+   "source_url": "https://www.nyc.gov/site/doh/about/about-doh/board-of-health.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "charter-revision-commission": {
+   "text": "On May 28th, Mayor Mamdani announced the creation of the Commission on Government Efficiency, COGE, a Charter Revision Commission tasked with changing the NYC Charter to make City government work better for New Yorkers.",
+   "source_url": "https://www.nyc.gov/site/charter/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-special-enforcement": {
+   "text": "The Mayor's Office of Special Enforcement (OSE) is an innovative, solutions-oriented task force that ensures NYC communities are safe from harmful illegal and unregulated industries that one agency and one set of enforcement tools alone can't address. Our multi-agency enforcement team devises strategic solutions-ranging from public education to enforcement action-to complex problems.",
+   "source_url": "https://www.nyc.gov/site/specialenforcement/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "juvenile-justice-advisory-board": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/acs/about/data-analysis.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "center-for-innovation-through-data-intelligence": {
+   "text": "The Center for Innovation through Data Intelligence (CIDI) is a research/policy center located in the Office of the Mayor of the City of New York. CIDI reports directly to the Deputy Mayor for Health and Human Services. As part of the Office of the Mayor, CIDI fosters collaboration with all Health and Human Service agencies to promote citywide policy change with the goal of improvement in the effectiveness of NYC government. CIDI embraces the Mayor’s goal of delivering cross agency solutions to big bold problems impacting the health and well-being of the most vulnerable people in our city. The vision of CIDI is to make data come alive to inspire change.\n\nAs an analytic office, the research agenda of CIDI is formulated by the Deputy Mayor for Health and Human Services along with the Health and Human Service Commissioners and leaders of City agencies providing data to CIDI. CIDI's Data Transfer Protocol allows City agencies to share agency data with CIDI in a timely manner upon approval of a project. To ensure the confidentiality, cultural context, and effectiveness of CIDI research results, CIDI creates a team of representatives from all data-sharing agencies to participate in the design and analysis of the project. In this way, CIDI maintains the integrity of the shared data, while providing actionable intelligence to the City of New York and other partners.",
+   "source_url": "https://www.nyc.gov/site/cidi/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "city-commission-on-human-rights": {
+   "text": "The New York City Commission on Human Rights (CCHR) is charged with the enforcement of the Human Rights Law, Title 8 of the Administrative Code of the City of New York. CCHR is responsible for the intake, investigation, and prosecution of complaints alleging violations of the Law.\n\nCCHR is also charged with educating the public and encouraging positive community relations. We provide public education about the Human Rights Law and help cultivate understanding and respect among the City’s many diverse communities through our numerous educational and outreach programs.\n\nAdditionally, CCHR utilizes restorative justice principles to address the harm caused by discrimination and bias, both in its handling of complaints and in its community partnerships.",
+   "source_url": "https://www.nyc.gov/site/cchr/about/inside-cchr.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-media-and-entertainment": {
+   "text": "The Mayor's Office of Media and Entertainment's mission is to support and strengthen New York City's creative economy and make it accessible to all. In 2019, the creative industries accounted for more than 440,000 local jobs and have an economic impact of $150 billion annually. MOME comprises four divisions: the Film Office, which coordinates on location production throughout the five boroughs; NYC Media, the city's official broadcast network and production group; the Press Credentials Office, which issues press cards; and Programs and Initiatives to advance industry and workforce development across NYC's creative sectors.",
+   "source_url": "https://www.nyc.gov/site/mome/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-office-of-the-actuary": {
+   "text": "The Chief Actuary is the legally designated technical advisor to the Boards of Trustees of the NYCRS, which include the New York City Employees’ Retirement System (NYCERS), the Teachers’ Retirement System (TRS), the Board of Education Retirement System (BERS), the New York City Police Pension Fund, and the New York Fire Department Pension Fund.",
+   "source_url": "https://www.nyc.gov/site/actuary/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-information-privacy": {
+   "text": "OTI’s Office of Information Privacy (OIP), headed by the Chief Privacy Officer (CPO) of the City of New York, advises the Mayor, Chief Technology Officer and other senior City officials, and City agencies on privacy protection in administration priorities, data sharing initiatives, and emerging policy areas, as well as response to suspected and known incidents impacting information privacy. OIP also implements the City's Identifying Information Law and provides guidance to a network of Agency Privacy Officers throughout the City on the lawful and responsible handling of identifying information and privacy protection.",
+   "source_url": "https://www.nyc.gov/content/oti/pages/meet-the-team/information-privacy",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-food-policy": {
+   "text": "The Mayor's Office of Food Policy works to advance the City’s efforts to increase food security, promote access to and consumption of healthy foods, and support economic opportunity and environmental sustainability in the food system. The Office works across city agencies, including the Departments of Education, Correction, Social Services, and Aging, to develop and advance innovative food policy. MOFP is critical in integrating an equity frame into food policy priorities and solutions.",
+   "source_url": "https://www.nyc.gov/site/foodpolicy/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-of-the-utility-consumer-advocate": {
+   "text": "We collaborate closely with city agency partners and other stakeholders to advocate for policies and programs that integrate equity in energy utility ratemaking, reduce energy cost burden and energy insecurity, expand access to energy affordability programs, establish protections for utility customers, ensure the transition to clean energy infrastructure benefits Disadvantaged Communities and low- to moderate-income New Yorkers, and represent New York City ratepayers in front of New York State’s Public Service Commission and other state and federal regulators.",
+   "source_url": "https://www.nyc.gov/content/climate/pages/utility-consumer-advocate",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-conversion-accelerator": {
+   "text": "The Office Conversion Accelerator program provides building owners with a single point of contact within city government to help ensure office conversion projects can be completed in a Code-compliant and timely manner. If you are a building owner considering an office-to-residential conversion project that might provide 50 or more housing units, please reach out and contact the Office Conversion Accelerator.\n\nTo advance office to residential conversions, which will help address ongoing office vacancies and create thousands of much-needed new homes for New Yorkers, Mayor Adams has established the Accelerator team to work with office building owners to advance opportunities for conversions. The Office Conversion Accelerator includes representatives from City Hall, the Department of City Planning, the Department of Buildings, the Department of Housing Preservation & Development, the Board of Standards and Appeals, the Landmarks Preservation Commission, and others.",
+   "source_url": "https://www.nyc.gov/site/officeconversions/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-payroll-administration": {
+   "text": "Welcome to the City of New York's Office of Payroll Administration (OPA), led by Executive Director Neil Matthew.\n\nWe manage payroll check, pension check, and direct deposit distributions to all City of New York employees and retirees.\n\nAs part of our fiduciary responsibilities, we also fund and reconcile payrolls, distribute payrolls to City agencies, and report wages and tax information to federal, state, and local tax authorities.\n\nThe agency also analyzes labor agreements for pay/leave impact, ensures compliance with ordered deductions, collects and remits employee voluntary deductions, administers the City of New York’s commuter benefits program, and provides union services for collection and reporting of member dues and voluntary political contributions in accordance with mayoral executive orders.",
+   "source_url": "https://www.nyc.gov/site/opa/about/about-opa.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-office-for-childcare-and-early-childhood-education": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/childcare/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
    "truncated": false
   }
  }

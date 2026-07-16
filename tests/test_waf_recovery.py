@@ -2,6 +2,7 @@
 browser-pane captures, the recovery-record schema, and the merge rules. NO test touches the
 network; captures are in-memory strings shaped like real get_page_text output."""
 
+import build_review_queue as rq
 import extract_waf_descriptions as ex
 import merge_descriptions as mg
 import plan_waf_candidates as pl
@@ -85,6 +86,27 @@ def test_candidates_index_page_uses_about_conventions():
     assert c[0] == "https://www.nyc.gov/site/nycha/about/about-nycha.page"
     assert c[1] == "https://www.nyc.gov/site/nycha/about/about.page"
     assert c[-1] == "https://www.nyc.gov/site/nycha/index.page"  # landing fallback last
+
+
+def test_candidates_include_overview_conventions():
+    # FDNY's About lives at /about/overview/overview.page — the deeper convention must be probed.
+    c = pl.candidate_urls("https://www.nyc.gov/site/fdny/index.page")
+    assert "https://www.nyc.gov/site/fdny/about/overview/overview.page" in c
+    assert "https://www.nyc.gov/site/fdny/about/overview.page" in c
+
+
+def test_candidates_include_legacy_html_fallback():
+    # A /site/ target also gets one legacy /html/ About fallback (same slug).
+    c = pl.candidate_urls("https://www.nyc.gov/site/dsny/index.page")
+    assert "https://www.nyc.gov/html/dsny/html/about/about.shtml" in c
+
+
+def test_candidates_legacy_start_url_probes_legacy_family():
+    # DOT's start URL is already legacy; derive the legacy slug from it and probe the legacy About.
+    c = pl.candidate_urls("https://www.nyc.gov/html/dot/html/home/home.shtml")
+    assert c[0] == "https://www.nyc.gov/html/dot/html/about/about.shtml"
+    assert "https://www.nyc.gov/html/dot/html/about/about.html" in c
+    assert "https://www.nyc.gov/html/dot/html/home/home.shtml" in c  # start preserved
 
 
 def test_candidates_specific_subpage_tried_first():
@@ -212,6 +234,15 @@ def test_merge_never_overwrites_existing_ok():
     assert stats["skipped_protected"] == 1
 
 
+def test_merge_ok_upgrades_no_about_found():
+    # A later batch finds a deeper/legacy about URL for an entity previously marked no_about_found.
+    base = _base({"a": {"status": "no_about_found", "text": None}})
+    recovery = {"descriptions": {"a": _ok("found at last")}}
+    merged, stats = mg.merge(base, recovery)
+    assert merged["descriptions"]["a"]["text"] == "found at last"
+    assert stats["recovered_ok"] == 1
+
+
 def test_merge_non_ok_recovery_reclassifies_fetch_failed():
     # This pass targets the WAF fetch_failed bucket: a browser-pane "no_about_found" is more
     # honest than leaving "fetch_failed" (which implies the WAF is still blocking).
@@ -262,3 +293,49 @@ def test_merge_does_not_mutate_inputs():
     recovery = {"descriptions": {"a": _ok("recovered")}}
     mg.merge(base, recovery)
     assert base["descriptions"]["a"]["status"] == "fetch_failed"
+
+
+# --- review-queue regeneration ----------------------------------------------------------------
+
+def test_queue_filters_to_review_statuses_and_sorts():
+    descriptions = {
+        "z-ok": _ok(),
+        "b-fail": {"status": "no_about_found", "source_url": "u2"},
+        "a-empty": {"status": "extraction_empty", "source_url": "u1"},
+        "c-robots": {"status": "robots_disallowed", "source_url": "u3"},
+        "d-nourl": {"status": "no_url", "source_url": None},
+        "e-failed": {"status": "fetch_failed", "source_url": "u4"},
+    }
+    names = {"a-empty": "A", "b-fail": "B", "c-robots": "C"}
+    rows = rq.build_rows(descriptions, names, customs={})
+    ids = [r[1] for r in rows]
+    # ok / no_url / fetch_failed excluded; ordered extraction_empty -> no_about_found -> robots.
+    assert ids == ["a-empty", "b-fail", "c-robots"]
+
+
+def test_queue_uses_default_resolution_and_name_fallback():
+    descriptions = {"x-y": {"status": "no_about_found", "source_url": "u"}}
+    rows = rq.build_rows(descriptions, names={}, customs={})
+    _order, entity_id, name, url, status, resolution = rows[0]
+    assert name == "X Y"  # id titleized when not in registry
+    assert resolution == rq.DEFAULT_RESOLUTION["no_about_found"]
+
+
+def test_queue_preserves_custom_resolution():
+    descriptions = {"x": {"status": "no_about_found", "source_url": "u"}}
+    rows = rq.build_rows(descriptions, names={"x": "X"}, customs={"x": "RESOLVED — supplied URL"})
+    assert rows[0][5] == "RESOLVED — supplied URL"
+
+
+def test_queue_parse_customs_ignores_template_rows(tmp_path):
+    default = rq.DEFAULT_RESOLUTION["no_about_found"]
+    md = (
+        "| Entity | id | URL tried | Status | Needed / Resolution |\n"
+        "|---|---|---|---|---|\n"
+        f"| A | `a` | http://a | `no_about_found` | {default} |\n"
+        "| B | `b` | http://b | `no_about_found` | RESOLVED — human note |\n"
+    )
+    f = tmp_path / "queue.md"
+    f.write_text(md)
+    customs = rq.parse_existing_customs(f)
+    assert customs == {"b": "RESOLVED — human note"}  # default row 'a' not captured as custom
