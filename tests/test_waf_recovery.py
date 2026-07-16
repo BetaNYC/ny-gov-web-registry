@@ -158,6 +158,14 @@ def test_extract_not_found_returns_empty():
     assert ex.extract_description(NOT_FOUND_CAPTURE) == ""
 
 
+def test_extract_soft_404_returns_empty():
+    # nyc.gov FSE soft-404: the tab title reflects the section, but the body is a 404.
+    cap = ("Title: About MOSPCE - MOSPCE\nURL: https://nyc.gov\n---\n"
+           "In this section:\n404 Error\n\nThat page was not found.\n\nTab Context:\n- x")
+    assert ex.is_not_found(cap) is True
+    assert ex.extract_description(cap) == ""
+
+
 def test_extract_nav_only_returns_empty():
     assert ex.extract_description(NAV_ONLY_CAPTURE) == ""
 

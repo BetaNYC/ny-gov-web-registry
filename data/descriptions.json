@@ -1354,49 +1354,44 @@
    "truncated": false
   },
   "tax-appeals-tribunal": {
-   "text": null,
-   "source_url": "https://www1.nyc.gov/site/taxappeals/index.page",
+   "text": "The New York City Tax Appeals Tribunal (the \"Tribunal\") is an independent agency created by the New York City Charter.  The Tribunal is a fair, impartial, efficient and knowledgeable forum in which disputes between taxpayers and the New York City Department of Finance (\"DOF\") involving taxes administered by the City of New York other than the New York City Real Property Tax are resolved.\n\nThe Tribunal consists of two divisions:  an Administrative Law Judge Division and an Appeals Division.  The Appeals Division consists of three Commissioners appointed by the Mayor who review Administrative Law Judge Determinations upon the filing of exceptions by a taxpayer and/or the Commissioner of Finance.  One of the three Commissioners of the Appeals Division is designated as President of the Tribunal by the Mayor and serves as such during his or her term.  The Administrative Law Judge Division consists of a Chief Administrative Law Judge and other Administrative Law Judges who conduct formal hearings and render Determinations.",
+   "source_url": "https://www.nyc.gov/site/taxappeals/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "department-of-correction": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/doc/index.page",
+   "text": "The New York City Department of Correction (DOC) is dedicated to creating a safe and supportive environment while providing individuals in our care with a path to successfully re-enter their communities. The Department provides for the care and custody of people ordered to be held by the courts and awaiting trial or who are convicted and sentenced to one year or less of jail time. Our dedicated workforce of both uniformed and non-uniformed staff members represents the city’s BOLDEST.",
+   "source_url": "https://www.nyc.gov/site/doc/about/about-doc.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "office-of-the-mayor": {
    "text": null,
    "source_url": "https://www.nyc.gov/mayors-office",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "department-of-design-and-construction": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/ddc/index.page",
+   "text": "From the pedestrian plaza in Times Square to the Far Rockaway Library, the Department of Design and Construction is building for you.\n\nAs the City's primary capital construction project manager, we build many of the civic facilities New Yorkers use every day. We provide communities with new or renovated structures such as firehouses, libraries, police precincts, courthouses, senior centers and more. To successfully manage our portfolio, we collaborate with other City agencies, as well as with emerging and world-renowned architects and consultants.\n\nOur work doesn’t stop at buildings—we also design and improve vital infrastructure. Our staff delivers roadway, sewer and water main construction projects in all five boroughs. We provide sidewalks, street reconstruction, water mains, sewers, and pedestrian ramps—quality infrastructure that is essential for a healthy, resilient city.",
+   "source_url": "https://www.nyc.gov/site/ddc/about/about-ddc.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "mayor-s-advisory-committee-on-the-judiciary": {
    "text": null,
-   "source_url": "https://www1.nyc.gov/site/macj/index.page",
+   "source_url": "https://www.nyc.gov/site/macj/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "new-york-botanical-garden": {
    "text": "Who We Are\n\nA museum of plants, a center for learning, and a plant science leader in the Bronx.\n\nWork With Us\n\nFind your place with our diverse team of gardeners, educators, scientists, and administrators—and follow your passion.\n\nInclusion, Diversity, Equity, and Accessibility\n\nNYBG is committed to providing a welcoming and supportive environment for all. See how we’re ensuring a diverse and equitable future at the Garden.\n\nPress Room\n\nDiscover updates on Garden initiatives and explore a wealth of exhibitions past and present.\n\nPrivate Events\n\nNYBG provides a beautiful backdrop for your wedding, engagement, company party, and so much more. See how we can make your next private event a memorable one.\n\nLicensing Partnerships\n\nWe work with top-tier brands around the globe to develop apparel, home decor, gardening equipment, and goods inspired by our one-of-a-kind botanical art collection and world-class horticultural knowledge.\n\nSustainability\n\nSee how NYBG works each day to be a greener and more sustainable part of New York City’s cultural fabric.\n\nLearn More\n\nPrivacy Policy\n\nTerms and Conditions\n\nContact Us\n\nSubscribe to our newsletter and be the first to know about all things NYBG",
@@ -1415,40 +1410,36 @@
    "truncated": false
   },
   "mayor-s-office-of-talent-and-workforce-development": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/wkdev/index.page",
+   "text": "The mission of the Office of Talent and Workforce Development (NYC Talent) is to ensure all New Yorkers can access good paying careers and employers can access New York City's talent so they can thrive today and in the future.\n\nTo achieve this mission, NYC Talent aligns efforts across the city's public-private workforce development ecosystem, provides data and policy expertise, and supports program innovations and process improvements for services offered by the City of New York and other workforce stakeholders. NYC Talent works in partnership with government, employers, industry professionals, educational institutions, nonprofits, and philanthropic organizations to ensure the City's workforce development strategy aligns with employer demand, jobseeker needs, and the rapidly changing economy.",
+   "source_url": "https://www.nyc.gov/site/wkdev/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "department-of-buildings": {
    "text": null,
    "source_url": "https://www.nyc.gov/site/buildings/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "new-york-city-children-s-cabinet": {
    "text": null,
    "source_url": "https://www.nyc.gov/site/childrenscabinet/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "community-boards": {
-   "text": null,
+   "text": "Community boards are the most local, grassroots form of City government, and the connection we provide between our communities and our elected officials and City agencies is important for a healthy democracy. We have always been small but mighty, accomplishing a lot with a little.",
    "source_url": "https://www.nyc.gov/site/communityboards/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "office-of-the-borough-president-of-brooklyn": {
    "text": "Meet Brooklyn Borough President Antonio Reynoso\n\nListen to Antonio talk about what makes Brooklyn great\n\nAntonio Reynoso is Brooklyn’s 20 th Borough President. The son of two Dominican immigrants, Antonio was born and raised in Los Sures, Williamsburg, just three blocks down from where he lives today with his wife and two sons. He grew up in Section 8 housing, relying on food stamps for family meals and scholarships for education opportunities. He experienced firsthand how a little help can go a long way for a young family trying their hardest to put down roots and have a fair shot at the life they want. In 2021, Antonio became the youngest Borough President elected to a four-year term, the first Latino to hold the office in the borough, and the first Dominican to be elected as a Borough President in NYC. As Borough President, he made history when he allocated the entirety of his Fiscal Year 2023 capital budget – a total of $45 million – to Brooklyn’s three public hospitals to build new and state-of-the-art maternal health facilities. This marked the first time a Borough President had ever allocated an entire fiscal year’s capital funding to one cause, and within one city organization. In Fall 2023, Antonio released The Comprehensive Plan for Brooklyn, the first borough-specific, large-scale planning effort ever in NYC and a model for planning citywide. Antonio previously served as Council Member for the 34th Council District, representing portions of Bushwick and Williamsburg in Brooklyn and Ridgewood in Queens. As a member of the City Council, he served as the Chair of Sanitation & Solid Waste Management. He led to passage the Commercial Waste Zones and Waste Equity bills, as well as the Right to Know Act. Antonio also championed the Bushwick Community Plan, a community-led rezoning to create affordable housing, preserve manufacturing space, and advance neighborhood needs that the de Blasio administration ultimately blocked from advancing.\n\nGet to Know Antonio\n\nThe Kid\n\nAntonio Reynoso was born and raised in Los Sures, Williamsburg, where he lived with his parents – both immigrants from the Dominican Republic – and two sisters in a two-bedroom apartment. Their home was always full of laughter and family. Every Sunday, first thing in the morning, his aunts and uncles were banging on the door to play dominoes. It was the best part of his week.\n\nThe Student\n\nAntonio’s parents immigrated to the United States in the late ‘70s and began to build a new life in Williamsburg just as the NYC 1980s Crack Epidemic was coming to a fever pitch. His mother along with his aunts came together to discuss how they’d ensure their kids were safe and set on a path to success. The decision was swift and unanimous: they would put everything they had into getting their children the best educations possible.\n\nThe Organizer\n\nAfter graduating Le Moyne College with his B.A. in political science, Antonio began working for ACORN under the leadership of legendary organizers Jon Kest and Bertha Lewis, helping to unionize childcare workers who had been left out of the salary, pensions, or healthcare opportunities they deserved.\n\nThe Council Member\n\nAntonio represented Williamsburg and Bushwick in Brooklyn and Ridgewood in Queens as District 34’s Council Member from 2014 until 2022. Over his two terms, he served as the Chair of Sanitation & Solid Waste Management; led to passage landmark bills such as the Waste Equity Law, Commercial Waste Zone Legislation, and the Right to Know Act; and developed the Bushwick Community Plan.\n\nThe Borough President\n\nAfter completing his two terms as Council Member, Antonio was elected to serve as the 20 th President of the greatest borough in the city: Brooklyn. His borough presidency is historic in more ways than one. He is the youngest Borough President elected to a four-year term, the first Latino to hold the office in the borough, and the first Dominican to be elected as a Borough President in NYC.\n\nExplore\n\nWhat’s Next\n\nDeputy Borough President, Reverend, and fierce community advocate are all words you can use to describe Kim Council.\n\nMeet Team BKBP, Brooklyn Borough Hall’s small-but-mighty team working hard to advance a Brooklyn for all!",
@@ -1475,13 +1466,12 @@
    "truncated": false
   },
   "unity-project": {
-   "text": null,
+   "text": "At the Mayor's Office, the NYC Unity Project advances LGBTQ+ programs, policies, press and communications, engagement, and interagency collaboration.",
    "source_url": "https://www.nyc.gov/content/unityproject/pages/",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "perelman-performing-arts-center": {
    "text": null,
@@ -1509,31 +1499,28 @@
    "truncated": false
   },
   "department-of-social-services": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/dss/index.page",
+   "text": "The Department of Social Services (DSS) is comprised of the administrative units of the NYC Human Resources Administration (HRA) and the Department of Homeless Services (DHS). Through integrated management for HRA and DHS, client services can be provided more seamlessly and effectively. The City leverages shared services functions across agencies, which results in better day-to-day management and building an integrated mission across agencies.",
+   "source_url": "https://www.nyc.gov/site/dss/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "community-services-board": {
-   "text": null,
+   "text": "The CSB is formed pursuant to New York State Mental Hygiene Law and New York City Charter to advise the NYC Commissioner of Health and Mental Hygiene’s Executive Deputy Commissioner in all areas related to the City's facilities, services, and programs for mental health and mental/developmental disabilities. The CSB also advises on the City's alcohol and drug prevention and treatment facilities, services, and programs.",
    "source_url": "https://www.nyc.gov/site/doh/health/health-topics/mh-community-services-board.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "equal-employment-practices-commission": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/eepc/index.page",
+   "text": "In 1989, voters established the Equal Employment Practices Commission (EEPC) to champion overdue efforts to diversify City government as an independent, non-mayoral oversight entity. The City Charter empowers the EEPC to monitor, audit, and evaluate all City agencies, officials, and entities for their employment practices and procedures.\n\nWe ensure they follow the law and best practices for fair and effective equal employment opportunity for current public servants and those seeking to work for the City.",
+   "source_url": "https://www.nyc.gov/site/eepc/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "brooklyn-navy-yard-development-corporation": {
    "text": "About us\n\nWho we are\n\nThe Brooklyn Navy Yard (the Yard) is a mission-driven industrial park that is a nationally acclaimed model of the viability and positive impact of modern, urban industrial development. The Yard is home to 550+ businesses employing more than 13,000 people and generating over $2.5 billion per year in economic impact for the city. Building on the Yard’s history as the economic heart of Brooklyn, the 300-acre waterfront asset offers a critical pathway to the middle class for many New Yorkers.\n\nThe Brooklyn Navy Yard Development Corporation (BNYDC) is a not-for-profit corporation that serves as the real estate developer and property manager of the Yard on behalf of its owner, the City of New York. BNYDC strives to provide an environment in which innovative companies can take root and grow.\n\nThe Yard was once the nation’s most storied naval shipbuilding facility, which for over 150 years built and launched America’s most famous fighting ships, including the USS Maine, USS Arizona, and USS Missouri. The Yard also served as an important point of the passage, home, and workplace for countless veterans as they served our country. Through its public programming, the Yard continues to honor and preserve this rich history.\n\nLearn more about the history of the Brooklyn Navy Yard here.\n\nOur vision\n\nBNYDC believes that the industrial sector can and will flourish in New York, employing a diverse cross-section of New Yorkers in jobs that offer real career pathways. BNYDC’s vision is a vibrant and dense, modern manufacturing community where businesses are provided the stability needed to invest, grow, and thrive. As the Yard grows, BNYDC will facilitate the expansion of key uses that enable the success of the Yard’s tenant businesses and support the stabilization and growth of the industrial sector. As the economic opportunity at the Yard increases, BNYDC will strive to find new and better ways to reach out to and partner with the local community to access these benefits.\n\nIn order to achieve this vision, BNYDC does the following:\n\nCreates and preserves quality jobs\n\nBuilds and maintains the real estate and physical infrastructure required for modern, urban industrial business activity.\n\nBrings additional space online through rehabilitation, subdivision, and new development.\n\nPursues tenant businesses that have the potential to be robust employers, across a spectrum of skill levels.\n\nAnchors New York City’s modern industrial sector and its businesses\n\nProvides a stable and predictable real estate environment, and offers services that allow tenant businesses to invest and flourish.\n\nCultivates a thriving industrial tenant base by retaining and attracting manufacturing businesses, and fostering strategic growth in other key sectors such as technology, design, artisanal, production, and film/media.\n\nPartners with tenants to accommodate and support their plans for growth.\n\nAdvocates for small and industrial businesses and their unique needs and benefits.\n\nDemonstrates that—in the right environment—industry can still thrive in urban America.\n\nConnects the local community with the resources and economic opportunity at the Yard\n\nReaches out to and partners with the local community to create meaningful connections between residents and the jobs and other economic opportunities (such as direct placements, internships, training, and mentorship) available at the Yard, focusing on groups with significant barriers to employment.\n\nCollaborates with stakeholders to expand the types and quality of opportunities available.\n\nEnsures that local, minority and women-owned businesses have access to the development and construction opportunities the Yard presents.\n\nEmploys sustainable practices in our development and operations.\n\nHonors and celebrates the history and heritage of the Yard through preservation, adaptive reuse, and public access.\n\nDelivers public programming and services that directly contribute to the local community.\n\nStay up-to-date with the Yard\n\nIf you would like to be added to our Public Engagement newsletter, please fill out the form below. If you are a tenant and have any questions about our Yard business growth newsletter, please email businessdevelopment@bnydc.org.",
@@ -1552,49 +1539,44 @@
    "truncated": false
   },
   "public-design-commission": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/designcommission/index.page",
+   "text": "As New York City’s design review agency, the Public Design Commission (PDC) has jurisdiction over permanent structures, landscape architecture, and art proposed on or over City-owned property. The mission of the PDC is to advocate for innovative, sustainable, and equitable design of public spaces and civic structures, with a goal of improving the public realm and therefore related services for all New Yorkers throughout the five boroughs.\n\nThe Commission is made up of 11 members who serve pro bono and meet once per month to review and vote on projects submitted by City agencies. Members include an architect, landscape architect, painter, sculptor, and three lay members, as well as representatives of the Brooklyn Museum, Metropolitan Museum of Art, New York Public Library, and the Mayor. The PDC staff assists the Commission members in their duties and guides submitting agencies through the design review process.",
+   "source_url": "https://www.nyc.gov/site/designcommission/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "mayor-s-office-for-prevention-of-hate-crimes": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/stophate/index.page",
+   "text": "The Office for the Prevention of Hate Crimes (OPHC) was created through New York City Council passage of NYC Local Law 46 and Local Law 47 in January 2019. While the legislation provided for the opening of the office in November 2019, OPHC launched in the summer of 2019 in response to an escalation of hate crimes. OPHC takes a holistic approach to preventing hate crimes, developing and coordinating community-driven prevention strategies to address biases fueling such crimes, and fostering healing for victims and their communities.\n\nOPHC is strategic in using non-law enforcement deterrence, including public education, outreach and community safety models and preventative best practices. It also works with partners to develop responses for when hate crimes occur, including developing strategies so that the criminal justice system has options beyond arrest and prosecution. The office coordinates the City’s efforts to prevent and respond to hate crimes through an Interagency Committee on Hate Crimes comprised of city agencies and all the District Attorneys’ offices in New York City.",
+   "source_url": "https://www.nyc.gov/site/stophate/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "administration-for-children-s-services": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/acs/index.page",
+   "text": "The Administration for Children's Services (ACS) protects and promotes the safety and well-being of children, youth and families through child welfare and juvenile justice services and community supports.",
+   "source_url": "https://www.nyc.gov/site/acs/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "new-york-city-police-pension-fund": {
    "text": null,
    "source_url": "https://www.nyc.gov/content/nycppf/pages/",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "veterans-advisory-board": {
-   "text": null,
-   "source_url": "https://www1.nyc.gov/site/veterans/community/veterans-advisory-board.page",
+   "text": "The NYC Veterans Advisory Board (VAB) functions through the contributions of 13 veterans who have been appointed to three-year terms by either the Mayor or the Speaker of the New York City Council. The members represent the five Boroughs of New York City. The VAB's main activities include advising the New York City Department of Veterans' Services on all matters concerning veterans; meeting at least quarterly; keeping records of all deliberations; determining its own rules of procedure; and submitting annual reports for the Mayor and the Speaker of the New York City Council.",
+   "source_url": "https://www.nyc.gov/site/veterans/community/veterans-advisory-board.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "staten-island-district-attorney-s-office": {
    "text": "OUR MISSION\n\n“The men and women of the Richmond County District Attorney’s Office work each day in partnership with law enforcement and the people of Staten Island to pursue justice for victims of crime, to prevent crime in all its forms, and to promote the safety and well-being of all citizens of our borough.”\n\nLEADERSHIP TEAM\n\nMichael E. Mcmahon\n\nDISTRICT ATTORNEY\n\nAshleigh J. Owens\n\nChief Assistant District Attorney\n\nThomas C. ridges\n\nFirst Executive Assistant District Attorney\n\nMARK PALLADINO\n\nExecutive ADA, Trials and Court Operations\n\nDarren Albanese\n\nExecutive ADA, Criminal Court and Professional Development\n\nADAM SILBERLIGHT\n\nEXECUTIVE ASSISTANT DISTRICT ATTORNEY\n\nLisa Davis\n\nEXECUTIVE ASSISTANT DISTRICT ATTORNEY\n\nVictoria Levin\n\nExecutive Assistant District Attorney for Special Victims & Pathways to Justice\n\nLegal Divisions, Bureaus & Units\n\nAPPEALS BUREAU 718-697-8317 The Appeals Bureau provides New York’s appellate courts and all federal courts with in-depth written and oral analyses of legal and factual issues arising in a full range of criminal prosecutions. Read More The Bureau ensures that properly-obtained convictions are upheld and that no defect in the trial-level proceedings unduly affects either the public or the accused. Our attorneys have regularly appeared in some of the most highly respected appellate courts in the nation, including the New York Court of Appeals and the United States Court of Appeals for the Second Circuit.\n\nCriminal Court Division 718-697-8340 Criminal Court is the point of entry for almost all prosecutions conducted by the Richmond County District Attorney’s Office. Each year, more than 10,000 cases are processed through Criminal Court. Read More Felonies, the most serious level of crime, are screened in Criminal Court and directed to the appropriate bureau or unit within the District Attorney’s Office for eventual prosecution in Supreme Court. All misdemeanors and violations are prosecuted directly in Criminal Court. The range of misdemeanor cases handled by Criminal Court includes, but is not limited to, prostitution, driving while intoxicated, graffiti, petit larceny, menacing, and assault.\n\nDomestic Violence Division 718-697-8315 In 2016, RCDA, under DA McMahon’s leadership, created a separate and dedicated Domestic Violence Bureau that works solely on handling the borough’s growing number of domestic violence cases. Read More The Domestic Violence Bureau is comprised of a Bureau Chief, a Deputy Bureau Chief and 11 ADAs, at both the misdemeanor and felony level, as well as additional legal support staff to allow for more direct and involved supervision of domestic violence cases. Additionally, the office moved to a system of vertical prosecution in domestic violence cases, meaning a case will stay with one prosecutor from start to finish, better serving the victims.\n\nNarcotics & INVESTIGATIONS Bureau 718-697-8319 The Narcotics-Investigations Bureau handles the prosecution of all felony-level offenses related to the unlawful possession and distribution of controlled substances. Read More Assistant District Attorneys assigned to the Narcotics-Investigations Bureau work alongside various law enforcement agencies on both street-level and long-term drug investigations. The Bureau is also responsible for reviewing, initiating and prosecuting cases involving a wide range of offenses, including white collar crimes, computer crimes, counterfeiting, organized crime, narcotics distribution, gun trafficking, conspiracy, and enterprise corruption, and may also be assigned murder cases.\n\nSpecial Victims Bureau 718-697-8313 The Special Victims Bureau investigates and prosecutes sex crimes, child abuse and neglect, child pornography, human trafficking, and other vulnerable populations. Read More They may also be assigned homicide cases. Specially-trained prosecutors are assisted by victim advocates who accompany victims to court appearances, discuss safety issues and provide referrals for counseling. ADAs in this Bureau also manage Mental Health Treatment Court and collaborate as partners with the Staten Island Advocacy Center.\n\nTRIALS BUREAU 718-697-8310 The Trials Bureau is responsible for the investigation and prosecution of violent felony crimes such as homicide, robbery, burglary, assault, arson, and weapons offenses. Read More It also prosecutes hate crimes, as well as vehicular offenses, and grand larcenies.\n\nAnimal Cruelty Prosecution Unit 718-697-8320 The Animal Cruelty Prosecution Unit was created by District Attorney McMahon to investigate and prosecute crimes against animals. Read More Additionally, the Unit was created to highlight and increase awareness of animal abuse, to educate the community about available resources and programs that could prevent neglect, abuse, and injury to animals, and to develop and facilitate relationships with Staten Islanders and local veterinarians to encourage the reporting of animal abuse by speaking for those who have no voice. Th",
@@ -1609,18 +1591,16 @@
    "source_url": "https://www.nyc.gov/site/dhs/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "civilian-complaint-review-board": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/ccrb/index.page",
+   "text": "The New York City Civilian Complaint Review Board (CCRB) is an independent agency. It is empowered to receive, investigate, mediate, hear, make findings, and recommend action on complaints against New York City police officers alleging the use of excessive or unnecessary force, abuse of authority, discourtesy, or the use of offensive language. The Board’s investigative staff, composed entirely of civilian employees, conducts investigations in an impartial fashion. The Board forwards its findings to the police commissioner.",
+   "source_url": "https://www.nyc.gov/site/ccrb/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "jamaica-center-for-arts-and-learning": {
    "text": "about jcal\n\nA Cultural Cornerstone of Queens since 1972\n\nOur Mission\n\nJamaica Center for Arts and Learning (JCAL) is a multidisciplinary arts center based in the diverse community of Southeast Queens. Our mission is to offer quality visual and performing arts programs and to provide accessible education programs to encourage participation in the arts.\n\nOur story\n\nJamaica Center for Arts and Learning (JCAL) is a multidisciplinary arts center based in and serving the diverse community of Southeast Queens, where 2.3 million African-American, Caribbean-American, Indo-Asian, African, Latinx, Caucasian, Native American, and Indigenous artists and audiences live, work, and learn. Founded in 1972, JCAL is the only multidisciplinary arts center—and only member of New York City’s Cultural Institutions Group (CIG)—located in Southeast Queens. Our mission is to offer quality visual and performing arts programs and accessible education programs to encourage participation in the arts.\n\nWe offer high-quality visual and performing arts and education programs at little to no cost, and gathering spaces and events for the community. JCAL actively supports local artists, introducing them to new audiences and expanding the impact of their work through residency programs, professional development, presentations, and partnerships. JCAL connects more than 58,000 neighbors, friends, parents, children, and artists to the cultural vibrancy and innovation of our borough.\n\nOur History\n\n1960's\n\nEARLY VISION In the late 1960s, the Greater Jamaica Development Corporation (GJDC) sought to restore the declining commercial corridor along Jamaica Avenue. One of its first actions was to appropriate the abandoned Queens Register of Titles and Deeds building, an imposing neo-Renaissance structure built in 1898. Plans were made to restore the building—to be called the Jamaica Arts Center—as a symbol of Jamaica's reawakening and as a magnet for thousands of office workers, shoppers and residents.\n\n1970's\n\nOPENING OUR DOORS\n\nStarting in 1972, GJDC hired the staff for Jamaica Arts Center (as we were first known). In 1974, the building was designated a landmark by the New York City Landmarks Preservation Commission. Four years later, we became one of just 34 members of New York City’s prestigious Cultural Institutions Group, which includes the Metropolitan Museum of Art, the Bronx Zoo and the New York Botanical Garden.\n\n1980's\n\nCREATIVE EXPRESSIONS\n\nThroughout the 1980s and 1990s, JCAL greatly expanded its visual and performing arts programming. This included early exhibitions from renowned artists such as Elizabeth Catlett, Tomie Arai, Emmett Wigglesworth, Charles Abramson, Robert Blackburn and Jacob Lawrence. Our facility also provided key resources to hundreds of artists and arts educators, while our in-school arts programming reached tens of thousands of public-school students across the city.\n\n1992\n\nA TURNING POINT\n\nIn 1992, after New York City’s fiscal crisis dramatically impacted JCAL and its peers in the Cultural Institutions Group, we joined the groundbreaking National Arts Stabilization (NAS) program. We adopted a new name—the Jamaica Center for Arts and Learning—and recommitted ourselves to serving the community.\n\n1998\n\nBUILDING MOMENTUM\n\nIn 1998, a $3.6 million restoration allowed us to expand our black-box theater, add a new gallery, improve classrooms, and strengthen operations. This growth made it possible to better support early-career artists of color seeking creative training and industry access.\n\n2000's\n\nEXPANDING OUR CAMPUS\n\nIn the early 2000s, our work attracted additional funding to restore the former First Reformed Dutch Church of Jamaica, just two blocks away. Originally built in 1859, the newly named Jamaica Performing Arts Center (JPAC) was given a new lease on life as a mid-size performing arts center. In 2009, JPAC was awarded a Lucy G. Moses Preservation Award by the New York Landmarks Conservancy.\n\n2020\n\nMEETING THE MOMENT\n\nDuring the COVID-19 pandemic, we transitioned quickly to livestreaming performances and exhibitions, offered free and low-cost classes, and provided affordable workspace and recording facilities to artists, musicians and filmmakers.\n\nToday\n\nWHERE WE ARE NOW\n\nToday, JCAL and JPAC comprise a two-block arts and culture campus in Southeast Queens. We have launched new programs and events, such as the Making Moves Dance Festival and JCAL Reads, and rebranded our School of the Arts.\n\nJCAL HAS BEEN GRACED BY\n\nElizabeth Catlett / Jacob Lawrence / romare bearden / Isamu Noguchi / adolph Gottlieb / david Chung / Wynton Marsalis / dizzy Gillespie / big Nick Nicholas / The boys Choir of Harlem\n\nRooted in the cultural richness of Southeast Queens, JCAL is honored to have welcomed Grammy, Pulitzer Prize, and National Medal of Arts recipients, acclaimed artists whose work reflects and shapes the vibrant creative legacy of the community.\n\nOur initiaTIves\n\nVisual Arts\n\nEach year, JCAL mounts exhibitions that explore u",
@@ -1651,9 +1631,8 @@
    "source_url": "https://www.nyc.gov/site/mospce/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "department-of-parks-and-recreation": {
    "text": null,
@@ -1680,13 +1659,12 @@
    "truncated": false
   },
   "mayor-s-office-to-end-domestic-and-gender-based-violence": {
-   "text": null,
+   "text": "The Mayor’s Office to End Domestic and Gender-Based Violence (ENDGBV) envisions a City free from domestic and gender-based violence to improve health and safety for all New Yorkers.",
    "source_url": "https://www.nyc.gov/site/ocdv/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "carnegie-hall": {
    "text": null,
@@ -1705,31 +1683,28 @@
    "truncated": false
   },
   "youth-board": {
-   "text": null,
+   "text": "The New York City Youth Board advises DYCD on the development of youth programs. The board is comprised of leaders from business, academia, government, foundations, and the non-profit sector.",
    "source_url": "https://www.nyc.gov/site/dycd/involved/boards-and-councils/nyc-youth-board.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "domestic-violence-fatality-review-committee": {
-   "text": null,
-   "source_url": "https://www1.nyc.gov/site/ocdv/press-resources/fatality-review-committee.page",
+   "text": "The NYC Domestic Violence Fatality Review Committee (FRC) was established through Local Law 61, in June 2005. Annually, the Committee reviews and analyzes family-related homicide data to gain an understanding of the circumstances surrounding the occurrence of these crimes and to ascertain the level to which victims accessed victim assistance and prevention services.",
+   "source_url": "https://www.nyc.gov/site/ocdv/press-resources/fatality-review-committee.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "mayor-s-office-of-sports-wellness-and-recreation": {
-   "text": null,
+   "text": "At the Mayor's Office of Sports, Wellness and Recreation (MOSWR), our mission is to enhance equitable access to competitive sports programs, promote overall wellness, and foster a sense of community through recreation.\n\nThe MOSWR is dedicated to collaborating with a diverse network of Community-Based Organizations (CBOs), sports, wellness, and recreation groups across New York City. Our primary objective is to oversee and manage The Mayor's Cup brand and events while continuously seeking out innovative, practical, and high-quality programs that empower youth and uplift communities.",
    "source_url": "https://www.nyc.gov/content/sports/pages/about-office-of-sports-wellness-and-recreation",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "office-of-data-analytics": {
    "text": null,
@@ -2621,6 +2596,6 @@
  "crawl_started_at": "2026-07-16T01:16:30+00:00",
  "user_agent": "ny-gov-web-registry crawler; https://github.com/BetaNYC/ny-gov-web-registry; noel@beta.nyc",
  "crawl_finished_at": "2026-07-16T01:40:46+00:00",
- "_recovery_merged_at": "2026-07-16T03:50:14+00:00",
+ "_recovery_merged_at": "2026-07-16T04:00:44+00:00",
  "_recovery_source": "extract_waf_descriptions.py (browser-pane, operator-authorized)"
 }
