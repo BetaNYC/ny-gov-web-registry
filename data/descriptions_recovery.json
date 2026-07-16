@@ -997,6 +997,126 @@
    "method": "browser-pane",
    "status": "ok",
    "truncated": false
+  },
+  "mayor-s-office-of-environmental-coordination": {
+   "text": "Established by Section 192(e) of the New York City Charter, the Office assists City agencies in carrying out their environmental review responsibilities. In addition to being the repository for all City Environmental Quality Review (CEQR) documents, the Mayor's Office of Environmental Coordination (MOEC) serves as the City's liaison to state and federal agencies on environmental matters and advises the Mayor on matters of environmental policy. Executive Order 149 of 2011 further defines MOEC’s responsibilities to include implementation of the City’s green building law, including authorizing the Director to exercise the powers and duties of the Mayor granted by the law.\n\nMOEC’s mission is to be a resource for city agencies and private applicants by providing information and assistance in completing the environmental review process and to help the city to lead by example in applying state-of-the-art green building requirements.",
+   "source_url": "https://www.nyc.gov/site/oec/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-young-men-s-initiative": {
+   "text": "In August 2011, New York City Young Men’s Initiative (YMI) was created as a public-private partnership to address increasing disparities among black and Latino men between the ages of 16 and 24 in education, employment, health and justice. The YMI mission is to develop and champion policies, programs and partnerships that holistically support the success of young men of color throughout NYC. The budget and scope of YMI has expanded since its inception.\n\nYMI accomplishes its mission through broad policy recommendations, changes and agency reforms and by connecting the city’s young men of color to individuals, opportunities and organizations that improve the quality of their lives and lead them to a more successful future.",
+   "source_url": "https://www.nyc.gov/site/ymi/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-water-board": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/nycwaterboard/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "mayor-s-office-of-citywide-events-coordination-and-management": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/cecm/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "department-of-consumer-and-worker-protection": {
+   "text": "The NYC Department of Consumer and Worker Protection (DCWP) protects and enhances the daily economic lives of New Yorkers to create thriving communities.",
+   "source_url": "https://www.nyc.gov/site/dca/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-tax-commission": {
+   "text": "The Tax Commission is the City of New York's forum for independent administrative review of annual real property tax assessments set by the NYC Department of Finance. The Tax Commission is a separate agency independent of the Department of Finance.\n\nThe Tax Commission comprises a president and six Commissioners appointed by the Mayor, with advice and consent of the City Council, to staggered six-year terms. As the head of the agency, the President serves full-time; the six Commissioners serve part-time. Each member of the Commission must have at least three years of business experience in real estate or real estate law. The Commission must include at least one resident of each borough.\n\nIn accordance with New York State and local law, the Tax Commission reviews and determines annual applications for correction of assessment that the applicants claim are incorrectly assessed or improperly denied an exemption from real property tax.",
+   "source_url": "https://www.nyc.gov/site/taxcommission/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "department-of-small-business-services": {
+   "text": "The NYC Department of Small Business Services (SBS) helps unlock economic potential and create economic security for all New Yorkers by connecting New Yorkers to good jobs, creating stronger businesses, and building thriving neighborhoods across the five boroughs.",
+   "source_url": "https://www.nyc.gov/site/sbs/about/about.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "three-quarter-housing-task-force": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/content/tenantprotection/pages/tqh-task-force",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "environmental-control-board": {
+   "text": "The OATH Hearings Division holds hearings on what are called Environmental Control Board, or ECB cases. These cases involve summonses that are issued by more than 25 different City enforcement agencies responsible for protecting the public's health and safety and ensuring it has a clean environment. OATH Hearing Officers' decisions on these summonses are final unless an appeal from the hearing decision is filed and accepted. Either side (the respondent or the City agency) can appeal. If an appeal has been accepted, the OATH Appeals Division reviews the arguments made on appeal, as well as the hearing record, to determine whether the hearing decision is supported by the law and by a preponderance of the evidence in the record. It then drafts a decision on the appeal and presents it to a monthly panel composed of three rotating members of the ECB. The panel reviews the draft decision and votes to adopt or modify it. If the panel members are unable to reach an agreement on a particular decision, the appeal is referred to the full ECB to discuss and vote on the outcome. Appeal decisions issued after review by a panel or the full ECB are final.",
+   "source_url": "https://www.nyc.gov/site/oath/hearings/about-ecb.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "cultural-affairs-advisory-commission": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/dcla/about/advisory-commission.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "department-of-finance": {
+   "text": "The Department of Finance collects the revenues that make every city service possible.",
+   "source_url": "https://www.nyc.gov/site/finance/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "new-york-city-taxi-and-limousine-commission": {
+   "text": "The New York City Taxi and Limousine Commission (TLC), created in 1971, is the agency responsible for licensing and regulating New York City's Medallion (Yellow) taxi cabs, for-hire vehicles (community-based liveries, black cars and luxury limousines), commuter vans, and paratransit vehicles. The Commission's Board consists of nine members, eight of whom are unsalaried Commissioners. The salaried Chair/ Commissioner presides over regularly scheduled public commission meetings and is the head of the agency, which maintains a staff of approximately 600 TLC employees.\n\nOver 200,000 TLC licensees complete approximately 1,000,000 trips each day. To operate for hire, drivers must first undergo a background check, have a safe driving record, and complete 24 hours of driver training. TLC-licensed vehicles are inspected for safety and emissions at TLC's Woodside Inspection Facility.",
+   "source_url": "https://www.nyc.gov/site/tlc/about/about-tlc.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "mayor-s-committee-on-city-marshals": {
+   "text": "The Mayor's Committee on City Marshals is established by State law, Section 1601 of the New York City Civil Court Act. The Committee's four functions are to (1) establish and publish qualifying criteria for appointment to the office of City marshal, (2) recruit and receive names of candidates for that office, (3) determine which of the qualified candidates are best qualified to serve as City marshals, and (4) recommend to the Mayor up to three qualified persons for appointment to the office of City marshal upon the occurrence of a vacancy. Mayoral Executive Order No. 44, February 13, 1980. By law, the Committee's proceedings, records, and communications, including all applications submitted to it, are confidential and exempt from public disclosure.",
+   "source_url": "https://www.nyc.gov/site/marshals/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "office-of-administrative-tax-appeals": {
+   "text": "The Office of Administrative Tax Appeals was established to bring together the agencies that provide fair, independent and efficient appeals of the taxes administered by the City of New York.",
+   "source_url": "https://www.nyc.gov/site/oata/index.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
+  },
+  "conflicts-of-interest-board": {
+   "text": "The Conflicts of Interest Board is the independent New York City agency tasked with administering, enforcing, and interpreting the City’s Conflicts of Interest Law, Annual Disclosure Law, Lobbyist Gift Law, Affiliated Not-for-Profits Law, and Legal Defense Trusts Law. We hope you'll enjoy learning more about this agency, and government ethics in general, by exploring the tabs on the left and the other offerings on our site.\n\nThrough a combination of engaging training, confidential advice, and vigorous enforcement, the Board seeks to prevent ethics questions from becoming ethics problems for public servants. Ultimately, however, integrity in City government rests upon all of us, public servant and private citizen alike. Only when each of us plays their part will the public trust inherent in public service be ensured.",
+   "source_url": "https://www.nyc.gov/site/coib/about/about-coib.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   }
  }
 }
