@@ -410,11 +410,11 @@
    "truncated": false
   },
   "fire-department-of-the-city-of-new-york": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/fdny/index.page",
+   "text": "The Fire Department of the City of New York (FDNY) is the largest Fire Department in the United States and is universally recognized as the world's busiest and most highly skilled emergency response agency. Annually, FDNY responds to millions of emergency calls.\n\nThe Department's primary mission is to provide fire protection, emergency medical care, fire prevention, and other critical public safety services to both residents and visitors in New York City's five boroughs. It also responds outside of the City's borders to assist neighboring municipalities, and nationally/internationally on special assignments.\n\nSince its inception in 1865, the FDNY has helped lead efforts to make New York the safest large city in the country. This accomplishment requires a steadfast and daily commitment to maintaining the Department's core values. FDNY members are sworn to serve and protect life and property. They aim to prevent emergencies by continually educating the public in fire and life safety, and disaster preparedness, as well as enforcing public safety codes.",
+   "source_url": "https://www.nyc.gov/site/fdny/about/overview/overview.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "no_about_found",
+   "method": "browser-pane",
+   "status": "ok",
    "truncated": false
   },
   "advisory-council-on-procurement-lobbying": {
@@ -482,11 +482,11 @@
    "truncated": false
   },
   "new-york-city-department-of-transportation": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/html/dot/html/home/home.shtml",
+   "text": "The New York City Department of Transportation's (NYC DOT) mission is to provide for the safe, equitable, and sustainable movement of people and goods and create public spaces that strengthen our communities.\n\nThe agency's vision is a transportation system that provides equitable mobility for all residents and visitors, is environmentally sustainable and built to adapt to the threat of climate change, and is driven by human power and clean energy.\n\nEvery time you go outside, you interact with NYC DOT. We are responsible for a vast network of public infrastructure, including planning, design, construction, maintenance, and management of roads, sidewalks, bridges, traffic signals and signs, crosswalks, bus stops, bike lanes, streetlights, plazas – even the Staten Island Ferry. We are here to help all New Yorkers and millions of visitors get around our city.\n\nThis is possible thanks to our approximately 6,000 employees, an annual operating budget of $1.6 billion and a ten-year $33 billion capital program, and the continued input and involvement of the public.",
+   "source_url": "https://www.nyc.gov/html/dot/html/about/about.shtml",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "no_about_found",
+   "method": "browser-pane",
+   "status": "ok",
    "truncated": false
   },
   "mayor-s-office-of-operations": {
@@ -610,31 +610,28 @@
    "truncated": false
   },
   "mayor-s-office-for-people-with-disabilities": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/mopd/index.page",
+   "text": "For half a century, the Mayor's Office for People with Disabilities (MOPD) has been the liaison between New York City government and the disability community. In partnership with City offices and agencies, MOPD ensures City initiatives, programs and policies address the needs and interests of people with disabilities. The office regularly engages in advocacy and policymaking at the local, state, national, and international levels to make certain accessibility and full inclusion are key priorities for all public and private stakeholders alike.",
+   "source_url": "https://www.nyc.gov/site/mopd/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "new-york-city-loft-board": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/loftboard/index.page",
+   "text": "In 1982, the New York State legislature passed Article 7-C of the Multiple Dwelling Law (MDL), also known as the Loft Law. The law created a new class of buildings in New York City. These buildings are known as interim multiple dwellings (IMD). Generally, these buildings are former commercial and manufacturing spaces that were used as residences by at least three or more families living independently from April 1, 1980 through December 1, 1981. The Loft Law also established the Loft Board to coordinate the legal conversion of these spaces to safe, rent-stabilized residential units.",
+   "source_url": "https://www.nyc.gov/site/loftboard/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "mayor-s-office-of-faith-based-and-community-partnerships": {
    "text": null,
    "source_url": "https://www.nyc.gov/site/cfcp/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "queens-botanical-garden": {
    "text": "Our Mission, Commitment, History\n\nAbout Queens Botanical Garden\n\nABOUT & MISSION\n\nQueens Botanical Garden (QBG) is an urban oasis where people, plants, and cultures are celebrated through inspiring gardens, innovative educational programs, and real-world applications of environmental stewardship. QBG is located on property owned by the City of New York, and its operation is made possible in part by public funds provided through the New York City Department of Cultural Affairs, Queens Borough President, the New York City Council, State elected officials, the New York State Department of Parks, Recreation and Historic Preservation, along with corporate, foundation, and individual supporters.\n\nCOMMITMENT\n\nWe are dedicated to fostering an inclusive environment for everyone, regardless of race, ethnicity, religion, color, national origin, age, disability (physical or mental), sex, sexual orientation, gender identity, parental status, marital status, and political affiliation, as well as gender expression, mental illness, socioeconomic status or background, neuro(a)typicality, physical appearance, predisposing genetic characteristic, or immigration status.\n\nHISTORY\n\nLocated at the northeast corner of Flushing Meadows-Corona Park in Flushing, QBG evolved from the five-acre “Gardens on Parade” exhibit showcased at the 1939-1940 New York World’s Fair. Officially opening as “The Queens Botanical Garden Society” in 1946 after local residents saved and expanded the original exhibit, the Garden remained at the original World’s Fair site until 1961, when it was moved to its current location on Main Street in Flushing. Among the original plantings taken from the 1939 site are two blue atlas cedars that frame the iconic tree gate sculpture at the Garden’s Main Street entrance today. QBG has become a 39-acre oasis in one of New York City’s most bustling and diverse neighborhoods.\n\nLIVING LAND ACKNOWLEDGEMENT\n\nQueens Botanical Garden acknowledges that it is situated on the traditional land of the Matinecock people, the first people of Flushing, Queens. We pay respect to the Matinecock people, past, present, and future, their ancestors who have stewarded the land for generations, and their continuing presence on this land today. We honor these origins by continuing to steward the land with sustainable practices, love for community, and commitment to equity, as well as helping to educate the public about the history, significance, contributions, and impact of indigenous peoples and culture.\n\nWe thank Tecumseh Ceaser, Artist and Cultural Consultant of the Matinecock Tribal Nation, for his guidance as we reflect on our acknowledgement.\n\nLeft : Poster cover for 1939 World’s Fair “Gardens on Parade” horticulture exhibition Center : English cottage garden from the “Gardens on parade” exhibit of the 1939 World’s Fair Right : Gates to “Gardens on parade”",
@@ -665,72 +662,64 @@
    "source_url": "https://www.nyc.gov/site/getstuffbuilt/initiatives/get-stuff-built.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "new-york-city-housing-authority-board": {
-   "text": null,
-   "source_url": "https://www1.nyc.gov/site/nycha/about/nycha-board.page",
+   "text": "The NYCHA Board is comprised of six (6) members, to include three (3) resident members.",
+   "source_url": "https://www.nyc.gov/site/nycha/about/nycha-board.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "nonprofit-advisory-council": {
-   "text": null,
+   "text": "In 2024, MONS launched the first ever Advisory Council on Nonprofits.  The Advisory Council is a voluntary, non-governing body of nonprofit leaders that provides input to inform the focus and priorities of MONS. The Council helps shape policy, legislative agendas, and responses to programmatic and administrative issues within government that impact nonprofits. By helping MONS address the needs of nonprofit organizations, the Council supports MONS in its mission to promote thriving communities.\n\nThe members of the advisory council represent a broad spectrum of nonprofit organizations, including those focused on social services, education, arts and culture, and advocacy. Their diverse backgrounds and perspectives will ensure that the advisory council effectively addresses the needs of the nonprofit sector. The Nonprofit Advisory Council is co-chaired by Mayor’s Office of Nonprofit Services Executive Director Michael Sedillo, Good Shepherd Services Vice President Annie Minguez, and Urban Pathways Chief Executive Officer Frederick Shack.",
    "source_url": "https://www.nyc.gov/site/nonprofits/about/advisory-council.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "department-of-city-planning": {
    "text": null,
    "source_url": "https://www.nyc.gov/site/planning/index.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "mayor-s-office-to-protect-tenants": {
-   "text": null,
+   "text": "The Mayor’s Office to Protect Tenants was revitalized by Mayor Mamdani on the first day of his administration to coordinate across agencies coordinate the work of the City to protect the rights of tenants and to improve affordability and quality of housing for tenants by working with tenants in New York City.",
    "source_url": "https://www.nyc.gov/content/tenantprotection/pages/",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "civic-engagement-commission": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/civicengagement/index.page",
+   "text": "In November 2018, New York City voters approved three ballot initiatives proposed by the 2018 Charter Revision Commission. This established the NYC CEC, which can be found in Chapter 76 of the NYC Charter. The Commission will run a citywide participatory budgeting program with guidance from a participatory budgeting advisory committee; partner with community-based organizations and civic leaders, increase awareness of City services, and assist New York City agencies in developing civic engagement initiatives; develop a plan to consider the language access needs of limited English proficient New Yorkers with regards to the Commission's programs and services and provide language interpreters at poll sites by the 2020 general election, with advice from a language assistance advisory committee; and provide assistance to community boards.",
+   "source_url": "https://www.nyc.gov/site/civicengagement/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "department-of-veterans-services": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/veterans/index.page",
+   "text": "To honor the sacrifice of New York City Veterans, Mayor Bill de Blasio created the Department of Veterans' Services (DVS) on April 8th, 2016, making DVS the first standalone City agency in the country dedicated to serving Veterans and their families.\n\nSince that time, the agency has moved to connect, mobilize, and empower New York City's Veteran community in order to foster purpose-driven lives for US Military Service Members – past and present – in addition to their caregivers, survivors, and families.\n\nDVS fulfills this mission by providing New York City's Veterans with essential services and programs focused on pivotal areas such as economic empowerment, housing security, benefits, health and wellness, and culture.",
+   "source_url": "https://www.nyc.gov/site/veterans/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "nyc-her-future": {
    "text": null,
    "source_url": "https://www.nyc.gov/content/nycherfuture/pages/",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "new-york-city-tourism-conventions": {
    "text": null,
@@ -741,22 +730,20 @@
    "truncated": false
   },
   "board-of-health": {
-   "text": null,
-   "source_url": "https://www1.nyc.gov/site/doh/about/about-doh/board-of-health.page",
+   "text": "Yellow Fever was plaguing New York City when the Board of Health held its first meeting in 1805. Led by Mayor De Witt Clinton, the board evacuated stricken neighborhoods and started collecting mortality statistics, to \"furnish data for reflection and calculation.\" Yellow Jack swept the city for the last time in 1822, but cholera, typhus and tuberculosis persisted, fueled by crowding and a lack of sanitation.",
+   "source_url": "https://www.nyc.gov/site/doh/about/about-doh/board-of-health.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www1.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "charter-revision-commission": {
-   "text": null,
+   "text": "On May 28th, Mayor Mamdani announced the creation of the Commission on Government Efficiency, COGE, a Charter Revision Commission tasked with changing the NYC Charter to make City government work better for New Yorkers.",
    "source_url": "https://www.nyc.gov/site/charter/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "special-commissioner-of-investigation-for-the-new-york-city-school-district": {
    "text": "The Office of the Special Commissioner of Investigation (SCI) is the independent watchdog for the New York City school district, the largest school district in the country.\n\nSCI has autonomy and authority to investigate allegations of criminality, corruption, and wrongdoing concerning the New York City Department of Education, its schools, its vendors, and its retirement systems.\n\nEvery officer and employee of the New York City Department of Education is obligated to immediately report to SCI wrongdoing in the school system. We also urge parents, students, and other concerned members of the community to get involved and help our children.\n\nTo file a complaint, please call\n\n212-510-1500\n\nOr file a complaint online .\n\nLinkedIn\n\nInstagram",
@@ -783,31 +770,28 @@
    "truncated": false
   },
   "mayor-s-office-of-special-enforcement": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/specialenforcement/index.page",
+   "text": "The Mayor's Office of Special Enforcement (OSE) is an innovative, solutions-oriented task force that ensures NYC communities are safe from harmful illegal and unregulated industries that one agency and one set of enforcement tools alone can't address. Our multi-agency enforcement team devises strategic solutions-ranging from public education to enforcement action-to complex problems.",
+   "source_url": "https://www.nyc.gov/site/specialenforcement/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "juvenile-justice-advisory-board": {
    "text": null,
    "source_url": "https://www.nyc.gov/site/acs/about/data-analysis.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "center-for-innovation-through-data-intelligence": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/cidi/index.page",
+   "text": "The Center for Innovation through Data Intelligence (CIDI) is a research/policy center located in the Office of the Mayor of the City of New York. CIDI reports directly to the Deputy Mayor for Health and Human Services. As part of the Office of the Mayor, CIDI fosters collaboration with all Health and Human Service agencies to promote citywide policy change with the goal of improvement in the effectiveness of NYC government. CIDI embraces the Mayor’s goal of delivering cross agency solutions to big bold problems impacting the health and well-being of the most vulnerable people in our city. The vision of CIDI is to make data come alive to inspire change.\n\nAs an analytic office, the research agenda of CIDI is formulated by the Deputy Mayor for Health and Human Services along with the Health and Human Service Commissioners and leaders of City agencies providing data to CIDI. CIDI's Data Transfer Protocol allows City agencies to share agency data with CIDI in a timely manner upon approval of a project. To ensure the confidentiality, cultural context, and effectiveness of CIDI research results, CIDI creates a team of representatives from all data-sharing agencies to participate in the design and analysis of the project. In this way, CIDI maintains the integrity of the shared data, while providing actionable intelligence to the City of New York and other partners.",
+   "source_url": "https://www.nyc.gov/site/cidi/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "office-of-the-borough-president-of-manhattan": {
    "text": "About Brad Hoylman-Sigal\n\nAs Manhattan’s 29th Borough President, Brad Hoylman-Sigal is informed by decades of experience in public service and civic engagement. Committed to furthering equity, community, and accountability , Brad is proud to represent and partner with Manhattanites.\n\nBrad Hoylman-Sigal is the 29th Manhattan Borough President, a lifelong public servant and community advocate who has called New York City home for more than 35 years. He brings deep roots in the borough and a long track-record of building a more equitable, affordable, and inclusive New York for all.\n\nBefore becoming Borough President, Brad served for more than a decade in the New York State Senate, where he established himself as one of Albany’s most effective champions for tenants, workers, families, and civil rights through his passage of over 400 bills. During his Senate tenure, Brad played a leading role in advancing some of the most significant progressive reforms in New York State, including landmark tenant protections, major expansions of LGBTQ+ rights, and critical legislation to improve public safety, consumer protections, and government transparency.\n\nBrad also previously served for over ten years as member and chair of his Community Board, working directly with residents, small businesses, and neighborhood leaders to solve local problems and strengthen community life.\n\nBrad lives in Greenwich Village with his husband David and their two daughters. As both a parent and a longtime New Yorker, he understands firsthand the pressures families face, from housing costs and childcare to safe streets, quality schools, and access to opportunity.\n\nAs Borough President, Brad’s priorities are rooted in listening to the people of Manhattan and delivering real results. His administration is focused on:\n\nExpanding affordable housing and protecting tenants\n\nSupporting small businesses and strengthening local economies\n\nEnsuring affordability for working families\n\nProviding real representation for every community in Manhattan\n\nStrengthening arts and culture as essential to the borough’s identity and economy\n\nProtecting immigrant neighbors and ensuring access to services for all\n\nPromoting civic participation and transparent, accountable government\n\nProviding guidance and direct services to constituents navigating city government\n\nEnsuring equity in how resources and services are distributed across the borough\n\nBrad is committed to a Borough President’s Office that is accessible, responsive, and deeply connected to the community. He believes the best policies are shaped by the people they serve, and that every New Yorker deserves to be heard, respected, and represented.\n\nUnder his leadership, the Manhattan Borough President’s Office will continue to fight for opportunity, fairness, and a thriving future for every neighborhood in the borough.",
@@ -842,13 +826,12 @@
    "truncated": false
   },
   "city-commission-on-human-rights": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/cchr/index.page",
+   "text": "The New York City Commission on Human Rights (CCHR) is charged with the enforcement of the Human Rights Law, Title 8 of the Administrative Code of the City of New York. CCHR is responsible for the intake, investigation, and prosecution of complaints alleging violations of the Law.\n\nCCHR is also charged with educating the public and encouraging positive community relations. We provide public education about the Human Rights Law and help cultivate understanding and respect among the City’s many diverse communities through our numerous educational and outreach programs.\n\nAdditionally, CCHR utilizes restorative justice principles to address the harm caused by discrimination and bias, both in its handling of complaints and in its community partnerships.",
+   "source_url": "https://www.nyc.gov/site/cchr/about/inside-cchr.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "nyc-service": {
    "text": "facebook\n\ntwitter\n\nyoutube\n\ninstagram\n\nlinkedin\n\nAbout Us\n\nNYC Service, a division of the Mayor’s Office, provides meaningful access, opportunity, and resources for communities to come together and answer the call to serve New York City.\n\nWe envision a city where New Yorkers are united by service—building a culture where neighbors uplift one another and take shared responsibility for the success of our city.\n\nOur Mission\n\nWe provide meaningful access, opportunity, and resources for communities to come together and answer the call to serve NYC.\n\nOur Vision\n\nNew Yorkers are united by service and together build a culture where New Yorkers uplift one another and take responsibility for the success of our city.\n\nOur Values\n\nParticipation: Lifelong civic engagement is a right, privilege, and responsibility of every New Yorker.\n\nDiversity & Inclusion: Every resident brings valuable lived experience that strengthens how we solve community challenges.\n\nCommunity: Volunteerism takes many forms across NYC, each contributing to the fabric of our city’s democracy.\n\nCollaboration: Our city’s future depends on people working together across communities and sectors.\n\nOur Team\n\nLaura Rog\n\nChief Service Officer, City of New York\n\nLaura Rog serves as NYC Service’s Chief Service Officer, leading citywide volunteer strategy, civic engagement initiatives, and community-based programming. Since 2021, she has overseen efforts spanning emergency response, youth engagement, and national service programs.\n\nA former AmeriCorps VISTA, Laura has worked in education and youth development across New York, Tanzania, and Japan. She holds degrees from SUNY Geneseo and the University of Rochester and serves as a board member and community ambassador across multiple organizations.\n\nAaron Miner\n\nDeputy Chief Service Officer, National Service & Fiscal Operations\n\nSteph Halpin\n\nChief of Staff & Communications\n\nTashawn Morgan\n\nAssistant Chief Service Officer of Community Engagement\n\nLindsey Wolf\n\nNational Service Operations Director\n\nRachelle Moore\n\nOperations Manager\n\nElena Farmer\n\nNational Service Impact Director\n\nErika Burke\n\nNational Service Partnerships Coordinator\n\nJessica Urofsky\n\nYouth Strategies Coordinator\n\nStuart Davis\n\nYouth Strategies Manager\n\nMelita Anderson\n\nCorporate Partnerships Coordinator\n\nJordan Williams\n\nStrategic Partnerships Director\n\nVanesa Paredes\n\nNational Service Program Coordinator\n\nKeira Sutton-Agnew\n\nNational Service Program Coordinator\n\nAaliyah Cardenas\n\nNational Service Program Support Director\n\nMelissa Chauca\n\nNational Service Recruitment Coordinator\n\nVictoria Ung\n\nNational Service Program Coordinator\n\nMonica Rizk\n\nNational Service Program Coordinator\n\nYvonne Hunter\n\nYouth Partnerships Manager\n\nSandra Choi\n\nCommunity Initiatives Director\n\nMaya Hafeez\n\nCommunity Initiatives Coordinator\n\nLeela Cullity\n\nStrategic Partnerships Coordinator\n\nViomo Emmanuel\n\nSpecial Projects Director\n\nAnna Savva\n\nCommunity Programs Manager\n\nJennifer Ramirez\n\nCommunications Coordinator\n\nCareers at NYC Service\n\nWe’re hiring! Visit our Careers page to learn more about open opportunities.\n\nLanguage Access\n\nNYC Service is committed to ensuring programs and resources are accessible to all New Yorkers and complies with Local Law 30.\n\nLearn more about our Language Access services .\n\nContact\n\nPhone number\n\n212-788-7550\n\nTweet to @nycservice\n\nMailing Address\n\n253 Broadway 8th Floor New York, NY 10007\n\nAbout Us\n\nServe\n\nFor Businesses\n\nFor Organizations\n\nConnect\n\nOrganization Newsletter\n\nSubscribe\n\nVolunteer Newsletter\n\nSubscribe\n\nfacebook\n\ntwitter\n\nyoutube\n\ninstagram\n\nlinkedin\n\nCommon Messages",
@@ -867,22 +850,20 @@
    "truncated": false
   },
   "mayor-s-office-of-media-and-entertainment": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/mome/index.page",
+   "text": "The Mayor's Office of Media and Entertainment's mission is to support and strengthen New York City's creative economy and make it accessible to all. In 2019, the creative industries accounted for more than 440,000 local jobs and have an economic impact of $150 billion annually. MOME comprises four divisions: the Film Office, which coordinates on location production throughout the five boroughs; NYC Media, the city's official broadcast network and production group; the Press Credentials Office, which issues press cards; and Programs and Initiatives to advance industry and workforce development across NYC's creative sectors.",
+   "source_url": "https://www.nyc.gov/site/mome/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "new-york-city-office-of-the-actuary": {
-   "text": null,
+   "text": "The Chief Actuary is the legally designated technical advisor to the Boards of Trustees of the NYCRS, which include the New York City Employees’ Retirement System (NYCERS), the Teachers’ Retirement System (TRS), the Board of Education Retirement System (BERS), the New York City Police Pension Fund, and the New York Fire Department Pension Fund.",
    "source_url": "https://www.nyc.gov/site/actuary/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "moma-ps1": {
    "text": "Mission\n\nInspired by daring artists, MoMA PS1 is committed to the exploration of contemporary art and culture, broadening perspectives on the issues of our day, and engaging New Yorkers and communities across the world. Join us in Queens to encounter today’s most exciting artists.\n\nPlan Your Visit See What′s On\n\nView of Niki de Saint Phalle’s La femme et L’oiseau fontaine\n\nInstallation view of Bruce Nauman: Disappearing Acts\n\nWarm Up 2021\n\nInstallation view of Greater New York 2021\n\nBlack Trans Liberation: Power and Purpose at MoMA PS1 on 16 August, 2021.\n\nElliot Reed. Duets at MoMA PS1 on 23 January, 2021.\n\nInstallation view of Theater of Operations: The Gulf Wars 1991–2011\n\nInstallation view of Gina Beavers: The Life I Deserve\n\nHistory\n\nFounded by curator Alanna Heiss, MoMA PS1 (originally known as P.S.1 Contemporary Art Center) was a defining force in the alternative space movement that gained momentum in New York in the 1970s. A rare example of this movement still anchored in its original site, PS1—a historic nineteenth-century public school building in the heart of Long Island City, Queens—has been transformed into a world-renowned place for artistic experimentation and creativity.\n\nLocated in what was once a thriving industrial enclave minutes from midtown Manhattan, PS1 has now become a cultural landmark in one of the fastest-growing, urban residential neighborhoods in the country. Decommissioned as a public school in 1963, the building was first secured from the city by the Institute for Art and Urban Resources Inc., a non-profit founded by Heiss in 1972 to provide studios and exhibition space in underutilized buildings across New York City.\n\nIn 1976, PS1 opened with the seminal Rooms exhibition, which was an invitation for artists to transform the building’s unique, expansive, and dilapidated spaces with site-specific installations. Over 70 artists activated the campus, which is a tradition that continues to this day with 15 artist interventions across the building that speak to its history as a site of experimentation and mark artists’ enduring presence on site. In addition to site-specific works, for 30 years PS1 ran a Studio Program that offered workspace to artists from around the world. While this program ended in 2004, artists and their communities continue to utilize spaces in the Museum for studios, meetings, and rehearsals.\n\nCommunity partnerships and collaboration are also part of PS1’s DNA. Beginning in 1980, PS1 housed the Department of Cultural Affairs’ Materials Donation Program—a creative reuse initiative that provides the city’s arts nonprofits, public schools, and agencies with access to free materials—now known as Materials for the Arts. Since 1982, PS1 has been a member of the City’s Cultural Institutions Group (CIG) in partnership with the Department of Cultural Affairs—the first member focused on contemporary art. Today, PS1’s partnerships continue to forge ties in Long Island City and beyond—building long term collaborations with organizations such as The Fortune Society and The Studio Museum in Harlem with the aim of joining resources to support a wider range of artists.\n\nTo celebrate its affiliation with the Museum of Modern Art in 2000, one of PS1’s most ambitious projects—Greater New York—was launched and has taken place every five years since. The only ongoing survey of artists living and working in the New York City area, each iteration is curated by a team of MoMA and PS1 staff alongside guest curators. To date, more than 500 local, emerging, established, and under-recognized artists have been championed on this international stage.\n\nChampioning grassroots innovation, Sunday Sessions (started in 2009) commissioned and presented projects organized with NYC collectives, DIY spaces, and community organizations, from Black Radical Imagination and Other Music to Art + Feminism and Topical Cream . With time-based practices now integrated into PS1’s year-round programming, these performances, residencies, and events have grown to include more than 3,000 multidisciplinary artists, musicians, scholars, activists, and thinkers to date.\n\nPS1’s idiosyncratic spaces have long had their challenges alongside their charm. In 1997, a campus-wide renovation included the creation of a large outdoor courtyard. Here, two signature programs launched: Warm Up summer music series (established in 1998) connects fans to innovative and experimental music; and the Young Architects Program (1999–2019), a collaboration with MoMA that invited architects and designers to create experimental public environments. In summer 2020—a time ripe with questions of gathering in an era of social distancing—PS1 embarked on a series of public facing and closed door programs centered around the courtyard to tackle critical questions around the role of cultural institutions and civic space, imagining new urban ecologies today. Furthering this commitment to steward public space, in 2021 PS1 partnered with NYC’s Depar",
@@ -893,58 +874,52 @@
    "truncated": true
   },
   "office-of-information-privacy": {
-   "text": null,
+   "text": "OTI’s Office of Information Privacy (OIP), headed by the Chief Privacy Officer (CPO) of the City of New York, advises the Mayor, Chief Technology Officer and other senior City officials, and City agencies on privacy protection in administration priorities, data sharing initiatives, and emerging policy areas, as well as response to suspected and known incidents impacting information privacy. OIP also implements the City's Identifying Information Law and provides guidance to a network of Agency Privacy Officers throughout the City on the lawful and responsible handling of identifying information and privacy protection.",
    "source_url": "https://www.nyc.gov/content/oti/pages/meet-the-team/information-privacy",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "mayor-s-office-of-food-policy": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/foodpolicy/index.page",
+   "text": "The Mayor's Office of Food Policy works to advance the City’s efforts to increase food security, promote access to and consumption of healthy foods, and support economic opportunity and environmental sustainability in the food system. The Office works across city agencies, including the Departments of Education, Correction, Social Services, and Aging, to develop and advance innovative food policy. MOFP is critical in integrating an equity frame into food policy priorities and solutions.",
+   "source_url": "https://www.nyc.gov/site/foodpolicy/about/about.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "mayor-s-office-of-the-utility-consumer-advocate": {
-   "text": null,
+   "text": "We collaborate closely with city agency partners and other stakeholders to advocate for policies and programs that integrate equity in energy utility ratemaking, reduce energy cost burden and energy insecurity, expand access to energy affordability programs, establish protections for utility customers, ensure the transition to clean energy infrastructure benefits Disadvantaged Communities and low- to moderate-income New Yorkers, and represent New York City ratepayers in front of New York State’s Public Service Commission and other state and federal regulators.",
    "source_url": "https://www.nyc.gov/content/climate/pages/utility-consumer-advocate",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "office-conversion-accelerator": {
-   "text": null,
+   "text": "The Office Conversion Accelerator program provides building owners with a single point of contact within city government to help ensure office conversion projects can be completed in a Code-compliant and timely manner. If you are a building owner considering an office-to-residential conversion project that might provide 50 or more housing units, please reach out and contact the Office Conversion Accelerator.\n\nTo advance office to residential conversions, which will help address ongoing office vacancies and create thousands of much-needed new homes for New Yorkers, Mayor Adams has established the Accelerator team to work with office building owners to advance opportunities for conversions. The Office Conversion Accelerator includes representatives from City Hall, the Department of City Planning, the Department of Buildings, the Department of Housing Preservation & Development, the Board of Standards and Appeals, the Landmarks Preservation Commission, and others.",
    "source_url": "https://www.nyc.gov/site/officeconversions/index.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "office-of-payroll-administration": {
-   "text": null,
-   "source_url": "https://www.nyc.gov/site/opa/index.page",
+   "text": "Welcome to the City of New York's Office of Payroll Administration (OPA), led by Executive Director Neil Matthew.\n\nWe manage payroll check, pension check, and direct deposit distributions to all City of New York employees and retirees.\n\nAs part of our fiduciary responsibilities, we also fund and reconcile payrolls, distribute payrolls to City agencies, and report wages and tax information to federal, state, and local tax authorities.\n\nThe agency also analyzes labor agreements for pay/leave impact, ensures compliance with ordered deductions, collects and remits employee voluntary deductions, administers the City of New York’s commuter benefits program, and provides union services for collection and reporting of member dues and voluntary political contributions in accordance with mayoral executive orders.",
+   "source_url": "https://www.nyc.gov/site/opa/about/about-opa.page",
    "fetched_at": "2026-07-16",
-   "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   },
   "mayor-s-office-for-childcare-and-early-childhood-education": {
    "text": null,
-   "source_url": "https://www.nyc.gov/site/childcare/index.page",
+   "source_url": "https://www.nyc.gov/site/childcare/about/about.page",
    "fetched_at": "2026-07-16",
    "method": null,
-   "status": "fetch_failed",
-   "truncated": false,
-   "note": "host_waf_blocked (skipped after 4 consecutive 403s from www.nyc.gov)"
+   "status": "no_about_found",
+   "truncated": false
   },
   "jazz-at-lincoln-center": {
    "text": "Ellington’s Greatest Masterpiece: Black, Brown and Beige\n\nThis special summer concert features the Jazz at Lincoln Center Orchestra performing Duke Ellington’s groundbreaking 1943 three-movement magnum opus with vocalist Ekep Nkwelle and violinist Eli Bishop . This concert is pay-what-you-choose, starting at $20.\n\n2026–27 SEASON TICKETS NOW ON-SALE\n\nJoin us for Wynton Marsalis’ final season leading Jazz at Lincoln Center, celebrated through 90 unforgettable performances honoring his music, leadership, and extraordinary impact on jazz.\n\nSwing University\n\nIt’s a summer of centennials at Swing University! Join us for classes celebrating the 100th birthdays of some of jazz’s most influential artists. Classes start July 13.\n\nDizzy’s Club\n\nFrom the first note to the last bite, Dizzy’s Club offers an unforgettable night out with incredible live jazz, a warm atmosphere, and a seasonally curated menu served in front of sweeping views of the city.\n\nThe Wonderful Word of Louis Armstrong\n\nWynton Marsalis breathes new life into Armstrong’s Hot Five and Hot Seven repertoire alongside celebrated multi-instrumentalist Vince Giordano and members of both their bands.\n\nJazzCall for Freedom\n\nIn times of uncertainty throughout American history, jazz has spoken in a clear voice to reaffirm democratic values. Join the JazzCall for Freedom, our civic contribution at a moment of deep division in our country.\n\nJul 23–24\n\nRose Theater\n\nSep 17–19\n\nRose Theater\n\nOct 2–3\n\nRose Theater\n\nView Season\n\nWorld-Class Jazz Under the Manhattan Skyline Live Every Night 7PM & 9PM\n\nJohn Ellis Heroes Quintet\n\nYuhan Su Sextet: 101st Cal Tjader Birthday Celebration\n\nCharles McPherson Quintet\n\nView Dizzy's\n\nMEMBERSHIP\n\nBecome a Member and save on the best seats in the house\n\nMembership starts at just $100 for the year. Join today and enjoy exclusive benefits like discounted tickets for mainstage concerts and Dizzy’s Club, access to events, and so much more.\n\nIn Rotation\n\nEssentially Ellington\n\nEach year, the Jazz at Lincoln Center Orchestra with Wynton Marsalis records the compositions that are newly enshrined in the EE library. Listen to the full anthology of recordings today.\n\nJLCO ON TOUR\n\nJazz at Lincoln Center Orchestra with Wynton Marsalis\n\nLearn more about the band and find out where you can see them live.",
@@ -2671,6 +2646,6 @@
  "crawl_started_at": "2026-07-16T01:16:30+00:00",
  "user_agent": "ny-gov-web-registry crawler; https://github.com/BetaNYC/ny-gov-web-registry; noel@beta.nyc",
  "crawl_finished_at": "2026-07-16T01:40:46+00:00",
- "_recovery_merged_at": "2026-07-16T03:10:34+00:00",
+ "_recovery_merged_at": "2026-07-16T03:33:23+00:00",
  "_recovery_source": "extract_waf_descriptions.py (browser-pane, operator-authorized)"
 }

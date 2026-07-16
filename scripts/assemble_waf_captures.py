@@ -33,6 +33,9 @@ def assemble(meta: dict, raw_dir: Path, fetched_at: str = FETCHED_AT) -> dict:
             "status_hint": hint,
             "raw_text": None,
         }
+        # Web-history datum: an entity whose About still lives on the pre-CMS /html/ generation.
+        if m.get("path_family"):
+            cap["path_family"] = m["path_family"]
         if hint == "found":
             raw_file = raw_dir / f"{entity_id}.txt"
             if not raw_file.exists():

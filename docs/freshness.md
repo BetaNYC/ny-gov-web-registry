@@ -11,7 +11,7 @@ The registry is designed to **stay current**, not be a one-time dump (design doc
 | Wikidata NYC gov orgs (WDQS SPARQL) | `data/cache/wikidata_nyc_gov_orgs.json` | **2026-07-15** | 232 bindings → 109 QIDs (88 with `P856`) |
 | nyc-boundaries layer index (`BoundaryId` union + `layers`) | `data/cache/nyc-boundaries_layers_index.ts` | **2026-07-15** | 22 published layer ids |
 | About-page crawl (live agency sites) | *(no cache — `data/descriptions.json` is the output)* | **2026-07-15** | 285 targets crawled + 32 `no_url` |
-| WAF recovery (browser-pane, operator-authorized) | `data/cache/waf_captures_raw/` + `waf_capture_meta.json` (git-ignored) | **2026-07-16** | batch 1: 25 of 152 (20 `ok`, 5 `no_about_found`); 127 remaining |
+| WAF recovery (browser-pane, operator-authorized) | `data/cache/waf_captures_raw/` + `waf_capture_meta.json` (git-ignored) | **2026-07-16** | batches 1–2: 50 of 152 (41 `ok`, 9 `no_about_found`); 102 remaining |
 
 Cache files are git-ignored (`data/cache/`); only the built `data/registry.json` — plus the
 committed, derived `data/curation.json`, `data/greenbook_enrichment.json`,
@@ -181,12 +181,35 @@ which implies the WAF is still blocking). Any other base status (`ok`, `no_url`,
 is never overwritten. Idempotent.
 
 **Batch 1 coverage (25 of 152 targets):** **20 recovered `ok`** (verbatim agency prose) +
-**5 reclassified `no_about_found`** (browser reached the site; no clean about block — FDNY, DOT,
-the M/WBE advisory roster, City Planning Commission hub, and a fully-removed STAR Corp site). Registry
-totals moved **91 → 111 `ok`**; `fetch_failed` 173 → 148; `no_about_found` 12 → 17. **Remaining: 127
-WAF targets** to process in follow-on batches (2–6) with the identical mechanical loop. Raw captures
-and the meta manifest live in git-ignored `data/cache/`; `data/descriptions_recovery.json` and the
-merged `data/descriptions.json` are the committed artifacts.
+**5 reclassified `no_about_found`** (browser reached the site; no clean about block). Registry
+totals moved **91 → 111 `ok`**.
+
+**Widened candidate conventions (operator corrections, 2026-07-15).** Two nyc.gov about-page
+families the batch-1 derivation missed, now probed by `plan_waf_candidates.py`:
+- **`/site/<slug>/about/overview/overview.page`** (and `…/about/overview.page`) — where FDNY's
+  About lives; and
+- the **legacy pre-CMS family `/html/<slug>/html/about/about.shtml`** (with `.html` sibling) — where
+  DOT's About lives. A `/html/` start URL derives its legacy slug from the URL itself (it can differ
+  from the modern `/site/` slug); a `/site/` target also gets one same-slug legacy fallback.
+  With these, FDNY and DOT (batch-1 `no_about_found`) were **recovered to `ok`** — a recovered `ok`
+  now upgrades a prior non-terminal failure in the merge. Any entity whose About is served from a
+  live legacy `/html/` path is itself a web-history datum, recorded in
+  `descriptions_recovery.json._legacy_path_entities` (currently: DOT) for the Wayback harvester and
+  reconciliation to inherit.
+
+**Batch 2 coverage (25 targets, entities 26–50 + the FDNY/DOT batch-1 upgrades):** **21 recovered
+`ok`** + **6 reclassified `no_about_found`** (CFCP and Get-Stuff-Built site paths removed; DCP moved
+off `/site/`; NYC Her Future tagline-only; the Juvenile Justice board maps to an ACS reports page;
+Childcare's about page is unpublished Lorem ipsum). CCHR was recovered via a legacy `/html/` redirect
+stub that revealed its modern `inside-cchr.page` URL. Registry totals now **111 → 132 `ok`**;
+`fetch_failed` 148 → 123; `no_about_found` 17 → 21. **Remaining: 102 WAF targets** (batches 3–6) with
+the identical mechanical loop.
+
+The **description review queue** (`docs/description-review-queue.md`) is regenerated from
+`descriptions.json` after every batch by the deterministic `scripts/build_review_queue.py`
+(preserves human-edited resolution notes; `--check` mode gates staleness). Raw captures and the meta
+manifest live in git-ignored `data/cache/`; `data/descriptions_recovery.json`, the merged
+`data/descriptions.json`, and the review queue are the committed artifacts.
 
 ## Three-tier refresh
 1. **Auto (city):** re-sync from MODA (`sync_moda.py`) — MODA maintains its own QA pipeline; we track its record ids. Population landed 2026-07-15 (phase 1): 306 Active orgs merged with the 17-entity seed → 318 entities. **Phase 2 (2026-07-15):** the operator-confirmed EDC merge (`data/curation.json`) collapses the separately-minted "Economic Development Corporation" into seed `nycedc` → **317 entities** (5 seeds matched by name + 1 by curated identifier gained a `nyc_goid`; 300 minted new). Greenbook contact scaffolding then attaches to 27 exact-matched city entities (no change to the count).
