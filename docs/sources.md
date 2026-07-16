@@ -62,6 +62,62 @@ inferred. Each scheme's authority, format, and verification rule is catalogued i
 - **No entities minted:** the registry carries one generic `community-boards` entity, not 59 boards; per-board `cd` linkage is deferred until a source asserts individual boards (recorded in the mapping's `deferred_per_board`).
 - Jurisdictions that exceed the map (MTA region, bi-state PANYNJ, statewide) carry an `area_note` naming a candidate external source (Census TIGER / NYS GIS Clearinghouse) instead. `us_census_geoid` is the documented national geographic scheme; the 5 borough presidents use it (`county` + FIPS) because nyc-boundaries has no borough layer.
 
+## Descriptions — about-crawler (phase 5, 2026-07-15)
+
+The registry's **only networked component**. Two scripts, both offline-testable at a pure seam:
+
+- **`scripts/crawl_targets.py`** (offline, no fetch) derives the crawl set into the committed
+  `data/crawl_targets.json`. `web_properties[]` stores **bare hosts** (phase-1 limitation), so the
+  deep path many NYC entities live at (`https://www.nyc.gov/site/<slug>/index.page`) survives only
+  in MODA's `url` column. Derivation priority per entity: **(1)** full URL from the MODA export
+  (`url_by_goid`, keyed by the entity's `nyc_goid`); **(2)** `https://<primary web_property host>/`;
+  **(3)** any web_property host; **(4)** `no_url` — recorded explicitly, never guessed. The 2026-07-15
+  derivation: **285 targets** (278 from a MODA URL, 7 from a seed web_property) + **32 `no_url`**.
+- **`scripts/crawl_about.py`** (networked, **gated behind `--operator-authorized`**) fetches each
+  target's homepage, discovers an about page, and extracts the entity's description.
+  - **Discovery** (≤ 4 fetches/entity): a homepage **link-scan** (anchors whose text/href signal
+    about/mission/who-we-are, ranked shallowest-path-first so a generic `/about` beats a deep
+    program page) tried first, then deterministic **path-probes** (the nyc.gov FSE convention
+    `/site/<slug>/about/about.page`, generic `/about`, `/about-us`).
+  - **Extraction** is stdlib `html.parser` only — prefers `<main>`/`<article>`, strips
+    nav/header/footer/aside/script/style. The stored text is the **agency's own words, verbatim**
+    (whitespace trimmed, capped at 5,000 chars with a `truncated` flag). The crawler **never
+    summarizes or generates** — that boundary is deliberate.
+
+### The contract: `data/descriptions.json` is the boundary artifact
+
+Downstream consumers (notably the BetaNYC workspace's **team/contacts Mission drafting**, issue #1
+user story 26) read `data/descriptions.json` as a **file** — never by re-running the crawler. One
+entry per entity id:
+
+```json
+"<entity id>": {
+  "text": "<verbatim about-page prose, or null on failure>",
+  "source_url": "<the URL the text came from>",
+  "fetched_at": "YYYY-MM-DD",
+  "method": "link-scan | path-probe | null",
+  "status": "ok | no_url | robots_disallowed | fetch_failed | no_about_found | extraction_empty",
+  "truncated": true|false
+}
+```
+
+`status: "ok"` carries real text; every other value is an explicit failure reason so **coverage
+gaps are visible, not silent**. A consumer that wants only usable descriptions filters on
+`status == "ok"`; the failure reasons tell a maintainer *why* an entity has none.
+
+### Etiquette (the crawler is a guest on every site it reads)
+
+- Identified User-Agent: `ny-gov-web-registry crawler; https://github.com/BetaNYC/ny-gov-web-registry; noel@beta.nyc`.
+- **robots.txt honored** per host (stdlib `urllib.robotparser`); a Disallow is recorded
+  `robots_disallowed` and the page is **never** fetched.
+- ≥ 1.5 s between requests to the same host + modest global pacing; 20 s timeout; one retry with
+  backoff on 5xx/timeout; **HTTP 429 → hard 60 s backoff** (mirrors the workspace's Internet Archive
+  practice).
+- **WAF circuit-breaker:** after 4 consecutive 403s a host is abandoned and its remaining targets
+  are recorded `fetch_failed` (note `host_waf_blocked`). `nyc.gov` sits behind Akamai and 403s
+  automation — we record and report that, never fight the WAF.
+
 ## Access gate
 Live pulls from any of these wait for explicit operator authorization. The sync scripts read
-from a local `data/cache/` and never fetch on their own.
+from a local `data/cache/` and never fetch on their own. The about-crawler is the one component
+that fetches, and it refuses to without `--operator-authorized` (configured ≠ authorized).

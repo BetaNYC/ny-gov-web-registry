@@ -4,7 +4,7 @@ A curated, machine-readable registry of **New York City + New York State governm
 
 Built by [BetaNYC](https://beta.nyc). MIT-licensed.
 
-> **Status: crosswalk + curation (phase 2, 2026-07-15).** The registry carries **317 entities** — the 17-entity anchor seed merged with **306 Active NYC governance organizations** from MODA / NYC Open Data `t3jq-9nkf`, less the operator-confirmed EDC merge (the separately-minted "Economic Development Corporation" folded into seed `nycedc`). Phase 2 also: reconciles the stale-but-rich **NYC Greenbook** (`mdcw-n682`, 2023-12) against the registry via **MODA's nycresolver** — attaching agency contact scaffolding (staleness-flagged) to 27 exact-matched city entities and routing fuzzy/cross-level/unmatched agencies to a review report, never minting new entities; and validates the **nyc.gov agency directory** (found to be the same `t3jq` upstream — 306 ⊆ 306, zero drift). **Phase 3 (2026-07-15)** attaches **Wikidata QIDs** by *domain-anchored* matching — a QID auto-attaches only when its `P856` official-website host is owned by exactly one entity (apex-shared hosts like `nyc.gov` never auto-match; exact-name matches become review proposals, never auto). A **place-vs-organization guard** (operator re-point directives in `curation.json`) overrides domain matches where `P856` belongs to a *place* rather than the office: the four borough-president offices were re-pointed off their borough *place* QIDs and **dropped** (Wikidata has no per-borough office item). Net: **3 QIDs auto-attached** (NYC Parks, H+H, Javits CCOC), **4 dropped**, **22 name proposals** to a review report. **Phase 4 (2026-07-15)** links geography by reference: an operator-curated mapping (`data/boundaries_mapping.json`) attaches `areas[]` for the entities that operate a district system (NYPD→`pp`+`ps`, DSNY→`dsny`, FDNY→`fb`, DOE→`sd`, City Council→`cc`, Community Boards→`cd`, Board of Elections→`ed`) and `us_census_geoid` county footprints for the 5 borough presidents; every layer id is validated against the nyc-boundaries vocabulary extracted into `data/nyc_boundaries_layers.json` (unknown layer = build error), and no entities are minted (per-board linkage deferred). All external data is still access-gated: syncs read operator-placed cache files and never fetch. Remaining enrichment (about-crawler) is phased and pending. See *Data sources & access* and [`docs/freshness.md`](docs/freshness.md).
+> **Status: crosswalk + curation (phase 2, 2026-07-15).** The registry carries **317 entities** — the 17-entity anchor seed merged with **306 Active NYC governance organizations** from MODA / NYC Open Data `t3jq-9nkf`, less the operator-confirmed EDC merge (the separately-minted "Economic Development Corporation" folded into seed `nycedc`). Phase 2 also: reconciles the stale-but-rich **NYC Greenbook** (`mdcw-n682`, 2023-12) against the registry via **MODA's nycresolver** — attaching agency contact scaffolding (staleness-flagged) to 27 exact-matched city entities and routing fuzzy/cross-level/unmatched agencies to a review report, never minting new entities; and validates the **nyc.gov agency directory** (found to be the same `t3jq` upstream — 306 ⊆ 306, zero drift). **Phase 3 (2026-07-15)** attaches **Wikidata QIDs** by *domain-anchored* matching — a QID auto-attaches only when its `P856` official-website host is owned by exactly one entity (apex-shared hosts like `nyc.gov` never auto-match; exact-name matches become review proposals, never auto). A **place-vs-organization guard** (operator re-point directives in `curation.json`) overrides domain matches where `P856` belongs to a *place* rather than the office: the four borough-president offices were re-pointed off their borough *place* QIDs and **dropped** (Wikidata has no per-borough office item). Net: **3 QIDs auto-attached** (NYC Parks, H+H, Javits CCOC), **4 dropped**, **22 name proposals** to a review report. **Phase 4 (2026-07-15)** links geography by reference: an operator-curated mapping (`data/boundaries_mapping.json`) attaches `areas[]` for the entities that operate a district system (NYPD→`pp`+`ps`, DSNY→`dsny`, FDNY→`fb`, DOE→`sd`, City Council→`cc`, Community Boards→`cd`, Board of Elections→`ed`) and `us_census_geoid` county footprints for the 5 borough presidents; every layer id is validated against the nyc-boundaries vocabulary extracted into `data/nyc_boundaries_layers.json` (unknown layer = build error), and no entities are minted (per-board linkage deferred). All external data is still access-gated: syncs read operator-placed cache files and never fetch. **Phase 5 (2026-07-15)** adds the registry's **only networked component** — the about-page crawler. It derives a reviewable, committed crawl set (`data/crawl_targets.json`) by recovering each entity's full start URL (the deep `nyc.gov/site/<slug>/` paths that `web_properties[]` lost survive only in MODA's `url` column), then politely fetches each entity's about page — identified User-Agent, robots.txt honored, per-host delay, WAF circuit-breaker — and extracts the agency's **own words** into `data/descriptions.json` (never summarized or generated). The crawler refuses to fetch without `--operator-authorized`. See *Data sources & access* and [`docs/freshness.md`](docs/freshness.md).
 
 ## Why this exists
 
@@ -25,9 +25,11 @@ data/wikidata_enrichment.json        entity-keyed Wikidata QIDs, domain-anchored
 data/wikidata_reconciliation.json    Wikidata match review report (auto / proposals / conflicts / leads / caveats)
 data/nyc_boundaries_layers.json      nyc-boundaries layer vocabulary extracted from the map (build validates areas[] against it)
 data/boundaries_mapping.json         operator-curated layer->operator + borough-president->county areas[] assertions (applied by the build)
-scripts/                             source-sync + reconcile + build + migration pipeline (see below)
+data/crawl_targets.json              the about-crawler's start-URL set, derived offline from the registry + MODA url column (committed, reviewable)
+data/descriptions.json               each entity's about-page self-description (crawler output; the boundary artifact downstream consumers read)
+scripts/                             source-sync + reconcile + build + migration + about-crawler pipeline (see below)
 docs/                                schema reference, scheme catalog, EAC-CPF crosswalk, source provenance, freshness
-tests/                               offline validation (schema, migration, build seam, reconciliation, curation)
+tests/                               offline validation (schema, migration, build seam, reconciliation, curation, crawler discovery/extraction)
 ```
 
 ## The data model (one record = one entity)
@@ -74,6 +76,20 @@ pip install -r requirements.txt
 # 7. python scripts/build_registry.py    # re-build to fold in greenbook + wikidata + boundaries areas (idempotent)
 python -m pytest    # offline: validates seed, migration, sync mappings, and build invariants
 ```
+
+### About-page descriptions (phase 5 — the one networked step)
+
+```bash
+# 8. python scripts/crawl_targets.py             # offline: derive the crawl set -> data/crawl_targets.json
+# 9. python scripts/crawl_about.py               # prints the crawl plan and EXITS (access gate; no fetch)
+#    python scripts/crawl_about.py --operator-authorized   # perform the polite crawl -> data/descriptions.json
+```
+
+`crawl_about.py` is the **only** code in this repo that touches the network, and it refuses to
+fetch without `--operator-authorized`. It honors robots.txt, identifies itself, rate-limits per
+host, and abandons a host after repeated 403s (nyc.gov sits behind Akamai). It is idempotent and
+resumable — an entity already in `descriptions.json` is skipped (`--force` to re-crawl), and the
+file is rewritten after each entity. See [`docs/sources.md`](docs/sources.md) § Descriptions.
 
 ## Contributing
 

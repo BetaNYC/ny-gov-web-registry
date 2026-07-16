@@ -10,6 +10,7 @@ The registry is designed to **stay current**, not be a one-time dump (design doc
 | nyc.gov agency directory (same upstream as `t3jq-9nkf`) | `data/cache/nycgov_agencydirectory.json` | **2026-07-15** | 306 (validation only) |
 | Wikidata NYC gov orgs (WDQS SPARQL) | `data/cache/wikidata_nyc_gov_orgs.json` | **2026-07-15** | 232 bindings → 109 QIDs (88 with `P856`) |
 | nyc-boundaries layer index (`BoundaryId` union + `layers`) | `data/cache/nyc-boundaries_layers_index.ts` | **2026-07-15** | 22 published layer ids |
+| About-page crawl (live agency sites) | *(no cache — `data/descriptions.json` is the output)* | **2026-07-15** | 285 targets crawled + 32 `no_url` |
 
 Cache files are git-ignored (`data/cache/`); only the built `data/registry.json` — plus the
 committed, derived `data/curation.json`, `data/greenbook_enrichment.json`,
@@ -110,6 +111,37 @@ Boards→`cd`, Board of Elections→`ed`) + 5 `us_census_geoid` `jurisdiction` r
 presidents). Entity count unchanged (**317** — no entities minted; per-board `cd` linkage deferred).
 Each `areas[]`-attached entity's `provenance.sources` gains `manual`. Idempotent: build → syncs →
 build is byte-identical.
+
+## About-page descriptions — crawl date & re-run (phase 5, 2026-07-15)
+
+`data/descriptions.json` was produced by an operator-authorized run of `scripts/crawl_about.py`
+on **2026-07-15** (each entry also carries its own `fetched_at`). The crawl set
+(`data/crawl_targets.json`) is derived offline first by `scripts/crawl_targets.py`.
+
+Re-run (the two-step, access-gated pipeline):
+
+```sh
+python scripts/crawl_targets.py                      # offline: registry + MODA url column -> crawl_targets.json
+python scripts/crawl_about.py                        # prints the plan and EXITS (no fetch without the flag)
+python scripts/crawl_about.py --operator-authorized  # perform the polite crawl -> descriptions.json
+```
+
+The crawler is **idempotent and resumable**: it skips any entity already in `descriptions.json`
+(`--force` re-crawls) and rewrites the file after each entity, so an interrupted run resumes where
+it stopped. `--limit N` crawls at most N not-yet-done targets (smoke runs).
+
+**Coverage (2026-07-15 run, 317 entities):** **91 `ok`** (extracted), **173 `fetch_failed`**,
+**32 `no_url`**, **12 `no_about_found`**, **7 `extraction_empty`**, **2 `robots_disallowed`**.
+The dominant failure is `fetch_failed`, and **153 of the 173** are on a `*.nyc.gov` host
+(`www.nyc.gov` 131, `www1.nyc.gov` 21, `nyc.gov` 1): the citywide front is behind **Akamai** and
+403s automated requests. The crawler's circuit-breaker abandoned the host after 4 consecutive 403s
+(**152 targets short-circuited**, note `host_waf_blocked`) rather than hammering it, so those
+entities are **recorded, not silently dropped**, and can be revisited via a different access path
+(e.g. a Chrome-driven pass) in a later phase. Notably, some `*.nyc.gov` *subdomains* are NOT
+WAF-walled — `ibo.nyc.gov`, `cityclerk.nyc.gov` extracted fine. Entities on their own distinctive
+domains (authorities, PBCs, `.org`/`.edu`/`.com` marquee entities) are where the crawl actually
+yields descriptions. 15 `ok` texts hit the 5,000-char cap (`truncated: true`). Run wall-clock:
+~24 min for the networked portion.
 
 ## Three-tier refresh
 1. **Auto (city):** re-sync from MODA (`sync_moda.py`) — MODA maintains its own QA pipeline; we track its record ids. Population landed 2026-07-15 (phase 1): 306 Active orgs merged with the 17-entity seed → 318 entities. **Phase 2 (2026-07-15):** the operator-confirmed EDC merge (`data/curation.json`) collapses the separately-minted "Economic Development Corporation" into seed `nycedc` → **317 entities** (5 seeds matched by name + 1 by curated identifier gained a `nyc_goid`; 300 minted new). Greenbook contact scaffolding then attaches to 27 exact-matched city entities (no change to the count).
