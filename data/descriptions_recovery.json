@@ -861,6 +861,22 @@
    "method": "browser-pane",
    "status": "ok",
    "truncated": false
+  },
+  "department-for-the-aging": {
+   "text": null,
+   "source_url": "https://www.nyc.gov/site/dfta/index.page",
+   "fetched_at": "2026-07-16",
+   "method": null,
+   "status": "no_about_found",
+   "truncated": false
+  },
+  "banking-commission": {
+   "text": "The NYC Banking Commission has three members: the Mayor; the City Comptroller; and the Commissioner of Finance. The Treasury Division of the Department of Finance provides administrative support to the Banking Commission.\n\nThe Banking Commission has three responsibilities: approve banks as NYC Designated Banks, which are the only banks that can hold City deposits; recommend to the City Council interest rates for the early and late payment of real estate taxes; and administer the City’s Banking Development District (BDD) Program, which is a program of the New York State Department of Financial Services.",
+   "source_url": "https://www.nyc.gov/site/finance/about/banking-commission.page",
+   "fetched_at": "2026-07-16",
+   "method": "browser-pane",
+   "status": "ok",
+   "truncated": false
   }
  }
 }
