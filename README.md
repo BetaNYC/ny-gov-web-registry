@@ -4,6 +4,8 @@
 
 Built and stewarded by [BetaNYC](https://beta.nyc). Free to use, reuse, and build on — with credit, and with improvements shared back (see [License](#license)).
 
+> 🚧 **Work in progress.** The registry is live and usable (317 entities), but coverage is still growing and the schema may evolve. [Issues](../../issues) and contributions welcome.
+
 ## Why this exists
 
 Not all government lives on `.gov`. The MTA is on `mta.info`, the Economic Development Corporation on `nycedc.com`, Health + Hospitals on `nychealthandhospitals.org`, CUNY on `cuny.edu` — while more than 150 city agencies share `nyc.gov`. Agencies get renamed, merged, and reorganized; their old websites disappear without notice. Anyone who wants to archive government on the web, cite it, monitor it, or simply join two datasets that each spell "Department of Finance" differently first needs an authoritative list of *which entities exist and how to identify them*. No single official source provides that across city government, public authorities, and the web domains they've used over time.
@@ -76,6 +78,15 @@ Two artifacts invite human eyes: the [description review queue](docs/description
 ## Reuse beyond New York
 
 Nothing in the schema is New York–specific. Field vocabulary follows [Popolo](https://www.popoloproject.com/) and the [W3C Organization ontology](https://www.w3.org/TR/vocab-org/); external keys are extensible `{scheme, identifier}` pairs; geography is by reference, with [Census GEOIDs](https://www.census.gov/programs-surveys/geography/guidance/geo-identifiers.html) as the documented national scheme; archival interoperability maps to [EAC-CPF](https://eac.staatsbibliothek-berlin.de/) ([field crosswalk](docs/eac-cpf-crosswalk.md)). Forking for another city means swapping the configured sources — not performing schema surgery.
+
+## Part of BetaNYC's civic data tools
+
+This registry anchors a family of free, open civic data assets [BetaNYC](https://beta.nyc) builds and stewards:
+
+- [`ny-gov-web-archiver`](https://github.com/BetaNYC/ny-gov-web-archiver) — a throttled Wayback Machine harvester that consumes this registry's domain list.
+- [`nyc-executive-orders`](https://github.com/BetaNYC/nyc-executive-orders) — the open archive of NYC mayoral executive orders, 1974–present; its `establishes_entity` links point at this registry's stable IDs.
+- [`nyc-boundaries`](https://github.com/BetaNYC/nyc-boundaries) — NYC administrative boundaries, mapped and queryable (this registry references its boundary IDs rather than embedding geometry).
+- Seven MCP servers giving AI agents direct access to NYC/NYS civic data: [Council legislation](https://github.com/BetaNYC/nyc-council-mcp), [City Record](https://github.com/BetaNYC/nyc-record-mcp), [Checkbook spending](https://github.com/BetaNYC/nyc-checkbook-mcp), [311](https://github.com/BetaNYC/nyc-311-mcp), [Charter/Code/Rules](https://github.com/BetaNYC/nyc-charter-laws-rules), [NYS legislation](https://github.com/BetaNYC/nys-openlegislation-mcp), and the [Council budget](https://github.com/BetaNYC/New-York-City-Budget).
 
 ## AI use in this project
 
