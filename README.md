@@ -75,6 +75,37 @@ Rebuilding from sources requires Python 3.11+ and [uv](https://docs.astral.sh/uv
 
 Two artifacts invite human eyes: the [description review queue](docs/description-review-queue.md) (agencies whose about page needs a human to find) and the [site anomalies log](docs/site-anomalies.md) (defects we noticed on live government sites — including three Lorem-ipsum placeholder pages).
 
+### `probe_bot_access.py` — how these hosts treat AI agents
+
+`scripts/probe_bot_access.py` is a study built on the registry's crawl set rather than a step in
+building the registry. It asks each host two questions and keeps them separate: **what it says**
+(`robots.txt`, `llms.txt`) and **what it does** — the live response to each of 12 declared
+identities spanning search crawlers, AI training crawlers, AI answer-engine crawlers, and
+**agentic** fetchers (`ChatGPT-User`, `Claude-User`, `Perplexity-User`: a person asked, right now).
+
+Every User-Agent is verified against its operator's published documentation, or explicitly flagged
+`string_verified: false`. `Google-Extended` and `Applebot-Extended` are never sent as live agents —
+they are robots.txt control tokens with no request user agent, and a test enforces that.
+
+Network-touching, so it is **operator-gated like every other fetch here**: round-robin across hosts,
+a global pace with jitter, per-host floors, stricter governors for the two concentrated `nyc.gov`
+hosts, and a circuit breaker that quarantines a host on 429 while treating 403 as data rather than
+failure. `--dry-run` prints the plan without a single request.
+
+```
+python3 scripts/probe_bot_access.py --dry-run                      # plan only, no network
+python3 scripts/probe_bot_access.py --vantage residential --out ./probe-out
+python3 scripts/probe_bot_access.py --vantage office --tier a --only-hosts @hosts.txt
+```
+
+Runs are checkpointed per request, so an interruption loses nothing and the same command resumes.
+Offline tests: `python3 tests/test_probe_bot_access.py` (23 assertions, no network).
+
+First results (2026-08-28, 116 hosts with a complete identity matrix): about three quarters of
+NYC-area government hosts admit self-identifying AI agents at rates close to Googlebot, while
+`www.nyc.gov` and `www1.nyc.gov` refuse every honestly-identified client and admit browsers —
+uniformly across all 150 deep agency paths.
+
 ## Reuse beyond New York
 
 Nothing in the schema is New York–specific. Field vocabulary follows [Popolo](https://www.popoloproject.com/) and the [W3C Organization ontology](https://www.w3.org/TR/vocab-org/); external keys are extensible `{scheme, identifier}` pairs; geography is by reference, with [Census GEOIDs](https://www.census.gov/programs-surveys/geography/guidance/geo-identifiers.html) as the documented national scheme; archival interoperability maps to [EAC-CPF](https://eac.staatsbibliothek-berlin.de/) ([field crosswalk](docs/eac-cpf-crosswalk.md)). Forking for another city means swapping the configured sources — not performing schema surgery.
