@@ -182,6 +182,6 @@
     }
   ],
   "deferred_per_board": {
-    "note": "The registry carries ONE generic 'Community Boards' entity (id: community-boards), not 59 individual community boards. The phase-4 spec's per-board linkage (each of the 59 boards -> its one cd district as a jurisdiction) is DEFERRED until a source asserts individual boards as entities. No entities are minted here. When such a source lands, mint 59 board entities and attach jurisdiction areas[]{scheme:'nyc-boundaries', layer:'cd', id:<district>}."
+    "note": "RESOLVED 2026-11-04: the 59 community boards are minted as seed records in data/registry.seed.json with jurisdiction areas[] {scheme:'nyc-boundaries', layer:'cd', id:<BoroCD>} (ids 101-112, 201-212, 301-318, 401-414, 501-503, verified against bm-api.beta.nyc/bounds_new?id=cd on 2026-11-04). The generic 'community-boards' entity keeps its whole-layer operates_layer reference."
   }
 }
