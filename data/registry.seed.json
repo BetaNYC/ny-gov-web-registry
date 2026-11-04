@@ -647,6 +647,4089 @@
         ],
         "last_verified": "2026-07-11"
       }
+    },
+    {
+      "id": "manhattan-community-board-1",
+      "name": "Manhattan Community Board 1",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "manhattancb1.cityofnewyork.us",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Verified 2026-11-04 (https://manhattancb1.cityofnewyork.us/). City-hosted WordPress (cityofnewyork.us)."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "101",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.manhattanbp.nyc.gov/communityboards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "man01@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 602-6300",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1 Centre Street New York, NY Room 2202-N",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "manhattan-community-board-2",
+      "name": "Manhattan Community Board 2",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "cbmanhattan.cityofnewyork.us",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /cb2/. Verified 2026-11-04 (https://cbmanhattan.cityofnewyork.us/cb2/). City-hosted WordPress (cityofnewyork.us)."
+        },
+        {
+          "domain": "cb2manhattan.org",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Former board email/web domain (hello@cb2manhattan.org still appears on a live board page). On 2026-11-04 it hosted a betting site."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://cbmanhattan.cityofnewyork.us/cb2/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "102",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.manhattanbp.nyc.gov/communityboards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "info@manhattancb2.org",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 979-2272",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "3 Washington Square Village, #1A, New York, NY",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "manhattan-community-board-3",
+      "name": "Manhattan Community Board 3",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/manhattancb3/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/manhattancb3/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/manhattancb3/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "103",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.manhattanbp.nyc.gov/communityboards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "mn03@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 533-5300",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "59 East 4th Street, New York, NY",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "manhattan-community-board-4",
+      "name": "Manhattan Community Board 4",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "cbmanhattan.cityofnewyork.us",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /cb4/. Verified 2026-11-04 (https://cbmanhattan.cityofnewyork.us/cb4/). City-hosted WordPress (cityofnewyork.us)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://cbmanhattan.cityofnewyork.us/cb4/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "104",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.manhattanbp.nyc.gov/communityboards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "stacjohnson@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 736-4536",
+          "note": "board website, checked 2026-11-04"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "manhattan-community-board-5",
+      "name": "Manhattan Community Board 5",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "cb5.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Verified 2026-11-04 (https://cb5.org/). Independent: WordPress."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "105",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.manhattanbp.nyc.gov/communityboards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "office@cb5.org",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 465-0907",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "450 7th Avenue, New York, NY Rm. 2109",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "manhattan-community-board-6",
+      "name": "Manhattan Community Board 6",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "cbsix.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Verified 2026-11-04 (https://cbsix.org/). Independent: WordPress 7.1.4."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "106",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.manhattanbp.nyc.gov/communityboards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "info@cbsix.org",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 319-3750",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "211 East 43rd Street, New York, NY Suite 1404",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "manhattan-community-board-7",
+      "name": "Manhattan Community Board 7",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.mcb7.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Verified 2026-11-04 (https://www.mcb7.org/). Independent: Vite/React SPA."
+        },
+        {
+          "domain": "cb7.org",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Former board email domain (office@cb7.org, 2016 audit). Parked and for sale on 2026-11-04."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "107",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.manhattanbp.nyc.gov/communityboards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "mn07@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 362-4008",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "250 W. 87th Street, New York, NY",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "manhattan-community-board-8",
+      "name": "Manhattan Community Board 8",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.cb8m.com",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Verified 2026-11-04 (https://www.cb8m.com/). Independent: optimization-detective 1.0.0-beta7; rest_api_unavailable."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "108",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.manhattanbp.nyc.gov/communityboards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "info@cb8m.com",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 758-4340",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "505 Park Avenue New York, NY 10022 Suite 620",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "manhattan-community-board-9",
+      "name": "Manhattan Community Board 9",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.cb9m.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Verified 2026-11-04 (https://www.cb9m.org/). Independent: WordPress 7.1.4."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "109",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.manhattanbp.nyc.gov/communityboards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "info@cb9m.org",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 864-6200",
+          "note": "board website, checked 2026-11-04"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "manhattan-community-board-10",
+      "name": "Manhattan Community Board 10",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "cbmanhattan.cityofnewyork.us",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /cb10/. Verified 2026-11-04 (https://cbmanhattan.cityofnewyork.us/cb10/). City-hosted WordPress (cityofnewyork.us)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://cbmanhattan.cityofnewyork.us/cb10/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "110",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.manhattanbp.nyc.gov/communityboards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "mn10cb@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 749-3105",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "215 West 125th Street 4th Floor",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "manhattan-community-board-11",
+      "name": "Manhattan Community Board 11",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.cb11m.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Verified 2026-11-04 (https://www.cb11m.org/). Independent: WordPress 7.1.4."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "111",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.manhattanbp.nyc.gov/communityboards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "mn11@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 831-8929",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1664 Park Avenue New York, NY 10035 Ground Floor",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "manhattan-community-board-12",
+      "name": "Manhattan Community Board 12",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "cb12m.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Verified 2026-11-04 (https://cb12m.org/en). Independent: not identifiable from page source."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "112",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.manhattanbp.nyc.gov/communityboards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "cb12m@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(212) 568-8500",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "530 West 166th Street New York, NY 10032 6th Floor",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "bronx-community-board-1",
+      "name": "Bronx Community Board 1",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/bronxcb1/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/bronxcb1/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/bronxcb1/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "201",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://bronxboropres.nyc.gov/community/community_boards.php",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bx01@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 585-7117",
+          "note": "board website, checked 2026-11-04"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "bronx-community-board-2",
+      "name": "Bronx Community Board 2",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/bronxcb2/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/bronxcb2/index.page). NYC.gov (city TeamSite template)."
+        },
+        {
+          "domain": "bxcb2.org",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Board website per the 2018 BetaNYC audit. On 2026-11-04 it hosted an online-casino page; no board content."
+        },
+        {
+          "domain": "bronxmall.com",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Unofficial third-party directory page used for this board in the 2016/2018 audits (bronxmall.com/commboards/). Not board-owned."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/bronxcb2/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "202",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://bronxboropres.nyc.gov/community/community_boards.php",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "brxcb2@optonline.net",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 328-9125",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1029 E 163rd St. Bronx, NY 10459",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "bronx-community-board-3",
+      "name": "Bronx Community Board 3",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/bronxcb3/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/bronxcb3/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/bronxcb3/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "203",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://bronxboropres.nyc.gov/community/community_boards.php",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "eritter@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 378-8054",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1426 Boston Rd Bronx, NY 10456",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "bronx-community-board-4",
+      "name": "Bronx Community Board 4",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/bronxcb4/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/bronxcb4/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/bronxcb4/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "204",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://bronxboropres.nyc.gov/community/community_boards.php",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bx04@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 299-0800",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1650 Selwyn Ave. Suite #11A Bronx, NY 10457",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "bronx-community-board-5",
+      "name": "Bronx Community Board 5",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/bronxcb5/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/bronxcb5/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/bronxcb5/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "205",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://bronxboropres.nyc.gov/community/community_boards.php",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bx05@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 364-2030",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "2155 University Avenue,BCC Campus Gould Hall - Room 200 Bronx, NY 10453",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "bronx-community-board-6",
+      "name": "Bronx Community Board 6",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "cbbronx.cityofnewyork.us",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /cb6/. Verified 2026-11-04 (https://cbbronx.cityofnewyork.us/cb6/). City-hosted WordPress (cityofnewyork.us)."
+        },
+        {
+          "domain": "bronxmall.com",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Unofficial third-party directory page used for this board in the 2016/2018 audits (bronxmall.com/commboards/). Not board-owned."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://cbbronx.cityofnewyork.us/cb6/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "206",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://bronxboropres.nyc.gov/community/community_boards.php",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bx06@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 579-6990",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1932 Arthur Avenue, Rm. 403-A Bronx, NY 10457",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "bronx-community-board-7",
+      "name": "Bronx Community Board 7",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/bronxcb7/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/bronxcb7/index.page). NYC.gov (city TeamSite template)."
+        },
+        {
+          "domain": "bronxcb7.info",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Board website per the 2016 BetaNYC audit. On 2026-11-04 it redirected to an ad-tracking domain."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/bronxcb7/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "207",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://bronxboropres.nyc.gov/community/community_boards.php",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "kcabreracarrera@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 933-5650",
+          "note": "board website, checked 2026-11-04"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "bronx-community-board-8",
+      "name": "Bronx Community Board 8",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "cbbronx.cityofnewyork.us",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /cb8/. Verified 2026-11-04 (https://cbbronx.cityofnewyork.us/cb8/). City-hosted WordPress (cityofnewyork.us)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://cbbronx.cityofnewyork.us/cb8/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "208",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://bronxboropres.nyc.gov/community/community_boards.php",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bx08@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 884-3959",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "5676 Riverdale Ave, Suite 100 Bronx, NY 10471",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "bronx-community-board-9",
+      "name": "Bronx Community Board 9",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/bronxcb9/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/bronxcb9/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/bronxcb9/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "209",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://bronxboropres.nyc.gov/community/community_boards.php",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bx09@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 823-3034",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1967 Turnbull Ave, Rm 7 Bronx, NY 10473",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "bronx-community-board-10",
+      "name": "Bronx Community Board 10",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/bronxcb10/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/bronxcb10/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/bronxcb10/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "210",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://bronxboropres.nyc.gov/community/community_boards.php",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bx10@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 892-1161",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "3165 E Tremont Ave Bronx, NY 10461",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "bronx-community-board-11",
+      "name": "Bronx Community Board 11",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/bronxcb11/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/bronxcb11/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/bronxcb11/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "211",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://bronxboropres.nyc.gov/community/community_boards.php",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bx11@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 892-6262",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1741 Colden Ave Bronx, NY 10462",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "bronx-community-board-12",
+      "name": "Bronx Community Board 12",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/bronxcb12/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/bronxcb12/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/bronxcb12/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "212",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://bronxboropres.nyc.gov/community/community_boards.php",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "gtorres@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 944-3300",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "4101 White Plains Rd Bronx, NY 10466",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-1",
+      "name": "Brooklyn Community Board 1",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/brooklyncb1/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/brooklyncb1/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/brooklyncb1/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "301",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bk01@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 389-0009",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "435 Graham Avenue, Brooklyn, NY 11211",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-2",
+      "name": "Brooklyn Community Board 2",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "cbbrooklyn.cityofnewyork.us",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /cb2/. Verified 2026-11-04 (https://cbbrooklyn.cityofnewyork.us/cb2/). City-hosted WordPress (cityofnewyork.us)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://cbbrooklyn.cityofnewyork.us/cb2/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "302",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bk02@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 596-5410",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "350 Jay Street Brooklyn, NY 11201 8th Floor",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-3",
+      "name": "Brooklyn Community Board 3",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/brooklyncb3/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/brooklyncb3/index.page). NYC.gov (city TeamSite template)."
+        },
+        {
+          "domain": "cb3brooklyn.org",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Board website per the 2016 BetaNYC audit. Parked domain on 2026-11-04."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/brooklyncb3/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "303",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bk03@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 622-6601",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1360 Fulton Street, Brooklyn NY11216",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-4",
+      "name": "Brooklyn Community Board 4",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/brooklyncb4/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/brooklyncb4/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/brooklyncb4/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "304",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bk04@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 628-8400",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1420 Bushwick Avenue Brooklyn, NY 11207-1422 Suite 370",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-5",
+      "name": "Brooklyn Community Board 5",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/brooklyncb5/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/brooklyncb5/index.page). NYC.gov (city TeamSite template)."
+        },
+        {
+          "domain": "brooklyncb5.org",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Listed as the board website in the 2016/2018 BetaNYC audits and in CAU dataset ruf7-3wgc. On 2026-11-04 it redirected through unrelated commercial sites; no board content."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/brooklyncb5/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "305",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "mperkins@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 819-5487",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "127 Pennsylvania Avenue, 2nd Floor Brooklyn, New York 11207",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-6",
+      "name": "Brooklyn Community Board 6",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "brooklyncb6.cityofnewyork.us",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Verified 2026-11-04 (https://brooklyncb6.cityofnewyork.us/). City-hosted WordPress (cityofnewyork.us)."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "306",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "info@bkcb6.org",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 643-3027",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "250 Baltic Street, Brooklyn, NY 11201",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-7",
+      "name": "Brooklyn Community Board 7",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "cbbrooklyn.cityofnewyork.us",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /cb7/. Verified 2026-11-04 (https://cbbrooklyn.cityofnewyork.us/cb7/). City-hosted WordPress (cityofnewyork.us)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://cbbrooklyn.cityofnewyork.us/cb7/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "307",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bk07@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "4201 4th Ave, Brooklyn, NY 11232",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-8",
+      "name": "Brooklyn Community Board 8",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.brooklyncb8.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Verified 2026-11-04 (https://www.brooklyncb8.org/). Independent: WordPress, Divi."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "308",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "brooklyncb8@gmail.com",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 467-5574",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1291 St. Marks Avenue, Brooklyn, NY 11213",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-9",
+      "name": "Brooklyn Community Board 9",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/brooklyncb9/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/brooklyncb9/index.page). NYC.gov (city TeamSite template)."
+        },
+        {
+          "domain": "communitybrd9bklyn.org",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Board website per the 2016/2018 BetaNYC audits. On 2026-11-04 it hosted unrelated product spam; no board content."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/brooklyncb9/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "309",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "infobk09@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 778-9279",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "890 Nostrand Avenue, Brooklyn, NY 11225",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-10",
+      "name": "Brooklyn Community Board 10",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "cbbrooklyn.cityofnewyork.us",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /cb10/. Verified 2026-11-04 (https://cbbrooklyn.cityofnewyork.us/cb10/). City-hosted WordPress (cityofnewyork.us)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://cbbrooklyn.cityofnewyork.us/cb10/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "310",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bk10@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 745-6827",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "8119 5th Ave, Brooklyn, NY 11209",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-11",
+      "name": "Brooklyn Community Board 11",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.brooklyncb11.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Verified 2026-11-04 (https://www.brooklyncb11.org/). Independent: WordPress 7.1.4."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "311",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bk11@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 266-8800",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "2214 Bath Ave, Brooklyn, NY 11214",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-12",
+      "name": "Brooklyn Community Board 12",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/brooklyncb12/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/brooklyncb12/index.page). NYC.gov (city TeamSite template)."
+        },
+        {
+          "domain": "brooklyncb12.org",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Board website per the 2016/2018 audits and CAU dataset ruf7-3wgc. Did not respond on 2026-11-04 (timeout)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/brooklyncb12/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "312",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bk12@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 851-0800",
+          "note": "board website, checked 2026-11-04"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-13",
+      "name": "Brooklyn Community Board 13",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/brooklyncb13/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/brooklyncb13/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/brooklyncb13/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "313",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "edmark@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 266-3001",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1201 Surf Ave, Brookyn, 3rd Floor NY 11224",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-14",
+      "name": "Brooklyn Community Board 14",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "cb14brooklyn.com",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Verified 2026-11-04 (https://cb14brooklyn.com/). Independent: WordPress 7.1.4."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "314",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "info@cb14brooklyn.com",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 859-6357",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "810 East 16th St, Brooklyn, NY 11230",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-15",
+      "name": "Brooklyn Community Board 15",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/brooklyncb15/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/brooklyncb15/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/brooklyncb15/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "315",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bklcb15@verizon.net",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 332-3008",
+          "note": "board website, checked 2026-11-04"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-16",
+      "name": "Brooklyn Community Board 16",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/brooklyncb16/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/brooklyncb16/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/brooklyncb16/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "316",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bk16@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 385-0323",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "444 Thomas Boyland Street, Rm. 103 Brooklyn, NY 11212",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-17",
+      "name": "Brooklyn Community Board 17",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "cbbrooklyn.cityofnewyork.us",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /cb17/. Verified 2026-11-04 (https://cbbrooklyn.cityofnewyork.us/cb17/). City-hosted WordPress (cityofnewyork.us)."
+        },
+        {
+          "domain": "brooklyncb17.org",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Board website per the 2016 BetaNYC audit. Did not resolve on 2026-11-04."
+        },
+        {
+          "domain": "cb17brooklyn.org",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Board website per the 2018 BetaNYC audit. Returned 404 on 2026-11-04."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://cbbrooklyn.cityofnewyork.us/cb17/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "317",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "voice",
+          "value": "(718) 434-3072",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "4112 Farragut Road Brooklyn, New York 11210",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "brooklyn-community-board-18",
+      "name": "Brooklyn Community Board 18",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/brooklyncb18/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/brooklyncb18/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/brooklyncb18/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "318",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.brooklynbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "bk18@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 241-0422",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1097 Bergen Ave, Brooklyn, NY 11234",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "queens-community-board-1",
+      "name": "Queens Community Board 1",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/queenscb1/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/queenscb1/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/queenscb1/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "401",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.queensbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "qn01@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 626-1021",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "45-02 Ditmars Blvd., Astoria",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "queens-community-board-2",
+      "name": "Queens Community Board 2",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/queenscb2/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/queenscb2/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/queenscb2/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "402",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.queensbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "qn02@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 533-8773",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "43-22 50th Ave., Woodside",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "queens-community-board-3",
+      "name": "Queens Community Board 3",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "queenscb3.cityofnewyork.us",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Verified 2026-11-04 (https://queenscb3.cityofnewyork.us/). City-hosted WordPress (cityofnewyork.us)."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "403",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.queensbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "communityboard@queenscb3.cityofnewyork.us",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 458-2707",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "82-11 37th Ave., Jackson Heights",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "queens-community-board-4",
+      "name": "Queens Community Board 4",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/queenscb4/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/queenscb4/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/queenscb4/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "404",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.queensbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "qn04@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 760-3142",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "46-11 104th Street., Elmhurst",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "queens-community-board-5",
+      "name": "Queens Community Board 5",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/queenscb5/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/queenscb5/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/queenscb5/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "405",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.queensbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "qn05@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 366-1834",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "61-23 Myrtle Ave., Middle Village",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "queens-community-board-6",
+      "name": "Queens Community Board 6",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/queenscb6/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/queenscb6/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/queenscb6/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "406",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.queensbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "qn06@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 263-9250",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "104-01 Metropolitan Ave., Forest Hills/Rego Park",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "queens-community-board-7",
+      "name": "Queens Community Board 7",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/queenscb7/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/queenscb7/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/queenscb7/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "407",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.queensbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "qn07@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 359-2800",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "30-50 Whitestone Expressway Flushing/Whitestone Suite 205",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "queens-community-board-8",
+      "name": "Queens Community Board 8",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/queenscb8/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/queenscb8/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/queenscb8/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "408",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.queensbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "qn08@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 264-7895",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "197-15 Hillside Avenue, Hollis, NY 11423",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "queens-community-board-9",
+      "name": "Queens Community Board 9",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/queenscb9/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/queenscb9/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/queenscb9/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "409",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.queensbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "qn09@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 286-2686",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "120-55 Queens Boulevard, Room 310A",
+          "note": "board website, checked 2026-11-04; matches Borough President page"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "queens-community-board-10",
+      "name": "Queens Community Board 10",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/queenscb10/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/queenscb10/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/queenscb10/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "410",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.queensbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "qn10@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 843-4488",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "115-01 Lefferts Blvd, South Ozone Park, NY 11420",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "queens-community-board-11",
+      "name": "Queens Community Board 11",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/queenscb11/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/queenscb11/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/queenscb11/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "411",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.queensbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "qn11@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 225-1054",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "46-21 Little Neck Parkway, Little Neck, NY 11362",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "queens-community-board-12",
+      "name": "Queens Community Board 12",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/queenscb12/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/queenscb12/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/queenscb12/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "412",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.queensbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "qn12@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 658-3308",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "90-28 161st Street, Jamaica, NY 11432",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "queens-community-board-13",
+      "name": "Queens Community Board 13",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/queenscb13/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/queenscb13/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/queenscb13/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "413",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.queensbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "mmcmillan@qcb13.org",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 464-9700",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "219-41 Jamaica Avenue, Queens Village, NY 11428",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "queens-community-board-14",
+      "name": "Queens Community Board 14",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/queenscb14/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/queenscb14/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/queenscb14/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "414",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [
+        {
+          "url": "https://www.queensbp.nyc.gov/community-boards/",
+          "note": "Borough President community board page"
+        }
+      ],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "qn14@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 471-7300",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1931 Mott Avenue, Far Rockaway, NY 11691",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "staten-island-community-board-1",
+      "name": "Staten Island Community Board 1",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/statenislandcb1/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/statenislandcb1/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/statenislandcb1/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "501",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "jcusack@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 981-6900",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1 Edgewater Plaza Staten Island, NY 10305 Room 217",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "staten-island-community-board-2",
+      "name": "Staten Island Community Board 2",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/statenislandcb2/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/statenislandcb2/index.page). NYC.gov (city TeamSite template)."
+        },
+        {
+          "domain": "cb2si.com",
+          "role": "legacy",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Board website per the 2018 BetaNYC audit. On 2026-11-04 it hosted a look-alike content site not run by the board."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/statenislandcb2/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "502",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [],
+      "contact_details": [
+        {
+          "type": "voice",
+          "value": "(718) 568-3581",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "900 South Ave Staten Island, NY 10314 Suite 28",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
+    },
+    {
+      "id": "staten-island-community-board-3",
+      "name": "Staten Island Community Board 3",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nyc",
+      "classification": "Advisory or Regulatory Organization",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "www.nyc.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Shared host; the board's site lives under /site/statenislandcb3/index.page. Verified 2026-11-04 (https://www.nyc.gov/site/statenislandcb3/index.page). NYC.gov (city TeamSite template)."
+        }
+      ],
+      "url_conventions": [
+        {
+          "era": "2026",
+          "pattern": "https://www.nyc.gov/site/statenislandcb3/…",
+          "notes": "Board pages sit under this path on a shared host."
+        }
+      ],
+      "areas": [
+        {
+          "scheme": "nyc-boundaries",
+          "layer": "cd",
+          "id": "503",
+          "role": "jurisdiction"
+        }
+      ],
+      "area_note": null,
+      "mandates": [],
+      "relations": [],
+      "links": [],
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "sicb3@cb.nyc.gov",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "voice",
+          "value": "(718) 356-7900",
+          "note": "board website, checked 2026-11-04"
+        },
+        {
+          "type": "address",
+          "value": "1243 Woodrow Road Staten Island, N. Y. 10309 2nd Floor",
+          "note": "board website, checked 2026-11-04; matches CAU dataset ruf7-3wgc"
+        }
+      ],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual"
+        ],
+        "last_verified": "2026-11-04"
+      }
     }
   ]
 }
