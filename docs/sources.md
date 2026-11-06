@@ -52,7 +52,7 @@ inferred. Each scheme's authority, format, and verification rule is catalogued i
 - **Sync:** `scripts/sync_nygov.py` — **stub, not implemented** (gated + brittle). Curate manually for now.
 
 ## A state agency listing — state websites (2026-11-06)
-- **Credit as:** "a state agency listing". Shared with BetaNYC privately by a colleague at the state; **the link is private** and is not published.
+- **Credit as:** "a state agency listing". Shared with BetaNYC privately; **the link is private** and is not published.
 - **Coverage:** 307 New York State websites with the agency that runs each, mostly executive agencies under `ny.gov` (264 hosts). It is the only list we have of `*.ny.gov` agency sites: CISA's .gov list carries `ny.gov` itself, not its subdomains. Missing: the Legislature, the courts, most authorities, and all local governments.
 - **What we keep:** domain, URL and agency only, in `data/ai-readability/sources/2026-11-06/state-agency-listing-websites.csv`. The rest of the file (review scores, staff names, internal links) is not committed.
 - **Used by:** `scripts/ai_readability_websites.py` → `data/ai-readability/websites.csv` (`source_list_state_agency`). Not a registry source yet; minting state agencies (growth plan step 1) would cite it.
