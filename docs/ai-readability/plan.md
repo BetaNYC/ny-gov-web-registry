@@ -162,10 +162,10 @@ copied to the private workspace (`team/research/ai-readability-ny/`) after each 
 About **9–10 working sessions** plus two unattended weekend runs. Everything before workstream F
 makes **no requests to government websites** except the optional live check in E.
 
-## 7. Proposed GitHub tracking (not posted yet)
+## 7. GitHub tracking (posted 2026-11-06)
 
-Epic: **Statewide AI-readability telemetry and registry growth**, with one issue per workstream
-A–F above. Every PR names its issue; close each with a dated note. Existing issues this touches:
+Epic [#28](https://github.com/BetaNYC/ny-gov-web-registry/issues/28): **Statewide AI-readability telemetry and registry growth**, with one issue per workstream
+A–F above: A #22, B #23, C #24, D #25, E #26, F #27 (on hold). Every PR names its issue; close each with a dated note. Existing issues this touches:
 #1 (populate from canonical sources), #17 (Wikidata guard; no change proposed), #20 (officeholder
 pointers; not needed for this work).
 
