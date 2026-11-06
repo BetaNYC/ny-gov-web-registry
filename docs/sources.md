@@ -76,6 +76,12 @@ inferred. Each scheme's authority, format, and verification rule is catalogued i
 - **Used by:** `scripts/ai_readability_websites.py` → `data/ai-readability/websites.csv` (`source_list_state_agency`), and since 2026-11-06 as a registry source: `provenance.sources` value **`state_listing`**. It seeds the web properties of the 53 state agencies (`sync_nygov.py`) and the hosts of the authorities it names (`sync_abo.py`). Copied to `data/cache/state_agency_listing_websites.csv` for the build.
 - **Its `agency` column is a short code** (`DOH`, `OMH`), sometimes a name (`Department of Law`). Every code is mapped by hand in `data/curation.json § state_listing_codes`; a new code in a refreshed listing fails the sync until it is curated.
 
+## A state agency listing — state websites (2026-11-06)
+- **Credit as:** "a state agency listing". Shared with BetaNYC privately; **the link is private** and is not published.
+- **Coverage:** 307 New York State websites with the agency that runs each, mostly executive agencies under `ny.gov` (264 hosts). It is the only list we have of `*.ny.gov` agency sites: CISA's .gov list carries `ny.gov` itself, not its subdomains. Missing: the Legislature, the courts, most authorities, and all local governments.
+- **What we keep:** domain, URL and agency only, in `data/ai-readability/sources/2026-11-06/state-agency-listing-websites.csv`. The rest of the file (review scores, staff names, internal links) is not committed.
+- **Used by:** `scripts/ai_readability_websites.py` → `data/ai-readability/websites.csv` (`source_list_state_agency`). Not a registry source yet; minting state agencies (growth plan step 1) would cite it.
+
 ## Wikidata / IRS — identifier enrichment
 - `wikidata` — QIDs from the WDQS SPARQL endpoint (CC0). **Sync:** `scripts/sync_wikidata.py` (phase 3, 2026-07-15), **domain-anchored**: auto-attaches a QID only when its `P856` official-website host is owned by exactly one entity (a *distinctive* domain); apex-shared hosts like `nyc.gov` never match, and exact name/alias matches become review proposals, never auto-attachments. Reads the operator-placed cache `data/cache/wikidata_nyc_gov_orgs.json` (does not fetch); query + fetch date in `freshness.md § Wikidata`.
 - `us_irs_ein` (for `.org` PBCs like H+H). Verified values only. See `schemes.md`.
