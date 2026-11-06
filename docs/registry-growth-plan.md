@@ -1,21 +1,41 @@
 ---
-title: Growing the registry statewide (plan, not yet approved)
+title: Growing the registry statewide (plan; steps 1–2 done)
 created: 2026-11-06
 type: plan
-status: draft
+status: active
+updated: 2026-11-06
 tags: [registry, nys, counties, municipalities, plan]
 ---
 
 # Growing the registry statewide — plan
 
 - **Report generated:** 2026-11-06
-- **Status:** plan only. **No entity is minted** until the operator approves. Source facts and
+- **Last revised:** 2026-11-06 (steps 1–2 minted)
+- **Status:** steps 1 and 2 approved by Noel on 2026-11-06 and **minted the same day** (issue #24,
+  epic #28): 53 state agencies, 138 new authorities, 18 existing entities enriched from their ABO
+  row. Steps 3–6 are still a plan: no entity is minted until the operator approves. Source facts and
   counts come from [`sources-statewide.md`](sources-statewide.md) (verified 2026-11-06).
+
+## Status of steps 1–2 (2026-11-06)
+
+| Step | Result | Held for review (`data/statewide_web_review.json`) |
+|---|---|---|
+| 1 State executive agencies | **53 minted** (`nys`), from the state agency listing's 87 codes, named from ny.gov and `kjw8-pupa`. Hosts of authority codes (NYPA, ESD, NYSERDA, BPCA, EFC, BFSA, Thruway…) went to the authority, not a new agency | Governor, Comptroller, Attorney General (statewide elected), Assembly, courts, unknown codes (CJN, DCB, VDC, PCFB, IOLA), CC&F (name unverified), CJC and Waterfront Commission (level unclear), two credit unions; 24 directory names with no listing host |
+| 2 Public authorities, State + Local | **156 of 156 present**: 138 minted (`authority`), 18 matched to existing entities and enriched (`curation.json § abo_matches`). No IDA or LDC minted | 24 hosts not applied: 11 municipal sites, 7 shared hosts, 3 ABO hosts that differ from the listing, 2 malformed, 1 differing from an existing entity |
+
+**Website rule used for authorities.** For this batch the operator's instruction was "primary =
+the ABO `website` host", which is one self-reported lead, not the two agreeing leads of rule 2
+below. Where the state agency listing also names the authority's host, the listing host is primary
+and a disagreeing ABO host goes to review. Rule 2 still governs steps 3–6.
+
+**New provenance values.** `state_listing` and `nygov_contacts` (item 2 of "Schema changes" below
+proposed `nygov_contacts`; `state_listing` is new). No `government_level` value was added.
 
 ## Today
 
-`data/registry.json`: 317 entities, almost all New York City (`government_level`: `nyc` 303,
-`authority` 12, `bi-state` 1, `pbc` 1). The five borough presidents already sit at the county
+`data/registry.json` before this plan: 317 entities, almost all New York City (`government_level`:
+`nyc` 303, `authority` 12, `bi-state` 1, `pbc` 1). After steps 1–2 and the #21 community boards
+(2026-11-06): **567** (`nyc` 362, `authority` 150, `nys` 53, `bi-state` 1, `pbc` 1). The five borough presidents already sit at the county
 level: each carries `areas[] {scheme: us_census_geoid, layer: county, id: 360xx, role:
 jurisdiction}`. The five district attorneys (also county-level offices) carry no county area yet.
 
@@ -127,7 +147,7 @@ these rules:
   - `scripts/sync_nys_localities.py` → counties, cities, towns, villages (GIS spine + OSC + ITS)
   - `scripts/sync_dotgov.py` → CISA leads
   - `scripts/sync_abo.py` (exists) → authorities
-  - `scripts/sync_nygov.py` (stub today) → state agencies from `kjw8-pupa` plus a hand-curated
+  - `scripts/sync_nygov.py` (implemented 2026-11-06) → state agencies from `kjw8-pupa` plus a hand-curated
     `data/curation.json` section
 - `build_registry.py` merges them; `crawl_targets.py` derives the larger crawl set.
 - Tests: fixture-based, like the existing `tests/test_sync_*.py`, plus a seed-validates check for

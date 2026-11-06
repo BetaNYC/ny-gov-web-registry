@@ -1,0 +1,399 @@
+{
+  "_source": "https://www.ny.gov/agencies (redirects to https://www.ny.gov/state-agencies-and-departments). The list renders client-side, so it was read once in a browser, paging through all results (sorted by name). Agency name and ny.gov directory page only.",
+  "_fetched": "2026-11-06",
+  "_count": 98,
+  "agencies": [
+    {
+      "name": "511NY",
+      "url": "https://www.ny.gov/agencies/511ny"
+    },
+    {
+      "name": "Adirondack Park Agency",
+      "url": "https://www.ny.gov/agencies/adirondack-park-agency"
+    },
+    {
+      "name": "Authorities Budget Office",
+      "url": "https://www.ny.gov/agencies/authorities-budget-office"
+    },
+    {
+      "name": "Battery Park City Authority",
+      "url": "https://www.ny.gov/agencies/battery-park-city-authority"
+    },
+    {
+      "name": "Board of Elections",
+      "url": "https://www.ny.gov/agencies/board-elections"
+    },
+    {
+      "name": "Bridge Authority",
+      "url": "https://www.ny.gov/agencies/bridge-authority"
+    },
+    {
+      "name": "Canal Corporation",
+      "url": "https://www.ny.gov/agencies/canal-corporation"
+    },
+    {
+      "name": "Central Pine Barrens Joint Planning and Policy Commission",
+      "url": "https://www.ny.gov/agencies/central-pine-barrens-joint-planning-and-policy-commission"
+    },
+    {
+      "name": "City University of New York",
+      "url": "https://www.ny.gov/agencies/city-university-new-york"
+    },
+    {
+      "name": "Commission of Correction",
+      "url": "https://www.ny.gov/agencies/commission-correction"
+    },
+    {
+      "name": "Commission on Ethics and Lobbying in Government",
+      "url": "https://www.ny.gov/agencies/commission-ethics-and-lobbying-government"
+    },
+    {
+      "name": "Commission on Judicial Conduct",
+      "url": "https://www.ny.gov/agencies/commission-judicial-conduct"
+    },
+    {
+      "name": "Commission on Prosecutorial Conduct",
+      "url": "https://www.ny.gov/agencies/commission-prosecutorial-conduct"
+    },
+    {
+      "name": "Corcraft Products (Department of Correctional Services, Division of Industries)",
+      "url": "https://www.ny.gov/agencies/corcraft-products-department-correctional-services-division-industries"
+    },
+    {
+      "name": "Council on Children and Families Services",
+      "url": "https://www.ny.gov/agencies/council-children-and-families-services"
+    },
+    {
+      "name": "Council on Developmental Disabilities",
+      "url": "https://www.ny.gov/agencies/council-developmental-disabilities"
+    },
+    {
+      "name": "Council on the Arts",
+      "url": "https://www.ny.gov/agencies/council-arts"
+    },
+    {
+      "name": "Department of Agriculture and Markets",
+      "url": "https://www.ny.gov/agencies/department-agriculture-and-markets"
+    },
+    {
+      "name": "Department of Civil Service",
+      "url": "https://www.ny.gov/agencies/department-civil-service"
+    },
+    {
+      "name": "Department of Corrections and Community Supervision",
+      "url": "https://www.ny.gov/agencies/department-corrections-and-community-supervision"
+    },
+    {
+      "name": "Department of Education",
+      "url": "https://www.ny.gov/agencies/department-education"
+    },
+    {
+      "name": "Department of Environmental Conservation",
+      "url": "https://www.ny.gov/agencies/department-environmental-conservation"
+    },
+    {
+      "name": "Department of Financial Services",
+      "url": "https://www.ny.gov/agencies/department-financial-services"
+    },
+    {
+      "name": "Department of Health",
+      "url": "https://www.ny.gov/agencies/department-health"
+    },
+    {
+      "name": "Department of Labor",
+      "url": "https://www.ny.gov/agencies/department-labor"
+    },
+    {
+      "name": "Department of Motor Vehicles",
+      "url": "https://www.ny.gov/agencies/department-motor-vehicles"
+    },
+    {
+      "name": "Department of Public Service",
+      "url": "https://www.ny.gov/agencies/department-public-service"
+    },
+    {
+      "name": "Department of State",
+      "url": "https://www.ny.gov/agencies/department-state"
+    },
+    {
+      "name": "Department of Taxation and Finance",
+      "url": "https://www.ny.gov/agencies/department-taxation-and-finance"
+    },
+    {
+      "name": "Department of Transportation",
+      "url": "https://www.ny.gov/agencies/department-transportation"
+    },
+    {
+      "name": "Department of Veterans' Services",
+      "url": "https://www.ny.gov/agencies/department-veterans-services"
+    },
+    {
+      "name": "Division of Consumer Protection",
+      "url": "https://www.ny.gov/agencies/division-consumer-protection"
+    },
+    {
+      "name": "Division of Criminal Justice Services",
+      "url": "https://www.ny.gov/agencies/division-criminal-justice-services"
+    },
+    {
+      "name": "Division of Homeland Security and Emergency Services",
+      "url": "https://www.ny.gov/agencies/division-homeland-security-and-emergency-services"
+    },
+    {
+      "name": "Division of Human Rights",
+      "url": "https://www.ny.gov/agencies/division-human-rights"
+    },
+    {
+      "name": "Division of Military and Naval Affairs",
+      "url": "https://www.ny.gov/agencies/division-military-and-naval-affairs"
+    },
+    {
+      "name": "Division of State Police",
+      "url": "https://www.ny.gov/agencies/division-state-police"
+    },
+    {
+      "name": "Division of Tax Appeals and Tax Appeals Tribunal",
+      "url": "https://www.ny.gov/agencies/division-tax-appeals-and-tax-appeals-tribunal"
+    },
+    {
+      "name": "Division of the Budget",
+      "url": "https://www.ny.gov/agencies/division-budget"
+    },
+    {
+      "name": "Dormitory Authority",
+      "url": "https://www.ny.gov/agencies/dormitory-authority"
+    },
+    {
+      "name": "Empire State Development",
+      "url": "https://www.ny.gov/agencies/empire-state-development"
+    },
+    {
+      "name": "Energy Research and Development Authority",
+      "url": "https://www.ny.gov/agencies/energy-research-and-development-authority"
+    },
+    {
+      "name": "Environmental Facilities Corporation",
+      "url": "https://www.ny.gov/agencies/environmental-facilities-corporation"
+    },
+    {
+      "name": "Financial Control Board",
+      "url": "https://www.ny.gov/agencies/financial-control-board"
+    },
+    {
+      "name": "Gaming Commission",
+      "url": "https://www.ny.gov/agencies/gaming-commission"
+    },
+    {
+      "name": "Geographic Information Systems (GIS)",
+      "url": "https://www.ny.gov/agencies/geographic-information-systems-gis"
+    },
+    {
+      "name": "Governor's Traffic Safety Committee",
+      "url": "https://www.ny.gov/agencies/governors-traffic-safety-committee"
+    },
+    {
+      "name": "Higher Education Services Corporation",
+      "url": "https://www.ny.gov/agencies/higher-education-services-corporation"
+    },
+    {
+      "name": "Homes and Community Renewal",
+      "url": "https://www.ny.gov/agencies/homes-and-community-renewal"
+    },
+    {
+      "name": "Housing Finance Agency/State of NY Mortgage Agency (SONYMA)",
+      "url": "https://www.ny.gov/agencies/housing-finance-agencystate-ny-mortgage-agency-sonyma"
+    },
+    {
+      "name": "Hudson River Park Trust",
+      "url": "https://www.ny.gov/agencies/hudson-river-park-trust"
+    },
+    {
+      "name": "Hudson River Valley Greenway",
+      "url": "https://www.ny.gov/agencies/hudson-river-valley-greenway"
+    },
+    {
+      "name": "Jacob K. Javits Convention Center",
+      "url": "https://www.ny.gov/agencies/jacob-k-javits-convention-center"
+    },
+    {
+      "name": "Justice Center for the Protection of People with Special Needs",
+      "url": "https://www.ny.gov/agencies/justice-center-protection-people-special-needs"
+    },
+    {
+      "name": "Liquidation Bureau",
+      "url": "https://www.ny.gov/agencies/liquidation-bureau"
+    },
+    {
+      "name": "Liquor Authority, Division of Alcoholic Beverage Control",
+      "url": "https://www.ny.gov/agencies/liquor-authority-division-alcoholic-beverage-control"
+    },
+    {
+      "name": "Metropolitan Transportation Authority",
+      "url": "https://www.ny.gov/agencies/metropolitan-transportation-authority"
+    },
+    {
+      "name": "MTA Inspector General",
+      "url": "https://www.ny.gov/agencies/mta-inspector-general"
+    },
+    {
+      "name": "New York Assembly",
+      "url": "https://www.ny.gov/agencies/new-york-assembly"
+    },
+    {
+      "name": "New York State Insurance Fund",
+      "url": "https://www.ny.gov/agencies/new-york-state-insurance-fund"
+    },
+    {
+      "name": "New York State Law Revision Commission",
+      "url": "https://www.ny.gov/agencies/new-york-state-law-revision-commission"
+    },
+    {
+      "name": "New York State Senate",
+      "url": "https://www.ny.gov/agencies/new-york-state-senate"
+    },
+    {
+      "name": "NYC 311",
+      "url": "https://www.ny.gov/agencies/nyc-311"
+    },
+    {
+      "name": "Office for New Americans",
+      "url": "https://www.ny.gov/agencies/office-new-americans"
+    },
+    {
+      "name": "Office for People With Developmental Disabilities",
+      "url": "https://www.ny.gov/agencies/office-people-developmental-disabilities"
+    },
+    {
+      "name": "Office for the Aging",
+      "url": "https://www.ny.gov/agencies/office-aging"
+    },
+    {
+      "name": "Office for the Prevention of Domestic Violence",
+      "url": "https://www.ny.gov/agencies/office-prevention-domestic-violence"
+    },
+    {
+      "name": "Office of Addiction Services and Supports",
+      "url": "https://www.ny.gov/agencies/office-addiction-services-and-supports"
+    },
+    {
+      "name": "Office of Attorney General",
+      "url": "https://www.ny.gov/agencies/office-attorney-general"
+    },
+    {
+      "name": "Office of Cannabis Management",
+      "url": "https://www.ny.gov/agencies/office-cannabis-management"
+    },
+    {
+      "name": "Office of Children and Family Services",
+      "url": "https://www.ny.gov/agencies/office-children-and-family-services"
+    },
+    {
+      "name": "Office of Counter Terrorism",
+      "url": "https://www.ny.gov/agencies/office-counter-terrorism"
+    },
+    {
+      "name": "Office of Emergency Management",
+      "url": "https://www.ny.gov/agencies/office-emergency-management"
+    },
+    {
+      "name": "Office of Employee Relations",
+      "url": "https://www.ny.gov/agencies/office-employee-relations"
+    },
+    {
+      "name": "Office of Fire Prevention and Control",
+      "url": "https://www.ny.gov/agencies/office-fire-prevention-and-control"
+    },
+    {
+      "name": "Office of General Services",
+      "url": "https://www.ny.gov/agencies/office-general-services"
+    },
+    {
+      "name": "Office of Information Technology Services",
+      "url": "https://www.ny.gov/agencies/office-information-technology-services"
+    },
+    {
+      "name": "Office of Interoperable and Emergency Communications (OIEC)",
+      "url": "https://www.ny.gov/agencies/office-interoperable-and-emergency-communications-oiec"
+    },
+    {
+      "name": "Office of Mental Health",
+      "url": "https://www.ny.gov/agencies/office-mental-health"
+    },
+    {
+      "name": "Office of Parks, Recreation and Historic Preservation",
+      "url": "https://www.ny.gov/agencies/office-parks-recreation-and-historic-preservation"
+    },
+    {
+      "name": "Office of State Comptroller",
+      "url": "https://www.ny.gov/agencies/office-state-comptroller"
+    },
+    {
+      "name": "Office of Temporary and Disability Assistance",
+      "url": "https://www.ny.gov/agencies/office-temporary-and-disability-assistance"
+    },
+    {
+      "name": "Office of the Governor",
+      "url": "https://www.ny.gov/agencies/office-governor"
+    },
+    {
+      "name": "Office of the Medicaid Inspector General",
+      "url": "https://www.ny.gov/agencies/office-medicaid-inspector-general"
+    },
+    {
+      "name": "Office of Victim Services",
+      "url": "https://www.ny.gov/agencies/office-victim-services"
+    },
+    {
+      "name": "Offices of the Inspector General",
+      "url": "https://www.ny.gov/agencies/offices-inspector-general"
+    },
+    {
+      "name": "Olympic Regional Development Authority",
+      "url": "https://www.ny.gov/agencies/olympic-regional-development-authority"
+    },
+    {
+      "name": "Port Authority of New York and New Jersey",
+      "url": "https://www.ny.gov/agencies/port-authority-new-york-and-new-jersey"
+    },
+    {
+      "name": "Power Authority",
+      "url": "https://www.ny.gov/agencies/power-authority"
+    },
+    {
+      "name": "Roosevelt Island Operating Corporation of the State of New York (RIOC)",
+      "url": "https://www.ny.gov/agencies/roosevelt-island-operating-corporation-state-new-york-rioc"
+    },
+    {
+      "name": "South Shore Estuary Council",
+      "url": "https://www.ny.gov/agencies/south-shore-estuary-council"
+    },
+    {
+      "name": "State Employees Federated Appeal (SEFA)",
+      "url": "https://www.ny.gov/agencies/state-employees-federated-appeal-sefa"
+    },
+    {
+      "name": "State University Construction Fund",
+      "url": "https://www.ny.gov/agencies/state-university-construction-fund"
+    },
+    {
+      "name": "State University of New York (SUNY)",
+      "url": "https://www.ny.gov/agencies/state-university-new-york-suny"
+    },
+    {
+      "name": "Teachers' Retirement System",
+      "url": "https://www.ny.gov/agencies/teachers-retirement-system"
+    },
+    {
+      "name": "Thruway Authority",
+      "url": "https://www.ny.gov/agencies/thruway-authority"
+    },
+    {
+      "name": "Waterfront Commission",
+      "url": "https://www.ny.gov/agencies/waterfront-commission"
+    },
+    {
+      "name": "Workers Compensation Board",
+      "url": "https://www.ny.gov/agencies/workers-compensation-board"
+    }
+  ]
+}

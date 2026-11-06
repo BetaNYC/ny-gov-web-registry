@@ -123,3 +123,54 @@ def test_built_output_is_schema_valid():
     entities, _ = build_entities(SEED, [[src]])
     for e in entities:
         jsonschema.validate(e, SCHEMA)
+
+
+# --- private sync keys (_match_entity_id / _expect_new / _on_match), added for issue #24 -------
+
+def test_match_entity_id_matches_directly_and_enriches():
+    src = _source("A Different Upstream Name")
+    src["_match_entity_id"] = "oti"
+    src["_on_match"] = {"add_provenance_source": "abo", "other_name_note": "upstream name",
+                        "add_web_properties": [{"domain": "oti.example.gov", "role": "microsite"}]}
+    entities, _ = build_entities(SEED, [[src]])
+    assert len(entities) == len(SEED)
+    oti = next(e for e in entities if e["id"] == "oti")
+    assert "abo" in oti["provenance"]["sources"]
+    assert {"name": "A Different Upstream Name", "note": "upstream name"} in oti["other_names"]
+    assert [w["domain"] for w in oti["web_properties"]] == ["oti.example.gov"]
+    assert SEED[0]["provenance"]["sources"] == ["manual"], "seed input must not be mutated"
+    assert "other_names" not in SEED[0] and SEED[0]["web_properties"] == []
+
+
+def test_match_entity_id_unknown_raises():
+    src = _source("X")
+    src["_match_entity_id"] = "no-such-id"
+    with pytest.raises(ValueError):
+        build_entities(SEED, [[src]])
+
+
+def test_expect_new_collision_raises():
+    src = _source("New York City Department of Education")
+    src["_expect_new"] = True
+    with pytest.raises(ValueError):
+        build_entities(SEED, [[src]])
+
+
+def test_private_keys_never_reach_a_minted_record():
+    src = _source("Brand New Body")
+    src["_expect_new"] = True
+    src["_review_hint"] = "anything"
+    entities, _ = build_entities(SEED, [[src]])
+    new = next(e for e in entities if e["name"] == "Brand New Body")
+    assert not any(k.startswith("_") for k in new)
+    jsonschema = pytest.importorskip("jsonschema")
+    jsonschema.validate(new, SCHEMA)
+
+
+def test_on_match_web_property_dedup_ignores_www():
+    seed = [_entity("x", "X")]
+    seed[0]["web_properties"] = [{"domain": "www.x.gov", "role": "primary"}]
+    src = _source("X")
+    src["_on_match"] = {"add_web_properties": [{"domain": "x.gov", "role": "microsite"}]}
+    entities, _ = build_entities(seed, [[src]])
+    assert [w["domain"] for w in entities[0]["web_properties"]] == ["www.x.gov"]

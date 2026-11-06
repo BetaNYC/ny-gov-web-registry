@@ -3,9 +3,15 @@
   "confirmed_merges": [
     {
       "seed_id": "nycedc",
-      "match": { "scheme": "nyc_goid", "identifier": "NYC_GOID_000177" },
+      "match": {
+        "scheme": "nyc_goid",
+        "identifier": "NYC_GOID_000177"
+      },
       "add_other_names": [
-        { "name": "Economic Development Corporation", "note": "MODA t3jq canonical name for NYC_GOID_000177; operator-confirmed merge into this record 2026-07-15 (PR #5 guidance)." }
+        {
+          "name": "Economic Development Corporation",
+          "note": "MODA t3jq canonical name for NYC_GOID_000177; operator-confirmed merge into this record 2026-07-15 (PR #5 guidance)."
+        }
       ],
       "add_provenance_source": "moda",
       "note": "Operator-confirmed (Noel, PR #5, 2026-07-15): seed nycedc = t3jq economic-development-corporation. Per merge discipline the seed keeps its id; it gains the nyc_goid identifier and the MODA name in other_names[]. Collapses what phase 1 minted as a separate 'economic-development-corporation' entity."
@@ -53,10 +59,1050 @@
     {
       "entity_id": "esd",
       "names": [
-        { "name": "Empire State Development Corporation", "note": "False-positive guard (PR #5, 2026-07-15): classic collision against NYC 'Economic Development Corporation'; ESD is a NYS state authority and must never merge with the city EDC." },
-        { "name": "New York State Urban Development Corporation", "note": "Former name / false-positive guard (PR #5, 2026-07-15): the UDC lineage under which ESD's public-benefit corporation was chartered." }
+        {
+          "name": "Empire State Development Corporation",
+          "note": "False-positive guard (PR #5, 2026-07-15): classic collision against NYC 'Economic Development Corporation'; ESD is a NYS state authority and must never merge with the city EDC."
+        },
+        {
+          "name": "New York State Urban Development Corporation",
+          "note": "Former name / false-positive guard (PR #5, 2026-07-15): the UDC lineage under which ESD's public-benefit corporation was chartered."
+        }
       ],
       "note": "Documents the ambiguity in-data so name matching can be audited; MUST NOT merge with nycedc (cross-government_level: authority vs the city EDC)."
     }
-  ]
+  ],
+  "_comment_statewide": "Statewide sections (Noel, 2026-11-06, epic BetaNYC/ny-gov-web-registry#28, issue #24): abo_matches / abo_holds / abo_website_holds are read by sync_abo.py; state_agencies / state_listing_codes / state_listing_host_overrides / state_directory_covered_elsewhere by sync_nygov.py (and the listing tables by sync_abo.py too). Every judgment in them is a reviewer-facing decision; anything not decided goes to data/statewide_web_review.json.",
+  "abo_matches": [
+    {
+      "abo_name": "Metropolitan Transportation Authority",
+      "entity_id": "mta",
+      "note": "Exact name match with the existing entity."
+    },
+    {
+      "abo_name": "Dormitory Authority of the State of New York",
+      "entity_id": "dasny",
+      "note": "Exact name match with the existing entity."
+    },
+    {
+      "abo_name": "New York State Energy Research and Development Authority",
+      "entity_id": "nyserda",
+      "note": "Exact name match with the existing entity."
+    },
+    {
+      "abo_name": "New York State Thruway Authority",
+      "entity_id": "nys-thruway",
+      "note": "Exact name match with the existing entity."
+    },
+    {
+      "abo_name": "New York State Urban Development Corporation",
+      "entity_id": "esd",
+      "note": "ESD's corporate name; the registry already records it as a former name of `esd` (PR #5). Same body; ESD's host esd.ny.gov matches."
+    },
+    {
+      "abo_name": "Roosevelt Island Operating Corporation",
+      "entity_id": "roosevelt-island-operating-corporation",
+      "note": "Exact name match with the existing entity. MODA lists it as a city entity; level left as is."
+    },
+    {
+      "abo_name": "Hudson River Park Trust",
+      "entity_id": "hudson-river-park-trust",
+      "note": "Exact name match with the existing entity. Host hudsonriverpark.org matches."
+    },
+    {
+      "abo_name": "United Nations Development Corporation",
+      "entity_id": "united-nations-development-corporation",
+      "note": "Exact name match with the existing entity. Host undc.org matches."
+    },
+    {
+      "abo_name": "New York City Public Housing Preservation Trust",
+      "entity_id": "new-york-city-public-housing-preservation-trust",
+      "note": "Exact name match with the existing entity."
+    },
+    {
+      "abo_name": "New York City Water Board",
+      "entity_id": "new-york-city-water-board",
+      "note": "Exact name match with the existing entity."
+    },
+    {
+      "abo_name": "New York City Municipal Water Finance Authority",
+      "entity_id": "new-york-city-municipal-water-finance-authority",
+      "note": "Exact name match with the existing entity."
+    },
+    {
+      "abo_name": "New York City Transitional Finance Authority",
+      "entity_id": "new-york-city-transitional-finance-authority",
+      "note": "Exact name match with the existing entity."
+    },
+    {
+      "abo_name": "New York City Health and Hospitals Corporation",
+      "entity_id": "nyc-health-hospitals",
+      "note": "H+H's corporate name (the 1969 HHC Act); same body as the existing pbc entity."
+    },
+    {
+      "abo_name": "New York City School Construction Authority",
+      "entity_id": "school-construction-authority",
+      "note": "MODA name without the 'New York City' prefix; host nycsca.org matches."
+    },
+    {
+      "abo_name": "New York City Housing Development Corporation",
+      "entity_id": "housing-development-corporation",
+      "note": "MODA name without the prefix; host nychdc.com matches."
+    },
+    {
+      "abo_name": "New York City Educational Construction Fund",
+      "entity_id": "educational-construction-fund",
+      "note": "MODA name without the prefix; same body."
+    },
+    {
+      "abo_name": "Trust for Cultural Resources of the City of New York",
+      "entity_id": "trust-for-cultural-resources",
+      "note": "MODA's shorter name; host tcrnyc.org matches."
+    },
+    {
+      "abo_name": "New York Convention Center Operating Corporation",
+      "entity_id": "convention-center-operating-corporation-javits",
+      "note": "The Javits Center operator; host javitscenter.com matches."
+    }
+  ],
+  "abo_holds": [],
+  "abo_website_holds": [
+    {
+      "abo_name": "Port Jervis Community Development Agency",
+      "reason": "abo_host_is_a_municipal_site",
+      "note": "portjervisny.org looks like the City of Port Jervis's own site, not the agency's."
+    },
+    {
+      "abo_name": "Victor Urban Renewal Agency",
+      "reason": "abo_host_is_a_municipal_site",
+      "note": "victorny.org looks like the Town/Village of Victor's site."
+    },
+    {
+      "abo_name": "Tonawanda (City) Community Development Agency",
+      "reason": "abo_host_is_a_municipal_site",
+      "note": "ci.tonawanda.ny.us is the City of Tonawanda's site."
+    },
+    {
+      "abo_name": "Huntington Community Development Agency",
+      "reason": "abo_host_is_a_municipal_site",
+      "note": "huntingtonny.gov is the Town of Huntington's site."
+    },
+    {
+      "abo_name": "Town of Erwin Urban Renewal Agency",
+      "reason": "abo_host_is_a_municipal_site",
+      "note": "erwinny.org looks like the Town of Erwin's site."
+    },
+    {
+      "abo_name": "Little Falls Urban Renewal Agency",
+      "reason": "abo_host_is_a_municipal_site",
+      "note": "cityoflittlefalls.net is the City of Little Falls's site."
+    },
+    {
+      "abo_name": "Village of Rockville Centre Community Development Agency",
+      "reason": "abo_host_is_a_municipal_site",
+      "note": "rvcny.gov is the Village of Rockville Centre's site."
+    },
+    {
+      "abo_name": "Gloversville Community Development Agency",
+      "reason": "abo_host_is_a_municipal_site",
+      "note": "cityofgloversville.com is the City of Gloversville's site."
+    },
+    {
+      "abo_name": "Niagara Falls Urban Renewal Agency",
+      "reason": "abo_host_is_a_municipal_site",
+      "note": "niagarafallsusa.org looks like the City of Niagara Falls's site."
+    },
+    {
+      "abo_name": "Village of Elmira Heights Urban Renewal Agency",
+      "reason": "abo_host_is_a_municipal_site",
+      "note": "elmiraheightsvillage.com is the Village of Elmira Heights's site."
+    },
+    {
+      "abo_name": "Village of Fairport Urban Renewal Agency",
+      "reason": "abo_host_is_a_municipal_site",
+      "note": "fairportoced.org looks like the Village of Fairport's economic-development office."
+    }
+  ],
+  "state_agencies": [
+    {
+      "key": "abo",
+      "name": "Authorities Budget Office",
+      "nygov_name": "Authorities Budget Office",
+      "kjw8_agency": null,
+      "short_name": "ABO",
+      "classification": "state-agency",
+      "primary": "abo.ny.gov"
+    },
+    {
+      "key": "apa",
+      "name": "Adirondack Park Agency",
+      "nygov_name": "Adirondack Park Agency",
+      "kjw8_agency": "Adirondack Park Agency (APA)",
+      "short_name": "APA",
+      "classification": "state-agency",
+      "primary": "apa.ny.gov"
+    },
+    {
+      "key": "agriculture",
+      "name": "New York State Department of Agriculture and Markets",
+      "nygov_name": "Department of Agriculture and Markets",
+      "kjw8_agency": "Department of Agriculture & Markets (DAM)",
+      "short_name": "DAM",
+      "classification": "state-agency",
+      "primary": "agriculture.ny.gov"
+    },
+    {
+      "key": "civil-service",
+      "name": "New York State Department of Civil Service",
+      "nygov_name": "Department of Civil Service",
+      "kjw8_agency": "Department of Civil Service (DCS)",
+      "short_name": "DCS",
+      "classification": "state-agency",
+      "primary": "cs.ny.gov"
+    },
+    {
+      "key": "dcjs",
+      "name": "New York State Division of Criminal Justice Services",
+      "nygov_name": "Division of Criminal Justice Services",
+      "kjw8_agency": "Division of Criminal Justice Services (DCJS)",
+      "short_name": "DCJS",
+      "classification": "state-agency",
+      "primary": "criminaljustice.ny.gov"
+    },
+    {
+      "key": "dec",
+      "name": "New York State Department of Environmental Conservation",
+      "nygov_name": "Department of Environmental Conservation",
+      "kjw8_agency": "Department of Environmental Conservation (DEC)",
+      "short_name": "DEC",
+      "classification": "state-agency",
+      "primary": "dec.ny.gov"
+    },
+    {
+      "key": "hcr",
+      "name": "New York State Homes and Community Renewal",
+      "nygov_name": "Homes and Community Renewal",
+      "kjw8_agency": "New York State Homes & Community Renewal (HCR)",
+      "short_name": "HCR",
+      "classification": "state-agency",
+      "primary": "hcr.ny.gov"
+    },
+    {
+      "key": "dhr",
+      "name": "New York State Division of Human Rights",
+      "nygov_name": "Division of Human Rights",
+      "kjw8_agency": "Division of Human Rights (DHR)",
+      "short_name": "DHR",
+      "classification": "state-agency",
+      "primary": "dhr.ny.gov"
+    },
+    {
+      "key": "dhses",
+      "name": "New York State Division of Homeland Security and Emergency Services",
+      "nygov_name": "Division of Homeland Security and Emergency Services",
+      "kjw8_agency": "Division of Homeland Security & Emergency Services (DHSES)",
+      "short_name": "DHSES",
+      "classification": "state-agency",
+      "primary": "dhses.ny.gov"
+    },
+    {
+      "key": "dmna",
+      "name": "New York State Division of Military and Naval Affairs",
+      "nygov_name": "Division of Military and Naval Affairs",
+      "kjw8_agency": "Division of Military & Naval Affairs (DMNA)",
+      "short_name": "DMNA",
+      "classification": "state-agency",
+      "primary": "dmna.ny.gov",
+      "host_notes": {
+        "nysmm.inmagic.com": "Vendor-hosted (Inmagic) catalog."
+      }
+    },
+    {
+      "key": "dmv",
+      "name": "New York State Department of Motor Vehicles",
+      "nygov_name": "Department of Motor Vehicles",
+      "kjw8_agency": "New York State Department of Motor Vehicles (DMV)",
+      "short_name": "DMV",
+      "classification": "state-agency",
+      "primary": "dmv.ny.gov",
+      "host_notes": {
+        "trafficsafety.ny.gov": "The ny.gov directory lists the Governor's Traffic Safety Committee separately; the listing files its host under DMV."
+      }
+    },
+    {
+      "key": "budget",
+      "name": "New York State Division of the Budget",
+      "nygov_name": "Division of the Budget",
+      "kjw8_agency": null,
+      "short_name": "DOB",
+      "classification": "state-agency",
+      "primary": "budget.ny.gov"
+    },
+    {
+      "key": "doccs",
+      "name": "New York State Department of Corrections and Community Supervision",
+      "nygov_name": "Department of Corrections and Community Supervision",
+      "kjw8_agency": "Department of Corrections & Community Supervision (DOCCS)",
+      "short_name": "DOCCS",
+      "classification": "state-agency",
+      "primary": "doccs.ny.gov",
+      "host_notes": {
+        "corcraft.ny.gov": "Corcraft Products, the department's Division of Industries (listed separately in the ny.gov directory)."
+      }
+    },
+    {
+      "key": "health",
+      "name": "New York State Department of Health",
+      "nygov_name": "Department of Health",
+      "kjw8_agency": "Department of Health (DOH)",
+      "short_name": "DOH",
+      "classification": "state-agency",
+      "primary": "health.ny.gov"
+    },
+    {
+      "key": "labor",
+      "name": "New York State Department of Labor",
+      "nygov_name": "Department of Labor",
+      "kjw8_agency": "Department of Labor (DOL)",
+      "short_name": "DOL",
+      "classification": "state-agency",
+      "primary": "dol.ny.gov",
+      "host_notes": {
+        "industrialappeals.ny.gov": "Industrial Board of Appeals (a separate kjw8-pupa entry); the listing files it under DOL.",
+        "uiappeals.ny.gov": "Unemployment Insurance Appeals Board (a separate kjw8-pupa entry); the listing files it under DOL."
+      }
+    },
+    {
+      "key": "dos",
+      "name": "New York State Department of State",
+      "nygov_name": "Department of State",
+      "kjw8_agency": "Department of State (DOS)",
+      "short_name": "DOS",
+      "classification": "state-agency",
+      "primary": "dos.ny.gov"
+    },
+    {
+      "key": "dot",
+      "name": "New York State Department of Transportation",
+      "nygov_name": "Department of Transportation",
+      "kjw8_agency": "New York State Department of Transportation (DOT)",
+      "short_name": "DOT",
+      "classification": "state-agency",
+      "primary": "dot.ny.gov",
+      "host_notes": {
+        "nymtc.org": "New York Metropolitan Transportation Council, a metropolitan planning organization; the listing files it under DOT.",
+        "tig.nymtc.org": "NYMTC sub-site; the listing files it under DOT."
+      }
+    },
+    {
+      "key": "dps",
+      "name": "New York State Department of Public Service",
+      "nygov_name": "Department of Public Service",
+      "kjw8_agency": "Public Service Commission (PSC) / Department of Public Service (DPS)",
+      "short_name": "DPS",
+      "classification": "state-agency",
+      "primary": "dps.ny.gov"
+    },
+    {
+      "key": "state-police",
+      "name": "New York State Division of State Police",
+      "nygov_name": "Division of State Police",
+      "kjw8_agency": "Division of State Police (SP)",
+      "short_name": "DSP",
+      "classification": "state-agency",
+      "primary": "troopers.ny.gov"
+    },
+    {
+      "key": "tax-appeals",
+      "name": "New York State Division of Tax Appeals and Tax Appeals Tribunal",
+      "nygov_name": "Division of Tax Appeals and Tax Appeals Tribunal",
+      "kjw8_agency": null,
+      "short_name": "DTA",
+      "classification": "state-agency",
+      "primary": "dta.ny.gov"
+    },
+    {
+      "key": "tax",
+      "name": "New York State Department of Taxation and Finance",
+      "nygov_name": "Department of Taxation and Finance",
+      "kjw8_agency": "Department of Tax & Finance (DTF)",
+      "short_name": "DTF",
+      "classification": "state-agency",
+      "primary": "tax.ny.gov"
+    },
+    {
+      "key": "veterans",
+      "name": "New York State Department of Veterans' Services",
+      "nygov_name": "Department of Veterans' Services",
+      "kjw8_agency": "Department of Veterans’ Services (DVS)",
+      "short_name": "DVS",
+      "classification": "state-agency",
+      "primary": "veterans.ny.gov"
+    },
+    {
+      "key": "dfs",
+      "name": "New York State Department of Financial Services",
+      "nygov_name": "Department of Financial Services",
+      "kjw8_agency": "Department of Financial Service (DFS)",
+      "short_name": "DFS",
+      "classification": "state-agency",
+      "primary": "dfs.ny.gov"
+    },
+    {
+      "key": "elections",
+      "name": "New York State Board of Elections",
+      "nygov_name": "Board of Elections",
+      "kjw8_agency": "NYS Board of Elections (BOE)",
+      "short_name": "BOE",
+      "classification": "state-agency",
+      "primary": "elections.ny.gov",
+      "host_notes": {
+        "electionenforcement.ny.gov": "Listing code 'NYSBE' (election law enforcement); filed with the Board of Elections."
+      }
+    },
+    {
+      "key": "ethics",
+      "name": "New York State Commission on Ethics and Lobbying in Government",
+      "nygov_name": "Commission on Ethics and Lobbying in Government",
+      "kjw8_agency": null,
+      "short_name": null,
+      "classification": "state-agency",
+      "primary": "ethics.ny.gov"
+    },
+    {
+      "key": "gaming",
+      "name": "New York State Gaming Commission",
+      "nygov_name": "Gaming Commission",
+      "kjw8_agency": "New York State Gaming Commission",
+      "short_name": null,
+      "classification": "state-agency",
+      "primary": "gaming.ny.gov",
+      "host_notes": {
+        "nylottery.ny.gov": "Listing code 'Lottery'; the New York Lottery is a division of the Gaming Commission.",
+        "franchiseoversightboard.ny.gov": "New York State Franchise Oversight Board (a separate kjw8-pupa entry); the listing files it under Gaming."
+      }
+    },
+    {
+      "key": "hesc",
+      "name": "New York State Higher Education Services Corporation",
+      "nygov_name": "Higher Education Services Corporation",
+      "kjw8_agency": "Office of NYS Higher Education Services Corporation (HESC)",
+      "short_name": "HESC",
+      "classification": "state-agency",
+      "primary": "hesc.ny.gov"
+    },
+    {
+      "key": "ils",
+      "name": "New York State Office of Indigent Legal Services",
+      "nygov_name": null,
+      "kjw8_agency": "Office of Indigent Legal Services (ILS)",
+      "short_name": "ILS",
+      "classification": "state-agency",
+      "primary": "ils.ny.gov"
+    },
+    {
+      "key": "its",
+      "name": "New York State Office of Information Technology Services",
+      "nygov_name": "Office of Information Technology Services",
+      "kjw8_agency": "Office of Information Technology Services (ITS)",
+      "short_name": "ITS",
+      "classification": "state-agency",
+      "primary": "its.ny.gov",
+      "host_notes": {
+        "ny.gov": "The state portal; the listing files it under ITS."
+      }
+    },
+    {
+      "key": "justice-center",
+      "name": "Justice Center for the Protection of People with Special Needs",
+      "nygov_name": "Justice Center for the Protection of People with Special Needs",
+      "kjw8_agency": "Justice Center for the Protection of People with Special Needs",
+      "short_name": "JCPPSN",
+      "classification": "state-agency",
+      "primary": "justicecenter.ny.gov"
+    },
+    {
+      "key": "lgpc",
+      "name": "Lake George Park Commission",
+      "nygov_name": null,
+      "kjw8_agency": "Lake George Park Commission (LGPC)",
+      "short_name": "LGPC",
+      "classification": "state-agency",
+      "primary": "lgpc.ny.gov"
+    },
+    {
+      "key": "mtaig",
+      "name": "MTA Inspector General",
+      "nygov_name": "MTA Inspector General",
+      "kjw8_agency": null,
+      "short_name": "MTAIG",
+      "classification": "state-agency",
+      "primary": "mtaig.ny.gov"
+    },
+    {
+      "key": "arts",
+      "name": "New York State Council on the Arts",
+      "nygov_name": "Council on the Arts",
+      "kjw8_agency": "New York State Council on the Arts (NYSCA)",
+      "short_name": "NYSCA",
+      "classification": "state-agency",
+      "primary": "arts.ny.gov"
+    },
+    {
+      "key": "education",
+      "name": "New York State Education Department",
+      "nygov_name": "Department of Education",
+      "kjw8_agency": "State Education Department (SED)",
+      "short_name": "NYSED",
+      "classification": "state-agency",
+      "primary": "nysed.gov"
+    },
+    {
+      "key": "nysif",
+      "name": "New York State Insurance Fund",
+      "nygov_name": "New York State Insurance Fund",
+      "kjw8_agency": "State Insurance Fund (SIF) NYSIF",
+      "short_name": "NYSIF",
+      "classification": "state-agency",
+      "primary": "ww3.nysif.com"
+    },
+    {
+      "key": "fcb",
+      "name": "New York State Financial Control Board",
+      "nygov_name": "Financial Control Board",
+      "kjw8_agency": null,
+      "short_name": null,
+      "classification": "state-agency",
+      "primary": "fcb.ny.gov"
+    },
+    {
+      "key": "oasas",
+      "name": "New York State Office of Addiction Services and Supports",
+      "nygov_name": "Office of Addiction Services and Supports",
+      "kjw8_agency": "Office of Addiction Services & Supports (OASAS)",
+      "short_name": "OASAS",
+      "classification": "state-agency",
+      "primary": "oasas.ny.gov"
+    },
+    {
+      "key": "ocfs",
+      "name": "New York State Office of Children and Family Services",
+      "nygov_name": "Office of Children and Family Services",
+      "kjw8_agency": "Office of Children & Family Services (OCFS)",
+      "short_name": "OCFS",
+      "classification": "state-agency",
+      "primary": "ocfs.ny.gov"
+    },
+    {
+      "key": "ocm",
+      "name": "New York State Office of Cannabis Management",
+      "nygov_name": "Office of Cannabis Management",
+      "kjw8_agency": "Office of Cannabis Management (OCM)",
+      "short_name": "OCM",
+      "classification": "state-agency",
+      "primary": "cannabis.ny.gov"
+    },
+    {
+      "key": "oer",
+      "name": "New York State Office of Employee Relations",
+      "nygov_name": "Office of Employee Relations",
+      "kjw8_agency": "Office Of Employee Relations (OER)",
+      "short_name": "OER",
+      "classification": "state-agency",
+      "primary": "oer.ny.gov"
+    },
+    {
+      "key": "ogs",
+      "name": "New York State Office of General Services",
+      "nygov_name": "Office of General Services",
+      "kjw8_agency": "Office of General Services (OGS)",
+      "short_name": "OGS",
+      "classification": "state-agency",
+      "primary": "ogs.ny.gov"
+    },
+    {
+      "key": "omh",
+      "name": "New York State Office of Mental Health",
+      "nygov_name": "Office of Mental Health",
+      "kjw8_agency": "Office of Mental Health (OMH)",
+      "short_name": "OMH",
+      "classification": "state-agency",
+      "primary": "omh.ny.gov"
+    },
+    {
+      "key": "omig",
+      "name": "New York State Office of the Medicaid Inspector General",
+      "nygov_name": "Office of the Medicaid Inspector General",
+      "kjw8_agency": "Office of the Medicaid Inspector General (OMIG)",
+      "short_name": "OMIG",
+      "classification": "state-agency",
+      "primary": "omig.ny.gov"
+    },
+    {
+      "key": "opdv",
+      "name": "New York State Office for the Prevention of Domestic Violence",
+      "nygov_name": "Office for the Prevention of Domestic Violence",
+      "kjw8_agency": "Office for the Prevention of Domestic Violence",
+      "short_name": "OPDV",
+      "classification": "state-agency",
+      "primary": "opdv.ny.gov"
+    },
+    {
+      "key": "opwdd",
+      "name": "New York State Office for People With Developmental Disabilities",
+      "nygov_name": "Office for People With Developmental Disabilities",
+      "kjw8_agency": "Office for People with Developmental Disabilities (OPWDD)",
+      "short_name": "OPWDD",
+      "classification": "state-agency",
+      "primary": "opwdd.ny.gov",
+      "host_notes": {
+        "cdd.ny.gov": "Council on Developmental Disabilities (a separate directory entry); the listing files it under OPWDD."
+      }
+    },
+    {
+      "key": "otda",
+      "name": "New York State Office of Temporary and Disability Assistance",
+      "nygov_name": "Office of Temporary and Disability Assistance",
+      "kjw8_agency": "Office of Temporary & Disability Assistance (OTDA)",
+      "short_name": "OTDA",
+      "classification": "state-agency",
+      "primary": "otda.ny.gov"
+    },
+    {
+      "key": "ovs",
+      "name": "New York State Office of Victim Services",
+      "nygov_name": "Office of Victim Services",
+      "kjw8_agency": "Office of Victim Services (OVS)",
+      "short_name": "OVS",
+      "classification": "state-agency",
+      "primary": "ovs.ny.gov"
+    },
+    {
+      "key": "perb",
+      "name": "New York State Public Employment Relations Board",
+      "nygov_name": null,
+      "kjw8_agency": "Public Employment Relations Board (PERB)",
+      "short_name": "PERB",
+      "classification": "state-agency",
+      "primary": "perb.ny.gov"
+    },
+    {
+      "key": "parks",
+      "name": "New York State Office of Parks, Recreation and Historic Preservation",
+      "nygov_name": "Office of Parks, Recreation and Historic Preservation",
+      "kjw8_agency": "Office of Parks Recreation & Historic Preservations (OPRHP)",
+      "short_name": "OPRHP",
+      "classification": "state-agency",
+      "primary": "parks.ny.gov"
+    },
+    {
+      "key": "scoc",
+      "name": "New York State Commission of Correction",
+      "nygov_name": "Commission of Correction",
+      "kjw8_agency": "State Commission of Correction (SCOC)",
+      "short_name": "SCOC",
+      "classification": "state-agency",
+      "primary": "scoc.ny.gov"
+    },
+    {
+      "key": "sla",
+      "name": "New York State Liquor Authority",
+      "nygov_name": "Liquor Authority, Division of Alcoholic Beverage Control",
+      "kjw8_agency": "Division of Alcohol Beverage Control (ABC/SLA)",
+      "short_name": "SLA",
+      "classification": "state-agency",
+      "primary": "sla.ny.gov"
+    },
+    {
+      "key": "aging",
+      "name": "New York State Office for the Aging",
+      "nygov_name": "Office for the Aging",
+      "kjw8_agency": "Office for the Aging (NYSOFA)",
+      "short_name": "NYSOFA",
+      "classification": "state-agency",
+      "primary": "aging.ny.gov"
+    },
+    {
+      "key": "wcb",
+      "name": "New York State Workers Compensation Board",
+      "nygov_name": "Workers Compensation Board",
+      "kjw8_agency": "Worker’s Compensation Board (WCB)",
+      "short_name": "WCB",
+      "classification": "state-agency",
+      "primary": "wcb.ny.gov",
+      "host_notes": {
+        "paidfamilyleave.ny.gov": "Paid Family Leave program site."
+      }
+    }
+  ],
+  "state_listing_codes": {
+    "ABO": {
+      "target": "agency:abo"
+    },
+    "Ag&Markets": {
+      "target": "agency:agriculture"
+    },
+    "APA": {
+      "target": "agency:apa"
+    },
+    "BFSA": {
+      "target": "abo:Buffalo Fiscal Stability Authority",
+      "primary": "bfsa.ny.gov"
+    },
+    "BPCA": {
+      "target": "abo:Battery Park City Authority",
+      "primary": "bpca.ny.gov"
+    },
+    "CC&F": {
+      "target": "review:name_unverified",
+      "note": "ccf.ny.gov. The ny.gov directory names 'Council on Children and Families Services'; kjw8-pupa has no entry. Confirm the official name before minting."
+    },
+    "CJC": {
+      "target": "review:level_unclear",
+      "note": "Commission on Judicial Conduct (ny.gov lists it). A constitutional commission tied to the judiciary; not clearly an executive agency."
+    },
+    "CJN": {
+      "target": "review:unknown_code",
+      "note": "Hosts cjn.ny.gov and two justicecenter.ny.gov subdomains; no directory names a 'CJN'."
+    },
+    "CS": {
+      "target": "agency:civil-service"
+    },
+    "DCB": {
+      "target": "review:unknown_code",
+      "note": "deferredcompboard.ny.gov; no directory names a deferred compensation board."
+    },
+    "DCJS": {
+      "target": "agency:dcjs"
+    },
+    "DEC": {
+      "target": "agency:dec"
+    },
+    "Department of Financial Services": {
+      "target": "agency:dfs"
+    },
+    "Department of Law": {
+      "target": "review:statewide_elected_office",
+      "note": "Office of the Attorney General (ag.ny.gov): statewide elected."
+    },
+    "DHCR": {
+      "target": "agency:hcr"
+    },
+    "DHR": {
+      "target": "agency:dhr"
+    },
+    "DHSES": {
+      "target": "agency:dhses"
+    },
+    "Division of State Police": {
+      "target": "agency:state-police"
+    },
+    "DMNA": {
+      "target": "agency:dmna"
+    },
+    "DMV": {
+      "target": "agency:dmv"
+    },
+    "DOB": {
+      "target": "agency:budget"
+    },
+    "DOCS": {
+      "target": "agency:doccs"
+    },
+    "DOH": {
+      "target": "agency:health"
+    },
+    "DOL": {
+      "target": "agency:labor"
+    },
+    "DOS": {
+      "target": "agency:dos"
+    },
+    "DOT": {
+      "target": "agency:dot"
+    },
+    "DPS": {
+      "target": "agency:dps"
+    },
+    "DSP": {
+      "target": "agency:state-police"
+    },
+    "DTA": {
+      "target": "agency:tax-appeals"
+    },
+    "DTF": {
+      "target": "agency:tax"
+    },
+    "DVS": {
+      "target": "agency:veterans"
+    },
+    "Elections": {
+      "target": "agency:elections"
+    },
+    "Environmental Facilities Corporation": {
+      "target": "abo:Environmental Facilities Corporation",
+      "primary": "efc.ny.gov"
+    },
+    "ESD": {
+      "target": "abo:New York State Urban Development Corporation",
+      "primary": "esd.ny.gov"
+    },
+    "Ethics": {
+      "target": "agency:ethics"
+    },
+    "Gaming": {
+      "target": "agency:gaming"
+    },
+    "Governor": {
+      "target": "review:statewide_elected_office",
+      "note": "Office of the Governor: a statewide elected office, not an executive agency. No government_level fits it yet."
+    },
+    "HESC": {
+      "target": "agency:hesc"
+    },
+    "HRPT": {
+      "target": "abo:Hudson River Park Trust",
+      "primary": "hudsonriverpark.org"
+    },
+    "Hudson River Valley Greenway": {
+      "target": "abo:Greenway Conservancy for the Hudson River Valley, Inc.",
+      "primary": "hudsongreenway.ny.gov"
+    },
+    "Hudson River-Black River Regulating District": {
+      "target": "abo:Hudson River-Black River Regulating District",
+      "primary": "hrbrrd.ny.gov"
+    },
+    "ILS": {
+      "target": "agency:ils"
+    },
+    "IOLA": {
+      "target": "review:unknown_code",
+      "note": "iola.org; neither ny.gov nor kjw8-pupa names this body."
+    },
+    "ITS": {
+      "target": "agency:its"
+    },
+    "JCOPE": {
+      "target": "review:legislature_or_defunct",
+      "note": "legethics.ny.gov is the Legislative Ethics Commission (Legislature); JCOPE itself was replaced by the Commission on Ethics and Lobbying in Government in 2022. projectsunlight.ny.gov owner unclear."
+    },
+    "JCPPSN": {
+      "target": "agency:justice-center"
+    },
+    "LGPC": {
+      "target": "agency:lgpc"
+    },
+    "LIAFCU": {
+      "target": "review:not_government",
+      "note": "liafcu.org looks like a credit union, not a government body."
+    },
+    "Lottery": {
+      "target": "agency:gaming"
+    },
+    "MTA": {
+      "target": "abo:Metropolitan Transportation Authority",
+      "primary": "mta.info"
+    },
+    "MTAIG": {
+      "target": "agency:mtaig"
+    },
+    "MVFCU": {
+      "target": "review:not_government",
+      "note": "mohawkvalleyfcu.org looks like a credit union, not a government body."
+    },
+    "Nassau County Interim Finance Authority": {
+      "target": "abo:Nassau County Interim Finance Authority",
+      "primary": "nifa.ny.gov"
+    },
+    "New York State Financial Control Board": {
+      "target": "agency:fcb"
+    },
+    "NHT": {
+      "target": "abo:Natural Heritage Trust",
+      "primary": "naturalheritagetrust.org"
+    },
+    "NYCOURTS": {
+      "target": "review:judiciary",
+      "note": "The Unified Court System is the judicial branch; courts are out of scope (growth plan)."
+    },
+    "NYPA": {
+      "target": "abo:Power Authority of the State of New York",
+      "primary": "nypa.gov"
+    },
+    "NYS Assembly": {
+      "target": "review:legislature",
+      "note": "The Legislature is out of scope for nys (executive agencies)."
+    },
+    "NYSBA": {
+      "target": "abo:New York State Bridge Authority",
+      "primary": "nysba.ny.gov"
+    },
+    "NYSBE": {
+      "target": "agency:elections"
+    },
+    "NYSCA": {
+      "target": "agency:arts"
+    },
+    "NYSED": {
+      "target": "agency:education"
+    },
+    "NYSERDA": {
+      "target": "abo:New York State Energy Research and Development Authority",
+      "primary": "nyserda.ny.gov"
+    },
+    "NYSIF": {
+      "target": "agency:nysif"
+    },
+    "NYSTA": {
+      "target": "abo:New York State Thruway Authority",
+      "primary": "thruway.ny.gov"
+    },
+    "NYWC": {
+      "target": "review:level_unclear",
+      "note": "waterfront.ny.gov; ny.gov lists a 'Waterfront Commission'. The bi-state Waterfront Commission of New York Harbor and its New York successor need a decision before minting."
+    },
+    "OASAS": {
+      "target": "agency:oasas"
+    },
+    "OCFS": {
+      "target": "agency:ocfs"
+    },
+    "OCM": {
+      "target": "agency:ocm"
+    },
+    "OER": {
+      "target": "agency:oer"
+    },
+    "Office of Victim Services": {
+      "target": "agency:ovs"
+    },
+    "OGS": {
+      "target": "agency:ogs"
+    },
+    "OMH": {
+      "target": "agency:omh"
+    },
+    "OMIG": {
+      "target": "agency:omig"
+    },
+    "OPDV": {
+      "target": "agency:opdv"
+    },
+    "OPWDD": {
+      "target": "agency:opwdd"
+    },
+    "OSC": {
+      "target": "review:statewide_elected_office",
+      "note": "Office of the State Comptroller: statewide elected. Its listed hosts are program sites (grants management, open government, SFS); ecfsa.ny.gov is filed with the Erie County Fiscal Stability Authority instead."
+    },
+    "OTDA": {
+      "target": "agency:otda"
+    },
+    "PANYNJ": {
+      "target": "entity:panynj"
+    },
+    "Parks": {
+      "target": "agency:parks"
+    },
+    "PCFB": {
+      "target": "review:unknown_code",
+      "note": "pcfb.ny.gov; neither ny.gov nor kjw8-pupa names this body."
+    },
+    "PERB": {
+      "target": "agency:perb"
+    },
+    "SCOC": {
+      "target": "agency:scoc"
+    },
+    "SLA": {
+      "target": "agency:sla"
+    },
+    "SOFA": {
+      "target": "agency:aging"
+    },
+    "VDC": {
+      "target": "review:unknown_code",
+      "note": "definedcontribution.ny.gov; no directory names this body. Possibly a program, not an agency."
+    },
+    "WCB": {
+      "target": "agency:wcb"
+    }
+  },
+  "state_listing_host_overrides": {
+    "cannabis.ny.gov": {
+      "target": "agency:ocm",
+      "note": "The listing files cannabis.ny.gov under OCFS; kjw8-pupa gives it as the Office of Cannabis Management's contact host."
+    },
+    "ecfsa.ny.gov": {
+      "target": "abo:Erie County Fiscal Stability Authority",
+      "note": "The listing files ecfsa.ny.gov under OSC; the host is the Erie County Fiscal Stability Authority's.",
+      "primary": true
+    },
+    "my.ny.gov": {
+      "target": "review:listing_attribution_doubtful",
+      "note": "The listing files my.ny.gov (the NY.gov ID login) under DOH."
+    }
+  },
+  "state_directory_covered_elsewhere": {
+    "_about": "Directory names deliberately not minted as nys agencies: public authorities (minted or matched from ABO), existing registry entities, offices held for review via state_listing_codes, non-government bodies, and services (511NY, NYC 311). Every other unused directory name is reported in the review file.",
+    "nygov": {
+      "511NY": "authority / existing entity / review / service",
+      "NYC 311": "authority / existing entity / review / service",
+      "Office of the Governor": "authority / existing entity / review / service",
+      "Office of State Comptroller": "authority / existing entity / review / service",
+      "Office of Attorney General": "authority / existing entity / review / service",
+      "New York Assembly": "authority / existing entity / review / service",
+      "New York State Senate": "authority / existing entity / review / service",
+      "Commission on Judicial Conduct": "authority / existing entity / review / service",
+      "Council on Children and Families Services": "authority / existing entity / review / service",
+      "Waterfront Commission": "authority / existing entity / review / service",
+      "Battery Park City Authority": "authority / existing entity / review / service",
+      "Bridge Authority": "authority / existing entity / review / service",
+      "Dormitory Authority": "authority / existing entity / review / service",
+      "Empire State Development": "authority / existing entity / review / service",
+      "Energy Research and Development Authority": "authority / existing entity / review / service",
+      "Environmental Facilities Corporation": "authority / existing entity / review / service",
+      "Hudson River Park Trust": "authority / existing entity / review / service",
+      "Hudson River Valley Greenway": "authority / existing entity / review / service",
+      "Metropolitan Transportation Authority": "authority / existing entity / review / service",
+      "Olympic Regional Development Authority": "authority / existing entity / review / service",
+      "Port Authority of New York and New Jersey": "authority / existing entity / review / service",
+      "Power Authority": "authority / existing entity / review / service",
+      "Roosevelt Island Operating Corporation of the State of New York (RIOC)": "authority / existing entity / review / service",
+      "Thruway Authority": "authority / existing entity / review / service",
+      "Jacob K. Javits Convention Center": "authority / existing entity / review / service",
+      "Housing Finance Agency/State of NY Mortgage Agency (SONYMA)": "authority / existing entity / review / service",
+      "Canal Corporation": "authority / existing entity / review / service",
+      "City University of New York": "authority / existing entity / review / service",
+      "State University of New York (SUNY)": "authority / existing entity / review / service",
+      "State University Construction Fund": "authority / existing entity / review / service"
+    },
+    "kjw8": {
+      "Battery Park City Authority (BPCA)": "authority / existing entity / not a state agency",
+      "City University of New York (CUNY)": "authority / existing entity / not a state agency",
+      "Dormitory Authority State of NY (DASNY)": "authority / existing entity / not a state agency",
+      "Empire State Development (ESD)": "authority / existing entity / not a state agency",
+      "Environmental Facilities Corporation (EFC)": "authority / existing entity / not a state agency",
+      "Hudson River Black River Regulating District (HRBRRD)": "authority / existing entity / not a state agency",
+      "Hudson River Park Trust (HRPT)": "authority / existing entity / not a state agency",
+      "Hudson River Valley Greenway (HRVG)": "authority / existing entity / not a state agency",
+      "Jacob Javits Convention Center": "authority / existing entity / not a state agency",
+      "Long Island Power Authority (LIPA)": "authority / existing entity / not a state agency",
+      "Metropolitan Transportation Authority (MTA)": "authority / existing entity / not a state agency",
+      "New York Power Authority (NYPA)": "authority / existing entity / not a state agency",
+      "New York State Bridge Authority": "authority / existing entity / not a state agency",
+      "New York State Energy Research & Development Authority (NYSERDA)": "authority / existing entity / not a state agency",
+      "New York State Thruway Authority": "authority / existing entity / not a state agency",
+      "Niagara Frontier Transportation Authority (NFTA)": "authority / existing entity / not a state agency",
+      "Ogdensburg Bridge and Port Authority (OBPA)": "authority / existing entity / not a state agency",
+      "Olympic Regional Development Authority (ORDA)": "authority / existing entity / not a state agency",
+      "Port Authority of New York & New Jersey (PANYNJ)": "authority / existing entity / not a state agency",
+      "Port of Oswego Authority": "authority / existing entity / not a state agency",
+      "Roosevelt Island Operating Corporation (RIOC)": "authority / existing entity / not a state agency",
+      "Agriculture & New York State Horse Breading Development Fund": "authority / existing entity / not a state agency",
+      "Agriculture & New York State Horse Breeding Development Fund": "authority / existing entity / not a state agency",
+      "New York State Thoroughbred Breeding & Development Fund": "authority / existing entity / not a state agency",
+      "The New York Racing Association, Inc. (NYRA)*NOT A STATE AGENCY": "authority / existing entity / not a state agency",
+      "State University of New York (SUNY)": "authority / existing entity / not a state agency"
+    }
+  }
 }

@@ -4,13 +4,13 @@
 
 Built and stewarded by [BetaNYC](https://beta.nyc). Free to use, reuse, and build on — with credit, and with improvements shared back (see [License](#license)).
 
-> 🚧 **Work in progress.** The registry is live and usable (317 entities), but coverage is still growing and the schema may evolve. [Issues](../../issues) and contributions welcome.
+> 🚧 **Work in progress.** The registry is live and usable (567 entities), but coverage is still growing and the schema may evolve. [Issues](../../issues) and contributions welcome.
 
 ## Why this exists
 
 Not all government lives on `.gov`. The MTA is on `mta.info`, the Economic Development Corporation on `nycedc.com`, Health + Hospitals on `nychealthandhospitals.org`, CUNY on `cuny.edu` — while more than 150 city agencies share `nyc.gov`. Agencies get renamed, merged, and reorganized; their old websites disappear without notice. Anyone who wants to archive government on the web, cite it, monitor it, or simply join two datasets that each spell "Department of Finance" differently first needs an authoritative list of *which entities exist and how to identify them*. No single official source provides that across city government, public authorities, and the web domains they've used over time.
 
-This registry is that list — **317 entities and growing**, each carrying its official name and acronym, former names, canonical government identifiers, boundary relationships, web domains, legal context, and (for 207 of them so far) the agency's own self-description, captured verbatim from its website.
+This registry is that list — **567 entities and growing** (New York City, plus, since 2026-11-06, 53 state executive agencies and the 156 state and local public authorities), each carrying its official name and acronym, former names, canonical government identifiers, boundary relationships, web domains, legal context, and (for 207 of them so far) the agency's own self-description, captured verbatim from its website.
 
 ## Who it's for
 
@@ -44,9 +44,10 @@ Every fact traces to a named source; identifiers are only ever filled when verif
 | **NYC Agencies and Governance Organizations** (`t3jq-9nkf`) | The spine: 306 active city entities — official names, acronyms, principal officers, org types. Maintained by NYC's Office of Data Analytics | [NYC Open Data](https://data.cityofnewyork.us/City-Government/NYC-Agencies-and-Governance-Organizations/t3jq-9nkf) · [source repo](https://github.com/MODA-NYC/nyc-governance-organizations) |
 | **NYC Greenbook** (`mdcw-n682`) | The City's official directory: addresses, phones, office structure (used as structural scaffolding; last updated 2023) | [NYC Open Data](https://data.cityofnewyork.us/City-Government/Greenbook/mdcw-n682) |
 | **NYC.gov Agency Directory** | Validation — the directory turns out to be powered by the same canonical dataset | [nyc.gov](https://www.nyc.gov/main/your-government/agency-directory) |
-| **ABO Directory of Public Authorities** (`4vym-q77x`) | 600+ state and local public authorities (future expansion) | [data.ny.gov](https://data.ny.gov/Transparency/Directory-of-Public-Authorities/4vym-q77x) |
-| **NY.gov Agency Listing** | State executive agencies (future expansion) | [ny.gov/agencies](https://www.ny.gov/agencies) |
-| **A state agency listing** | 307 New York State websites and the agency that runs each — the state agency sites under `ny.gov` that no public list carries. Used only for the [website list](data/ai-readability/websites.csv) (domain, URL and agency kept; nothing else) | Private (shared with BetaNYC; no public link) |
+| **ABO Directory of Public Authorities** (`4vym-q77x`) | The 156 State and Local public authorities (45 + 111) and their self-reported websites. The 452 IDAs and LDCs are a later batch | [data.ny.gov](https://data.ny.gov/Transparency/Directory-of-Public-Authorities/4vym-q77x) |
+| **NY.gov Agency Listing** | Names of the state executive agencies | [ny.gov/agencies](https://www.ny.gov/agencies) |
+| **Agency Contacts** (`kjw8-pupa`) | The Governor's office list of 79 agencies: a second source for agency names and contact-page hosts (contact names are not used) | [data.ny.gov](https://data.ny.gov/d/kjw8-pupa) |
+| **A state agency listing** | 307 New York State websites and the agency that runs each — the state agency sites under `ny.gov` that no public list carries. Seeds the state agencies' web properties in the registry and the [website list](data/ai-readability/websites.csv) (domain, URL and agency kept; nothing else) | Private (shared with BetaNYC; no public link) |
 | **CISA .gov domain list** | Every registered `.gov` domain; the 1,451 New York rows seed the [website list](data/ai-readability/websites.csv) | [github.com/cisagov/dotgov-data](https://github.com/cisagov/dotgov-data) |
 | **NYS ITS Locality Hierarchy with Websites** (`55k6-h6qq`) | Websites of counties, cities, towns and villages (last updated 2023, partly stale) | [data.ny.gov](https://data.ny.gov/d/55k6-h6qq) |
 | **Wikidata** | QIDs linking entities into linked open data (attached only via verified domain matches, with a place-vs-organization guard) | [wikidata.org](https://www.wikidata.org) |
@@ -72,11 +73,11 @@ Every fact traces to a named source; identifiers are only ever filled when verif
 Consuming the data is just reading two committed, schema-validated JSON files:
 
 ```
-data/registry.json        # 317 entities
+data/registry.json        # 567 entities
 data/descriptions.json    # per-entity self-descriptions + coverage records
 ```
 
-Rebuilding from sources requires Python 3.11+ and [uv](https://docs.astral.sh/uv/): `uv sync`, place the documented exports in `data/cache/` (**no script fetches the network on its own** — sources are operator-gated by design; see [`docs/sources.md`](docs/sources.md)), run the `sync_*` scripts, then `python scripts/build_registry.py`. The offline test suite (`pytest`, 243 tests) never touches the network.
+Rebuilding from sources requires Python 3.11+ and [uv](https://docs.astral.sh/uv/): `uv sync`, place the documented exports in `data/cache/` (**no script fetches the network on its own** — sources are operator-gated by design; see [`docs/sources.md`](docs/sources.md)), run the `sync_*` scripts, then `python scripts/build_registry.py`. The offline test suite (`pytest`, 293 tests) never touches the network.
 
 Two artifacts invite human eyes: the [description review queue](docs/description-review-queue.md) (agencies whose about page needs a human to find) and the [site anomalies log](docs/site-anomalies.md) (defects we noticed on live government sites — including three Lorem-ipsum placeholder pages).
 

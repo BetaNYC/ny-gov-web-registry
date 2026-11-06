@@ -12,6 +12,10 @@ The registry is designed to **stay current**, not be a one-time dump (design doc
 | nyc-boundaries layer index (`BoundaryId` union + `layers`) | `data/cache/nyc-boundaries_layers_index.ts` | **2026-07-15** | 22 published layer ids |
 | About-page crawl (live agency sites) | *(no cache — `data/descriptions.json` is the output)* | **2026-07-15** | 285 targets crawled + 32 `no_url` |
 | WAF recovery (human-context browser, operator-authorized) | `data/cache/waf_captures_raw/` + `waf_capture_meta.json` (git-ignored) | **2026-07-16** | **COMPLETE — 152 of 152** (116 `ok`, 36 `no_about_found`). Batches 1–6 via the app's Browser pane; the final 43 (entities 110–152) via the operator's personal Chrome (`claude-in-chrome` MCP) after the pane's cookie jar 400'd |
+| ABO Directory of Public Authorities `4vym-q77x` | `data/cache/abo_4vym-q77x.json` (copy of `data/ai-readability/sources/2026-11-06/abo-directory-4vym-q77x.json`) | **2026-11-06** | 608 (State 45, Local 111, IDA 106, LDC 346); **156 State + Local used** |
+| A state agency listing (private) | `data/cache/state_agency_listing_websites.csv` (copy of `sources/2026-11-06/state-agency-listing-websites.csv`) | **2026-11-06** | 307 hosts, 87 agency codes |
+| Agency Contacts `kjw8-pupa` (`agency`, `agency_contact_url` only) | `data/cache/kjw8-pupa_agencies.json` (copy of `sources/2026-11-06/kjw8-pupa-agency-contacts-agencies.json`) | **2026-11-06** (dataset rows last updated **2025-04-11**) | 623 rows → 79 agencies |
+| ny.gov agency directory | `data/cache/nygov_state_agencies.json` (copy of `sources/2026-11-06/nygov-state-agencies-and-departments.json`) | **2026-11-06** | 98 entries |
 
 Cache files are git-ignored (`data/cache/`); only the built `data/registry.json` — plus the
 committed, derived `data/curation.json`, `data/greenbook_enrichment.json`,
@@ -24,11 +28,13 @@ Full phase-2 pipeline (offline; caches placed manually, access-gated):
 ```sh
 # 1. Operator manually places the gated exports in data/cache/ (no script fetches).
 python scripts/sync_moda.py                 # t3jq rows.csv -> records_moda.json (Active-only)
-python scripts/build_registry.py            # seed + moda + curation -> registry.json (317)
+python scripts/build_registry.py            # seed + moda + curation -> registry.json
 python scripts/sync_greenbook.py            # aggregate + nycresolver reconcile -> greenbook_enrichment.json + reconciliation.json
 python scripts/sync_wikidata.py             # domain-anchor Wikidata QIDs -> wikidata_enrichment.json + reconciliation.json
 python scripts/sync_boundaries.py           # extract nyc-boundaries layer vocabulary -> nyc_boundaries_layers.json
-python scripts/build_registry.py            # re-apply with Greenbook + Wikidata + boundaries areas attached (idempotent)
+python scripts/sync_abo.py                  # ABO State + Local -> records_abo.json + statewide_web_review.json § authorities
+python scripts/sync_nygov.py                # state agencies -> records_nygov.json + statewide_web_review.json § state_agencies
+python scripts/build_registry.py            # re-apply with Greenbook + Wikidata + boundaries + statewide (567; idempotent)
 python scripts/validate_nycgov_directory.py # assert directory record_ids ⊆ registry nyc_goids
 ```
 
@@ -36,6 +42,27 @@ python scripts/validate_nycgov_directory.py # assert directory record_ids ⊆ re
 build (`build_unenriched()` = seed + moda + curation), so their matching never sees prior
 enrichment and every full rebuild is byte-identical. Build once, run the syncs, build again to fold
 the enrichment in — all builds idempotent.
+
+## Statewide mint — state agencies + State/Local authorities (2026-11-06, issue #24)
+
+Run on office, 2026-11-06. Result: **567 entities** (317 before + the 59 community boards from #21,
+which had not been rebuilt into `registry.json` yet, + **138 authorities** minted from ABO + **53
+state agencies**). **18 existing entities were enriched** by their ABO row instead of being
+duplicated (MTA, DASNY, NYSERDA, Thruway, ESD, H+H and twelve MODA city entities such as the School
+Construction Authority and HDC); `data/curation.json § abo_matches` lists every one. Items not
+applied are in `data/statewide_web_review.json`.
+
+**The MODA cache was reconstructed, not re-downloaded.** No machine had
+`data/cache/records_moda.json` (#21 skipped its rebuild for that reason). Because the build is
+deterministic, the MODA batch was recovered from the committed `registry.json` by stripping every
+post-merge enrichment (Greenbook, Wikidata, boundaries, curation). Proof: the pre-#21 seed plus the
+reconstructed cache rebuilt `registry.json` **byte-for-byte**, and the current seed added exactly the
+59 boards and changed nothing else. A fresh `t3jq-9nkf` export should replace it at the next MODA
+refresh.
+
+**`data/crawl_targets.json` was not regenerated.** It needs the MODA CSV (`url` column) for 278 deep
+nyc.gov start URLs; without it those would silently fall back to bare hosts. The new statewide
+entities are therefore not crawl targets yet; regenerate once the MODA export is placed.
 
 ## Wikidata — SPARQL query & reproducibility (phase 3, 2026-07-15)
 

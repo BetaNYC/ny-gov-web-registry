@@ -44,18 +44,37 @@ inferred. Each scheme's authority, format, and verification rule is catalogued i
 - **Coverage:** 608 active authorities, four classes (State / Local / IDA / LDC). 9 columns (verified 2026-07-11): `public_authority_type`, `public_authority_name`, `address_line_1`, `address_line_2`, `city`, `state`, `zip`, `website`, `georeference`.
 - **`website` column:** added **2026-01-15**; type URL; **self-reported via PARIS, blank where not provided** → partial coverage.
 - **No id column:** the dataset exposes no stable authority id, so the `nys_abo` identifier scheme cannot be filled from it (see `schemes.md`). Backup per-class listings: `abo.ny.gov/paw/paw_weblisting{ST,LOCAL,IDA,LDC}.html`.
-- **Sync:** `scripts/sync_abo.py` (concrete mapping against the verified columns).
+- **Snapshot:** `data/ai-readability/sources/2026-11-06/abo-directory-4vym-q77x.json` (Socrata JSON; `website` is an object `{"url": …}`). Copied to `data/cache/abo_4vym-q77x.json` for the build; `sync_abo.py` reads that JSON and still accepts a CSV export (`abo_4vym-q77x.csv`) as a fallback.
+- **Sync:** `scripts/sync_abo.py` → `data/cache/records_abo.json` (v2 records; fixed 2026-11-06, it previously emitted the retired v1 shape) and `data/statewide_web_review.json § authorities`.
+  - **Scope (Noel, 2026-11-06):** `State` and `Local` rows only (156). IDA and LDC rows are skipped (stretch goal).
+  - `public_authority_name` → `name`; `public_authority_type` → `classification` `state-authority` / `local-authority`; `government_level` `authority`; address columns → one `contact_details` address (office address, noted with the snapshot date); `provenance.sources` `[abo]` (+ `state_listing` when the listing names a host).
+  - **Dedupe:** an ABO row that is an existing entity is matched, never re-minted: by an operator-confirmed `data/curation.json § abo_matches` entry (all 18 are listed there, exact-name ones included), else by exact normalized name. A match only *adds*: `abo` to provenance, the ABO name to `other_names[]`, and listing hosts the entity lacks. It never changes the entity's level, classification or primary site. Possible duplicates go in `abo_holds` and are not emitted.
+  - **Websites:** a root URL → `primary` web property (host only, self-reported). A URL with a path is a page on a host the authority does not own → `url_conventions[]`, no web property. When the state agency listing names hosts for the authority, the curated listing host is primary and a differing ABO host goes to review. Malformed hosts (checked against the Public Suffix List snapshot), a root host claimed by several authorities (`nyshcr.org`, `mvwa.us`), and municipal sites listed as an agency's website (`abo_website_holds`) go to review, never applied.
 
 ## ny.gov — state executive agencies
-- **Directory:** https://www.ny.gov/agencies — HTML, paginated, **no bulk export, no stated license.**
-- Covers executive agencies that are **not** authorities (so absent from ABO). Requires scrape + curation.
-- **Sync:** `scripts/sync_nygov.py` — **stub, not implemented** (gated + brittle). Curate manually for now.
+- **Directory:** https://www.ny.gov/agencies (redirects to `/state-agencies-and-departments`) — **no bulk export, no stated license.** The list renders client-side (a search widget), so a plain HTTP fetch returns no agencies.
+- **Snapshot (2026-11-06):** read once in a browser, paging through all results: `data/ai-readability/sources/2026-11-06/nygov-state-agencies-and-departments.json` (98 entries: name + ny.gov directory page). It mixes agencies, authorities, the Legislature, elected offices and services (511NY).
+- **Used for:** agency names (`nygov` in provenance) and each agency's `links[]` entry. No agency website was fetched.
+
+## Agency Contacts — data.ny.gov `kjw8-pupa`
+- **Publisher:** Office of the Governor. **License:** not stated in the dataset metadata. Rows last updated 2025-04-11.
+- **Columns (verified 2026-11-06 from `/api/views/kjw8-pupa.json`):** `contact`, `primary_contact`, `title`, `phone_number`, `agency`, `agency_contact_url`.
+- **What we keep:** `agency` and `agency_contact_url` only (SoQL `$select`), 79 distinct agencies, in `data/ai-readability/sources/2026-11-06/kjw8-pupa-agency-contacts-agencies.json`. Contact names, titles and phones were never fetched (the Greenbook rule: no officer identity).
+- **Used for:** a second name source (`nygov_contacts` in provenance) and a second lead for an agency's primary host: when the contact URL's host equals the chosen primary, the web property's note says so.
+
+## Sync: `scripts/sync_nygov.py` — state executive agencies (2026-11-06)
+- Joins the three snapshots above through `data/curation.json`: `state_agencies` (one hand-curated entry per agency: name, short name, which directory names it, primary host), `state_listing_codes` (every one of the listing's 87 agency codes → an agency, an ABO authority, an existing entity, or `review:<reason>`), `state_listing_host_overrides` (a host filed under the wrong code), and `state_directory_covered_elsewhere`.
+- **Names:** the directory's wording, with a `New York State` prefix where the bare name would collide with a city body (`Department of Transportation` exists for NYC too). The directory's own wording and the kjw8-pupa wording go in `other_names[]`. Every agency record is marked to mint new: a name collision with any existing entity fails the build instead of merging.
+- **Websites:** the curated primary host + every other listing host for that code as `microsite` (the schema has no "application/sub-site" role; each note says what the host is when known).
+- **Not minted (review file):** the Governor, Comptroller and Attorney General (statewide elected; no `government_level` fits), the Assembly and legislative ethics hosts, the courts, codes no directory names (`CJN`, `DCB`, `VDC`, `PCFB`, `IOLA`), `CC&F` (name unverified), the Commission on Judicial Conduct and Waterfront Commission (level unclear), two credit unions, and directory names with no listing host.
+- **Output:** `data/cache/records_nygov.json`, `data/statewide_web_review.json § state_agencies`.
 
 ## A state agency listing — state websites (2026-11-06)
 - **Credit as:** "a state agency listing". Shared with BetaNYC privately; **the link is private** and is not published.
 - **Coverage:** 307 New York State websites with the agency that runs each, mostly executive agencies under `ny.gov` (264 hosts). It is the only list we have of `*.ny.gov` agency sites: CISA's .gov list carries `ny.gov` itself, not its subdomains. Missing: the Legislature, the courts, most authorities, and all local governments.
 - **What we keep:** domain, URL and agency only, in `data/ai-readability/sources/2026-11-06/state-agency-listing-websites.csv`. The rest of the file (review scores, staff names, internal links) is not committed.
-- **Used by:** `scripts/ai_readability_websites.py` → `data/ai-readability/websites.csv` (`source_list_state_agency`). Not a registry source yet; minting state agencies (growth plan step 1) would cite it.
+- **Used by:** `scripts/ai_readability_websites.py` → `data/ai-readability/websites.csv` (`source_list_state_agency`), and since 2026-11-06 as a registry source: `provenance.sources` value **`state_listing`**. It seeds the web properties of the 53 state agencies (`sync_nygov.py`) and the hosts of the authorities it names (`sync_abo.py`). Copied to `data/cache/state_agency_listing_websites.csv` for the build.
+- **Its `agency` column is a short code** (`DOH`, `OMH`), sometimes a name (`Department of Law`). Every code is mapped by hand in `data/curation.json § state_listing_codes`; a new code in a refreshed listing fails the sync until it is curated.
 
 ## Wikidata / IRS — identifier enrichment
 - `wikidata` — QIDs from the WDQS SPARQL endpoint (CC0). **Sync:** `scripts/sync_wikidata.py` (phase 3, 2026-07-15), **domain-anchored**: auto-attaches a QID only when its `P856` official-website host is owned by exactly one entity (a *distinctive* domain); apex-shared hosts like `nyc.gov` never match, and exact name/alias matches become review proposals, never auto-attachments. Reads the operator-placed cache `data/cache/wikidata_nyc_gov_orgs.json` (does not fetch); query + fetch date in `freshness.md § Wikidata`.

@@ -381,7 +381,8 @@ def test_committed_report_stats_and_count_unchanged(registry, report):
     assert report["stats"]["auto_attached"] == 3
     assert report["stats"]["re_pointed"] == 4
     assert report["distinct_qids"] == 109
-    assert len(registry) == 317  # QID attachment never mints entities
+    # QID attachment never mints entities; the count moves only when a batch is minted on purpose.
+    assert len(registry) == 567  # 317 (seed 17 + MODA 300) + 59 community boards (#21) + 138 ABO authorities + 53 state agencies (#24)
 
 
 def test_committed_registry_all_valid(registry):
