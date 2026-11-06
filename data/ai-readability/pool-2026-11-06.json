@@ -1,0 +1,1843 @@
+[
+ {
+  "entity_id": "mta",
+  "entity_name": "Metropolitan Transportation Authority",
+  "url": "https://new.mta.info/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "panynj",
+  "entity_name": "Port Authority of New York and New Jersey",
+  "url": "https://panynj.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "nycedc",
+  "entity_name": "New York City Economic Development Corporation",
+  "url": "https://edc.nyc/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "nyc-health-hospitals",
+  "entity_name": "NYC Health + Hospitals",
+  "url": "https://www.nychealthandhospitals.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "cuny",
+  "entity_name": "City University of New York",
+  "url": "https://www.cuny.edu/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "nycha",
+  "entity_name": "New York City Housing Authority",
+  "url": "https://www.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "nyserda",
+  "entity_name": "New York State Energy Research and Development Authority",
+  "url": "https://nyserda.ny.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "nys-thruway",
+  "entity_name": "New York State Thruway Authority",
+  "url": "https://thruway.ny.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "dasny",
+  "entity_name": "Dormitory Authority of the State of New York",
+  "url": "https://dasny.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "esd",
+  "entity_name": "Empire State Development",
+  "url": "https://esd.ny.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "nyc-doe",
+  "entity_name": "New York City Department of Education",
+  "url": "https://schools.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "nyc-mayor",
+  "entity_name": "Office of the Mayor of the City of New York",
+  "url": "https://nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "new-york-city-school-bus-umbrella-services-inc",
+  "entity_name": "New York City School Bus Umbrella Services, Inc.",
+  "url": "https://www.nycsbus.com/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "primary-care-development-corporation",
+  "entity_name": "Primary Care Development Corporation",
+  "url": "https://www.pcdc.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "mayor-s-office-of-housing-recovery-operations",
+  "entity_name": "Mayor's Office of Housing Recovery Operations",
+  "url": "https://www1.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "museum-of-modern-art",
+  "entity_name": "Museum of Modern Art",
+  "url": "https://www.moma.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "prospect-park-alliance",
+  "entity_name": "Prospect Park Alliance",
+  "url": "https://www.prospectpark.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "advisory-council-on-procurement-lobbying",
+  "entity_name": "Advisory Council on Procurement Lobbying",
+  "url": "https://ogs.ny.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "trust-for-governors-island",
+  "entity_name": "Trust for Governors Island",
+  "url": "https://www.govisland.com/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "campaign-finance-board",
+  "entity_name": "Campaign Finance Board",
+  "url": "https://www.nyccfb.info/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "nyc311",
+  "entity_name": "NYC311",
+  "url": "https://portal.311.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "queens-botanical-garden",
+  "entity_name": "Queens Botanical Garden",
+  "url": "https://queensbotanical.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "mayor-s-office-of-community-mental-health",
+  "entity_name": "Mayor's Office of Community Mental Health",
+  "url": "https://mentalhealth.cityofnewyork.us/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "trust-for-cultural-resources",
+  "entity_name": "Trust for Cultural Resources",
+  "url": "https://www.tcrnyc.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "new-york-city-tourism-conventions",
+  "entity_name": "New York City Tourism + Conventions",
+  "url": "https://www.nyctourism.com/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "special-commissioner-of-investigation-for-the-new-york-city-school-district",
+  "entity_name": "Special Commissioner of Investigation for the New York City School District",
+  "url": "https://nycsci.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "office-of-the-borough-president-of-manhattan",
+  "entity_name": "Office of the Borough President of Manhattan",
+  "url": "https://www.manhattanbp.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "staten-island-museum",
+  "entity_name": "Staten Island Museum",
+  "url": "https://www.statenislandmuseum.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "museum-of-jewish-heritage",
+  "entity_name": "Museum of Jewish Heritage",
+  "url": "https://mjhnyc.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "mayor-s-office-of-climate-and-environmental-justice",
+  "entity_name": "Mayor's Office of Climate and Environmental Justice",
+  "url": "https://climate.cityofnewyork.us/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "nyc-service",
+  "entity_name": "NYC Service",
+  "url": "https://www.nycservice.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "national-september-11-memorial-and-museum",
+  "entity_name": "National September 11 Memorial and Museum",
+  "url": "https://www.911memorial.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "moma-ps1",
+  "entity_name": "MoMA PS1",
+  "url": "https://www.momaps1.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "jazz-at-lincoln-center",
+  "entity_name": "Jazz at Lincoln Center",
+  "url": "https://www.jazz.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "wave-hill",
+  "entity_name": "Wave Hill",
+  "url": "https://www.wavehill.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "educational-construction-fund",
+  "entity_name": "Educational Construction Fund",
+  "url": "https://infohub.nyced.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "office-of-the-special-narcotics-prosecutor",
+  "entity_name": "Office of the Special Narcotics Prosecutor",
+  "url": "https://www.snpnyc.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "fund-for-public-schools",
+  "entity_name": "Fund for Public Schools",
+  "url": "https://www.fundforpublicschools.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "panel-on-educational-policy",
+  "entity_name": "Panel on Educational Policy",
+  "url": "https://www.schools.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "gracie-mansion-conservancy",
+  "entity_name": "Gracie Mansion Conservancy",
+  "url": "https://www.graciemansion.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "bronx-museum-of-the-arts",
+  "entity_name": "Bronx Museum of the Arts",
+  "url": "https://www.bronxmuseum.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "lincoln-center-theater",
+  "entity_name": "Lincoln Center Theater",
+  "url": "https://www.lct.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "housing-development-corporation",
+  "entity_name": "Housing Development Corporation",
+  "url": "https://www.nychdc.com/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "teachers-retirement-system-of-city-of-new-york",
+  "entity_name": "Teachers' Retirement System of City of New York",
+  "url": "https://www.trsnyc.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "queens-district-attorney-s-office",
+  "entity_name": "Queens District Attorney's Office",
+  "url": "https://queensda.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "brooklyn-children-s-museum",
+  "entity_name": "Brooklyn Children's Museum",
+  "url": "https://www.brooklynkids.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "cultural-institutions-retirement-system",
+  "entity_name": "Cultural Institutions Retirement System",
+  "url": "https://cirsplans.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "forest-park-trust",
+  "entity_name": "Forest Park Trust",
+  "url": "https://forestparktrust.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "new-york-city-center",
+  "entity_name": "New York City Center",
+  "url": "https://www.nycitycenter.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "flushing-council-on-culture-and-the-arts-flushing-town-hall",
+  "entity_name": "Flushing Council on Culture and the Arts / Flushing Town Hall",
+  "url": "https://www.flushingtownhall.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "new-york-city-ballet",
+  "entity_name": "New York City Ballet",
+  "url": "https://www.nycballet.com/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "bronx-county-historical-society",
+  "entity_name": "Bronx County Historical Society",
+  "url": "https://bronxhistoricalsociety.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "new-york-hall-of-science",
+  "entity_name": "New York Hall of Science",
+  "url": "https://nysci.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "board-of-elections",
+  "entity_name": "Board of Elections",
+  "url": "https://vote.nyc/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "fire-department-pension-fund-and-related-funds",
+  "entity_name": "Fire Department Pension Fund and Related Funds",
+  "url": "https://nycfirepension.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "studio-museum-in-harlem",
+  "entity_name": "Studio Museum in Harlem",
+  "url": "https://studiomuseum.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "office-of-the-borough-president-of-queens",
+  "entity_name": "Office of the Borough President of Queens",
+  "url": "https://www.queensbp.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "wildlife-conservation-society",
+  "entity_name": "Wildlife Conservation Society",
+  "url": "https://www.wcs.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "independent-budget-office",
+  "entity_name": "Independent Budget Office",
+  "url": "https://www.ibo.nyc.ny.us/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "queens-theatre-in-the-park",
+  "entity_name": "Queens Theatre in the Park",
+  "url": "https://queenstheatre.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "new-york-botanical-garden",
+  "entity_name": "New York Botanical Garden",
+  "url": "https://www.nybg.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "office-of-the-new-york-city-comptroller",
+  "entity_name": "Office of the New York City Comptroller",
+  "url": "https://comptroller.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "office-of-the-borough-president-of-brooklyn",
+  "entity_name": "Office of the Borough President of Brooklyn",
+  "url": "https://www.brooklynbp.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "office-of-the-city-clerk",
+  "entity_name": "Office of the City Clerk",
+  "url": "https://www.cityclerk.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "weeksville-heritage-center",
+  "entity_name": "Weeksville Heritage Center",
+  "url": "https://www.weeksvillesociety.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "perelman-performing-arts-center",
+  "entity_name": "Perelman Performing Arts Center",
+  "url": "https://pacnyc.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "snug-harbor-cultural-center-and-botanical-garden",
+  "entity_name": "Snug Harbor Cultural Center and Botanical Garden",
+  "url": "https://snug-harbor.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "brooklyn-navy-yard-development-corporation",
+  "entity_name": "Brooklyn Navy Yard Development Corporation",
+  "url": "https://www.brooklynnavyyard.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "new-york-city-public-housing-preservation-trust",
+  "entity_name": "New York City Public Housing Preservation Trust",
+  "url": "https://www.preservationtrust.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "staten-island-district-attorney-s-office",
+  "entity_name": "Staten Island District Attorney's Office",
+  "url": "https://www.statenislandda.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "jamaica-center-for-arts-and-learning",
+  "entity_name": "Jamaica Center for Arts and Learning",
+  "url": "https://www.jcal.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "staten-island-children-s-museum",
+  "entity_name": "Staten Island Children's Museum",
+  "url": "https://www.sichildrensmuseum.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "staten-island-historical-society",
+  "entity_name": "Staten Island Historical Society",
+  "url": "https://www.historicrichmondtown.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "department-of-parks-and-recreation",
+  "entity_name": "Department of Parks and Recreation",
+  "url": "https://www.nycgovparks.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "land-development-corporation",
+  "entity_name": "Land Development Corporation",
+  "url": "https://www.nycldc.com/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "voter-assistance-advisory-committee",
+  "entity_name": "Voter Assistance Advisory Committee",
+  "url": "https://nyccfb.info/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "carnegie-hall",
+  "entity_name": "Carnegie Hall",
+  "url": "https://www.carnegiehall.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "randall-s-island-park-alliance",
+  "entity_name": "Randall's Island Park Alliance",
+  "url": "https://randallsisland.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "bronx-district-attorney-s-office",
+  "entity_name": "Bronx District Attorney's Office",
+  "url": "https://www.bronxda.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "office-of-the-public-advocate",
+  "entity_name": "Office of the Public Advocate",
+  "url": "https://advocate.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "new-york-city-watershed-protection-and-partnership-council",
+  "entity_name": "New York City Watershed Protection and Partnership Council",
+  "url": "https://dos.ny.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "new-york-public-library",
+  "entity_name": "New York Public Library",
+  "url": "https://www.nypl.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "flushing-meadows-corona-park-alliance",
+  "entity_name": "Flushing Meadows Corona Park Alliance",
+  "url": "https://allianceforfmcp.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "office-of-the-borough-president-of-the-bronx",
+  "entity_name": "Office of the Borough President of The Bronx",
+  "url": "https://bronxboropres.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "mayor-s-office-of-criminal-justice",
+  "entity_name": "Mayor's Office of Criminal Justice",
+  "url": "https://criminaljustice.cityofnewyork.us/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "office-of-the-borough-president-of-staten-island",
+  "entity_name": "Office of the Borough President of Staten Island",
+  "url": "https://www.statenislandusa.com/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "museum-of-the-city-of-new-york",
+  "entity_name": "Museum of the City of New York",
+  "url": "https://www.mcny.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "grownyc",
+  "entity_name": "GrowNYC",
+  "url": "https://www.grownyc.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "brooklyn-museum",
+  "entity_name": "Brooklyn Museum",
+  "url": "https://www.brooklynmuseum.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "center-for-brooklyn-history",
+  "entity_name": "Center for Brooklyn History",
+  "url": "https://www.bklynlibrary.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "council-for-airport-opportunity",
+  "entity_name": "Council for Airport Opportunity",
+  "url": "https://www.caonynj.com/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "brooklyn-bridge-park-corporation",
+  "entity_name": "Brooklyn Bridge Park Corporation",
+  "url": "https://brooklynbridgepark.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "brooklyn-botanic-garden",
+  "entity_name": "Brooklyn Botanic Garden",
+  "url": "https://www.bbg.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "animal-care-centers-of-nyc",
+  "entity_name": "Animal Care Centers of NYC",
+  "url": "https://www.nycacc.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "united-nations-development-corporation",
+  "entity_name": "United Nations Development Corporation",
+  "url": "https://undc.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "public-administrator-of-queens-county",
+  "entity_name": "Public Administrator of Queens County",
+  "url": "https://www.queenscountypa.com/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "jamaica-bay-rockaway-parks-conservancy-inc",
+  "entity_name": "Jamaica Bay - Rockaway Parks Conservancy, Inc.",
+  "url": "https://www.jbrpc.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "new-york-city-employee-retirement-system",
+  "entity_name": "New York City Employee Retirement System",
+  "url": "https://www.nycers.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "metropolitan-museum-of-art",
+  "entity_name": "Metropolitan Museum of Art",
+  "url": "https://www.metmuseum.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "public-theater",
+  "entity_name": "Public Theater",
+  "url": "https://publictheater.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "queens-museum",
+  "entity_name": "Queens Museum",
+  "url": "https://queensmuseum.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "staten-island-zoological-society",
+  "entity_name": "Staten Island Zoological Society",
+  "url": "https://www.statenislandzoo.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "lower-manhattan-development-corporation",
+  "entity_name": "Lower Manhattan Development Corporation",
+  "url": "https://www.renewnyc.com/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "central-park-conservancy",
+  "entity_name": "Central Park Conservancy",
+  "url": "https://www.centralparknyc.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "new-york-city-council",
+  "entity_name": "New York City Council",
+  "url": "https://council.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "convention-center-operating-corporation-javits",
+  "entity_name": "Convention Center Operating Corporation (Javits)",
+  "url": "https://www.javitscenter.com/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "manhattan-district-attorney-s-office",
+  "entity_name": "Manhattan District Attorney's Office",
+  "url": "https://manhattanda.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "new-york-city-school-support-services",
+  "entity_name": "New York City School Support Services",
+  "url": "https://www.nycsss.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "queens-public-library",
+  "entity_name": "Queens Public Library",
+  "url": "https://www.queenslibrary.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "board-of-education-retirement-system",
+  "entity_name": "Board of Education Retirement System",
+  "url": "https://www.bers.nyc.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "museum-of-the-moving-image",
+  "entity_name": "Museum of the Moving Image",
+  "url": "https://movingimage.us/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "greenbelt-conservancy",
+  "entity_name": "Greenbelt Conservancy",
+  "url": "https://sigreenbelt.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "american-museum-of-natural-history",
+  "entity_name": "American Museum of Natural History",
+  "url": "https://www.amnh.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "audit-committee",
+  "entity_name": "Audit Committee",
+  "url": "https://nycauditcommittee.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "brooklyn-district-attorney-s-office",
+  "entity_name": "Brooklyn District Attorney's Office",
+  "url": "https://www.brooklynda.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "office-of-collective-bargaining",
+  "entity_name": "Office of Collective Bargaining",
+  "url": "https://www.ocb-nyc.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "hiv-planning-council",
+  "entity_name": "HIV Planning Council",
+  "url": "https://nyhiv.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "el-museo-del-barrio",
+  "entity_name": "El Museo del Barrio",
+  "url": "https://www.elmuseo.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "school-construction-authority",
+  "entity_name": "School Construction Authority",
+  "url": "https://www.nycsca.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "new-york-city-transit-riders-council",
+  "entity_name": "New York City Transit Riders Council",
+  "url": "https://pcac.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "roosevelt-island-operating-corporation",
+  "entity_name": "Roosevelt Island Operating Corporation",
+  "url": "https://rioc.ny.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "hudson-river-park-trust",
+  "entity_name": "Hudson River Park Trust",
+  "url": "https://hudsonriverpark.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "brooklyn-academy-of-music",
+  "entity_name": "Brooklyn Academy of Music",
+  "url": "https://www.bam.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "rent-guidelines-board",
+  "entity_name": "Rent Guidelines Board",
+  "url": "https://rentguidelinesboard.cityofnewyork.us/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "catskill-watershed-corporation",
+  "entity_name": "Catskill Watershed Corporation",
+  "url": "https://cwconline.org/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": "advisory-council-for-the-nyc-civil-court-housing-part",
+  "entity_name": "Advisory Council for the NYC Civil Court Housing Part",
+  "url": "https://ww2.nycourts.gov/",
+  "pool": "nyc-registry"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Albany",
+  "url": "https://albanyny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Amsterdam",
+  "url": "https://amsterdamnyfd.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Auburn",
+  "url": "https://auburnny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Batavia",
+  "url": "https://cityofbataviany.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Beacon",
+  "url": "https://beaconny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Binghamton",
+  "url": "https://binghamton-ny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Buffalo",
+  "url": "https://buffalony.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Canandaigua",
+  "url": "https://canandaiguanewyork.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Cohoes",
+  "url": "https://cohoes-ny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Corning",
+  "url": "https://cityofcorningny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Cortland",
+  "url": "https://cortlandny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Dunkirk",
+  "url": "https://cityofdunkirkny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Elmira",
+  "url": "https://cityofelmirany.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Fulton",
+  "url": "https://cityoffultonny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Geneva",
+  "url": "https://cityofgenevany.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Glen Cove",
+  "url": "https://glencoveny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Glens Falls",
+  "url": "https://cityofglensfallsny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Gloversville",
+  "url": "https://cityofgloversvilleny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Hornell",
+  "url": "https://www.cityofhornell.com/",
+  "pool": "city",
+  "lead": "its-2023"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Hudson",
+  "url": "https://hudsonny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Ithaca",
+  "url": "https://cityofithacany.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Jamestown",
+  "url": "https://jamestownny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Johnstown",
+  "url": "https://www.cityofjohnstown-ny.com/",
+  "pool": "city",
+  "lead": "its-2023"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Kingston",
+  "url": "https://kingston-ny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Lackawanna",
+  "url": "https://lackawannany.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Little Falls",
+  "url": "https://cityoflittlefalls.net/",
+  "pool": "city",
+  "lead": "its-2023"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Lockport",
+  "url": "https://lockportny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Long Beach",
+  "url": "https://longbeachny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Mechanicville",
+  "url": "https://www.mechanicvilleny.gov/",
+  "pool": "city",
+  "lead": "its-2023"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Middletown",
+  "url": "https://middletownny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Mt Vernon",
+  "url": "https://www.cmvny.com/",
+  "pool": "city",
+  "lead": "its-2023"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Newburgh",
+  "url": "https://cityofnewburgh-ny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of New Rochelle",
+  "url": "https://newrochelleny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Niagara Falls",
+  "url": "https://niagarafallsny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of North Tonawanda",
+  "url": "https://northtonawanda.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Norwich",
+  "url": "https://norwichnewyork.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Ogdensburg",
+  "url": "https://ogdensburgny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Olean",
+  "url": "https://cityofolean.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Oneida",
+  "url": "https://oneidacityny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Oneonta",
+  "url": "https://cityofoneontany.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Oswego",
+  "url": "https://oswegony.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Peekskill",
+  "url": "https://cityofpeekskillny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Plattsburgh",
+  "url": "https://cityofplattsburgh-ny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Port Jervis",
+  "url": "https://portjervisny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Poughkeepsie",
+  "url": "https://cityofpoughkeepsie.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Rensselaer",
+  "url": "https://www.rensselaerny.gov/",
+  "pool": "city",
+  "lead": "its-2023"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Rochester",
+  "url": "https://cityofrochester.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Rome",
+  "url": "https://romeny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Rye",
+  "url": "https://ryeny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Salamanca",
+  "url": "https://salamancany.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Saratoga Springs",
+  "url": "https://saratogaspringsny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Schenectady",
+  "url": "https://cityofschenectady.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Sherrill",
+  "url": "https://sherrillny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Syracuse",
+  "url": "https://syr.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Tonawanda",
+  "url": "https://tonawandacity.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Troy",
+  "url": "https://www.troyny.gov/",
+  "pool": "city",
+  "lead": "its-2023"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Utica",
+  "url": "https://uticany.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Watertown",
+  "url": "https://watertown-ny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Watervliet",
+  "url": "https://watervlietny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of White Plains",
+  "url": "https://whiteplainsny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "City of Yonkers",
+  "url": "https://yonkersny.gov/",
+  "pool": "city",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Housing Trust Fund Corporation",
+  "url": "https://www.nyshcr.org/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Roosevelt Island Operating Corporation",
+  "url": "https://www.rioc.ny.gov/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "New York State Urban Development Corporation",
+  "url": "https://www.esd.ny.gov/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Erie County Medical Center Corporation",
+  "url": "https://www.ecmc.edu/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Capital District Transportation Authority",
+  "url": "https://www.cdta.org/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Hudson River-Black River Regulating District",
+  "url": "https://www.hrbrrd.ny.gov/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Nelson A. Rockefeller Empire State Plaza Performing Arts Center Operating Corporation",
+  "url": "https://www.theegg.org/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Agriculture and New York State Horse Breeding Development Fund",
+  "url": "https://www.nysirestakes.com/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Metropolitan Transportation Authority",
+  "url": "https://www.mta.info/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Central New York Regional Transportation Authority",
+  "url": "https://www.centro.org/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Natural Heritage Trust",
+  "url": "https://www.naturalheritagetrust.org/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Hudson River Park Trust",
+  "url": "https://www.hudsonriverpark.org/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "New York State Olympic Regional Development Authority",
+  "url": "https://www.orda.org/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Long Island Power Authority",
+  "url": "https://www.lipower.org/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Dormitory Authority of the State of New York",
+  "url": "https://www.dasny.org/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Nassau County Interim Finance Authority",
+  "url": "https://www.nifa.state.ny.gov/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Nassau Health Care Corporation",
+  "url": "https://www.nuhealth.net/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "United Nations Development Corporation",
+  "url": "https://www.undc.org/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Power Authority of the State of New York",
+  "url": "https://www.nypa.gov/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Environmental Facilities Corporation",
+  "url": "https://www.efc.ny.gov/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Buffalo Fiscal Stability Authority",
+  "url": "https://www.bfsa.ny.gov/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "New York State Thoroughbred Breeding Development Fund",
+  "url": "https://www.nybreds.com/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Port of Oswego Authority",
+  "url": "https://www.portoswego.com/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Homeless Housing Assistance Corporation",
+  "url": "https://www.otda.state.ny.us/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Erie County Fiscal Stability Authority",
+  "url": "https://www.ecfsa.state.ny.us/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Rochester-Genesee Regional Transportation Authority",
+  "url": "https://www.rgrta.com/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Greenway Conservancy for the Hudson River Valley, Inc.",
+  "url": "https://hudsongreenway.ny.gov/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Niagara Frontier Transportation Authority",
+  "url": "https://www.nfta.com/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Westchester County Health Care Corporation",
+  "url": "https://www.worldclassmedicine.com/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Ogdensburg Bridge and Port Authority",
+  "url": "https://www.ogdensport.com/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "New York State Bridge Authority",
+  "url": "https://www.nysba.state.ny.us/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "New York State Thruway Authority",
+  "url": "https://www.thruway.ny.gov/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Roswell Park Cancer Institute Corporation",
+  "url": "https://www.roswellpark.org/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "New York State Energy Research and Development Authority",
+  "url": "https://www.nyserda.org/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Battery Park City Authority",
+  "url": "https://www.bpca.ny.gov/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Albany Convention Center Authority",
+  "url": "https://www.albanycapitalcenter.com/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "Development Authority of the North Country",
+  "url": "https://www.danc.org/",
+  "pool": "state-authority",
+  "lead": "abo"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Albany",
+  "url": "https://albanycountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Allegany",
+  "url": "https://alleganyco.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Broome",
+  "url": "https://broomecountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Cattaraugus",
+  "url": "https://cattco.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Cayuga",
+  "url": "https://cayugacounty.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Chautauqua",
+  "url": "https://chautauquacountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Chemung",
+  "url": "https://chemungcountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Chenango",
+  "url": "https://chenangocountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Clinton",
+  "url": "https://clintoncountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Columbia",
+  "url": "https://columbiacountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Cortland",
+  "url": "https://cortlandcountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Delaware",
+  "url": "https://delcony.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Dutchess",
+  "url": "https://dutchessny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Erie",
+  "url": "https://erie.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Essex",
+  "url": "https://essexcountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Franklin",
+  "url": "https://franklincountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Fulton",
+  "url": "https://fultoncountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Genesee",
+  "url": "https://geneseeny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Greene",
+  "url": "https://greenecountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Hamilton",
+  "url": "https://hamiltoncountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Herkimer",
+  "url": "https://herkimercountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Jefferson",
+  "url": "https://jeffersoncountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Lewis",
+  "url": "https://lewiscountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Livingston",
+  "url": "https://livingstoncountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Madison",
+  "url": "https://www.madisoncounty.ny.gov/",
+  "pool": "county",
+  "lead": "its-2023"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Monroe",
+  "url": "https://monroecounty.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Montgomery",
+  "url": "https://montgomerycountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Nassau",
+  "url": "https://nassaucountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Niagara",
+  "url": "https://niagaracounty.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Oneida",
+  "url": "https://oneidacountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Onondaga",
+  "url": "https://onondaga.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Ontario",
+  "url": "https://ontariocountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Orange",
+  "url": "https://orangecountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Orleans",
+  "url": "https://orleanscountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Oswego",
+  "url": "https://oswegocountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Otsego",
+  "url": "https://otsegocountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Putnam",
+  "url": "https://putnamcountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Rensselaer",
+  "url": "https://renscony.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Rockland",
+  "url": "https://rocklandcountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Saratoga",
+  "url": "https://saratogacountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Schenectady",
+  "url": "https://schenectadycountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Schoharie",
+  "url": "https://schohariecounty-ny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Schuyler",
+  "url": "https://schuylercountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Seneca",
+  "url": "https://senecacountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Steuben",
+  "url": "https://steubencountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of St Lawrence",
+  "url": "https://stlawco.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Suffolk",
+  "url": "https://suffolkcountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Sullivan",
+  "url": "https://sullivanny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Tioga",
+  "url": "https://tiogacountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Tompkins",
+  "url": "https://tompkinscountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Ulster",
+  "url": "https://ulstercountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Warren",
+  "url": "https://warrencountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Washington",
+  "url": "https://washingtoncountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Wayne",
+  "url": "https://waynecountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Westchester",
+  "url": "https://westchestercountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Wyoming",
+  "url": "https://wyomingcountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ },
+ {
+  "entity_id": null,
+  "entity_name": "County of Yates",
+  "url": "https://yatescountyny.gov/",
+  "pool": "county",
+  "lead": "cisa"
+ }
+]
