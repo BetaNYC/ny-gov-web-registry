@@ -269,6 +269,10 @@ goes on.
 finished; used to resume). `--on-exit "<cmd>"` runs `<cmd> <path to status.json>` at exit,
 including after a crash. `latest.json` (plan §4.4) is not built yet.
 
+**One row per website:** `python scripts/ai_readability_export.py --run-dir <run> --targets-file
+<list>` writes `sites.csv` and `sites.json` in GSA's Site Scanning layout, plus `ai_<test id>_`
+columns for this catalog. Column definitions: `data/ai-readability/data-dictionary.csv`.
+
 **Parallel workers:** `--max-workers N` splits hosts into N disjoint groups, each with its own
 global pace. A shared host clock still prevents two in-flight requests to one host and keeps the
 per-host floor. Homepage redirects to another host are followed (as the legacy probe did) and are

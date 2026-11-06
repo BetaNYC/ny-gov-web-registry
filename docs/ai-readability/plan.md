@@ -101,12 +101,17 @@ from dead sites, the `status.json` fields and the `--on-exit` hook are in
 ```
 data/ai-readability/
   portals.json                       # D1 open-data portal hosts (seeded, curated)
+  data-dictionary.csv                # every column of sites.csv, in GSA's dictionary format
+  target-list-dictionary.csv         # the site-list fields, in GSA's target-list format
+  gsa/                               # GSA's own two dictionaries, copied 2026-11-06
   runs/<YYYY-MM-DD>-<vantage>/
     run.json                         # manifest: catalog version, git SHA, identities + doc URLs,
                                      #   vantage, machine, start/end, request count, breaker events
     results.jsonl                    # one row per (host, test, identity): raw status, evidence,
                                      #   verdict (pass/partial/fail/blocked/na), evidence sha256
     summary.md                       # counts per test, Abhi-12 view, our view, flips since last run
+    sites.csv / sites.json           # one row per website, GSA Site Scanning layout + our columns
+                                     #   (scripts/ai_readability_export.py; data-dictionary.csv)
   latest.json                        # per entity id + host: newest verdict per test (sidecar)
 ```
 

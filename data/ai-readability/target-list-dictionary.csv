@@ -1,0 +1,6 @@
+name,field id,description,data type
+Initial URL,url,"URL to be scanned. Same meaning as GSA's `initial_url`; kept as `url` because the probe and render_check read that name",string
+Entity ID,entity_id,"Registry id of the New York body that owns the site (`id` in data/registry.json). Null for sites not yet in the registry. No GSA equivalent",string
+Agency,entity_name,"Name of the New York body that owns the site. Same role as GSA's `agency`",string
+Pool,pool,"Which group the site was tested with: nyc-registry, city, county, state-authority. No GSA equivalent",string
+Source List,lead,"Which public list the address came from: cisa (CISA .gov list), its-2023 (NYS ITS 55k6-h6qq), abo (NYS ABO 4vym-q77x). Absent for nyc-registry rows, which come from data/crawl_targets.json. Same role as GSA's `source_list_*` flags, as one value instead of one column per list",string
