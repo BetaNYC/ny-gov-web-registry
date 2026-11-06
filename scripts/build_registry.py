@@ -4,7 +4,7 @@ Pipeline:
     data/registry.seed.json                      (hand-authored anchor set; source of truth for structure)
     data/cache/records_moda.json    (optional)   (from sync_moda.py)
     data/cache/records_abo.json     (optional)   (from sync_abo.py)
-    data/cache/records_nygov.json   (optional)   (from sync_nygov.py — not yet produced)
+    data/cache/records_nygov.json   (optional)   (from sync_nygov.py — state executive agencies)
         |
         v
     data/registry.json  +  schema validation
@@ -71,6 +71,16 @@ def build_entities(seed_entities: list[dict], source_batches: list[list[dict]]) 
     Returns (entities, proposals). Matching is identifier-scheme-first, then normalized name.
     Existing records keep their id; unmatched source records are minted a new neutral id.
     Never deletes; enrichment and additions are recorded as proposals.
+
+    Three optional private keys (leading underscore; never written to the registry) let a sync
+    script state a decision it already made against curation (sync_abo / sync_nygov):
+      _match_entity_id  match this existing id directly (an operator-confirmed match). An unknown
+                        id raises: a stale curation entry is a build error, not a silent mint.
+      _expect_new       this record must NOT match anything; a match raises (so a name collision
+                        with an existing entity can never silently merge two bodies).
+      _on_match         additive enrichment applied when the record matches: add_provenance_source,
+                        other_name_note (adds the record's name to other_names[] if new), and
+                        add_web_properties (skipped when the www-normalized host is already owned).
     """
     entities = [dict(e) for e in seed_entities]
     by_pair: dict[tuple[str, str], dict] = {}
@@ -78,25 +88,37 @@ def build_entities(seed_entities: list[dict], source_batches: list[list[dict]]) 
         for pair in _pairs(e):
             by_pair.setdefault(pair, e)
     by_name = {_norm(e["name"]): e for e in entities}
+    by_id = {e["id"]: e for e in entities}
     used_ids = {e["id"] for e in entities}
     proposals: list[dict] = []
 
     for batch in source_batches:
         for rec in batch:
             match = None
+            if rec.get("_match_entity_id"):
+                match = by_id.get(rec["_match_entity_id"])
+                if match is None:
+                    raise ValueError(f"source record {rec.get('name')!r} names _match_entity_id "
+                                     f"{rec['_match_entity_id']!r}, which is not in the registry")
             for pair in _pairs(rec):
+                if match is not None:
+                    break
                 if pair in by_pair:
                     match = by_pair[pair]
-                    break
             if match is None:
                 match = by_name.get(_norm(rec.get("name", "")))
+            if match is not None and rec.get("_expect_new"):
+                raise ValueError(f"source record {rec.get('name')!r} is marked _expect_new but "
+                                 f"matches existing entity {match['id']!r}; curate the match "
+                                 "or rename before building")
 
             if match is None:
                 new_id = _mint_id(rec.get("name", ""), used_ids)
                 used_ids.add(new_id)
-                new_rec = {k: v for k, v in rec.items() if k != "id"}
+                new_rec = {k: v for k, v in rec.items() if k != "id" and not k.startswith("_")}
                 new_rec["id"] = new_id
                 entities.append(new_rec)
+                by_id[new_id] = new_rec
                 by_name[_norm(new_rec.get("name", ""))] = new_rec
                 for pair in _pairs(new_rec):
                     by_pair.setdefault(pair, new_rec)
@@ -112,7 +134,35 @@ def build_entities(seed_entities: list[dict], source_batches: list[list[dict]]) 
                         by_pair.setdefault(pair, match)
                         proposals.append({"action": "enrich", "id": match["id"],
                                           "identifier": {"scheme": pair[0], "identifier": pair[1]}})
+                if rec.get("_on_match"):
+                    _apply_on_match(match, rec)
+                    proposals.append({"action": "enrich", "id": match["id"], "from": rec.get("name")})
     return entities, proposals
+
+
+def _apply_on_match(entity: dict, rec: dict) -> None:
+    """Additive enrichment of a matched entity from a record's `_on_match` (see build_entities).
+    Mutates `entity` only; copies the members it touches so the caller's seed list is untouched."""
+    om = rec["_on_match"]
+    src = om.get("add_provenance_source")
+    if src:
+        prov = dict(entity.get("provenance") or {"sources": []})
+        prov["sources"] = list(prov.get("sources", []))
+        if src not in prov["sources"]:
+            prov["sources"].append(src)
+        entity["provenance"] = prov
+    if om.get("other_name_note") is not None and _norm(rec.get("name", "")) != _norm(entity["name"]):
+        entity["other_names"] = [dict(o) for o in entity.get("other_names", [])]
+        _add_other_name(entity, rec["name"], om["other_name_note"])
+    if om.get("add_web_properties"):
+        wps = [dict(w) for w in entity.get("web_properties", [])]
+        have = {re.sub(r"^www\d*\.", "", w.get("domain", "").lower()) for w in wps}
+        for wp in om["add_web_properties"]:
+            key = re.sub(r"^www\d*\.", "", wp["domain"].lower())
+            if key not in have:
+                wps.append(dict(wp))
+                have.add(key)
+        entity["web_properties"] = wps
 
 
 def _add_other_name(entity: dict, name: str, note: str | None) -> bool:

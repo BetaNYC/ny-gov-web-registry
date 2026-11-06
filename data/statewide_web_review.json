@@ -1,0 +1,395 @@
+{
+  "_about": "Statewide items held for human review, never applied to data/registry.json. One section per sync script (each rewrites only its own). Every item names its reason. Growth plan: docs/registry-growth-plan.md.",
+  "authorities": {
+    "_about": "ABO State + Local rows (sync_abo.py): possible duplicates held back, and hosts not applied.",
+    "items": [
+      {
+        "abo_name": "Port Jervis Community Development Agency",
+        "reason": "abo_host_is_a_municipal_site",
+        "host": "www.portjervisny.org",
+        "abo_website": "http://www.portjervisny.org",
+        "note": "portjervisny.org looks like the City of Port Jervis's own site, not the agency's."
+      },
+      {
+        "abo_name": "Livingston County Water and Sewer Authority",
+        "reason": "abo_website_malformed",
+        "abo_website": "http://wwww.LCWSA.us"
+      },
+      {
+        "abo_name": "Victor Urban Renewal Agency",
+        "reason": "abo_host_is_a_municipal_site",
+        "host": "victorny.org",
+        "abo_website": "http://victorny.org",
+        "note": "victorny.org looks like the Town/Village of Victor's site."
+      },
+      {
+        "abo_name": "New York State Housing Finance Agency",
+        "reason": "abo_host_shared_by_several_authorities",
+        "host": "www.nyshcr.org",
+        "abo_website": "http://www.nyshcr.org",
+        "shared_with": [
+          "New York State Affordable Housing Corporation",
+          "State of New York Mortgage Agency",
+          "State of New York Municipal Bond Bank Agency",
+          "Tobacco Settlement Financing Corporation"
+        ]
+      },
+      {
+        "abo_name": "Yonkers Community Development Agency",
+        "reason": "abo_website_malformed",
+        "abo_website": "http://www.cityofyonkers"
+      },
+      {
+        "abo_name": "Tonawanda (City) Community Development Agency",
+        "reason": "abo_host_is_a_municipal_site",
+        "host": "www.ci.tonawanda.ny.us",
+        "abo_website": "http://www.ci.tonawanda.ny.us",
+        "note": "ci.tonawanda.ny.us is the City of Tonawanda's site."
+      },
+      {
+        "abo_name": "Niagara Falls Urban Renewal Agency",
+        "reason": "abo_host_is_a_municipal_site",
+        "host": "www.niagarafallsusa.org",
+        "abo_website": "http://www.niagarafallsusa.org",
+        "note": "niagarafallsusa.org looks like the City of Niagara Falls's site."
+      },
+      {
+        "abo_name": "State of New York Mortgage Agency",
+        "reason": "abo_host_shared_by_several_authorities",
+        "host": "www.nyshcr.org",
+        "abo_website": "http://www.nyshcr.org/",
+        "shared_with": [
+          "New York State Affordable Housing Corporation",
+          "New York State Housing Finance Agency",
+          "State of New York Municipal Bond Bank Agency",
+          "Tobacco Settlement Financing Corporation"
+        ]
+      },
+      {
+        "abo_name": "Huntington Community Development Agency",
+        "reason": "abo_host_is_a_municipal_site",
+        "host": "huntingtonny.gov",
+        "abo_website": "http://huntingtonny.gov",
+        "note": "huntingtonny.gov is the Town of Huntington's site."
+      },
+      {
+        "abo_name": "Upper Mohawk Valley Regional Water Board",
+        "reason": "abo_host_shared_by_several_authorities",
+        "host": "www.mvwa.us",
+        "abo_website": "http://www.mvwa.us",
+        "shared_with": [
+          "Upper Mohawk Valley Regional Water Finance Authority"
+        ]
+      },
+      {
+        "abo_name": "Town of Erwin Urban Renewal Agency",
+        "reason": "abo_host_is_a_municipal_site",
+        "host": "www.erwinny.org",
+        "abo_website": "http://www.erwinny.org",
+        "note": "erwinny.org looks like the Town of Erwin's site."
+      },
+      {
+        "abo_name": "State of New York Municipal Bond Bank Agency",
+        "reason": "abo_host_shared_by_several_authorities",
+        "host": "www.nyshcr.org",
+        "abo_website": "http://www.nyshcr.org",
+        "shared_with": [
+          "New York State Affordable Housing Corporation",
+          "New York State Housing Finance Agency",
+          "State of New York Mortgage Agency",
+          "Tobacco Settlement Financing Corporation"
+        ]
+      },
+      {
+        "abo_name": "Little Falls Urban Renewal Agency",
+        "reason": "abo_host_is_a_municipal_site",
+        "host": "cityoflittlefalls.net",
+        "abo_website": "http://cityoflittlefalls.net",
+        "note": "cityoflittlefalls.net is the City of Little Falls's site."
+      },
+      {
+        "abo_name": "Village of Fairport Urban Renewal Agency",
+        "reason": "abo_host_is_a_municipal_site",
+        "host": "www.fairportoced.org",
+        "abo_website": "http://www.fairportoced.org",
+        "note": "fairportoced.org looks like the Village of Fairport's economic-development office."
+      },
+      {
+        "abo_name": "Nassau County Interim Finance Authority",
+        "reason": "abo_host_differs_from_state_listing",
+        "host": "www.nifa.state.ny.gov",
+        "abo_website": "http://www.nifa.state.ny.gov",
+        "state_listing_primary": "nifa.ny.gov",
+        "note": "The listing host was used as primary; the ABO host was not applied (possibly a legacy host, unverified)."
+      },
+      {
+        "abo_name": "New York State Affordable Housing Corporation",
+        "reason": "abo_host_shared_by_several_authorities",
+        "host": "www.nyshcr.org",
+        "abo_website": "http://www.nyshcr.org",
+        "shared_with": [
+          "New York State Housing Finance Agency",
+          "State of New York Mortgage Agency",
+          "State of New York Municipal Bond Bank Agency",
+          "Tobacco Settlement Financing Corporation"
+        ]
+      },
+      {
+        "abo_name": "Village of Rockville Centre Community Development Agency",
+        "reason": "abo_host_is_a_municipal_site",
+        "host": "www.rvcny.gov",
+        "abo_website": "http://www.rvcny.gov",
+        "note": "rvcny.gov is the Village of Rockville Centre's site."
+      },
+      {
+        "abo_name": "Upper Mohawk Valley Regional Water Finance Authority",
+        "reason": "abo_host_shared_by_several_authorities",
+        "host": "www.mvwa.us",
+        "abo_website": "http://www.mvwa.us",
+        "shared_with": [
+          "Upper Mohawk Valley Regional Water Board"
+        ]
+      },
+      {
+        "abo_name": "Erie County Fiscal Stability Authority",
+        "reason": "abo_host_differs_from_state_listing",
+        "host": "www.ecfsa.state.ny.us",
+        "abo_website": "http://www.ecfsa.state.ny.us",
+        "state_listing_primary": "ecfsa.ny.gov",
+        "note": "The listing host was used as primary; the ABO host was not applied (possibly a legacy host, unverified)."
+      },
+      {
+        "abo_name": "Village of Elmira Heights Urban Renewal Agency",
+        "reason": "abo_host_is_a_municipal_site",
+        "host": "www.elmiraheightsvillage.com",
+        "abo_website": "http://www.elmiraheightsvillage.com",
+        "note": "elmiraheightsvillage.com is the Village of Elmira Heights's site."
+      },
+      {
+        "abo_name": "Gloversville Community Development Agency",
+        "reason": "abo_host_is_a_municipal_site",
+        "host": "www.cityofgloversville.com",
+        "abo_website": "http://www.cityofgloversville.com",
+        "note": "cityofgloversville.com is the City of Gloversville's site."
+      },
+      {
+        "abo_name": "New York State Bridge Authority",
+        "reason": "abo_host_differs_from_state_listing",
+        "host": "www.nysba.state.ny.us",
+        "abo_website": "http://www.nysba.state.ny.us",
+        "state_listing_primary": "nysba.ny.gov",
+        "note": "The listing host was used as primary; the ABO host was not applied (possibly a legacy host, unverified)."
+      },
+      {
+        "abo_name": "New York State Energy Research and Development Authority",
+        "entity_id": "nyserda",
+        "reason": "abo_host_differs_from_existing_entity",
+        "host": "www.nyserda.org",
+        "abo_website": "http://www.nyserda.org",
+        "existing_hosts": [
+          "nyserda.ny.gov"
+        ]
+      },
+      {
+        "abo_name": "Tobacco Settlement Financing Corporation",
+        "reason": "abo_host_shared_by_several_authorities",
+        "host": "www.nyshcr.org",
+        "abo_website": "http://www.nyshcr.org/",
+        "shared_with": [
+          "New York State Affordable Housing Corporation",
+          "New York State Housing Finance Agency",
+          "State of New York Mortgage Agency",
+          "State of New York Municipal Bond Bank Agency"
+        ]
+      }
+    ]
+  },
+  "state_agencies": {
+    "_about": "State agency listing codes and hosts (sync_nygov.py) not minted or not applied.",
+    "items": [
+      {
+        "agency_key": "dos",
+        "reason": "host_also_owned_by_other_entity",
+        "host": "dos.ny.gov",
+        "also_owned_by": "new-york-city-watershed-protection-and-partnership-council",
+        "note": "Applied to this agency; check whether the other entity's claim is a page-only presence that belongs in url_conventions[]."
+      },
+      {
+        "agency_key": "ogs",
+        "reason": "host_also_owned_by_other_entity",
+        "host": "ogs.ny.gov",
+        "also_owned_by": "advisory-council-on-procurement-lobbying",
+        "note": "Applied to this agency; check whether the other entity's claim is a page-only presence that belongs in url_conventions[]."
+      },
+      {
+        "reason": "judiciary",
+        "listing_codes": [
+          "NYCOURTS"
+        ],
+        "hosts": [
+          "nycourts.gov"
+        ],
+        "code_notes": {
+          "NYCOURTS": "The Unified Court System is the judicial branch; courts are out of scope (growth plan)."
+        }
+      },
+      {
+        "reason": "legislature",
+        "listing_codes": [
+          "NYS Assembly"
+        ],
+        "hosts": [
+          "assembly.ny.gov"
+        ],
+        "code_notes": {
+          "NYS Assembly": "The Legislature is out of scope for nys (executive agencies)."
+        }
+      },
+      {
+        "reason": "legislature_or_defunct",
+        "listing_codes": [
+          "JCOPE"
+        ],
+        "hosts": [
+          "legethics.ny.gov",
+          "projectsunlight.ny.gov"
+        ],
+        "code_notes": {
+          "JCOPE": "legethics.ny.gov is the Legislative Ethics Commission (Legislature); JCOPE itself was replaced by the Commission on Ethics and Lobbying in Government in 2022. projectsunlight.ny.gov owner unclear."
+        }
+      },
+      {
+        "reason": "level_unclear",
+        "listing_codes": [
+          "CJC",
+          "NYWC"
+        ],
+        "hosts": [
+          "cjc.ny.gov",
+          "waterfront.ny.gov"
+        ],
+        "code_notes": {
+          "CJC": "Commission on Judicial Conduct (ny.gov lists it). A constitutional commission tied to the judiciary; not clearly an executive agency.",
+          "NYWC": "waterfront.ny.gov; ny.gov lists a 'Waterfront Commission'. The bi-state Waterfront Commission of New York Harbor and its New York successor need a decision before minting."
+        }
+      },
+      {
+        "reason": "listing_attribution_doubtful",
+        "listing_codes": [],
+        "hosts": [
+          "my.ny.gov"
+        ],
+        "host_notes": {
+          "my.ny.gov": "The listing files my.ny.gov (the NY.gov ID login) under DOH."
+        }
+      },
+      {
+        "reason": "name_unverified",
+        "listing_codes": [
+          "CC&F"
+        ],
+        "hosts": [
+          "ccf.ny.gov"
+        ],
+        "code_notes": {
+          "CC&F": "ccf.ny.gov. The ny.gov directory names 'Council on Children and Families Services'; kjw8-pupa has no entry. Confirm the official name before minting."
+        }
+      },
+      {
+        "reason": "not_government",
+        "listing_codes": [
+          "LIAFCU",
+          "MVFCU"
+        ],
+        "hosts": [
+          "liafcu.org",
+          "mohawkvalleyfcu.org"
+        ],
+        "code_notes": {
+          "LIAFCU": "liafcu.org looks like a credit union, not a government body.",
+          "MVFCU": "mohawkvalleyfcu.org looks like a credit union, not a government body."
+        }
+      },
+      {
+        "reason": "statewide_elected_office",
+        "listing_codes": [
+          "Department of Law",
+          "Governor",
+          "OSC"
+        ],
+        "hosts": [
+          "ag.ny.gov",
+          "broadband.ny.gov",
+          "governor.ny.gov",
+          "grantsmanagement.ny.gov",
+          "newyorkersvolunteer.ny.gov",
+          "opengovernment.ny.gov",
+          "sfs.ny.gov"
+        ],
+        "code_notes": {
+          "Department of Law": "Office of the Attorney General (ag.ny.gov): statewide elected.",
+          "Governor": "Office of the Governor: a statewide elected office, not an executive agency. No government_level fits it yet.",
+          "OSC": "Office of the State Comptroller: statewide elected. Its listed hosts are program sites (grants management, open government, SFS); ecfsa.ny.gov is filed with the Erie County Fiscal Stability Authority instead."
+        }
+      },
+      {
+        "reason": "unknown_code",
+        "listing_codes": [
+          "CJN",
+          "DCB",
+          "IOLA",
+          "PCFB",
+          "VDC"
+        ],
+        "hosts": [
+          "cbc.justicecenter.ny.gov",
+          "cjn.ny.gov",
+          "deferredcompboard.ny.gov",
+          "definedcontribution.ny.gov",
+          "iola.org",
+          "pcfb.ny.gov",
+          "vpcr.justicecenter.ny.gov"
+        ],
+        "code_notes": {
+          "CJN": "Hosts cjn.ny.gov and two justicecenter.ny.gov subdomains; no directory names a 'CJN'.",
+          "DCB": "deferredcompboard.ny.gov; no directory names a deferred compensation board.",
+          "IOLA": "iola.org; neither ny.gov nor kjw8-pupa names this body.",
+          "PCFB": "pcfb.ny.gov; neither ny.gov nor kjw8-pupa names this body.",
+          "VDC": "definedcontribution.ny.gov; no directory names this body. Possibly a program, not an agency."
+        }
+      },
+      {
+        "reason": "in_directory_not_minted_no_listing_host",
+        "nygov_names": [
+          "Central Pine Barrens Joint Planning and Policy Commission",
+          "Commission on Prosecutorial Conduct",
+          "Corcraft Products (Department of Correctional Services, Division of Industries)",
+          "Council on Developmental Disabilities",
+          "Division of Consumer Protection",
+          "Geographic Information Systems (GIS)",
+          "Governor's Traffic Safety Committee",
+          "Liquidation Bureau",
+          "New York State Law Revision Commission",
+          "Office for New Americans",
+          "Office of Counter Terrorism",
+          "Office of Emergency Management",
+          "Office of Fire Prevention and Control",
+          "Office of Interoperable and Emergency Communications (OIEC)",
+          "Offices of the Inspector General",
+          "South Shore Estuary Council",
+          "State Employees Federated Appeal (SEFA)",
+          "Teachers' Retirement System"
+        ],
+        "kjw8_agencies": [
+          "Industrial Board of Appeals",
+          "NYS Council on Developmental Disabilities (CDD)",
+          "New York State Franchise Oversight Board",
+          "Office of Renewable Energy Siting (ORES)",
+          "Office of Resilient Homes & Communities",
+          "Unemployment Insurance Appeals Board"
+        ],
+        "note": "Named by ny.gov or kjw8-pupa but not minted as its own entity in this batch: no host of its own in the state agency listing. Some are sub-units whose hosts the listing files under a parent agency (kept there as microsites, with a note)."
+      }
+    ]
+  }
+}

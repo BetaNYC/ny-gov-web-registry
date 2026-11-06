@@ -1,0 +1,324 @@
+{
+  "_source": "data.ny.gov kjw8-pupa (Agency Contacts, Office of the Governor), SoQL $select=agency,agency_contact_url; contact names, titles and phone numbers deliberately not fetched",
+  "_fetched": "2026-11-06",
+  "_rows_fetched": 623,
+  "_dataset_rows_updated_at_epoch": 1744404459,
+  "agencies": [
+    {
+      "agency": "Adirondack Park Agency (APA)",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Agriculture & New York State Horse Breading Development Fund",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Agriculture & New York State Horse Breeding Development Fund",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Battery Park City Authority (BPCA)",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "City University of New York (CUNY)",
+      "agency_contact_url": "https://www.cuny.edu/contact-us/"
+    },
+    {
+      "agency": "Department of Agriculture & Markets (DAM)",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Department of Civil Service (DCS)",
+      "agency_contact_url": "https://www.cs.ny.gov/home/contact.cfm"
+    },
+    {
+      "agency": "Department of Corrections & Community Supervision (DOCCS)",
+      "agency_contact_url": "https://publicapps.doccs.ny.gov/DOCCSWebContactForm.aspx"
+    },
+    {
+      "agency": "Department of Environmental Conservation (DEC)",
+      "agency_contact_url": "https://www.dec.ny.gov/about/259.html"
+    },
+    {
+      "agency": "Department of Financial Service (DFS)",
+      "agency_contact_url": "https://www.dfs.ny.gov/contact_us/main"
+    },
+    {
+      "agency": "Department of Health (DOH)",
+      "agency_contact_url": "https://www.health.ny.gov/contact/"
+    },
+    {
+      "agency": "Department of Labor (DOL)",
+      "agency_contact_url": "https://dol.ny.gov/contact-dol"
+    },
+    {
+      "agency": "Department of State (DOS)",
+      "agency_contact_url": "https://dos.ny.gov/form/contact-us"
+    },
+    {
+      "agency": "Department of Tax & Finance (DTF)",
+      "agency_contact_url": "https://www.tax.ny.gov/help/contact/#phonenumbers"
+    },
+    {
+      "agency": "Department of Veterans’ Services (DVS)",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Division of Alcohol Beverage Control (ABC/SLA)",
+      "agency_contact_url": "https://sla.ny.gov/contact-us"
+    },
+    {
+      "agency": "Division of Criminal Justice Services (DCJS)",
+      "agency_contact_url": "https://www.criminaljustice.ny.gov/crimnet/contact.htm"
+    },
+    {
+      "agency": "Division of Homeland Security & Emergency Services (DHSES)",
+      "agency_contact_url": "https://www.dhses.ny.gov/contact-us"
+    },
+    {
+      "agency": "Division of Human Rights (DHR)",
+      "agency_contact_url": "https://dhr.ny.gov/contact-us"
+    },
+    {
+      "agency": "Division of Military & Naval Affairs (DMNA)",
+      "agency_contact_url": "https://dmna.ny.gov/contact/"
+    },
+    {
+      "agency": "Division of State Police (SP)",
+      "agency_contact_url": "https://troopers.ny.gov/contact-us"
+    },
+    {
+      "agency": "Dormitory Authority State of NY (DASNY)",
+      "agency_contact_url": "https://www.dasny.org/contact-us"
+    },
+    {
+      "agency": "Empire State Development (ESD)",
+      "agency_contact_url": "https://esd.ny.gov/contact-us"
+    },
+    {
+      "agency": "Environmental Facilities Corporation (EFC)",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Hudson River Black River Regulating District (HRBRRD)",
+      "agency_contact_url": "https://hrbrrd.ny.gov/contact-us/"
+    },
+    {
+      "agency": "Hudson River Park Trust (HRPT)",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Hudson River Valley Greenway (HRVG)",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Industrial Board of Appeals",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Jacob Javits Convention Center",
+      "agency_contact_url": "https://www.javitscenter.com/contact/"
+    },
+    {
+      "agency": "Justice Center for the Protection of People with Special Needs",
+      "agency_contact_url": "https://www.justicecenter.ny.gov/contact"
+    },
+    {
+      "agency": "Lake George Park Commission (LGPC)",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Long Island Power Authority (LIPA)",
+      "agency_contact_url": "https://www.lipower.org/contact-us/"
+    },
+    {
+      "agency": "Metropolitan Transportation Authority (MTA)",
+      "agency_contact_url": "https://new.mta.info/contact-us"
+    },
+    {
+      "agency": "NYS Board of Elections (BOE)",
+      "agency_contact_url": "https://www.elections.ny.gov/Contact.html"
+    },
+    {
+      "agency": "NYS Council on Developmental Disabilities (CDD)",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "New York Power Authority (NYPA)",
+      "agency_contact_url": "https://www.nypa.gov/footer/contact-nypa"
+    },
+    {
+      "agency": "New York State Bridge Authority",
+      "agency_contact_url": "https://nysba.ny.gov/connect-with-us"
+    },
+    {
+      "agency": "New York State Council on the Arts (NYSCA)",
+      "agency_contact_url": "https://arts.ny.gov/contact"
+    },
+    {
+      "agency": "New York State Department of Motor Vehicles (DMV)",
+      "agency_contact_url": "https://dmv.ny.gov/contact-us/contact-us"
+    },
+    {
+      "agency": "New York State Department of Transportation (DOT)",
+      "agency_contact_url": "https://www.dot.ny.gov/divisions"
+    },
+    {
+      "agency": "New York State Energy Research & Development Authority (NYSERDA)",
+      "agency_contact_url": "https://www.nyserda.ny.gov/Contacts"
+    },
+    {
+      "agency": "New York State Franchise Oversight Board",
+      "agency_contact_url": "https://franchiseoversightboard.ny.gov"
+    },
+    {
+      "agency": "New York State Gaming Commission",
+      "agency_contact_url": "https://www.gaming.ny.gov/contact.php"
+    },
+    {
+      "agency": "New York State Homes & Community Renewal (HCR)",
+      "agency_contact_url": "https://hcr.ny.gov/contact-us"
+    },
+    {
+      "agency": "New York State Thoroughbred Breeding & Development Fund",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "New York State Thruway Authority",
+      "agency_contact_url": "https://www.thruway.ny.gov/about/contact/phone.html"
+    },
+    {
+      "agency": "Niagara Frontier Transportation Authority (NFTA)",
+      "agency_contact_url": "https://www.nfta.com/contact-us"
+    },
+    {
+      "agency": "Office Of Employee Relations (OER)",
+      "agency_contact_url": "https://oer.ny.gov/contact-office-employee-relations"
+    },
+    {
+      "agency": "Office for People with Developmental Disabilities (OPWDD)",
+      "agency_contact_url": "https://opwdd.ny.gov/contact-us"
+    },
+    {
+      "agency": "Office for the Aging (NYSOFA)",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Office for the Prevention of Domestic Violence",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Office of Addiction Services & Supports (OASAS)",
+      "agency_contact_url": "https://oasas.ny.gov/contact-us"
+    },
+    {
+      "agency": "Office of Cannabis Management (OCM)",
+      "agency_contact_url": "https://cannabis.ny.gov/contact-us"
+    },
+    {
+      "agency": "Office of Children & Family Services (OCFS)",
+      "agency_contact_url": "https://ocfs.ny.gov/main/contact/"
+    },
+    {
+      "agency": "Office of General Services (OGS)",
+      "agency_contact_url": "https://ogs.ny.gov/contact-office-general-services"
+    },
+    {
+      "agency": "Office of Indigent Legal Services (ILS)",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Office of Information Technology Services (ITS)",
+      "agency_contact_url": "https://its.ny.gov/contact-us"
+    },
+    {
+      "agency": "Office of Mental Health (OMH)",
+      "agency_contact_url": "https://omh.ny.gov/omhweb/about/"
+    },
+    {
+      "agency": "Office of NYS Higher Education Services Corporation (HESC)",
+      "agency_contact_url": "https://www.hesc.ny.gov/contact-hesc.html"
+    },
+    {
+      "agency": "Office of Parks Recreation & Historic Preservations (OPRHP)",
+      "agency_contact_url": "https://www.parks.ny.gov/about/contact-us.aspx"
+    },
+    {
+      "agency": "Office of Renewable Energy Siting (ORES)",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Office of Resilient Homes & Communities",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Office of Temporary & Disability Assistance (OTDA)",
+      "agency_contact_url": "https://otda.ny.gov/contact.asp"
+    },
+    {
+      "agency": "Office of Victim Services (OVS)",
+      "agency_contact_url": "https://ovs.ny.gov/contact-us"
+    },
+    {
+      "agency": "Office of the Medicaid Inspector General (OMIG)",
+      "agency_contact_url": "https://omig.ny.gov/about-us/contact-us"
+    },
+    {
+      "agency": "Ogdensburg Bridge and Port Authority (OBPA)",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Olympic Regional Development Authority (ORDA)",
+      "agency_contact_url": "https://orda.org/contact-us/"
+    },
+    {
+      "agency": "Port Authority of New York & New Jersey (PANYNJ)",
+      "agency_contact_url": "https://www.panynj.gov/port-authority/en/help-center/contact-us.html"
+    },
+    {
+      "agency": "Port of Oswego Authority",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "Public Employment Relations Board (PERB)",
+      "agency_contact_url": "https://perb.ny.gov/professional-staff-directory/"
+    },
+    {
+      "agency": "Public Service Commission (PSC) / Department of Public Service (DPS)",
+      "agency_contact_url": "https://dps.ny.gov/contact-us"
+    },
+    {
+      "agency": "Roosevelt Island Operating Corporation (RIOC)",
+      "agency_contact_url": "https://rioc.ny.gov"
+    },
+    {
+      "agency": "State Commission of Correction (SCOC)",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "State Education Department (SED)",
+      "agency_contact_url": "https://www.nysed.gov/contact-NYSED"
+    },
+    {
+      "agency": "State Insurance Fund (SIF) NYSIF",
+      "agency_contact_url": null
+    },
+    {
+      "agency": "State University of New York (SUNY)",
+      "agency_contact_url": "https://www.suny.edu/contact/"
+    },
+    {
+      "agency": "The New York Racing Association, Inc. (NYRA)*NOT A STATE AGENCY",
+      "agency_contact_url": "https://www.nyrainc.com/about/contact"
+    },
+    {
+      "agency": "Unemployment Insurance Appeals Board",
+      "agency_contact_url": "https://uiappeals.ny.gov/contact"
+    },
+    {
+      "agency": "Worker’s Compensation Board (WCB)",
+      "agency_contact_url": "https://www.wcb.ny.gov/content/main/Contact.jsp"
+    }
+  ]
+}
