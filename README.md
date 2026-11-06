@@ -71,7 +71,7 @@ data/registry.json        # 317 entities
 data/descriptions.json    # per-entity self-descriptions + coverage records
 ```
 
-Rebuilding from sources requires Python 3.11+ and [uv](https://docs.astral.sh/uv/): `uv sync`, place the documented exports in `data/cache/` (**no script fetches the network on its own** — sources are operator-gated by design; see [`docs/sources.md`](docs/sources.md)), run the `sync_*` scripts, then `python scripts/build_registry.py`. The offline test suite (`pytest`, 194 tests) never touches the network.
+Rebuilding from sources requires Python 3.11+ and [uv](https://docs.astral.sh/uv/): `uv sync`, place the documented exports in `data/cache/` (**no script fetches the network on its own** — sources are operator-gated by design; see [`docs/sources.md`](docs/sources.md)), run the `sync_*` scripts, then `python scripts/build_registry.py`. The offline test suite (`pytest`, 243 tests) never touches the network.
 
 Two artifacts invite human eyes: the [description review queue](docs/description-review-queue.md) (agencies whose about page needs a human to find) and the [site anomalies log](docs/site-anomalies.md) (defects we noticed on live government sites — including three Lorem-ipsum placeholder pages).
 
@@ -99,7 +99,31 @@ python3 scripts/probe_bot_access.py --vantage office --tier a --only-hosts @host
 ```
 
 Runs are checkpointed per request, so an interruption loses nothing and the same command resumes.
-Offline tests: `python3 tests/test_probe_bot_access.py` (23 assertions, no network).
+Offline tests: `python3 tests/test_probe_bot_access.py` (24 assertions, no network).
+
+**AI-readability mode** (`--tier core|full`) runs the [test catalog](docs/ai-readability/tests.md)
+from the same script: robots/llms/sitemap, the homepage once per identity, a 404 probe and an
+`http://` check per host (11 requests in core), with the content tests parsed from the one
+research-UA homepage by `scripts/ai_readability.py`. A host that pushes back is quarantined and
+listed for review; only our own breakage stops a run, and `status.json` says `done` or `broke`.
+Results go to `data/ai-readability/runs/<date>-<vantage>/`, which is git-ignored (results stay
+private until the study concludes). Offline tests: `tests/test_ai_readability.py`.
+
+**V1, the browser check:** `scripts/render_check.py` loads each homepage in headless Chrome twice:
+once under the browser's own name ("HeadlessChrome") and once as plain "Chrome", a disclosed
+control. Where the two differ, the site decides by the declared name. It needs Playwright and
+refuses to run without `--operator-authorized`. Offline tests: `tests/test_render_check.py`.
+
+```
+uv run --with playwright python scripts/render_check.py --targets-file pilot.json \
+    --run-dir data/ai-readability/runs/<YYYY-MM-DD>-<vantage> --operator-authorized
+```
+
+```
+python3 scripts/probe_bot_access.py --tier core --targets-file pilot.json --dry-run
+python3 scripts/probe_bot_access.py --tier core --targets-file pilot.json --vantage office \
+    --machine office --on-exit "bash notify.sh"
+```
 
 First results (2026-08-28, 116 hosts with a complete identity matrix): about three quarters of
 NYC-area government hosts admit self-identifying AI agents at rates close to Googlebot, while
