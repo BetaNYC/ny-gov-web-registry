@@ -1,6 +1,19 @@
 name,field id,description,data type
-Initial URL,url,"URL to be scanned. Same meaning as GSA's `initial_url`; kept as `url` because the probe and render_check read that name",string
-Entity ID,entity_id,"Registry id of the New York body that owns the site (`id` in data/registry.json). Null for sites not yet in the registry. No GSA equivalent",string
-Agency,entity_name,"Name of the New York body that owns the site. Same role as GSA's `agency`",string
-Pool,pool,"Which group the site was tested with: nyc-registry, city, county, state-authority. No GSA equivalent",string
-Source List,lead,"Which public list the address came from: cisa (CISA .gov list), its-2023 (NYS ITS 55k6-h6qq), abo (NYS ABO 4vym-q77x). Absent for nyc-registry rows, which come from data/crawl_targets.json. Same role as GSA's `source_list_*` flags, as one value instead of one column per list",string
+Initial URL,initial_url,URL to be scanned (GSA). BetaNYC: always `https://` + host + `/`; pages listed by a source are in `ny_page_urls`,string
+Initial Base Domain,base_domain,"Base Domain of initial URL (GSA). BetaNYC: by the Public Suffix List snapshot in sources/2026-11-06/, so `.ny.us` hosts get one more label (`state.ny.us`)",string
+Initial Top Level Domain,top_level_domain,Top Level Domain of initial URL (GSA),string
+Branch,branch,Branch of Government of the Agency Owner of initial Base Domain (GSA). BetaNYC: not yet filled; no source states it reliably,string
+Agency,agency,"Agency Owner of initial Base Domain (GSA). BetaNYC: the owner of the host, from the first source that names one, in this order: registry, state agency listing, ABO, CISA, ITS 2023. Blank for shared hosts (several registry bodies) and for hosts named only page-by-page; see `ny_names`",string
+Bureau,bureau,Bureau Owner of initial Base Domain (GSA). BetaNYC: not yet filled,string
+Source List - Registry,source_list_registry,Whether the host was sourced from data/registry.json (this repo),boolean
+Source List - State agency listing,source_list_state_agency,Whether the host was sourced from a state agency listing (shared with BetaNYC privately; link private),boolean
+Source List - ABO,source_list_abo,"Whether the host was sourced from NYS Authorities Budget Office directory, data.ny.gov 4vym-q77x",boolean
+Source List - CISA .gov,source_list_cisa,"Whether the host was sourced from CISA .gov domain list, github.com/cisagov/dotgov-data",boolean
+Source List - ITS 2023,source_list_its_2023,"Whether the host was sourced from NYS ITS Locality Hierarchy with Websites, data.ny.gov 55k6-h6qq, last updated 2023-03-06",boolean
+NY - Initial Domain,ny_initial_domain,"The host as first listed, `www.` kept",string
+NY - Entity IDs,ny_entity_ids,Registry ids (data/registry.json) whose primary website is this host,list
+NY - Names,ny_names,Every owner name the sources give for this host or a page on it,list
+NY - Levels,ny_levels,"What kind of body each source says owns it: registry government_level, `state agency`, ABO type, CISA domain type, or ITS type",list
+NY - Counties,ny_counties,"County named by ITS 2023, when any",list
+NY - Page URLs,ny_page_urls,"Pages (not whole hosts) a source lists, e.g. a town page on its county's site",list
+NY - Source Count,ny_source_count,How many of the five sources list this host,integer
