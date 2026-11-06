@@ -1,5 +1,6 @@
 """Offline tests for probe_bot_access — no network. Covers the three places this script can be
 silently wrong: the inverted circuit breaker, block-page-behind-200 detection, and robots grouping.
+The AI-readability mode (--tier core|full) is tested in test_ai_readability.py.
 """
 
 import pathlib
@@ -49,21 +50,14 @@ def test_a_handful_of_429_refusers_across_a_big_corpus_does_not_stop_the_run():
     assert len(b.quarantined) == 6
 
 
-def test_systemic_429_does_stop_the_run():
-    """If a large SHARE of contacted hosts 429s, the problem is plausibly our egress."""
-    b = p.CircuitBreaker()
+def test_systemic_429_no_longer_stops_the_run():
+    """Policy change 2026-11-06 (Noel, plan.md §4.3a): pushback never stops the run. Even if
+    every host 429s, each is quarantined and the run carries on to the end."""
+    b = p.CircuitBreaker(monitor=p.NetworkMonitor(check=lambda: False, sleep=lambda s: None))
     for i in range(40):
         b.record(429, transport_error=False, host="h{}.example.gov".format(i))
-    assert b.tripped is True
-    assert "egress" in b.reason
-
-
-def test_429_trip_needs_both_floor_and_share():
-    """A small corpus where every host 429s still must not trip below the absolute floor."""
-    b = p.CircuitBreaker()
-    for i in range(p.GLOBAL_429_HOSTS_FLOOR - 1):
-        b.record(429, transport_error=False, host="h{}.example.gov".format(i))
-    assert b.tripped is False, "share is 100% but the floor is not met"
+    assert b.tripped is False
+    assert len(b.quarantined) == 40
 
 
 def test_repeated_429_from_one_host_never_trips_globally():
@@ -74,17 +68,45 @@ def test_repeated_429_from_one_host_never_trips_globally():
     assert len(b.quarantined) == 1
 
 
-def test_transport_failures_trip_only_when_consecutive():
-    b = p.CircuitBreaker()
-    for _ in range(7):
-        b.record(None, transport_error=True)
+def _monitor(ok):
+    calls = []
+
+    def check():
+        calls.append(1)
+        return ok
+    return p.NetworkMonitor(check=check, sleep=lambda s: None), calls
+
+
+def test_transport_failures_on_one_host_never_trip():
+    """A dead municipal site is quarantined, never evidence about us."""
+    m, calls = _monitor(ok=False)
+    b = p.CircuitBreaker(monitor=m)
+    for _ in range(50):
+        b.record(None, transport_error=True, host="dead.example.gov")
+    assert b.tripped is False and calls == []
+    assert b.is_quarantined("dead.example.gov")
+
+
+def test_transport_streak_across_hosts_trips_only_if_reachability_fails():
+    m, calls = _monitor(ok=False)
+    b = p.CircuitBreaker(monitor=m)
+    for i in range(p.NET_DOWN_STREAK - 1):
+        b.record(None, transport_error=True, host="h{}.example.gov".format(i))
     assert b.tripped is False
-    b.record(200, transport_error=False)      # a success resets the streak
-    for _ in range(7):
-        b.record(None, transport_error=True)
+    b.record(200, transport_error=False, host="ok.example.gov")       # a success resets
+    for i in range(p.NET_DOWN_STREAK):
+        b.record(None, transport_error=True, host="g{}.example.gov".format(i))
+    assert b.tripped is True and "network" in b.reason
+    assert len(calls) == 2, "checked twice before declaring our network down"
+
+
+def test_transport_streak_with_network_up_continues():
+    m, calls = _monitor(ok=True)
+    b = p.CircuitBreaker(monitor=m)
+    for i in range(p.NET_DOWN_STREAK * 3):
+        b.record(None, transport_error=True, host="h{}.example.gov".format(i))
     assert b.tripped is False
-    b.record(None, transport_error=True)
-    assert b.tripped is True
+    assert len(calls) == 3, "one check per full streak; each passing check resets the streak"
 
 
 # ----------------------------------------------------------------- block page behind a 200

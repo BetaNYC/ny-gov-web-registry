@@ -46,6 +46,9 @@ Every fact traces to a named source; identifiers are only ever filled when verif
 | **NYC.gov Agency Directory** | Validation — the directory turns out to be powered by the same canonical dataset | [nyc.gov](https://www.nyc.gov/main/your-government/agency-directory) |
 | **ABO Directory of Public Authorities** (`4vym-q77x`) | 600+ state and local public authorities (future expansion) | [data.ny.gov](https://data.ny.gov/Transparency/Directory-of-Public-Authorities/4vym-q77x) |
 | **NY.gov Agency Listing** | State executive agencies (future expansion) | [ny.gov/agencies](https://www.ny.gov/agencies) |
+| **A state agency listing** | 307 New York State websites and the agency that runs each — the state agency sites under `ny.gov` that no public list carries. Used only for the [website list](data/ai-readability/websites.csv) (domain, URL and agency kept; nothing else) | Private (shared with BetaNYC; no public link) |
+| **CISA .gov domain list** | Every registered `.gov` domain; the 1,451 New York rows seed the [website list](data/ai-readability/websites.csv) | [github.com/cisagov/dotgov-data](https://github.com/cisagov/dotgov-data) |
+| **NYS ITS Locality Hierarchy with Websites** (`55k6-h6qq`) | Websites of counties, cities, towns and villages (last updated 2023, partly stale) | [data.ny.gov](https://data.ny.gov/d/55k6-h6qq) |
 | **Wikidata** | QIDs linking entities into linked open data (attached only via verified domain matches, with a place-vs-organization guard) | [wikidata.org](https://www.wikidata.org) |
 | **IRS EIN / tax-exempt data** | Identifier scheme reserved for `.org` public benefit corporations | [IRS Tax Exempt Organization Search](https://apps.irs.gov/app/eos/) |
 | **NYC Boundaries Map** | The district-layer vocabulary that `areas[]` points into | [boundaries.beta.nyc](https://boundaries.beta.nyc) · [repo](https://github.com/BetaNYC/nyc-boundaries) |
@@ -61,6 +64,8 @@ Every fact traces to a named source; identifiers are only ever filled when verif
 | [CityOfNewYork/CROL-Overview](https://github.com/CityOfNewYork/CROL-Overview) · [CROL-Schema](https://github.com/CityOfNewYork/CROL-Schema) | The 2014–2016 City Record Online workgroup — the civic-data-standards lineage (Popolo, schema.org) this schema rejoins |
 | BetaNYC City Record archive | Machine-readable archive of NYC's official journal (1873–present, in preparation for public release) — the registry's `other_names` and `relations` exist partly so a century and a half of agency name variants can resolve |
 | NYC/NYS Wayback harvester | Forthcoming — reads this registry's `web_properties` as its crawl set |
+| [GSA/site-scanning-documentation](https://github.com/GSA/site-scanning-documentation) · [Site Scanning data guide](https://digital.gov/guides/site-scanning/data) | The federal government's daily scan of its own websites. Our AI-readability output (`sites.csv`) and site list (`websites.csv`) follow its column layout and data dictionaries, so the two can be read side by side |
+| [cisagov/dotgov-data](https://github.com/cisagov/dotgov-data) | CISA's list of every registered `.gov` domain — the source of the New York `.gov` domains in [`websites.csv`](data/ai-readability/websites.csv) |
 
 ## Using the data
 
@@ -71,7 +76,7 @@ data/registry.json        # 317 entities
 data/descriptions.json    # per-entity self-descriptions + coverage records
 ```
 
-Rebuilding from sources requires Python 3.11+ and [uv](https://docs.astral.sh/uv/): `uv sync`, place the documented exports in `data/cache/` (**no script fetches the network on its own** — sources are operator-gated by design; see [`docs/sources.md`](docs/sources.md)), run the `sync_*` scripts, then `python scripts/build_registry.py`. The offline test suite (`pytest`, 194 tests) never touches the network.
+Rebuilding from sources requires Python 3.11+ and [uv](https://docs.astral.sh/uv/): `uv sync`, place the documented exports in `data/cache/` (**no script fetches the network on its own** — sources are operator-gated by design; see [`docs/sources.md`](docs/sources.md)), run the `sync_*` scripts, then `python scripts/build_registry.py`. The offline test suite (`pytest`, 243 tests) never touches the network.
 
 Two artifacts invite human eyes: the [description review queue](docs/description-review-queue.md) (agencies whose about page needs a human to find) and the [site anomalies log](docs/site-anomalies.md) (defects we noticed on live government sites — including three Lorem-ipsum placeholder pages).
 
@@ -99,7 +104,49 @@ python3 scripts/probe_bot_access.py --vantage office --tier a --only-hosts @host
 ```
 
 Runs are checkpointed per request, so an interruption loses nothing and the same command resumes.
-Offline tests: `python3 tests/test_probe_bot_access.py` (23 assertions, no network).
+Offline tests: `python3 tests/test_probe_bot_access.py` (24 assertions, no network).
+
+**AI-readability mode** (`--tier core|full`) runs the [test catalog](docs/ai-readability/tests.md)
+from the same script: robots/llms/sitemap, the homepage once per identity, a 404 probe and an
+`http://` check per host (11 requests in core), with the content tests parsed from the one
+research-UA homepage by `scripts/ai_readability.py`. A host that pushes back is quarantined and
+listed for review; only our own breakage stops a run, and `status.json` says `done` or `broke`.
+Results go to `data/ai-readability/runs/<date>-<vantage>/`, which is git-ignored (results stay
+private until the study concludes). Offline tests: `tests/test_ai_readability.py`.
+
+**V1, the browser check:** `scripts/render_check.py` loads each homepage in headless Chrome twice:
+once under the browser's own name ("HeadlessChrome") and once as plain "Chrome", a disclosed
+control. Where the two differ, the site decides by the declared name. It needs Playwright and
+refuses to run without `--operator-authorized`. Offline tests: `tests/test_render_check.py`.
+
+**The website list:** [`data/ai-readability/websites.csv`](data/ai-readability/websites.csv) (and
+`.json`) is every New York government website we know of, one row per host, built by
+`scripts/ai_readability_websites.py` from the registry (so the two stay in step) plus the
+statewide lists in the table above. It uses the layout of GSA's Federal Website Index, with a
+`source_list_*` column per source; fields are in
+[`target-list-dictionary.csv`](data/ai-readability/target-list-dictionary.csv). A row means a
+public list names the host, not that it is a registry entity. Test results stay private.
+
+**Federal layout:** `scripts/ai_readability_export.py` turns a run folder into `sites.csv` and
+`sites.json`, one row per website, in the layout of GSA's
+[Site Scanning](https://digital.gov/guides/site-scanning/data) data: every GSA column in GSA's order
+(filled only where our test measures the same thing, blank otherwise), then our `ny_` and
+`ai_<test>_` columns. Every column is defined in
+[`data/ai-readability/data-dictionary.csv`](data/ai-readability/data-dictionary.csv), in GSA's
+dictionary format and generated by the script (`--write-dictionary`). GSA's own
+dictionaries are copied in `data/ai-readability/gsa/`. Offline tests:
+`tests/test_ai_readability_export.py`, `tests/test_ai_readability_websites.py`.
+
+```
+uv run --with playwright python scripts/render_check.py --targets-file pilot.json \
+    --run-dir data/ai-readability/runs/<YYYY-MM-DD>-<vantage> --operator-authorized
+```
+
+```
+python3 scripts/probe_bot_access.py --tier core --targets-file pilot.json --dry-run
+python3 scripts/probe_bot_access.py --tier core --targets-file pilot.json --vantage office \
+    --machine office --on-exit "bash notify.sh"
+```
 
 First results (2026-08-28, 116 hosts with a complete identity matrix): about three quarters of
 NYC-area government hosts admit self-identifying AI agents at rates close to Googlebot, while

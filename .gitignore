@@ -15,3 +15,11 @@ data/cache/
 
 # Transient build report
 data/build_proposals.json
+
+# AI-readability results stay private until the study concludes (Noel, 2026-11-06;
+# docs/ai-readability/plan.md §5). portals.json and the docs ARE committed.
+data/ai-readability/runs/
+data/ai-readability/latest.json
+
+# Local holding area for files set aside instead of deleted
+.trash/
