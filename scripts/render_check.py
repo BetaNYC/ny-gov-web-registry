@@ -79,7 +79,9 @@ def verdict(rec: dict) -> str:
 
 
 def load_targets(path: str) -> list:
-    return json.loads(pathlib.Path(path).read_text())
+    """Same inputs as probe_bot_access.py --targets-file, including data/ai-readability/websites.json."""
+    import probe_bot_access
+    return probe_bot_access.load_targets(path)
 
 
 def run(targets: list, out_path: pathlib.Path) -> int:
