@@ -1034,14 +1034,26 @@ def plan_targets(targets: list) -> list:
     return jobs
 
 
+def website_row_as_target(row: dict) -> dict:
+    """A row of data/ai-readability/websites.json (GSA target-list layout) as a probe target.
+    entity_id is set only when exactly one registry body lists the host."""
+    ids = row.get("ny_entity_ids") or []
+    names = row.get("ny_names") or []
+    return {"entity_id": ids[0] if len(ids) == 1 else None,
+            "entity_name": row.get("agency") or (names[0] if names else None),
+            "url": row.get("initial_url")}
+
+
 def load_targets(targets_file) -> list:
     """--targets-file: a JSON list of {entity_id, entity_name, url} (entity_id may be null), or
-    {"targets": [...]}. Without it: data/crawl_targets.json, mapped to the same shape."""
+    {"targets": [...]}, or data/ai-readability/websites.json (rows with `initial_url`). Without it: data/crawl_targets.json, mapped to the same shape."""
     if targets_file:
         raw = json.loads(pathlib.Path(targets_file).read_text())
         items = raw.get("targets", raw) if isinstance(raw, dict) else raw
         out = []
         for t in items:
+            if isinstance(t, dict) and "initial_url" in t:      # data/ai-readability/websites.json
+                t = website_row_as_target(t)
             if not isinstance(t, dict) or not t.get("url"):
                 raise ValueError("every target needs a 'url': {!r}".format(t))
             out.append({"entity_id": t.get("entity_id"), "entity_name": t.get("entity_name"),

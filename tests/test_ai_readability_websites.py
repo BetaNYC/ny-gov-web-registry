@@ -81,3 +81,29 @@ def test_columns_follow_gsa_target_list_and_dictionary_is_current(tmp_path):
     out = ws.write_dictionary(tmp_path / "d.csv")
     assert out.read_text() == (AIR / "target-list-dictionary.csv").read_text()
     assert [r["field id"] for r in csv.DictReader(out.open())] == ws.COLUMNS
+
+
+def test_websites_json_is_a_valid_probe_and_render_target_list():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import probe_bot_access as p
+    import render_check as rc
+    targets = p.load_targets(str(AIR / "websites.json"))
+    pub = json.loads((AIR / "websites.json").read_text())
+    assert len(targets) == len(pub) and all(t["url"].startswith("https://") for t in targets)
+    assert rc.load_targets(str(AIR / "websites.json")) == targets
+    one = p.website_row_as_target({"initial_url": "https://x.gov/", "agency": None,
+                                   "ny_entity_ids": ["a", "b"], "ny_names": ["A", "B"]})
+    assert one == {"entity_id": None, "entity_name": "A", "url": "https://x.gov/"}
+
+
+def test_render_check_loads_targets_in_isolated_mode(tmp_path):
+    """V1 is run as `python -I scripts/render_check.py`, which drops scripts/ from sys.path."""
+    import subprocess
+    code = ("import runpy; "
+            "m = runpy.run_path(%r); "
+            "print(len(m['load_targets'](%r)))") % (str(ROOT / "scripts" / "render_check.py"),
+                                                      str(AIR / "websites.json"))
+    out = subprocess.run([sys.executable, "-I", "-c", code], capture_output=True, text=True,
+                         cwd=tmp_path)
+    assert out.returncode == 0, out.stderr
+    assert int(out.stdout.strip()) == len(json.loads((AIR / "websites.json").read_text()))
