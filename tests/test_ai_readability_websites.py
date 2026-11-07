@@ -94,3 +94,16 @@ def test_websites_json_is_a_valid_probe_and_render_target_list():
     one = p.website_row_as_target({"initial_url": "https://x.gov/", "agency": None,
                                    "ny_entity_ids": ["a", "b"], "ny_names": ["A", "B"]})
     assert one == {"entity_id": None, "entity_name": "A", "url": "https://x.gov/"}
+
+
+def test_render_check_loads_targets_in_isolated_mode(tmp_path):
+    """V1 is run as `python -I scripts/render_check.py`, which drops scripts/ from sys.path."""
+    import subprocess
+    code = ("import runpy; "
+            "m = runpy.run_path(%r); "
+            "print(len(m['load_targets'](%r)))") % (str(ROOT / "scripts" / "render_check.py"),
+                                                      str(AIR / "websites.json"))
+    out = subprocess.run([sys.executable, "-I", "-c", code], capture_output=True, text=True,
+                         cwd=tmp_path)
+    assert out.returncode == 0, out.stderr
+    assert int(out.stdout.strip()) == len(json.loads((AIR / "websites.json").read_text()))
