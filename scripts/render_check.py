@@ -79,7 +79,12 @@ def verdict(rec: dict) -> str:
 
 
 def load_targets(path: str) -> list:
-    return json.loads(pathlib.Path(path).read_text())
+    """Same inputs as probe_bot_access.py --targets-file, including data/ai-readability/websites.json."""
+    here = str(pathlib.Path(__file__).resolve().parent)
+    if here not in sys.path:  # `python -I` leaves the script's own folder off sys.path
+        sys.path.insert(0, here)
+    import probe_bot_access
+    return probe_bot_access.load_targets(path)
 
 
 def run(targets: list, out_path: pathlib.Path) -> int:
