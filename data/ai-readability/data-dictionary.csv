@@ -166,3 +166,14 @@ AI - Abhi-12 Score,ai_abhi12_score,Score on Abhi Nemani's 12-row scorecard,"Pass
 AI - BetaNYC Score,ai_betanyc_score,The same score over only the rows we could measure,"Blocked rows are left out, not counted as fail. Read with `ai_betanyc_measured_rows`.",(score),Number,No
 AI - BetaNYC Measured Rows,ai_betanyc_measured_rows,How many of the 12 rows could be measured,,(score),Number,No
 AI - Review Notes,ai_review_count,Notes this site left on the run's review list,"Pushback, errors and oddities to look at by hand.",(run),Number,No
+AI - Reach Checked,ai_reach_checked,Whether reach_check.py looked at this site,"Only sites the run could not read (W4 na, blocked or fail) are checked; blank reach columns on other sites mean not checked.",reach,Yes or no,No
+AI - Reach Diagnosis,ai_reach_diagnosis,Why the site could not be read,"One of: `dns_missing` The name does not resolve; neither does the www or bare variant.; `dns_alt_host_only` The name does not resolve, but the www or bare variant does.; `no_server` The name resolves, but nothing answers on port 443 or 80.; `http_only` Nothing answers on 443; plain http on 80 answers.; `bad_certificate_http_ok` The certificate fails to verify; plain http answers.; `bad_certificate` The certificate fails to verify; plain http does not answer.; `tls_fails_http_ok` The TLS handshake fails; plain http answers.; `tls_fails` The TLS handshake fails; plain http does not answer.; `refuses` HTTPS answers with 401, 403, 429 or 503.; `answers_now` HTTPS answers with a 2xx or 3xx status now.; `error_status` HTTPS answers with another 4xx or 5xx status.; `https_error` TLS verified, but the HTTPS request itself failed.; `unclear` None of the above.",reach,Text,No
+AI - Reach DNS Resolves,ai_reach_dns_resolves,Whether the site's host name resolves,,reach,Yes or no,No
+AI - Reach Alternate Host,ai_reach_alt_host,The www or bare variant that resolves instead,Set only when the listed name does not resolve.,reach,Text,No
+AI - Reach TLS,ai_reach_tls,Whether the HTTPS certificate verified,"`ok`, `bad_cert` or `error` (handshake failed). Blank if nothing answered on 443.",reach,Text,No
+AI - Reach TLS Detail,ai_reach_tls_detail,Why the certificate or handshake failed,For example `certificate has expired` or `Hostname mismatch`.,reach,Text,No
+AI - Reach HTTPS Status,ai_reach_https_status,Status of GET / over verified HTTPS,Redirects not followed.,reach,Number,No
+AI - Reach HTTP Status,ai_reach_http_status,Status of GET / over plain http,Redirects not followed. A 301 to https is normal.,reach,Number,No
+AI - Reach Checked At,ai_reach_checked_at,When reach_check.py ran for this site,UTC.,reach,Date and time,No
+AI - Retest Run,ai_retest_run_id,The later run that probed this site again,Blank if the site was not retested.,(run),Text,No
+AI - Retest W4 Verdict,ai_retest_w4_verdict,W4 verdict in the retest run,Compare with `ai_w4_verdict` to tell a passing glitch from a lasting failure.,W4,Text,No

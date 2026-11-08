@@ -92,3 +92,17 @@ def test_csv_conventions(tmp_path):
     ex.write_outputs([{"name": "x", "live": False}], tmp_path, ["name", "live"])
     assert (tmp_path / "sites.csv").read_text().splitlines() == ["name,live", "x,FALSE"]
     assert json.loads((tmp_path / "sites.json").read_text()) == [{"name": "x", "live": False}]
+
+
+def test_reach_and_retest_columns():
+    t = [{"url": "https://down.example.gov/", "entity_id": None, "entity_name": "D", "pool": "city"},
+         {"url": "https://www.example.gov/", "entity_id": "ex", "entity_name": "E", "pool": "county"}]
+    reach = [{"test": "reach", "url": t[0]["url"], "host": "down.example.gov", "ts": "2026-11-08T13:00:00+00:00",
+              "dns_resolves": True, "tcp443": True, "tcp80": True, "tls": "bad_cert",
+              "tls_detail": "certificate has expired", "http_status": 200, "diagnosis": "bad_certificate_http_ok"}]
+    retest = [dict(r, run_id="retest") for r in _rows("down.example.gov")]
+    rows = ex.build_rows(t, _rows(), [], [], PSL, reach_rows=reach, retest_results=retest)
+    assert rows[0]["ai_reach_checked"] is True and rows[0]["ai_reach_diagnosis"] == "bad_certificate_http_ok"
+    assert rows[0]["ai_reach_tls"] == "bad_cert" and rows[0]["ai_reach_http_status"] == 200
+    assert rows[0]["ai_retest_run_id"] == "retest" and rows[0]["ai_retest_w4_verdict"] == "pass"
+    assert rows[1]["ai_reach_checked"] is None and rows[1]["ai_retest_w4_verdict"] is None

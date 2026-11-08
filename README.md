@@ -120,6 +120,14 @@ once under the browser's own name ("HeadlessChrome") and once as plain "Chrome",
 control. Where the two differ, the site decides by the declared name. It needs Playwright and
 refuses to run without `--operator-authorized`. Offline tests: `tests/test_render_check.py`.
 
+**Why a site could not be read:** `scripts/reach_check.py` takes the sites a run could not read
+(W4 `na`, `blocked` or `fail`) and checks each layer in order: does the name resolve (or its `www`
+/ bare variant), does anything answer on 443 and 80, does the certificate verify, and what GET `/`
+returns over HTTPS and plain http. Each site gets one diagnosis (`dns_missing`,
+`bad_certificate_http_ok`, `refuses`, `answers_now`, ...). It writes `reach.jsonl` into the run
+folder, and the export turns it into the `ai_reach_*` columns. A later run over the same failures
+(`--retest-run-dir`) fills `ai_retest_*`. Offline tests: `tests/test_reach_check.py`.
+
 **The website list:** [`data/ai-readability/websites.csv`](data/ai-readability/websites.csv) (and
 `.json`) is every New York government website we know of, one row per host, built by
 `scripts/ai_readability_websites.py` from the registry (so the two stay in step) plus the
