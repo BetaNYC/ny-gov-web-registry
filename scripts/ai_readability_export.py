@@ -111,8 +111,10 @@ def bare_mime(ctype: str | None) -> str | None:
 class Host:
     """Everything known about one host: its pool row, test rows, V1 rows, review rows."""
 
-    def __init__(self, target, rows, v1, review, psl, tenants=()):
+    def __init__(self, target, rows, v1, review, psl, tenants=(), reach=None, retest=()):
         self.t, self.rows, self.v1, self.review, self.psl = target, rows, v1, review, psl
+        self.reach = reach or {}             # this host's reach_check.py record, if it was checked
+        self.retest = {(r["test"], r.get("identity")): r for r in retest}   # a later run's rows
         self.tenants = sorted(tenants)
         self.by = {}
         for r in rows:
@@ -367,6 +369,14 @@ GSA_FILLED = {
 T, N, B, L, D = "Text", "Number", "Yes or no", "A list of values", "Date and time"
 
 
+def _reach_diagnoses() -> dict:
+    here = str(pathlib.Path(__file__).resolve().parent)
+    if here not in sys.path:  # `python -I` leaves the script's own folder off sys.path
+        sys.path.insert(0, here)
+    import reach_check
+    return reach_check.DIAGNOSES
+
+
 def _ours():
     f = [
         ("ny_entity_id", "NY - Entity ID", "The registry id of the body that owns the site",
@@ -496,6 +506,34 @@ def _ours():
          "", "(score)", N, lambda h: _scores(h)[1]["measured_rows"]),
         ("ai_review_count", "AI - Review Notes", "Notes this site left on the run's review list",
          "Pushback, errors and oddities to look at by hand.", "(run)", N, lambda h: len(h.review)),
+        ("ai_reach_checked", "AI - Reach Checked", "Whether reach_check.py looked at this site",
+         "Only sites the run could not read (W4 na, blocked or fail) are checked; blank reach columns on "
+         "other sites mean not checked.", "reach", B, lambda h: bool(h.reach) or None),
+        ("ai_reach_diagnosis", "AI - Reach Diagnosis", "Why the site could not be read",
+         "One of: " + "; ".join("`{}` {}".format(k, v) for k, v in _reach_diagnoses().items()),
+         "reach", T, lambda h: h.reach.get("diagnosis")),
+        ("ai_reach_dns_resolves", "AI - Reach DNS Resolves", "Whether the site's host name resolves", "",
+         "reach", B, lambda h: h.reach.get("dns_resolves")),
+        ("ai_reach_alt_host", "AI - Reach Alternate Host", "The www or bare variant that resolves instead",
+         "Set only when the listed name does not resolve.", "reach", T, lambda h: h.reach.get("alt_host")),
+        ("ai_reach_tls", "AI - Reach TLS", "Whether the HTTPS certificate verified",
+         "`ok`, `bad_cert` or `error` (handshake failed). Blank if nothing answered on 443.", "reach", T,
+         lambda h: h.reach.get("tls")),
+        ("ai_reach_tls_detail", "AI - Reach TLS Detail", "Why the certificate or handshake failed",
+         "For example `certificate has expired` or `Hostname mismatch`.", "reach", T,
+         lambda h: h.reach.get("tls_detail")),
+        ("ai_reach_https_status", "AI - Reach HTTPS Status", "Status of GET / over verified HTTPS",
+         "Redirects not followed.", "reach", N, lambda h: h.reach.get("https_status")),
+        ("ai_reach_http_status", "AI - Reach HTTP Status", "Status of GET / over plain http",
+         "Redirects not followed. A 301 to https is normal.", "reach", N, lambda h: h.reach.get("http_status")),
+        ("ai_reach_checked_at", "AI - Reach Checked At", "When reach_check.py ran for this site", "UTC.",
+         "reach", D, lambda h: h.reach.get("ts")),
+        ("ai_retest_run_id", "AI - Retest Run", "The later run that probed this site again",
+         "Blank if the site was not retested.", "(run)", T,
+         lambda h: next(iter(h.retest.values()))["run_id"] if h.retest else None),
+        ("ai_retest_w4_verdict", "AI - Retest W4 Verdict", "W4 verdict in the retest run",
+         "Compare with `ai_w4_verdict` to tell a passing glitch from a lasting failure.", "W4", T,
+         lambda h: (h.retest.get(("W4", RESEARCH)) or {}).get("verdict")),
     ]
     return f
 
@@ -541,10 +579,15 @@ def load_targets(path: str) -> list:
     return probe_bot_access.load_targets(path)
 
 
-def build_rows(targets, results, v1_rows, review_rows, psl, gsa=None, tenants=None) -> list:
+def build_rows(targets, results, v1_rows, review_rows, psl, gsa=None, tenants=None, reach_rows=(),
+               retest_results=()) -> list:
     gsa = gsa or gsa_dictionary()
     tenants = tenants or {}
     by_host, rev_by_host, v1_by_url = {}, {}, {}
+    reach_by_url = {r["url"]: r for r in reach_rows}
+    retest_by_host = {}
+    for r in retest_results:
+        retest_by_host.setdefault(r["host"], []).append(r)
     for r in results:
         by_host.setdefault(r["host"], []).append(r)
     for r in review_rows:
@@ -555,7 +598,7 @@ def build_rows(targets, results, v1_rows, review_rows, psl, gsa=None, tenants=No
     for t in targets:
         host = urllib.parse.urlparse(t["url"]).hostname
         h = Host(t, by_host.get(host, []), v1_by_url.get(t["url"], {}), rev_by_host.get(host, []), psl,
-                 tenants.get(host, ()))
+                 tenants.get(host, ()), reach_by_url.get(t["url"]), retest_by_host.get(host, ()))
         row = {}
         for g in gsa:
             fid = g["field id"]
@@ -630,6 +673,7 @@ def main(argv=None) -> int:
     ap.add_argument("--targets-file", help="the target list the run used")
     ap.add_argument("--write-dictionary", action="store_true",
                     help="write data/ai-readability/data-dictionary.csv and exit")
+    ap.add_argument("--retest-run-dir", help="a later run over this run's failures; fills ai_retest_*")
     a = ap.parse_args(argv)
     if a.write_dictionary:
         print("wrote", write_dictionary())
@@ -640,7 +684,10 @@ def main(argv=None) -> int:
     targets = load_targets(a.targets_file)
     gsa = gsa_dictionary()
     rows = build_rows(targets, _jsonl(run_dir / "results.jsonl"), _jsonl(run_dir / "v1-headless.jsonl"),
-                      _jsonl(run_dir / "review.jsonl"), load_psl(), gsa, registry_tenants())
+                      _jsonl(run_dir / "review.jsonl"), load_psl(), gsa, registry_tenants(),
+                      reach_rows=_jsonl(run_dir / "reach.jsonl"),
+                      retest_results=_jsonl(pathlib.Path(a.retest_run_dir) / "results.jsonl")
+                      if a.retest_run_dir else ())
     write_outputs(rows, run_dir, columns(gsa))
     print("wrote {} rows x {} columns to {}/sites.csv and sites.json".format(
         len(rows), len(columns(gsa)), run_dir))

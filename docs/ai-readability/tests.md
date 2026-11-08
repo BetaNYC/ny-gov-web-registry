@@ -167,6 +167,14 @@ tier; in core, F1 alone decides and the row is marked "Partial evidence").
 | **V2** | Vantage parity | — | the same core tier from office **and** residential connections | reported: per identity, same admit verdict? | both rows | IP-reputation differences are the point, not an error | doubles W4 | yes (prior runs used both) |
 | **V3** | Run-to-run drift | — | diff this run's results against the previous run of the **same catalog version** | reported: tests that flipped | flip list | transient outages (a flip must repeat next run before it is reported as change) | 0 | **new** |
 
+**Reach diagnosis (not a scored test).** For every site a run could not read, `scripts/reach_check.py`
+records why, one layer at a time: DNS (and the `www` / bare variant), TCP 443 and 80, certificate
+verification, and GET `/` over HTTPS and plain http (at most 2 requests, research UA, no redirects
+followed, no retries). The result is one diagnosis per site, defined in `reach_check.DIAGNOSES` and
+in the `ai_reach_diagnosis` row of the data dictionary. It separates dead or misspelled list entries
+and broken certificates from real refusals, so a failure is never read as "blocks AI" by default.
+Added 2026-11-08.
+
 ### P — While we are there (adopted 2026-11-06, all four, per Noel)
 
 Noel asked what else to record, since every NY government site gets visited once. These read the
