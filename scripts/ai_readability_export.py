@@ -532,6 +532,15 @@ def registry_tenants(path=REGISTRY) -> dict:
     return out
 
 
+def load_targets(path: str) -> list:
+    """Same inputs as probe_bot_access.py --targets-file, including data/ai-readability/websites.json."""
+    here = str(pathlib.Path(__file__).resolve().parent)
+    if here not in sys.path:  # `python -I` leaves the script's own folder off sys.path
+        sys.path.insert(0, here)
+    import probe_bot_access
+    return probe_bot_access.load_targets(path)
+
+
 def build_rows(targets, results, v1_rows, review_rows, psl, gsa=None, tenants=None) -> list:
     gsa = gsa or gsa_dictionary()
     tenants = tenants or {}
@@ -628,7 +637,7 @@ def main(argv=None) -> int:
     if not (a.run_dir and a.targets_file):
         ap.error("--run-dir and --targets-file are required (or use --write-dictionary)")
     run_dir = pathlib.Path(a.run_dir)
-    targets = json.loads(pathlib.Path(a.targets_file).read_text(encoding="utf-8"))
+    targets = load_targets(a.targets_file)
     gsa = gsa_dictionary()
     rows = build_rows(targets, _jsonl(run_dir / "results.jsonl"), _jsonl(run_dir / "v1-headless.jsonl"),
                       _jsonl(run_dir / "review.jsonl"), load_psl(), gsa, registry_tenants())

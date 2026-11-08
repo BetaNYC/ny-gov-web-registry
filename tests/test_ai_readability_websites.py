@@ -107,3 +107,10 @@ def test_render_check_loads_targets_in_isolated_mode(tmp_path):
                          cwd=tmp_path)
     assert out.returncode == 0, out.stderr
     assert int(out.stdout.strip()) == len(json.loads((AIR / "websites.json").read_text()))
+
+
+def test_export_reads_websites_json_as_targets():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ai_readability_export as ex
+    import probe_bot_access as p
+    assert ex.load_targets(str(AIR / "websites.json")) == p.load_targets(str(AIR / "websites.json"))
