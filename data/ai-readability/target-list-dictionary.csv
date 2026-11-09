@@ -17,3 +17,5 @@ NY - Levels,ny_levels,"What kind of body each source says owns it: registry gove
 NY - Counties,ny_counties,"County named by ITS 2023, when any",list
 NY - Page URLs,ny_page_urls,"Pages (not whole hosts) a source lists, e.g. a town page on its county's site",list
 NY - Source Count,ny_source_count,How many of the five sources list this host,integer
+NY - Host Issue,ny_host_issue,"Set when a hand check (website-corrections.csv) found the host is no longer the body's website: `lookalike` (a third-party site), `for_sale`, or `redirects_offsite`. Probe runs skip these hosts. Blank otherwise",string
+NY - Superseded By,ny_superseded_by,The body's real host when `ny_host_issue` is set (also a row in this list),string

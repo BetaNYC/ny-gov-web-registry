@@ -141,6 +141,10 @@ statewide lists in the table above. It uses the layout of GSA's Federal Website 
 `source_list_*` column per source; fields are in
 [`target-list-dictionary.csv`](data/ai-readability/target-list-dictionary.csv). A row means a
 public list names the host, not that it is a registry entity. Test results stay private.
+A host a list still names but that is no longer the body's site (a lookalike, a domain for
+sale, a redirect elsewhere) is recorded by hand in
+[`website-corrections.csv`](data/ai-readability/website-corrections.csv). Its row stays, with
+`ny_host_issue` and `ny_superseded_by` set, and probe runs skip it.
 
 **Federal layout:** `scripts/ai_readability_export.py` turns a run folder into `sites.csv` and
 `sites.json`, one row per website, in the layout of GSA's

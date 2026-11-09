@@ -18,6 +18,12 @@ SOURCES (all read from the repo; this script never fetches)
   cisa            CISA .gov list, NY rows only (`Security contact email` is never read)
   its_2023        NYS ITS Locality Hierarchy with Websites, data.ny.gov 55k6-h6qq (stale, 2023)
 
+CORRECTIONS (data/ai-readability/website-corrections.csv, checked by hand)
+  A host a source lists that is no longer the body's website: a lookalike site, a domain for
+  sale, or a redirect to an unrelated site. The source row is kept as the source states it; the
+  host gets `ny_host_issue` and `ny_superseded_by` (the body's real host, already in the list),
+  and probe_bot_access.py --targets-file skips it.
+
   One row per host (a leading `www.` is kept in `initial_url` but ignored for matching). When
   a source lists a page rather than a host (a town hosted on its county's site), the page goes
   in `ny_page_urls` and the host's row records every owner in `ny_names`.
@@ -57,7 +63,9 @@ PATHS = {
     "abo": SRC / "abo-directory-4vym-q77x.json",
     "cisa": SRC / "cisa-dotgov-current-full.csv",
     "its_2023": SRC / "its-locality-websites-55k6-h6qq.json",
+    "corrections": AIR / "website-corrections.csv",
 }
+HOST_ISSUES = ("lookalike", "for_sale", "redirects_offsite")
 OUT_CSV, OUT_JSON = AIR / "websites.csv", AIR / "websites.json"
 OUT_DICT = AIR / "target-list-dictionary.csv"
 
@@ -162,6 +170,20 @@ def read_its(path):
                    "level": (x.get("type") or "?").lower(), "county": x.get("county")}
 
 
+def read_corrections(path) -> dict:
+    """{host key: row} from website-corrections.csv; {} when the file is absent."""
+    path = pathlib.Path(path) if path else None
+    if not path or not path.exists():
+        return {}
+    out = {}
+    with open(path, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            if r["issue"] not in HOST_ISSUES:
+                raise ValueError("unknown issue {!r} for {}".format(r["issue"], r["host"]))
+            out[_key(r["host"].strip().lower())] = r
+    return out
+
+
 READERS = {"registry": read_registry, "state_agency": read_state_agency, "abo": read_abo,
            "cisa": read_cisa, "its_2023": read_its}
 
@@ -170,7 +192,7 @@ READERS = {"registry": read_registry, "state_agency": read_state_agency, "abo": 
 COLUMNS = (["initial_url", "base_domain", "top_level_domain", "branch", "agency", "bureau"]
            + ["source_list_" + s for s, _, _ in SOURCES]
            + ["ny_initial_domain", "ny_entity_ids", "ny_names", "ny_levels", "ny_counties",
-              "ny_page_urls", "ny_source_count"])
+              "ny_page_urls", "ny_source_count", "ny_host_issue", "ny_superseded_by"])
 
 
 def build(paths=PATHS, psl=None) -> list:
@@ -194,6 +216,7 @@ def build(paths=PATHS, psl=None) -> list:
                 h["counties"].add(rec["county"])
             if rec.get("path"):
                 h["pages"].add("https://{}{}".format(rec["host"], rec["path"]))
+    fixes = read_corrections(paths.get("corrections"))
     rows = []
     for k in sorted(hosts):
         h = hosts[k]
@@ -206,7 +229,9 @@ def build(paths=PATHS, psl=None) -> list:
         row.update(ny_initial_domain=h["host"], ny_entity_ids=sorted(h["entity_ids"]) or None,
                    ny_names=h["names"] or None, ny_levels=sorted(h["levels"]) or None,
                    ny_counties=sorted(h["counties"]) or None, ny_page_urls=sorted(h["pages"]) or None,
-                   ny_source_count=len(h["by"]))
+                   ny_source_count=len(h["by"]),
+                   ny_host_issue=(fixes.get(k) or {}).get("issue") or None,
+                   ny_superseded_by=(fixes.get(k) or {}).get("superseded_by") or None)
         rows.append(row)
     return rows
 
@@ -281,6 +306,12 @@ def dictionary_rows() -> list:
          "description": "Pages (not whole hosts) a source lists, e.g. a town page on its county's site"},
         {"name": "NY - Source Count", "field id": "ny_source_count", "data type": "integer",
          "description": "How many of the five sources list this host"},
+        {"name": "NY - Host Issue", "field id": "ny_host_issue", "data type": "string",
+         "description": "Set when a hand check (website-corrections.csv) found the host is no longer "
+                        "the body's website: `lookalike` (a third-party site), `for_sale`, or "
+                        "`redirects_offsite`. Probe runs skip these hosts. Blank otherwise"},
+        {"name": "NY - Superseded By", "field id": "ny_superseded_by", "data type": "string",
+         "description": "The body's real host when `ny_host_issue` is set (also a row in this list)"},
     ]
     assert {r["field id"] for r in rows[:6]} <= set(gsa) | {"base_domain", "top_level_domain"}
     return rows

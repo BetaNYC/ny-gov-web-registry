@@ -1046,13 +1046,16 @@ def website_row_as_target(row: dict) -> dict:
 
 def load_targets(targets_file) -> list:
     """--targets-file: a JSON list of {entity_id, entity_name, url} (entity_id may be null), or
-    {"targets": [...]}, or data/ai-readability/websites.json (rows with `initial_url`). Without it: data/crawl_targets.json, mapped to the same shape."""
+    {"targets": [...]}, or data/ai-readability/websites.json (rows with `initial_url`; rows with
+    `ny_host_issue` are skipped). Without it: data/crawl_targets.json, mapped to the same shape."""
     if targets_file:
         raw = json.loads(pathlib.Path(targets_file).read_text())
         items = raw.get("targets", raw) if isinstance(raw, dict) else raw
         out = []
         for t in items:
             if isinstance(t, dict) and "initial_url" in t:      # data/ai-readability/websites.json
+                if t.get("ny_host_issue"):                       # not the body's site any more
+                    continue
                 t = website_row_as_target(t)
             if not isinstance(t, dict) or not t.get("url"):
                 raise ValueError("every target needs a 'url': {!r}".format(t))

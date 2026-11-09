@@ -89,7 +89,9 @@ def test_websites_json_is_a_valid_probe_and_render_target_list():
     import render_check as rc
     targets = p.load_targets(str(AIR / "websites.json"))
     pub = json.loads((AIR / "websites.json").read_text())
-    assert len(targets) == len(pub) and all(t["url"].startswith("https://") for t in targets)
+    live = [r for r in pub if not r.get("ny_host_issue")]          # flagged hosts are skipped
+    assert len(live) < len(pub)
+    assert len(targets) == len(live) and all(t["url"].startswith("https://") for t in targets)
     assert rc.load_targets(str(AIR / "websites.json")) == targets
     one = p.website_row_as_target({"initial_url": "https://x.gov/", "agency": None,
                                    "ny_entity_ids": ["a", "b"], "ny_names": ["A", "B"]})
@@ -106,7 +108,8 @@ def test_render_check_loads_targets_in_isolated_mode(tmp_path):
     out = subprocess.run([sys.executable, "-I", "-c", code], capture_output=True, text=True,
                          cwd=tmp_path)
     assert out.returncode == 0, out.stderr
-    assert int(out.stdout.strip()) == len(json.loads((AIR / "websites.json").read_text()))
+    assert int(out.stdout.strip()) == sum(
+        1 for r in json.loads((AIR / "websites.json").read_text()) if not r.get("ny_host_issue"))
 
 
 def test_export_reads_websites_json_as_targets():
@@ -114,3 +117,34 @@ def test_export_reads_websites_json_as_targets():
     import ai_readability_export as ex
     import probe_bot_access as p
     assert ex.load_targets(str(AIR / "websites.json")) == p.load_targets(str(AIR / "websites.json"))
+
+
+def test_corrections_flag_host_but_keep_row(tmp_path):
+    paths = _fixture(tmp_path)
+    (tmp_path / "fix.csv").write_text(
+        "host,issue,superseded_by,checked,evidence\n"
+        "www.co.albany.ny.us,lookalike,townofz.gov,2026-11-09,third-party site\n")
+    paths["corrections"] = tmp_path / "fix.csv"
+    rows = {r["ny_initial_domain"]: r for r in ws.build(paths, PSL)}
+    bad = rows["co.albany.ny.us"]                       # matched with or without www.
+    assert bad["ny_host_issue"] == "lookalike" and bad["ny_superseded_by"] == "townofz.gov"
+    assert bad["source_list_its_2023"]                  # the source row is kept as stated
+    assert rows["townofz.gov"]["ny_host_issue"] is None
+
+
+def test_corrections_reject_unknown_issue(tmp_path):
+    p = tmp_path / "fix.csv"
+    p.write_text("host,issue,superseded_by,checked,evidence\nx.gov,typo,,2026-11-09,\n")
+    try:
+        ws.read_corrections(p)
+    except ValueError as e:
+        assert "typo" in str(e)
+    else:
+        raise AssertionError("unknown issue accepted")
+
+
+def test_corrections_file_hosts_have_their_real_site_in_the_list():
+    rows = json.loads((AIR / "websites.json").read_text())
+    have = {_key(r["ny_initial_domain"]) for r in rows}
+    for k, r in ws.read_corrections(AIR / "website-corrections.csv").items():
+        assert k in have and _key(r["superseded_by"]) in have, k
