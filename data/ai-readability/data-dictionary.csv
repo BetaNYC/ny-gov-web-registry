@@ -177,3 +177,17 @@ AI - Reach HTTP Status,ai_reach_http_status,Status of GET / over plain http,Redi
 AI - Reach Checked At,ai_reach_checked_at,When reach_check.py ran for this site,UTC.,reach,Date and time,No
 AI - Retest Run,ai_retest_run_id,The later run that probed this site again,Blank if the site was not retested.,(run),Text,No
 AI - Retest W4 Verdict,ai_retest_w4_verdict,W4 verdict in the retest run,Compare with `ai_w4_verdict` to tell a passing glitch from a lasting failure.,W4,Text,No
+AI - Person Check,ai_person_checked,Whether a visible Chrome visited this site,"headed_check.py, for sites that turned every crawler away. Blank if not checked.",person,Yes or no,No
+AI - Person Verdict,ai_person_verdict,"Did a visible Chrome, under its own name, get the homepage?","pass = 200 and not a challenge page; blocked otherwise; na = no answer. A pass here with a blocked `ai_w4_verdict` means the site blocks bots, not people.",person,Text,No
+AI - Person Status,ai_person_status,HTTP status Chrome received for the homepage,,person,Number,No
+AI - Person Challenge,ai_person_challenge,Chrome was shown a challenge or block page,Automated Chrome is detectable (navigator.webdriver). A challenge here may still let a person by hand through.,person,Yes or no,No
+AI - Person Vantage,ai_person_vantage,The machine and connection used,,person,Text,No
+AI - Person Abhi-12 Score,ai_person_abhi12_score,The 12-row score on what Chrome received,"Same scoring as `ai_abhi12_score`. The agent-reachability row stays 0 here, because crawlers were turned away. Blank unless the person check passed.",(score),Number,No
+AI - Person W1 Verdict,ai_person_w1_verdict,W1 verdict on what Chrome received,Blank unless the person check passed.,W1,Text,No
+AI - Person M2 Verdict,ai_person_m2_verdict,M2 verdict on what Chrome received,Blank unless the person check passed.,M2,Text,No
+AI - Person M4 Verdict,ai_person_m4_verdict,M4 verdict on what Chrome received,Blank unless the person check passed.,M4,Text,No
+AI - Person R1 Verdict,ai_person_r1_verdict,R1 verdict on what Chrome received,Blank unless the person check passed.,R1,Text,No
+AI - Person I1 Verdict,ai_person_i1_verdict,I1 verdict on what Chrome received,Blank unless the person check passed.,I1,Text,No
+AI - Person I2 Verdict,ai_person_i2_verdict,I2 verdict on what Chrome received,Blank unless the person check passed.,I2,Text,No
+AI - Person I3 Verdict,ai_person_i3_verdict,I3 verdict on what Chrome received,Blank unless the person check passed.,I3,Text,No
+AI - Person D1 Verdict,ai_person_d1_verdict,D1 verdict on what Chrome received,Blank unless the person check passed.,D1,Text,No

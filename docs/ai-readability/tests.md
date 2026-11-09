@@ -175,6 +175,14 @@ in the `ai_reach_diagnosis` row of the data dictionary. It separates dead or mis
 and broken certificates from real refusals, so a failure is never read as "blocks AI" by default.
 Added 2026-11-08.
 
+**Person check (not a scored test).** For sites that refused every crawler, `scripts/headed_check.py`
+asks whether a person would get in. It opens the installed Google Chrome as a normal, visible window,
+under its own unchanged User-Agent, so no name is borrowed. It runs the probe's own core-tier request
+plan and scoring (`probe_bot_access.host_plan`) on what Chrome receives. Rows are labeled identity
+`headed_chrome`, never the research identity. It is not an evasion tool: no stealth plugins, no
+fingerprint patching, no CAPTCHA solving, and no retries. It needs `--operator-authorized` and a
+logged-in desktop session. Added 2026-11-08.
+
 ### P — While we are there (adopted 2026-11-06, all four, per Noel)
 
 Noel asked what else to record, since every NY government site gets visited once. These read the

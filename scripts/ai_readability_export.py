@@ -111,10 +111,13 @@ def bare_mime(ctype: str | None) -> str | None:
 class Host:
     """Everything known about one host: its pool row, test rows, V1 rows, review rows."""
 
-    def __init__(self, target, rows, v1, review, psl, tenants=(), reach=None, retest=()):
+    def __init__(self, target, rows, v1, review, psl, tenants=(), reach=None, retest=(), person=None,
+                 person_rows=()):
         self.t, self.rows, self.v1, self.review, self.psl = target, rows, v1, review, psl
         self.reach = reach or {}             # this host's reach_check.py record, if it was checked
         self.retest = {(r["test"], r.get("identity")): r for r in retest}   # a later run's rows
+        self.person = person or {}           # headed_check.py: one visible-Chrome visit, if made
+        self.person_rows = list(person_rows)  # the core tests scored on what that Chrome received
         self.tenants = sorted(tenants)
         self.by = {}
         for r in rows:
@@ -534,6 +537,31 @@ def _ours():
         ("ai_retest_w4_verdict", "AI - Retest W4 Verdict", "W4 verdict in the retest run",
          "Compare with `ai_w4_verdict` to tell a passing glitch from a lasting failure.", "W4", T,
          lambda h: (h.retest.get(("W4", RESEARCH)) or {}).get("verdict")),
+        ("ai_person_checked", "AI - Person Check", "Whether a visible Chrome visited this site",
+         "headed_check.py, for sites that turned every crawler away. Blank if not checked.", "person", B,
+         lambda h: True if h.person else None),
+        ("ai_person_verdict", "AI - Person Verdict", "Did a visible Chrome, under its own name, get the homepage?",
+         "pass = 200 and not a challenge page; blocked otherwise; na = no answer. A pass here with a "
+         "blocked `ai_w4_verdict` means the site blocks bots, not people.", "person", T,
+         lambda h: h.person.get("verdict")),
+        ("ai_person_status", "AI - Person Status", "HTTP status Chrome received for the homepage", "",
+         "person", N, lambda h: h.person.get("status")),
+        ("ai_person_challenge", "AI - Person Challenge", "Chrome was shown a challenge or block page",
+         "Automated Chrome is detectable (navigator.webdriver). A challenge here may still let a person by "
+         "hand through.", "person", B, lambda h: h.person.get("challenge") if h.person else None),
+        ("ai_person_vantage", "AI - Person Vantage", "The machine and connection used", "", "person", T,
+         lambda h: h.person.get("vantage")),
+        ("ai_person_abhi12_score", "AI - Person Abhi-12 Score", "The 12-row score on what Chrome received",
+         "Same scoring as `ai_abhi12_score`. The agent-reachability row stays 0 here, because crawlers "
+         "were turned away. Blank unless the person check passed.", "(score)", N,
+         lambda h: ar.abhi_score(ar.host_row_verdicts(h.person_rows))
+         if h.person.get("verdict") == "pass" and h.person_rows else None),
+    ] + [
+        ("ai_person_{}_verdict".format(t.lower()), "AI - Person {} Verdict".format(t),
+         "{} verdict on what Chrome received".format(t), "Blank unless the person check passed.", t, T,
+         (lambda t: lambda h: next((r["verdict"] for r in h.person_rows if r["test"] == t), None)
+          if h.person.get("verdict") == "pass" else None)(t))
+        for t in ("W1", "M2", "M4", "R1", "I1", "I2", "I3", "D1")
     ]
     return f
 
@@ -580,7 +608,7 @@ def load_targets(path: str) -> list:
 
 
 def build_rows(targets, results, v1_rows, review_rows, psl, gsa=None, tenants=None, reach_rows=(),
-               retest_results=()) -> list:
+               retest_results=(), person_rows=(), person_results=()) -> list:
     gsa = gsa or gsa_dictionary()
     tenants = tenants or {}
     by_host, rev_by_host, v1_by_url = {}, {}, {}
@@ -588,6 +616,10 @@ def build_rows(targets, results, v1_rows, review_rows, psl, gsa=None, tenants=No
     retest_by_host = {}
     for r in retest_results:
         retest_by_host.setdefault(r["host"], []).append(r)
+    person_by_url = {r["url"]: r for r in person_rows}
+    person_by_host = {}
+    for r in person_results:
+        person_by_host.setdefault(r["host"], []).append(r)
     for r in results:
         by_host.setdefault(r["host"], []).append(r)
     for r in review_rows:
@@ -598,7 +630,8 @@ def build_rows(targets, results, v1_rows, review_rows, psl, gsa=None, tenants=No
     for t in targets:
         host = urllib.parse.urlparse(t["url"]).hostname
         h = Host(t, by_host.get(host, []), v1_by_url.get(t["url"], {}), rev_by_host.get(host, []), psl,
-                 tenants.get(host, ()), reach_by_url.get(t["url"]), retest_by_host.get(host, ()))
+                 tenants.get(host, ()), reach_by_url.get(t["url"]), retest_by_host.get(host, ()),
+                 person_by_url.get(t["url"]), person_by_host.get(host, ()))
         row = {}
         for g in gsa:
             fid = g["field id"]
@@ -674,6 +707,7 @@ def main(argv=None) -> int:
     ap.add_argument("--write-dictionary", action="store_true",
                     help="write data/ai-readability/data-dictionary.csv and exit")
     ap.add_argument("--retest-run-dir", help="a later run over this run's failures; fills ai_retest_*")
+    ap.add_argument("--person-run-dir", help="a headed_check.py run (headed.jsonl); fills ai_person_*")
     a = ap.parse_args(argv)
     if a.write_dictionary:
         print("wrote", write_dictionary())
@@ -687,7 +721,11 @@ def main(argv=None) -> int:
                       _jsonl(run_dir / "review.jsonl"), load_psl(), gsa, registry_tenants(),
                       reach_rows=_jsonl(run_dir / "reach.jsonl"),
                       retest_results=_jsonl(pathlib.Path(a.retest_run_dir) / "results.jsonl")
-                      if a.retest_run_dir else ())
+                      if a.retest_run_dir else (),
+                      person_rows=_jsonl(pathlib.Path(a.person_run_dir) / "headed.jsonl")
+                      if a.person_run_dir else (),
+                      person_results=_jsonl(pathlib.Path(a.person_run_dir) / "results.jsonl")
+                      if a.person_run_dir else ())
     write_outputs(rows, run_dir, columns(gsa))
     print("wrote {} rows x {} columns to {}/sites.csv and sites.json".format(
         len(rows), len(columns(gsa)), run_dir))
