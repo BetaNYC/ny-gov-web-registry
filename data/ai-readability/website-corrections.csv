@@ -1,0 +1,8 @@
+host,issue,superseded_by,checked,evidence
+www.lewiscountyny.org,lookalike,lewiscountyny.gov,2026-11-09,"Serves a nationwide inmate-search site, not the county's; the county's own pages and emails use lewiscountyny.gov and lewiscounty.ny.gov"
+townofcrownpoint.com,lookalike,townofcrownpointny.gov,2026-11-09,"Third-party ""for informational purposes only"" site; lists town emails at townofcrownpointny.gov"
+www.townofhardenburgh.org,lookalike,hardenburghny.gov,2026-11-09,"Third-party ""for informational purposes only"" site; links hardenburghny.gov as the official town website"
+villageoflindenhurst.com,lookalike,villageoflindenhurstny.gov,2026-11-09,"Third-party ""for informational purposes only"" site; lists the village email at villageoflindenhurstny.gov"
+www.townofeastbloomfield.com,for_sale,townofeastbloomfieldny.gov,2026-11-09,Redirects to a domain-sale listing (hugedomains.com)
+www.waverlybarton.com,for_sale,villageofwaverly.gov,2026-11-09,Redirects to a domain-sale listing (hugedomains.com)
+www.townofwawarsing.net,redirects_offsite,wawarsingny.gov,2026-11-09,Redirects to an unrelated site (collegepaper.net)
