@@ -128,6 +128,12 @@ returns over HTTPS and plain http. Each site gets one diagnosis (`dns_missing`,
 folder, and the export turns it into the `ai_reach_*` columns. A later run over the same failures
 (`--retest-run-dir`) fills `ai_retest_*`. Offline tests: `tests/test_reach_check.py`.
 
+**Would a person get in?** `scripts/headed_check.py` takes sites that refused every crawler. It
+visits them in a real, visible Chrome that keeps its own name, and scores the same core tests on
+what Chrome received. That separates "blocks bots" from "blocks everyone". The export's
+`--person-run-dir` turns the run into the `ai_person_*` columns. Offline tests:
+`tests/test_headed_check.py`.
+
 **The website list:** [`data/ai-readability/websites.csv`](data/ai-readability/websites.csv) (and
 `.json`) is every New York government website we know of, one row per host, built by
 `scripts/ai_readability_websites.py` from the registry (so the two stay in step) plus the

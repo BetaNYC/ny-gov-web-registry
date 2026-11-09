@@ -106,3 +106,17 @@ def test_reach_and_retest_columns():
     assert rows[0]["ai_reach_tls"] == "bad_cert" and rows[0]["ai_reach_http_status"] == 200
     assert rows[0]["ai_retest_run_id"] == "retest" and rows[0]["ai_retest_w4_verdict"] == "pass"
     assert rows[1]["ai_reach_checked"] is None and rows[1]["ai_retest_w4_verdict"] is None
+
+
+def test_person_columns():
+    t = [{"url": "https://walled.example.gov/", "entity_id": None, "entity_name": "W", "pool": "city"},
+         {"url": "https://www.example.gov/", "entity_id": "ex", "entity_name": "E", "pool": "county"}]
+    person = [{"test": "headed", "url": t[0]["url"], "host": "walled.example.gov", "status": 200,
+               "challenge": False, "verdict": "pass", "vantage": "home-hearth"}]
+    prow = [dict(r, identity="headed_chrome") for r in _rows("walled.example.gov")]
+    rows = ex.build_rows(t, _rows(), [], [], PSL, person_rows=person, person_results=prow)
+    assert rows[0]["ai_person_checked"] is True and rows[0]["ai_person_verdict"] == "pass"
+    assert rows[0]["ai_person_status"] == 200 and rows[0]["ai_person_vantage"] == "home-hearth"
+    assert rows[0]["ai_person_w1_verdict"] is not None
+    assert isinstance(rows[0]["ai_person_abhi12_score"], float)
+    assert rows[1]["ai_person_checked"] is None and rows[1]["ai_person_abhi12_score"] is None
