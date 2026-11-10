@@ -62,7 +62,10 @@ Some hosts carry many registry bodies on their own pages (`www.nyc.gov`, `www1.n
 mode scores each such page. **Which pages:** every `ny_page_urls` entry of a
 `websites.json` row whose `ny_entity_ids` lists more than one body (rows with `ny_host_issue`
 skipped), plus `data/ai-readability/deep-pages-extra.csv` (pages that are not in the registry,
-such as the community boards' `nyc.gov/site/<board>/` pages). A page whose path is the host's
+such as the community boards' `nyc.gov/site/<board>/` pages), after the hand checks in
+`data/ai-readability/page-corrections.csv`: a page found `gone` (404, no new page anywhere) is
+skipped, and a page that `moved` is probed at its `moved_to` URL with the same owners, recorded
+as `moved_from` (paced on its new host when it moved off-host). A page whose path is the host's
 homepage is left to the host run, and a page listed twice (`www.` and a trailing `/` ignored) is
 sent once. Each page's owner names and registry ids come from the source records that list it
 (`ai_readability_websites.page_owners()`); a page no source pairs keeps an empty name, never a

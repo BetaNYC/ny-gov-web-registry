@@ -30,7 +30,8 @@ CORRECTIONS (data/ai-readability/website-corrections.csv, checked by hand)
 
   DEEP PAGES (issue #35): deep_page_targets() turns the `ny_page_urls` of hosts shared by
   several registry bodies, plus data/ai-readability/deep-pages-extra.csv, into one probe target
-  per page; page_owners() pairs each page with the source records that list it. Used by
+  per page, after the hand checks in data/ai-readability/page-corrections.csv (a page that moved
+  is probed at its new URL; a page that is gone is dropped); page_owners() pairs each page with the source records that list it. Used by
   probe_bot_access.py --deep-pages and headed_check.py --deep-pages.
 
   A row here says "a public list names this host", nothing more. It is not a registry entity
@@ -261,6 +262,27 @@ def _agency(h):
 
 # ------------------------------------------------------------------------------ deep pages
 DEEP_PAGES_EXTRA = AIR / "deep-pages-extra.csv"
+PAGE_CORRECTIONS = AIR / "page-corrections.csv"
+PAGE_ISSUES = ("moved", "gone")
+
+
+def read_page_corrections(path=PAGE_CORRECTIONS) -> dict:
+    """{_page_key(page_url): row} from page-corrections.csv (columns page_url, issue, moved_to,
+    checked, evidence; checked by hand in a real browser). `moved`: the body's page now lives at
+    `moved_to`. `gone`: the page is 404 and no page for the body was found. {} when absent."""
+    path = pathlib.Path(path) if path else None
+    if not path or not path.exists():
+        return {}
+    out = {}
+    with open(path, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            url = (r.get("page_url") or "").strip()
+            if r["issue"] not in PAGE_ISSUES:
+                raise ValueError("unknown page issue {!r} for {}".format(r["issue"], url))
+            if r["issue"] == "moved" and not (r.get("moved_to") or "").strip():
+                raise ValueError("`moved` needs moved_to: {}".format(url))
+            out[_page_key(url)] = r
+    return out
 
 
 def page_owners(paths=PATHS) -> dict:
@@ -296,7 +318,8 @@ def _page_key(url: str):
     return _key(host), (p.path or "").rstrip("/"), p.query
 
 
-def deep_page_targets(rows: list, owners: dict, extra_csv=DEEP_PAGES_EXTRA) -> list:
+def deep_page_targets(rows: list, owners: dict, extra_csv=DEEP_PAGES_EXTRA,
+                      page_corrections=PAGE_CORRECTIONS) -> list:
     """One probe target per page on a host shared by several registry bodies (issue #35).
 
     Pages come from `ny_page_urls` of every websites.json row whose `ny_entity_ids` holds more
@@ -309,21 +332,40 @@ def deep_page_targets(rows: list, owners: dict, extra_csv=DEEP_PAGES_EXTRA) -> l
     `host` is the websites.json row's host (pacing and quarantine key; the extra CSV uses the
     URL's own host); `page_host` is the URL's own host (its robots.txt decides W3). Owner names
     come only from `owners` (page_owners()) or the CSV; a page neither pairs is kept with empty
-    names, never a guessed one."""
+    names, never a guessed one.
+
+    `page_corrections` (read_page_corrections()) applies hand checks: a `gone` page is dropped,
+    and a `moved` page is probed at its `moved_to` URL with the same owners (`moved_from` keeps
+    the listed URL; the source lists stay as the sources state them). A moved page on another
+    host is paced on that host, and is kept even when it is that host's homepage."""
     out, seen = [], set()
+    fixes = read_page_corrections(page_corrections)
 
     def add(url, host, names, ids, source):
+        moved_from = None
+        fix = fixes.get(_page_key(url))
+        if fix and fix["issue"] == "gone":
+            return
+        if fix:
+            moved_from, url = url, fix["moved_to"].strip()
+            new_host = (urllib.parse.urlparse(url).hostname or "").lower()
+            if _key(new_host) != _key(host):
+                host = new_host
+            source = "{}; {}".format(source, PAGE_CORRECTIONS.name)
         p = urllib.parse.urlparse(url)
-        if (p.path or "/") == "/" and not p.query:
+        if (p.path or "/") == "/" and not p.query and not moved_from:
             return
         k = _page_key(url)
         if k in seen:
             return
         seen.add(k)
-        out.append({"url": url, "host": host, "page_host": (p.hostname or "").lower(),
-                    "entity_id": ids[0] if len(ids) == 1 else None, "entity_ids": list(ids),
-                    "entity_name": "; ".join(names) if names else None,
-                    "entity_names": list(names), "source": source})
+        t = {"url": url, "host": host, "page_host": (p.hostname or "").lower(),
+             "entity_id": ids[0] if len(ids) == 1 else None, "entity_ids": list(ids),
+             "entity_name": "; ".join(names) if names else None,
+             "entity_names": list(names), "source": source}
+        if moved_from:
+            t["moved_from"] = moved_from
+        out.append(t)
 
     for r in rows:
         if r.get("ny_host_issue") or len(r.get("ny_entity_ids") or []) < 2:

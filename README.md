@@ -148,7 +148,10 @@ sale, a redirect elsewhere) is recorded by hand in
 Pages that are not in the registry but belong in the deep-page run (the community boards whose
 only site is a `www.nyc.gov/site/<board>/` page) are listed by hand in
 [`deep-pages-extra.csv`](data/ai-readability/deep-pages-extra.csv) (`url`, `name`, `source`,
-`checked`).
+`checked`). A listed page that a person checked in a browser and found moved or gone is recorded
+in [`page-corrections.csv`](data/ai-readability/page-corrections.csv) (`page_url`, `issue`
+`moved` or `gone`, `moved_to`, `checked`, `evidence`): the deep-page run probes a moved page at
+its new URL and skips a gone one. The source lists keep the old URL as the sources state it.
 
 **Deep pages:** on hosts shared by several registry bodies (`www.nyc.gov`, `www1.nyc.gov`, ...),
 `probe_bot_access.py --deep-pages` scores each body's own page rather than the host's homepage:

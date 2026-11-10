@@ -370,3 +370,45 @@ def test_headed_needs_a_targets_file_unless_deep_pages(capsys):
 def test_headed_page_kind():
     assert headed_check.page_kind("https://a.example.gov/robots.txt") == "robots"
     assert headed_check.page_kind(PAGE_A) == "page"
+
+
+# ======================================================================== page corrections
+def write_page_fixes(tmp_path, rows):
+    path = tmp_path / "page-corrections.csv"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.writer(fh)
+        w.writerow(["page_url", "issue", "moved_to", "checked", "evidence"])
+        w.writerows(rows)
+    return path
+
+
+def test_deep_page_targets_drops_gone_pages_and_probes_moved_ones_at_their_new_url(tmp_path):
+    fixes = write_page_fixes(tmp_path, [
+        ["https://www.shared.example.gov/site/a/index.page", "gone", "", "2026-11-10", "404"],
+        ["https://www1.shared.example.gov/fund", "moved", "https://fund.example.gov/", "2026-11-10",
+         "own site"],
+        ["https://www.shared.example.gov/assets/ab", "moved",
+         "https://www.shared.example.gov/site/c/ab.page", "2026-11-10", "same host"]])
+    t = {x["url"]: x for x in aw.deep_page_targets(ROWS, OWNERS, None, fixes)}
+    assert not any("/site/a/index.page" in u for u in t), "a gone page is dropped"
+    off = t["https://fund.example.gov/"]
+    assert off["moved_from"] == "https://www1.shared.example.gov/fund"
+    assert off["host"] == "fund.example.gov", "a page moved off-host is paced on its new host"
+    same = t["https://www.shared.example.gov/site/c/ab.page"]
+    assert same["host"] == SHARED and same["entity_ids"] == ["a", "c"], "owners carry over"
+    assert "page-corrections.csv" in same["source"]
+
+
+def test_page_corrections_reject_unknown_issue_and_moved_without_target(tmp_path):
+    import pytest
+    with pytest.raises(ValueError):
+        aw.read_page_corrections(write_page_fixes(tmp_path, [["https://x.example.gov/a", "dead",
+                                                              "", "", ""]]))
+    with pytest.raises(ValueError):
+        aw.read_page_corrections(write_page_fixes(tmp_path, [["https://x.example.gov/a", "moved",
+                                                              "", "", ""]]))
+
+
+def test_real_page_corrections_file_is_valid():
+    fixes = aw.read_page_corrections()
+    assert fixes and all(r["checked"] for r in fixes.values())
