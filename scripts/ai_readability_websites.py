@@ -28,6 +28,11 @@ CORRECTIONS (data/ai-readability/website-corrections.csv, checked by hand)
   a source lists a page rather than a host (a town hosted on its county's site), the page goes
   in `ny_page_urls` and the host's row records every owner in `ny_names`.
 
+  DEEP PAGES (issue #35): deep_page_targets() turns the `ny_page_urls` of hosts shared by
+  several registry bodies, plus data/ai-readability/deep-pages-extra.csv, into one probe target
+  per page; page_owners() pairs each page with the source records that list it. Used by
+  probe_bot_access.py --deep-pages and headed_check.py --deep-pages.
+
   A row here says "a public list names this host", nothing more. It is not a registry entity
   and is never minted into data/registry.json by this script.
 
@@ -247,6 +252,93 @@ def _agency(h):
             if not rec.get("path") and rec.get("name"):
                 return rec["name"]
     return None
+
+
+# ------------------------------------------------------------------------------ deep pages
+DEEP_PAGES_EXTRA = AIR / "deep-pages-extra.csv"
+
+
+def page_owners(paths=PATHS) -> dict:
+    """{page url: {"names": [...], "entity_ids": [...], "sources": [...]}} from the same source
+    records build() reads, keyed by the same `https://host + path` string it writes into
+    `ny_page_urls`, so every listed page can be paired with the body (or bodies) the source
+    names for it. CISA lists hosts only, so it never contributes a page."""
+    out = {}
+    for src, _, _ in SOURCES:
+        if src == "cisa" or not pathlib.Path(paths[src]).exists():
+            continue
+        reader = READERS[src]
+        recs = reader(paths[src], paths.get("crawl_targets")) if src == "registry" else reader(paths[src])
+        for rec in recs:
+            if not rec.get("path"):
+                continue
+            url = "https://{}{}".format(rec["host"], rec["path"])
+            d = out.setdefault(url, {"names": [], "entity_ids": set(), "sources": []})
+            if rec.get("name") and rec["name"] not in d["names"]:
+                d["names"].append(rec["name"])
+            if rec.get("entity_id"):
+                d["entity_ids"].add(rec["entity_id"])
+            if src not in d["sources"]:
+                d["sources"].append(src)
+    for d in out.values():
+        d["entity_ids"] = sorted(d["entity_ids"])
+    return out
+
+
+def _page_key(url: str):
+    p = urllib.parse.urlparse(url)
+    host = (p.hostname or "").lower()
+    return _key(host), (p.path or "").rstrip("/"), p.query
+
+
+def deep_page_targets(rows: list, owners: dict, extra_csv=DEEP_PAGES_EXTRA) -> list:
+    """One probe target per page on a host shared by several registry bodies (issue #35).
+
+    Pages come from `ny_page_urls` of every websites.json row whose `ny_entity_ids` holds more
+    than one body (rows with `ny_host_issue` are skipped), plus every row of `extra_csv`
+    (columns url, name, source, checked: pages that are not in the registry, e.g. community
+    boards). A page is dropped when its path is the host's homepage (the host run scores it)
+    or when the same page (`www.` and a trailing `/` ignored) is already listed.
+
+    Each target: {url, host, page_host, entity_id, entity_ids, entity_name, entity_names, source}.
+    `host` is the websites.json row's host (pacing and quarantine key; the extra CSV uses the
+    URL's own host); `page_host` is the URL's own host (its robots.txt decides W3). Owner names
+    come only from `owners` (page_owners()) or the CSV; a page neither pairs is kept with empty
+    names, never a guessed one."""
+    out, seen = [], set()
+
+    def add(url, host, names, ids, source):
+        p = urllib.parse.urlparse(url)
+        if (p.path or "/") == "/" and not p.query:
+            return
+        k = _page_key(url)
+        if k in seen:
+            return
+        seen.add(k)
+        out.append({"url": url, "host": host, "page_host": (p.hostname or "").lower(),
+                    "entity_id": ids[0] if len(ids) == 1 else None, "entity_ids": list(ids),
+                    "entity_name": "; ".join(names) if names else None,
+                    "entity_names": list(names), "source": source})
+
+    for r in rows:
+        if r.get("ny_host_issue") or len(r.get("ny_entity_ids") or []) < 2:
+            continue
+        host = (r.get("ny_initial_domain") or urllib.parse.urlparse(r["initial_url"]).hostname).lower()
+        for url in r.get("ny_page_urls") or []:
+            o = owners.get(url) or {}
+            add(url, host, o.get("names") or [], o.get("entity_ids") or [],
+                ",".join(o.get("sources") or []) or "websites.json")
+    extra_csv = pathlib.Path(extra_csv) if extra_csv else None
+    if extra_csv and extra_csv.exists():
+        with open(extra_csv, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                url = (r.get("url") or "").strip()
+                if not url:
+                    continue
+                name = (r.get("name") or "").strip()
+                add(url, (urllib.parse.urlparse(url).hostname or "").lower(),
+                    [name] if name else [], [], "{}: {}".format(extra_csv.name, r.get("source") or ""))
+    return out
 
 
 def write(rows, csv_path=OUT_CSV, json_path=OUT_JSON) -> None:

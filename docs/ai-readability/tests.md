@@ -55,6 +55,40 @@ file says yes while the edge says no.
 Content tests (`R`, `I`, `D`, `F1`) parse the **one** homepage body fetched with the research
 identity. They cost no extra requests.
 
+### Deep pages (`--deep-pages`, issue #35)
+
+Some hosts carry many registry bodies on their own pages (`www.nyc.gov`, `www1.nyc.gov`,
+`edc.nyc`, ...), and each of those bodies would otherwise inherit its host's homepage score. Deep-page
+mode scores each such page. **Which pages:** every `ny_page_urls` entry of a
+`websites.json` row whose `ny_entity_ids` lists more than one body (rows with `ny_host_issue`
+skipped), plus `data/ai-readability/deep-pages-extra.csv` (pages that are not in the registry,
+such as the community boards' `nyc.gov/site/<board>/` pages). A page whose path is the host's
+homepage is left to the host run, and a page listed twice (`www.` and a trailing `/` ignored) is
+sent once. Each page's owner names and registry ids come from the source records that list it
+(`ai_readability_websites.page_owners()`); a page no source pairs keeps an empty name, never a
+guessed one. **What runs per page:** the Tier B identities (`research_betanyc`, `claudebot`,
+`mechanism_probe_chrome`), one GET of the page each, and only the page-level tests `W3` (the page's
+own path against its host's robots.txt), `W4` per identity and the all-AI aggregate, `R1`, `R3`,
+`I1–I4` (I4 against every name the sources give the page), `F1`, `F2`, `D1`, `P1–P4`. robots.txt
+is fetched **once per page host per run** and shared by its pages; llms.txt, the sitemap, the 404
+probe and the `http://` check stay with the host run. Rows carry `scope: "page"` and `page_url`
+(host rows are unchanged). **Requests:** one robots.txt per distinct page host + pages × 3,
+before retries; `--dry-run` prints the total and the busiest host. **Pacing:** the same as a host
+run (global pace, ≥ 30 s per host, the `www.nyc.gov` / `www1.nyc.gov` governors, never two
+requests in flight to one host), and every request for a page is paced on its list row's host,
+so `nyc.gov/...` and `www.nyc.gov/...` share one clock. The runner keeps at most one page per
+host in its window and round-robins across hosts; with `--max-workers`, each host's pages stay on
+one worker. Because one host's requests are serialized, the busiest host sets the run's length.
+Pushback quarantines the host, as in a host run; resume is per page. **The person view:**
+`headed_check.py --deep-pages` runs the same page plan through a visible Chrome (`headed_chrome`,
+its own User-Agent), one page load per page plus each page host's robots.txt, paced by the same
+host clock, one browser context per host, no retries. A page that shows a challenge or block page
+is recorded (`blocked`, `challenge: true`) and listed in `needs_person.txt` in the run folder for
+a person to try by hand; it is never clicked and never retried. A page the server says is gone
+(404 or 410) is a dead registry link, not a block: it is recorded as `not_found` and listed in
+`pages_not_found.txt`. Both lists are written even when empty. Results stay in the git-ignored
+run folder.
+
 ## Identities (who we say we are)
 
 Every string below is copied **verbatim from the vendor's own page** (accessed 2026-11-06) or is
