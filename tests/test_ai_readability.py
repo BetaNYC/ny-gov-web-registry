@@ -345,6 +345,9 @@ def test_core_tier_fresh_row_rests_on_f1():
 
 # ======================================================================== runner (fake network)
 H1, H2, H3 = "www.example.gov", "slow.example.gov", "edge.example.gov"
+# The day crawlers.csv was checked: the pre-run guard refuses a list checked > 30 days before
+# `today`, so runner tests pin the day instead of aging out.
+CHECK_DAY = date(2026, 11, 10)
 
 
 def fake_transport(table, calls):
@@ -386,7 +389,7 @@ def run(tmp_path, targets, table, extra=(), monitor=None, transport=None):
                                         "--machine", "test"] + list(extra))
     args._argv = []
     code = p.run_readability(
-        args, transport=transport or fake_transport(table, calls),
+        args, transport=transport or fake_transport(table, calls), today=CHECK_DAY,
         monitor=monitor or p.NetworkMonitor(check=lambda: True, sleep=lambda s: None),
         sleep=lambda s: None,
         pacing={"pace_s": 0, "jitter_s": 0, "host_floor_s": 0, "governors": {},
@@ -407,9 +410,9 @@ def test_runner_end_to_end_writes_the_run_folder(tmp_path):
     for t in ("W1", "W2", "W3", "W4", "W5", "W6", "M1", "M2", "M3", "M4", "R1", "R3", "I1", "I2",
               "I3", "I4", "I5", "D1", "F1", "F2", "F4", "P1", "P2", "P3", "P4"):
         assert t in tests, t
-    assert all(r["catalog_version"] == "0.1" and r["git_sha"] for r in rows)
+    assert all(r["catalog_version"] == ar.CATALOG_VERSION and r["git_sha"] for r in rows)
     run_json = json.loads((d / "run.json").read_text())
-    assert run_json["catalog_version"] == "0.1" and run_json["git_sha"]
+    assert run_json["catalog_version"] == ar.CATALOG_VERSION and run_json["git_sha"]
     assert len(calls) == 11
     # content tests added no requests: the homepage was fetched once per identity, no more
     assert sum(1 for c in calls if c[0] == "https://www.example.gov/") == 6
@@ -538,7 +541,7 @@ def test_dry_run_uses_no_network(tmp_path, capsys):
     def no_net(*a, **k):
         raise AssertionError("dry run touched the network")
     args = p.build_parser().parse_args(["--tier", "core", "--targets-file", str(tf), "--dry-run"])
-    assert p.run_readability(args, transport=no_net) == 0
+    assert p.run_readability(args, transport=no_net, today=CHECK_DAY) == 0
     out = capsys.readouterr().out
     assert "requests≈11–11" in out and "no network used" in out
 
@@ -546,7 +549,7 @@ def test_dry_run_uses_no_network(tmp_path, capsys):
 def test_core_identities_and_full_has_bingbot_with_documented_string():
     assert [i["key"] for i in p.tier_identities("core")] == list(p.CORE_IDENTITY_KEYS)
     full = p.tier_identities("full")
-    assert full[0]["key"] == "research_betanyc" and len(full) == len(p.IDENTITIES) + 1
+    assert full[0]["key"] == "research_betanyc" and len(full) == len(p.IDENTITIES)
     b = next(i for i in full if i["key"] == "bingbot")
     assert b["ua"] == "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
 
@@ -592,7 +595,7 @@ def test_full_tier_adds_m5_r2_f3_and_bingbot(tmp_path):
     args = p.build_parser().parse_args(["--tier", "full", "--targets-file", str(tf),
                                         "--run-dir", str(tmp_path / "run")])
     args._argv = []
-    code = p.run_readability(args, transport=fake_transport(table, calls),
+    code = p.run_readability(args, transport=fake_transport(table, calls), today=CHECK_DAY,
                              monitor=p.NetworkMonitor(check=lambda: True, sleep=lambda s: None),
                              sleep=lambda s: None,
                              pacing={"pace_s": 0, "jitter_s": 0, "host_floor_s": 0,

@@ -66,8 +66,14 @@ Add:
 
 Two connections, never merged: **office** (BetaNYC static IP) and **residential** (Noel's home).
 Prior runs showed the same host can answer differently by vantage. Each run records its egress
-class and the run host (`whichmachine.sh` name). No cloud, VPN or proxy vantage: those IPs are often
-pre-blocked, which would measure the IP rather than the site.
+class and the run host (`whichmachine.sh` name). No cloud, VPN or proxy vantage for a full run:
+those IPs are often pre-blocked, which would measure the IP rather than the site.
+
+**Amended 2026-11-10 (issue #44):** VPN is allowed as a disclosed third vantage, only to answer
+"is this block about our network?" for a small named set (`--vantage vpn` needs `--only-hosts`, at
+most 25 hosts; the probe refuses a full VPN run). Never a way to retry until we get in. Every run
+records its network (place, provider, ASN, public address, time; start and end) in `run.json`,
+and every row carries `place`.
 
 ### 4.3 Etiquette and load
 

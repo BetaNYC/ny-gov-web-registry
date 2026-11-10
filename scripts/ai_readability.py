@@ -7,7 +7,8 @@ against fixtures (tests/test_ai_readability.py).
 
 VERDICTS
   pass | partial | fail | blocked | na   — scored tests
-  reported                               — report-only tests (W3, W5, W6, M3, R3, I4, I5, F2, P*)
+  reported                               — report-only tests (W3, W5, W6, M3, M5, R2, R3, I4, I5,
+                                           F2, P*, C1, D2, D3, D4)
 
   `blocked` means the edge refused us (401/403/429 or a challenge page). `na` means we could not
   measure (transport failure, host quarantined, or the input the test needs does not exist).
@@ -32,34 +33,30 @@ import xml.etree.ElementTree as ET
 from datetime import date, datetime
 from html.parser import HTMLParser
 
-CATALOG_VERSION = "0.1"
+CATALOG_VERSION = "0.2"   # 0.2 (2026-11-10): crawlers.csv identities; C1, D2–D7 (#43, #44)
 
 # ------------------------------------------------------------------------------------ tokens
 # W2's token list: the AI tokens already matched by probe_bot_access.ROBOTS_AI_TOKENS plus the
 # robots-only and "also matched" tokens listed in tests.md § Identities. Matching is by product
 # token, case-insensitive (RFC 9309 §2.2.1), never by full UA string.
-AI_TOKENS = (
-    "GPTBot", "OAI-SearchBot", "ChatGPT-User",
-    "ClaudeBot", "Claude-User", "Claude-SearchBot", "anthropic-ai", "Claude-Web",
-    "PerplexityBot", "Perplexity-User",
-    "CCBot", "Bytespider", "meta-externalagent", "meta-externalfetcher",
-    "Amazonbot", "Amzn-SearchBot", "Amzn-User", "Applebot", "Applebot-Extended",
-    "Google-Extended", "MistralAI-User", "DuckAssistBot", "cohere-ai", "Diffbot", "omgili",
-)
+#
+# From catalog 0.2 the list is data/ai-readability/crawlers.csv (every name, sent or rules-only;
+# issue #44), read through crawler_list. Two kinds of name are kept on top of it, both outside
+# the checked list on purpose:
+#   - SEARCH_CONTROL_TOKENS are scored separately in W3 (search crawlers, not AI);
+#   - LEGACY_ROBOTS_TOKENS were matched by catalog 0.1 and have no row in crawlers.csv (no
+#     company page was checked for them). They are only ever READ in robots.txt, never sent, and
+#     are kept so W2 stays comparable with the 2026-11-06 run.
+import crawler_list as _crawlers  # noqa: E402  (pure: reads one CSV)
+
+SEARCH_CONTROL_TOKENS = ("Googlebot", "bingbot")
+LEGACY_ROBOTS_TOKENS = ("anthropic-ai", "Claude-Web", "cohere-ai", "Diffbot", "omgili")
+_ROWS = _crawlers.load()
+AI_TOKENS = tuple(t for t in _crawlers.robots_tokens(_ROWS) if t not in SEARCH_CONTROL_TOKENS) \
+    + LEGACY_ROBOTS_TOKENS
 
 # Identity key -> the robots.txt product token that identity answers to (W5 pairs them).
-IDENTITY_TOKENS = {
-    "googlebot": "Googlebot",
-    "bingbot": "bingbot",
-    "gptbot": "GPTBot",
-    "ccbot": "CCBot",
-    "claudebot": "ClaudeBot",
-    "oai_searchbot": "OAI-SearchBot",
-    "perplexitybot": "PerplexityBot",
-    "chatgpt_user": "ChatGPT-User",
-    "perplexity_user": "Perplexity-User",
-    "claude_user": "Claude-User",
-}
+IDENTITY_TOKENS = {_crawlers.key_for(t): t for t in _crawlers.robots_tokens(_ROWS)}
 
 REFUSAL_STATUSES = (401, 403, 429)
 
@@ -573,6 +570,7 @@ class PageParser(HTMLParser):
         self.meta = {}             # name/property (lower) -> content (first wins)
         self.links = []            # [{"href", "text", "hreflang"}]
         self.alternates = []       # <link rel=alternate hreflang>
+        self.link_tags = []        # every <link>: {"rel", "type", "href"} (C1, D2, R2)
         self.scripts = []          # script src values
         self.jsonld = []           # raw JSON-LD strings
         self.itemtypes = []
@@ -609,6 +607,8 @@ class PageParser(HTMLParser):
                 self.meta[key] = a.get("content", "")
         elif tag == "link":
             rel = a.get("rel", "").lower()
+            self.link_tags.append({"rel": rel, "type": a.get("type", "").lower(),
+                                   "href": a.get("href", "")})
             if "alternate" in rel and a.get("hreflang"):
                 self.alternates.append({"hreflang": a["hreflang"], "href": a.get("href", "")})
         elif tag == "script":
@@ -712,7 +712,20 @@ def test_r1(resp: dict, page: PageParser = None):
     return "fail", ev
 
 
-def test_r2(accept_resp: dict, index_md_resp: dict):
+def markdown_alternates(home_resp: dict, page: "PageParser" = None) -> list:
+    """Markdown versions the homepage itself advertises, read from what was already fetched: a
+    `Link:` header or `<link>` with rel=alternate and type text/markdown (llmstxt.org)."""
+    out = []
+    for target, params in link_header((home_resp or {}).get("headers") or {}):
+        if "alternate" in params.get("rel", "").split() and "text/markdown" in params.get("type", ""):
+            out.append({"href": target, "via": "Link header"})
+    for t in (page.link_tags if page else []):
+        if "alternate" in t["rel"].split() and "text/markdown" in t["type"]:
+            out.append({"href": t["href"], "via": "<link>"})
+    return out
+
+
+def test_r2(accept_resp: dict, index_md_resp: dict, home_resp: dict = None, page=None):
     out = {}
     for name, r in (("accept_markdown", accept_resp), ("index_md", index_md_resp)):
         if unreachable(r) or refused(r):
@@ -725,6 +738,8 @@ def test_r2(accept_resp: dict, index_md_resp: dict):
         out[name] = {"status": r.get("status"), "content_type": ctype, "markdown": md,
                      "vary": (r.get("headers") or {}).get("vary")}
     out["markdown_served"] = any(v.get("markdown") for v in out.values() if isinstance(v, dict))
+    if home_resp is not None:
+        out["advertised_alternates"] = markdown_alternates(home_resp, page)
     return "reported", out
 
 
@@ -1116,6 +1131,333 @@ def test_p4(resp: dict, page: PageParser = None):
     return "reported", {"third_party_script_hosts": len(hosts), "hosts_private": sorted(hosts)}
 
 
+# =========================================================================== catalog 0.2 tests
+# C1 and D2 read only what the host run already fetched (zero requests). D3–D7 each cost a few
+# documented requests, full tier only; the request plan lives in probe_bot_access.host_plan.
+# Every path below is one its spec documents (docs/ai-readability/tests.md § "Data endpoints").
+
+def link_header(headers: dict) -> list:
+    """Parse an HTTP `Link:` header (RFC 8288) into [(target, {param: value})]."""
+    raw = (headers or {}).get("link") or ""
+    out = []
+    for m in re.finditer(r"<([^>]*)>((?:\s*;\s*[^;,]+=(?:\"[^\"]*\"|[^;,]*))*)", raw):
+        params = {}
+        for pm in re.finditer(r";\s*([^=;,\s]+)\s*=\s*(\"[^\"]*\"|[^;,]*)", m.group(2)):
+            params[pm.group(1).lower()] = pm.group(2).strip().strip('"').lower() \
+                if pm.group(1).lower() in ("rel", "type") else pm.group(2).strip().strip('"')
+        out.append((m.group(1).strip(), params))
+    return out
+
+
+# --------------------------------------------------------------------------- C1 website software
+WP_API_REL = "https://api.w.org/"   # WordPress REST API handbook, "Discovery"
+
+
+def wp_api_root(resp: dict, page: PageParser = None):
+    """The REST API root a WordPress site advertises (Link header or <link>, rel
+    https://api.w.org/), resolved against the page, else None. Read from the fetched homepage."""
+    base = (resp or {}).get("final_url") or (resp or {}).get("url") or ""
+    for target, params in link_header((resp or {}).get("headers") or {}):
+        if WP_API_REL in params.get("rel", "").split():
+            return _abs(base, target)
+    for t in (page.link_tags if page else []):
+        if WP_API_REL in t["rel"].split():
+            return _abs(base, t["href"])
+    return None
+
+
+def test_c1(resp: dict, page: PageParser = None, gsa_cms: str = None):
+    """C1 — website software. The GSA Site Scanning `cms` value, when the address list carries
+    one, is kept as is. Only a gap is filled, and only from the homepage already fetched (meta
+    generator, known asset paths, the WordPress REST link): no extra request."""
+    gsa = (gsa_cms or "").strip() or None
+    ev = {"gsa_cms": gsa, "cms": gsa, "source": "gsa" if gsa else None,
+          "homepage_platforms": [], "homepage_signals": []}
+    if unreachable(resp) or refused(resp) or (resp or {}).get("status") != 200:
+        ev["homepage_note"] = "no readable homepage"
+        return "reported", ev
+    page = page or parse_page(resp.get("body"))
+    _, p1 = test_p1(resp, page)
+    platforms, signals = list(p1.get("platforms") or []), list(p1.get("signals") or [])
+    if wp_api_root(resp, page):
+        signals.append({"platform": "WordPress", "signal": "REST API link rel=https://api.w.org/"})
+        if "WordPress" not in platforms:
+            platforms = sorted(platforms + ["WordPress"])
+    ev["homepage_platforms"], ev["homepage_signals"] = platforms, signals
+    if not gsa and platforms:
+        ev["cms"], ev["source"] = ", ".join(platforms), "homepage"
+    return "reported", ev
+
+
+def is_wordpress(c1_ev: dict) -> bool:
+    return any("wordpress" in (p or "").lower() for p in
+               (c1_ev.get("homepage_platforms") or []) + [c1_ev.get("gsa_cms") or ""])
+
+
+# --------------------------------------------------------------- D2 data and API links (pass 1)
+# Patterns that sort a link into a kind. These are reading aids for a reported test, not a
+# claim that the link works: D2 never follows a link (pass 2 does that, where documented).
+D2_PATTERNS = (
+    ("catalog", re.compile(r"/data\.json$|/api/catalog/v1|/api/feed/dcat|/api/3/action/|"
+                           r"/\.well-known/api-catalog|/api/views/metadata/v1", re.I)),
+    ("gis_service", re.compile(r"/arcgis/rest/services|/(?:map|feature|image)server\b|"
+                               r"[?&]service=w[mf]s|\.hub\.arcgis\.com|\.opendata\.arcgis\.com", re.I)),
+    ("api", re.compile(r"(?:^|[/.])api(?:[/.]|$)|/wp-json/|swagger|openapi|graphql", re.I)),
+    ("developer", re.compile(r"(?:^|[/.])developers?(?:[/.]|$)", re.I)),
+    ("feed", re.compile(r"/feed/?$|/rss(?:\.xml)?/?$|/atom(?:\.xml)?/?$|\.rss$", re.I)),
+)
+D2_TEXT = (("open_data", re.compile(r"\bopen\s*data\b", re.I)),
+           ("api", re.compile(r"\bAPIs?\b")),
+           ("developer", re.compile(r"\bdevelopers?\b", re.I)))
+FEED_TYPES = ("application/rss+xml", "application/atom+xml", "application/feed+json")
+
+
+def _d2_kinds(url: str, text: str, portals: dict) -> list:
+    kinds = []
+    u = urllib.parse.urlparse(url)
+    host = (u.netloc or "").lower().split("@")[-1].split(":")[0]
+    hostpath = (host + u.path).lower().rstrip("/")
+    if host and portals and (host in portals["hosts"] or host.endswith(portals["host_suffixes"])
+                             or any(hostpath.startswith(p) for p in portals["url_prefixes"])):
+        kinds.append("open_data")
+    for kind, rx in D2_PATTERNS:
+        if rx.search(u.netloc + u.path + ("?" + u.query if u.query else "")) and kind not in kinds:
+            kinds.append(kind)
+    for kind, rx in D2_TEXT:
+        if rx.search(text or "") and kind not in kinds:
+            kinds.append(kind)
+    return kinds
+
+
+def test_d2(resp: dict, page: PageParser = None, portals: dict = None, llms_resp: dict = None):
+    """D2 — links to open data, APIs, developer pages, catalogs, feeds and GIS services in files
+    already fetched: the homepage's anchors and <link> tags, its Link header, and llms.txt.
+    Reported (no pass rule): it is pass 1 of the data-endpoint census."""
+    g = homepage_gate(resp)
+    if g:
+        return g
+    page = page or parse_page(resp.get("body"))
+    base = resp.get("final_url") or resp.get("url") or ""
+    found, seen = [], set()
+
+    def add(url, text, via, extra_kinds=()):
+        url = (url or "").strip()
+        if not url or url in seen or not url.lower().startswith(("http://", "https://")):
+            return
+        kinds = list(extra_kinds) + [k for k in _d2_kinds(url, text, portals) if k not in extra_kinds]
+        if kinds:
+            seen.add(url)
+            found.append({"url": url[:300], "text": (text or "")[:120], "kinds": kinds, "via": via})
+
+    for link in page.links:
+        add(_abs(base, link["href"]), link.get("text"), "a")
+    for t in page.link_tags:
+        extra = ("feed",) if t["type"] in FEED_TYPES else (
+            ("api",) if WP_API_REL in t["rel"].split() else ())
+        add(_abs(base, t["href"]), t["rel"], "link", extra)
+    for target, params in link_header(resp.get("headers") or {}):
+        extra = ("api",) if WP_API_REL in params.get("rel", "").split() else ()
+        add(_abs(base, target), params.get("rel", ""), "Link header", extra)
+    if llms_resp and llms_resp.get("status") == 200 and not refused(llms_resp) \
+            and not looks_like_html(llms_resp.get("body") or ""):
+        for m in re.finditer(r"\[([^\]]*)\]\((https?://[^)\s]+)\)", llms_resp.get("body") or ""):
+            add(m.group(2), m.group(1), "llms.txt")
+    counts = {}
+    for f in found:
+        for k in f["kinds"]:
+            counts[k] = counts.get(k, 0) + 1
+    return "reported", {"count": len(found), "by_kind": counts, "links": found[:60]}
+
+
+# ---------------------------------------------------------------- D3 WordPress REST index
+def test_d3(resp: dict):
+    """D3 — the WordPress REST API index, asked only when C1 says WordPress. Reported:
+    `rest_index` is true when the root answers 200 with JSON carrying `namespaces` (the handbook:
+    "The index of the API exposes the namespaces item")."""
+    um = _unmeasured(resp, "WordPress REST index")
+    if um:
+        return um
+    ev = {"url": resp.get("url"), "final_url": resp.get("final_url"), "status": resp.get("status"),
+          "content_type": content_type_of(resp), "rest_index": False}
+    if resp.get("status") == 200:
+        try:
+            doc = json.loads(resp.get("body") or "")
+        except ValueError:
+            doc = None
+        if isinstance(doc, dict) and isinstance(doc.get("namespaces"), list):
+            ev.update(rest_index=True, namespaces=doc["namespaces"][:50],
+                      name=doc.get("name") if isinstance(doc.get("name"), str) else None,
+                      routes=len(doc["routes"]) if isinstance(doc.get("routes"), dict) else None)
+    return "reported", ev
+
+
+# ---------------------------------------------------------------- D4 RFC 9727 api-catalog
+API_CATALOG_PATH = "/.well-known/api-catalog"            # RFC 9727 §2
+LINKSET_TYPE = "application/linkset+json"                # RFC 9727 §4.2
+RFC9727_PROFILE = "https://www.rfc-editor.org/info/rfc9727"
+
+
+def test_d4(resp: dict):
+    """D4 — RFC 9727 API catalog at /.well-known/api-catalog, on every site. Reported:
+    `present` = 200 with a Linkset (top-level `linkset` array); `media_type_ok` = served as
+    application/linkset+json (a MUST in §4.2); `items` = links with relation `item` (§3.1)."""
+    um = _unmeasured(resp, "api-catalog")
+    if um:
+        return um
+    ctype = content_type_of(resp)
+    ev = {"status": resp.get("status"), "content_type": ctype, "final_url": resp.get("final_url"),
+          "present": False, "media_type_ok": LINKSET_TYPE in ctype,
+          "profile_rfc9727": RFC9727_PROFILE in ctype}
+    if resp.get("status") != 200:
+        return "reported", ev
+    try:
+        doc = json.loads(resp.get("body") or "")
+    except ValueError:
+        doc = None
+    if isinstance(doc, dict) and isinstance(doc.get("linkset"), list):
+        items, rels = 0, set()
+        for ctx in doc["linkset"]:
+            if isinstance(ctx, dict):
+                for rel, targets in ctx.items():
+                    if rel == "anchor":
+                        continue
+                    rels.add(rel)
+                    if rel == "item" and isinstance(targets, list):
+                        items += len(targets)
+        ev.update(present=True, items=items, relations=sorted(rels)[:30])
+    else:
+        ev["note"] = "200 but not a Linkset JSON document"
+    return "reported", ev
+
+
+# --------------------------------------------------------------------- D5–D7 portal tests
+# Only for addresses whose kind is `data portal`. The platform is read from the homepage already
+# fetched (or the address list's own `platform` value); each platform's catalog is asked for at
+# the path its vendor documents, and nowhere else. An unrecognized platform is not guessed at.
+PORTAL_PLATFORMS = ("socrata", "arcgis_hub", "ckan")
+SOCRATA_DISCOVERY = "https://api.us.socrata.com/api/catalog/v1"   # North American domains
+
+
+def portal_platform(host: str, resp: dict, page: PageParser = None, hint: str = None) -> dict:
+    """{platform, signal}. platform is None when nothing on the homepage names one."""
+    h = (hint or "").strip().lower().replace(" ", "_")
+    if h in PORTAL_PLATFORMS:
+        return {"platform": h, "signal": "address list"}
+    host = (host or "").lower()
+    if host.endswith((".hub.arcgis.com", ".opendata.arcgis.com")):
+        return {"platform": "arcgis_hub", "signal": "host name"}
+    if unreachable(resp) or refused(resp) or (resp or {}).get("status") != 200:
+        return {"platform": None, "signal": "no readable homepage"}
+    page = page or parse_page(resp.get("body"))
+    gen = (page.meta.get("generator") or "").lower()
+    html = (resp.get("body") or "").lower()
+    if gen.startswith("ckan"):
+        return {"platform": "ckan", "signal": "meta generator: " + gen[:60]}
+    if "arcgis hub" in gen:
+        return {"platform": "arcgis_hub", "signal": "meta generator: " + gen[:60]}
+    if "socrata" in html:
+        return {"platform": "socrata", "signal": "homepage names socrata"}
+    return {"platform": None, "signal": "no platform named on the homepage"}
+
+
+def portal_catalog_url(platform: str, host: str):
+    """The documented machine-readable catalog for a platform, on the portal's own host:
+      socrata    /api/views/metadata/v1?limit=1&page=1   ("accessible on every Socrata domain";
+                 list form "list all metadata for all public assets on a domain")
+      arcgis_hub /api/feed/dcat-us/1.1.json             (Esri, "Federate data")
+      ckan       /api/3/action/package_list?limit=1     (CKAN API guide)"""
+    base = "https://{}".format(host)
+    return {"socrata": base + "/api/views/metadata/v1?limit=1&page=1",
+            "arcgis_hub": base + "/api/feed/dcat-us/1.1.json",
+            "ckan": base + "/api/3/action/package_list?limit=1"}.get(platform)
+
+
+def dataset_lookup_url(platform: str, host: str):
+    """Socrata's metadata list has no documented response schema, so the dataset page comes from
+    the Discovery API, whose `results[].permalink` is documented. Other platforms need nothing
+    more: the catalog itself names a dataset."""
+    if platform == "socrata":
+        return SOCRATA_DISCOVERY + "?" + urllib.parse.urlencode({"domains": host, "limit": 1})
+    return None
+
+
+def _json(resp):
+    try:
+        return json.loads((resp or {}).get("body") or "")
+    except ValueError:
+        return None
+
+
+def test_d5(platform: str, resp: dict):
+    """D5 — a machine-readable catalog at the platform's documented path.
+    pass: 200 and the documented shape (socrata: JSON; arcgis_hub: DCAT-US `conformsTo` and a
+    `dataset` array; ckan: `success` true and a `result` array). fail: answered but not that.
+    blocked / na as everywhere. na also when the platform was not recognized."""
+    if not platform:
+        return "na", {"reason": "platform not recognized from the homepage; no documented "
+                                "catalog path to try"}
+    um = _unmeasured(resp, "portal catalog")
+    if um:
+        return um
+    doc = _json(resp)
+    ev = {"platform": platform, "url": resp.get("url"), "status": resp.get("status"),
+          "content_type": content_type_of(resp), "json": doc is not None}
+    if resp.get("status") != 200 or doc is None:
+        return "fail", ev
+    if platform == "socrata":
+        ok = isinstance(doc, (list, dict))
+        ev["entries"] = len(doc) if isinstance(doc, list) else None
+    elif platform == "arcgis_hub":
+        ok = isinstance(doc, dict) and isinstance(doc.get("dataset"), list) and bool(doc.get("conformsTo"))
+        ev.update(conforms_to=doc.get("conformsTo") if isinstance(doc, dict) else None,
+                  datasets=len(doc["dataset"]) if ok else None)
+    else:
+        ok = isinstance(doc, dict) and doc.get("success") is True and isinstance(doc.get("result"), list)
+        ev["datasets"] = len(doc["result"]) if ok else None
+    return ("pass" if ok else "fail"), ev
+
+
+def dataset_page_url(platform: str, host: str, catalog_resp: dict, lookup_resp: dict = None):
+    """One dataset's web page, from a documented field: DCAT-US `dataset[0].landingPage`
+    (arcgis_hub), Discovery `results[0].permalink` (socrata), CKAN `/dataset/<name>` for
+    `result[0]` of package_list. None when the response does not name one."""
+    if platform == "arcgis_hub":
+        doc = _json(catalog_resp)
+        ds = doc.get("dataset") if isinstance(doc, dict) else None
+        if isinstance(ds, list) and ds and isinstance(ds[0], dict):
+            lp = ds[0].get("landingPage")
+            return lp if isinstance(lp, str) and lp.startswith(("http://", "https://")) else None
+    elif platform == "socrata":
+        doc = _json(lookup_resp)
+        res = doc.get("results") if isinstance(doc, dict) else None
+        if isinstance(res, list) and res and isinstance(res[0], dict):
+            pl = res[0].get("permalink")
+            return pl if isinstance(pl, str) and pl.startswith(("http://", "https://")) else None
+    elif platform == "ckan":
+        doc = _json(catalog_resp)
+        res = doc.get("result") if isinstance(doc, dict) else None
+        if isinstance(res, list) and res and isinstance(res[0], str) and res[0]:
+            return "https://{}/dataset/{}".format(host, urllib.parse.quote(res[0], safe=""))
+    return None
+
+
+def test_d6(url: str, resp: dict, page: PageParser = None):
+    """D6 — one dataset page readable without JavaScript: R1's rule on the dataset page."""
+    if not url:
+        return "na", {"reason": "no dataset page named by the catalog"}
+    verdict, ev = test_r1(resp, page)
+    ev = dict(ev, dataset_url=url)
+    return verdict, ev
+
+
+def test_d7(per_identity: dict, identity_classes: dict):
+    """D7 — the catalog reached by each crawler name: W4's rule per identity, and W4's
+    all-AI aggregate over them. per_identity: {key: response}."""
+    verdicts = {k: w4_identity_verdict(r) for k, r in per_identity.items()}
+    agg = w4_aggregate({k: v[0] for k, v in verdicts.items()}, identity_classes)
+    return verdicts, agg
+
+
 # ==================================================================================== scoring
 ABHI_ROWS = (
     ("Has robots.txt", "W1"),
@@ -1139,9 +1481,9 @@ def host_row_verdicts(rows: list) -> dict:
     """{abhi_test_id: verdict} for one host's result rows."""
     by = {}
     for r in rows:
-        if r["test"] == "W4":
+        if r["test"] in ("W4", "D7"):
             if r["identity"] == W4_AGGREGATE_IDENTITY:
-                by["W4"] = r["verdict"]
+                by[r["test"]] = r["verdict"]
         elif r["test"] not in by:
             by[r["test"]] = r["verdict"]
     f1, f3 = by.get("F1"), by.get("F3")
@@ -1179,8 +1521,9 @@ def summarize(rows: list, review_count: int, meta: dict) -> str:
     by_test = defaultdict(Counter)
     by_host = defaultdict(list)
     for r in rows:
-        key = r["test"] if r["test"] != "W4" else (
-            "W4 (all AI)" if r["identity"] == W4_AGGREGATE_IDENTITY else "W4 · " + r["identity"])
+        key = r["test"] if r["test"] not in ("W4", "D7") else (
+            r["test"] + " (all AI)" if r["identity"] == W4_AGGREGATE_IDENTITY
+            else r["test"] + " · " + r["identity"])
         by_test[key][r["verdict"]] += 1
         by_host[r.get("page_url") or r["host"]].append(r)   # a --deep-pages row is per page
     cols = ("pass", "partial", "fail", "blocked", "na", "reported")

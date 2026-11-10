@@ -103,17 +103,21 @@ HOST_GOVERNORS = {
 }
 
 # --------------------------------------------------------------------------- identities
-# EVERY string below is either verified verbatim against the operator's own documentation (fetched
-# 2026-08-28, `doc` names the source) or explicitly flagged `string_verified: False`.
-# Per platform/system/engineering-standards.md §0: a guessed UA would silently measure a bot that
-# does not exist and produce confident garbage. Do not add an entry without a doc URL.
-IDENTITIES = [
+# From 2026-11-10 (issue #44) every vendor crawler identity comes from the checked list
+# data/ai-readability/crawlers.csv, through crawler_list.build_identities(): labels copied word for
+# word, never assembled, no version stand-in ever filled in. Only the CONTROLS below are defined in
+# code, because they are not vendor crawlers: our own research crawler, the library default, and
+# the desktop-Chrome mechanism probe (disclosed in the dataset).
+import crawler_list  # noqa: E402  (pure: reads crawlers.csv)
+
+CONTROL_IDENTITIES = [
     {
         "key": "baseline_default",
         "label": "unadorned client (Python-urllib default)",
         "ua": None,  # None => library default; an honest, unremarkable non-browser client
         "klass": "baseline",
         "string_verified": True,
+        "label_kind": "control",
         "doc": "n/a — library default",
     },
     {
@@ -123,91 +127,8 @@ IDENTITIES = [
                "(+https://github.com/BetaNYC/ny-gov-web-registry; noel@beta.nyc)"),
         "klass": "baseline_honest",
         "string_verified": True,
+        "label_kind": "control",
         "doc": "ours",
-    },
-    {
-        "key": "googlebot",
-        "label": "Googlebot (search)",
-        "ua": ("Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; "
-               "+http://www.google.com/bot.html) Chrome/126.0.0.0 Safari/537.36"),
-        "klass": "search",
-        "string_verified": True,
-        "doc": "https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers",
-    },
-    {
-        "key": "gptbot",
-        "label": "GPTBot (AI training)",
-        "ua": ("Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.4; "
-               "+https://openai.com/gptbot"),
-        "klass": "ai_training",
-        "string_verified": True,
-        "doc": "https://developers.openai.com/api/docs/bots",
-    },
-    {
-        "key": "ccbot",
-        "label": "CCBot (Common Crawl, AI training corpus)",
-        "ua": "CCBot/2.0 (https://commoncrawl.org/faq/)",
-        "klass": "ai_training",
-        "string_verified": True,
-        "doc": "https://commoncrawl.org/ccbot",
-    },
-    {
-        "key": "claudebot",
-        "label": "ClaudeBot (AI training)",
-        # Anthropic documents the robots.txt TOKEN but does not publish a full UA string. The token
-        # is what robots.txt and most WAF rules match on, so the token is embedded in the
-        # conventional wrapper and the limitation is recorded rather than hidden.
-        "ua": ("Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ClaudeBot/1.0; "
-               "+claudebot@anthropic.com"),
-        "klass": "ai_training",
-        "string_verified": False,
-        "doc": "https://support.claude.com/en/articles/8896518 (token documented; full string not published)",
-    },
-    {
-        "key": "oai_searchbot",
-        "label": "OAI-SearchBot (AI answer-engine index)",
-        "ua": ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like "
-               "Gecko) Chrome/131.0.0.0 Safari/537.36; compatible; OAI-SearchBot/1.4; "
-               "+https://openai.com/searchbot"),
-        "klass": "ai_search",
-        "string_verified": True,
-        "doc": "https://developers.openai.com/api/docs/bots",
-    },
-    {
-        "key": "perplexitybot",
-        "label": "PerplexityBot (AI answer-engine index)",
-        "ua": ("Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; "
-               "+https://perplexity.ai/perplexitybot)"),
-        "klass": "ai_search",
-        "string_verified": True,
-        "doc": "https://docs.perplexity.ai/guides/bots",
-    },
-    {
-        "key": "chatgpt_user",
-        "label": "ChatGPT-User (AGENTIC — a person asked, right now)",
-        "ua": ("Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; "
-               "+https://openai.com/bot"),
-        "klass": "ai_agentic",
-        "string_verified": True,
-        "doc": "https://developers.openai.com/api/docs/bots",
-    },
-    {
-        "key": "perplexity_user",
-        "label": "Perplexity-User (AGENTIC — a person asked, right now)",
-        "ua": ("Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Perplexity-User/1.0; "
-               "+https://perplexity.ai/perplexity-user)"),
-        "klass": "ai_agentic",
-        "string_verified": True,
-        "doc": "https://docs.perplexity.ai/guides/bots",
-    },
-    {
-        "key": "claude_user",
-        "label": "Claude-User (AGENTIC — a person asked, right now)",
-        "ua": ("Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; Claude-User/1.0; "
-               "+claudebot@anthropic.com"),
-        "klass": "ai_agentic",
-        "string_verified": False,
-        "doc": "https://support.claude.com/en/articles/8896518 (token documented; full string not published)",
     },
     {
         "key": "mechanism_probe_chrome",
@@ -219,9 +140,32 @@ IDENTITIES = [
                "Gecko) Chrome/126.0.0.0 Safari/537.36"),
         "klass": "mechanism_probe",
         "string_verified": True,
+        "label_kind": "control",
         "doc": "n/a — deliberate control, disclosed in the dataset",
     },
 ]
+CONTROL_KEYS = tuple(i["key"] for i in CONTROL_IDENTITIES)
+
+
+def load_crawler_identities(path=None) -> "tuple[list, list, list]":
+    """(rows, sent vendor identities, not-sent records) from crawlers.csv."""
+    rows = crawler_list.load(path)
+    sent, not_sent = crawler_list.build_identities(rows)
+    return rows, sent, not_sent
+
+
+CRAWLER_ROWS, VENDOR_IDENTITIES, NOT_SENT = load_crawler_identities()
+_CTRL = {i["key"]: i for i in CONTROL_IDENTITIES}
+# Controls first (research before anything else), then the list in its own order.
+IDENTITIES = [_CTRL["baseline_default"], _CTRL["research_betanyc"]] + VENDOR_IDENTITIES + \
+    [_CTRL["mechanism_probe_chrome"]]
+
+# The legacy tiers (a, b, all: the 2026-08 bot-access study) keep their original twelve names so a
+# re-run stays comparable and under HARD_REQUEST_CAP; the labels now come from crawlers.csv too.
+LEGACY_IDENTITY_KEYS = ("baseline_default", "research_betanyc", "googlebot", "gptbot", "ccbot",
+                        "claudebot", "oai_searchbot", "perplexitybot", "chatgpt_user",
+                        "perplexity_user", "claude_user", "mechanism_probe_chrome")
+LEGACY_IDENTITIES = [i for k in LEGACY_IDENTITY_KEYS for i in IDENTITIES if i["key"] == k]
 
 # Tier B asks only "does this deep path differ from its host's apex?" Three identities answer that:
 # an honest baseline, one honest AI agent, and the mechanism probe. Twelve would be waste.
@@ -229,16 +173,12 @@ TIER_B_IDENTITY_KEYS = ("research_betanyc", "claudebot", "mechanism_probe_chrome
 
 # Product tokens that are robots.txt CONTROL ONLY — they never issue a request. Scored in the
 # stated-policy arm; sending them as a live UA would be an error.
-ROBOTS_ONLY_TOKENS = ("Google-Extended", "Applebot-Extended")
+ROBOTS_ONLY_TOKENS = tuple(r["name"] for r in CRAWLER_ROWS
+                           if r["send"] == "rules-only" and r["ua_exact"] == crawler_list.TOKEN_ONLY)
 
-# Tokens we look for when parsing robots.txt.
-ROBOTS_AI_TOKENS = (
-    "GPTBot", "OAI-SearchBot", "ChatGPT-User",
-    "ClaudeBot", "Claude-User", "Claude-SearchBot", "anthropic-ai", "Claude-Web",
-    "PerplexityBot", "Perplexity-User",
-    "CCBot", "Bytespider", "Meta-ExternalAgent", "Amazonbot", "Applebot",
-    "Google-Extended", "Applebot-Extended", "cohere-ai", "Diffbot", "omgili",
-)
+# Tokens we look for when parsing robots.txt: every name in crawlers.csv (sent or rules-only) plus
+# catalog 0.1's legacy read-only tokens (ai_readability.AI_TOKENS). Never a list kept here.
+ROBOTS_AI_TOKENS = ar.AI_TOKENS
 ROBOTS_SEARCH_TOKENS = ("Googlebot", "bingbot", "Slurp", "DuckDuckBot", "Baiduspider", "YandexBot")
 
 # Body fingerprints for a challenge/block page served with a 2xx status. research-methods.md
@@ -491,7 +431,7 @@ def build_work(targets: list, tier: str) -> list:
             continue
         by_host[urllib.parse.urlparse(url).netloc.lower()].append(t)
 
-    ident_by_key = {i["key"]: i for i in IDENTITIES}
+    ident_by_key = {i["key"]: i for i in LEGACY_IDENTITIES}
     work = []
 
     for host, items in sorted(by_host.items()):
@@ -503,7 +443,7 @@ def build_work(targets: list, tier: str) -> list:
                          "url": "https://{}/robots.txt".format(host), "identity": "research_betanyc"})
             work.append({"kind": "llms", "host": host,
                          "url": "https://{}/llms.txt".format(host), "identity": "research_betanyc"})
-            for ident in IDENTITIES:
+            for ident in LEGACY_IDENTITIES:
                 work.append({"kind": "probe_tier_a", "host": host, "url": rep["start_url"],
                              "identity": ident["key"],
                              "entity_id": rep.get("entity_id") or rep.get("id"),
@@ -588,9 +528,17 @@ READ_CAPS = {                 # bytes read per request kind; bodies beyond this 
     "md_accept": 256_000,
     "md_index": 256_000,
     "link": 8_000,
+    "api_catalog": 256_000,   # D4
+    "wp_rest": 2_000_000,     # D3: a WordPress index lists every route
+    "portal_catalog": 2_000_000,       # D5 (a DCAT-US feed can be large; truncated is fine)
+    "portal_catalog_ident": 64_000,    # D7 reads status and block page only
+    "portal_lookup": 256_000,          # D6 Socrata Discovery lookup
+    "dataset": 2_000_000,              # D6 dataset page, read like a homepage
 }
 KIND_TEST = {"robots": "W1", "llms": "M4", "sitemap": "M2", "home": "W4", "page": "W4", "notfound": "F4",
-             "http": "I5", "llms_full": "M5", "md_accept": "R2", "md_index": "R2", "link": "F3"}
+             "http": "I5", "llms_full": "M5", "md_accept": "R2", "md_index": "R2", "link": "F3",
+             "api_catalog": "D4", "wp_rest": "D3", "portal_catalog": "D5", "portal_lookup": "D6",
+             "dataset": "D6", "portal_catalog_ident": "D7"}
 
 NET_DOWN_STREAK = 8            # consecutive transport failures before we suspect ourselves
 NET_DOWN_MIN_HOSTS = 4         # ...spread over at least this many distinct hosts
@@ -603,25 +551,19 @@ REACHABILITY_URLS = ("https://captive.apple.com/hotspot-detect.html",
 DEFAULT_MAX_REQUESTS = 30_000
 MAX_REDIRECTS = 5
 
-# Bing's legacy desktop bingbot string, verbatim from
-# https://www.bing.com/webmasters/help/which-crawlers-does-bing-use-8c184ec0 (accessed 2026-11-06).
-BINGBOT = {
-    "key": "bingbot",
-    "label": "bingbot (search)",
-    "ua": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
-    "klass": "search",
-    "string_verified": True,
-    "doc": "https://www.bing.com/webmasters/help/which-crawlers-does-bing-use-8c184ec0",
-}
+# bingbot comes from crawlers.csv like every vendor name (its first published label is the same
+# legacy desktop string the 2026-11-06 run sent).
+BINGBOT = next(i for i in IDENTITIES if i["key"] == "bingbot")
 
 
-def tier_identities(tier: str) -> list:
-    """core: the six of tests.md; full: every identity the legacy probe sends, plus bingbot."""
-    by_key = {i["key"]: i for i in IDENTITIES}
+def tier_identities(tier: str, identities=None) -> list:
+    """core: the six of tests.md; full: the research crawler first, then every other identity:
+    the controls and every name crawlers.csv sends."""
+    identities = IDENTITIES if identities is None else identities
+    by_key = {i["key"]: i for i in identities}
     if tier == "core":
         return [by_key[k] for k in CORE_IDENTITY_KEYS]
-    ids = [by_key[RESEARCH_KEY]] + [i for i in IDENTITIES if i["key"] != RESEARCH_KEY]
-    return ids + [BINGBOT]
+    return [by_key[RESEARCH_KEY]] + [i for i in identities if i["key"] != RESEARCH_KEY]
 
 
 def _transport_kind(exc: BaseException) -> str:
@@ -925,6 +867,7 @@ def host_plan(job: dict, ctx: RunContext):
         verdict, ev = verdict_ev
         rows.append({"catalog_version": ar.CATALOG_VERSION, "git_sha": ctx.git_sha,
                      "run_id": ctx.run_id, "vantage": ctx.vantage, "tier": ctx.tier,
+                     "place": getattr(ctx, "place", None),
                      "ts": now_iso(), "host": host, "entity_id": job.get("entity_id"),
                      "entity_name": job.get("entity_name"), "entity_ids": job.get("entity_ids"),
                      "test": test, "identity": identity, "verdict": verdict, "evidence": ev,
@@ -987,13 +930,31 @@ def host_plan(job: dict, ctx: RunContext):
     row("F4", RESEARCH_KEY, ar.test_f4(notfound))
     for pid, fn in (("P1", ar.test_p1), ("P2", ar.test_p2), ("P3", ar.test_p3), ("P4", ar.test_p4)):
         row(pid, RESEARCH_KEY, fn(research, page))
+    # ---- catalog 0.2, zero requests: website software and data/API links (pass 1)
+    c1 = ar.test_c1(research, page, job.get("gsa_cms"))
+    row("C1", RESEARCH_KEY, c1)
+    row("D2", RESEARCH_KEY, ar.test_d2(research, page, ctx.portals, llms))
 
     if ctx.tier == "full":
         llms_full = yield req("llms_full", base + "/llms-full.txt", follow="same_host")
         row("M5", RESEARCH_KEY, ar.test_m5(llms_full))
         md_accept = yield req("md_accept", home_url, accept="text/markdown")
         md_index = yield req("md_index", base + "/index.md", follow="same_host")
-        row("R2", RESEARCH_KEY, ar.test_r2(md_accept, md_index))
+        row("R2", RESEARCH_KEY, ar.test_r2(md_accept, md_index, research, page))
+        # ---- data endpoints, pass 2 (documented paths only; tests.md § Data endpoints)
+        api_cat = yield req("api_catalog", base + ar.API_CATALOG_PATH,
+                            accept=ar.LINKSET_TYPE + ", application/json;q=0.5")
+        row("D4", RESEARCH_KEY, ar.test_d4(api_cat))
+        if ar.is_wordpress(c1[1]):
+            root = ar.wp_api_root(research, page) if page else None
+            wp_url = root if root and urllib.parse.urlparse(root).netloc.lower() == host \
+                else base + "/wp-json/"
+            wp = yield req("wp_rest", wp_url, accept="application/json", follow="same_host")
+            row("D3", RESEARCH_KEY, ar.test_d3(wp))
+        else:
+            row("D3", RESEARCH_KEY, ("na", {"reason": "homepage does not show WordPress"}))
+        if "data portal" in (job.get("kinds") or []):
+            yield from portal_plan(job, ctx, research, page, req, row)
         links = ar.f3_pick_links(research, page) if page else []
         results = []
         for link in links:
@@ -1009,16 +970,58 @@ def host_plan(job: dict, ctx: RunContext):
     return rows
 
 
+def portal_plan(job: dict, ctx, research, page, req, row):
+    """D5–D7 for an address of kind `data portal` (full tier): the platform's documented catalog
+    (research identity), one dataset page from it, then the catalog once per other identity.
+    Requests: 1 + 1 (+1 Socrata Discovery lookup) + (identities − 1). Nothing when the platform
+    is not recognized: no path is tried that its vendor does not document."""
+    host = job["host"]
+    plat = ar.portal_platform(host, research, page, job.get("platform"))
+    platform = plat["platform"]
+    cat_url = ar.portal_catalog_url(platform, host) if platform else None
+    if not cat_url:
+        why = ("na", {"reason": "platform not recognized ({}); no documented catalog path to "
+                                "try".format(plat["signal"])})
+        row("D5", RESEARCH_KEY, why)
+        row("D6", RESEARCH_KEY, why)
+        row("D7", ar.W4_AGGREGATE_IDENTITY, why)
+        return
+    catalog = yield req("portal_catalog", cat_url, accept="application/json")
+    verdict, ev = ar.test_d5(platform, catalog)
+    row("D5", RESEARCH_KEY, (verdict, dict(ev, platform_signal=plat["signal"])))
+    lookup = None
+    lk = ar.dataset_lookup_url(platform, host) if verdict == "pass" else None
+    if lk:
+        lookup = yield req("portal_lookup", lk, accept="application/json")
+    ds_url = ar.dataset_page_url(platform, host, catalog, lookup) if verdict == "pass" else None
+    if ds_url:
+        ds = yield req("dataset", ds_url)
+        ds_page = ar.parse_page(ds.get("body")) if ds.get("status") == 200 and not ar.refused(ds) \
+            else None
+        row("D6", RESEARCH_KEY, ar.test_d6(ds_url, ds, ds_page))
+    else:
+        row("D6", RESEARCH_KEY, ar.test_d6(None, None))
+    per = {RESEARCH_KEY: catalog}
+    for ident in ctx.identities:
+        if ident["key"] != RESEARCH_KEY:
+            per[ident["key"]] = yield req("portal_catalog_ident", cat_url, identity=ident["key"],
+                                          accept="application/json")
+    verdicts, agg = ar.test_d7(per, {i["key"]: i["klass"] for i in ctx.identities})
+    for key, ve in verdicts.items():
+        row("D7", key, ve)
+    row("D7", ar.W4_AGGREGATE_IDENTITY, agg)
+
+
 # Tests a deep page gets (issue #35). The host-level files (llms.txt, sitemap, the 404 probe,
 # http://) and the tests that read them belong to the host run and are not repeated per page.
 PAGE_TESTS = ("W3", "W4", "R1", "R3", "I1", "I2", "I3", "I4", "F1", "F2", "D1",
               "P1", "P2", "P3", "P4")
 
 
-def page_identities() -> list:
+def page_identities(identities=None) -> list:
     """--deep-pages: the Tier B set. A page asks whether it differs from its host; an honest
     baseline, one honest AI agent and the mechanism probe answer that."""
-    by_key = {i["key"]: i for i in IDENTITIES}
+    by_key = {i["key"]: i for i in (IDENTITIES if identities is None else identities)}
     return [by_key[k] for k in TIER_B_IDENTITY_KEYS]
 
 
@@ -1056,6 +1059,7 @@ def page_plan(job: dict, ctx):
         verdict, ev = verdict_ev
         rows.append({"catalog_version": ar.CATALOG_VERSION, "git_sha": ctx.git_sha,
                      "run_id": ctx.run_id, "vantage": ctx.vantage, "tier": ctx.tier,
+                     "place": getattr(ctx, "place", None),
                      "ts": now_iso(), "host": host, "scope": "page", "page_url": page_url,
                      "page_host": page_host, "entity_id": job.get("entity_id"),
                      "entity_name": job.get("entity_name"), "entity_ids": job.get("entity_ids"),
@@ -1236,15 +1240,28 @@ def plan_targets(targets: list) -> list:
         if host:
             by_host[host].append(t)
     jobs = []
+    # Which address stands for a host (addresses.csv): a data portal or main site before a
+    # sub-site, section or API, so a host's homepage is read from its own front door. A host
+    # carrying only sections is still read at the first one. Rows without `kind` sort as before.
+    kind_rank = {"data portal": 0, "main site": 1, "sub-site": 2, "API": 3, "section": 4}
     for host, items in sorted(by_host.items()):
-        items = sorted(items, key=lambda x: (x.get("entity_id") is None, x.get("entity_id") or ""))
+        items = sorted(items, key=lambda x: (kind_rank.get(x.get("kind"), 0),
+                                             x.get("entity_id") is None, x.get("entity_id") or ""))
         rep = items[0]
         url = rep["url"]
         if urllib.parse.urlparse(url).scheme != "https":
             url = "https://{}{}".format(host, urllib.parse.urlparse(url).path or "/")
-        jobs.append({"host": host, "url": url, "entity_id": rep.get("entity_id"),
-                     "entity_name": rep.get("entity_name"),
-                     "entity_ids": [i.get("entity_id") for i in items]})
+        job = {"host": host, "url": url, "entity_id": rep.get("entity_id"),
+               "entity_name": rep.get("entity_name"),
+               "entity_ids": [i.get("entity_id") for i in items]}
+        kinds = sorted({i["kind"] for i in items if i.get("kind")})
+        if kinds:
+            job["kinds"] = kinds
+        for field in ("platform", "gsa_cms"):
+            val = next((i[field] for i in items if i.get(field)), None)
+            if val:
+                job[field] = val
+        jobs.append(job)
     return jobs
 
 
@@ -1258,10 +1275,64 @@ def website_row_as_target(row: dict) -> dict:
             "url": row.get("initial_url")}
 
 
+ADDRESSES = ROOT / "data" / "ai-readability" / "addresses.csv"
+WEBSITES = ROOT / "data" / "ai-readability" / "websites.json"
+ADDRESS_KINDS = ("main site", "sub-site", "section", "data portal", "API")
+# addresses.csv headers, normalized (lower case, spaces and hyphens to underscores) -> our field.
+ADDRESS_FIELDS = {"address": "address", "owning_body": "owning_body", "kind": "kind",
+                  "level": "level", "entity_type": "level", "level_or_entity_type": "level",
+                  "source": "source", "date_found": "date_found", "notes": "notes",
+                  "entity_id": "entity_id", "platform": "platform", "cms": "cms"}
+
+
+def _norm_header(h: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "_", (h or "").strip().lower()).strip("_")
+
+
+def load_addresses(path) -> list:
+    """data/ai-readability/addresses.csv (issue #41) as probe targets. Columns: address, owning
+    body, kind (main site | sub-site | section | data portal | API), level or entity_type,
+    source, date found, notes. Optional: entity_id, platform (a data portal's software, if the
+    list knows it), cms (GSA Site Scanning's value, kept as is by C1). An address with no scheme
+    is read as https. Raises on an unknown kind or a missing address: the list is checked, not
+    guessed around."""
+    import csv
+    out = []
+    with pathlib.Path(path).open(newline="", encoding="utf-8") as fh:
+        reader = csv.DictReader(fh)
+        cols = {h: ADDRESS_FIELDS.get(_norm_header(h)) for h in reader.fieldnames or []}
+        if "address" not in cols.values() or "kind" not in cols.values():
+            raise ValueError("{}: needs `address` and `kind` columns, has {}".format(
+                path, reader.fieldnames))
+        for n, raw in enumerate(reader, start=2):
+            r = {cols[k]: (v or "").strip() for k, v in raw.items() if cols.get(k)}
+            if not r.get("address"):
+                raise ValueError("{} line {}: empty address".format(path, n))
+            if r.get("kind") not in ADDRESS_KINDS:
+                raise ValueError("{} line {}: kind {!r} is not one of {}".format(
+                    path, n, r.get("kind"), ", ".join(ADDRESS_KINDS)))
+            url = r["address"] if "://" in r["address"] else "https://" + r["address"]
+            out.append({"entity_id": r.get("entity_id") or None,
+                        "entity_name": r.get("owning_body") or None, "url": url,
+                        "kind": r["kind"], "level": r.get("level") or None,
+                        "platform": r.get("platform") or None, "gsa_cms": r.get("cms") or None,
+                        "source": r.get("source") or None})
+    return out
+
+
+def default_targets_file() -> "pathlib.Path":
+    """--tier core|full with no --targets-file: the address inventory when it exists, else
+    websites.json (until issue #41's addresses.csv lands)."""
+    return ADDRESSES if ADDRESSES.exists() else WEBSITES
+
+
 def load_targets(targets_file) -> list:
-    """--targets-file: a JSON list of {entity_id, entity_name, url} (entity_id may be null), or
-    {"targets": [...]}, or data/ai-readability/websites.json (rows with `initial_url`; rows with
-    `ny_host_issue` are skipped). Without it: data/crawl_targets.json, mapped to the same shape."""
+    """--targets-file: addresses.csv (any .csv, issue #41 layout), a JSON list of {entity_id,
+    entity_name, url} (entity_id may be null), or {"targets": [...]}, or
+    data/ai-readability/websites.json (rows with `initial_url`; rows with `ny_host_issue` are
+    skipped). Without it: data/crawl_targets.json, mapped to the same shape (legacy tiers)."""
+    if targets_file and str(targets_file).lower().endswith(".csv"):
+        return load_addresses(targets_file)
     if targets_file:
         raw = json.loads(pathlib.Path(targets_file).read_text())
         items = raw.get("targets", raw) if isinstance(raw, dict) else raw
@@ -1274,7 +1345,8 @@ def load_targets(targets_file) -> list:
             if not isinstance(t, dict) or not t.get("url"):
                 raise ValueError("every target needs a 'url': {!r}".format(t))
             out.append({"entity_id": t.get("entity_id"), "entity_name": t.get("entity_name"),
-                        "url": t["url"]})
+                        "url": t["url"], **{k: t[k] for k in ("kind", "platform", "gsa_cms")
+                                            if t.get(k)}})
         return out
     raw = json.loads(TARGETS.read_text())
     items = raw.get("targets", raw) if isinstance(raw, dict) else raw
@@ -1282,14 +1354,56 @@ def load_targets(targets_file) -> list:
              "url": t.get("start_url")} for t in items if t.get("start_url")]
 
 
-def requests_per_host(tier: str, n_identities: int) -> "tuple[int, int]":
+def requests_per_host(tier: str, n_identities: int, job: dict = None) -> "tuple[int, int]":
     """(min, max) requests one host costs, before retries. core: robots, llms, sitemap,
-    homepage × identities, 404 probe, http:// check. full adds llms-full, two markdown
-    probes and up to 10 link checks (HEAD, GET on 405)."""
+    homepage × identities, 404 probe, http:// check (C1 and D2 cost nothing). full adds
+    llms-full, two markdown probes, the RFC 9727 api-catalog (D4), the WordPress REST index when
+    the homepage shows WordPress (D3, 0–1), up to 10 link checks (HEAD, GET on 405), and, for a
+    `data portal` address, the portal tests (D5–D7): catalog, a Socrata Discovery lookup (0–1),
+    one dataset page, and the catalog once per other identity — or nothing when the platform is
+    not recognized."""
     core = 5 + n_identities
     if tier == "core":
         return core, core
-    return core + 3, core + 3 + 20
+    lo, hi = core + 3 + 1, core + 3 + 1 + 1 + 20
+    if job and "data portal" in (job.get("kinds") or []):
+        hi += 1 + 1 + 1 + (n_identities - 1)
+    return lo, hi
+
+
+EST_RESPONSE_S = 1.0   # assumed mean time a request takes, added to the pace (an estimate input)
+
+
+def run_estimate(jobs: list, tier: str, n_identities: int, workers: int = 1,
+                 pace_s: float = GLOBAL_PACE_S, floor_s: float = MIN_HOST_DELAY_S,
+                 governors: dict = None) -> dict:
+    """Requests and wall-clock hours for a host run, given the pacing. Each worker sends one
+    request per (pace + response time), so the run takes requests × that ÷ workers; but one
+    host's requests are serialized at its floor (≥ 30 s, or its governor if higher), so the
+    busiest host sets a lower bound. Hours are the larger of the two, for the min and max
+    request counts. Retries and quarantines are not modeled."""
+    governors = HOST_GOVERNORS if governors is None else governors
+    lo = hi = 0
+    busiest, busiest_hi = None, 0
+    for j in jobs:
+        a, b = requests_per_host(tier, n_identities, j)
+        lo, hi = lo + a, hi + b
+        if b > busiest_hi:
+            busiest, busiest_hi = j["host"], b
+    per_req = pace_s + EST_RESPONSE_S
+    workers = max(1, workers)
+
+    def hours(n_req, host_max):
+        floor = max(floor_s, governors.get(busiest, 0.0)) if busiest else floor_s
+        return round(max(n_req * per_req / workers, max(0, host_max - 1) * floor) / 3600, 1)
+    return {"hosts": len(jobs), "requests_min": lo, "requests_max": hi,
+            "hours_min": hours(lo, requests_per_host(tier, n_identities,
+                                                     next((j for j in jobs if j["host"] == busiest),
+                                                          None))[0] if busiest else 0),
+            "hours_max": hours(hi, busiest_hi), "busiest": busiest,
+            "busiest_requests_max": busiest_hi, "workers": workers,
+            "seconds_per_request": per_req,
+            "portals": sum(1 for j in jobs if "data portal" in (j.get("kinds") or []))}
 
 
 def run_worker(jobs: list, ctx: RunContext, writer, window: int = 8) -> None:
@@ -1427,14 +1541,52 @@ def split_by_host(jobs: list, n: int) -> list:
     return groups
 
 
+VPN_MAX_HOSTS = 25   # --vantage vpn: a small named set only (issue #44), never a full run
+
+
+def vpn_guard(args, jobs: list) -> list:
+    """Reasons to refuse a VPN run. VPN is a disclosed third vantage used only to ask "is this
+    block about our network?" for a few named hosts: never a full run, never a way to retry
+    until we get in."""
+    if (getattr(args, "vantage", "") or "").strip().lower() != "vpn":
+        return []
+    if not args.only_hosts:
+        return ["--vantage vpn needs --only-hosts (a small named set); a full run over a VPN "
+                "is refused"]
+    if len(jobs) > VPN_MAX_HOSTS:
+        return ["--vantage vpn is limited to {} hosts; --only-hosts matched {}".format(
+            VPN_MAX_HOSTS, len(jobs))]
+    if not jobs:
+        return ["--vantage vpn: --only-hosts matched no address"]
+    return []
+
+
+def pre_run_guard(identities: list, rows: list, today) -> list:
+    """The pre-run guard (issue #42/#44): crawlers.csv must pass its own checks, every label we
+    send must be in it (controls excepted), and no row may be checked more than 30 days ago."""
+    return crawler_list.guard(rows, identities, today, controls=CONTROL_KEYS)
+
+
 def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
-                    monotonic=time.monotonic, pacing=None) -> int:
-    """Entry point for --tier core|full and --deep-pages. Returns 0 (done) or 1 (broke)."""
+                    monotonic=time.monotonic, pacing=None, today=None, netlookup=None) -> int:
+    """Entry point for --tier core|full and --deep-pages. Returns 0 (done), 1 (broke) or 2
+    (refused before starting: pre-run guard or VPN guard)."""
+    import network_record
+    today = today or _date.today()
     deep = bool(getattr(args, "deep_pages", False))
+    crawlers_path = getattr(args, "crawlers", None)
+    if crawlers_path:
+        crawler_rows, vendor, not_sent = load_crawler_identities(crawlers_path)
+        all_idents = [_CTRL["baseline_default"], _CTRL["research_betanyc"]] + vendor + \
+            [_CTRL["mechanism_probe_chrome"]]
+    else:
+        crawler_rows, not_sent, all_idents = CRAWLER_ROWS, NOT_SENT, IDENTITIES
     if deep:
         args.tier = "pages"
         jobs = page_jobs(load_deep_page_targets(args.targets_file, args.deep_pages_extra))
     else:
+        if not args.targets_file:
+            args.targets_file = str(default_targets_file())
         jobs = plan_targets(load_targets(args.targets_file))
     if args.only_hosts:
         only = ({h.strip().lower() for h in pathlib.Path(args.only_hosts[1:]).read_text().splitlines()
@@ -1443,7 +1595,13 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
         jobs = [j for j in jobs if j["host"] in only]
     if args.limit:
         jobs = jobs[:args.limit]
-    identities = page_identities() if deep else tier_identities(args.tier)
+    identities = page_identities(all_idents) if deep else tier_identities(args.tier, all_idents)
+    refusals = pre_run_guard(identities, crawler_rows, today) + vpn_guard(args, jobs)
+    if refusals:
+        print("REFUSED: the run did not start.", file=sys.stderr)
+        for r in refusals:
+            print("  - " + r, file=sys.stderr)
+        return 2
     if deep:
         floor_s = (pacing or {}).get("host_floor_s", MIN_HOST_DELAY_S)
         governors = (pacing or {}).get("governors", HOST_GOVERNORS)
@@ -1474,12 +1632,25 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
             print("\nno network used (dry run)")
             return 0
     else:
-        lo, hi = requests_per_host(args.tier, len(identities))
+        pc = pacing or {}
+        est = run_estimate(jobs, args.tier, len(identities), args.max_workers,
+                           pc.get("pace_s", GLOBAL_PACE_S), pc.get("host_floor_s", MIN_HOST_DELAY_S),
+                           pc.get("governors", HOST_GOVERNORS))
+        lo, hi = est["requests_min"], est["requests_max"]
 
     if args.dry_run:
-        print("tier={}  hosts={}  identities={}  requests≈{}–{} ({}–{} per host, before retries)"
-              .format(args.tier, len(jobs), len(identities), lo * len(jobs), hi * len(jobs), lo, hi))
+        print("tier={}  hosts={}  identities={}  requests≈{}–{} (before retries)".format(
+            args.tier, len(jobs), len(identities), lo, hi))
+        print("estimated wall clock: {}–{} h with {} worker(s) at ≈{:.0f} s per request "
+              "(pace {:.0f} s + ≈{:.0f} s response); busiest host {} ({} requests, ≥ 30 s apart)"
+              .format(est["hours_min"], est["hours_max"], est["workers"],
+                      est["seconds_per_request"], est["seconds_per_request"] - EST_RESPONSE_S,
+                      EST_RESPONSE_S, est["busiest"], est["busiest_requests_max"]))
+        print("data portals (D5–D7): {}  ·  targets: {}".format(est["portals"], args.targets_file))
+        print("network record: 3 requests to stat.ripe.net at the start and 3 at the end")
         print("identities: " + ", ".join(i["key"] for i in identities))
+        if not_sent:
+            print("read in robots.txt only, not sent: " + ", ".join(n["name"] for n in not_sent))
         for j in jobs[:args.dry_run_show]:
             print("\n{}  (entity {})".format(j["host"], j["entity_id"]))
             print("  GET https://{}/robots.txt            [research]".format(j["host"]))
@@ -1492,6 +1663,11 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
             if args.tier == "full":
                 print("  GET /llms-full.txt · GET / Accept: text/markdown · GET /index.md · "
                       "≤10 HEAD same-host links")
+                print("  GET /.well-known/api-catalog (D4) · GET the WordPress REST root if the "
+                      "homepage shows WordPress (D3)")
+                if "data portal" in (j.get("kinds") or []):
+                    print("  data portal: the platform's documented catalog, one dataset page, "
+                          "and the catalog once per identity (D5–D7)")
         if len(jobs) > args.dry_run_show:
             print("\n... {} more hosts".format(len(jobs) - args.dry_run_show))
         print("\nno network used (dry run)")
@@ -1522,9 +1698,16 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
                      max_requests=args.max_requests, portals=portals, dotgov=dotgov,
                      seed=args.seed, sleep=sleep, monotonic=monotonic, **pacing)
     ctx.requests = spent
+    ctx.place = network_record.place_of(args.vantage)
     if deep:  # the estimate is recomputed for what is still pending (robots per page host)
         lo = hi = page_request_estimate(pending, len(identities), ctx.clock.floor_s,
                                         ctx.clock.governors)["requests"]
+    else:
+        pe = run_estimate(pending, args.tier, len(identities), args.max_workers, ctx.pace_s,
+                          ctx.clock.floor_s, ctx.clock.governors)
+        lo, hi = pe["requests_min"], pe["requests_max"]
+    netlookup = netlookup or network_record.lookup
+    network = network_record.start_record(args.vantage, netlookup())
     writer = RunWriter(run_dir, ctx)
     started = now_iso()
     argv = list(sys.argv[1:]) if not getattr(args, "_argv", None) else list(args._argv)
@@ -1542,6 +1725,12 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
         "units": len(jobs),
         "hosts_already_done": len(done), "started": started, "ended": None,
         "identities": identities, "robots_only_tokens_not_sent": list(ROBOTS_ONLY_TOKENS),
+        "identities_not_sent": not_sent,
+        "crawlers_csv": {"path": str(crawlers_path or crawler_list.CRAWLERS_CSV),
+                         "sha256": ar.sha256(pathlib.Path(crawlers_path or
+                                                          crawler_list.CRAWLERS_CSV).read_bytes()),
+                         "checked_oldest": min((r["checked"] for r in crawler_rows), default=None)},
+        "network": network,
         "pacing": {"global_pace_s": ctx.pace_s, "jitter_s": ctx.jitter_s,
                    "min_host_delay_s": ctx.clock.floor_s, "host_governors": ctx.clock.governors,
                    "max_workers": args.max_workers},
@@ -1556,7 +1745,12 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
             run_dir, len(jobs), len(pending), len(identities), lo))
     else:
         print("run_dir={}  hosts={} (pending {})  identities={}  ≈{}–{} requests".format(
-            run_dir, len(jobs), len(pending), len(identities), lo * len(pending), hi * len(pending)))
+            run_dir, len(jobs), len(pending), len(identities), lo, hi))
+    print("network at start: place={} provider={} asn={} ip={}{}".format(
+        network["place"], network["start"].get("provider"), network["start"].get("asn"),
+        network["start"].get("public_ip"),
+        "  (lookup failed: {})".format(network["start"]["error"]) if network["start"].get("error")
+        else ""))
 
     state, error = "broke", None
 
@@ -1618,6 +1812,10 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
         status_path = run_dir / "status.json"
         try:
             status_path = write_status(run_dir, status)
+            try:
+                network_record.finish_record(network, netlookup())
+            except Exception as e:  # recorded, never guessed
+                network_record.finish_record(network, {"error": "{}: {}".format(type(e).__name__, e)})
             manifest.update({"ended": ended, "requests": ctx.requests,
                              "quarantined_hosts": ctx.quarantined,
                              "network_checks": ctx.monitor.checks, "state": state})
@@ -1649,8 +1847,13 @@ def build_parser() -> argparse.ArgumentParser:
                     help="a|b|all: the 2026-08 bot-access study. core|full: the AI-readability "
                          "test catalog (docs/ai-readability/tests.md)")
     ap.add_argument("--targets-file", default=None,
-                    help="core|full: JSON list of {entity_id, entity_name, url} to run instead of "
-                         "data/crawl_targets.json (entity_id may be null)")
+                    help="core|full: addresses.csv (issue #41 layout), websites.json, or a JSON "
+                         "list of {entity_id, entity_name, url}. Default: "
+                         "data/ai-readability/addresses.csv, else websites.json")
+    ap.add_argument("--crawlers", default=None,
+                    help="core|full|deep pages: the checked crawler list (default "
+                         "data/ai-readability/crawlers.csv). The run refuses to start if it fails "
+                         "its own checks or any row was checked more than 30 days ago")
     ap.add_argument("--out-root", default=str(ROOT / "data" / "ai-readability" / "runs"),
                     help="core|full: run folders are created here as <YYYY-MM-DD>-<vantage>/")
     ap.add_argument("--run-dir", default=None,
@@ -1686,7 +1889,9 @@ def build_parser() -> argparse.ArgumentParser:
                          "data/ai-readability/deep-pages-extra.csv")
     ap.add_argument("--seed", type=int, default=20260828)
     ap.add_argument("--vantage", default=os.environ.get("PROBE_VANTAGE", "unknown"),
-                    help="label for the network this ran from, e.g. 'residential' or 'office'")
+                    help="the network this ran from: office | home | vpn (recorded as `place` in "
+                         "run.json and on every row). vpn needs --only-hosts and at most {} "
+                         "hosts".format(VPN_MAX_HOSTS))
     return ap
 
 
@@ -1697,9 +1902,9 @@ def main(argv=None) -> int:
     if args.deep_pages:
         return run_readability(args)
     if args.tier in ("core", "full"):
-        if not args.targets_file and not TARGETS.exists():
-            print("FATAL: {} not found and no --targets-file given.".format(TARGETS),
-                  file=sys.stderr)
+        if not args.targets_file and not default_targets_file().exists():
+            print("FATAL: neither {} nor {} exists, and no --targets-file given.".format(
+                ADDRESSES, WEBSITES), file=sys.stderr)
             return 2
         return run_readability(args)
 
@@ -1756,7 +1961,7 @@ def main(argv=None) -> int:
     print("vantage={}  tier={}  hosts={}  work_units={}  pending={}  est≈{}h{:02d}m".format(
         args.vantage, args.tier, hosts, len(work), len(pending), est_min // 60, est_min % 60))
     print("identities: {} ({} with operator-verified strings)".format(
-        len(IDENTITIES), sum(1 for i in IDENTITIES if i["string_verified"])))
+        len(LEGACY_IDENTITIES), sum(1 for i in LEGACY_IDENTITIES if i["string_verified"])))
     print("cap={} requests | global pace≈{}s | governed hosts: {}".format(
         HARD_REQUEST_CAP, GLOBAL_PACE_S, ", ".join(HOST_GOVERNORS)))
 
@@ -1777,7 +1982,7 @@ def main(argv=None) -> int:
             len(pending), HARD_REQUEST_CAP), file=sys.stderr)
         return 2
 
-    ident_by_key = {i["key"]: i for i in IDENTITIES}
+    ident_by_key = {i["key"]: i for i in LEGACY_IDENTITIES}
     pacer, breaker = Pacer(rng), CircuitBreaker()
     sent = 0
     skipped = 0
@@ -1833,7 +2038,7 @@ def main(argv=None) -> int:
         "work_units_total": len(work), "hosts": hosts,
         "circuit_breaker_tripped": breaker.tripped, "circuit_breaker_reason": breaker.reason,
         "quarantined_hosts": breaker.quarantined, "units_skipped_quarantined": skipped,
-        "identities": [{k: v for k, v in i.items() if k != "ua"} for i in IDENTITIES],
+        "identities": [{k: v for k, v in i.items() if k != "ua"} for i in LEGACY_IDENTITIES],
         "robots_only_tokens_not_sent": list(ROBOTS_ONLY_TOKENS),
         "pacing": {"global_pace_s": GLOBAL_PACE_S, "min_host_delay_s": MIN_HOST_DELAY_S,
                    "host_governors": HOST_GOVERNORS},

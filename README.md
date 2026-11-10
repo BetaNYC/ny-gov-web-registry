@@ -85,14 +85,18 @@ Two artifacts invite human eyes: the [description review queue](docs/description
 
 `scripts/probe_bot_access.py` is a study built on the registry's crawl set rather than a step in
 building the registry. It asks each host two questions and keeps them separate: **what it says**
-(`robots.txt`, `llms.txt`) and **what it does** — the live response to each of 12 declared
-identities spanning search crawlers, AI training crawlers, AI answer-engine crawlers, and
-**agentic** fetchers (`ChatGPT-User`, `Claude-User`, `Perplexity-User`: a person asked, right now).
+(`robots.txt`, `llms.txt`) and **what it does** — the live response to each declared identity:
+search crawlers, AI training crawlers, AI answer-engine crawlers, and **agentic** fetchers
+(`ChatGPT-User`, `Claude-User`, `Perplexity-User`: a person asked, right now).
 
-Every User-Agent is verified against its operator's published documentation, or explicitly flagged
-`string_verified: false`. The checked list of crawler names, each tied to its company's own page and reviewed twice, is
-[`data/ai-readability/crawlers.csv`](data/ai-readability/crawlers.csv) ([how it is kept](docs/ai-readability/crawlers.md)). `Google-Extended` and `Applebot-Extended` are never sent as live agents —
-they are robots.txt control tokens with no request user agent, and a test enforces that.
+Every vendor User-Agent comes from the checked list of crawler names,
+[`data/ai-readability/crawlers.csv`](data/ai-readability/crawlers.csv) ([how it is kept](docs/ai-readability/crawlers.md)),
+each tied to its company's own page and reviewed twice. Labels are copied word for word, never
+assembled, and a version stand-in such as `Chrome/W.X.Y.Z` is never filled in (`scripts/crawler_list.py`).
+Only three controls live in code: the BetaNYC research crawler, the library default, and a
+disclosed desktop-Chrome probe. Rules-only names (`Google-Extended`, `Applebot-Extended`, ...) are
+read in robots.txt and never sent. Before a run starts, a guard refuses it if the list fails its own
+checks, if any sent label is not in the list, or if a row was checked more than 30 days ago.
 
 Network-touching, so it is **operator-gated like every other fetch here**: round-robin across hosts,
 a global pace with jitter, per-host floors, stricter governors for the two concentrated `nyc.gov`
@@ -115,6 +119,15 @@ research-UA homepage by `scripts/ai_readability.py`. A host that pushes back is 
 listed for review; only our own breakage stops a run, and `status.json` says `done` or `broke`.
 Results go to `data/ai-readability/runs/<date>-<vantage>/`, which is git-ignored (results stay
 private until the study concludes). Offline tests: `tests/test_ai_readability.py`.
+
+The targets are `data/ai-readability/addresses.csv` (every address: main sites, sub-sites,
+sections, data portals, APIs) when it exists, else `websites.json`. The full tier adds the data
+endpoint checks (the RFC 9727 API catalog, a WordPress site's REST index, and for data portals the
+platform's documented catalog, one dataset page, and the catalog per crawler name). Every
+`run.json` records the network the run went out on (place, provider, ASN, public address, time; at
+the start and the end) via `scripts/network_record.py` (RIPEstat). `--vantage vpn` is allowed only
+for a small `--only-hosts` set. `--dry-run` prints the request total and an estimated wall clock.
+Offline tests: `tests/test_rerun_scanner.py`.
 
 **V1, the browser check:** `scripts/render_check.py` loads each homepage in headless Chrome twice:
 once under the browser's own name ("HeadlessChrome") and once as plain "Chrome", a disclosed

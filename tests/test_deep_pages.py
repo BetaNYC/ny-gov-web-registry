@@ -145,6 +145,7 @@ def run_deep(tmp_path, table, extra=(), monkeypatch=None, transport=None, calls=
     args._argv = []
     code = p.run_readability(
         args, transport=transport or fake_transport(table, calls),
+        today=__import__("datetime").date(2026, 11, 10),
         monitor=p.NetworkMonitor(check=lambda: True, sleep=lambda s: None),
         sleep=lambda s: None,
         pacing={"pace_s": 0, "jitter_s": 0, "host_floor_s": 0, "governors": {},

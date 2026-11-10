@@ -223,7 +223,7 @@ def test_build_work_tier_a_is_one_target_per_host_full_matrix():
     work = p.build_work(targets, "a")
     tier_a = [w for w in work if w["kind"] == "probe_tier_a"]
     assert len({w["url"] for w in tier_a}) == 1              # one representative
-    assert len(tier_a) == len(p.IDENTITIES)                  # full matrix
+    assert len(tier_a) == len(p.LEGACY_IDENTITIES) == 12     # full matrix, original 12 names
     assert sum(1 for w in work if w["kind"] == "robots") == 1
     assert sum(1 for w in work if w["kind"] == "llms") == 1
 
