@@ -84,7 +84,9 @@ Pushback quarantines the host, as in a host run; resume is per page. **The perso
 its own User-Agent), one page load per page plus each page host's robots.txt, paced by the same
 host clock, one browser context per host, no retries. A page that shows a challenge or block page
 is recorded (`blocked`, `challenge: true`) and listed in `needs_person.txt` in the run folder for
-a person to try by hand; it is never clicked and never retried. Results stay in the git-ignored
+a person to try by hand; it is never clicked and never retried. A page the server says is gone
+(404 or 410) is a dead registry link, not a block: it is recorded as `not_found` and listed in
+`pages_not_found.txt`. Both lists are written even when empty. Results stay in the git-ignored
 run folder.
 
 ## Identities (who we say we are)

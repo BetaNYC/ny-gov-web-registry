@@ -158,6 +158,17 @@ def needs_person(resp: dict, title: str, text: str, rc) -> str:
     return ""
 
 
+NOT_FOUND = "not_found"
+
+
+def page_verdict(rec: dict, rc) -> str:
+    """--deep-pages: a page the server says is gone (404/410) is a dead registry link, not a
+    block, so it gets its own verdict and goes to pages_not_found.txt for the registry to fix."""
+    if rec.get("status") in (404, 410):
+        return NOT_FOUND
+    return rc.verdict(rec)
+
+
 def browser_transport(browser, pba, rc, captured: dict):
     """A probe transport backed by Chrome: one context per host (www. ignored), so cookies stay
     within the host as in a person's browser. The `ua` argument is ignored on purpose: Chrome
@@ -196,6 +207,9 @@ def run_pages(jobs: list, run_dir: pathlib.Path, vantage: str, transport, ua: st
         portals=ar.load_portals(portals_path) if portals_path.exists() else None,
         sleep=sleep, monotonic=monotonic, max_attempts=1, **(pacing or {}))
     counts = {}
+    # Written up front so an empty file means "checked, none", not "never checked".
+    (run_dir / "needs_person.txt").touch()
+    (run_dir / "pages_not_found.txt").touch()
 
     def writer(job, rows, review):
         with (run_dir / "results.jsonl").open("a") as res:
@@ -219,9 +233,12 @@ def run_pages(jobs: list, run_dir: pathlib.Path, vantage: str, transport, ua: st
                "challenge": rc.is_challenge(title, text), "waf": r.get("waf"),
                "error": r.get("transport_error") or (
                    None if job["url"] in captured else "not fetched (host quarantined)")}
-        rec["verdict"] = rc.verdict(rec)
+        rec["verdict"] = page_verdict(rec, rc)
         why = needs_person(r, title, text, rc)
         rec["needs_person"] = bool(why)
+        if rec["verdict"] == NOT_FOUND:
+            with (run_dir / "pages_not_found.txt").open("a") as f:
+                f.write("{}\t{}\t{}\n".format(job["url"], rec["status"], job.get("entity_name") or ""))
         with (run_dir / "headed.jsonl").open("a") as hd:
             hd.write(json.dumps(rec) + "\n")
         if why:

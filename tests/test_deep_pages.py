@@ -340,6 +340,27 @@ def test_headed_deep_pages_label_rows_and_list_pages_that_need_a_person(tmp_path
     assert counts.get("blocked", 0) >= 2   # the challenge and the 503
 
 
+def test_headed_deep_pages_gone_page_is_not_found_not_blocked(tmp_path):
+    jobs = p.page_jobs(aw.deep_page_targets(ROWS, OWNERS, None))
+    table = deep_table()
+    table[(PAGE_F, None)] = resp(404, "not found")
+    captured = {}
+    chrome = FakeChrome(table, captured)
+    run_dir = tmp_path / "headed"
+    run_dir.mkdir()
+    counts = headed_check.run_pages(jobs, run_dir, "test", chrome, "Mozilla/5.0 Chrome/142",
+                                    captured, sleep=lambda s: None,
+                                    pacing={"pace_s": 0, "jitter_s": 0, "host_floor_s": 0,
+                                            "governors": {}, "retry_backoff_s": 0})
+    headed = {r["page_url"]: r for r in rows_of(run_dir, "headed.jsonl")}
+    assert headed[PAGE_F]["verdict"] == headed_check.NOT_FOUND
+    assert headed[PAGE_F]["needs_person"] is False
+    gone = (run_dir / "pages_not_found.txt").read_text().splitlines()
+    assert [ln.split("\t")[0] for ln in gone] == [PAGE_F]
+    assert (run_dir / "needs_person.txt").read_text() == "", "written even when empty"
+    assert counts.get(headed_check.NOT_FOUND) == 1 and "blocked" not in counts
+
+
 def test_headed_needs_a_targets_file_unless_deep_pages(capsys):
     assert headed_check.main(["--run-dir", "/tmp/x", "--vantage", "t",
                               "--operator-authorized"]) == 2

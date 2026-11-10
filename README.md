@@ -154,7 +154,8 @@ only site is a `www.nyc.gov/site/<board>/` page) are listed by hand in
 `probe_bot_access.py --deep-pages` scores each body's own page rather than the host's homepage:
 the three Tier B identities, page-level tests only, robots.txt once per host, the same pacing.
 `headed_check.py --deep-pages` gives the person view of the same pages and lists any page that
-needs a human click in `needs_person.txt`. Method: [`docs/ai-readability/tests.md`](docs/ai-readability/tests.md)
+needs a human click in `needs_person.txt`, and any page that is gone (404/410) in
+`pages_not_found.txt`. Method: [`docs/ai-readability/tests.md`](docs/ai-readability/tests.md)
 § Deep pages. Offline tests: `tests/test_deep_pages.py`.
 
 ```
