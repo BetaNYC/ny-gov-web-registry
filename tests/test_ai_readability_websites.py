@@ -148,3 +148,16 @@ def test_corrections_file_hosts_have_their_real_site_in_the_list():
     have = {_key(r["ny_initial_domain"]) for r in rows}
     for k, r in ws.read_corrections(AIR / "website-corrections.csv").items():
         assert k in have and _key(r["superseded_by"]) in have, k
+
+
+def test_host_path_keeps_trailing_slash_and_query():
+    """Some servers treat /pages and /pages/ as different addresses: www.nyc.gov/content/...
+    answers 404 without the slash. Keep the path as the source wrote it; only the bare
+    homepage collapses to None."""
+    hp = ws._host_path
+    assert hp("https://www.nyc.gov/content/oti/pages/") == ("www.nyc.gov", "/content/oti/pages/")
+    assert hp("https://www.nyc.gov/content/oti/pages") == ("www.nyc.gov", "/content/oti/pages")
+    assert hp("https://www.nyc.gov/assets/mwbe/?page=mwbe-advisory-council") == (
+        "www.nyc.gov", "/assets/mwbe/?page=mwbe-advisory-council")
+    assert hp("https://www.nyc.gov/") == ("www.nyc.gov", None)
+    assert hp("www.nyc.gov") == ("www.nyc.gov", None)

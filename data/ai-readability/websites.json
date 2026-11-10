@@ -533,7 +533,7 @@
   ],
   "ny_page_urls": [
    "https://www.albanycounty.com/business/capital-resource-corporation",
-   "https://www.albanycounty.com/ida"
+   "https://www.albanycounty.com/ida/"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -927,7 +927,8 @@
    "Cattaraugus"
   ],
   "ny_page_urls": [
-   "https://www.allegany.org/index.php"
+   "https://www.allegany.org/index.php?Town%20of%20Allegany",
+   "https://www.allegany.org/index.php?Village%20of%20Allegany"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -976,22 +977,22 @@
    "Allegany"
   ],
   "ny_page_urls": [
-   "https://www.alleganyco.com/development/allegany-county-land-bank-corporation",
-   "https://www.alleganyco.com/local_govt/Allen",
-   "https://www.alleganyco.com/local_govt/Andover",
-   "https://www.alleganyco.com/local_govt/Angelica",
-   "https://www.alleganyco.com/local_govt/Belfast",
-   "https://www.alleganyco.com/local_govt/Birdsall",
-   "https://www.alleganyco.com/local_govt/Clarksville",
-   "https://www.alleganyco.com/local_govt/Genesee",
-   "https://www.alleganyco.com/local_govt/WAlmond",
-   "https://www.alleganyco.com/local_govt/Ward",
-   "https://www.alleganyco.com/local_govt/Wirt",
-   "https://www.alleganyco.com/local_govt/villages/Almond",
-   "https://www.alleganyco.com/local_govt/villages/Andover",
-   "https://www.alleganyco.com/local_govt/villages/Bolivar",
-   "https://www.alleganyco.com/local_govt/villages/Canseraga",
-   "https://www.alleganyco.com/local_govt/villages/Richburg"
+   "https://www.alleganyco.com/development/allegany-county-land-bank-corporation/",
+   "https://www.alleganyco.com/local_govt/Allen/",
+   "https://www.alleganyco.com/local_govt/Andover/",
+   "https://www.alleganyco.com/local_govt/Angelica/",
+   "https://www.alleganyco.com/local_govt/Belfast/",
+   "https://www.alleganyco.com/local_govt/Birdsall/",
+   "https://www.alleganyco.com/local_govt/Clarksville/",
+   "https://www.alleganyco.com/local_govt/Genesee/",
+   "https://www.alleganyco.com/local_govt/WAlmond/",
+   "https://www.alleganyco.com/local_govt/Ward/",
+   "https://www.alleganyco.com/local_govt/Wirt/",
+   "https://www.alleganyco.com/local_govt/villages/Almond/",
+   "https://www.alleganyco.com/local_govt/villages/Andover/",
+   "https://www.alleganyco.com/local_govt/villages/Bolivar/",
+   "https://www.alleganyco.com/local_govt/villages/Canseraga/",
+   "https://www.alleganyco.com/local_govt/villages/Richburg/"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -5375,7 +5376,7 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://brooklynbridgepark.org/about/brooklyn-bridge-park-corporation"
+   "https://brooklynbridgepark.org/about/brooklyn-bridge-park-corporation/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -6837,7 +6838,7 @@
    "St Lawrence"
   ],
   "ny_page_urls": [
-   "https://www.cantonnewyork.us/government/elected-village"
+   "https://www.cantonnewyork.us/government/elected-village/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -6867,7 +6868,7 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://cantonny.gov/canton-capital-corporation"
+   "https://cantonny.gov/canton-capital-corporation/"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -7732,7 +7733,7 @@
   "ny_page_urls": [
    "https://www.cayugacounty.us/DoingBusiness/PlanningandEconomicDevelopment/EconomicDevelopment/PartnersandResources/DevelopmentCorporation.aspx",
    "https://www.cayugacounty.us/portals/1//villageofmoravia",
-   "https://www.cayugacounty.us/portals/1/Aurelius",
+   "https://www.cayugacounty.us/portals/1/Aurelius/",
    "https://www.cayugacounty.us/portals/1/Townofcato",
    "https://www.cayugacounty.us/portals/1/conquest",
    "https://www.cayugacounty.us/portals/1/fairhaven",
@@ -7740,7 +7741,7 @@
    "https://www.cayugacounty.us/portals/1/genoa",
    "https://www.cayugacounty.us/portals/1/ira",
    "https://www.cayugacounty.us/portals/1/locke",
-   "https://www.cayugacounty.us/portals/1/montezuma",
+   "https://www.cayugacounty.us/portals/1/montezuma/",
    "https://www.cayugacounty.us/portals/1/niles",
    "https://www.cayugacounty.us/portals/1/scipio",
    "https://www.cayugacounty.us/portals/1/sempronius",
@@ -7749,8 +7750,8 @@
    "https://www.cayugacounty.us/portals/1/sterling",
    "https://www.cayugacounty.us/portals/1/summerhill",
    "https://www.cayugacounty.us/portals/1/throop",
-   "https://www.cayugacounty.us/portals/1/townofvictory",
-   "https://www.cayugacounty.us/portals/1/venice",
+   "https://www.cayugacounty.us/portals/1/townofvictory/",
+   "https://www.cayugacounty.us/portals/1/venice/",
    "https://www.cayugacounty.us/towns/A-G/VillageofCayuga.aspx",
    "https://www.cayugacounty.us/towns/H-P/Ledyard.aspx",
    "https://www.cayugacounty.us/towns/H-P/Owasco.aspx",
@@ -8429,7 +8430,7 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://cdrpc.org/programs/water-quality/combined-sewer-overflow-cso"
+   "https://cdrpc.org/programs/water-quality/combined-sewer-overflow-cso/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -9203,7 +9204,8 @@
    "Chemung"
   ],
   "ny_page_urls": [
-   "https://www.chemungcounty.com/index.asp"
+   "https://www.chemungcounty.com/index.asp?pageId=231",
+   "https://www.chemungcounty.com/index.asp?pageId=242"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -9772,8 +9774,8 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://www.ci.nyc.ny.us/html/nyw",
-   "https://www.ci.nyc.ny.us/html/tfa"
+   "https://www.ci.nyc.ny.us/html/nyw/",
+   "https://www.ci.nyc.ny.us/html/tfa/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -9997,7 +9999,7 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://www.cityclerk.nyc.gov/content"
+   "https://www.cityclerk.nyc.gov/content/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -10083,7 +10085,7 @@
    "Broome"
   ],
   "ny_page_urls": [
-   "https://www.cityofbinghamton.com/department.asp"
+   "https://www.cityofbinghamton.com/department.asp?zone=Dept-Economic-Development&pid=6&pm=page"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -10987,7 +10989,7 @@
   ],
   "ny_page_urls": [
    "https://www.cityofrochester.gov/departments/neighborhood-and-business-development/rochester-urban-renewal-agency-rura",
-   "https://www.cityofrochester.gov/landbank"
+   "https://www.cityofrochester.gov/landbank/"
   ],
   "ny_source_count": 3,
   "ny_host_issue": null,
@@ -11677,7 +11679,7 @@
   "ny_page_urls": [
    "https://www.clintoncountyida.com/Clinton-IDA/cc_capital-resource-corp.html",
    "https://www.clintoncountyida.com/Clinton-IDA/clinton.html",
-   "https://www.clintoncountyida.com/information-page"
+   "https://www.clintoncountyida.com/information-page/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -11873,7 +11875,7 @@
    "Westchester"
   ],
   "ny_page_urls": [
-   "https://cmvny.com/departments/planning/industrial-development-agency"
+   "https://cmvny.com/departments/planning/industrial-development-agency/"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -12254,15 +12256,15 @@
    "Montgomery"
   ],
   "ny_page_urls": [
-   "https://www.co.montgomery.ny.us/florida",
+   "https://www.co.montgomery.ny.us/florida/",
    "https://www.co.montgomery.ny.us/sites/public/municipal/Municipal_Development/TownOfCanajoharie.aspx",
    "https://www.co.montgomery.ny.us/sites/public/municipal/Municipal_Development/TownOfGlen.aspx",
    "https://www.co.montgomery.ny.us/sites/public/municipal/Municipal_Development/TownOfRoot.aspx",
    "https://www.co.montgomery.ny.us/sites/public/municipal/Municipal_Development/VillageOfAmes.aspx",
    "https://www.co.montgomery.ny.us/sites/public/municipal/Municipal_Development/VillageOfHagaman.aspx",
    "https://www.co.montgomery.ny.us/sites/public/municipal/Municipal_Development/VillageOfNelliston.aspx",
-   "https://www.co.montgomery.ny.us/tpalatine",
-   "https://www.co.montgomery.ny.us/vpalatine"
+   "https://www.co.montgomery.ny.us/tpalatine/",
+   "https://www.co.montgomery.ny.us/vpalatine/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -13041,7 +13043,7 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://columbiaedc.com/about-cedc/columbia-county-land-bank-corporation"
+   "https://columbiaedc.com/about-cedc/columbia-county-land-bank-corporation/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -14430,7 +14432,7 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://www.cuny.edu/about/administration/offices/fpcm/cucf"
+   "https://www.cuny.edu/about/administration/offices/fpcm/cucf/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -15504,8 +15506,8 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://www.discoverrensselaer.com/rccrc",
-   "https://www.discoverrensselaer.com/rcwsa-2"
+   "https://www.discoverrensselaer.com/rccrc/",
+   "https://www.discoverrensselaer.com/rcwsa-2/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -18356,7 +18358,7 @@
   "ny_page_urls": [
    "https://www.erie.gov/akron",
    "https://www.erie.gov/newstead",
-   "https://www.erie.gov/sardinia"
+   "https://www.erie.gov/sardinia/"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -19688,7 +19690,7 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://flxgateway.com/scida"
+   "https://flxgateway.com/scida/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -21279,7 +21281,7 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://glencoveida.org/local-economic-assistance-corporation"
+   "https://glencoveida.org/local-economic-assistance-corporation/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -24211,7 +24213,7 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://www.herkimercountyida.org/ldc"
+   "https://www.herkimercountyida.org/ldc/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -25436,7 +25438,7 @@
    "Suffolk"
   ],
   "ny_page_urls": [
-   "https://huntingtonny.gov/action_orgs_detail.cfm"
+   "https://huntingtonny.gov/action_orgs_detail.cfm?boardID=29"
   ],
   "ny_source_count": 3,
   "ny_host_issue": null,
@@ -28563,7 +28565,7 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://www.lipower.org/UDSA"
+   "https://www.lipower.org/UDSA/"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -30629,7 +30631,7 @@
   ],
   "ny_page_urls": [
    "https://www.massenaworks.com/town/index.asp",
-   "https://www.massenaworks.com/village"
+   "https://www.massenaworks.com/village/"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -32968,7 +32970,7 @@
    "Hamilton"
   ],
   "ny_page_urls": [
-   "https://mylonglake.com/long-lake/ll-local-government"
+   "https://mylonglake.com/long-lake/ll-local-government/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -34273,7 +34275,7 @@
    "Niagara"
   ],
   "ny_page_urls": [
-   "https://niagarafallsusa.org/government/city-departments/nfc-development-corp"
+   "https://niagarafallsusa.org/government/city-departments/nfc-development-corp/"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -34640,7 +34642,7 @@
    "Oswego"
   ],
   "ny_page_urls": [
-   "https://www.norcog.org/cleveland"
+   "https://www.norcog.org/cleveland/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -36224,24 +36226,25 @@
   ],
   "ny_page_urls": [
    "https://nyc.gov/html/nycwaterboard/html/home/home.shtml",
-   "https://www.nyc.gov/assets/mwbe",
-   "https://www.nyc.gov/content/appointments/pages",
+   "https://www.nyc.gov/assets/mwbe/",
+   "https://www.nyc.gov/assets/mwbe/?page=mwbe-advisory-council",
+   "https://www.nyc.gov/content/appointments/pages/",
    "https://www.nyc.gov/content/climate/pages/reports-and-publications/new-york-city-panel-on-climate-change-npcc",
    "https://www.nyc.gov/content/climate/pages/utility-consumer-advocate",
-   "https://www.nyc.gov/content/core/pages",
-   "https://www.nyc.gov/content/genderequity/pages",
+   "https://www.nyc.gov/content/core/pages/",
+   "https://www.nyc.gov/content/genderequity/pages/",
    "https://www.nyc.gov/content/genderequity/pages/economic-mobility-opportunity",
-   "https://www.nyc.gov/content/nycherfuture/pages",
-   "https://www.nyc.gov/content/nycppf/pages",
-   "https://www.nyc.gov/content/organize/pages",
-   "https://www.nyc.gov/content/oti/pages",
+   "https://www.nyc.gov/content/nycherfuture/pages/",
+   "https://www.nyc.gov/content/nycppf/pages/",
+   "https://www.nyc.gov/content/organize/pages/",
+   "https://www.nyc.gov/content/oti/pages/",
    "https://www.nyc.gov/content/oti/pages/data-analytics",
    "https://www.nyc.gov/content/oti/pages/meet-the-team/cyber-command",
    "https://www.nyc.gov/content/oti/pages/meet-the-team/information-privacy",
    "https://www.nyc.gov/content/planning/pages/commission",
    "https://www.nyc.gov/content/sports/pages/about-office-of-sports-wellness-and-recreation",
-   "https://www.nyc.gov/content/tenantprotection/pages",
-   "https://www.nyc.gov/content/unityproject/pages",
+   "https://www.nyc.gov/content/tenantprotection/pages/",
+   "https://www.nyc.gov/content/unityproject/pages/",
    "https://www.nyc.gov/html/dot/html/home/home.shtml",
    "https://www.nyc.gov/html/hhc/html/home/home.shtml",
    "https://www.nyc.gov/main/combat-antisemitism",
@@ -38075,7 +38078,7 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://www.nyshcr.org/HTFC"
+   "https://www.nyshcr.org/HTFC/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -38710,7 +38713,7 @@
    "Oneida"
   ],
   "ny_page_urls": [
-   "https://ocgov.net/departments/audit-and-control/oneida-tobacco-asset-securitization-corporation",
+   "https://ocgov.net/departments/audit-and-control/oneida-tobacco-asset-securitization-corporation/",
    "https://www.ocgov.net/comptroller/SportsFaciltyAuthority"
   ],
   "ny_source_count": 2,
@@ -38940,7 +38943,7 @@
    "St Lawrence"
   ],
   "ny_page_urls": [
-   "https://ogdensburg.org/index.aspx"
+   "https://ogdensburg.org/index.aspx?nid=92"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -39056,7 +39059,7 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://ogs.ny.gov/ACPL"
+   "https://ogs.ny.gov/ACPL/"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -39534,7 +39537,7 @@
    "Onondaga"
   ],
   "ny_page_urls": [
-   "https://www.ongov.net/otasc"
+   "https://www.ongov.net/otasc/"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -39567,10 +39570,10 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://ongoved.com/not-for-profit/ocof",
-   "https://ongoved.com/ocida",
-   "https://www.ongoved.com/non-profit/crt",
-   "https://www.ongoved.com/non-profit/ocdc"
+   "https://ongoved.com/not-for-profit/ocof/",
+   "https://ongoved.com/ocida/",
+   "https://www.ongoved.com/non-profit/crt/",
+   "https://www.ongoved.com/non-profit/ocdc/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -40840,7 +40843,7 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://www.otda.state.ny.us/main/bhs"
+   "https://www.otda.state.ny.us/main/bhs/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -41908,7 +41911,7 @@
   ],
   "ny_counties": null,
   "ny_page_urls": [
-   "https://pcac.org/nyctrc"
+   "https://pcac.org/nyctrc/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -42598,8 +42601,8 @@
    "Ontario"
   ],
   "ny_page_urls": [
-   "https://www.phelpsny.com/community/town",
-   "https://www.phelpsny.com/community/village"
+   "https://www.phelpsny.com/community/town/",
+   "https://www.phelpsny.com/community/village/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -46526,7 +46529,7 @@
    "Rockland"
   ],
   "ny_page_urls": [
-   "https://rocklandgov.com/departments/finance"
+   "https://rocklandgov.com/departments/finance/"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -48081,7 +48084,7 @@
    "Essex"
   ],
   "ny_page_urls": [
-   "https://www.saranaclakeny.gov/index.php"
+   "https://www.saranaclakeny.gov/index.php?section=departments_communitydev_ldc"
   ],
   "ny_source_count": 3,
   "ny_host_issue": null,
@@ -48203,7 +48206,7 @@
   ],
   "ny_page_urls": [
    "https://www.saratogacountyny.gov/commissions",
-   "https://www.saratogacountyny.gov/departments/planning-and-economic-development-beta/boards-and-authorities/prosperity-partnership"
+   "https://www.saratogacountyny.gov/departments/planning-and-economic-development-beta/boards-and-authorities/prosperity-partnership/"
   ],
   "ny_source_count": 3,
   "ny_host_issue": null,
@@ -48785,7 +48788,7 @@
    "https://www.schohariecounty-ny.gov/CountyWebSite/townsew/index.jsp",
    "https://www.schohariecounty-ny.gov/CountyWebSite/townsha/index.jsp",
    "https://www.schohariecounty-ny.gov/CountyWebSite/townsum/index.jsp",
-   "https://www.schohariecounty-ny.gov/CountyWebSite/villcob",
+   "https://www.schohariecounty-ny.gov/CountyWebSite/villcob/",
    "https://www.schohariecounty-ny.gov/CountyWebSite/villesp/index.jsp",
    "https://www.schohariecounty-ny.gov/CountyWebSite/villmid/index.jsp",
    "https://www.schohariecounty-ny.gov/CountyWebSite/villric/index.jsp",
@@ -48992,7 +48995,8 @@
    "Schuyler"
   ],
   "ny_page_urls": [
-   "https://www.schuylercounty.us/Index.aspx"
+   "https://www.schuylercounty.us/Index.aspx?NID=425",
+   "https://www.schuylercounty.us/Index.aspx?NID=433"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -49865,7 +49869,7 @@
    "Saratoga"
   ],
   "ny_page_urls": [
-   "https://sgfny.com/ldc"
+   "https://sgfny.com/ldc/"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -50519,7 +50523,7 @@
    "Schuyler"
   ],
   "ny_page_urls": [
-   "https://sites.google.com/a/columbiacountyny.com/columbia-county-ctasc",
+   "https://sites.google.com/a/columbiacountyny.com/columbia-county-ctasc/",
    "https://sites.google.com/site/townofreadingschuylercountyny"
   ],
   "ny_source_count": 2,
@@ -54168,8 +54172,8 @@
    "Tioga"
   ],
   "ny_page_urls": [
-   "https://www.tiogacountyny.com/departments/economic-development-planning",
-   "https://www.tiogacountyny.com/programs-agencies/industrial-development-agency",
+   "https://www.tiogacountyny.com/departments/economic-development-planning/",
+   "https://www.tiogacountyny.com/programs-agencies/industrial-development-agency/",
    "https://www.tiogacountyny.com/towns-villages/candor-village-of.html",
    "https://www.tiogacountyny.com/towns-villages/newark-valley.html",
    "https://www.tiogacountyny.com/towns-villages/nichols-village-of.html",
@@ -76641,7 +76645,7 @@
   ],
   "ny_page_urls": [
    "https://www.troyny.gov/295/Troy-Capital-Resource-Corporation",
-   "https://www.troyny.gov/departments/planning-department/economic-development/troy-ldc"
+   "https://www.troyny.gov/departments/planning-department/economic-development/troy-ldc/"
   ],
   "ny_source_count": 3,
   "ny_host_issue": null,
@@ -76702,7 +76706,7 @@
    "Tompkins"
   ],
   "ny_page_urls": [
-   "https://trumansburg-ny.gov/projects/three-falls-local-development-corporation"
+   "https://trumansburg-ny.gov/projects/three-falls-local-development-corporation/"
   ],
   "ny_source_count": 3,
   "ny_host_issue": null,
@@ -76846,8 +76850,8 @@
    "Franklin"
   ],
   "ny_page_urls": [
-   "https://tupper-lake.com/about/town-of-tupper-lake-2",
-   "https://tupper-lake.com/about/village-of-tupper-lake-2"
+   "https://tupper-lake.com/about/town-of-tupper-lake-2/",
+   "https://tupper-lake.com/about/village-of-tupper-lake-2/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -77580,7 +77584,7 @@
    "Putnam"
   ],
   "ny_page_urls": [
-   "https://users.bestweb.net/~vcsclerk"
+   "https://users.bestweb.net/~vcsclerk/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -78072,7 +78076,8 @@
    "Ontario"
   ],
   "ny_page_urls": [
-   "https://www.victorny.org/index.aspx"
+   "https://www.victorny.org/index.aspx?NID=27",
+   "https://www.victorny.org/index.aspx?NID=92"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -81949,8 +81954,8 @@
    "Albany"
   ],
   "ny_page_urls": [
-   "https://www.villageofgreenisland.com/town",
-   "https://www.villageofgreenisland.com/village"
+   "https://www.villageofgreenisland.com/town/",
+   "https://www.villageofgreenisland.com/village/"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
@@ -87434,7 +87439,7 @@
    "Chemung"
   ],
   "ny_page_urls": [
-   "https://villageofwellsburg.com/blog"
+   "https://villageofwellsburg.com/blog/"
   ],
   "ny_source_count": 1,
   "ny_host_issue": null,
@@ -91481,9 +91486,9 @@
    "Erie"
   ],
   "ny_page_urls": [
-   "https://www2.erie.gov/clarence",
-   "https://www2.erie.gov/etasc",
-   "https://www2.erie.gov/village_alden"
+   "https://www2.erie.gov/clarence/",
+   "https://www2.erie.gov/etasc/",
+   "https://www2.erie.gov/village_alden/"
   ],
   "ny_source_count": 2,
   "ny_host_issue": null,
