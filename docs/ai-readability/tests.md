@@ -1,15 +1,18 @@
 ---
-title: AI-readability test catalog (v0.1, draft)
+title: AI-readability test catalog (v0.2, draft)
 created: 2026-11-06
+updated: 2026-11-10
 type: research-method
 status: draft
 tags: [ai-readability, method, robots, llms-txt, registry]
 ---
 
-# AI-readability test catalog — v0.1 (draft, not yet run)
+# AI-readability test catalog — v0.2 (draft)
 
 - **Report generated:** 2026-11-06
-- **Data current as of:** vendor crawler docs and IETF drafts read 2026-11-06 (see § Sources)
+- **Last revised:** 2026-11-10 (catalog 0.2: crawler list, C1, D2–D7; issues #43, #44)
+- **Data current as of:** vendor crawler docs and IETF drafts read 2026-11-06; data-endpoint
+  specs and the network-lookup docs read 2026-11-10 (see § Sources)
 - **Status:** proposal. Nothing in this catalog has been run against any host yet. Running it
   needs the operator's explicit OK (see [`plan.md`](plan.md)).
 
@@ -49,11 +52,18 @@ file says yes while the edge says no.
 | Tier | Tests | Requests per host |
 |---|---|---|
 | **core** | all `W`, `M1–M4`, `R1`, `R3`, all `I`, `D1`, `F1`, `F2`, `F4`, `P1–P4` | **11** (robots 1, llms 1, sitemap 1, homepage × 6 identities, 404 probe 1, `http://` check 1 for I5) |
-| **full** | core + `W4` with all 12 identities + `M5` + `R2` + `F3` | **≈ 30** |
+| **full** | core + `W4` with every identity (24 from 2026-11-10) + `M5` + `R2` + `F3` + `D3` + `D4`, plus `D5–D7` on data portals | **≈ 33–54**; a data portal adds up to 26 |
 | **render** | `V1` (headless browser render) | 1 page load, sampled hosts only |
 
-Content tests (`R`, `I`, `D`, `F1`) parse the **one** homepage body fetched with the research
-identity. They cost no extra requests.
+Content tests (`R`, `I`, `D1`, `D2`, `C1`, `F1`) parse the **one** homepage body fetched with the
+research identity. They cost no extra requests.
+
+**Catalog 0.2 (2026-11-10).** The full tier per host is: core (5 + identities), llms-full, two
+markdown probes, the RFC 9727 API catalog, the WordPress REST index only when the homepage shows
+WordPress (0–1), and up to 20 link checks (10 links, HEAD then GET on 405). With 24 identities that
+is 33 to 54 requests. An address of kind `data portal` adds the portal tests: its catalog, a
+Socrata Discovery lookup (Socrata only), one dataset page, and the catalog once per other identity:
+up to 26 more. `--dry-run` prints the total and an estimated wall clock from the pacing.
 
 ### Addresses (issue #41)
 
@@ -100,7 +110,9 @@ run folder.
 
 ## Identities (who we say we are)
 
-**From the 2026-11 re-run on, the checked list is [`data/ai-readability/crawlers.csv`](../../data/ai-readability/crawlers.csv)** (34 names, each checked twice against its company's page; rules and history in [`crawlers.md`](crawlers.md)). The table below is the list the 2026-11-06 run used.
+**From catalog 0.2 (2026-11-10, issue #44) the scanner reads [`data/ai-readability/crawlers.csv`](../../data/ai-readability/crawlers.csv)** (34 names, each checked twice against its company's page; rules and history in [`crawlers.md`](crawlers.md)). Every vendor identity comes from it through `scripts/crawler_list.py`; only three controls stay in code (`research_betanyc`, `baseline_default`, `mechanism_probe_chrome`). How a row becomes a sent label (one label per name, never a stand-in, name-only crawlers sent as the bare name) is in [`crawlers.md` § How a row becomes what the scanner sends](crawlers.md#how-a-row-becomes-what-the-scanner-sends-issue-44-2026-11-10). W2 and W3 read every name in the list, sent or rules-only, plus five legacy tokens from catalog 0.1 (`anthropic-ai`, `Claude-Web`, `cohere-ai`, `Diffbot`, `omgili`) kept read-only so W2 stays comparable with the first run.
+
+The table below is the list the 2026-11-06 run (catalog 0.1) used.
 
 Every string below is copied **verbatim from the vendor's own page** (accessed 2026-11-06) or is
 marked token-only. Never add a guessed string (workspace engineering standards §0): a guessed UA
@@ -161,7 +173,11 @@ pass rule · evidence kept · known false positives · cost · **probe** (alread
 | **M2** | Sitemap works | "Working sitemap.xml" | `GET` first M1 URL, else `/sitemap.xml`; parse XML; if an index, record child count but **do not** fetch children | 200 + valid `urlset` or `sitemapindex` XML | status, type, URL count or child count, sha256 | gzip sitemaps; huge indexes (we stop at the index) | 1 | **yes** (core, v0.1 runner) |
 | **M3** | Sitemap is fresh | (part of "No stale content") | from M2: share of `<url>` with `<lastmod>`, newest and median lastmod | reported: newest lastmod age in days | dates | CMSs that stamp every URL with today's date (flag if > 90% share one date) | 0 | **yes** (core, v0.1 runner) |
 | **M4** | llms.txt present and well formed | "Has llms.txt" | `GET /llms.txt`, research UA | 200, text (not HTML), starts with `# ` H1 then a `> ` summary ([llmstxt.org](https://llmstxt.org/)) | status, type, first 8 KB | soft-404 HTML served at 200 (shape check catches it) | 1 | **yes** (core, v0.1 runner) |
-| **M5** | llms-full.txt present | — | `GET /llms-full.txt` | reported only | status, size | as M4 | 1 (full) | **yes** (full, v0.1 runner) |
+| **M5** | llms-full.txt present | — | `GET /llms-full.txt` | reported only | status, size | as M4 | 1 (full) | **yes** (full, on) |
+
+**M5's source, checked 2026-11-10:** [llmstxt.org](https://llmstxt.org/) does **not** define
+`llms-full.txt`; it names only `/llms.txt`. The file is a convention some documentation hosts
+publish, with no spec behind it. M5 stays report-only and is never scored.
 
 llms.txt is a 2024 community proposal by Jeremy Howard, not a standard, and the big AI vendors do
 not say they read it. We record it because governments are adopting it (Maryland's
@@ -173,7 +189,7 @@ because it is known to work.
 | id | Checks | Abhi row | Method | Pass rule | Evidence | False positives | Cost | probe |
 |---|---|---|---|---|---|---|---|---|
 | **R1** | Text without JavaScript | "Text readable without JavaScript" | from the research-UA homepage body: strip `script/style/noscript/template`, count visible words in `<main>` or `<body>`; flag shell phrases ("Loading…", "enable JavaScript", empty root div) | ≥ 150 visible words **and** no shell phrase | word count, shell phrase hit, 1 KB of extracted text | splash/landing pages that are short by design (record, do not fail below 150 if `<main>` has links + headings — mark Partial) | 0 | **yes** (core, v0.1 runner) |
-| **R2** | Markdown twin | — | `GET /` with `Accept: text/markdown`; also `GET /index.md` | reported: markdown served (type `text/markdown` and not HTML) | status, type, `Vary` header | servers that ignore Accept and return HTML (that is a plain "no") | 2 (full) | **yes** (full, v0.1 runner) |
+| **R2** | Markdown twin | — | `GET /` with `Accept: text/markdown`; also `GET /index.md`; and (0.2, free) any markdown version the homepage advertises with a `Link:` header or `<link>` of rel `alternate`, type `text/markdown` | reported: markdown served (type `text/markdown` and not HTML); `advertised_alternates` listed | status, type, `Vary` header, advertised hrefs | servers that ignore Accept and return HTML (that is a plain "no") | 2 (full) | **yes** (full, on) |
 | **R3** | Page has structure and a language | — | from homepage body: `<html lang>`, one `<h1>`, a `<main>` or landmark, `<title>` | reported per item | booleans | — | 0 | **yes** (core, v0.1 runner) |
 
 ### I — Identity: does the site say clearly who it is?
@@ -192,13 +208,33 @@ because it is known to work.
 |---|---|---|---|---|---|---|---|---|
 | **D1** | Homepage links to open data | "Open data linked from the homepage" | homepage anchors whose host is a known portal (list in `data/ai-readability/portals.json`, seeded from `data.ny.gov`, `data.cityofnewyork.us`, ArcGIS Hub domains, and the county/city portals in `BetaNYC/grounding-ai-with-ny-open-data` `resources/ny-open-data-portals.md`) or whose text says "open data" | ≥ 1 such link | matched hrefs | link in a mega-menu loaded by JS is missed (R1 tells you why); "data" pages that are PDFs | 0 | **yes** (core, v0.1 runner) |
 
+### Catalog 0.2 additions: website software and data endpoints (issue #43, 2026-11-10)
+
+Each row was written before its code, from the document named in **Source** (read 2026-11-10).
+No path or field is used that its source does not document; where a source left something
+unstated, the row says so and the test does without it. `C1` and `D2` read only what the host run
+already fetched. `D3`–`D7` run in the **full** tier only.
+
+| id | Checks | Source | Method | Pass rule | Cost (requests) |
+|---|---|---|---|---|---|
+| **C1** | Website software (CMS) | [GSA Site Scanning `cms`](https://digital.gov/guides/site-scanning/data) (field definition in `data/ai-readability/gsa/Site_Scanning_Data_Dictionary.csv`); [WordPress REST API handbook, Discovery](https://developer.wordpress.org/rest-api/using-the-rest-api/discovery/) | Keep the GSA Site Scanning `cms` value as is when the address list carries one (`cms` column). Fill a gap only from the homepage already fetched: P1's signals (meta generator, known asset paths, `x-powered-by`/Drupal headers) plus the WordPress REST link, rel `https://api.w.org/`, in a `Link:` header or `<link>` | reported: `cms`, `source` (`gsa` / `homepage` / none), the homepage signals | 0 |
+| **D2** | Data and API links, pass 1 | none (a reading aid): sorts links into kinds by URL patterns kept in `ai_readability.D2_PATTERNS` | From the homepage's anchors and `<link>` tags, its `Link:` header, and llms.txt's markdown links: links to open data (portal list of D1, or the words "open data"), APIs, developer pages, catalogs (`data.json`, `/api/catalog/v1`, `/api/feed/dcat`, `/api/3/action/`, `/.well-known/api-catalog`), feeds (RSS/Atom types, `/feed`) and GIS services (`/arcgis/rest/services`, `MapServer`/`FeatureServer`, WMS/WFS) | reported: links, counts by kind. No link is followed | 0 |
+| **D3** | WordPress REST index | [WordPress REST API handbook, Discovery](https://developer.wordpress.org/rest-api/using-the-rest-api/discovery/) | Only when C1 shows WordPress. GET the root the site itself advertises (rel `https://api.w.org/`, including the `?rest_route=/` form the handbook says to expect) when it is on the same host, else `/wp-json/` (the handbook's example root). Same-host redirects only | reported: `rest_index` true when 200 JSON carries `namespaces` ("The index of the API exposes the namespaces item"); namespaces and route count kept | 0–1 |
+| **D4** | API catalog (RFC 9727) | [RFC 9727](https://www.rfc-editor.org/rfc/rfc9727.html) | Every site: GET `/.well-known/api-catalog` (§2: publishers "SHALL resolve an HTTPS GET request" there), `Accept: application/linkset+json` | reported: `present` = 200 with a Linkset (top-level `linkset` array); `media_type_ok` = served as `application/linkset+json` (§4.2, a MUST); `profile_rfc9727` = the profile parameter (a SHOULD); `items` = links of relation `item` (§3.1) | 1 |
+| **D5** | Portal: a machine-readable catalog | Socrata [Metadata API](https://dev.socrata.com/docs/other/metadata) ("accessible on every Socrata domain"; list form "list all metadata for all public assets on a domain"); Esri [ArcGIS Hub, Federate data](https://doc.esri.com/en/arcgis-hub/latest/build/federate-data.html) ("DCAT US 1.1 (<siteURL>/api/feed/dcat-us/1.1.json)"); [CKAN Action API](https://docs.ckan.org/en/latest/api/index.html) (`/api/3/action/package_list`, `limit`); [DCAT-US v1.1](https://resources.data.gov/resources/dcat-us/) (`conformsTo`, `dataset` required) | Only for addresses of kind `data portal`. Platform read from the homepage already fetched (host `*.hub.arcgis.com`/`*.opendata.arcgis.com`, meta generator `ckan…`/`ArcGIS Hub`, the homepage naming Socrata) or the list's own `platform` value. Then one GET at the platform's documented path on the portal's own host: Socrata `/api/views/metadata/v1?limit=1&page=1`, Hub `/api/feed/dcat-us/1.1.json`, CKAN `/api/3/action/package_list?limit=1`. An unrecognized platform is `na`: no path is tried that its vendor does not document, and `/data.json` is not tried (Esri's current docs do not mention it; DCAT-US does not fix its location) | pass: 200 and the documented shape (Socrata: JSON, since its list form has no published schema; Hub: DCAT-US with `conformsTo` and a `dataset` array; CKAN: `success` true and a `result` array). fail: answered otherwise. blocked / na as everywhere | 1 |
+| **D6** | Portal: one dataset page readable without JavaScript | DCAT-US `landingPage`; Socrata [Discovery API](https://dev.socrata.com/docs/other/discovery) (`https://api.us.socrata.com/api/catalog/v1`, `domains`, `limit`; `results[].permalink`); CKAN docs' `/dataset/<name>` page form ([theming](https://docs.ckan.org/en/latest/theming/htmx.html)) | The first dataset the catalog names: Hub `dataset[0].landingPage`; Socrata `results[0].permalink` from one Discovery lookup (`domains=<host>&limit=1`), because the metadata list has no documented fields; CKAN `/dataset/<result[0]>`. GET it with the research identity | R1's rule on that page (≥ 150 words and no JS-shell phrase = pass) | 1, Socrata 2 |
+| **D7** | Portal: the catalog reached by each crawler name | as D5 | The D5 catalog URL once per other identity of the full tier | W4's rule per identity (admitted = 200 and not a challenge page) and W4's all-AI aggregate row | identities − 1 (23 today) |
+
+The Socrata Discovery lookup goes to Tyler's own API host (`api.us.socrata.com`, documented "for
+domains in North America"), not to the portal; it is paced on its own host clock like any host.
+
 ### F — Fresh: is it current, and does it tell the truth about errors?
 
 | id | Checks | Abhi row | Method | Pass rule | Evidence | False positives | Cost | probe |
 |---|---|---|---|---|---|---|---|---|
 | **F1** | Copyright / "updated" year | (part of "No stale or broken content") | regex `©\|copyright` + 4-digit year, and "last updated"/"updated" dates, in visible text | newest year found ≥ current year − 1 | years found | sites that never print a year (reported "none", not fail) | 0 | **yes** (core, v0.1 runner) |
 | **F2** | Server freshness headers | — | `Last-Modified`, `Date`, `Age` on the homepage response | reported only | header values | CDNs rewrite these; context only, never scored | 0 | **yes** (core, v0.1 runner) |
-| **F3** | Broken links on the homepage | (part of "No stale or broken content") | pick up to 10 same-host homepage links (deterministic: first 10 in document order); `HEAD`, fall back to `GET` on 405 | ≤ 1 of 10 returns 4xx/5xx | per-link status | WAF blocks on deep links look like breakage (cross-check W4) | ≤ 10 (full) | **yes** (full, v0.1 runner) |
+| **F3** | Broken links on the homepage | (part of "No stale or broken content") | pick up to 10 same-host homepage links (deterministic: first 10 in document order); `HEAD`, fall back to `GET` on 405 | ≤ 1 of 10 returns 4xx/5xx | per-link status | WAF blocks on deep links look like breakage (cross-check W4) | ≤ 20 (full: 10 HEAD, plus a GET for each 405) | **yes** (full, on) |
 | **F4** | Honest 404 | — | `GET /ai-readability-probe-<run-id>-does-not-exist` | 404 or 410 = Pass; 200 = soft-404 (Fail) | status, body class | sites that redirect unknown paths to home (302 → 200) count as soft-404 | 1 | **yes** (core, v0.1 runner) |
 
 The combined Abhi row "No stale or broken content" = **F1 pass and F3 pass** (F3 only in the full
@@ -289,7 +325,8 @@ Added 2026-11-06. Parsers and verdicts are in `scripts/ai_readability.py` (pure,
 **Verdicts.** `pass · partial · fail` are scored. `blocked` = the edge refused us (401, 403, 429
 or a challenge page). `na` = not measured (transport failure, host quarantined, or the input does
 not exist, e.g. F1 when no year is printed). `reported` = report-only tests (W3, W5, W6, M3, M5,
-R2, R3, I4, I5, F2, P1–P4). Content tests read only the research-UA homepage: if that one was
+R2, R3, I4, I5, F2, P1–P4, and from 0.2 C1, D2, D3, D4). D5–D7 are scored like the rest, but are
+not part of the Abhi-12 view. Content tests read only the research-UA homepage: if that one was
 refused they are `blocked`, even when another identity got in.
 
 **Where the code fills a gap in the pass rules above** (so a reviewer can disagree):
@@ -331,6 +368,31 @@ all** from neutral non-government check URLs (Apple's and Google's captive-porta
 HTTP status counts), tried twice 60 s apart. If the check answers, the streak resets and the run
 goes on.
 
+**What it reads (0.2).** Targets: `--targets-file`, else `data/ai-readability/addresses.csv`
+(issue #41: address, owning body, kind, level or entity_type, source, date found, notes; optional
+`platform` and `cms`), else `websites.json`. One job per host; a host's homepage is read from its
+`data portal` or `main site` address before a sub-site, API or section. Sections on a shared host
+are scored page by page with `--deep-pages`. Crawlers: `--crawlers`, else
+`data/ai-readability/crawlers.csv`.
+
+**Pre-run guard (0.2).** The run refuses to start, and prints why, when crawlers.csv fails its own
+checks, when any label it would send is not in the list (controls excepted), when a sent label
+carries a version stand-in, or when any row's `checked` is more than 30 days old. `--dry-run` runs
+the guard too.
+
+**Network record (0.2).** `run.json` → `network`: `place` (office | home | vpn, from `--vantage`),
+and a reading at the `start` and the `end` of the run, each with the provider, ASN, public
+address, prefix and time, plus `changed` (ASN or address differ; null if either reading failed).
+One documented service, the RIPEstat Data API, no token: `whats-my-ip` (`ip`), `network-info`
+(`asns`, `prefix`), `as-overview` (`holder`), with `sourceapp` set as RIPEstat asks; 3 requests per
+reading, never to a government site. A failed lookup is recorded with its `error` and null fields,
+never guessed. (ipinfo.io was not used: its docs do not document `/json` without a token and show
+no `org` field.) Every result row carries `place`.
+
+**VPN (0.2).** `--vantage vpn` is a disclosed third vantage, used only to ask "is this block about
+our network?" for a small named set: it needs `--only-hosts` and at most 25 hosts, and the probe
+refuses a full VPN run. Its rows carry `place: vpn`, so they never mix with office or home.
+
 **Output** (`data/ai-readability/runs/<YYYY-MM-DD>-<vantage>/`, git-ignored): `run.json`,
 `results.jsonl` (one row per host × test × identity, stamped with `catalog_version` and git SHA),
 `review.jsonl`, `status.json` (`state: done|broke`, counts, `error` and `resume_cmd` when broke),
@@ -360,6 +422,13 @@ Vendor crawler pages: [OpenAI](https://developers.openai.com/api/docs/bots) ·
 [Mistral](https://docs.mistral.ai/robots) ·
 [DuckDuckGo](https://duckduckgo.com/duckduckgo-help-pages/results/duckassistbot).
 Standards and conventions: [llmstxt.org](https://llmstxt.org/) · [RFC 9309](https://www.rfc-editor.org/rfc/rfc9309) ·
+[RFC 9727](https://www.rfc-editor.org/rfc/rfc9727.html) ·
+[WordPress REST API, Discovery](https://developer.wordpress.org/rest-api/using-the-rest-api/discovery/) ·
+Socrata [Discovery](https://dev.socrata.com/docs/other/discovery) and [Metadata](https://dev.socrata.com/docs/other/metadata) APIs (their bodies load from `https://dev.socrata.com/apis/discovery.yaml` and `metadata.yaml`) ·
+Esri [ArcGIS Hub, Federate data](https://doc.esri.com/en/arcgis-hub/latest/build/federate-data.html) ·
+[CKAN Action API](https://docs.ckan.org/en/latest/api/index.html) ·
+[DCAT-US v1.1](https://resources.data.gov/resources/dcat-us/) ·
+RIPEstat [Data API](https://stat.ripe.net/docs/02.data-api/) (network record) — all read 2026-11-10 ·
 IETF [aipref](https://datatracker.ietf.org/wg/aipref/about/) and
 [webbotauth](https://datatracker.ietf.org/wg/webbotauth/about/) working groups ·
 [Cloudflare Content Signals](https://blog.cloudflare.com/content-signals-policy/).

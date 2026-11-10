@@ -327,9 +327,12 @@ GSA_FILLED = {
     "sitemap_xml_scan_status": ("M2", "As `primary_scan_status`, for the M2 request. Blank when M2 "
                                 "read a robots-declared sitemap instead of `/sitemap.xml`.",
                                 lambda h: _status_of(h, "M2") if _sitemap_at_root(h) else None),
-    "cms": ("P1", "From P1. Our detection list is shorter than GSA's 63 signatures and also names "
-            "hosts (e.g. `WP Engine`); several matches are comma-separated.",
-            lambda h: ", ".join(h.ev("P1", "platforms") or []) or None),
+    "cms": ("C1", "From C1: GSA Site Scanning's own `cms` value when the address list carries "
+            "one, kept as is; otherwise what the homepage says (P1's signals plus the WordPress "
+            "REST link). Our detection list is shorter than GSA's 63 signatures and also names "
+            "hosts (e.g. `WP Engine`); several matches are comma-separated. Runs before catalog "
+            "0.2 have no C1 and fall back to P1.",
+            lambda h: h.ev("C1", "cms") or ", ".join(h.ev("P1", "platforms") or []) or None),
     "https_enforced": ("I5", "From I5: TRUE if `http://` redirects to `https://`, FALSE if `http://` "
                        "serves the page (2xx), blank if it refused, failed or redirected elsewhere. "
                        "GSA takes this from a separate federal security dataset; ours is one direct "

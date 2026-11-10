@@ -1,0 +1,6 @@
+address,owning body,kind,level or entity_type,source,date found,notes
+https://www.example.gov/,City of Example,main site,city,fixture,2026-11-10,
+https://www.example.gov/parks/,City of Example Parks,section,city,fixture,2026-11-10,a section on the main host
+https://data.example.gov/,City of Example,data portal,city,fixture,2026-11-10,CKAN portal
+https://api.example.gov/v1/,City of Example,API,city,fixture,2026-11-10,
+blog.example.gov,City of Example,sub-site,city,fixture,2026-11-10,no scheme in the list

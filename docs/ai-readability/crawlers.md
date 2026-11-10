@@ -2,7 +2,8 @@
 
 `data/ai-readability/crawlers.csv` lists every crawler name the AI-readability study sends to a
 site or reads in robots.txt, each tied to its company's own documentation. It is the source for
-the next statewide run (epic #47, issue #42). The scanner does not read it yet; that is issue #44.
+the next statewide run (epic #47, issue #42). Since issue #44 the scanner reads it
+(`scripts/crawler_list.py`); the only identities still defined in code are the three controls.
 
 ## Columns
 
@@ -62,9 +63,48 @@ the next statewide run (epic #47, issue #42). The scanner does not read it yet; 
   says user-triggered fetchers as a group "generally ignore robots.txt"; the third Google address
   file added).
 
-## What the scanner sends today, against this list
+## How a row becomes what the scanner sends (issue #44, 2026-11-10)
 
-Checked 2026-11-10 against `IDENTITIES` in `scripts/probe_bot_access.py`. To be fixed in #44.
+`scripts/crawler_list.py` turns the list into identities. The rules, and why:
+
+1. **`rules-only` rows are never sent.** Their names are read in robots.txt (W2, W3) only.
+2. **One label per name.** Where `ua_exact` holds several labels joined by ` || `, the scanner
+   sends the **first** one, in the company's own order, that it is allowed to send. Not every
+   variant: the study asks whether the *name* is admitted, and sending each variant would multiply
+   the requests (about 1.5×) to answer a question nobody asked. Every candidate label, and why each
+   unused one was skipped, is kept in `run.json` (`identities[].candidates`).
+3. **A label with a version stand-in (`W.X.Y.Z`) is never sent**, and never filled in. So
+   Googlebot sends `Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)`,
+   the label Google publishes with no version, never `Chrome/126.0.0.0`. bingbot sends its first
+   label, which has no stand-in.
+4. **A row whose every label has a stand-in is not sent**, with that reason recorded in
+   `run.json` (`identities_not_sent`): today Google-Agent, Amazonbot, Amzn-SearchBot and Amzn-User.
+   Their names are still read in robots.txt.
+5. **Meta's relative-link labels are skipped** for the short form Meta also publishes (rule 4
+   above), for example `meta-externalagent/1.1`.
+6. **Name-only crawlers** (`ua_exact` = `token only`: ClaudeBot, Claude-User, Claude-SearchBot)
+   are sent as the **bare published name**, exactly `ClaudeBot`, marked `label_kind: token-only`
+   in the run's identities record. Nothing is ever assembled around it.
+7. **Example labels** (rule 3 above) are sent as published and marked `example: true`.
+8. **Perplexity** sends the current labels in the list.
+
+Each sent name also has a class (`search`, `ai_training`, `ai_search`, `ai_agentic`) in
+`crawler_list.CLASSES`, which decides whether it counts toward W4's all-AI row. The CSV has no
+class column, so the class is assigned there from the row's `purpose`; the pre-run guard refuses a
+run with an unclassified sent name.
+
+**The pre-run guard** (`probe_bot_access.pre_run_guard`) refuses to start a run, and prints why,
+when the list fails its own checks, when any sent label is not in the list (the controls
+`research_betanyc`, `baseline_default` and `mechanism_probe_chrome` excepted), when a sent label
+carries a stand-in, or when any row's `checked` is more than **30 days** old.
+
+What the full tier sends, from the list as checked 2026-11-10: 21 vendor names plus the three
+controls (24 identities). The core tier keeps its six (`research_betanyc`, `googlebot`, `gptbot`,
+`oai_searchbot`, `chatgpt_user`, `mechanism_probe_chrome`); only Googlebot's label changed.
+
+## What the scanner sent before #44, against this list
+
+Checked 2026-11-10 against the old `IDENTITIES` in `scripts/probe_bot_access.py`. Fixed in #44.
 
 | Scanner key | Finding |
 |---|---|
