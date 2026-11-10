@@ -639,6 +639,35 @@ def _transport_kind(exc: BaseException) -> str:
     return "other"
 
 
+# A redirect whose Location names a bot manager's own challenge is a block, whatever the final
+# page says. Markers are the vendor's own strings as seen in a live Location header (2026-11-10:
+# edc.nyc sends unverified bots to a challenge URL carrying `ssk=botmanager_support@radware.com`).
+BLOCK_REDIRECT_MARKERS = (
+    ("botmanager_support@radware.com", "radware_botmanager"),
+)
+
+
+def redirect_url(base: str, location: str) -> str:
+    """The URL a browser would request for this Location: resolved against `base`, ASCII tab
+    and newline removed, leading/trailing C0 controls and spaces stripped, and any other C0
+    control, space or DEL percent-encoded (WHATWG URL Standard). http.client refuses a URL that
+    still holds them (InvalidURL), which used to read as a transport failure."""
+    loc = location.strip("".join(map(chr, range(0x21))))
+    loc = "".join(c for c in loc if c not in "\t\n\r")
+    loc = "".join("%{:02X}".format(ord(c)) if ord(c) <= 0x20 or ord(c) == 0x7F else c for c in loc)
+    return urllib.parse.urljoin(base, loc)
+
+
+def block_redirect(redirects: list):
+    """The class name when any hop's Location carries a BLOCK_REDIRECT_MARKERS string, else None."""
+    for hop in redirects:
+        low = (hop.get("location") or "").lower()
+        for marker, name in BLOCK_REDIRECT_MARKERS:
+            if marker in low:
+                return name
+    return None
+
+
 def http_request(url: str, ua, method: str = "GET", accept: str = "*/*", follow: str = "any",
                  max_bytes: int = 120_000, timeout: float = REQUEST_TIMEOUT_S) -> dict:
     """One request with explicit redirect control (urllib follows everything, including off-host,
@@ -682,6 +711,14 @@ def http_request(url: str, ua, method: str = "GET", accept: str = "*/*", follow:
             finally:
                 conn.close()
         except Exception as e:  # timeout, DNS, TLS, reset, protocol error
+            blocked = block_redirect(redirects)
+            if blocked:  # the shield answered; failing on its challenge URL is not a dead host
+                return {"url": url, "final_url": current, "status": redirects[-1]["status"],
+                        "headers": {}, "body": "", "raw": b"", "bytes": 0, "content_type": "",
+                        "is_block_page": True, "body_class": blocked, "waf": [blocked],
+                        "redirects": redirects, "peercert": peercert, "truncated": False,
+                        "offhost_redirect": False, "elapsed_s": round(time.time() - started, 2),
+                        "transport_error": None, "transport_kind": None}
             return {"url": url, "final_url": current, "status": None, "headers": {}, "body": "",
                     "raw": b"", "bytes": 0, "content_type": "", "is_block_page": None,
                     "body_class": None, "waf": [], "redirects": redirects, "peercert": peercert,
@@ -691,7 +728,7 @@ def http_request(url: str, ua, method: str = "GET", accept: str = "*/*", follow:
         location = hdrs.get("location")
         if status in (301, 302, 303, 307, 308) and location and follow != "none" \
                 and len(redirects) < MAX_REDIRECTS:
-            nxt = urllib.parse.urljoin(current, location)
+            nxt = redirect_url(current, location)
             nhost = urllib.parse.urlparse(nxt).netloc.lower()
             if follow == "any" or nhost == start_host:
                 redirects.append({"status": status, "location": nxt})
@@ -711,9 +748,13 @@ def http_request(url: str, ua, method: str = "GET", accept: str = "*/*", follow:
         cls, is_block = classify_body(body)
         if method == "HEAD":
             cls, is_block = "head", False
+        blocked = block_redirect(redirects)
+        if blocked:
+            cls, is_block = blocked, True
         return {"url": url, "final_url": current, "status": status, "headers": hdrs, "body": body,
                 "raw": raw, "bytes": len(raw), "content_type": ctype, "is_block_page": is_block,
-                "body_class": cls, "waf": fingerprint_waf(hdrs, hdrs.get("set-cookie", "")),
+                "body_class": cls, "waf": fingerprint_waf(hdrs, hdrs.get("set-cookie", ""))
+                + ([blocked] if blocked else []),
                 "redirects": redirects, "peercert": peercert, "truncated": truncated,
                 "offhost_redirect": offhost, "elapsed_s": round(time.time() - started, 2),
                 "transport_error": None, "transport_kind": None}
