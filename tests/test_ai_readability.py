@@ -655,3 +655,46 @@ def test_http_request_against_a_localhost_server():
         assert r["status"] == 200 and r["body"] == ""
     finally:
         srv.shutdown()
+
+
+def test_redirect_url_cleans_a_location_the_way_a_browser_does():
+    assert p.redirect_url("https://a.example.gov/x", " /c/?q=Some Bot\t1.0\n ") == \
+        "https://a.example.gov/c/?q=Some%20Bot1.0"
+    assert p.redirect_url("https://a.example.gov/x", "/plain") == "https://a.example.gov/plain"
+
+
+def test_bot_manager_redirect_is_a_block_not_a_transport_failure():
+    """A shield's challenge redirect (spaces in its Location, as seen live) is recorded as a
+    block page and never quarantines the host. 127.0.0.1 only."""
+    import http.server
+    import threading
+
+    class H(http.server.BaseHTTPRequestHandler):
+        def log_message(self, *a):
+            pass
+
+        def do_GET(self):
+            if self.path == "/page":
+                self.send_response(302)
+                self.send_header("Location", "/chk/?ssc=x&ssk=botmanager_support@radware.com"
+                                             "&ua=Some Bot 1.0")
+                self.end_headers()
+                return
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html")
+            self.end_headers()
+            self.wfile.write(b"<html><body>" + b"please wait " * 40 + b"</body></html>")
+
+    srv = http.server.HTTPServer(("127.0.0.1", 0), H)
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    base = "http://127.0.0.1:{}".format(srv.server_address[1])
+    try:
+        r = p.http_request(base + "/page", "TestUA/1.0", follow="same_host")
+    finally:
+        srv.shutdown()
+    assert r["transport_error"] is None and r["status"] == 200
+    assert "%20" in r["final_url"]
+    assert r["is_block_page"] is True and r["body_class"] == "radware_botmanager"
+    assert "radware_botmanager" in r["waf"]
+    what, quarantine = p._pushback(r)
+    assert quarantine is False, "a block is data, not pushback that quarantines the host"

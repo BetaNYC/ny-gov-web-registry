@@ -304,6 +304,14 @@ goes to `review.jsonl` (host, entity id, test, identity, what happened, time, ac
 challenge pages are recorded in `review.jsonl` too, but do **not** quarantine the host: the other
 identities' answers are the measurement.
 
+**Redirects are cleaned the way a browser cleans them** (`redirect_url()`, WHATWG URL Standard):
+tab and newline removed, edge spaces stripped, any other space or control character
+percent-encoded. A redirect whose `Location` carries a bot manager's own marker
+(`BLOCK_REDIRECT_MARKERS`: today `botmanager_support@radware.com`, seen on a live challenge
+redirect 2026-11-10) makes the response a block page (`body_class` and a `waf` entry
+`radware_botmanager`), so it scores `blocked`. Before this, a challenge `Location` holding spaces
+failed in `http.client` as `InvalidURL`, read as a transport failure, and quarantined the host.
+
 **The run stops only on our own breakage:** a crash (including disk full), SIGTERM/SIGINT, the
 `--max-requests` cap, or our network down. "Network down" needs all three: 8 consecutive
 transport failures (any success resets the count), spread over ≥ 4 distinct hosts (a single dead
