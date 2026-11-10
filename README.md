@@ -77,7 +77,7 @@ data/registry.json        # 567 entities
 data/descriptions.json    # per-entity self-descriptions + coverage records
 ```
 
-Rebuilding from sources requires Python 3.11+ and [uv](https://docs.astral.sh/uv/): `uv sync`, place the documented exports in `data/cache/` (**no script fetches the network on its own** — sources are operator-gated by design; see [`docs/sources.md`](docs/sources.md)), run the `sync_*` scripts, then `python scripts/build_registry.py`. The offline test suite (`pytest`, 293 tests) never touches the network.
+Rebuilding from sources requires Python 3.11+ and [uv](https://docs.astral.sh/uv/): `uv sync`, place the documented exports in `data/cache/` (**no script fetches the network on its own** — sources are operator-gated by design; see [`docs/sources.md`](docs/sources.md)), run the `sync_*` scripts, then `python scripts/build_registry.py`. The offline test suite (`pytest`, 328 tests) never touches the network.
 
 Two artifacts invite human eyes: the [description review queue](docs/description-review-queue.md) (agencies whose about page needs a human to find) and the [site anomalies log](docs/site-anomalies.md) (defects we noticed on live government sites — including three Lorem-ipsum placeholder pages).
 
@@ -145,6 +145,26 @@ A host a list still names but that is no longer the body's site (a lookalike, a 
 sale, a redirect elsewhere) is recorded by hand in
 [`website-corrections.csv`](data/ai-readability/website-corrections.csv). Its row stays, with
 `ny_host_issue` and `ny_superseded_by` set, and probe runs skip it.
+Pages that are not in the registry but belong in the deep-page run (the community boards whose
+only site is a `www.nyc.gov/site/<board>/` page) are listed by hand in
+[`deep-pages-extra.csv`](data/ai-readability/deep-pages-extra.csv) (`url`, `name`, `source`,
+`checked`).
+
+**Deep pages:** on hosts shared by several registry bodies (`www.nyc.gov`, `www1.nyc.gov`, ...),
+`probe_bot_access.py --deep-pages` scores each body's own page rather than the host's homepage:
+the three Tier B identities, page-level tests only, robots.txt once per host, the same pacing.
+`headed_check.py --deep-pages` gives the person view of the same pages and lists any page that
+needs a human click in `needs_person.txt`. Method: [`docs/ai-readability/tests.md`](docs/ai-readability/tests.md)
+§ Deep pages. Offline tests: `tests/test_deep_pages.py`.
+
+```
+python3 scripts/probe_bot_access.py --deep-pages --dry-run
+python3 scripts/probe_bot_access.py --deep-pages --vantage office --machine office \
+    --run-dir data/ai-readability/runs/<YYYY-MM-DD>-office-pages
+uv run --with playwright python scripts/headed_check.py --deep-pages \
+    --run-dir data/ai-readability/runs/<YYYY-MM-DD>-office-pages-headed --vantage office \
+    --operator-authorized
+```
 
 **Federal layout:** `scripts/ai_readability_export.py` turns a run folder into `sites.csv` and
 `sites.json`, one row per website, in the layout of GSA's

@@ -45,6 +45,16 @@ AI-READABILITY MODE (--tier core|full; docs/ai-readability/tests.md, plan.md §4
     python3 scripts/probe_bot_access.py --tier core --targets-file pilot.json --vantage office \
         --machine office --on-exit "bash notify.sh"
   Resume: the status.json `resume_cmd` (same command plus --run-dir).
+
+DEEP-PAGE MODE (--deep-pages; issue #35, docs/ai-readability/tests.md "Deep pages")
+  One unit per page on a host shared by several registry bodies, plus
+  data/ai-readability/deep-pages-extra.csv. Each page host's robots.txt is fetched once per run;
+  each page once per Tier B identity. Page-level rows only (PAGE_TESTS), with `page_url` and
+  scope "page". Same pacing, quarantine and resume rules; resume is per page.
+
+    python3 scripts/probe_bot_access.py --deep-pages --dry-run
+    python3 scripts/probe_bot_access.py --deep-pages --vantage office --machine office \
+        --run-dir data/ai-readability/runs/<YYYY-MM-DD>-office-pages
 """
 
 from __future__ import annotations
@@ -572,13 +582,14 @@ READ_CAPS = {                 # bytes read per request kind; bodies beyond this 
     "llms_full": 64_000,      # M5 is presence + size only
     "sitemap": 5_000_000,
     "home": 2_000_000,
+    "page": 2_000_000,        # --deep-pages: a page is read like a homepage
     "notfound": 64_000,
     "http": 8_000,
     "md_accept": 256_000,
     "md_index": 256_000,
     "link": 8_000,
 }
-KIND_TEST = {"robots": "W1", "llms": "M4", "sitemap": "M2", "home": "W4", "notfound": "F4",
+KIND_TEST = {"robots": "W1", "llms": "M4", "sitemap": "M2", "home": "W4", "page": "W4", "notfound": "F4",
              "http": "I5", "llms_full": "M5", "md_accept": "R2", "md_index": "R2", "link": "F3"}
 
 NET_DOWN_STREAK = 8            # consecutive transport failures before we suspect ourselves
@@ -800,7 +811,7 @@ class RunContext:
                  pace_s=GLOBAL_PACE_S, jitter_s=GLOBAL_JITTER_S, host_floor_s=MIN_HOST_DELAY_S,
                  governors=None, monitor=None, max_requests=DEFAULT_MAX_REQUESTS, portals=None,
                  dotgov=None, today=None, seed=20260828, sleep=time.sleep,
-                 monotonic=time.monotonic, retry_backoff_s=RETRY_BACKOFF_S):
+                 monotonic=time.monotonic, retry_backoff_s=RETRY_BACKOFF_S, max_attempts=2):
         self.run_id, self.tier, self.vantage, self.git_sha = run_id, tier, vantage, git_sha
         self.identities = identities
         self.ident_by_key = {i["key"]: i for i in identities}
@@ -808,6 +819,8 @@ class RunContext:
         self.pace_s, self.jitter_s = pace_s, jitter_s
         self.sleep, self.monotonic = sleep, monotonic
         self.retry_backoff_s = retry_backoff_s
+        self.max_attempts = max_attempts   # 2 = the single retry on 5xx/transport; 1 = none
+        self.robots_cache = {}             # --deep-pages: page host -> robots.txt response
         self.clock = HostClock(host_floor_s, HOST_GOVERNORS if governors is None else governors,
                                monotonic=monotonic, sleep=sleep)
         self.monitor = monitor or NetworkMonitor(sleep=sleep)
@@ -955,6 +968,162 @@ def host_plan(job: dict, ctx: RunContext):
     return rows
 
 
+# Tests a deep page gets (issue #35). The host-level files (llms.txt, sitemap, the 404 probe,
+# http://) and the tests that read them belong to the host run and are not repeated per page.
+PAGE_TESTS = ("W3", "W4", "R1", "R3", "I1", "I2", "I3", "I4", "F1", "F2", "D1",
+              "P1", "P2", "P3", "P4")
+
+
+def page_identities() -> list:
+    """--deep-pages: the Tier B set. A page asks whether it differs from its host; an honest
+    baseline, one honest AI agent and the mechanism probe answer that."""
+    by_key = {i["key"]: i for i in IDENTITIES}
+    return [by_key[k] for k in TIER_B_IDENTITY_KEYS]
+
+
+def _i4_for_names(research, names, page, i3_ev):
+    """I4 against every name the sources give the page (one page can carry two bodies). The
+    first name's strings are kept; `per_name` records the agreement for each."""
+    if len(names) <= 1:
+        return ar.test_i4(research, names[0] if names else None, page, i3_ev)
+    results = [(n, ar.test_i4(research, n, page, i3_ev)) for n in names]
+    verdict, ev = results[0][1]
+    if verdict != "reported":
+        return verdict, ev
+    ev = dict(ev, per_name={n: r[1].get("names_agree") for n, r in results})
+    ev["names_agree"] = any(ev["per_name"].values())
+    return verdict, ev
+
+
+def page_plan(job: dict, ctx):
+    """Generator for one deep page (--deep-pages): robots.txt of the page's own host, fetched
+    once per run and shared by every page on it (ctx.robots_cache), then the page once per
+    identity. Emits only page-level rows (PAGE_TESTS), each with `page_url` and scope "page".
+    Every request is paced on job["host"] (`pace_host`), so `nyc.gov` and `www.nyc.gov` pages
+    share one clock and one governor."""
+    host, page_url = job["host"], job["url"]
+    pu = urllib.parse.urlparse(page_url)
+    page_host = (job.get("page_host") or pu.netloc).lower()
+    page_path = (pu.path or "/") + ("?" + pu.query if pu.query else "")
+    rows = []
+
+    def req(kind, url, identity=RESEARCH_KEY, follow="any"):
+        return {"kind": kind, "url": url, "identity": identity, "method": "GET",
+                "accept": "*/*", "follow": follow, "pace_host": host}
+
+    def row(test, identity, verdict_ev):
+        verdict, ev = verdict_ev
+        rows.append({"catalog_version": ar.CATALOG_VERSION, "git_sha": ctx.git_sha,
+                     "run_id": ctx.run_id, "vantage": ctx.vantage, "tier": ctx.tier,
+                     "ts": now_iso(), "host": host, "scope": "page", "page_url": page_url,
+                     "page_host": page_host, "entity_id": job.get("entity_id"),
+                     "entity_name": job.get("entity_name"), "entity_ids": job.get("entity_ids"),
+                     "source": job.get("source"),
+                     "test": test, "identity": identity, "verdict": verdict, "evidence": ev,
+                     "evidence_sha256": ar.sha256(json.dumps(ev, sort_keys=True, default=str))})
+
+    cache = ctx.robots_cache
+    if page_host in cache:
+        robots = cache[page_host]
+    else:
+        robots = yield req("robots", "https://{}/robots.txt".format(page_host), follow="same_host")
+        cache[page_host] = robots
+    pages = {}
+    for ident in ctx.identities:
+        pages[ident["key"]] = yield req("page", page_url, identity=ident["key"])
+
+    research = pages.get(RESEARCH_KEY)
+    page = None
+    if research and research.get("status") == 200 and not ar.refused(research):
+        page = ar.parse_page(research.get("body"))
+
+    row("W3", RESEARCH_KEY, ar.test_w3(robots, page_path))
+    w4 = {}
+    for ident in ctx.identities:
+        w4[ident["key"]] = ar.w4_identity_verdict(pages[ident["key"]])
+        row("W4", ident["key"], w4[ident["key"]])
+    row("W4", ar.W4_AGGREGATE_IDENTITY, ar.w4_aggregate(
+        {k: v[0] for k, v in w4.items()}, {i["key"]: i["klass"] for i in ctx.identities}))
+    row("R1", RESEARCH_KEY, ar.test_r1(research, page))
+    row("R3", RESEARCH_KEY, ar.test_r3(research, page))
+    row("I1", RESEARCH_KEY, ar.test_i1(research, page))
+    row("I2", RESEARCH_KEY, ar.test_i2(research, page))
+    i3 = ar.test_i3(research, page)
+    row("I3", RESEARCH_KEY, i3)
+    row("I4", RESEARCH_KEY, _i4_for_names(
+        research, job.get("entity_names") or ([job["entity_name"]] if job.get("entity_name") else []),
+        page, i3[1] if i3[0] in ("pass", "partial", "fail") else None))
+    row("F1", RESEARCH_KEY, ar.test_f1(research, ctx.today, page))
+    row("F2", RESEARCH_KEY, ar.test_f2(research))
+    row("D1", RESEARCH_KEY, ar.test_d1(research, ctx.portals, page))
+    for pid, fn in (("P1", ar.test_p1), ("P2", ar.test_p2), ("P3", ar.test_p3), ("P4", ar.test_p4)):
+        row(pid, RESEARCH_KEY, fn(research, page))
+    return rows
+
+
+def plan_for(job: dict):
+    """The request plan for a job: page_plan for a --deep-pages job, host_plan otherwise."""
+    return page_plan if job.get("page_url") else host_plan
+
+
+def job_unit(job_or_row: dict) -> str:
+    """Resume key: the page URL for a deep page (job or row), else the host."""
+    return job_or_row.get("page_url") or job_or_row.get("host")
+
+
+def clock_host(spec: dict) -> str:
+    """The host whose clock paces a request: the plan's `pace_host`, else the URL's host."""
+    return spec.get("pace_host") or urllib.parse.urlparse(spec["url"]).netloc.lower()
+
+
+def page_jobs(targets: list) -> list:
+    """deep_page_targets() rows as runner jobs, sorted by host then URL."""
+    jobs = []
+    for t in targets:
+        url = t["url"]
+        p = urllib.parse.urlparse(url)
+        if p.scheme != "https":
+            url = urllib.parse.urlunparse(p._replace(scheme="https"))
+        jobs.append({"host": t["host"], "url": url, "page_url": url,
+                     "page_host": t.get("page_host") or p.netloc.lower(),
+                     "entity_id": t.get("entity_id"), "entity_ids": t.get("entity_ids") or [],
+                     "entity_name": t.get("entity_name"), "entity_names": t.get("entity_names") or [],
+                     "source": t.get("source")})
+    return sorted(jobs, key=lambda j: (j["host"], j["url"]))
+
+
+def load_deep_page_targets(websites_file=None, extra_csv=None) -> list:
+    """--deep-pages targets: websites.json (or --targets-file in that layout) plus the extra
+    page list, paired with owners by ai_readability_websites.page_owners()."""
+    import ai_readability_websites as aw
+    path = pathlib.Path(websites_file) if websites_file else aw.OUT_JSON
+    rows = json.loads(path.read_text(encoding="utf-8"))
+    if not (isinstance(rows, list) and rows and isinstance(rows[0], dict)
+            and "ny_page_urls" in rows[0]):
+        raise ValueError("--deep-pages needs a websites.json-layout file (rows with "
+                         "`ny_page_urls`): {}".format(path))
+    return aw.deep_page_targets(rows, aw.page_owners(),
+                                aw.DEEP_PAGES_EXTRA if extra_csv is None else extra_csv)
+
+
+def page_request_estimate(jobs: list, n_identities: int, floor_s: float, governors: dict) -> dict:
+    """Requests a --deep-pages run sends (before retries): one robots.txt per distinct page host
+    plus pages × identities. `min_hours` is the floor set by the busiest host, whose requests
+    are serialized at its per-host floor whatever the worker count."""
+    per_host = defaultdict(int)
+    robots_hosts = set()
+    for j in jobs:
+        per_host[j["host"]] += n_identities
+        if j["page_host"] not in robots_hosts:
+            robots_hosts.add(j["page_host"])
+            per_host[j["host"]] += 1
+    busiest = max(per_host, key=per_host.get) if per_host else None
+    floor = max(floor_s, governors.get(busiest, 0.0)) if busiest else 0.0
+    return {"pages": len(jobs), "hosts": len(per_host), "robots": len(robots_hosts),
+            "requests": sum(per_host.values()), "per_host": dict(per_host), "busiest": busiest,
+            "min_hours": round(max(0, per_host.get(busiest, 0) - 1) * floor / 3600, 1)}
+
+
 QUARANTINED_RESP = {"status": None, "headers": {}, "body": "", "raw": b"", "bytes": 0,
                     "is_block_page": None, "body_class": None, "waf": [], "redirects": [],
                     "transport_error": None, "quarantined": True}
@@ -965,6 +1134,7 @@ def perform(spec: dict, job: dict, ctx: RunContext, review: list, last_global: l
     pushback to `review`. Returns a response dict (synthetic when the host is quarantined)."""
     host = job["host"]
     req_host = urllib.parse.urlparse(spec["url"]).netloc.lower()
+    pace_host = clock_host(spec)
     if ctx.is_quarantined(host) or ctx.stop.is_set():
         return dict(QUARANTINED_RESP, url=spec["url"], final_url=spec["url"])
     ident = ctx.ident_by_key.get(spec["identity"]) or {"ua": None}
@@ -978,13 +1148,13 @@ def perform(spec: dict, job: dict, ctx: RunContext, review: list, last_global: l
         wait = last_global[0] + gap - ctx.monotonic()
         if wait > 0:
             ctx.sleep(wait)
-        ctx.clock.acquire(req_host)
+        ctx.clock.acquire(pace_host)
         try:
             resp = ctx.transport(spec["url"], ident["ua"], method=spec["method"],
                                  accept=spec["accept"], follow=spec["follow"],
                                  max_bytes=READ_CAPS.get(spec["kind"], 120_000))
         finally:
-            ctx.clock.release(req_host)
+            ctx.clock.release(pace_host)
             last_global[0] = ctx.monotonic()
         transport_fail = resp.get("status") is None and bool(resp.get("transport_error"))
         ctx.monitor.record(req_host, transport_fail)
@@ -992,22 +1162,25 @@ def perform(spec: dict, job: dict, ctx: RunContext, review: list, last_global: l
             ctx.broke_reason = ctx.broke_reason or ctx.monitor.reason
             ctx.stop.set()
         retryable = transport_fail or (resp.get("status") or 0) >= 500
-        if retryable and attempt == 1 and not ctx.stop.is_set():
+        if retryable and attempt < ctx.max_attempts and not ctx.stop.is_set():
             ctx.sleep(ctx.retry_backoff_s)
             continue
         break
     pb = _pushback(resp)
     if pb:
         what, quarantine = pb
-        on_own_host = req_host == host
+        on_own_host = req_host == host or spec.get("pace_host") == host
         if quarantine and on_own_host:
             ctx.quarantine(host, "{} on {} ({})".format(what, KIND_TEST.get(spec["kind"]),
                                                         spec["identity"]))
-        review.append({"run_id": ctx.run_id, "ts": now_iso(), "host": host,
-                       "entity_id": job.get("entity_id"), "test": KIND_TEST.get(spec["kind"]),
-                       "kind": spec["kind"], "identity": spec["identity"], "url": spec["url"],
-                       "what": what, "status": resp.get("status"),
-                       "action": "quarantined" if (quarantine and on_own_host) else "recorded"})
+        rec = {"run_id": ctx.run_id, "ts": now_iso(), "host": host,
+               "entity_id": job.get("entity_id"), "test": KIND_TEST.get(spec["kind"]),
+               "kind": spec["kind"], "identity": spec["identity"], "url": spec["url"],
+               "what": what, "status": resp.get("status"),
+               "action": "quarantined" if (quarantine and on_own_host) else "recorded"}
+        if job.get("page_url"):
+            rec.update(scope="page", page_url=job["page_url"])
+        review.append(rec)
     return resp
 
 
@@ -1088,17 +1261,23 @@ def run_worker(jobs: list, ctx: RunContext, writer, window: int = 8) -> None:
     last_global = [-1e18]
 
     def admit():
-        while queue and len(active) < window:
-            job = queue.pop(0)
-            gen = host_plan(job, ctx)
+        # At most one active job per host: a host's requests are serialized by its clock anyway,
+        # so a second job on it would only crowd other hosts out of the window. (In --deep-pages
+        # it also lets the first page on a host fetch robots.txt before the next page asks.)
+        while len(active) < window:
+            busy = {a[0]["host"] for a in active}
+            nxt = next((j for j in queue if j["host"] not in busy), None)
+            if nxt is None:
+                return
+            queue.remove(nxt)
+            gen = plan_for(nxt)(nxt, ctx)
             spec = next(gen)
-            active.append([job, gen, spec, []])
+            active.append([nxt, gen, spec, []])
 
     admit()
     while active and not ctx.stop.is_set():
         # the host whose floor frees soonest
-        active.sort(key=lambda a: ctx.clock.ready_at(
-            urllib.parse.urlparse(a[2]["url"]).netloc.lower()))
+        active.sort(key=lambda a: ctx.clock.ready_at(clock_host(a[2])))
         slot = active[0]
         job, gen, spec, review = slot
         resp = perform(spec, job, ctx, review, last_global)
@@ -1131,7 +1310,7 @@ class RunWriter:
                 with (self.dir / "review.jsonl").open("a") as f:
                     f.write("".join(json.dumps(r, default=str) + "\n" for r in review))
             with (self.dir / "progress.jsonl").open("a") as f:
-                f.write(json.dumps({"host": job["host"], "ts": now_iso(),
+                f.write(json.dumps({"host": job["host"], "unit": job_unit(job), "ts": now_iso(),
                                     "requests_so_far": self.ctx.requests}) + "\n")
             self.rows_written += len(rows)
             self.review_written += len(review)
@@ -1150,15 +1329,16 @@ def read_jsonl(path: pathlib.Path) -> list:
 
 
 def prepare_resume(run_dir: pathlib.Path) -> "tuple[set, int]":
-    """Hosts already finished, and requests already spent. Rows for a host that was mid-flight
-    at the crash are dropped, so the resumed run writes each host exactly once."""
+    """Units (hosts; pages in --deep-pages) already finished, and requests already spent. Rows
+    for a unit that was mid-flight at the crash are dropped, so the resumed run writes each unit
+    exactly once."""
     progress = read_jsonl(run_dir / "progress.jsonl")
-    done = {p["host"] for p in progress}
+    done = {p.get("unit") or p["host"] for p in progress}
     spent = max([p.get("requests_so_far", 0) for p in progress] + [0])
     for name in ("results.jsonl", "review.jsonl"):
         path = run_dir / name
         if path.exists():
-            keep = [r for r in read_jsonl(path) if r.get("host") in done]
+            keep = [r for r in read_jsonl(path) if job_unit(r) in done]
             tmp = path.with_suffix(".jsonl.tmp")
             tmp.write_text("".join(json.dumps(r, default=str) + "\n" for r in keep))
             os.replace(tmp, path)
@@ -1194,11 +1374,27 @@ def run_on_exit(cmd: str, status_path: pathlib.Path) -> None:
         print("on-exit hook failed: {}".format(e), file=sys.stderr)
 
 
+def split_by_host(jobs: list, n: int) -> list:
+    """Worker groups for --deep-pages: every page of a host goes to the same worker, so one
+    host's robots.txt is fetched once and its pages never wait on another worker's clock."""
+    by_host = defaultdict(list)
+    for j in jobs:
+        by_host[j["host"]].append(j)
+    groups = [[] for _ in range(n)]
+    for host in sorted(by_host, key=lambda h: -len(by_host[h])):
+        min(groups, key=len).extend(by_host[host])
+    return groups
+
+
 def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
                     monotonic=time.monotonic, pacing=None) -> int:
-    """Entry point for --tier core|full. Returns 0 (done) or 1 (broke)."""
-    targets = load_targets(args.targets_file)
-    jobs = plan_targets(targets)
+    """Entry point for --tier core|full and --deep-pages. Returns 0 (done) or 1 (broke)."""
+    deep = bool(getattr(args, "deep_pages", False))
+    if deep:
+        args.tier = "pages"
+        jobs = page_jobs(load_deep_page_targets(args.targets_file, args.deep_pages_extra))
+    else:
+        jobs = plan_targets(load_targets(args.targets_file))
     if args.only_hosts:
         only = ({h.strip().lower() for h in pathlib.Path(args.only_hosts[1:]).read_text().splitlines()
                  if h.strip()} if args.only_hosts.startswith("@") else
@@ -1206,8 +1402,38 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
         jobs = [j for j in jobs if j["host"] in only]
     if args.limit:
         jobs = jobs[:args.limit]
-    identities = tier_identities(args.tier)
-    lo, hi = requests_per_host(args.tier, len(identities))
+    identities = page_identities() if deep else tier_identities(args.tier)
+    if deep:
+        floor_s = (pacing or {}).get("host_floor_s", MIN_HOST_DELAY_S)
+        governors = (pacing or {}).get("governors", HOST_GOVERNORS)
+        est = page_request_estimate(jobs, len(identities), floor_s, governors)
+        lo = hi = est["requests"]
+        if args.dry_run:
+            print("deep pages  pages={}  hosts={}  identities={}  requests≈{} (robots.txt × {} "
+                  "page hosts + pages × {} identities, before retries)".format(
+                      est["pages"], est["hosts"], len(identities), est["requests"], est["robots"],
+                      len(identities)))
+            print("identities: " + ", ".join(i["key"] for i in identities))
+            print("busiest host: {} ({} requests, ≥ {} h at its per-host floor)".format(
+                est["busiest"], est["per_host"].get(est["busiest"], 0), est["min_hours"]))
+            for h in sorted(est["per_host"], key=lambda h: -est["per_host"][h]):
+                print("  {:<28} {:>4} requests".format(h, est["per_host"][h]))
+            unpaired = [j["url"] for j in jobs if not j.get("entity_name")]
+            print("pages with no owner name: {}".format(len(unpaired)))
+            for u in unpaired:
+                print("  " + u)
+            for j in jobs[:args.dry_run_show]:
+                print("\n{}  ({})".format(j["url"], j.get("entity_name")))
+                print("  GET https://{}/robots.txt   [research; once per run for this host]".format(
+                    j["page_host"]))
+                for i in identities:
+                    print("  GET {}  [{}]".format(j["url"], i["key"]))
+            if len(jobs) > args.dry_run_show:
+                print("\n... {} more pages".format(len(jobs) - args.dry_run_show))
+            print("\nno network used (dry run)")
+            return 0
+    else:
+        lo, hi = requests_per_host(args.tier, len(identities))
 
     if args.dry_run:
         print("tier={}  hosts={}  identities={}  requests≈{}–{} ({}–{} per host, before retries)"
@@ -1239,7 +1465,7 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
     run_dir.mkdir(parents=True, exist_ok=True)
     run_id = run_dir.name
     done, spent = prepare_resume(run_dir)
-    pending = [j for j in jobs if j["host"] not in done]
+    pending = [j for j in jobs if job_unit(j) not in done]
 
     portals = ar.load_portals(args.portals) if args.portals and pathlib.Path(args.portals).exists() \
         else None
@@ -1255,6 +1481,9 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
                      max_requests=args.max_requests, portals=portals, dotgov=dotgov,
                      seed=args.seed, sleep=sleep, monotonic=monotonic, **pacing)
     ctx.requests = spent
+    if deep:  # the estimate is recomputed for what is still pending (robots per page host)
+        lo = hi = page_request_estimate(pending, len(identities), ctx.clock.floor_s,
+                                        ctx.clock.governors)["requests"]
     writer = RunWriter(run_dir, ctx)
     started = now_iso()
     argv = list(sys.argv[1:]) if not getattr(args, "_argv", None) else list(args._argv)
@@ -1265,7 +1494,11 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
     manifest = {
         "catalog_version": ar.CATALOG_VERSION, "git_sha": ctx.git_sha, "run_id": run_id,
         "tier": args.tier, "vantage": args.vantage, "machine": args.machine,
-        "targets_source": args.targets_file or str(TARGETS), "hosts": len(jobs),
+        "targets_source": (args.targets_file or str(TARGETS)) if not deep else {
+            "websites": args.targets_file or "data/ai-readability/websites.json",
+            "extra": args.deep_pages_extra or "data/ai-readability/deep-pages-extra.csv"},
+        "mode": "deep_pages" if deep else "hosts", "hosts": len({j["host"] for j in jobs}),
+        "units": len(jobs),
         "hosts_already_done": len(done), "started": started, "ended": None,
         "identities": identities, "robots_only_tokens_not_sent": list(ROBOTS_ONLY_TOKENS),
         "pacing": {"global_pace_s": ctx.pace_s, "jitter_s": ctx.jitter_s,
@@ -1277,8 +1510,12 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
         "max_requests": args.max_requests,
     }
     (run_dir / "run.json").write_text(json.dumps(manifest, indent=2, default=str))
-    print("run_dir={}  hosts={} (pending {})  identities={}  ≈{}–{} requests".format(
-        run_dir, len(jobs), len(pending), len(identities), lo * len(pending), hi * len(pending)))
+    if deep:
+        print("run_dir={}  pages={} (pending {})  identities={}  ≈{} requests".format(
+            run_dir, len(jobs), len(pending), len(identities), lo))
+    else:
+        print("run_dir={}  hosts={} (pending {})  identities={}  ≈{}–{} requests".format(
+            run_dir, len(jobs), len(pending), len(identities), lo * len(pending), hi * len(pending)))
 
     state, error = "broke", None
 
@@ -1295,7 +1532,7 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
         if n == 1:
             run_worker(pending, ctx, writer)
         else:
-            groups = [pending[i::n] for i in range(n)]
+            groups = split_by_host(pending, n) if deep else [pending[i::n] for i in range(n)]
 
             def _guard(group):
                 try:
@@ -1330,6 +1567,9 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
         status = {"state": state, "started": started, "ended": ended,
                   "requests": ctx.requests, "hosts": len(jobs),
                   "hosts_done": len(done) + writer.hosts_done, "review_count": review_count,
+                  "mode": "deep_pages" if deep else "hosts",
+                  **({"pages": len(jobs), "pages_done": len(done) + writer.hosts_done}
+                     if deep else {}),
                   "quarantined_hosts": len(ctx.quarantined), "run_dir": str(run_dir)}
         if state == "broke":
             status["error"] = error
@@ -1396,6 +1636,13 @@ def build_parser() -> argparse.ArgumentParser:
                     help="comma-separated hosts, or @path to a newline-delimited file. Restricts "
                          "the run to these hosts — used for the second-vantage confirmation pass, "
                          "where the point is re-measuring the SAME hosts from another network.")
+    ap.add_argument("--deep-pages", action="store_true",
+                    help="score each page on hosts shared by several registry bodies (issue #35): "
+                         "pages from websites.json (or --targets-file in that layout) plus "
+                         "--deep-pages-extra, at the Tier B identities, page-level tests only")
+    ap.add_argument("--deep-pages-extra", default=None,
+                    help="--deep-pages: extra page list (url,name,source,checked); default "
+                         "data/ai-readability/deep-pages-extra.csv")
     ap.add_argument("--seed", type=int, default=20260828)
     ap.add_argument("--vantage", default=os.environ.get("PROBE_VANTAGE", "unknown"),
                     help="label for the network this ran from, e.g. 'residential' or 'office'")
@@ -1406,6 +1653,8 @@ def main(argv=None) -> int:
     args = build_parser().parse_args(argv)
     args._argv = list(argv) if argv is not None else list(sys.argv[1:])
 
+    if args.deep_pages:
+        return run_readability(args)
     if args.tier in ("core", "full"):
         if not args.targets_file and not TARGETS.exists():
             print("FATAL: {} not found and no --targets-file given.".format(TARGETS),

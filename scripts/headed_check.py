@@ -30,7 +30,20 @@ Run (results stay private: write into a git-ignored run folder):
       --run-dir data/ai-readability/runs/<YYYY-MM-DD>-<vantage>-headed --vantage home-hearth \
       --operator-authorized
 Output: <run-dir>/results.jsonl (same row shape as the probe), headed.jsonl (one row per host:
-  status, title, words, challenge, verdict), and summary counts on stdout.
+  status, title, words, challenge, verdict), needs_person.txt (pages that showed a challenge or
+  block page: never clicked, never retried, left for a person to try by hand), and summary
+  counts on stdout.
+
+DEEP PAGES (--deep-pages; issue #35)
+  The probe's deep-page targets (probe_bot_access.load_deep_page_targets) through
+  probe_bot_access.page_plan and run_worker: each page host's robots.txt once, each page once,
+  paced by the probe's own HostClock (per-host floor and governors) and round-robin across
+  hosts. One browser context per host, kept for all its pages. No retries (max_attempts=1).
+  Rows carry `page_url` and scope "page"; headed.jsonl has one row per page.
+
+  uv run --with playwright python scripts/headed_check.py --deep-pages \
+      --run-dir data/ai-readability/runs/<YYYY-MM-DD>-<vantage>-pages-headed --vantage office \
+      --operator-authorized
 """
 from __future__ import annotations
 
@@ -130,6 +143,99 @@ def browser_fetch(page, pba, spec: dict) -> dict:
         page.remove_listener("response", on_response)
 
 
+def page_kind(url: str) -> str:
+    """page_plan asks for only two things: a host's /robots.txt and the page itself."""
+    return "robots" if urllib.parse.urlparse(url).path == "/robots.txt" else "page"
+
+
+def needs_person(resp: dict, title: str, text: str, rc) -> str:
+    """Why a person must look at this page ('' when they need not): a challenge or
+    interactive check, or a block page. Recorded, never clicked, never retried."""
+    if rc.is_challenge(title, text):
+        return "challenge"
+    if (resp or {}).get("is_block_page"):
+        return "block page ({})".format(resp.get("body_class"))
+    return ""
+
+
+def browser_transport(browser, pba, rc, captured: dict):
+    """A probe transport backed by Chrome: one context per host (www. ignored), so cookies stay
+    within the host as in a person's browser. The `ua` argument is ignored on purpose: Chrome
+    keeps its own name. The page's title and text are kept in `captured` for headed.jsonl."""
+    contexts = {}
+
+    def transport(url, ua, method="GET", accept="*/*", follow="any", max_bytes=0):
+        host = (urllib.parse.urlparse(url).hostname or "").lower()
+        key = host[4:] if host.startswith("www.") else host
+        if key not in contexts:
+            bctx = browser.new_context()   # no user_agent override: Chrome's own name
+            contexts[key] = (bctx, bctx.new_page())
+        page = contexts[key][1]
+        kind = page_kind(url)
+        r = browser_fetch(page, pba, {"url": url, "kind": "home" if kind == "page" else kind,
+                                      "follow": follow})
+        if kind == "page":
+            title = page.title() if r.get("status") else ""
+            text = page.inner_text("body") if page.query_selector("body") else ""
+            captured[url] = (r, title, text)
+        return r
+
+    transport.close = lambda: [c.close() for c, _ in contexts.values()]
+    return transport
+
+
+def run_pages(jobs: list, run_dir: pathlib.Path, vantage: str, transport, ua: str,
+              captured: dict, sleep=time.sleep, monotonic=time.monotonic, pacing=None) -> dict:
+    """--deep-pages through the probe's own runner (page_plan, HostClock, round-robin), with
+    Chrome as the transport. Browser-agnostic so it can be tested with a fake transport."""
+    ar, pba, rc = _modules()
+    portals_path = pba.ROOT / "data" / "ai-readability" / "portals.json"
+    ctx = pba.RunContext(
+        run_dir.name, "pages", vantage, pba.git_sha(),
+        [{"key": pba.RESEARCH_KEY, "klass": "baseline", "ua": None}], transport=transport,
+        portals=ar.load_portals(portals_path) if portals_path.exists() else None,
+        sleep=sleep, monotonic=monotonic, max_attempts=1, **(pacing or {}))
+    counts = {}
+
+    def writer(job, rows, review):
+        with (run_dir / "results.jsonl").open("a") as res:
+            for row in rows:
+                if row["identity"] == pba.RESEARCH_KEY:
+                    row["identity"] = IDENTITY
+                row.update(client=IDENTITY, ua=ua)
+                res.write(json.dumps(row, default=str) + "\n")
+        if review:
+            with (run_dir / "review.jsonl").open("a") as f:
+                for r in review:
+                    r["identity"] = IDENTITY if r.get("identity") == pba.RESEARCH_KEY else r.get("identity")
+                    f.write(json.dumps(r, default=str) + "\n")
+        r, title, text = captured.get(job["url"]) or ({}, "", "")
+        rec = {"test": "headed", "identity": IDENTITY, "ua": ua, "vantage": vantage,
+               "scope": "page", "url": job["url"], "page_url": job["url"], "host": job["host"],
+               "entity_id": job.get("entity_id"), "entity_name": job.get("entity_name"),
+               "ts": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+               "status": r.get("status"), "final_url": r.get("final_url"), "title": title,
+               "words": rc.visible_words(text), "text_head": (text or "")[:600],
+               "challenge": rc.is_challenge(title, text), "waf": r.get("waf"),
+               "error": r.get("transport_error") or (
+                   None if job["url"] in captured else "not fetched (host quarantined)")}
+        rec["verdict"] = rc.verdict(rec)
+        why = needs_person(r, title, text, rc)
+        rec["needs_person"] = bool(why)
+        with (run_dir / "headed.jsonl").open("a") as hd:
+            hd.write(json.dumps(rec) + "\n")
+        if why:
+            with (run_dir / "needs_person.txt").open("a") as f:
+                f.write("{}\t{}\t{}\n".format(job["url"], rec["status"], why))
+        counts[rec["verdict"]] = counts.get(rec["verdict"], 0) + 1
+        print(job["url"], rec["status"], rec["words"], rec["verdict"], why, flush=True)
+
+    pba.run_worker(jobs, ctx, writer)
+    if ctx.broke_reason:
+        print("stopped: " + ctx.broke_reason, file=sys.stderr)
+    return counts
+
+
 def run(targets: list, run_dir: pathlib.Path, vantage: str) -> dict:
     from playwright.sync_api import sync_playwright  # imported here so tests need no Playwright
 
@@ -185,6 +291,11 @@ def run(targets: list, run_dir: pathlib.Path, vantage: str) -> dict:
                    "challenge": rc.is_challenge(title, text), "waf": r.get("waf"),
                    "error": r.get("transport_error")}
             rec["verdict"] = rc.verdict(rec)
+            why = needs_person(r, title, text, rc)
+            rec["needs_person"] = bool(why)
+            if why:
+                with (run_dir / "needs_person.txt").open("a") as f:
+                    f.write("{}\t{}\t{}\n".format(t["url"], rec["status"], why))
             hd.write(json.dumps(rec) + "\n")
             res.flush()
             hd.flush()
@@ -195,9 +306,37 @@ def run(targets: list, run_dir: pathlib.Path, vantage: str) -> dict:
     return counts
 
 
+def run_deep(jobs: list, run_dir: pathlib.Path, vantage: str) -> dict:
+    from playwright.sync_api import sync_playwright  # imported here so tests need no Playwright
+
+    ar, pba, rc = _modules()
+    captured = {}
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False, channel="chrome")
+        probe = browser.new_page()
+        ua = probe.evaluate("navigator.userAgent")
+        probe.close()
+        if "Headless" in ua:
+            raise SystemExit("refusing: the browser reports a headless User-Agent: " + ua)
+        transport = browser_transport(browser, pba, rc, captured)
+        try:
+            counts = run_pages(jobs, run_dir, vantage, transport, ua, captured)
+        finally:
+            transport.close()
+            browser.close()
+    return counts
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--targets-file", required=True, help="same inputs as probe_bot_access.py")
+    ap.add_argument("--targets-file", default=None,
+                    help="same inputs as probe_bot_access.py (required unless --deep-pages; with "
+                         "--deep-pages, an optional websites.json-layout file)")
+    ap.add_argument("--deep-pages", action="store_true",
+                    help="the probe's deep-page targets (issue #35), page-level tests only")
+    ap.add_argument("--deep-pages-extra", default=None,
+                    help="--deep-pages: extra page list; default data/ai-readability/deep-pages-extra.csv")
+    ap.add_argument("--limit", type=int, default=None, help="--deep-pages: first N pages (smoke test)")
     ap.add_argument("--run-dir", required=True, help="git-ignored run folder")
     ap.add_argument("--vantage", required=True, help="machine short name, e.g. home-hearth")
     ap.add_argument("--operator-authorized", action="store_true",
@@ -206,11 +345,19 @@ def main(argv=None) -> int:
     if not a.operator_authorized:
         print("refusing: pass --operator-authorized (configured is not authorized)", file=sys.stderr)
         return 2
-    _, pba, _ = _modules()
-    targets = pba.load_targets(a.targets_file)
+    if not a.deep_pages and not a.targets_file:
+        print("refusing: --targets-file is required (or pass --deep-pages)", file=sys.stderr)
+        return 2
+    _, pba, rc = _modules()
     run_dir = pathlib.Path(a.run_dir)
     run_dir.mkdir(parents=True, exist_ok=True)
-    counts = run(targets, run_dir, a.vantage)
+    if a.deep_pages:
+        jobs = pba.page_jobs(pba.load_deep_page_targets(a.targets_file, a.deep_pages_extra))
+        if a.limit:
+            jobs = jobs[:a.limit]
+        counts = run_deep(jobs, run_dir, a.vantage)
+    else:
+        counts = run(pba.load_targets(a.targets_file), run_dir, a.vantage)
     print(json.dumps(counts, sort_keys=True))
     return 0
 

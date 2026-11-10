@@ -621,8 +621,12 @@ def build_rows(targets, results, v1_rows, review_rows, psl, gsa=None, tenants=No
     for r in person_results:
         person_by_host.setdefault(r["host"], []).append(r)
     for r in results:
+        if r.get("scope") == "page":       # --deep-pages rows are per page, never a host's
+            continue
         by_host.setdefault(r["host"], []).append(r)
     for r in review_rows:
+        if r.get("scope") == "page":
+            continue
         rev_by_host.setdefault(r.get("host"), []).append(r)
     for r in v1_rows:
         v1_by_url.setdefault(r["url"], {})[r["variant"]] = r

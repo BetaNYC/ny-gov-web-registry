@@ -1182,7 +1182,7 @@ def summarize(rows: list, review_count: int, meta: dict) -> str:
         key = r["test"] if r["test"] != "W4" else (
             "W4 (all AI)" if r["identity"] == W4_AGGREGATE_IDENTITY else "W4 · " + r["identity"])
         by_test[key][r["verdict"]] += 1
-        by_host[r["host"]].append(r)
+        by_host[r.get("page_url") or r["host"]].append(r)   # a --deep-pages row is per page
     cols = ("pass", "partial", "fail", "blocked", "na", "reported")
     lines = ["---", "title: AI-readability run summary — {}".format(meta.get("run_id")),
              "created: {}".format(meta.get("date")), "type: run-summary", "status: private",
@@ -1193,7 +1193,8 @@ def summarize(rows: list, review_count: int, meta: dict) -> str:
              "- **Tier:** {} · **Vantage:** {} · **Machine:** {}".format(
                  meta.get("tier"), meta.get("vantage"), meta.get("machine")),
              "- **Started:** {} · **Ended:** {}".format(meta.get("started"), meta.get("ended")),
-             "- **Hosts:** {} · **Requests:** {} · **Review rows:** {}".format(
+             "- **{}:** {} · **Requests:** {} · **Review rows:** {}".format(
+                 "Pages" if any(r.get("page_url") for r in rows) else "Hosts",
                  len(by_host), meta.get("requests"), review_count), "",
              "## Verdict counts per test", "",
              "| test | " + " | ".join(cols) + " |", "|---|" + "---|" * len(cols)]
