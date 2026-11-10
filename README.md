@@ -136,7 +136,9 @@ what Chrome received. That separates "blocks bots" from "blocks everyone". The e
 `tests/test_headed_check.py`.
 
 **The website list:** [`data/ai-readability/websites.csv`](data/ai-readability/websites.csv) (and
-`.json`) is every New York government website we know of, one row per host, built by
+`.json`) is every New York government website we know of, plus every open-data portal and data
+API in BetaNYC's portal registry (`ny_kind`; nonprofit, research, library and university
+portals carry `ny_government` FALSE and are never counted as government), one row per host, built by
 `scripts/ai_readability_websites.py` from the registry (so the two stay in step) plus the
 statewide lists in the table above. It uses the layout of GSA's Federal Website Index, with a
 `source_list_*` column per source; fields are in
@@ -153,6 +155,14 @@ only site is a `www.nyc.gov/site/<board>/` page) are listed by hand in
 in [`page-corrections.csv`](data/ai-readability/page-corrections.csv) (`page_url`, `issue`
 `moved` or `gone`, `moved_to`, `checked`, `evidence`): the deep-page run probes a moved page at
 its new URL and skips a gone one. The source lists keep the old URL as the sources state it.
+
+**The address inventory:** [`data/ai-readability/addresses.csv`](data/ai-readability/addresses.csv)
+is one row per address to scan (main site, sub-site, section, data portal, API), with its owning
+body, source and date found, built by `scripts/address_inventory.py` from the website list, the
+deep pages, the portal registry, files the last scan already fetched, BetaNYC's contact files and
+public certificate logs (`scripts/cert_log_names.py`). Nothing is guessed. Columns, sources,
+counts and the certificate-log filter: [`docs/ai-readability/addresses.md`](docs/ai-readability/addresses.md).
+Offline tests: `tests/test_address_inventory.py`.
 
 **Deep pages:** on hosts shared by several registry bodies (`www.nyc.gov`, `www1.nyc.gov`, ...),
 `probe_bot_access.py --deep-pages` scores each body's own page rather than the host's homepage:

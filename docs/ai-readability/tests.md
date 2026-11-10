@@ -55,6 +55,12 @@ file says yes while the edge says no.
 Content tests (`R`, `I`, `D`, `F1`) parse the **one** homepage body fetched with the research
 identity. They cost no extra requests.
 
+### Addresses (issue #41)
+
+The next run's list of addresses (main sites, sub-sites, sections, data portals, APIs) is
+`data/ai-readability/addresses.csv`, built by `scripts/address_inventory.py`. How it is built,
+and the certificate-log filter: [`addresses.md`](addresses.md). The scanner reads it from #44.
+
 ### Deep pages (`--deep-pages`, issue #35)
 
 Some hosts carry many registry bodies on their own pages (`www.nyc.gov`, `www1.nyc.gov`,
