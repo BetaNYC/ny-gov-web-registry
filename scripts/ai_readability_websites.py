@@ -93,7 +93,12 @@ def _host_path(u: str):
     p = urllib.parse.urlparse(u if "//" in u else "https://" + u)
     if not p.hostname or "." not in p.hostname:
         return None, None
-    path = p.path.rstrip("/")
+    # Keep the path exactly as the source wrote it, trailing slash and query included: some
+    # servers treat /pages and /pages/ as different addresses (www.nyc.gov/content/... answers
+    # 404 without the slash). Only the bare homepage collapses to None.
+    path = p.path if p.path.strip("/") else ""
+    if path and p.query:
+        path += "?" + p.query
     return p.hostname.lower().rstrip("."), (path or None)
 
 
