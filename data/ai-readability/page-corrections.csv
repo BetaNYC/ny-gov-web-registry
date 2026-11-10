@@ -1,0 +1,9 @@
+page_url,issue,moved_to,checked,evidence
+https://schools.nyc.gov/community/facilities/ecf/default.htm,moved,https://ecfny.org/,2026-11-10,"404 in Chrome; ecfny.org is the Fund's own site (title ""Educational Construction Fund""), linked from schools.nyc.gov's School Construction page"
+https://www.nyc.gov/site/childrenscabinet/index.page,moved,https://www.nyc.gov/site/cidi/collaborations/childrens-cabinet.page,2026-11-10,"404 in Chrome; the Cabinet's page is now under CIDI (200, title ""Children's Cabinet - CIDI""); every /site/childrenscabinet/ page checked is 404"
+https://www.nyc.gov/site/wkdev/workforce-board/about-the-council.page,moved,https://www.nyc.gov/mayors-office/news/2024/04/mayor-adams-launches-workforce-development-council-unlock-new-job-opportunities-new-yorkers,2026-11-10,"404 in Chrome; no Council page found on nyc.gov, only the 2024 launch press release (200). Not a home page"
+https://www.nyc.gov/site/starcorp/index.page,moved,https://comptroller.nyc.gov/statements/sales-tax-asset-receivable-corporation-star/,2026-11-10,"404 in Chrome; no STAR page found on nyc.gov, only the Comptroller's financial statements page (200). Not the corporation's own page"
+https://www.nyc.gov/site/cfcp/index.page,gone,,2026-11-10,"404 in Chrome; every /site/cfcp/ page checked is 404 (index, about, careers); Kagi search found no new page"
+https://www.nyc.gov/site/getstuffbuilt/initiatives/get-stuff-built.page,gone,,2026-11-10,"404 in Chrome; /site/getstuffbuilt/ index and initiative pages are 404; only 2022-2023 PDFs remain under /assets/getstuffbuilt/"
+https://www.nyc.gov/site/publicrealm/index.page,gone,,2026-11-10,"404 in Chrome; Kagi search found no Office of the Public Realm page on nyc.gov"
+https://www.nyc.gov/site/trie/index.page,gone,,2026-11-10,"404 in Chrome; the 2020-2021 taskforce has no page; its reports sit under the Mayor's Office of Equity (/site/equity/)"
