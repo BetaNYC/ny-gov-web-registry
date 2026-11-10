@@ -10,12 +10,19 @@ Source List - State agency listing,source_list_state_agency,Whether the host was
 Source List - ABO,source_list_abo,"Whether the host was sourced from NYS Authorities Budget Office directory, data.ny.gov 4vym-q77x",boolean
 Source List - CISA .gov,source_list_cisa,"Whether the host was sourced from CISA .gov domain list, github.com/cisagov/dotgov-data",boolean
 Source List - ITS 2023,source_list_its_2023,"Whether the host was sourced from NYS ITS Locality Hierarchy with Websites, data.ny.gov 55k6-h6qq, last updated 2023-03-06",boolean
+Source List - NY data portal registry,source_list_portal_registry,"Whether the host was sourced from BetaNYC's NY data portal registry (BetaNYC/ny-data-registry-mcp data/ny-data-portal-registry.json), rows live or UNCONFIRMED",boolean
 NY - Initial Domain,ny_initial_domain,"The host as first listed, `www.` kept",string
 NY - Entity IDs,ny_entity_ids,Registry ids (data/registry.json) whose primary website is this host,list
 NY - Names,ny_names,Every owner name the sources give for this host or a page on it,list
 NY - Levels,ny_levels,"What kind of body each source says owns it: registry government_level, `state agency`, ABO type, CISA domain type, or ITS type",list
 NY - Counties,ny_counties,"County named by ITS 2023, when any",list
 NY - Page URLs,ny_page_urls,"Pages (not whole hosts) a source lists, e.g. a town page on its county's site",list
-NY - Source Count,ny_source_count,How many of the five sources list this host,integer
+NY - Source Count,ny_source_count,How many of the six sources list this host,integer
 NY - Host Issue,ny_host_issue,"Set when a hand check (website-corrections.csv) found the host is no longer the body's website: `lookalike` (a third-party site), `for_sale`, or `redirects_offsite`. Probe runs skip these hosts. Blank otherwise",string
 NY - Superseded By,ny_superseded_by,The body's real host when `ny_host_issue` is set (also a row in this list),string
+NY - Kind,ny_kind,`main site` when a source other than the portal registry lists the host; otherwise `API` (every portal URL on it is a machine endpoint) or `data portal`,string
+NY - Government,ny_government,"FALSE only when the portal registry is the only source and every portal row's entity_type is nonprofit, research-center, library or university",boolean
+NY - Portal Entity Types,ny_portal_entity_types,"`entity_type` of each portal registry row on this host, as the registry writes it",list
+NY - Portal Registry IDs,ny_portal_registry_ids,"`registry_id` the portal registry gives (data/registry.json ids), when any",list
+NY - Portal URLs,ny_portal_urls,The portal registry's URL for each portal or API on this host,list
+NY - Hosting,ny_hosting,"`vendor` when the host is on a shared vendor platform (arcgis.com, legistar.com); blank otherwise",string

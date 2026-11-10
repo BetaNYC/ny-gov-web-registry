@@ -17,6 +17,22 @@ SOURCES (all read from the repo; this script never fetches)
   abo             ABO Directory of Public Authorities, data.ny.gov 4vym-q77x (`website`)
   cisa            CISA .gov list, NY rows only (`Security contact email` is never read)
   its_2023        NYS ITS Locality Hierarchy with Websites, data.ny.gov 55k6-h6qq (stale, 2023)
+  portal_registry BetaNYC's NY data portal registry (BetaNYC/ny-data-registry-mcp
+                  data/ny-data-portal-registry.json; snapshot in sources/2026-11-10/), rows with
+                  status `live` or `UNCONFIRMED` only (issue #41). Every portal and data API is
+                  added, government or not. Its `entity_type` is kept in `ny_portal_entity_types`
+                  and `ny_government` is FALSE when the only sources for a host are portal rows
+                  of a non-government type (NON_GOVERNMENT_TYPES: nonprofit, research center,
+                  library, university), so they are never counted as government. The portal's
+                  own URL goes in `ny_portal_urls`, never in `ny_page_urls` (deep pages, #35, are
+                  not changed by it).
+
+KIND (`ny_kind`, issue #41)
+  `main site` when any other source lists the host itself; otherwise `API` when every portal
+  URL on the host is a machine endpoint (api_kind(): an ArcGIS `/rest/services` directory, a
+  `.json` file, or the Legistar Web API), else `data portal`. `ny_hosting` is `vendor` for a
+  host on a shared vendor platform (VENDOR_HOSTING: arcgis.com, legistar.com), e.g.
+  webapi.legistar.com, the NYC Council's second address.
 
 CORRECTIONS (data/ai-readability/website-corrections.csv, checked by hand)
   A host a source lists that is no longer the body's website: a lookalike site, a domain for
@@ -70,6 +86,7 @@ PATHS = {
     "cisa": SRC / "cisa-dotgov-current-full.csv",
     "its_2023": SRC / "its-locality-websites-55k6-h6qq.json",
     "corrections": AIR / "website-corrections.csv",
+    "portal_registry": AIR / "sources" / "2026-11-10" / "ny-data-portal-registry.json",
 }
 HOST_ISSUES = ("lookalike", "for_sale", "redirects_offsite")
 OUT_CSV, OUT_JSON = AIR / "websites.csv", AIR / "websites.json"
@@ -84,7 +101,14 @@ SOURCES = (
     ("cisa", "CISA .gov", "CISA .gov domain list, github.com/cisagov/dotgov-data"),
     ("its_2023", "ITS 2023", "NYS ITS Locality Hierarchy with Websites, data.ny.gov 55k6-h6qq, "
      "last updated 2023-03-06"),
+    ("portal_registry", "NY data portal registry",
+     "BetaNYC's NY data portal registry (BetaNYC/ny-data-registry-mcp "
+     "data/ny-data-portal-registry.json), rows live or UNCONFIRMED"),
 )
+PORTAL_STATUSES = ("live", "UNCONFIRMED")
+NON_GOVERNMENT_TYPES = ("nonprofit", "research-center", "library", "university")
+VENDOR_HOSTING = ("arcgis.com", "legistar.com")
+KINDS = ("main site", "sub-site", "section", "data portal", "API")
 
 
 def _host_path(u: str):
@@ -195,21 +219,49 @@ def read_corrections(path) -> dict:
     return out
 
 
+def api_kind(url: str) -> bool:
+    """True when a portal URL is a machine endpoint rather than a page for people: an ArcGIS
+    REST services directory, a `.json` file, or the Legistar Web API."""
+    p = urllib.parse.urlparse(url)
+    host = (p.hostname or "").lower()
+    return ("/rest/services" in p.path or p.path.lower().endswith(".json")
+            or host == "webapi.legistar.com")
+
+
+def read_portal_registry(path):
+    """Rows of the portal registry with status live or UNCONFIRMED. `name` is the registry's
+    `entity` as written; `entity_type` and `registry_id` are kept."""
+    doc = json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
+    for r in doc["rows"]:
+        if r.get("status") not in PORTAL_STATUSES:
+            continue
+        h, p = _host_path(r.get("url") or "")
+        if h:
+            yield {"host": h, "path": p, "name": r.get("entity"), "portal": True,
+                   "url": r["url"], "entity_type": r.get("entity_type"),
+                   "registry_id": r.get("registry_id"), "api": api_kind(r["url"]),
+                   "status": r.get("status")}
+
+
 READERS = {"registry": read_registry, "state_agency": read_state_agency, "abo": read_abo,
-           "cisa": read_cisa, "its_2023": read_its}
+           "cisa": read_cisa, "its_2023": read_its, "portal_registry": read_portal_registry}
 
 
 # ------------------------------------------------------------------------------ build
 COLUMNS = (["initial_url", "base_domain", "top_level_domain", "branch", "agency", "bureau"]
            + ["source_list_" + s for s, _, _ in SOURCES]
            + ["ny_initial_domain", "ny_entity_ids", "ny_names", "ny_levels", "ny_counties",
-              "ny_page_urls", "ny_source_count", "ny_host_issue", "ny_superseded_by"])
+              "ny_page_urls", "ny_source_count", "ny_host_issue", "ny_superseded_by",
+              "ny_kind", "ny_government", "ny_portal_entity_types", "ny_portal_registry_ids",
+              "ny_portal_urls", "ny_hosting"])
 
 
 def build(paths=PATHS, psl=None) -> list:
     psl = psl or ex.load_psl()
     hosts = {}
     for src, _, _ in SOURCES:
+        if not paths.get(src):                 # a fixture may leave a source out
+            continue
         reader = READERS[src]
         recs = reader(paths[src], paths.get("crawl_targets")) if src == "registry" else reader(paths[src])
         for rec in recs:
@@ -225,7 +277,7 @@ def build(paths=PATHS, psl=None) -> list:
                 h["levels"].add(rec["level"])
             if rec.get("county"):
                 h["counties"].add(rec["county"])
-            if rec.get("path"):
+            if rec.get("path") and not rec.get("portal"):
                 h["pages"].add("https://{}{}".format(rec["host"], rec["path"]))
     fixes = read_corrections(paths.get("corrections"))
     rows = []
@@ -243,8 +295,29 @@ def build(paths=PATHS, psl=None) -> list:
                    ny_source_count=len(h["by"]),
                    ny_host_issue=(fixes.get(k) or {}).get("issue") or None,
                    ny_superseded_by=(fixes.get(k) or {}).get("superseded_by") or None)
+        row.update(_portal_columns(h, psl))
         rows.append(row)
     return rows
+
+
+def _portal_columns(h, psl) -> dict:
+    portal = h["by"].get("portal_registry", [])
+    other = [s for s in h["by"] if s != "portal_registry"]
+    types = sorted({r["entity_type"] for r in portal if r.get("entity_type")})
+    if other:
+        kind = "main site"
+    elif portal and all(r["api"] for r in portal):
+        kind = "API"
+    else:
+        kind = "data portal"
+    government = bool(other) or any(t not in NON_GOVERNMENT_TYPES for t in types)
+    bd = ex.base_domain(h["host"], psl) or ""
+    return {"ny_kind": kind, "ny_government": government,
+            "ny_portal_entity_types": types or None,
+            "ny_portal_registry_ids": sorted({r["registry_id"] for r in portal if r.get("registry_id")}) or None,
+            "ny_portal_urls": sorted({r["url"] for r in portal}) or None,
+            "ny_hosting": "vendor" if any(bd == v or bd.endswith("." + v) or h["host"].endswith("." + v)
+                                          for v in VENDOR_HOSTING) else None}
 
 
 def _agency(h):
@@ -292,7 +365,7 @@ def page_owners(paths=PATHS) -> dict:
     names for it. CISA lists hosts only, so it never contributes a page."""
     out = {}
     for src, _, _ in SOURCES:
-        if src == "cisa" or not pathlib.Path(paths[src]).exists():
+        if src in ("cisa", "portal_registry") or not paths.get(src) or not pathlib.Path(paths[src]).exists():
             continue
         reader = READERS[src]
         recs = reader(paths[src], paths.get("crawl_targets")) if src == "registry" else reader(paths[src])
@@ -444,13 +517,28 @@ def dictionary_rows() -> list:
         {"name": "NY - Page URLs", "field id": "ny_page_urls", "data type": "list",
          "description": "Pages (not whole hosts) a source lists, e.g. a town page on its county's site"},
         {"name": "NY - Source Count", "field id": "ny_source_count", "data type": "integer",
-         "description": "How many of the five sources list this host"},
+         "description": "How many of the six sources list this host"},
         {"name": "NY - Host Issue", "field id": "ny_host_issue", "data type": "string",
          "description": "Set when a hand check (website-corrections.csv) found the host is no longer "
                         "the body's website: `lookalike` (a third-party site), `for_sale`, or "
                         "`redirects_offsite`. Probe runs skip these hosts. Blank otherwise"},
         {"name": "NY - Superseded By", "field id": "ny_superseded_by", "data type": "string",
          "description": "The body's real host when `ny_host_issue` is set (also a row in this list)"},
+        {"name": "NY - Kind", "field id": "ny_kind", "data type": "string",
+         "description": "`main site` when a source other than the portal registry lists the host; "
+                        "otherwise `API` (every portal URL on it is a machine endpoint) or `data portal`"},
+        {"name": "NY - Government", "field id": "ny_government", "data type": "boolean",
+         "description": "FALSE only when the portal registry is the only source and every portal "
+                        "row's entity_type is nonprofit, research-center, library or university"},
+        {"name": "NY - Portal Entity Types", "field id": "ny_portal_entity_types", "data type": "list",
+         "description": "`entity_type` of each portal registry row on this host, as the registry writes it"},
+        {"name": "NY - Portal Registry IDs", "field id": "ny_portal_registry_ids", "data type": "list",
+         "description": "`registry_id` the portal registry gives (data/registry.json ids), when any"},
+        {"name": "NY - Portal URLs", "field id": "ny_portal_urls", "data type": "list",
+         "description": "The portal registry's URL for each portal or API on this host"},
+        {"name": "NY - Hosting", "field id": "ny_hosting", "data type": "string",
+         "description": "`vendor` when the host is on a shared vendor platform (arcgis.com, "
+                        "legistar.com); blank otherwise"},
     ]
     assert {r["field id"] for r in rows[:6]} <= set(gsa) | {"base_domain", "top_level_domain"}
     return rows
