@@ -65,6 +65,12 @@ is 33 to 54 requests. An address of kind `data portal` adds the portal tests: it
 Socrata Discovery lookup (Socrata only), one dataset page, and the catalog once per other identity:
 up to 26 more. `--dry-run` prints the total and an estimated wall clock from the pacing.
 
+### Addresses (issue #41)
+
+The next run's list of addresses (main sites, sub-sites, sections, data portals, APIs) is
+`data/ai-readability/addresses.csv`, built by `scripts/address_inventory.py`. How it is built,
+and the certificate-log filter: [`addresses.md`](addresses.md). The scanner reads it from #44.
+
 ### Deep pages (`--deep-pages`, issue #35)
 
 Some hosts carry many registry bodies on their own pages (`www.nyc.gov`, `www1.nyc.gov`,
