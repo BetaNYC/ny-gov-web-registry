@@ -94,6 +94,8 @@ run folder.
 
 ## Identities (who we say we are)
 
+**From the 2026-11 re-run on, the checked list is [`data/ai-readability/crawlers.csv`](../../data/ai-readability/crawlers.csv)** (34 names, each checked twice against its company's page; rules and history in [`crawlers.md`](crawlers.md)). The table below is the list the 2026-11-06 run used.
+
 Every string below is copied **verbatim from the vendor's own page** (accessed 2026-11-06) or is
 marked token-only. Never add a guessed string (workspace engineering standards §0): a guessed UA
 measures a bot that does not exist. Vendors label several strings "example, version may change," so

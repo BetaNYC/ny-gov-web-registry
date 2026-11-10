@@ -90,7 +90,8 @@ identities spanning search crawlers, AI training crawlers, AI answer-engine craw
 **agentic** fetchers (`ChatGPT-User`, `Claude-User`, `Perplexity-User`: a person asked, right now).
 
 Every User-Agent is verified against its operator's published documentation, or explicitly flagged
-`string_verified: false`. `Google-Extended` and `Applebot-Extended` are never sent as live agents —
+`string_verified: false`. The checked list of crawler names, each tied to its company's own page and reviewed twice, is
+[`data/ai-readability/crawlers.csv`](data/ai-readability/crawlers.csv) ([how it is kept](docs/ai-readability/crawlers.md)). `Google-Extended` and `Applebot-Extended` are never sent as live agents —
 they are robots.txt control tokens with no request user agent, and a test enforces that.
 
 Network-touching, so it is **operator-gated like every other fetch here**: round-robin across hosts,
