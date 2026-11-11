@@ -61,7 +61,7 @@ PATHS = {
 }
 OUT = AIR / "addresses.csv"
 COLUMNS = ("address", "owning_body_id", "owning_body", "kind", "level_or_entity_type", "source",
-           "date_found", "notes")
+           "date_found", "notes", "platform")
 SOURCE_LABELS = ("websites.json", "deep-page list", "data portal registry",
                  "linked from fetched files", "BetaNYC contact files", "certificate logs")
 KINDS = ws.KINDS
@@ -90,7 +90,8 @@ class Inventory:
         self.names = {e["id"]: e["name"] for e in registry["entities"]}
         self.levels = {e["id"]: e.get("government_level") for e in registry["entities"]}
 
-    def add(self, address, kind, source, date_found, ids=(), names=(), level=None, notes=""):
+    def add(self, address, kind, source, date_found, ids=(), names=(), level=None, notes="",
+            platform=""):
         assert kind in KINDS, kind
         assert source in SOURCE_LABELS, source
         k = addr_key(address)
@@ -104,6 +105,8 @@ class Inventory:
                     r["level_or_entity_type"] = "; ".join(x for x in (r["level_or_entity_type"], level) if x)
                 if notes:
                     r["notes"] = "; ".join(x for x in (r["notes"], notes) if x)
+                if platform and not r["platform"]:
+                    r["platform"] = platform
             return False
         ids = [i for i in ids if i]
         names = list(names) or [self.names[i] for i in ids if i in self.names]
@@ -111,7 +114,7 @@ class Inventory:
             level = "; ".join(sorted({self.levels[i] for i in ids if self.levels.get(i)}))
         r = {"address": address, "owning_body_id": "; ".join(ids), "owning_body": "; ".join(names),
              "kind": kind, "level_or_entity_type": level or "", "source": source,
-             "date_found": date_found, "notes": notes}
+             "date_found": date_found, "notes": notes, "platform": platform or ""}
         self.by_key[k] = r
         self.rows.append(r)
         return True
@@ -183,7 +186,8 @@ def build(paths=PATHS) -> list:
             notes.append("vendor-hosted")
         inv.add(url, kind, "data portal registry", NEW_SOURCES_DATE,
                 ids=[rid] if rid in inv.names else [], names=[rec["name"]],
-                level=rec.get("entity_type"), notes="; ".join(notes))
+                level=rec.get("entity_type"), notes="; ".join(notes),
+                platform=(rec.get("platform") or "").strip())
 
     # 4. linked from fetched files (same registered domain as the listed host)
     if paths.get("fetched") and pathlib.Path(paths["fetched"]).exists():

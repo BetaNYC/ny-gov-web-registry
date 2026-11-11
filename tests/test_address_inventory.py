@@ -245,3 +245,14 @@ def test_cert_log_user_agent_is_the_research_identity():
     import probe_bot_access as p
     ua = next(i["ua"] for i in p.IDENTITIES if i["key"] == "research_betanyc")
     assert cl.UA == ua
+
+
+def test_platform_column_only_for_portal_registry_rows():
+    import csv
+    path = pathlib.Path(__file__).resolve().parent.parent / "data" / "ai-readability" / "addresses.csv"
+    rows = list(csv.DictReader(path.open(newline="", encoding="utf-8")))
+    assert "platform" in rows[0]
+    with_platform = [r for r in rows if r["platform"]]
+    assert with_platform and all("data portal registry" in r["source"] for r in with_platform)
+    nyc = [r for r in rows if r["address"].rstrip("/") == "https://data.cityofnewyork.us"]
+    assert nyc and nyc[0]["platform"].lower().startswith("socrata")
