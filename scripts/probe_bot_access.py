@@ -1647,7 +1647,7 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
                       est["seconds_per_request"], est["seconds_per_request"] - EST_RESPONSE_S,
                       EST_RESPONSE_S, est["busiest"], est["busiest_requests_max"]))
         print("data portals (D5–D7): {}  ·  targets: {}".format(est["portals"], args.targets_file))
-        print("network record: 3 requests to stat.ripe.net at the start and 3 at the end")
+        print("network record: up to 9 requests to stat.ripe.net at the start and 9 at the end (IPv4 and IPv6 each)")
         print("identities: " + ", ".join(i["key"] for i in identities))
         if not_sent:
             print("read in robots.txt only, not sent: " + ", ".join(n["name"] for n in not_sent))
@@ -1706,7 +1706,7 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
         pe = run_estimate(pending, args.tier, len(identities), args.max_workers, ctx.pace_s,
                           ctx.clock.floor_s, ctx.clock.governors)
         lo, hi = pe["requests_min"], pe["requests_max"]
-    netlookup = netlookup or network_record.lookup
+    netlookup = netlookup or network_record.lookup_all
     network = network_record.start_record(args.vantage, netlookup())
     writer = RunWriter(run_dir, ctx)
     started = now_iso()

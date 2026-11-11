@@ -26,11 +26,20 @@ FAILURE IS RECORDED, NEVER GUESSED. A lookup that fails leaves its fields null a
 tests (Charter/Spectrum AS12271, Verizon Business AS701) are fixtures only.
 
 Three small requests per reading, to stat.ripe.net only (never a government site), twice a run.
+
+BOTH ADDRESS FAMILIES. A machine with IPv6 reaches some sites over IPv6 and others over IPv4, so
+one reading shows only the family the lookup itself happened to use (the first home trial,
+2026-11-10, recorded only its IPv6 address). `lookup_all()` adds `by_family`: one reading forced
+over IPv4 and one forced over IPv6. A family the network does not have records its error. That is
+up to 9 requests per reading.
 """
 
 from __future__ import annotations
 
+import http.client
+import ipaddress
 import json
+import socket
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -44,7 +53,7 @@ DOCS = {
 }
 SOURCEAPP = "betanyc-ny-gov-web-registry"
 PLACES = ("office", "home", "vpn")
-TIMEOUT_S = 15
+TIMEOUT_S = 30
 USER_AGENT = ("BetaNYC-agentic-access-study/1.0 "
               "(+https://github.com/BetaNYC/ny-gov-web-registry; noel@beta.nyc)")
 
@@ -128,3 +137,71 @@ def finish_record(rec: dict, reading: dict) -> dict:
     else:
         rec["changed"] = {"asn": s["asn"] != e["asn"], "public_ip": s["public_ip"] != e["public_ip"]}
     return rec
+
+
+FAMILIES = {"ipv4": socket.AF_INET, "ipv6": socket.AF_INET6}
+
+
+class _FamilyHTTPS(http.client.HTTPSConnection):
+    """An HTTPS connection that only uses one address family (IPv4 or IPv6)."""
+
+    def __init__(self, host, family, **kw):
+        super().__init__(host, **kw)
+        self._family = family
+
+    def connect(self):
+        last = OSError("no {} address for {}".format(
+            "IPv4" if self._family == socket.AF_INET else "IPv6", self.host))
+        for af, st, proto, _, addr in socket.getaddrinfo(self.host, self.port, self._family,
+                                                          socket.SOCK_STREAM):
+            if af == socket.AF_INET6 and ipaddress.ip_address(addr[0].split("%")[0]).ipv4_mapped:
+                continue  # an IPv4 address dressed as IPv6 is not IPv6
+            sock = socket.socket(af, st, proto)
+            sock.settimeout(self.timeout)
+            try:
+                sock.connect(addr)
+            except OSError as e:
+                sock.close()
+                last = e
+                continue
+            self.sock = self._context.wrap_socket(sock, server_hostname=self.host)
+            return
+        raise last
+
+
+def http_json_family(family: str):
+    """A `get(url)` that reaches stat.ripe.net only over the named family."""
+    def get(url: str):
+        parts = urllib.parse.urlsplit(url)
+        conn = _FamilyHTTPS(parts.hostname, FAMILIES[family], timeout=TIMEOUT_S)
+        try:
+            path = parts.path + ("?" + parts.query if parts.query else "")
+            conn.request("GET", path, headers={"Accept": "application/json", "User-Agent": USER_AGENT})
+            resp = conn.getresponse()
+            if resp.status != 200:
+                raise ValueError("HTTP {}".format(resp.status))
+            return json.loads(resp.read(200_000).decode("utf-8"))
+        finally:
+            conn.close()
+    return get
+
+
+def lookup_all(get=None, get_for=None, now=_now) -> dict:
+    """The usual reading plus `by_family` (IPv4 and IPv6 forced). `get_for(family) -> get` is
+    injectable for tests."""
+    rec = lookup(get=get, now=now)
+    get_for = get_for or http_json_family
+    rec["by_family"] = {}
+    for fam in FAMILIES:
+        r = lookup(get=get_for(fam), now=now)
+        if r["public_ip"] and _family_of(r["public_ip"]) != fam:
+            # Answered, but over the other family: this network has no working route for `fam`.
+            r = {**r, "seen_ip": r["public_ip"], "public_ip": None, "asn": None, "provider": None,
+                 "prefix": None, "error": "asked over {} but answered from {}".format(
+                     fam, r["public_ip"])}
+        rec["by_family"][fam] = r
+    return rec
+
+
+def _family_of(ip: str) -> str:
+    return "ipv4" if ipaddress.ip_address(ip).version == 4 else "ipv6"
