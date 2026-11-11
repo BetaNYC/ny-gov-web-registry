@@ -120,3 +120,179 @@ def test_person_columns():
     assert rows[0]["ai_person_w1_verdict"] is not None
     assert isinstance(rows[0]["ai_person_abhi12_score"], float)
     assert rows[1]["ai_person_checked"] is None and rows[1]["ai_person_abhi12_score"] is None
+
+
+# ---------------------------------------------------------------- catalog 0.2 (issue #45)
+def _full_rows(host="data.example.gov"):
+    base = {"run_id": "r2", "catalog_version": "0.2", "vantage": "home", "ts": "2026-11-10T00:00:00+00:00",
+            "host": host}
+
+    def r(test, verdict, ident="research_betanyc", **ev):
+        return dict(base, test=test, verdict=verdict, identity=ident, evidence=ev)
+    return [
+        r("W4", "pass", status=200, final_url="https://{}/".format(host)),
+        r("W4", "blocked", "claudebot", status=403),
+        r("W4", "pass", "meta_webindexer", status=200),
+        r("C1", "reported", gsa_cms=None, cms="WordPress", source="homepage",
+          homepage_platforms=["WordPress"], homepage_signals=[]),
+        r("D2", "reported", count=3, by_kind={"open_data": 2, "feed": 1}, links=[]),
+        r("D3", "reported", status=200, rest_index=True, namespaces=["wp/v2", "oembed/1.0"], routes=40),
+        r("D4", "reported", status=404, present=False, media_type_ok=False, profile_rfc9727=False),
+        r("D5", "pass", platform="ckan", url="https://{}/api/3/action/package_list?limit=1".format(host),
+          status=200, datasets=1, platform_signal="address list"),
+        r("D6", "partial", words=80, dataset_url="https://{}/dataset/x".format(host)),
+        r("D7", "pass", "gptbot", status=200),
+        r("D7", "partial", "all_ai", ai_identities={"gptbot": "pass", "claudebot": "blocked"},
+          admitted=["gptbot"]),
+        r("R2", "reported", accept_markdown={"status": 200, "content_type": "text/html; charset=utf-8",
+                                             "markdown": False, "vary": "Accept-Encoding"},
+          index_md={"status": 404, "content_type": "text/html", "markdown": False},
+          markdown_served=False, advertised_alternates=[{"href": "https://{}/index.md".format(host),
+                                                         "via": "<link>"}]),
+        r("M5", "reported", status=200, present=True, bytes=1234, content_type="text/plain"),
+        r("F3", "pass", checked=10, broken=1, links=[]),
+    ]
+
+
+RUN = {"tier": "full",
+       "identities": [{"key": "research_betanyc"}, {"key": "baseline_default"}, {"key": "googlebot"},
+                      {"key": "claudebot"}, {"key": "meta_webindexer"}, {"key": "mechanism_probe_chrome"}],
+       "network": {"place": "home", "vantage": "home",
+                   "start": {"asn": "AS64500", "provider": "EXAMPLE-NET", "public_ip": "192.0.2.1",
+                             "by_family": {"ipv4": {"public_ip": "192.0.2.1", "error": None},
+                                           "ipv6": {"public_ip": None, "error": "OSError: no route"}}},
+                   "end": {"asn": "AS64500", "provider": "EXAMPLE-NET", "public_ip": "192.0.2.9"},
+                   "changed": {"asn": False, "public_ip": True}}}
+
+
+def test_run_identities_keep_the_first_six_then_the_run_order():
+    keys = ex.run_identities(RUN)
+    assert keys[:6] == list(ex.IDENTITIES)
+    assert keys[6:] == ["baseline_default", "claudebot", "meta_webindexer"]
+    assert ex.run_identities(None) == list(ex.IDENTITIES)
+    assert ex.run_identities({"identities": ["ccbot", "gptbot"]})[6:] == ["ccbot"]   # plain keys too
+
+
+def test_w4_columns_follow_the_identities_the_run_used():
+    old = ex.columns()
+    new = ex.columns(identities=ex.run_identities(RUN))
+    assert set(old) <= set(new) and len(new) == len(set(new))
+    assert "ai_w4_claudebot_status" in new and "ai_w4_claudebot_status" not in old
+    t = [{"url": "https://data.example.gov/", "entity_id": None, "entity_name": "D"}]
+    row = ex.build_rows(t, _full_rows(), [], [], PSL, run=RUN)[0]
+    assert row["ai_w4_claudebot_status"] == 403 and row["ai_w4_claudebot_admitted"] is False
+    assert row["ai_w4_meta_webindexer_admitted"] is True
+    assert row["ai_w4_gptbot_status"] is None                      # a column of the six, not measured
+    assert "ai_w4_claudebot_status" not in ex.build_rows(t, _full_rows(), [], [], PSL)[0]
+
+
+def test_new_test_columns():
+    t = [{"url": "https://data.example.gov/", "entity_id": None, "entity_name": "D"}]
+    row = ex.build_rows(t, _full_rows(), [], [], PSL, run=RUN)[0]
+    assert row["ai_c1_verdict"] == "reported" and row["ai_c1_cms"] == "WordPress"
+    assert row["ai_c1_source"] == "homepage" and row["ai_c1_homepage_platforms"] == ["WordPress"]
+    assert row["cms"] == "WordPress"
+    assert row["ai_d2_count"] == 3 and row["ai_d2_open_data_count"] == 2 and row["ai_d2_feed_count"] == 1
+    assert row["ai_d2_api_count"] == 0                             # D2 ran and found none
+    assert row["ai_d3_rest_index"] is True and row["ai_d3_routes"] == 40
+    assert row["ai_d3_namespaces"] == ["wp/v2", "oembed/1.0"]
+    assert row["ai_d4_status"] == 404 and row["ai_d4_present"] is False and row["ai_d4_items"] is None
+    assert row["ai_d5_verdict"] == "pass" and row["ai_d5_platform"] == "ckan"
+    assert row["ai_d5_platform_signal"] == "address list" and row["ai_d5_datasets"] == 1
+    assert row["ai_d6_verdict"] == "partial" and row["ai_d6_words"] == 80
+    assert row["ai_d6_dataset_url"].endswith("/dataset/x")
+    assert row["ai_d7_verdict"] == "partial"
+    assert row["ai_d7_admitted"] == ["gptbot"] and row["ai_d7_not_admitted"] == ["claudebot"]
+    assert row["ai_r2_markdown_served"] is False and row["ai_r2_accept_status"] == 200
+    assert row["ai_r2_accept_media_type"] == "text/html" and row["ai_r2_vary"] == "Accept-Encoding"
+    assert row["ai_r2_index_md_status"] == 404
+    assert row["ai_r2_advertised_alternates"] == ["https://data.example.gov/index.md"]
+    assert row["ai_m5_present"] is True and row["ai_m5_status_code"] == 200 and row["ai_m5_bytes"] == 1234
+    assert row["ai_f3_verdict"] == "pass" and row["ai_f3_checked"] == 10 and row["ai_f3_broken"] == 1
+
+
+def test_new_test_columns_blank_in_a_core_run():
+    t = [{"url": "https://www.example.gov/", "entity_id": "ex", "entity_name": "E"}]
+    row = ex.build_rows(t, _rows(), [], [], PSL)[0]
+    for c in ("ai_c1_verdict", "ai_d2_count", "ai_d2_api_count", "ai_d3_rest_index", "ai_d5_verdict",
+              "ai_d7_admitted", "ai_r2_markdown_served", "ai_m5_present", "ai_f3_verdict",
+              "ai_run_place", "ai_run_ipv4", "ai_run_network_changed", "ny_kind"):
+        assert row[c] is None, c
+
+
+def test_network_columns():
+    t = [{"url": "https://data.example.gov/", "entity_id": None, "entity_name": "D"}]
+    row = ex.build_rows(t, _full_rows(), [], [], PSL, run=RUN)[0]
+    assert row["ai_run_tier"] == "full" and row["ai_run_place"] == "home"
+    assert row["ai_run_provider"] == "EXAMPLE-NET"
+    assert row["ai_run_asn_start"] == "AS64500" and row["ai_run_asn_end"] == "AS64500"
+    assert row["ai_run_ipv4"] is True and row["ai_run_ipv6"] is False
+    assert row["ai_run_network_changed"] is False and row["ai_run_ip_changed"] is True
+    assert "192.0.2.1" not in json.dumps(row)                       # the address is never exported
+    # a run before per-family readings: only the family its one reading used is known
+    old = {"network": {"place": "home", "start": {"asn": "AS64500", "public_ip": "2001:db8::1"},
+                       "end": {"asn": None, "error": "URLError: down"}, "changed": None}}
+    row = ex.build_rows(t, _full_rows(), [], [], PSL, run=old)[0]
+    assert row["ai_run_ipv6"] is True and row["ai_run_ipv4"] is None
+    assert row["ai_run_asn_end"] is None and row["ai_run_network_changed"] is None
+
+
+ADDRESSES = """address,owning_body_id,owning_body,kind,level_or_entity_type,source,date_found,notes,platform
+https://www.example.gov/services,ex-agency,Example Agency,section,state agency,test,2026-11-10,,
+https://www.example.gov/,ex-agency,Example Agency,main site,state agency,test,2026-11-10,,
+data.example.gov,ex-agency,Example Agency,data portal,state agency,test,2026-11-10,,Socrata
+"""
+
+
+def test_addresses_csv_gives_one_row_per_host(tmp_path):
+    f = tmp_path / "addresses.csv"
+    f.write_text(ADDRESSES)
+    targets = ex.load_targets(str(f))
+    by_url = {t["url"]: t for t in targets}
+    assert sorted(by_url) == ["https://data.example.gov", "https://www.example.gov/"]
+    main = by_url["https://www.example.gov/"]                       # the main site, not the section
+    assert main["kind"] == "main site" and main["kinds"] == ["main site", "section"]
+    assert main["entity_id"] == "ex-agency" and main["entity_name"] == "Example Agency"
+    portal = by_url["https://data.example.gov"]
+    assert portal["platform"] == "Socrata" and portal["kinds"] == ["data portal"]
+    rows = ex.build_rows(targets, _full_rows(), [], [], PSL, run=RUN)
+    prow = next(r for r in rows if r["initial_domain"] == "data.example.gov")
+    assert prow["ny_kind"] == "data portal" and prow["ny_platform"] == "Socrata"
+    assert prow["ny_owning_body"] == "Example Agency" and prow["ny_entity_id"] == "ex-agency"
+    assert prow["ny_level"] == "state agency" and prow["ny_kinds"] == ["data portal"]
+
+
+def _write_run(d, run=RUN):
+    d.mkdir()
+    rows = _full_rows("data.example.gov")
+    (d / "results.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
+    (d / "run.json").write_text(json.dumps(run))
+
+
+def test_only_run_hosts_and_out_dir(tmp_path):
+    run = tmp_path / "run"
+    _write_run(run)
+    targets = tmp_path / "t.json"
+    targets.write_text(json.dumps([{"url": "https://data.example.gov/", "entity_name": "D"},
+                                   {"url": "https://other.example.gov/", "entity_name": "O"}]))
+    assert ex.main(["--run-dir", str(run), "--targets-file", str(targets)]) == 0
+    assert len(json.loads((run / "sites.json").read_text())) == 2   # default: every target
+    out = tmp_path / "out"
+    assert ex.main(["--run-dir", str(run), "--targets-file", str(targets), "--only-run-hosts",
+                    "--out-dir", str(out)]) == 0
+    rows = json.loads((out / "sites.json").read_text())
+    assert [r["initial_domain"] for r in rows] == ["data.example.gov"]
+    header = (out / "sites.csv").read_text().splitlines()[0].split(",")
+    assert "ai_w4_claudebot_status" in header and "ai_run_place" in header
+
+
+def test_dictionary_covers_every_full_tier_identity_and_new_column():
+    fids = {r["field id"] for r in ex.dictionary_rows()}
+    import probe_bot_access
+    for i in probe_bot_access.tier_identities("full"):
+        assert "ai_w4_{}_status".format(i["key"]) in fids
+        assert "ai_w4_{}_admitted".format(i["key"]) in fids
+    assert set(ex.columns(identities=ex.dictionary_identities())) - fids == set()
+    for c in ("ai_c1_cms", "ai_d7_verdict", "ai_r2_markdown_served", "ai_m5_present", "ai_f3_broken",
+              "ny_kind", "ny_platform", "ny_owning_body", "ai_run_asn_start", "ai_run_ipv6"):
+        assert c in fids, c

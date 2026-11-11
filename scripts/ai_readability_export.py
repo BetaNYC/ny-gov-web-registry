@@ -23,9 +23,20 @@ OUTPUTS (inside the run folder, git-ignored with the rest of runs/)
   --write-dictionary writes data/ai-readability/data-dictionary.csv, in GSA's dictionary format
   (same seven columns), generated from the FIELDS table below so the two cannot drift.
 
+CATALOG 0.2 (issue #45)
+  - `--targets-file data/ai-readability/addresses.csv`: one row per host, the address the scanner
+    read (probe_bot_access.plan_targets), with `ny_kind`, `ny_kinds`, `ny_platform`,
+    `ny_owning_body`, `ny_level`.
+  - W4 columns per identity come from run.json `identities`: the 2026-11-06 six first, under the
+    same names, then every other identity the run used. The dictionary lists every identity a
+    full-tier run sends today (crawlers.csv plus the controls).
+  - The run's network record (run.json `network`) on every row as `ai_run_*`. Never the address.
+  - `--only-run-hosts`: only the hosts the run visited. A flag, not a default: run.json does not
+    record `--only-hosts`.
+
 Run:
   python scripts/ai_readability_export.py --run-dir data/ai-readability/runs/<run-id> \
-      --targets-file data/ai-readability/pool-2026-11-06.json
+      --targets-file data/ai-readability/addresses.csv [--only-run-hosts] [--out-dir <dir>]
   python scripts/ai_readability_export.py --write-dictionary
 """
 
@@ -51,6 +62,9 @@ DICT_COLUMNS = ("name", "field id", "description", "description - details", "rel
                 "data type", "queryable")
 
 RESEARCH = "research_betanyc"
+# The 2026-11-06 core run's six identities. Their columns always come first, under these names,
+# so that run exports the same as before; any other identity a run used (run.json `identities`,
+# from data/ai-readability/crawlers.csv since catalog 0.2) gets the same two columns after them.
 IDENTITIES = ("research_betanyc", "googlebot", "gptbot", "oai_searchbot", "chatgpt_user",
               "mechanism_probe_chrome")
 LIVE_CODES = {200, 201, 202, 203, 204, 205, 206}      # GSA `live` definition
@@ -112,8 +126,9 @@ class Host:
     """Everything known about one host: its pool row, test rows, V1 rows, review rows."""
 
     def __init__(self, target, rows, v1, review, psl, tenants=(), reach=None, retest=(), person=None,
-                 person_rows=()):
+                 person_rows=(), run=None):
         self.t, self.rows, self.v1, self.review, self.psl = target, rows, v1, review, psl
+        self.run = run or {}                 # the run's run.json (identities, network record)
         self.reach = reach or {}             # this host's reach_check.py record, if it was checked
         self.retest = {(r["test"], r.get("identity")): r for r in retest}   # a later run's rows
         self.person = person or {}           # headed_check.py: one visible-Chrome visit, if made
@@ -269,6 +284,64 @@ def _main_present(h):
     return None if lm is None else "main" in lm
 
 
+# ---- catalog 0.2 tests (C1, D2–D7, R2, M5, F3)
+def _d2_kind_count(h, kind):
+    if h.row("D2") is None or h.verdict("D2") != "reported":
+        return None
+    return (h.ev("D2", "by_kind") or {}).get(kind, 0)
+
+
+def _r2_part(h, part, key):
+    p = h.ev("R2", part)
+    return p.get(key) if isinstance(p, dict) else None
+
+
+def _r2_alternates(h):
+    alts = h.ev("R2", "advertised_alternates")
+    return [a.get("href") for a in alts if isinstance(a, dict) and a.get("href")] or None \
+        if isinstance(alts, list) else None
+
+
+def _d5_count(h):
+    n = h.ev("D5", "datasets")
+    return n if n is not None else h.ev("D5", "entries")
+
+
+def _d7_split(h, admitted):
+    ids = h.ev("D7", "ai_identities", ar.W4_AGGREGATE_IDENTITY)
+    if not isinstance(ids, dict):
+        return None
+    return sorted(k for k, v in ids.items() if (v == "pass") == admitted) or None
+
+
+# ---- the run's network record (run.json `network`, issue #44)
+def _net(h):
+    return h.run.get("network") or {}
+
+
+def _reading(h, which):
+    return _net(h).get(which) or {}
+
+
+def _family_ok(h, fam):
+    """TRUE if the start reading forced over `fam` got an address back, FALSE if it failed,
+    blank if the run has no per-family reading. A run before the per-family reading (#51) still
+    proves the family its one reading came over."""
+    start = _reading(h, "start")
+    by = start.get("by_family")
+    if isinstance(by, dict) and fam in by:
+        return bool((by[fam] or {}).get("public_ip"))
+    ip = start.get("public_ip")
+    if ip:
+        return (":" in ip) == (fam == "ipv6") or None
+    return None
+
+
+def _changed(h, key):
+    c = _net(h).get("changed")
+    return c.get(key) if isinstance(c, dict) else None
+
+
 # ------------------------------------------------------------------------------ the fields
 # GSA columns we fill: field id -> (relevant_scan, BetaNYC details, extractor).
 # Every GSA column not listed here is written blank, and the dictionary says so.
@@ -383,7 +456,18 @@ def _reach_diagnoses() -> dict:
     return reach_check.DIAGNOSES
 
 
-def _ours():
+def run_identities(run: dict = None) -> list:
+    """The identity keys a run's W4 columns cover: the 2026-11-06 six first (fixed names), then
+    every other identity run.json lists, in its own order. Nothing is hardcoded beyond the six."""
+    keys = list(IDENTITIES)
+    for i in (run or {}).get("identities") or []:
+        k = i.get("key") if isinstance(i, dict) else i
+        if k and k not in keys:
+            keys.append(k)
+    return keys
+
+
+def _ours(identities=IDENTITIES):
     f = [
         ("ny_entity_id", "NY - Entity ID", "The registry id of the body that owns the site",
          "Matches `id` in `data/registry.json`. Blank for sites not yet in the registry (the "
@@ -393,6 +477,24 @@ def _ours():
          "host such as `www.nyc.gov`, and `agency` is left blank.", "pool", L, lambda h: h.tenants or None),
         ("ny_pool", "NY - Pool", "Which group of sites this one was tested with",
          "`nyc-registry`, `city`, `county` or `state-authority`.", "pool", T, lambda h: h.t.get("pool")),
+        ("ny_kind", "NY - Address Kind", "The kind of address the run read for this host",
+         "From `data/ai-readability/addresses.csv` `kind`: `main site`, `sub-site`, `section`, "
+         "`data portal` or `API`. When several addresses share a host, the scanner reads one of them "
+         "(a data portal or main site first) and this is its kind. Blank for other target lists.",
+         "addresses", T, lambda h: h.t.get("kind")),
+        ("ny_kinds", "NY - Address Kinds on Host", "Every address kind the list gives this host",
+         "From `addresses.csv`. A host listed as both `main site` and `data portal` gets the portal "
+         "tests (D5–D7).", "addresses", L, lambda h: h.t.get("kinds") or None),
+        ("ny_platform", "NY - Platform", "The data portal's software, as the address list states it",
+         "From `addresses.csv` `platform` (the portal registry's own words). D5 maps it to a platform "
+         "only where it names Socrata, ArcGIS Hub or CKAN outright; see `ai_d5_platform`.",
+         "addresses", T, lambda h: h.t.get("platform")),
+        ("ny_owning_body", "NY - Owning Body", "The government body the address list says owns the address",
+         "From `addresses.csv` `owning_body`, for the address the run read. Unlike `agency`, it is "
+         "filled on shared hosts too. Blank for other target lists (see `agency`).", "addresses", T,
+         lambda h: h.t.get("entity_name") if h.t.get("kind") else None),
+        ("ny_level", "NY - Level or Entity Type", "Level of government or entity type",
+         "From `addresses.csv` `level_or_entity_type`.", "addresses", T, lambda h: h.t.get("level")),
         ("ai_run_id", "AI - Run ID", "The run this row came from",
          "Folder name under `data/ai-readability/runs/`: date, then vantage (where we ran from).",
          "(run)", T, lambda h: (h.rows or [{}])[0].get("run_id")),
@@ -402,6 +504,37 @@ def _ours():
         ("ai_vantage", "AI - Vantage", "Where the requests came from",
          "`office` or `residential`. Sites can treat these connections differently.", "(run)", T,
          lambda h: (h.rows or [{}])[0].get("vantage")),
+        ("ai_run_tier", "AI - Run Tier", "Which set of tests the run used",
+         "`core` or `full` (run.json `tier`). Full-tier tests are blank in a core run.", "(run)", T,
+         lambda h: h.run.get("tier")),
+        ("ai_run_place", "AI - Run Place", "Where the run went out from",
+         "`office`, `home` or `vpn` (run.json `network.place`). The same on every row of a run. "
+         "Runs before catalog 0.2 have no network record and leave every `ai_run_*` network column "
+         "blank.", "(network)", T, lambda h: _net(h).get("place")),
+        ("ai_run_provider", "AI - Run Provider", "The internet provider at the start of the run",
+         "RIPEstat `as-overview` `holder` for the start ASN (`scripts/network_record.py`).",
+         "(network)", T, lambda h: _reading(h, "start").get("provider")),
+        ("ai_run_asn_start", "AI - Run ASN at Start", "The network number (ASN) at the start of the run",
+         "RIPEstat `network-info`, e.g. `AS12271`. Blank if the lookup failed.", "(network)", T,
+         lambda h: _reading(h, "start").get("asn")),
+        ("ai_run_asn_end", "AI - Run ASN at End", "The network number (ASN) at the end of the run",
+         "As `ai_run_asn_start`, read again when the run closed.", "(network)", T,
+         lambda h: _reading(h, "end").get("asn")),
+        ("ai_run_ipv4", "AI - Run Had IPv4", "Whether the run's network had a working IPv4 route",
+         "From the start reading forced over IPv4 (`by_family.ipv4`): TRUE if it got an address, FALSE "
+         "if it failed. Runs without per-family readings fill only the family their one reading used. "
+         "Addresses themselves are not exported.", "(network)", B, lambda h: _family_ok(h, "ipv4")),
+        ("ai_run_ipv6", "AI - Run Had IPv6", "Whether the run's network had a working IPv6 route",
+         "As `ai_run_ipv4`, for IPv6. A site may be reached over either family.", "(network)", B,
+         lambda h: _family_ok(h, "ipv6")),
+        ("ai_run_network_changed", "AI - Run Network Changed", "Whether the ASN changed during the run",
+         "run.json `network.changed.asn`: TRUE if the start and end ASNs differ. Blank when either "
+         "reading failed (an unreadable network is not evidence it stayed put).", "(network)", B,
+         lambda h: _changed(h, "asn")),
+        ("ai_run_ip_changed", "AI - Run Address Changed", "Whether the public address changed during the run",
+         "run.json `network.changed.public_ip`. An address can change within one provider (IPv6 "
+         "privacy addresses do); read with `ai_run_network_changed`.", "(network)", B,
+         lambda h: _changed(h, "public_ip")),
         ("ai_w1_verdict", "AI - W1 robots.txt", "Whether robots.txt is reachable and is a real robots file",
          "pass / partial / fail / blocked / na. Stricter than `robots_txt_detected`.", "W1", T,
          lambda h: h.verdict("W1")),
@@ -420,7 +553,7 @@ def _ours():
          "pass if every AI identity got the page, partial if some did, blocked if none did.", "W4", T,
          lambda h: h.verdict("W4", "all_ai")),
     ]
-    for ident in IDENTITIES:
+    for ident in identities:
         f.append(("ai_w4_{}_status".format(ident), "AI - W4 {} Status".format(ident),
                   "Homepage status code when we said we were `{}`".format(ident),
                   "One request with that identity's User-Agent. `mechanism_probe_chrome` is a "
@@ -487,6 +620,120 @@ def _ours():
          "Distinct outside hosts that serve scripts to the homepage",
          "Scripts only, so smaller than GSA's `third_party_service_count`. The host names are kept private.",
          "P4", N, lambda h: h.ev("P4", "third_party_script_hosts")),
+    ]
+    rep = "Reported test: `reported` when measured, or `na` / `blocked` when it could not be."
+    f += [
+        # ---- catalog 0.2 (docs/ai-readability/tests.md § Catalog 0.2 additions), issue #43
+        ("ai_c1_verdict", "AI - C1 Website Software", "Whether C1 ran", rep, "C1", T, lambda h: h.verdict("C1")),
+        ("ai_c1_cms", "AI - C1 CMS", "The website software C1 settled on",
+         "GSA's own `cms` when the address list carries one, else what the homepage shows. Same value "
+         "as the GSA `cms` column, which falls back to P1 for older runs.", "C1", T,
+         lambda h: h.ev("C1", "cms")),
+        ("ai_c1_source", "AI - C1 Source", "Where `ai_c1_cms` came from",
+         "`gsa` (the address list) or `homepage`. Blank when neither named any software.", "C1", T,
+         lambda h: h.ev("C1", "source")),
+        ("ai_c1_homepage_platforms", "AI - C1 Homepage Platforms", "Software the homepage itself shows",
+         "P1's signals plus the WordPress REST link (rel `https://api.w.org/`). Kept even when GSA's "
+         "value wins, so the two can be compared.", "C1", L,
+         lambda h: h.ev("C1", "homepage_platforms") or None),
+        ("ai_d2_verdict", "AI - D2 Data and API Links", "Whether D2 ran", rep, "D2", T, lambda h: h.verdict("D2")),
+        ("ai_d2_count", "AI - D2 Links Found", "Data, API, catalog, feed and GIS links found",
+         "In the homepage's anchors and `<link>` tags, its `Link:` header and llms.txt. No link is "
+         "followed. A link can be of several kinds.", "D2", N, lambda h: h.ev("D2", "count")),
+    ] + [
+        ("ai_d2_{}_count".format(k), "AI - D2 {} Links".format(label), "Links D2 sorted as {}".format(desc),
+         "By URL pattern or link text (`ai_readability.D2_PATTERNS`, `D2_TEXT`). 0 when D2 ran and "
+         "found none.", "D2", N, (lambda k: lambda h: _d2_kind_count(h, k))(k))
+        for k, label, desc in (("open_data", "Open Data", "open data (a D1 portal or the words "
+                                "\"open data\")"),
+                               ("api", "API", "an API"), ("developer", "Developer", "a developer page"),
+                               ("catalog", "Catalog", "a machine-readable catalog"),
+                               ("feed", "Feed", "an RSS, Atom or JSON feed"),
+                               ("gis_service", "GIS Service", "a GIS service"))
+    ] + [
+        ("ai_d3_verdict", "AI - D3 WordPress REST", "Whether D3 ran",
+         rep + " `na` when C1 does not show WordPress, or in a core run.", "D3", T, lambda h: h.verdict("D3")),
+        ("ai_d3_rest_index", "AI - D3 REST Index", "Whether the WordPress REST index answered",
+         "TRUE when the root answered 200 with JSON carrying `namespaces`.", "D3", B,
+         lambda h: h.ev("D3", "rest_index")),
+        ("ai_d3_status", "AI - D3 Status", "Status code of the WordPress REST root", "", "D3", N,
+         lambda h: h.ev("D3", "status")),
+        ("ai_d3_namespaces", "AI - D3 Namespaces", "Namespaces the REST index lists",
+         "First 50, e.g. `wp/v2`. Shows which plugins expose an API.", "D3", L,
+         lambda h: h.ev("D3", "namespaces") or None),
+        ("ai_d3_routes", "AI - D3 Routes", "Number of routes in the REST index", "", "D3", N,
+         lambda h: h.ev("D3", "routes")),
+        ("ai_d4_verdict", "AI - D4 API Catalog", "Whether D4 ran", rep, "D4", T, lambda h: h.verdict("D4")),
+        ("ai_d4_status", "AI - D4 Status", "Status code of `/.well-known/api-catalog`", "", "D4", N,
+         lambda h: h.ev("D4", "status")),
+        ("ai_d4_present", "AI - D4 Present", "Whether an RFC 9727 API catalog is there",
+         "TRUE = 200 with a Linkset (a top-level `linkset` array).", "D4", B, lambda h: h.ev("D4", "present")),
+        ("ai_d4_media_type_ok", "AI - D4 Media Type OK", "Whether it is served as `application/linkset+json`",
+         "RFC 9727 §4.2 (a MUST).", "D4", B, lambda h: h.ev("D4", "media_type_ok")),
+        ("ai_d4_profile_rfc9727", "AI - D4 Profile", "Whether the media type names the RFC 9727 profile",
+         "A SHOULD in RFC 9727.", "D4", B, lambda h: h.ev("D4", "profile_rfc9727")),
+        ("ai_d4_items", "AI - D4 Items", "Links of relation `item` in the catalog", "RFC 9727 §3.1.", "D4", N,
+         lambda h: h.ev("D4", "items")),
+        ("ai_d5_verdict", "AI - D5 Portal Catalog", "Whether a data portal serves its documented catalog",
+         "pass / fail / blocked / na. Only addresses of kind `data portal`; `na` also when the platform "
+         "was not recognized (no undocumented path is tried).", "D5", T, lambda h: h.verdict("D5")),
+        ("ai_d5_platform", "AI - D5 Platform", "The portal platform D5 recognized",
+         "`socrata`, `arcgis_hub` or `ckan`.", "D5", T, lambda h: h.ev("D5", "platform")),
+        ("ai_d5_platform_signal", "AI - D5 Platform Signal", "What named the platform",
+         "The address list, the portal registry's words, the host name, the meta generator or the "
+         "homepage text.", "D5", T, lambda h: h.ev("D5", "platform_signal")),
+        ("ai_d5_url", "AI - D5 Catalog URL", "The documented catalog address D5 asked for", "", "D5", T,
+         lambda h: h.ev("D5", "url")),
+        ("ai_d5_status", "AI - D5 Status", "Status code of the catalog", "", "D5", N, lambda h: h.ev("D5", "status")),
+        ("ai_d5_datasets", "AI - D5 Catalog Entries", "Entries in the catalog response",
+         "ArcGIS Hub: `dataset` items; CKAN: `result` items (the request asks for 1); Socrata: list "
+         "length (the request asks for 1). A sample size, not the portal's total.", "D5", N, _d5_count),
+        ("ai_d6_verdict", "AI - D6 Dataset Page Readable", "Whether one dataset page has text without JavaScript",
+         "R1's rule (≥ 150 words, no JS-shell phrase) on the first dataset the catalog names.", "D6", T,
+         lambda h: h.verdict("D6")),
+        ("ai_d6_dataset_url", "AI - D6 Dataset URL", "The dataset page D6 read", "", "D6", T,
+         lambda h: h.ev("D6", "dataset_url")),
+        ("ai_d6_words", "AI - D6 Words", "Visible words on that dataset page", "", "D6", N,
+         lambda h: h.ev("D6", "words")),
+        ("ai_d7_verdict", "AI - D7 Catalog Reachable by AI", "Whether the portal catalog admits the AI identities",
+         "W4's all-AI rule applied to the D5 catalog: pass if every AI identity got it, partial if "
+         "some did, blocked if none did.", "D7", T, lambda h: h.verdict("D7", ar.W4_AGGREGATE_IDENTITY)),
+        ("ai_d7_admitted", "AI - D7 Admitted", "AI identities that got the catalog",
+         "Identity keys, as in the `ai_w4_<identity>_*` columns.", "D7", L, lambda h: _d7_split(h, True)),
+        ("ai_d7_not_admitted", "AI - D7 Not Admitted", "AI identities that did not get the catalog",
+         "Refused, failed or no answer.", "D7", L, lambda h: _d7_split(h, False)),
+        ("ai_r2_verdict", "AI - R2 Markdown Twin", "Whether R2 ran", rep, "R2", T, lambda h: h.verdict("R2")),
+        ("ai_r2_markdown_served", "AI - R2 Markdown Served", "Whether a markdown version was served",
+         "TRUE if `GET /` with `Accept: text/markdown` or `GET /index.md` returned `text/markdown` "
+         "that is not HTML.", "R2", B, lambda h: h.ev("R2", "markdown_served")),
+        ("ai_r2_accept_status", "AI - R2 Accept Status", "Status of `GET /` with `Accept: text/markdown`",
+         "", "R2", N, lambda h: _r2_part(h, "accept_markdown", "status")),
+        ("ai_r2_accept_media_type", "AI - R2 Accept Media Type", "Media type of that answer",
+         "Parameters dropped.", "R2", T,
+         lambda h: bare_mime(_r2_part(h, "accept_markdown", "content_type"))),
+        ("ai_r2_vary", "AI - R2 Vary Header", "`Vary` header on that answer",
+         "`Accept` here means the server says it negotiates on it.", "R2", T,
+         lambda h: _r2_part(h, "accept_markdown", "vary")),
+        ("ai_r2_index_md_status", "AI - R2 index.md Status", "Status of `GET /index.md`", "", "R2", N,
+         lambda h: _r2_part(h, "index_md", "status")),
+        ("ai_r2_advertised_alternates", "AI - R2 Advertised Markdown", "Markdown versions the homepage advertises",
+         "`Link:` header or `<link>` with rel `alternate` and type `text/markdown`.", "R2", L, _r2_alternates),
+        ("ai_m5_verdict", "AI - M5 llms-full.txt", "Whether M5 ran",
+         rep + " Never scored: llmstxt.org does not define this file.", "M5", T, lambda h: h.verdict("M5")),
+        ("ai_m5_present", "AI - M5 Present", "Whether `/llms-full.txt` exists",
+         "TRUE = 200 and not HTML.", "M5", B, lambda h: h.ev("M5", "present")),
+        ("ai_m5_status_code", "AI - M5 Status", "Status code for `/llms-full.txt`", "", "M5", N,
+         lambda h: h.ev("M5", "status")),
+        ("ai_m5_bytes", "AI - M5 Bytes", "Size of `/llms-full.txt` as read", "", "M5", N,
+         lambda h: h.ev("M5", "bytes")),
+        ("ai_f3_verdict", "AI - F3 Broken Links", "Whether the homepage's links work",
+         "pass if at most 1 of up to 10 same-host links returns 4xx/5xx. Decides Abhi's \"No stale or "
+         "broken content\" row with F1 in a full run.", "F3", T, lambda h: h.verdict("F3")),
+        ("ai_f3_checked", "AI - F3 Links Checked", "Same-host homepage links checked",
+         "The first 10 in document order; `HEAD`, then `GET` on 405.", "F3", N, lambda h: h.ev("F3", "checked")),
+        ("ai_f3_broken", "AI - F3 Links Broken", "Of those, how many returned 4xx/5xx",
+         "A firewall refusing deep links looks like breakage; cross-check `ai_w4_verdict`.", "F3", N,
+         lambda h: h.ev("F3", "broken")),
     ]
     for variant, label in (("headless_default", "Own Name"), ("headless_as_chrome", "As Chrome")):
         f.append(("ai_v1_{}_status".format(variant), "AI - V1 Headless {} Status".format(label),
@@ -569,7 +816,6 @@ def _ours():
     return f
 
 
-OURS = _ours()
 
 
 def gsa_dictionary(path=GSA_DICT) -> list:
@@ -577,9 +823,9 @@ def gsa_dictionary(path=GSA_DICT) -> list:
         return list(csv.DictReader(fh))
 
 
-def columns(gsa=None) -> list:
+def columns(gsa=None, identities=IDENTITIES) -> list:
     gsa = gsa or gsa_dictionary()
-    return [r["field id"] for r in gsa] + [f[0] for f in OURS]
+    return [r["field id"] for r in gsa] + [f[0] for f in _ours(identities)]
 
 
 # ------------------------------------------------------------------------------ build rows
@@ -601,18 +847,53 @@ def registry_tenants(path=REGISTRY) -> dict:
     return out
 
 
-def load_targets(path: str) -> list:
-    """Same inputs as probe_bot_access.py --targets-file, including data/ai-readability/websites.json."""
+def _probe():
     here = str(pathlib.Path(__file__).resolve().parent)
     if here not in sys.path:  # `python -I` leaves the script's own folder off sys.path
         sys.path.insert(0, here)
     import probe_bot_access
-    return probe_bot_access.load_targets(path)
+    return probe_bot_access
+
+
+def load_targets(path: str) -> list:
+    """Same inputs as probe_bot_access.py --targets-file, including data/ai-readability/websites.json
+    and data/ai-readability/addresses.csv.
+
+    addresses.csv can list several addresses on one host (a main site and its sections), and the
+    scanner reads each host once, from one of them (probe_bot_access.plan_targets). So a .csv
+    gives one target per host: the address the scanner read, with every kind on the host
+    (`kinds`) and the list's `owning_body_id` as `entity_id`."""
+    probe = _probe()
+    if not str(path).lower().endswith(".csv"):
+        return probe.load_targets(path)
+    targets = probe.load_addresses(path)
+    with open(path, newline="", encoding="utf-8") as fh:
+        raw = list(csv.DictReader(fh))
+    ids = [(r.get("owning_body_id") or r.get("entity_id") or "").strip() or None for r in raw]
+    # plan_targets picks a host's address by kind, then entity_id (None for every address, as in
+    # the scanner); entity_name plays no part, so it can carry the row number back out.
+    marked = [dict(t, entity_name="#{}".format(i)) for i, t in enumerate(targets)]
+    out = []
+    for job in probe.plan_targets(marked):
+        i = int(job["entity_name"][1:])
+        t = dict(targets[i], url=job["url"], entity_id=ids[i] or targets[i].get("entity_id"))
+        for k in ("kinds", "platform", "gsa_cms"):
+            if job.get(k):
+                t[k] = job[k]
+        out.append(t)
+    return out
+
+
+def run_hosts(results) -> set:
+    """Hosts a run actually visited (host-level rows only)."""
+    return {r["host"] for r in results if r.get("scope") != "page"}
 
 
 def build_rows(targets, results, v1_rows, review_rows, psl, gsa=None, tenants=None, reach_rows=(),
-               retest_results=(), person_rows=(), person_results=()) -> list:
+               retest_results=(), person_rows=(), person_results=(), run=None) -> list:
     gsa = gsa or gsa_dictionary()
+    run = run or {}
+    ours = _ours(run_identities(run))
     tenants = tenants or {}
     by_host, rev_by_host, v1_by_url = {}, {}, {}
     reach_by_url = {r["url"]: r for r in reach_rows}
@@ -638,12 +919,12 @@ def build_rows(targets, results, v1_rows, review_rows, psl, gsa=None, tenants=No
         host = urllib.parse.urlparse(t["url"]).hostname
         h = Host(t, by_host.get(host, []), v1_by_url.get(t["url"], {}), rev_by_host.get(host, []), psl,
                  tenants.get(host, ()), reach_by_url.get(t["url"]), retest_by_host.get(host, ()),
-                 person_by_url.get(t["url"]), person_by_host.get(host, ()))
+                 person_by_url.get(t["url"]), person_by_host.get(host, ()), run)
         row = {}
         for g in gsa:
             fid = g["field id"]
             row[fid] = GSA_FILLED[fid][2](h) if fid in GSA_FILLED else None
-        for fid, *_rest, fn in OURS:
+        for fid, *_rest, fn in ours:
             row[fid] = fn(h)
         out.append(row)
     return out
@@ -671,8 +952,15 @@ def write_outputs(rows, run_dir: pathlib.Path, cols) -> None:
 
 
 # ------------------------------------------------------------------------------ dictionary
-def dictionary_rows(gsa=None) -> list:
+def dictionary_identities() -> list:
+    """Every identity a full-tier run sends today (data/ai-readability/crawlers.csv plus the
+    controls), after the 2026-11-06 six. A run's export carries only the identities it used."""
+    return run_identities({"identities": _probe().tier_identities("full")})
+
+
+def dictionary_rows(gsa=None, identities=None) -> list:
     gsa = gsa or gsa_dictionary()
+    identities = dictionary_identities() if identities is None else identities
     rows = []
     for g in gsa:
         fid = g["field id"]
@@ -685,18 +973,18 @@ def dictionary_rows(gsa=None) -> list:
         rows.append({"name": g["name"], "field id": fid, "description": g["description"],
                      "description - details": details, "relevant_scan": scan,
                      "data type": g["data type"], "queryable": "No"})
-    for fid, name, desc, details, scan, dtype, _ in OURS:
+    for fid, name, desc, details, scan, dtype, _ in _ours(identities):
         rows.append({"name": name, "field id": fid, "description": desc,
                      "description - details": details, "relevant_scan": scan,
                      "data type": dtype, "queryable": "No"})
     return rows
 
 
-def write_dictionary(path=OUR_DICT, gsa=None) -> pathlib.Path:
+def write_dictionary(path=OUR_DICT, gsa=None, identities=None) -> pathlib.Path:
     with open(path, "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=DICT_COLUMNS)
         w.writeheader()
-        w.writerows(dictionary_rows(gsa))
+        w.writerows(dictionary_rows(gsa, identities))
     return pathlib.Path(path)
 
 
@@ -715,6 +1003,10 @@ def main(argv=None) -> int:
                     help="write data/ai-readability/data-dictionary.csv and exit")
     ap.add_argument("--retest-run-dir", help="a later run over this run's failures; fills ai_retest_*")
     ap.add_argument("--person-run-dir", help="a headed_check.py run (headed.jsonl); fills ai_person_*")
+    ap.add_argument("--only-run-hosts", action="store_true",
+                    help="export only the hosts the run visited (e.g. a run made with --only-hosts); "
+                         "by default every target gets a row, blank where the run did not go")
+    ap.add_argument("--out-dir", help="where to write sites.csv and sites.json (default: --run-dir)")
     a = ap.parse_args(argv)
     if a.write_dictionary:
         print("wrote", write_dictionary())
@@ -724,7 +1016,13 @@ def main(argv=None) -> int:
     run_dir = pathlib.Path(a.run_dir)
     targets = load_targets(a.targets_file)
     gsa = gsa_dictionary()
-    rows = build_rows(targets, _jsonl(run_dir / "results.jsonl"), _jsonl(run_dir / "v1-headless.jsonl"),
+    results = _jsonl(run_dir / "results.jsonl")
+    run = json.loads((run_dir / "run.json").read_text(encoding="utf-8")) \
+        if (run_dir / "run.json").exists() else {}
+    if a.only_run_hosts:
+        visited = run_hosts(results)
+        targets = [t for t in targets if urllib.parse.urlparse(t["url"]).hostname in visited]
+    rows = build_rows(targets, results, _jsonl(run_dir / "v1-headless.jsonl"),
                       _jsonl(run_dir / "review.jsonl"), load_psl(), gsa, registry_tenants(),
                       reach_rows=_jsonl(run_dir / "reach.jsonl"),
                       retest_results=_jsonl(pathlib.Path(a.retest_run_dir) / "results.jsonl")
@@ -732,10 +1030,12 @@ def main(argv=None) -> int:
                       person_rows=_jsonl(pathlib.Path(a.person_run_dir) / "headed.jsonl")
                       if a.person_run_dir else (),
                       person_results=_jsonl(pathlib.Path(a.person_run_dir) / "results.jsonl")
-                      if a.person_run_dir else ())
-    write_outputs(rows, run_dir, columns(gsa))
-    print("wrote {} rows x {} columns to {}/sites.csv and sites.json".format(
-        len(rows), len(columns(gsa)), run_dir))
+                      if a.person_run_dir else (), run=run)
+    cols = columns(gsa, run_identities(run))
+    out_dir = pathlib.Path(a.out_dir) if a.out_dir else run_dir
+    out_dir.mkdir(parents=True, exist_ok=True)
+    write_outputs(rows, out_dir, cols)
+    print("wrote {} rows x {} columns to {}/sites.csv and sites.json".format(len(rows), len(cols), out_dir))
     return 0
 
 

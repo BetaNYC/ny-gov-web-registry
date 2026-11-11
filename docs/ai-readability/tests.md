@@ -403,6 +403,15 @@ including after a crash. `latest.json` (plan §4.4) is not built yet.
 **One row per website:** `python scripts/ai_readability_export.py --run-dir <run> --targets-file
 <list>` writes `sites.csv` and `sites.json` in GSA's Site Scanning layout, plus `ai_<test id>_`
 columns for this catalog. Column definitions: `data/ai-readability/data-dictionary.csv`.
+Since catalog 0.2 (issue #45): `<list>` may be `addresses.csv` (one row per host, the address the
+scanner read, with `ny_kind`, `ny_kinds`, `ny_platform`, `ny_owning_body`, `ny_level`); W4 gets
+`ai_w4_<identity>_status` / `_admitted` for every identity in the run's `run.json` (the 2026-11-06
+six keep their names and come first); every row carries the run's network record (`ai_run_place`,
+`ai_run_provider`, `ai_run_asn_start` / `_end`, `ai_run_ipv4` / `_ipv6`, `ai_run_network_changed`,
+`ai_run_ip_changed`; never the address itself); C1, D2–D7, R2, M5 and F3 get `ai_<test>_*`
+columns. `--only-run-hosts` exports only the hosts the run visited (a run with `--only-hosts`
+does not record that list, so this is a flag, not a default). `--out-dir` writes elsewhere than
+the run folder.
 
 **Parallel workers:** `--max-workers N` splits hosts into N disjoint groups, each with its own
 global pace. A shared host clock still prevents two in-flight requests to one host and keeps the
