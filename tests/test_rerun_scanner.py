@@ -469,6 +469,19 @@ def test_d4_reads_an_rfc_9727_linkset():
 
 
 # ======================================================================== D5–D7 portals
+def test_portal_platform_from_the_registry_words():
+    assert ar.registry_platform("Socrata (Tyler Technologies)") == "socrata"
+    assert ar.registry_platform("Socrata (retired)") is None
+    assert ar.registry_platform("ArcGIS Hub (custom domain) + county ArcGIS Server") == "arcgis_hub"
+    assert ar.registry_platform("ArcGIS Enterprise (self-hosted Sites)") is None
+    assert ar.registry_platform("Esri ArcGIS Server 11.5") is None
+    assert ar.registry_platform("CKAN-derived catalog (data.gov, GSA)") == "ckan"
+    assert ar.registry_platform("") is None and ar.registry_platform(None) is None
+    # a blocked homepage still gets the registry's platform
+    got = ar.portal_platform("data.example.gov", resp(403, "denied"), hint="Socrata (Tyler Technologies)")
+    assert got["platform"] == "socrata" and got["signal"].startswith("portal registry")
+
+
 def test_portal_platform_from_the_homepage_only():
     assert ar.portal_platform("x.hub.arcgis.com", None)["platform"] == "arcgis_hub"
     ckan = resp(200, "<html><head><meta name='generator' content='ckan 2.10.4'></head></html>")

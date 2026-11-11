@@ -240,7 +240,7 @@ def read_portal_registry(path):
             yield {"host": h, "path": p, "name": r.get("entity"), "portal": True,
                    "url": r["url"], "entity_type": r.get("entity_type"),
                    "registry_id": r.get("registry_id"), "api": api_kind(r["url"]),
-                   "status": r.get("status")}
+                   "status": r.get("status"), "platform": r.get("platform")}
 
 
 READERS = {"registry": read_registry, "state_agency": read_state_agency, "abo": read_abo,

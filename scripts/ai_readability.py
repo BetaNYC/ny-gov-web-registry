@@ -1338,11 +1338,31 @@ PORTAL_PLATFORMS = ("socrata", "arcgis_hub", "ckan")
 SOCRATA_DISCOVERY = "https://api.us.socrata.com/api/catalog/v1"   # North American domains
 
 
+def registry_platform(text: str):
+    """The portal registry's own `platform` words (BetaNYC/ny-data-registry-mcp), mapped only
+    where they name one of PORTAL_PLATFORMS outright: Socrata (not retired), ArcGIS Hub, CKAN.
+    ArcGIS Enterprise "Sites", ArcGIS Online apps and ArcGIS Server are not Hub, so they map to
+    nothing: Esri documents the DCAT-US feed for Hub sites."""
+    t = (text or "").strip().lower()
+    if not t or "retired" in t:
+        return None
+    if t.startswith("socrata"):
+        return "socrata"
+    if t.startswith("arcgis hub") or t == "arcgis online / arcgis hub":
+        return "arcgis_hub"
+    if t.startswith("ckan"):
+        return "ckan"
+    return None
+
+
 def portal_platform(host: str, resp: dict, page: PageParser = None, hint: str = None) -> dict:
     """{platform, signal}. platform is None when nothing on the homepage names one."""
     h = (hint or "").strip().lower().replace(" ", "_")
     if h in PORTAL_PLATFORMS:
         return {"platform": h, "signal": "address list"}
+    named = registry_platform(hint)
+    if named:
+        return {"platform": named, "signal": "portal registry: " + hint.strip()[:80]}
     host = (host or "").lower()
     if host.endswith((".hub.arcgis.com", ".opendata.arcgis.com")):
         return {"platform": "arcgis_hub", "signal": "host name"}

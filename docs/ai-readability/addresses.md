@@ -30,6 +30,7 @@ The file holds addresses only. No scan result, status or verdict is written into
 | `source` | Which source named it first; later sources that name the same address are added after `; ` |
 | `date_found` | When the source was read: 2026-11-06 for `websites.json` and the earlier scan, 2026-11-10 for the portal registry and the contact files, the `checked` date for the deep-page list, the answer date for certificate logs |
 | `notes` | Why a row looks the way it does: a moved page, `vendor-hosted`, `portal registry status UNCONFIRMED`, the domain a certificate-log name was found under |
+| `platform` | For data portal registry rows only: the registry's own `platform` words, copied as written (for example `Socrata (Tyler Technologies)`, `ArcGIS Hub`). Empty for every other row. The portal tests (D5–D7) use it when the homepage does not name a platform |
 
 One row per address. Two addresses are the same when they differ only by `www.`, a trailing
 `/`, the scheme or a `#fragment`.
