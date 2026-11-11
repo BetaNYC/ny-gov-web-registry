@@ -108,9 +108,23 @@ WWW - Same,www_same,"Whether the ""www.""-prefixed address led to the exact same
 NY - Entity ID,ny_entity_id,The registry id of the body that owns the site,Matches `id` in `data/registry.json`. Blank for sites not yet in the registry (the statewide test pool).,pool,Text,No
 NY - Entity IDs on Host,ny_entity_ids,Every registry body whose primary website is this host,"From `data/registry.json` `web_properties` (role `primary`). More than one means a shared host such as `www.nyc.gov`, and `agency` is left blank.",pool,A list of values,No
 NY - Pool,ny_pool,Which group of sites this one was tested with,"`nyc-registry`, `city`, `county` or `state-authority`.",pool,Text,No
+NY - Address Kind,ny_kind,The kind of address the run read for this host,"From `data/ai-readability/addresses.csv` `kind`: `main site`, `sub-site`, `section`, `data portal` or `API`. When several addresses share a host, the scanner reads one of them (a data portal or main site first) and this is its kind. Blank for other target lists.",addresses,Text,No
+NY - Address Kinds on Host,ny_kinds,Every address kind the list gives this host,From `addresses.csv`. A host listed as both `main site` and `data portal` gets the portal tests (D5–D7).,addresses,A list of values,No
+NY - Platform,ny_platform,"The data portal's software, as the address list states it","From `addresses.csv` `platform` (the portal registry's own words). D5 maps it to a platform only where it names Socrata, ArcGIS Hub or CKAN outright; see `ai_d5_platform`.",addresses,Text,No
+NY - Owning Body,ny_owning_body,The government body the address list says owns the address,"From `addresses.csv` `owning_body`, for the address the run read. Unlike `agency`, it is filled on shared hosts too. Blank for other target lists (see `agency`).",addresses,Text,No
+NY - Level or Entity Type,ny_level,Level of government or entity type,From `addresses.csv` `level_or_entity_type`.,addresses,Text,No
 AI - Run ID,ai_run_id,The run this row came from,"Folder name under `data/ai-readability/runs/`: date, then vantage (where we ran from).",(run),Text,No
 AI - Catalog Version,ai_catalog_version,Version of the test catalog used,See `docs/ai-readability/tests.md`. Compare runs only within one version.,(run),Text,No
 AI - Vantage,ai_vantage,Where the requests came from,`office` or `residential`. Sites can treat these connections differently.,(run),Text,No
+AI - Run Tier,ai_run_tier,Which set of tests the run used,`core` or `full` (run.json `tier`). Full-tier tests are blank in a core run.,(run),Text,No
+AI - Run Place,ai_run_place,Where the run went out from,"`office`, `home` or `vpn` (run.json `network.place`). The same on every row of a run. Runs before catalog 0.2 have no network record and leave every `ai_run_*` network column blank.",(network),Text,No
+AI - Run Provider,ai_run_provider,The internet provider at the start of the run,RIPEstat `as-overview` `holder` for the start ASN (`scripts/network_record.py`).,(network),Text,No
+AI - Run ASN at Start,ai_run_asn_start,The network number (ASN) at the start of the run,"RIPEstat `network-info`, e.g. `AS12271`. Blank if the lookup failed.",(network),Text,No
+AI - Run ASN at End,ai_run_asn_end,The network number (ASN) at the end of the run,"As `ai_run_asn_start`, read again when the run closed.",(network),Text,No
+AI - Run Had IPv4,ai_run_ipv4,Whether the run's network had a working IPv4 route,"From the start reading forced over IPv4 (`by_family.ipv4`): TRUE if it got an address, FALSE if it failed. Runs without per-family readings fill only the family their one reading used. Addresses themselves are not exported.",(network),Yes or no,No
+AI - Run Had IPv6,ai_run_ipv6,Whether the run's network had a working IPv6 route,"As `ai_run_ipv4`, for IPv6. A site may be reached over either family.",(network),Yes or no,No
+AI - Run Network Changed,ai_run_network_changed,Whether the ASN changed during the run,run.json `network.changed.asn`: TRUE if the start and end ASNs differ. Blank when either reading failed (an unreadable network is not evidence it stayed put).,(network),Yes or no,No
+AI - Run Address Changed,ai_run_ip_changed,Whether the public address changed during the run,run.json `network.changed.public_ip`. An address can change within one provider (IPv6 privacy addresses do); read with `ai_run_network_changed`.,(network),Yes or no,No
 AI - W1 robots.txt,ai_w1_verdict,Whether robots.txt is reachable and is a real robots file,pass / partial / fail / blocked / na. Stricter than `robots_txt_detected`.,W1,Text,No
 AI - W2 Names AI Crawlers,ai_w2_verdict,Whether robots.txt gives any AI crawler its own rules,pass if at least one AI token has its own group.,W2,Text,No
 AI - W2 AI Tokens Named,ai_w2_tokens_named,Which AI crawler names robots.txt mentions,Matched case-insensitively against the catalog's token list.,W2,A list of values,No
@@ -129,6 +143,42 @@ AI - W4 chatgpt_user Status,ai_w4_chatgpt_user_status,Homepage status code when 
 AI - W4 chatgpt_user Admitted,ai_w4_chatgpt_user_admitted,Whether `chatgpt_user` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
 AI - W4 mechanism_probe_chrome Status,ai_w4_mechanism_probe_chrome_status,Homepage status code when we said we were `mechanism_probe_chrome`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
 AI - W4 mechanism_probe_chrome Admitted,ai_w4_mechanism_probe_chrome_admitted,Whether `mechanism_probe_chrome` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 baseline_default Status,ai_w4_baseline_default_status,Homepage status code when we said we were `baseline_default`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 baseline_default Admitted,ai_w4_baseline_default_admitted,Whether `baseline_default` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 claudebot Status,ai_w4_claudebot_status,Homepage status code when we said we were `claudebot`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 claudebot Admitted,ai_w4_claudebot_admitted,Whether `claudebot` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 claude_user Status,ai_w4_claude_user_status,Homepage status code when we said we were `claude_user`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 claude_user Admitted,ai_w4_claude_user_admitted,Whether `claude_user` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 claude_searchbot Status,ai_w4_claude_searchbot_status,Homepage status code when we said we were `claude_searchbot`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 claude_searchbot Admitted,ai_w4_claude_searchbot_admitted,Whether `claude_searchbot` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 meta_externalagent Status,ai_w4_meta_externalagent_status,Homepage status code when we said we were `meta_externalagent`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 meta_externalagent Admitted,ai_w4_meta_externalagent_admitted,Whether `meta_externalagent` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 meta_externalfetcher Status,ai_w4_meta_externalfetcher_status,Homepage status code when we said we were `meta_externalfetcher`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 meta_externalfetcher Admitted,ai_w4_meta_externalfetcher_admitted,Whether `meta_externalfetcher` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 perplexitybot Status,ai_w4_perplexitybot_status,Homepage status code when we said we were `perplexitybot`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 perplexitybot Admitted,ai_w4_perplexitybot_admitted,Whether `perplexitybot` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 perplexity_user Status,ai_w4_perplexity_user_status,Homepage status code when we said we were `perplexity_user`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 perplexity_user Admitted,ai_w4_perplexity_user_admitted,Whether `perplexity_user` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 bingbot Status,ai_w4_bingbot_status,Homepage status code when we said we were `bingbot`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 bingbot Admitted,ai_w4_bingbot_admitted,Whether `bingbot` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 applebot Status,ai_w4_applebot_status,Homepage status code when we said we were `applebot`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 applebot Admitted,ai_w4_applebot_admitted,Whether `applebot` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 ccbot Status,ai_w4_ccbot_status,Homepage status code when we said we were `ccbot`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 ccbot Admitted,ai_w4_ccbot_admitted,Whether `ccbot` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 mistralai_user Status,ai_w4_mistralai_user_status,Homepage status code when we said we were `mistralai_user`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 mistralai_user Admitted,ai_w4_mistralai_user_admitted,Whether `mistralai_user` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 duckassistbot Status,ai_w4_duckassistbot_status,Homepage status code when we said we were `duckassistbot`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 duckassistbot Admitted,ai_w4_duckassistbot_admitted,Whether `duckassistbot` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 claude_agent Status,ai_w4_claude_agent_status,Homepage status code when we said we were `claude_agent`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 claude_agent Admitted,ai_w4_claude_agent_admitted,Whether `claude_agent` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 meta_webindexer Status,ai_w4_meta_webindexer_status,Homepage status code when we said we were `meta_webindexer`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 meta_webindexer Admitted,ai_w4_meta_webindexer_admitted,Whether `meta_webindexer` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 mistralai_index Status,ai_w4_mistralai_index_status,Homepage status code when we said we were `mistralai_index`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 mistralai_index Admitted,ai_w4_mistralai_index_admitted,Whether `mistralai_index` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 mistralai_training Status,ai_w4_mistralai_training_status,Homepage status code when we said we were `mistralai_training`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 mistralai_training Admitted,ai_w4_mistralai_training_admitted,Whether `mistralai_training` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
+AI - W4 google_gemininotebook Status,ai_w4_google_gemininotebook_status,Homepage status code when we said we were `google_gemininotebook`,"One request with that identity's User-Agent. `mechanism_probe_chrome` is a disclosed control (a Chrome UA), used only to show a block is about identity.",W4,Number,No
+AI - W4 google_gemininotebook Admitted,ai_w4_google_gemininotebook_admitted,Whether `google_gemininotebook` got the real homepage,TRUE only for a 200 that is not a challenge or block page.,W4,Yes or no,No
 AI - W4 Server Header,ai_w4_server,The `Server` header on the homepage,"Often names the CDN (e.g. `AkamaiGHost`, `cloudflare`).",W4,Text,No
 AI - W4 Firewall Detected,ai_w4_waf,Web firewall or bot-defense products recognized,From headers and cookies. Blank means none recognized.,W4,A list of values,No
 AI - W5 Stated vs Enforced,ai_w5_divergent,Identities where robots.txt and the edge disagree,"robots.txt allows the crawler but the homepage refuses it, or the reverse. Cloudflare and Akamai may refuse a vendor UA sent from a non-vendor network (spoof detection).",W5,A list of values,No
@@ -156,6 +206,55 @@ AI - P2 Civic Vendors,ai_p2_vendors,Civic platforms the homepage links to,"Legis
 AI - P3 Translation Widget,ai_p3_translation_widget,Whether a translation widget is on the page,,P3,Yes or no,No
 AI - P3 hreflang Count,ai_p3_hreflang_alternates,Number of `hreflang` alternate links,,P3,Number,No
 AI - P4 Third-Party Scripts,ai_p4_third_party_script_count,Distinct outside hosts that serve scripts to the homepage,"Scripts only, so smaller than GSA's `third_party_service_count`. The host names are kept private.",P4,Number,No
+AI - C1 Website Software,ai_c1_verdict,Whether C1 ran,"Reported test: `reported` when measured, or `na` / `blocked` when it could not be.",C1,Text,No
+AI - C1 CMS,ai_c1_cms,The website software C1 settled on,"GSA's own `cms` when the address list carries one, else what the homepage shows. Same value as the GSA `cms` column, which falls back to P1 for older runs.",C1,Text,No
+AI - C1 Source,ai_c1_source,Where `ai_c1_cms` came from,`gsa` (the address list) or `homepage`. Blank when neither named any software.,C1,Text,No
+AI - C1 Homepage Platforms,ai_c1_homepage_platforms,Software the homepage itself shows,"P1's signals plus the WordPress REST link (rel `https://api.w.org/`). Kept even when GSA's value wins, so the two can be compared.",C1,A list of values,No
+AI - D2 Data and API Links,ai_d2_verdict,Whether D2 ran,"Reported test: `reported` when measured, or `na` / `blocked` when it could not be.",D2,Text,No
+AI - D2 Links Found,ai_d2_count,"Data, API, catalog, feed and GIS links found","In the homepage's anchors and `<link>` tags, its `Link:` header and llms.txt. No link is followed. A link can be of several kinds.",D2,Number,No
+AI - D2 Open Data Links,ai_d2_open_data_count,"Links D2 sorted as open data (a D1 portal or the words ""open data"")","By URL pattern or link text (`ai_readability.D2_PATTERNS`, `D2_TEXT`). 0 when D2 ran and found none.",D2,Number,No
+AI - D2 API Links,ai_d2_api_count,Links D2 sorted as an API,"By URL pattern or link text (`ai_readability.D2_PATTERNS`, `D2_TEXT`). 0 when D2 ran and found none.",D2,Number,No
+AI - D2 Developer Links,ai_d2_developer_count,Links D2 sorted as a developer page,"By URL pattern or link text (`ai_readability.D2_PATTERNS`, `D2_TEXT`). 0 when D2 ran and found none.",D2,Number,No
+AI - D2 Catalog Links,ai_d2_catalog_count,Links D2 sorted as a machine-readable catalog,"By URL pattern or link text (`ai_readability.D2_PATTERNS`, `D2_TEXT`). 0 when D2 ran and found none.",D2,Number,No
+AI - D2 Feed Links,ai_d2_feed_count,"Links D2 sorted as an RSS, Atom or JSON feed","By URL pattern or link text (`ai_readability.D2_PATTERNS`, `D2_TEXT`). 0 when D2 ran and found none.",D2,Number,No
+AI - D2 GIS Service Links,ai_d2_gis_service_count,Links D2 sorted as a GIS service,"By URL pattern or link text (`ai_readability.D2_PATTERNS`, `D2_TEXT`). 0 when D2 ran and found none.",D2,Number,No
+AI - D3 WordPress REST,ai_d3_verdict,Whether D3 ran,"Reported test: `reported` when measured, or `na` / `blocked` when it could not be. `na` when C1 does not show WordPress, or in a core run.",D3,Text,No
+AI - D3 REST Index,ai_d3_rest_index,Whether the WordPress REST index answered,TRUE when the root answered 200 with JSON carrying `namespaces`.,D3,Yes or no,No
+AI - D3 Status,ai_d3_status,Status code of the WordPress REST root,,D3,Number,No
+AI - D3 Namespaces,ai_d3_namespaces,Namespaces the REST index lists,"First 50, e.g. `wp/v2`. Shows which plugins expose an API.",D3,A list of values,No
+AI - D3 Routes,ai_d3_routes,Number of routes in the REST index,,D3,Number,No
+AI - D4 API Catalog,ai_d4_verdict,Whether D4 ran,"Reported test: `reported` when measured, or `na` / `blocked` when it could not be.",D4,Text,No
+AI - D4 Status,ai_d4_status,Status code of `/.well-known/api-catalog`,,D4,Number,No
+AI - D4 Present,ai_d4_present,Whether an RFC 9727 API catalog is there,TRUE = 200 with a Linkset (a top-level `linkset` array).,D4,Yes or no,No
+AI - D4 Media Type OK,ai_d4_media_type_ok,Whether it is served as `application/linkset+json`,RFC 9727 §4.2 (a MUST).,D4,Yes or no,No
+AI - D4 Profile,ai_d4_profile_rfc9727,Whether the media type names the RFC 9727 profile,A SHOULD in RFC 9727.,D4,Yes or no,No
+AI - D4 Items,ai_d4_items,Links of relation `item` in the catalog,RFC 9727 §3.1.,D4,Number,No
+AI - D5 Portal Catalog,ai_d5_verdict,Whether a data portal serves its documented catalog,pass / fail / blocked / na. Only addresses of kind `data portal`; `na` also when the platform was not recognized (no undocumented path is tried).,D5,Text,No
+AI - D5 Platform,ai_d5_platform,The portal platform D5 recognized,"`socrata`, `arcgis_hub` or `ckan`.",D5,Text,No
+AI - D5 Platform Signal,ai_d5_platform_signal,What named the platform,"The address list, the portal registry's words, the host name, the meta generator or the homepage text.",D5,Text,No
+AI - D5 Catalog URL,ai_d5_url,The documented catalog address D5 asked for,,D5,Text,No
+AI - D5 Status,ai_d5_status,Status code of the catalog,,D5,Number,No
+AI - D5 Catalog Entries,ai_d5_datasets,Entries in the catalog response,"ArcGIS Hub: `dataset` items; CKAN: `result` items (the request asks for 1); Socrata: list length (the request asks for 1). A sample size, not the portal's total.",D5,Number,No
+AI - D6 Dataset Page Readable,ai_d6_verdict,Whether one dataset page has text without JavaScript,"R1's rule (≥ 150 words, no JS-shell phrase) on the first dataset the catalog names.",D6,Text,No
+AI - D6 Dataset URL,ai_d6_dataset_url,The dataset page D6 read,,D6,Text,No
+AI - D6 Words,ai_d6_words,Visible words on that dataset page,,D6,Number,No
+AI - D7 Catalog Reachable by AI,ai_d7_verdict,Whether the portal catalog admits the AI identities,"W4's all-AI rule applied to the D5 catalog: pass if every AI identity got it, partial if some did, blocked if none did.",D7,Text,No
+AI - D7 Admitted,ai_d7_admitted,AI identities that got the catalog,"Identity keys, as in the `ai_w4_<identity>_*` columns.",D7,A list of values,No
+AI - D7 Not Admitted,ai_d7_not_admitted,AI identities that did not get the catalog,"Refused, failed or no answer.",D7,A list of values,No
+AI - R2 Markdown Twin,ai_r2_verdict,Whether R2 ran,"Reported test: `reported` when measured, or `na` / `blocked` when it could not be.",R2,Text,No
+AI - R2 Markdown Served,ai_r2_markdown_served,Whether a markdown version was served,TRUE if `GET /` with `Accept: text/markdown` or `GET /index.md` returned `text/markdown` that is not HTML.,R2,Yes or no,No
+AI - R2 Accept Status,ai_r2_accept_status,Status of `GET /` with `Accept: text/markdown`,,R2,Number,No
+AI - R2 Accept Media Type,ai_r2_accept_media_type,Media type of that answer,Parameters dropped.,R2,Text,No
+AI - R2 Vary Header,ai_r2_vary,`Vary` header on that answer,`Accept` here means the server says it negotiates on it.,R2,Text,No
+AI - R2 index.md Status,ai_r2_index_md_status,Status of `GET /index.md`,,R2,Number,No
+AI - R2 Advertised Markdown,ai_r2_advertised_alternates,Markdown versions the homepage advertises,`Link:` header or `<link>` with rel `alternate` and type `text/markdown`.,R2,A list of values,No
+AI - M5 llms-full.txt,ai_m5_verdict,Whether M5 ran,"Reported test: `reported` when measured, or `na` / `blocked` when it could not be. Never scored: llmstxt.org does not define this file.",M5,Text,No
+AI - M5 Present,ai_m5_present,Whether `/llms-full.txt` exists,TRUE = 200 and not HTML.,M5,Yes or no,No
+AI - M5 Status,ai_m5_status_code,Status code for `/llms-full.txt`,,M5,Number,No
+AI - M5 Bytes,ai_m5_bytes,Size of `/llms-full.txt` as read,,M5,Number,No
+AI - F3 Broken Links,ai_f3_verdict,Whether the homepage's links work,"pass if at most 1 of up to 10 same-host links returns 4xx/5xx. Decides Abhi's ""No stale or broken content"" row with F1 in a full run.",F3,Text,No
+AI - F3 Links Checked,ai_f3_checked,Same-host homepage links checked,"The first 10 in document order; `HEAD`, then `GET` on 405.",F3,Number,No
+AI - F3 Links Broken,ai_f3_broken,"Of those, how many returned 4xx/5xx",A firewall refusing deep links looks like breakage; cross-check `ai_w4_verdict`.,F3,Number,No
 AI - V1 Headless Own Name Status,ai_v1_headless_default_status,Homepage status in headless Chrome (headless_default),`headless_default` sends the browser's own UA (contains `HeadlessChrome`); `headless_as_chrome` is the same browser with only that word changed.,V1,Number,No
 AI - V1 Headless Own Name Verdict,ai_v1_headless_default_verdict,Whether headless Chrome (headless_default) got the real page,pass / blocked / na.,V1,Text,No
 AI - V1 Headless As Chrome Status,ai_v1_headless_as_chrome_status,Homepage status in headless Chrome (headless_as_chrome),`headless_default` sends the browser's own UA (contains `HeadlessChrome`); `headless_as_chrome` is the same browser with only that word changed.,V1,Number,No
