@@ -52,7 +52,12 @@ DEEP-PAGE MODE (--deep-pages; issue #35, docs/ai-readability/tests.md "Deep page
   each page once per Tier B identity. Page-level rows only (PAGE_TESTS), with `page_url` and
   scope "page". Same pacing, quarantine and resume rules; resume is per page.
 
+  --pages-from addresses (issue #45): the pages are every address in addresses.csv that is not
+  its host's root and that the host run does not read (every section; portals and APIs on a
+  path). --page-identities full sends every name a --tier full host run sends (default tierb).
+
     python3 scripts/probe_bot_access.py --deep-pages --dry-run
+    python3 scripts/probe_bot_access.py --pages-from addresses --page-identities full --dry-run
     python3 scripts/probe_bot_access.py --deep-pages --vantage office --machine office \
         --run-dir data/ai-readability/runs/<YYYY-MM-DD>-office-pages
 """
@@ -1014,14 +1019,22 @@ def portal_plan(job: dict, ctx, research, page, req, row):
 
 # Tests a deep page gets (issue #35). The host-level files (llms.txt, sitemap, the 404 probe,
 # http://) and the tests that read them belong to the host run and are not repeated per page.
-PAGE_TESTS = ("W3", "W4", "R1", "R3", "I1", "I2", "I3", "I4", "F1", "F2", "D1",
+PAGE_TESTS = ("W3", "W4", "R1", "R3", "I1", "I2", "I3", "I4", "F1", "F2", "D1", "D2",
               "P1", "P2", "P3", "P4")
+PAGE_IDENTITY_SETS = ("tierb", "full")
 
 
-def page_identities(identities=None) -> list:
-    """--deep-pages: the Tier B set. A page asks whether it differs from its host; an honest
-    baseline, one honest AI agent and the mechanism probe answer that."""
-    by_key = {i["key"]: i for i in (IDENTITIES if identities is None else identities)}
+def page_identities(identities=None, which: str = "tierb") -> list:
+    """--deep-pages identities. `tierb` (default): the Tier B set; a page asks whether it differs
+    from its host, and an honest baseline, one honest AI agent and the mechanism probe answer
+    that. `full`: the same set a full-tier host run sends (tier_identities("full")), so a page
+    gets the same per-crawler W4 as a site (issue #45)."""
+    identities = IDENTITIES if identities is None else identities
+    if which == "full":
+        return tier_identities("full", identities)
+    if which != "tierb":
+        raise ValueError("page identities: {!r} is not one of {}".format(which, PAGE_IDENTITY_SETS))
+    by_key = {i["key"]: i for i in identities}
     return [by_key[k] for k in TIER_B_IDENTITY_KEYS]
 
 
@@ -1064,6 +1077,7 @@ def page_plan(job: dict, ctx):
                      "page_host": page_host, "entity_id": job.get("entity_id"),
                      "entity_name": job.get("entity_name"), "entity_ids": job.get("entity_ids"),
                      "source": job.get("source"),
+                     **{k: job[k] for k in ("kind", "moved_from") if job.get(k)},
                      "test": test, "identity": identity, "verdict": verdict, "evidence": ev,
                      "evidence_sha256": ar.sha256(json.dumps(ev, sort_keys=True, default=str))})
 
@@ -1101,6 +1115,8 @@ def page_plan(job: dict, ctx):
     row("F1", RESEARCH_KEY, ar.test_f1(research, ctx.today, page))
     row("F2", RESEARCH_KEY, ar.test_f2(research))
     row("D1", RESEARCH_KEY, ar.test_d1(research, ctx.portals, page))
+    # D2 reads the page body already fetched: no request (llms.txt stays with the host run).
+    row("D2", RESEARCH_KEY, ar.test_d2(research, page, ctx.portals, None))
     for pid, fn in (("P1", ar.test_p1), ("P2", ar.test_p2), ("P3", ar.test_p3), ("P4", ar.test_p4)):
         row(pid, RESEARCH_KEY, fn(research, page))
     return rows
@@ -1133,7 +1149,8 @@ def page_jobs(targets: list) -> list:
                      "page_host": t.get("page_host") or p.netloc.lower(),
                      "entity_id": t.get("entity_id"), "entity_ids": t.get("entity_ids") or [],
                      "entity_name": t.get("entity_name"), "entity_names": t.get("entity_names") or [],
-                     "source": t.get("source")})
+                     "source": t.get("source"),
+                     **{k: t[k] for k in ("kind", "moved_from") if t.get(k)}})
     return sorted(jobs, key=lambda j: (j["host"], j["url"]))
 
 
@@ -1149,6 +1166,80 @@ def load_deep_page_targets(websites_file=None, extra_csv=None) -> list:
                          "`ny_page_urls`): {}".format(path))
     return aw.deep_page_targets(rows, aw.page_owners(),
                                 aw.DEEP_PAGES_EXTRA if extra_csv is None else extra_csv)
+
+
+def load_address_page_targets(addresses_file=None, page_corrections=None) -> list:
+    """--pages-from addresses (issue #45): every address in addresses.csv whose path is not its
+    host's root and that the host run does not read as its own job, so sections get a page scan
+    as sites get a host scan. That is every `section`, plus a data portal or API that sits on a
+    path, minus any address plan_targets() picks to stand for its host (the host run reads it).
+
+    Same rules as deep_page_targets(): page-corrections.csv applies (a `gone` page is skipped, a
+    `moved` page is probed at `moved_to` and recorded as `moved_from`; an address that already
+    is a `moved_to` keeps its listed address as `moved_from`), a homepage is left to the host
+    run, and a page listed twice (`www.` and a trailing `/` ignored) is sent once. Every request
+    is paced on the host-run job's host for the page's host (`www.` ignored), so `nyc.gov/...`
+    shares the `www.nyc.gov` clock and governor; a page on a host with no job paces on its own.
+
+    The owner comes from addresses.csv only (`owning_body_id`, `owning_body`, several joined with
+    `; `); a blank owner stays blank, never a guessed name."""
+    import csv
+    import ai_readability_websites as aw
+    path = pathlib.Path(addresses_file) if addresses_file else ADDRESSES
+    targets = load_addresses(path)
+    with path.open(newline="", encoding="utf-8") as fh:
+        raw = list(csv.DictReader(fh))
+    jobs = plan_targets(targets)
+    host_job_pages = {aw._page_key(j["url"]) for j in jobs}
+    pace_host = {}            # `www.` ignored; when both forms have a job, the www. host's clock
+    for j in jobs:
+        k = aw._key(j["host"])
+        if k not in pace_host or j["host"].startswith("www."):
+            pace_host[k] = j["host"]
+    fixes = aw.read_page_corrections(aw.PAGE_CORRECTIONS if page_corrections is None
+                                     else page_corrections)
+    moved_to = {aw._page_key(r["moved_to"].strip()): url for url, r in
+                ((r["page_url"].strip(), r) for r in fixes.values()) if r["issue"] == "moved"}
+    split = lambda v: [x.strip() for x in (v or "").split(";") if x.strip()]  # noqa: E731
+    out, seen = [], set()
+    for t, r in zip(targets, raw):
+        url, moved_from = t["url"], None
+        fix = fixes.get(aw._page_key(url))
+        if fix and fix["issue"] == "gone":
+            continue
+        if fix:
+            moved_from, url = url, fix["moved_to"].strip()
+        else:
+            moved_from = moved_to.get(aw._page_key(url))
+        p = urllib.parse.urlparse(url)
+        if p.scheme != "https":
+            url = urllib.parse.urlunparse(p._replace(scheme="https"))
+            p = urllib.parse.urlparse(url)
+        if (p.path or "/") == "/" and not p.query:
+            continue                       # a homepage: the host run's
+        k = aw._page_key(url)
+        if k in host_job_pages or k in seen:
+            continue                       # the host run reads it, or already listed
+        seen.add(k)
+        page_host = (p.hostname or "").lower()
+        ids = split(r.get("owning_body_id"))
+        names = split(r.get("owning_body"))
+        item = {"url": url, "host": pace_host.get(aw._key(page_host), page_host),
+                "page_host": page_host, "entity_id": ids[0] if len(ids) == 1 else None,
+                "entity_ids": ids, "entity_name": "; ".join(names) if names else None,
+                "entity_names": names, "source": "addresses.csv: {}".format(t.get("source") or ""),
+                "kind": t["kind"]}
+        if moved_from:
+            item["moved_from"] = moved_from
+        out.append(item)
+    return out
+
+
+def page_run_hours(est: dict, workers: int = 1, pace_s: float = GLOBAL_PACE_S) -> float:
+    """Wall-clock hours for a page run: the larger of all requests at the global pace (plus
+    the assumed response time) shared across workers, and the busiest host's floor."""
+    total = est["requests"] * (pace_s + EST_RESPONSE_S) / max(1, workers) / 3600
+    return round(max(total, est["min_hours"]), 1)
 
 
 def page_request_estimate(jobs: list, n_identities: int, floor_s: float, governors: dict) -> dict:
@@ -1541,6 +1632,8 @@ def split_by_host(jobs: list, n: int) -> list:
     return groups
 
 
+DRY_RUN_HOSTS_SHOWN = 15   # --deep-pages --dry-run: the busiest hosts listed by name
+
 VPN_MAX_HOSTS = 25   # --vantage vpn: a small named set only (issue #44), never a full run
 
 
@@ -1573,7 +1666,10 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
     (refused before starting: pre-run guard or VPN guard)."""
     import network_record
     today = today or _date.today()
-    deep = bool(getattr(args, "deep_pages", False))
+    pages_from = getattr(args, "pages_from", None)
+    deep = bool(getattr(args, "deep_pages", False)) or bool(pages_from)
+    pages_from = pages_from or "websites"
+    which_ids = getattr(args, "page_identities", None) or "tierb"
     crawlers_path = getattr(args, "crawlers", None)
     if crawlers_path:
         crawler_rows, vendor, not_sent = load_crawler_identities(crawlers_path)
@@ -1583,7 +1679,10 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
         crawler_rows, not_sent, all_idents = CRAWLER_ROWS, NOT_SENT, IDENTITIES
     if deep:
         args.tier = "pages"
-        jobs = page_jobs(load_deep_page_targets(args.targets_file, args.deep_pages_extra))
+        if pages_from == "addresses":
+            jobs = page_jobs(load_address_page_targets(args.targets_file))
+        else:
+            jobs = page_jobs(load_deep_page_targets(args.targets_file, args.deep_pages_extra))
     else:
         if not args.targets_file:
             args.targets_file = str(default_targets_file())
@@ -1595,7 +1694,8 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
         jobs = [j for j in jobs if j["host"] in only]
     if args.limit:
         jobs = jobs[:args.limit]
-    identities = page_identities(all_idents) if deep else tier_identities(args.tier, all_idents)
+    identities = page_identities(all_idents, which_ids) if deep else \
+        tier_identities(args.tier, all_idents)
     refusals = pre_run_guard(identities, crawler_rows, today) + vpn_guard(args, jobs)
     if refusals:
         print("REFUSED: the run did not start.", file=sys.stderr)
@@ -1608,15 +1708,38 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
         est = page_request_estimate(jobs, len(identities), floor_s, governors)
         lo = hi = est["requests"]
         if args.dry_run:
+            pace_s = (pacing or {}).get("pace_s", GLOBAL_PACE_S)
             print("deep pages  pages={}  hosts={}  identities={}  requests≈{} (robots.txt × {} "
                   "page hosts + pages × {} identities, before retries)".format(
                       est["pages"], est["hosts"], len(identities), est["requests"], est["robots"],
                       len(identities)))
+            print("pages from: {}  ·  page identities: {}  ·  targets: {}".format(
+                pages_from, which_ids, args.targets_file or (
+                    ADDRESSES if pages_from == "addresses" else WEBSITES)))
+            if pages_from == "addresses":
+                kinds = defaultdict(int)
+                for j in jobs:
+                    kinds[j.get("kind")] += 1
+                print("pages by kind: " + ", ".join("{} {}".format(k, n)
+                                                    for k, n in sorted(kinds.items())))
+                print("moved (probed at moved_to): {}".format(
+                    sum(1 for j in jobs if j.get("moved_from"))))
             print("identities: " + ", ".join(i["key"] for i in identities))
-            print("busiest host: {} ({} requests, ≥ {} h at its per-host floor)".format(
-                est["busiest"], est["per_host"].get(est["busiest"], 0), est["min_hours"]))
-            for h in sorted(est["per_host"], key=lambda h: -est["per_host"][h]):
-                print("  {:<28} {:>4} requests".format(h, est["per_host"][h]))
+            if not_sent and which_ids == "full":
+                print("read in robots.txt only, not sent: " + ", ".join(n["name"] for n in not_sent))
+            print("estimated wall clock: ≈{} h with {} worker(s) at ≈{:.0f} s per request".format(
+                page_run_hours(est, args.max_workers, pace_s), max(1, args.max_workers),
+                pace_s + EST_RESPONSE_S))
+            print("busiest host: {} ({} requests, ≥ {} h at its per-host floor of {:.0f} s)".format(
+                est["busiest"], est["per_host"].get(est["busiest"], 0), est["min_hours"],
+                max(floor_s, governors.get(est["busiest"], 0.0)) if est["busiest"] else 0))
+            print("network record: up to 9 requests to stat.ripe.net at the start and 9 at the end "
+                  "(IPv4 and IPv6 each)")
+            ranked = sorted(est["per_host"], key=lambda h: -est["per_host"][h])
+            for h in ranked[:DRY_RUN_HOSTS_SHOWN]:
+                print("  {:<28} {:>5} requests".format(h, est["per_host"][h]))
+            if len(ranked) > DRY_RUN_HOSTS_SHOWN:
+                print("  ... {} more hosts".format(len(ranked) - DRY_RUN_HOSTS_SHOWN))
             unpaired = [j["url"] for j in jobs if not j.get("entity_name")]
             print("pages with no owner name: {}".format(len(unpaired)))
             for u in unpaired:
@@ -1677,8 +1800,10 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
     if args.run_dir:
         run_dir = pathlib.Path(args.run_dir)
     else:
-        run_dir = pathlib.Path(args.out_root) / "{}-{}".format(
-            started_local.strftime("%Y-%m-%d"), args.vantage)
+        # a page run gets its own folder, so it can never resume into (and append page rows
+        # to) the same day's host run
+        run_dir = pathlib.Path(args.out_root) / "{}-{}{}".format(
+            started_local.strftime("%Y-%m-%d"), args.vantage, "-pages" if deep else "")
     run_dir.mkdir(parents=True, exist_ok=True)
     run_id = run_dir.name
     done, spent = prepare_resume(run_dir)
@@ -1718,9 +1843,13 @@ def run_readability(args, transport=None, monitor=None, sleep=time.sleep,
     manifest = {
         "catalog_version": ar.CATALOG_VERSION, "git_sha": ctx.git_sha, "run_id": run_id,
         "tier": args.tier, "vantage": args.vantage, "machine": args.machine,
-        "targets_source": (args.targets_file or str(TARGETS)) if not deep else {
+        "targets_source": (args.targets_file or str(TARGETS)) if not deep else ({
+            "addresses": args.targets_file or "data/ai-readability/addresses.csv",
+            "page_corrections": "data/ai-readability/page-corrections.csv"}
+            if pages_from == "addresses" else {
             "websites": args.targets_file or "data/ai-readability/websites.json",
-            "extra": args.deep_pages_extra or "data/ai-readability/deep-pages-extra.csv"},
+            "extra": args.deep_pages_extra or "data/ai-readability/deep-pages-extra.csv"}),
+        **({"pages_from": pages_from, "page_identities": which_ids} if deep else {}),
         "mode": "deep_pages" if deep else "hosts", "hosts": len({j["host"] for j in jobs}),
         "units": len(jobs),
         "hosts_already_done": len(done), "started": started, "ended": None,
@@ -1887,6 +2016,17 @@ def build_parser() -> argparse.ArgumentParser:
     ap.add_argument("--deep-pages-extra", default=None,
                     help="--deep-pages: extra page list (url,name,source,checked); default "
                          "data/ai-readability/deep-pages-extra.csv")
+    ap.add_argument("--pages-from", choices=("websites", "addresses"), default=None,
+                    help="deep pages: where the page list comes from (implies --deep-pages). "
+                         "websites (default): the shared-host pages of websites.json plus "
+                         "--deep-pages-extra. addresses: every address in addresses.csv (or "
+                         "--targets-file in that layout) that is not its host's root and that the "
+                         "host run does not read as its own job: every section, and data portals "
+                         "or APIs on a path (issue #45)")
+    ap.add_argument("--page-identities", choices=PAGE_IDENTITY_SETS, default="tierb",
+                    help="deep pages: tierb (default): research_betanyc, claudebot, "
+                         "mechanism_probe_chrome. full: every identity a --tier full host run "
+                         "sends (crawlers.csv plus the controls), under the same pre-run guard")
     ap.add_argument("--seed", type=int, default=20260828)
     ap.add_argument("--vantage", default=os.environ.get("PROBE_VANTAGE", "unknown"),
                     help="the network this ran from: office | home | vpn (recorded as `place` in "
@@ -1899,7 +2039,11 @@ def main(argv=None) -> int:
     args = build_parser().parse_args(argv)
     args._argv = list(argv) if argv is not None else list(sys.argv[1:])
 
-    if args.deep_pages:
+    if args.pages_from == "addresses" and args.deep_pages_extra:
+        print("FATAL: --deep-pages-extra is for --pages-from websites; addresses.csv already lists "
+              "the extra pages.", file=sys.stderr)
+        return 2
+    if args.deep_pages or args.pages_from:
         return run_readability(args)
     if args.tier in ("core", "full"):
         if not args.targets_file and not default_targets_file().exists():

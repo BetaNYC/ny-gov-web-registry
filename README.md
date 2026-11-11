@@ -182,11 +182,17 @@ Offline tests: `tests/test_address_inventory.py`.
 the three Tier B identities, page-level tests only, robots.txt once per host, the same pacing.
 `headed_check.py --deep-pages` gives the person view of the same pages and lists any page that
 needs a human click in `needs_person.txt`, and any page that is gone (404/410) in
-`pages_not_found.txt`. Method: [`docs/ai-readability/tests.md`](docs/ai-readability/tests.md)
-§ Deep pages. Offline tests: `tests/test_deep_pages.py`.
+`pages_not_found.txt`. **Every section:** `--pages-from addresses` takes the pages from
+`addresses.csv` instead (every section, plus data portals and APIs on a path, that the host run
+does not read as its own job), and `--page-identities full` sends every crawler name a
+`--tier full` host run sends (default `tierb`, the three above). `ai_readability_export.py
+--run-dir <page run>` writes `pages.csv`, one row per page. Method:
+[`docs/ai-readability/tests.md`](docs/ai-readability/tests.md) § Deep pages. Offline tests:
+`tests/test_deep_pages.py`, `tests/test_deep_pages_addresses.py`.
 
 ```
 python3 scripts/probe_bot_access.py --deep-pages --dry-run
+python3 scripts/probe_bot_access.py --pages-from addresses --page-identities full --dry-run
 python3 scripts/probe_bot_access.py --deep-pages --vantage office --machine office \
     --run-dir data/ai-readability/runs/<YYYY-MM-DD>-office-pages
 uv run --with playwright python scripts/headed_check.py --deep-pages \
