@@ -240,6 +240,25 @@ def test_lookup_reads_documented_fields():
     assert rec["asn"] == "AS701" and "Verizon" in rec["provider"]
 
 
+def test_lookup_all_reads_both_families_and_records_a_missing_one():
+    def get_for(fam):
+        if fam == "ipv4":
+            return fake_ripestat(*HOME_NET)
+        def no_v6(url):
+            raise OSError("no IPv6 address for stat.ripe.net")
+        return no_v6
+    rec = nr.lookup_all(get=fake_ripestat(*HOME_NET), get_for=get_for, now=lambda: "t0")
+    assert rec["asn"] == "AS701" and set(rec["by_family"]) == {"ipv4", "ipv6"}
+    assert rec["by_family"]["ipv4"]["public_ip"] == HOME_NET[0]
+    v6 = rec["by_family"]["ipv6"]
+    assert v6["public_ip"] is None and "no IPv6" in v6["error"]
+    # a "forced IPv6" reading that answers from an IPv4 address is an error, not an IPv6 address
+    rec = nr.lookup_all(get=fake_ripestat(*HOME_NET), get_for=lambda fam: fake_ripestat(*HOME_NET))
+    v6 = rec["by_family"]["ipv6"]
+    assert v6["public_ip"] is None and v6["seen_ip"] == HOME_NET[0] and "answered from" in v6["error"]
+    assert rec["by_family"]["ipv4"]["public_ip"] == HOME_NET[0]
+
+
 def test_lookup_failure_is_recorded_never_guessed():
     rec = nr.lookup(get=fake_ripestat(*OFFICE, fail_at="network-info"))
     assert rec["public_ip"] == OFFICE[0] and rec["asn"] is None and rec["provider"] is None
