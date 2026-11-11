@@ -10,7 +10,8 @@ tags: [ai-readability, method, robots, llms-txt, registry]
 # AI-readability test catalog — v0.2 (draft)
 
 - **Report generated:** 2026-11-06
-- **Last revised:** 2026-11-10 (catalog 0.2: crawler list, C1, D2–D7; issues #43, #44)
+- **Last revised:** 2026-11-10 (catalog 0.2: crawler list, C1, D2–D7; issues #43, #44; deep
+  pages from the address inventory, D2 on pages, issue #45)
 - **Data current as of:** vendor crawler docs and IETF drafts read 2026-11-06; data-endpoint
   specs and the network-lookup docs read 2026-11-10 (see § Sources)
 - **Status:** proposal. Nothing in this catalog has been run against any host yet. Running it
@@ -88,7 +89,9 @@ sent once. Each page's owner names and registry ids come from the source records
 guessed one. **What runs per page:** the Tier B identities (`research_betanyc`, `claudebot`,
 `mechanism_probe_chrome`), one GET of the page each, and only the page-level tests `W3` (the page's
 own path against its host's robots.txt), `W4` per identity and the all-AI aggregate, `R1`, `R3`,
-`I1–I4` (I4 against every name the sources give the page), `F1`, `F2`, `D1`, `P1–P4`. robots.txt
+`I1–I4` (I4 against every name the sources give the page), `F1`, `F2`, `D1`, `D2` (the data and
+API links on the page itself, from the body already fetched: no extra request; added 2026-11-10,
+issue #45), `P1–P4`. robots.txt
 is fetched **once per page host per run** and shared by its pages; llms.txt, the sitemap, the 404
 probe and the `http://` check stay with the host run. Rows carry `scope: "page"` and `page_url`
 (host rows are unchanged). **Requests:** one robots.txt per distinct page host + pages × 3,
@@ -107,6 +110,50 @@ a person to try by hand; it is never clicked and never retried. A page the serve
 (404 or 410) is a dead registry link, not a block: it is recorded as `not_found` and listed in
 `pages_not_found.txt`. Both lists are written even when empty. Results stay in the git-ignored
 run folder.
+
+**Every section (`--pages-from addresses`, issue #45).** Sections get the same scan as sites. With
+`--pages-from addresses` (it implies `--deep-pages`) the page list is
+`data/ai-readability/addresses.csv` (or `--targets-file` in that layout): every address whose
+path is not its host's root and that the host run does not read as its own job. That is every
+`section`, plus a `data portal` or `API` that sits on a path. The host run reads one address per
+host (`plan_targets()`: a data portal or main site first, else the first sub-site, API or
+section), so an address it picks to stand for its host, and any homepage, are left to it. The
+same rules as above apply: `page-corrections.csv` (`gone` skipped; `moved` probed at `moved_to`
+and recorded as `moved_from`, also when the inventory already lists the new address), and a page
+listed twice (`www.` and a trailing `/` ignored) is sent once. The owner is the address's own
+`owning_body_id` and `owning_body` (several joined with `; `); a blank owner stays blank. Each
+page is paced on the host run's job host for its host, `www.` ignored (when both forms have a
+job, the `www.` one), so `nyc.gov/...` shares the `www.nyc.gov` clock and governor; a page on a
+host with no job paces on its own. `--deep-pages-extra` is refused here: the inventory already
+lists those pages. Rows also carry `kind` and, for a moved page, `moved_from`.
+On 2026-11-10 this gives 535 pages (534 sections, 1 data portal on a path) on 179 hosts.
+
+**Which names (`--page-identities`).** `tierb` (default, so older commands send the same three) or
+`full`: every identity a `--tier full` host run sends, from `crawlers.csv` through the same loader
+(`--crawlers` works here too) and the same pre-run guard; a page then gets W4 per crawler name,
+as a site does. Requests: one robots.txt per page host + pages × identities, before retries.
+With `full` on 2026-11-10: 24 identities, ≈13,020 requests, and `www.nyc.gov` alone carries
+3,961 of them, so the run takes at least 33 h at its 30-second floor whatever the worker count.
+
+**Dry run and record.** `--dry-run` prints pages, hosts, identities, requests, pages by kind,
+moved pages, an hours estimate (all requests at the global pace across workers, or the busiest
+host's floor, whichever is longer), the busiest host with its floor, and the 15 busiest hosts.
+A page run writes the same network record as a host run (`run.json` → `network`, start and end,
+IPv4 and IPv6), plus `pages_from` and `page_identities`. Without `--run-dir`, a page run's folder
+is `<YYYY-MM-DD>-<vantage>-pages/`, so it can never resume into the same day's host run.
+
+```
+python3 scripts/probe_bot_access.py --pages-from addresses --page-identities full --dry-run
+python3 scripts/probe_bot_access.py --pages-from addresses --page-identities full \
+    --vantage office --machine office
+```
+
+**One row per page.** `ai_readability_export.py --run-dir <page run>` (no `--targets-file`)
+sees `mode: deep_pages` in `run.json` and writes `pages.csv` / `pages.json`: one row per page, the
+host file's columns in the same order, then `ai_scope` (`page`), `page_url` and `ny_moved_from`.
+Host-level tests (W1, W2, W6, M*, F3, F4, I5, C1, D3–D7) stay blank; `initial_url` is the page,
+`agency` / `ny_owning_body` its owner, `ny_entity_ids` the page's bodies, and `ai_w3_decisions`
+is read at the page's own path.
 
 ## Identities (who we say we are)
 
@@ -371,8 +418,8 @@ goes on.
 **What it reads (0.2).** Targets: `--targets-file`, else `data/ai-readability/addresses.csv`
 (issue #41: address, owning body, kind, level or entity_type, source, date found, notes; optional
 `platform` and `cms`), else `websites.json`. One job per host; a host's homepage is read from its
-`data portal` or `main site` address before a sub-site, API or section. Sections on a shared host
-are scored page by page with `--deep-pages`. Crawlers: `--crawlers`, else
+`data portal` or `main site` address before a sub-site, API or section. Every other section,
+and a portal or API on a path, is scored page by page with `--pages-from addresses` (§ Deep pages). Crawlers: `--crawlers`, else
 `data/ai-readability/crawlers.csv`.
 
 **Pre-run guard (0.2).** The run refuses to start, and prints why, when crawlers.csv fails its own

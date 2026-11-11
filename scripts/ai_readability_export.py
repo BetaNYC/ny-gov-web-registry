@@ -34,9 +34,16 @@ CATALOG 0.2 (issue #45)
   - `--only-run-hosts`: only the hosts the run visited. A flag, not a default: run.json does not
     record `--only-hosts`.
 
+PAGE RUNS (--deep-pages, issue #45)
+  When run.json says `mode: deep_pages`, the export writes pages.csv / pages.json instead: one
+  row per page, the host file's columns in the same order (host-level tests blank), then
+  `ai_scope` (`page`), `page_url` and `ny_moved_from`. No --targets-file: every row of a page
+  run carries its page, owner, kind and moved_from.
+
 Run:
   python scripts/ai_readability_export.py --run-dir data/ai-readability/runs/<run-id> \
       --targets-file data/ai-readability/addresses.csv [--only-run-hosts] [--out-dir <dir>]
+  python scripts/ai_readability_export.py --run-dir data/ai-readability/runs/<run-id>-pages
   python scripts/ai_readability_export.py --write-dictionary
 """
 
@@ -239,7 +246,7 @@ def _w3_decisions(h):
     toks = h.ev("W3", "tokens") or {}
     out = []
     for tok, paths in sorted(toks.items()):
-        p = paths.get("/")
+        p = paths.get(h.t.get("w3_path") or "/")     # a page row: the page's own path
         d = p.get("decision") if isinstance(p, dict) else p   # short form: {"/": "disallow"}
         if d:
             out.append("{}={}".format(tok, d))
@@ -818,6 +825,26 @@ def _ours(identities=IDENTITIES):
 
 
 
+# Page exports only (a --deep-pages run, issue #45): written after every other column, so a page
+# file has the host file's columns, in the same order, then these.
+PAGE_FIELDS = [
+    ("ai_scope", "AI - Scope", "Whether the row is a website or one page on it",
+     "Always `page` in `pages.csv`: the row scores one page (a section, or a data portal or API "
+     "on a path), not its host. Host-level fields (W1, W2, W6, M*, F3, F4, I5, C1, D3–D7) are "
+     "blank: they stay with the host run. In a page row `initial_url` is the page, `name` and "
+     "`initial_domain` its host, `agency` and `ny_owning_body` its owner from the page list, "
+     "`ny_entity_ids` the bodies that list names for the page, and `ai_w3_decisions` read at the "
+     "page's own path.", "(page)", T, lambda h: "page"),
+    ("page_url", "Page URL", "The page the row scores",
+     "The URL each identity requested. For a moved page, the new address (`ny_moved_from` keeps "
+     "the listed one).", "(page)", T, lambda h: h.t.get("url")),
+    ("ny_moved_from", "NY - Moved From", "The listed address of a page that moved",
+     "From `data/ai-readability/page-corrections.csv` (checked by hand): the address the list gave "
+     "before the page moved. Blank for a page at its listed address.", "(page)", T,
+     lambda h: h.t.get("moved_from")),
+]
+
+
 def gsa_dictionary(path=GSA_DICT) -> list:
     with open(path, newline="", encoding="utf-8") as fh:
         return list(csv.DictReader(fh))
@@ -930,6 +957,53 @@ def build_rows(targets, results, v1_rows, review_rows, psl, gsa=None, tenants=No
     return out
 
 
+def page_targets(results) -> list:
+    """One target per page of a --deep-pages run, from its own rows (the run records the page,
+    its owner, kind and moved_from on every row, so no target list is needed)."""
+    out = {}
+    for r in results:
+        if r.get("scope") != "page" or r.get("page_url") in out:
+            continue
+        u = urllib.parse.urlparse(r["page_url"])
+        out[r["page_url"]] = {
+            "url": r["page_url"], "entity_id": r.get("entity_id"),
+            "entity_ids": r.get("entity_ids") or [], "entity_name": r.get("entity_name"),
+            "kind": r.get("kind"), "moved_from": r.get("moved_from"), "source": r.get("source"),
+            "w3_path": (u.path or "/") + ("?" + u.query if u.query else "")}
+    return sorted(out.values(), key=lambda t: t["url"])
+
+
+def build_page_rows(results, review_rows, psl, gsa=None, run=None) -> list:
+    """pages.csv rows: one per page of a --deep-pages run, in the host file's column style. Every
+    extractor reads the page's own rows; host-level tests are absent, so their columns are blank."""
+    gsa = gsa or gsa_dictionary()
+    run = run or {}
+    fields = _ours(run_identities(run)) + PAGE_FIELDS
+    by_page, rev_by_page = {}, {}
+    for r in results:
+        if r.get("scope") == "page":
+            by_page.setdefault(r["page_url"], []).append(r)
+    for r in review_rows:
+        if r.get("scope") == "page":
+            rev_by_page.setdefault(r.get("page_url"), []).append(r)
+    out = []
+    for t in page_targets(results):
+        h = Host(t, by_page.get(t["url"], []), {}, rev_by_page.get(t["url"], []), psl,
+                 t.get("entity_ids") or (), run=run)
+        row = {}
+        for g in gsa:
+            fid = g["field id"]
+            row[fid] = GSA_FILLED[fid][2](h) if fid in GSA_FILLED else None
+        for fid, *_rest, fn in fields:
+            row[fid] = fn(h)
+        out.append(row)
+    return out
+
+
+def page_columns(gsa=None, identities=IDENTITIES) -> list:
+    return columns(gsa, identities) + [f[0] for f in PAGE_FIELDS]
+
+
 def csv_value(v):
     if v is None:
         return ""
@@ -940,13 +1014,13 @@ def csv_value(v):
     return str(v)
 
 
-def write_outputs(rows, run_dir: pathlib.Path, cols) -> None:
-    with open(run_dir / "sites.csv", "w", newline="", encoding="utf-8") as fh:
+def write_outputs(rows, run_dir: pathlib.Path, cols, stem: str = "sites") -> None:
+    with open(run_dir / "{}.csv".format(stem), "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
         w.writerow(cols)
         for r in rows:
             w.writerow([csv_value(r.get(c)) for c in cols])
-    (run_dir / "sites.json").write_text(
+    (run_dir / "{}.json".format(stem)).write_text(
         json.dumps([{c: r.get(c) for c in cols} for r in rows], indent=1, ensure_ascii=False) + "\n",
         encoding="utf-8")
 
@@ -973,7 +1047,7 @@ def dictionary_rows(gsa=None, identities=None) -> list:
         rows.append({"name": g["name"], "field id": fid, "description": g["description"],
                      "description - details": details, "relevant_scan": scan,
                      "data type": g["data type"], "queryable": "No"})
-    for fid, name, desc, details, scan, dtype, _ in _ours(identities):
+    for fid, name, desc, details, scan, dtype, _ in _ours(identities) + PAGE_FIELDS:
         rows.append({"name": name, "field id": fid, "description": desc,
                      "description - details": details, "relevant_scan": scan,
                      "data type": dtype, "queryable": "No"})
@@ -1011,14 +1085,25 @@ def main(argv=None) -> int:
     if a.write_dictionary:
         print("wrote", write_dictionary())
         return 0
+    run_dir = pathlib.Path(a.run_dir) if a.run_dir else None
+    run = json.loads((run_dir / "run.json").read_text(encoding="utf-8")) \
+        if run_dir and (run_dir / "run.json").exists() else {}
+    if run_dir and run.get("mode") == "deep_pages":   # a page run: pages.csv, no target list
+        gsa = gsa_dictionary()
+        rows = build_page_rows(_jsonl(run_dir / "results.jsonl"), _jsonl(run_dir / "review.jsonl"),
+                               load_psl(), gsa, run)
+        cols = page_columns(gsa, run_identities(run))
+        out_dir = pathlib.Path(a.out_dir) if a.out_dir else run_dir
+        out_dir.mkdir(parents=True, exist_ok=True)
+        write_outputs(rows, out_dir, cols, stem="pages")
+        print("wrote {} page rows x {} columns to {}/pages.csv and pages.json".format(
+            len(rows), len(cols), out_dir))
+        return 0
     if not (a.run_dir and a.targets_file):
         ap.error("--run-dir and --targets-file are required (or use --write-dictionary)")
-    run_dir = pathlib.Path(a.run_dir)
     targets = load_targets(a.targets_file)
     gsa = gsa_dictionary()
     results = _jsonl(run_dir / "results.jsonl")
-    run = json.loads((run_dir / "run.json").read_text(encoding="utf-8")) \
-        if (run_dir / "run.json").exists() else {}
     if a.only_run_hosts:
         visited = run_hosts(results)
         targets = [t for t in targets if urllib.parse.urlparse(t["url"]).hostname in visited]
