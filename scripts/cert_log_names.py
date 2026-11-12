@@ -82,6 +82,9 @@ INFRA_LABELS = (
     "ftp", "sftp", "ns", "dns", "adfs", "sts", "mdm", "localhost", "login", "signin", "sso",
     "dev", "test", "testing", "stage", "staging", "uat", "qa", "sandbox", "demo",
     "click", "track", "trk", "links", "mta-sts", "_dmarc", "_domainkey",
+    # Staff-only back offices: a site editor's login, an intranet, an employee portal. The study
+    # asks what a New Yorker can reach, so these are not scanned (Noel, 2026-11-12).
+    "admin", "backend", "cms", "intranet", "staff", "employee", "manage",
 )
 _INFRA = re.compile(r"^(?:{})(?:\d+|-.*)?$".format("|".join(map(re.escape, INFRA_LABELS))))
 

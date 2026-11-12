@@ -91,10 +91,10 @@ Built 2026-11-10; certificate logs added 2026-11-12. Counted by first source.
 | data portal registry | 95 |
 | linked from fetched files | 6 |
 | BetaNYC contact files | 11 |
-| certificate logs | 1,868 |
-| **Total** | **5,832** |
+| certificate logs | 1,852 |
+| **Total** | **5,816** |
 
-By kind: main site 3,178 · sub-site 2,004 · section 552 · data portal 90 · API 8.
+By kind: main site 3,178 · sub-site 1,988 · section 552 · data portal 90 · API 8.
 
 `python3 scripts/address_inventory.py` prints both counts.
 
@@ -139,7 +139,9 @@ fails is recorded and skipped. Raw answers are cached outside git, so a rerun ne
   `globalprotect`, `cpanel`, `whm`, `webdisk`, `cpcalendars`, `cpcontacts`, `webmin`, `plesk`,
   `ftp`, `sftp`, `ns`, `dns`, `adfs`, `sts`, `mdm`, `localhost`, `login`, `signin`, `sso`,
   `dev`, `test`, `testing`, `stage`, `staging`, `uat`, `qa`, `sandbox`, `demo`, `click`,
-  `track`, `trk`, `links`, `mta-sts`, `_dmarc`, `_domainkey`; and no label contains `staging`;
+  `track`, `trk`, `links`, `mta-sts`, `_dmarc`, `_domainkey`, and the staff-only back offices
+  `admin`, `backend`, `cms`, `intranet`, `staff`, `employee`, `manage` (the study asks what a New
+  Yorker can reach; Noel, 2026-11-12); and no label contains `staging`;
 - it is not already a host in `websites.json`.
 
 **The answer.** Each name gets **one** GET to `https://<name>/` with the honest research user
@@ -161,7 +163,8 @@ government service. On 2026-11-11, 116 `link.<domain>` names pointed at `track.s
 served SMTP2GO's own page. The test is the DNS name, not the label, so `link.cdta.org` stays.
 
 **First run (2026-11-10 to 11-12):** 2,961 domains queried, 0 failed after the 404 retry;
-1,935 names listed, 1,868 of them new to `addresses.csv`. The answers stay outside git; only the listed address is published.
+1,918 names listed, 1,852 of them new to `addresses.csv` (17 staff-only names left out on
+2026-11-12). The answers stay outside git; only the listed address is published.
 
 ```
 nohup python3 scripts/cert_log_names.py >> ~/tmp/g1-crtsh/run.log 2>&1 &
