@@ -92,6 +92,12 @@ VENDOR_DOMAINS = frozenset({
     "ecode360.com", "municode.com", "google.com", "blogspot.com", "weebly.com",
 })
 
+# Email click-tracking services. A name whose DNS points at one of these (CNAME, read at export)
+# is a mail vendor's link redirector, not a government service: on 2026-11-11, 116 `link.<town>`
+# names pointed at track.smtp2go.net and served SMTP2GO's own page. Matched on the canonical name
+# DNS returns, so `link.cdta.org` (a CDTA service) and other `link.` names stay.
+EMAIL_TRACKING_DOMAINS = ("smtp2go.net",)
+
 ACCEPT_TYPES = ("text/html", "application/xhtml+xml", "application/json", "application/xml",
                 "text/xml", "application/geo+json", "application/vnd.api+json")
 
@@ -147,6 +153,20 @@ def is_infra(name: str, domain: str) -> bool:
     return any(_INFRA.match(l) or "staging" in l for l in labels)
 
 
+def is_email_tracker(canonical: str | None) -> bool:
+    """True when DNS's canonical name for a host is under an EMAIL_TRACKING_DOMAINS entry."""
+    c = (canonical or "").lower().rstrip(".")
+    return any(c == d or c.endswith("." + d) for d in EMAIL_TRACKING_DOMAINS)
+
+
+def canonical_name(host: str) -> str | None:
+    """The name DNS gives after following CNAMEs, or None when it does not resolve."""
+    try:
+        return socket.gethostbyname_ex(host)[0]
+    except OSError:
+        return None
+
+
 def accept(status: int, content_type: str | None, location: str | None, name: str):
     """(kept, why). Kept: an HTML or API answer (2xx, or 401/403, which still serve a page), or a
     redirect that stays on the same host. Dropped: no answer, an error status, a redirect to
@@ -189,7 +209,9 @@ def query_crtsh(domain: str):
             return data, True
         except urllib.error.HTTPError as e:
             last = "HTTP {}".format(e.code)
-            if e.code != 429 and e.code < 500:
+            # crt.sh also answers 404 when it is overloaded: on 2026-11-11, 187 domains got a 404
+            # and the same query answered 200 with certificates minutes later. Retry it like a 5xx.
+            if e.code not in (404, 429) and e.code < 500:
                 break
         except (urllib.error.URLError, socket.timeout, TimeoutError, ConnectionError,
                 http.client.HTTPException, json.JSONDecodeError, ssl.SSLError) as e:
@@ -294,12 +316,15 @@ def export(path) -> int:
         r = json.loads(l)
         if r.get("kept") and not is_infra(r["name"], r["domain"]):
             best.setdefault(r["name"], (r["domain"], r["ts"][:10]))
+    trackers = sorted(n for n in best if is_email_tracker(canonical_name(n)))
+    for n in trackers:
+        del best[n]
     with open(path, "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
         w.writerow(["address", "registered_domain", "found"])
         for n in sorted(best):
             w.writerow(["https://{}/".format(n), best[n][0], best[n][1]])
-    print("wrote {} names to {}".format(len(best), path))
+    print("wrote {} names to {} ({} email click-tracking names left out)".format(len(best), path, len(trackers)))
     return 0
 
 
