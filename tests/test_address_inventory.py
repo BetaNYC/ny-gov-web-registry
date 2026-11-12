@@ -256,3 +256,39 @@ def test_platform_column_only_for_portal_registry_rows():
     assert with_platform and all("data portal registry" in r["source"] for r in with_platform)
     nyc = [r for r in rows if r["address"].rstrip("/") == "https://data.cityofnewyork.us"]
     assert nyc and nyc[0]["platform"].lower().startswith("socrata")
+
+
+def test_cert_log_email_trackers_are_found_by_dns_name_not_label():
+    assert cl.is_email_tracker("track.smtp2go.net")
+    assert cl.is_email_tracker("TRACK.SMTP2GO.NET.")
+    assert not cl.is_email_tracker("home.cdta-prod.gfcp.io")
+    assert not cl.is_email_tracker("notsmtp2go.net")
+    assert not cl.is_email_tracker(None)
+
+
+def test_cert_log_retries_a_crtsh_404(tmp_path, monkeypatch):
+    import io
+    import urllib.error
+    (tmp_path / "raw").mkdir()
+    monkeypatch.setattr(cl, "CACHE", tmp_path)
+    monkeypatch.setattr(cl, "BACKOFF_S", (0.01,))
+    monkeypatch.setattr(cl.time, "sleep", lambda s: None)
+    calls = []
+
+    class Resp(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    def fake_urlopen(req, timeout=None):
+        calls.append(req.full_url)
+        if len(calls) == 1:
+            raise urllib.error.HTTPError(req.full_url, 404, "Not Found", {}, None)
+        return Resp(b'[{"name_value": "a.example.gov"}]')
+
+    monkeypatch.setattr(cl.urllib.request, "urlopen", fake_urlopen)
+    data, fresh = cl.query_crtsh("example.gov")
+    assert len(calls) == 2 and data == [{"name_value": "a.example.gov"}]
+    assert not (tmp_path / "failed.jsonl").exists()

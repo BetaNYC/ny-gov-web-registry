@@ -82,7 +82,7 @@ row takes the portal's kind and adds its `entity_type`.
 
 ## Count of addresses per source
 
-Built 2026-11-10. Counted by first source.
+Built 2026-11-10; certificate logs added 2026-11-12. Counted by first source.
 
 | Source | Addresses |
 |---|---|
@@ -91,10 +91,10 @@ Built 2026-11-10. Counted by first source.
 | data portal registry | 95 |
 | linked from fetched files | 6 |
 | BetaNYC contact files | 11 |
-| certificate logs | pending (second PR) |
-| **Total** | **3,964** |
+| certificate logs | 1,868 |
+| **Total** | **5,832** |
 
-By kind: main site 3,178 · sub-site 136 · section 552 · data portal 90 · API 8.
+By kind: main site 3,178 · sub-site 2,004 · section 552 · data portal 90 · API 8.
 
 `python3 scripts/address_inventory.py` prints both counts.
 
@@ -122,7 +122,9 @@ when the body owns it: a `.gov` or `.ny.us` domain, or a host that is the domain
 legistar.com and the others in `VENDOR_DOMAINS`) and non-government portals are never queried.
 
 **One query per domain** to `https://crt.sh/?q=%25.<domain>&output=json`, at least 6 seconds
-apart, backing off (30, 90, 240, 600 seconds) on 429, 5xx and timeouts. A domain that still
+apart, backing off (30, 90, 240, 600 seconds) on 404, 429, 5xx and timeouts. crt.sh answers 404
+when it is overloaded: on the first pass (2026-11-11) 187 domains got one, and the same queries
+answered with certificates the next morning, so 404 is retried too. A domain that still
 fails is recorded and skipped. Raw answers are cached outside git, so a rerun never asks twice.
 
 **The filter.** A name is kept for checking only when:
@@ -151,7 +153,15 @@ listed when it answers:
 
 It is dropped when it does not answer (no DNS, refused, timeout, a TLS error), answers with
 another status, redirects to another host (an alias of an address listed elsewhere), or serves
-another content type. The answers stay outside git; only the listed address is published.
+another content type.
+
+**Email click-trackers are left out at export.** A name whose DNS points (CNAME) at an email
+click-tracking service in `EMAIL_TRACKING_DOMAINS` is a mail vendor's link redirector, not a
+government service. On 2026-11-11, 116 `link.<domain>` names pointed at `track.smtp2go.net` and
+served SMTP2GO's own page. The test is the DNS name, not the label, so `link.cdta.org` stays.
+
+**First run (2026-11-10 to 11-12):** 2,961 domains queried, 0 failed after the 404 retry;
+1,935 names listed, 1,868 of them new to `addresses.csv`. The answers stay outside git; only the listed address is published.
 
 ```
 nohup python3 scripts/cert_log_names.py >> ~/tmp/g1-crtsh/run.log 2>&1 &
