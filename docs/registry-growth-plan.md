@@ -3,14 +3,14 @@ title: Growing the registry statewide (plan; steps 1–2 done)
 created: 2026-11-06
 type: plan
 status: active
-updated: 2026-11-06
+updated: 2026-11-13
 tags: [registry, nys, counties, municipalities, plan]
 ---
 
 # Growing the registry statewide — plan
 
 - **Report generated:** 2026-11-06
-- **Last revised:** 2026-11-06 (steps 1–2 minted)
+- **Last revised:** 2026-11-13 (steps 3–6: sync scripts built, not minted; the GIS read failed)
 - **Status:** steps 1 and 2 approved by Noel on 2026-11-06 and **minted the same day** (issue #24,
   epic #28): 53 state agencies, 138 new authorities, 18 existing entities enriched from their ABO
   row. Steps 3–6 are still a plan: no entity is minted until the operator approves. Source facts and
@@ -30,6 +30,30 @@ and a disagreeing ABO host goes to review. Rule 2 still governs steps 3–6.
 
 **New provenance values.** `state_listing` and `nygov_contacts` (item 2 of "Schema changes" below
 proposed `nygov_contacts`; `state_listing` is new). No `government_level` value was added.
+
+## Status of steps 3–6 (2026-11-13)
+
+Issue #23 (epic #58) built the pipeline: `scripts/sync_dotgov.py`, `scripts/sync_nys_localities.py`
+and `scripts/extract_osc_entities.py`, the schema values below, and the three new schemes in
+[`schemes.md`](schemes.md). The OSC read succeeded (57 / 62 / 933 / 532, matching the counts
+here). **The GIS read failed**: on 2026-11-13 the NYS Civil Boundaries service answered every
+request with an error ("service not started"). GIS is the spine, so **nothing is minted** until
+that read succeeds (`data/ai-readability/sources/2026-11-13/README.md` has the attempts and the
+query to run). Two choices made while building, for review:
+
+- **Census areas:** counties get `county` and towns `county_subdivision`. Cities and villages get
+  none for now: a place GEOID is 7 digits, but the GIS gives a 10-digit (cities) and a 15-digit
+  (villages) `FIPS_CODE`, and the source does not say how a place code is derived from them.
+- **Path-only presences** (a town's page on its county's site) are proposed in the review file
+  rather than applied to `url_conventions[]`, because every such lead is single-source (rule 3).
+
+**Open question answered (item 1 below):** no consumer outside this repo reads
+`government_level`. The archiver (`ny-gov-web-archiver/src/ny_gov_web_archiver/registry_input.py`)
+reads entity ids and domains only; `ny-data-registry-mcp` reads only `registry_id` cross-links;
+`grounding-ai-with-ny-open-data` does not read the registry. Inside this repo,
+`sync_greenbook.py` and `reconcile.py` compare levels for equality (a new value simply never
+matches `nyc`), and `ai_readability_websites.py` and `address_inventory.py` pass the value through
+as text. None enumerates the allowed values.
 
 ## Today
 

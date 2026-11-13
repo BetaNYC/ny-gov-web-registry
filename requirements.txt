@@ -8,6 +8,10 @@ requests>=2.31,<3
 # Offline validation (tests validate the seed/migration/build against schema/property.schema.json).
 jsonschema>=4.21,<5
 
+# Reads OSC's entity-tables.xls (legacy .xls; openpyxl cannot read it) in
+# scripts/extract_osc_entities.py only. Cell values only; xlrd never runs macros.
+xlrd>=2.0.1,<3
+
 # Test runner (offline suite in tests/).
 pytest>=8,<9
 

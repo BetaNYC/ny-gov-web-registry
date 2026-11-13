@@ -49,7 +49,9 @@ Every fact traces to a named source; identifiers are only ever filled when verif
 | **Agency Contacts** (`kjw8-pupa`) | The Governor's office list of 79 agencies: a second source for agency names and contact-page hosts (contact names are not used) | [data.ny.gov](https://data.ny.gov/d/kjw8-pupa) |
 | **A state agency listing** | 307 New York State websites and the agency that runs each — the state agency sites under `ny.gov` that no public list carries. Seeds the state agencies' web properties in the registry and the [website list](data/ai-readability/websites.csv) (domain, URL and agency kept; nothing else) | Private (shared with BetaNYC; no public link) |
 | **CISA .gov domain list** | Every registered `.gov` domain; the 1,451 New York rows seed the [website list](data/ai-readability/websites.csv) | [github.com/cisagov/dotgov-data](https://github.com/cisagov/dotgov-data) |
-| **NYS ITS Locality Hierarchy with Websites** (`55k6-h6qq`) | Websites of counties, cities, towns and villages (last updated 2023, partly stale) | [data.ny.gov](https://data.ny.gov/d/55k6-h6qq) |
+| **NYS ITS Locality Hierarchy with Websites** (`55k6-h6qq`) | Websites of counties, cities, towns and villages (last updated 2023, partly stale); one of the website leads for the counties, cities, towns and villages | [data.ny.gov](https://data.ny.gov/d/55k6-h6qq) |
+| **NYS Civil Boundaries** (GIS) | Who the counties, cities, towns and villages are, with their SWIS, GNIS and Census codes: the spine for the next batch (sync built 2026-11-13, issue #23; not minted yet) | [ArcGIS REST service](https://gisservices.its.ny.gov/arcgis/rest/services/NYS_Civil_Boundaries/FeatureServer) |
+| **OSC Local Government Entities** | The State Comptroller's list of every local government; the cross-check and municipal code for the same batch | [osc.ny.gov](https://web.osc.state.ny.us/localgov/web-entity-map/) |
 | **Wikidata** | QIDs linking entities into linked open data (attached only via verified domain matches, with a place-vs-organization guard) | [wikidata.org](https://www.wikidata.org) |
 | **IRS EIN / tax-exempt data** | Identifier scheme reserved for `.org` public benefit corporations | [IRS Tax Exempt Organization Search](https://apps.irs.gov/app/eos/) |
 | **NYC Boundaries Map** | The district-layer vocabulary that `areas[]` points into | [boundaries.beta.nyc](https://boundaries.beta.nyc) · [repo](https://github.com/BetaNYC/nyc-boundaries) |
@@ -77,7 +79,7 @@ data/registry.json        # 567 entities
 data/descriptions.json    # per-entity self-descriptions + coverage records
 ```
 
-Rebuilding from sources requires Python 3.11+ and [uv](https://docs.astral.sh/uv/): `uv sync`, place the documented exports in `data/cache/` (**no script fetches the network on its own** — sources are operator-gated by design; see [`docs/sources.md`](docs/sources.md)), run the `sync_*` scripts, then `python scripts/build_registry.py`. The offline test suite (`pytest`, 328 tests) never touches the network.
+Rebuilding from sources requires Python 3.11+ and [uv](https://docs.astral.sh/uv/): `uv sync`, place the documented exports in `data/cache/` (**no script fetches the network on its own** — sources are operator-gated by design; see [`docs/sources.md`](docs/sources.md)), run the `sync_*` scripts, then `python scripts/build_registry.py`. The offline test suite (`pytest`, 471 tests) never touches the network.
 
 Two artifacts invite human eyes: the [description review queue](docs/description-review-queue.md) (agencies whose about page needs a human to find) and the [site anomalies log](docs/site-anomalies.md) (defects we noticed on live government sites — including three Lorem-ipsum placeholder pages).
 
