@@ -8,14 +8,17 @@ tags: [registry, sources, snapshot, nys, localities]
 
 # Source snapshots, 2026-11-13
 
-Inputs to `scripts/sync_nys_localities.py` (issue #23, epic #58): the counties, cities, towns and
-villages of New York. Each read was authorized by Noel for 2026-11-13, once each. All requests
+Inputs to `scripts/sync_nys_localities.py` and `scripts/qa_localities.py` (issues #23 and #25,
+epic #58): the counties, cities, towns and villages of New York. Each read was authorized by Noel
+for 2026-11-13, once each. The localities were minted from the OSC extract (the GIS read below
+failed). All requests
 sent the User-Agent `BetaNYC-registry-research/1.0` from the `office` machine. Copies of these
 files go in `data/cache/`, which the sync scripts read; nothing here is fetched by a script.
 
 | File | Source |
 |---|---|
 | `osc-entity-tables-general-purpose.json` | OSC Local Government Entities, `entity-tables.xls`: the Counties, Cities, Towns and Villages sheets and the general-purpose rows of the Summary Table, extracted by `scripts/extract_osc_entities.py`. Copy to `data/cache/osc_entity_tables.json` |
+| `census-population-sxhg-qquj.json` | data.ny.gov `sxhg-qquj`, "Census 2010 and 2020 Population: Region, Counties, Cities, Towns, Villages": the raw SODA response, all 1,599 rows. Read by `scripts/qa_localities.py` from here (a name check; no codes). Copy also in `data/cache/census_population_sxhg-qquj.json` |
 | `grounding-ny-data-portal-registry-localities.json` | The 119 city and county rows of BetaNYC's NY data portal registry (`resources/ny-data-portal-registry.json` in [BetaNYC/grounding-ai-with-ny-open-data](https://github.com/BetaNYC/grounding-ai-with-ny-open-data) at `6106598`, the merge of PR #35). Fields kept: entity, entity_type, region, url, status, platform, last_verified. Copy to `data/cache/grounding_ny_data_portal_localities.json` |
 
 Also used, from the 2026-11-06 folder (not refetched): `its-locality-websites-55k6-h6qq.json`
@@ -39,6 +42,18 @@ Also used, from the 2026-11-06 folder (not refetched): `its-locality-websites-55
   python scripts/extract_osc_entities.py --fetched <UTC time> --last-modified "<header>" \
       --out data/cache/osc_entity_tables.json
   ```
+
+## Census population list (`sxhg-qquj`)
+
+- **URL:** `https://data.ny.gov/resource/sxhg-qquj.json?$limit=5000&$offset=0&$order=:id` (SODA;
+  `$limit`/`$offset` per https://dev.socrata.com/docs/queries/limit and
+  https://dev.socrata.com/docs/queries/offset). 1,599 rows came back, under the 5,000 limit, so
+  one page was the whole dataset.
+- **Fetched:** 2026-11-14T00:34:13Z (7:34 pm ET on 2026-11-13), one GET, HTTP 200, 291,787 bytes.
+  Response headers: `X-SODA2-Fields` `area_type, area_name, _2010_census_population,
+  _2020_census_population, population_change, population_percent_change`;
+  `Last-Modified: Mon, 03 Jan 2022 17:19:28 GMT`.
+- **Rows by `area_type`:** State 1, REDC 10, County 62, City 61, Town 930, Village 535.
 
 ## NYS Civil Boundaries GIS: not read (service down)
 

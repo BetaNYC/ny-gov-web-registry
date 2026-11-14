@@ -4,13 +4,13 @@
 
 Built and stewarded by [BetaNYC](https://beta.nyc). Free to use, reuse, and build on — with credit, and with improvements shared back (see [License](#license)).
 
-> 🚧 **Work in progress.** The registry is live and usable (567 entities), but coverage is still growing and the schema may evolve. [Issues](../../issues) and contributions welcome.
+> 🚧 **Work in progress.** The registry is live and usable (2,150 entities), but coverage is still growing and the schema may evolve. [Issues](../../issues) and contributions welcome.
 
 ## Why this exists
 
 Not all government lives on `.gov`. The MTA is on `mta.info`, the Economic Development Corporation on `nycedc.com`, Health + Hospitals on `nychealthandhospitals.org`, CUNY on `cuny.edu` — while more than 150 city agencies share `nyc.gov`. Agencies get renamed, merged, and reorganized; their old websites disappear without notice. Anyone who wants to archive government on the web, cite it, monitor it, or simply join two datasets that each spell "Department of Finance" differently first needs an authoritative list of *which entities exist and how to identify them*. No single official source provides that across city government, public authorities, and the web domains they've used over time.
 
-This registry is that list — **567 entities and growing** (New York City, plus, since 2026-11-06, 53 state executive agencies and the 156 state and local public authorities), each carrying its official name and acronym, former names, canonical government identifiers, boundary relationships, web domains, legal context, and (for 207 of them so far) the agency's own self-description, captured verbatim from its website.
+This registry is that list — **2,150 entities and growing** (New York City, plus, since 2026-11-06, 53 state executive agencies and the 156 state and local public authorities, and since 2026-11-13, New York's 57 counties, 61 cities, 933 towns and 532 villages outside NYC), each carrying its official name and acronym, former names, canonical government identifiers, boundary relationships, web domains, legal context, and (for 207 of them so far) the agency's own self-description, captured verbatim from its website.
 
 ## Who it's for
 
@@ -49,9 +49,10 @@ Every fact traces to a named source; identifiers are only ever filled when verif
 | **Agency Contacts** (`kjw8-pupa`) | The Governor's office list of 79 agencies: a second source for agency names and contact-page hosts (contact names are not used) | [data.ny.gov](https://data.ny.gov/d/kjw8-pupa) |
 | **A state agency listing** | 307 New York State websites and the agency that runs each — the state agency sites under `ny.gov` that no public list carries. Seeds the state agencies' web properties in the registry and the [website list](data/ai-readability/websites.csv) (domain, URL and agency kept; nothing else) | Private (shared with BetaNYC; no public link) |
 | **CISA .gov domain list** | Every registered `.gov` domain; the 1,451 New York rows seed the [website list](data/ai-readability/websites.csv) | [github.com/cisagov/dotgov-data](https://github.com/cisagov/dotgov-data) |
-| **NYS ITS Locality Hierarchy with Websites** (`55k6-h6qq`) | Websites of counties, cities, towns and villages (last updated 2023, partly stale); one of the website leads for the counties, cities, towns and villages | [data.ny.gov](https://data.ny.gov/d/55k6-h6qq) |
-| **NYS Civil Boundaries** (GIS) | Who the counties, cities, towns and villages are, with their SWIS, GNIS and Census codes: the spine for the next batch (sync built 2026-11-13, issue #23; not minted yet) | [ArcGIS REST service](https://gisservices.its.ny.gov/arcgis/rest/services/NYS_Civil_Boundaries/FeatureServer) |
-| **OSC Local Government Entities** | The State Comptroller's list of every local government; the cross-check and municipal code for the same batch | [osc.ny.gov](https://web.osc.state.ny.us/localgov/web-entity-map/) |
+| **NYS ITS Locality Hierarchy with Websites** (`55k6-h6qq`) | Websites of counties, cities, towns and villages (last updated 2023, partly stale); the SWIS and GNIS codes and one of the website leads for the counties, cities, towns and villages | [data.ny.gov](https://data.ny.gov/d/55k6-h6qq) |
+| **Census 2010 and 2020 Population** (`sxhg-qquj`) | A name check on every minted county, city, town and village ([QA report](docs/qa/2026-11-13-localities-qa.md)) | [data.ny.gov](https://data.ny.gov/d/sxhg-qquj) |
+| **NYS Civil Boundaries** (GIS) | The planned check on the counties, cities, towns and villages and their SWIS, GNIS and Census codes (the service was down on 2026-11-13; sync path built, issue #23) | [ArcGIS REST service](https://gisservices.its.ny.gov/arcgis/rest/services/NYS_Civil_Boundaries/FeatureServer) |
+| **OSC Local Government Entities** | The State Comptroller's list of every local government: who the 1,583 counties, cities, towns and villages are, with their municipal codes (minted 2026-11-13, issue #25) | [osc.ny.gov](https://web.osc.state.ny.us/localgov/web-entity-map/) |
 | **Wikidata** | QIDs linking entities into linked open data (attached only via verified domain matches, with a place-vs-organization guard) | [wikidata.org](https://www.wikidata.org) |
 | **IRS EIN / tax-exempt data** | Identifier scheme reserved for `.org` public benefit corporations | [IRS Tax Exempt Organization Search](https://apps.irs.gov/app/eos/) |
 | **NYC Boundaries Map** | The district-layer vocabulary that `areas[]` points into | [boundaries.beta.nyc](https://boundaries.beta.nyc) · [repo](https://github.com/BetaNYC/nyc-boundaries) |
@@ -75,7 +76,7 @@ Every fact traces to a named source; identifiers are only ever filled when verif
 Consuming the data is just reading two committed, schema-validated JSON files:
 
 ```
-data/registry.json        # 567 entities
+data/registry.json        # 2,150 entities
 data/descriptions.json    # per-entity self-descriptions + coverage records
 ```
 

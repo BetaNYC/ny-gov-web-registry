@@ -97,6 +97,46 @@
       "id": "36085",
       "county_name": "Richmond County (Staten Island)",
       "justification": "The Staten Island Borough President's footprint is Richmond County. FIPS 36085 (state 36 + county 085)."
+    },
+    {
+      "entity_id": "manhattan-district-attorney-s-office",
+      "scheme": "us_census_geoid",
+      "layer": "county",
+      "id": "36061",
+      "county_name": "New York County (Manhattan)",
+      "justification": "A district attorney is elected county-wide; this office's footprint is Manhattan County. Added 2026-11-13 (issue #25, growth plan § NYC: five counties, no county governments), the same county reference the borough president carries. FIPS 36061."
+    },
+    {
+      "entity_id": "bronx-district-attorney-s-office",
+      "scheme": "us_census_geoid",
+      "layer": "county",
+      "id": "36005",
+      "county_name": "Bronx County (The Bronx)",
+      "justification": "A district attorney is elected county-wide; this office's footprint is Bronx County. Added 2026-11-13 (issue #25, growth plan § NYC: five counties, no county governments), the same county reference the borough president carries. FIPS 36005."
+    },
+    {
+      "entity_id": "brooklyn-district-attorney-s-office",
+      "scheme": "us_census_geoid",
+      "layer": "county",
+      "id": "36047",
+      "county_name": "Kings County (Brooklyn)",
+      "justification": "A district attorney is elected county-wide; this office's footprint is Kings County. Added 2026-11-13 (issue #25, growth plan § NYC: five counties, no county governments), the same county reference the borough president carries. FIPS 36047."
+    },
+    {
+      "entity_id": "queens-district-attorney-s-office",
+      "scheme": "us_census_geoid",
+      "layer": "county",
+      "id": "36081",
+      "county_name": "Queens County (Queens)",
+      "justification": "A district attorney is elected county-wide; this office's footprint is Queens County. Added 2026-11-13 (issue #25, growth plan § NYC: five counties, no county governments), the same county reference the borough president carries. FIPS 36081."
+    },
+    {
+      "entity_id": "staten-island-district-attorney-s-office",
+      "scheme": "us_census_geoid",
+      "layer": "county",
+      "id": "36085",
+      "county_name": "Richmond County (Staten Island)",
+      "justification": "A district attorney is elected county-wide; this office's footprint is Richmond County. Added 2026-11-13 (issue #25, growth plan § NYC: five counties, no county governments), the same county reference the borough president carries. FIPS 36085."
     }
   ],
   "defines_not_operates": [

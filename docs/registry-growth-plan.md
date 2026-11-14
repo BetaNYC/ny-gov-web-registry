@@ -10,7 +10,7 @@ tags: [registry, nys, counties, municipalities, plan]
 # Growing the registry statewide — plan
 
 - **Report generated:** 2026-11-06
-- **Last revised:** 2026-11-13 (steps 3–6: sync scripts built, not minted; the GIS read failed)
+- **Last revised:** 2026-11-13 (steps 3–6 minted from the OSC entity tables; GIS confirmation pending)
 - **Status:** steps 1 and 2 approved by Noel on 2026-11-06 and **minted the same day** (issue #24,
   epic #28): 53 state agencies, 138 new authorities, 18 existing entities enriched from their ABO
   row. Steps 3–6 are still a plan: no entity is minted until the operator approves. Source facts and
@@ -31,21 +31,41 @@ and a disagreeing ABO host goes to review. Rule 2 still governs steps 3–6.
 **New provenance values.** `state_listing` and `nygov_contacts` (item 2 of "Schema changes" below
 proposed `nygov_contacts`; `state_listing` is new). No `government_level` value was added.
 
-## Status of steps 3–6 (2026-11-13)
+## Status of steps 3–6 (2026-11-13): minted
 
-Issue #23 (epic #58) built the pipeline: `scripts/sync_dotgov.py`, `scripts/sync_nys_localities.py`
-and `scripts/extract_osc_entities.py`, the schema values below, and the three new schemes in
-[`schemes.md`](schemes.md). The OSC read succeeded (57 / 62 / 933 / 532, matching the counts
-here). **The GIS read failed**: on 2026-11-13 the NYS Civil Boundaries service answered every
-request with an error ("service not started"). GIS is the spine, so **nothing is minted** until
-that read succeeds (`data/ai-readability/sources/2026-11-13/README.md` has the attempts and the
-query to run). Two choices made while building, for review:
+**Minted 2026-11-13 (issues #23 and #25, epic #58): 57 counties, 61 cities, 933 towns and 532
+villages, 1,583 entities**, for **2,150** in the registry. NYC's five counties and the City of
+New York were not minted; the five district attorneys gained their county `jurisdiction` area.
 
-- **Census areas:** counties get `county` and towns `county_subdivision`. Cities and villages get
-  none for now: a place GEOID is 7 digits, but the GIS gives a 10-digit (cities) and a 15-digit
-  (villages) `FIPS_CODE`, and the source does not say how a place code is derived from them.
+**Spine changed for this mint (Noel, 2026-11-13).** The NYS Civil Boundaries GIS service was down
+all evening ("service not started"), so the spine is the **OSC entity tables** instead of GIS:
+every entity carries its `nys_osc_muni_code`, and its name and id come from OSC. `nys_swis`,
+`us_gnis` and the county Census code come from the ITS `55k6-h6qq` row (data.ny.gov) that matches
+the place one-to-one on type, county and normalized name. GIS stays the follow-up that confirms
+those codes (`scripts/sync_nys_localities.py --spine gis` once a snapshot exists).
+
+| | Result |
+|---|---|
+| OSC code on every entity | 1,583 of 1,583 |
+| `nys_swis` (from ITS) | 1,578; not attached: Fallsburg, Bloomingburg (spelled with an h in ITS), Palm Tree, Ateres (newer than ITS), Kiryas Joel (ITS code known stale) |
+| `us_gnis` (from ITS) | 1,531; also not attached to 48 places where ITS gives a city and its town the same id |
+| ITS match | counties 57/57, cities 61/61, towns 931/933, villages 529/532; 20 ITS rows match no place (18 villages OSC no longer lists, plus the two h spellings) |
+| Census list `sxhg-qquj` (names only) | counties 57/57, cities 60/61, towns 930/933, villages 531/532 |
+| Primary website (two sources agree) | 83 (9 counties, 33 cities, 22 towns, 19 villages) |
+| Held for review | 1,692 items in `data/statewide_web_review.json` § localities; 1,438 places have a website item |
+
+Full QA, with every mismatch named: [`qa/2026-11-13-localities-qa.md`](qa/2026-11-13-localities-qa.md).
+Website leads for the 1,500 places without a primary, one row per host, for the AI-readability
+scan to check: `data/ai-readability/localities-website-leads-2026-11-13.csv`.
+
+Choices made while building, for review:
+
+- **Census areas:** counties get `county`. Towns would get `county_subdivision` from GIS; ITS has
+  no such code, so towns carry none for now. Cities and villages get none: a place GEOID is 7
+  digits and the GIS gives 10 and 15, with no documented derivation.
 - **Path-only presences** (a town's page on its county's site) are proposed in the review file
   rather than applied to `url_conventions[]`, because every such lead is single-source (rule 3).
+- **Wikidata areas** were not attempted (no Wikidata read was authorized). Follow-up.
 
 **Open question answered (item 1 below):** no consumer outside this repo reads
 `government_level`. The archiver (`ny-gov-web-archiver/src/ny_gov_web_archiver/registry_input.py`)
