@@ -69,8 +69,10 @@ def test_matched_authorities_kept_their_level():
 def test_counts_by_level():
     c = collections.Counter(e["government_level"] for e in REGISTRY)
     assert c["nys"] == 53
-    assert c["authority"] == 150  # 12 before + 138 minted from ABO
-    assert len(REGISTRY) == 567
+    assert c["authority"] == 151  # 12 before + 138 minted from ABO + suny (seed, epic #58)
+    # 567 before the localities, + suny; the 1,583 counties, cities, towns and villages (issue #25)
+    # are checked in test_localities_registry.py.
+    assert len(REGISTRY) - sum(c[lv] for lv in ("county", "city", "town", "village")) == 568
 
 
 def test_every_entity_is_schema_valid_and_ids_unique():

@@ -51,6 +51,14 @@ INPUT (never fetches; all in data/cache/):
 OUTPUT:
     data/cache/records_localities.json            (read by build_registry.py)
     data/statewide_web_review.json § localities   (committed; nothing in it is applied)
+    data/ai-readability/localities-website-leads-2026-11-13.csv   (one row per lead host, for every
+        place without a primary site; the AI-readability scan checks those hosts, this script does not)
+
+SPINE (`--spine`): `osc` (default since 2026-11-13, Noel's decision while the GIS service is
+down): OSC entity tables are who exists (57 / 61 / 933 / 532 outside NYC), and SWIS, GNIS and
+county FIPS come from the matched ITS 55k6-h6qq row (type + county + normalized name, one-to-one
+both ways; a code ITS gives to two places, or a SWIS curated as stale, is not attached). `gis`:
+the NYS Civil Boundaries layers, once a snapshot exists; GIS then confirms or replaces the codes.
 """
 from __future__ import annotations
 
@@ -70,7 +78,10 @@ OSC = CACHE / "osc_entity_tables.json"
 ITS = CACHE / "its_55k6-h6qq.json"
 DOTGOV = CACHE / "leads_dotgov.json"
 GROUNDING = CACHE / "grounding_ny_data_portal_localities.json"
+# Websites confirmed by the AI-readability scan (tracked; written by confirm_locality_websites.py).
+CHECKS = sc.ROOT / "data" / "locality_website_checks.json"
 OUT = CACHE / "records_localities.json"
+LEADS_CSV = sc.ROOT / "data" / "ai-readability" / "localities-website-leads-2026-11-13.csv"
 
 TIERS = ("county", "city", "town", "village")
 LAYER = {"county": "counties", "city": "cities", "town": "towns", "village": "villages"}
@@ -185,9 +196,9 @@ def gis_units(gis: dict[str, list[dict]], expected: dict[str, int] = EXPECTED_GI
                 if ck in nyc_counties:
                     raise ValueError(f"GIS {LAYER[tier]} {r['NAME']!r} sits in an NYC county")
                 county = county_name[ck]
-            units.append({"tier": tier, "gis_name": r["NAME"].strip(), "county": county,
-                          "swis": swis, "gnis": gnis, "fips": _digits(r["FIPS_CODE"]),
-                          "county_fips": county_fips[ck]})
+            units.append({"tier": tier, "place": r["NAME"].strip(), "county": county,
+                          "swis": swis, "its_swis": swis, "gnis": gnis, "fips": _digits(r["FIPS_CODE"]),
+                          "county_fips": county_fips[ck], "spine": "nys_gis"})
     counts["units"] = {t: sum(u["tier"] == t for u in units) for t in TIERS}
     if len({u["swis"] for u in units}) != len(units):
         raise ValueError("GIS: a SWIS code repeats across rows")
@@ -202,7 +213,7 @@ def assign_ids(units: list[dict], taken: set[str]) -> None:
     """Set u['name'] and u['id'] (growth plan § Ids). Mutates the units."""
     groups: dict[str, list[dict]] = {}
     for u in units:
-        u["name"] = official_name(u["tier"], u["gis_name"])
+        u["name"] = official_name(u["tier"], u["place"])
         groups.setdefault(br._slugify(u["name"]), []).append(u)
     for slug, members in groups.items():
         for u in members:
@@ -231,7 +242,7 @@ def match_osc(units: list[dict], osc: dict, review: list[dict]) -> None:
             osc_by_key.setdefault(key(tier, county, row["name"]), []).append(row)
     units_by_key: dict[tuple, list[dict]] = {}
     for u in units:
-        units_by_key.setdefault(key(u["tier"], u["county"], u["gis_name"]), []).append(u)
+        units_by_key.setdefault(key(u["tier"], u["county"], u["place"]), []).append(u)
 
     used: set[str] = set()
     for k, members in units_by_key.items():
@@ -266,13 +277,15 @@ def _grounding_host_ok(host: str, psl) -> bool:
 
 
 def collect_leads(units: list[dict], its: list[dict], dotgov: list[dict], grounding: list[dict],
-                  review: list[dict], tlds: set[str] | None, psl) -> None:
-    """Attach u['leads'] = [{source, host, path, url, detail, ambiguous}]."""
-    by_swis = {u["swis"]: u for u in units}
+                  review: list[dict], tlds: set[str] | None, psl, report_unjoined_its: bool = True) -> None:
+    """Attach u['leads'] = [{source, host, path, url, detail, ambiguous}]. ITS rows join on the
+    SWIS of the ITS row matched to the place (`its_swis`). With the OSC spine, unmatched ITS rows
+    are already reported by match_its, so `report_unjoined_its` is False there."""
+    by_swis = {u["its_swis"]: u for u in units if u.get("its_swis")}
     by_tier_name: dict[tuple[str, str], list[dict]] = {}
     for u in units:
         u["leads"] = []
-        by_tier_name.setdefault((u["tier"], name_key(u["gis_name"])), []).append(u)
+        by_tier_name.setdefault((u["tier"], name_key(u["place"])), []).append(u)
 
     def add(u, source, url, detail, ambiguous=False):
         host, path = sc.split_url(url)
@@ -294,7 +307,7 @@ def collect_leads(units: list[dict], its: list[dict], dotgov: list[dict], ground
             continue
         u = by_swis.get(_digits(r.get("swis_code"), 6))
         if u is None or u["tier"] != tier:
-            if tier and r.get("county") and not _is_nyc_its(r):
+            if report_unjoined_its and r.get("county") and not _is_nyc_its(r):
                 review.append({"tier": tier, "reason": "its_row_not_in_gis",
                                "its_row": {"swis_code": r.get("swis_code"), "type": r.get("type"),
                                            "name": r.get("municipality"), "county": r.get("county"),
@@ -390,6 +403,73 @@ def decide_websites(units: list[dict], owner: dict[str, str], review: list[dict]
 
 # --- records -------------------------------------------------------------------------------
 
+def apply_checks(units: list[dict], checks: list[dict], owner: dict[str, str], review: list[dict]) -> None:
+    """Apply data/locality_website_checks.json: a place with no two-lead primary takes the host the
+    AI-readability scan confirmed (its page title names the place; growth plan rule 4), plus any
+    `legacy` hosts. Never overrides a two-lead primary. Its website review items are replaced by one
+    item listing the root-lead hosts that were not applied, if any."""
+    by_id = {u["id"]: u for u in units}
+    taken: dict[str, str] = {u["primary"]["host"]: u["id"] for u in units if u["primary"]}
+    for c in checks:
+        u = by_id.get(c["entity_id"])
+        if u is None:
+            raise ValueError(f"website check names unknown entity {c['entity_id']!r}")
+        if c["role"] not in ("primary", "legacy"):
+            raise ValueError(f"website check {c['entity_id']}: role {c['role']!r}")
+        if u["primary"]:
+            raise ValueError(f"website check {c['entity_id']}: the place already has a primary from two "
+                             "agreeing leads; checks never override it")
+        h = sc.norm_host(c["host"])
+        if h in owner or h in taken:
+            raise ValueError(f"website check {c['entity_id']}: host {c['host']} is already "
+                             f"{owner.get(h) or taken.get(h)}'s")
+        taken[h] = c["entity_id"]
+        chk = u.setdefault("checked", {"primary": None, "legacy": [], "checked_on": c["checked_on"]})
+        if c["role"] == "primary":
+            if chk["primary"]:
+                raise ValueError(f"website check {c['entity_id']}: two primary hosts")
+            chk["primary"] = c["host"]
+        else:
+            chk["legacy"].append(c["host"])
+    for u in units:
+        chk = u.get("checked")
+        if not chk:
+            continue
+        if not chk["primary"]:
+            raise ValueError(f"website check {u['id']}: legacy host without a primary")
+        review[:] = [i for i in review if not (i.get("proposed_id") == u["id"] and i["reason"].startswith("website_"))]
+        done = {sc.norm_host(h) for h in [chk["primary"], *chk["legacy"]]}
+        other = sorted(h for h in u["hosts"] if h not in done)
+        if other:
+            review.append(_item(u, "website_additional_leads_not_applied", hosts=other, primary=chk["primary"],
+                                note="The primary was confirmed by the AI-readability scan; these lead hosts "
+                                     "were not applied."))
+
+
+LEADS_CSV_COLUMNS = ("entity_id", "name", "county", "level", "host", "source")
+
+
+def lead_rows(units: list[dict]) -> list[dict]:
+    """One row per (place, lead host, source) for every place WITHOUT a primary site, for the
+    AI-readability scan to check. Hosts only: a path-only lead (a page on someone else's host,
+    usually the county's) is not a host lead and stays in the review file. Hosts are as the
+    source gave them (www. kept). A place with no host lead has no row."""
+    rows = []
+    for u in units:
+        if u["primary"] or u.get("checked"):
+            continue
+        seen = set()
+        for lead in u["leads"]:
+            key = (lead["host"], lead["source"])
+            if lead["path"] or key in seen:
+                continue
+            seen.add(key)
+            rows.append({"entity_id": u["id"], "name": u["name"], "county": u["county"],
+                         "level": u["tier"], "host": lead["host"], "source": lead["source"]})
+    rows.sort(key=lambda r: (r["entity_id"], r["host"], r["source"]))
+    return rows
+
+
 def _item(u: dict, reason: str, **kw) -> dict:
     return {"proposed_id": u.get("id"), "name": u.get("name"), "tier": u["tier"], "county": u["county"],
             "swis": u["swis"], "reason": reason, **kw}
@@ -408,14 +488,17 @@ def _areas(u: dict) -> list[dict]:
 
 
 def to_record(u: dict) -> dict:
-    ids = [{"scheme": "nys_swis", "identifier": u["swis"]}]
+    ids = [{"scheme": "nys_swis", "identifier": u["swis"]}] if u["swis"] else []
     if u["gnis"]:
         ids.append({"scheme": "us_gnis", "identifier": u["gnis"]})
     other_names = []
-    sources = ["nys_gis"]
+    sources = [u["spine"]]
     if u.get("osc"):
         ids.append({"scheme": "nys_osc_muni_code", "identifier": u["osc"]["municipal_code"]})
-        sources.append("osc")
+        if "osc" not in sources:
+            sources.append("osc")
+        if u["spine"] == "osc" and (u["swis"] or u["gnis"]):
+            sources.append("its_localities")
         osc_name = re.sub(r"^((?:Village|Town|City) of )\1+", r"\1", u["osc"]["name"])
         if br._norm(osc_name) != br._norm(u["name"]):
             other_names.append({"name": osc_name, "note": "Name in the OSC entity tables (2026)."})
@@ -429,7 +512,15 @@ def to_record(u: dict) -> dict:
         wps.append({"domain": raw, "role": "primary", "valid_from": None, "valid_to": None,
                     "notes": f"Auto-accepted {BUILD_DATE}: {len(p['sources'])} independent leads agree on "
                              f"this host [{', '.join(p['sources'])}]. {why}. Not live-checked."})
-        sources += [PROVENANCE[s] for s in p["sources"] if s in PROVENANCE]
+        sources += [PROVENANCE[s] for s in p["sources"] if s in PROVENANCE and PROVENANCE[s] not in sources]
+    elif u.get("checked"):
+        c = u["checked"]
+        wps.append({"domain": c["primary"], "role": "primary", "valid_from": None, "valid_to": None,
+                    "notes": f"Confirmed: the site's page title names the place (BetaNYC scan, {c['checked_on']})."})
+        for h in c["legacy"]:
+            wps.append({"domain": h, "role": "legacy", "valid_from": None, "valid_to": None,
+                        "notes": f"Former address: listed for this place in ITS 55k6-h6qq (2023); its site is now "
+                                 f"{c['primary']} (BetaNYC scan, {c['checked_on']})."})
     return {
         "name": u["name"], "short_name": None, "other_names": other_names,
         "government_level": u["tier"], "classification": None,
@@ -442,14 +533,21 @@ def to_record(u: dict) -> dict:
 
 def build_records(gis: dict[str, list[dict]], osc: dict, its: list[dict], dotgov: list[dict],
                   grounding: list[dict], base: list[dict], tlds: set[str] | None = None,
-                  psl=None, expected_rows: dict[str, int] = EXPECTED_GIS_ROWS
-                  ) -> tuple[list[dict], list[dict], dict]:
+                  psl=None, expected_rows: dict[str, int] = EXPECTED_GIS_ROWS,
+                  checks: list[dict] | None = None) -> tuple[list[dict], list[dict], dict]:
     """Pure: source snapshots + the existing registry -> (records, review items, summary)."""
     if psl is None:
         import ai_readability_export as ex
         psl = ex.load_psl()
     units, summary = gis_units(gis, expected_rows)
+    review: list[dict] = []
     assign_ids(units, {e["id"] for e in base})
+    match_osc(units, osc, review)
+    return _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its=True, checks=checks)
+
+
+def _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its, checks=None):
+    """Shared by both spines: name clash check, website leads and rule, records, summary."""
     base_names = {br._norm(e["name"]): e["id"] for e in base}
     clash = sorted((u["name"], base_names[br._norm(u["name"])]) for u in units if br._norm(u["name"]) in base_names)
     if clash:
@@ -458,17 +556,22 @@ def build_records(gis: dict[str, list[dict]], osc: dict, its: list[dict], dotgov
     for e in base:
         for w in e.get("web_properties", []):
             owner.setdefault(sc.norm_host(w["domain"]), e["id"])
-    review: list[dict] = []
-    match_osc(units, osc, review)
-    collect_leads(units, its, dotgov, grounding, review, tlds, psl)
+    collect_leads(units, its, dotgov, grounding, review, tlds, psl, report_unjoined_its)
     decide_websites(units, owner, review)
+    apply_checks(units, checks or [], owner, review)
     order = {t: i for i, t in enumerate(TIERS)}
     units.sort(key=lambda u: (order[u["tier"]], u["id"]))
     records = [to_record(u) for u in units]
+    summary["lead_rows"] = lead_rows(units)
     review.sort(key=lambda i: (order.get(i["tier"], 9), i.get("proposed_id") or "", i["reason"],
                                json.dumps(i, sort_keys=True)))
     summary["osc_matched"] = sum(1 for u in units if u.get("osc"))
+    summary["codes"] = {"nys_swis": sum(1 for u in units if u["swis"]),
+                        "us_gnis": sum(1 for u in units if u["gnis"]),
+                        "nys_osc_muni_code": summary["osc_matched"], "places": len(units)}
     summary["primary_website"] = {t: sum(1 for u in units if u["tier"] == t and u["primary"]) for t in TIERS}
+    summary["primary_confirmed_by_scan"] = {t: sum(1 for u in units if u["tier"] == t and u.get("checked"))
+                                            for t in TIERS}
     summary["name_collisions"] = sorted(u["id"] for u in units if u["name_collision"])
     reasons: dict[str, int] = {}
     for i in review:
@@ -477,6 +580,137 @@ def build_records(gis: dict[str, list[dict]], osc: dict, its: list[dict], dotgov
     summary["places_with_a_website_review_item"] = len({i["proposed_id"] for i in review
                                                         if i["reason"].startswith(("website_", "path_only"))})
     return records, review, summary
+
+
+# --- OSC spine (Noel, 2026-11-13: mint from OSC while the GIS service is down) ----------------
+
+EXPECTED_OSC_UNITS = {"county": 57, "city": 61, "town": 933, "village": 532}  # NYC not counted
+_ITS_KEEP = ("swis_code", "type", "municipality", "county", "_2nd_county", "gnis_id", "county_fips")
+
+
+def osc_place(tier: str, osc_name: str) -> str:
+    """'County of St. Lawrence' -> 'St. Lawrence'; 'Village of Village of The Branch' -> 'The Branch'."""
+    return re.sub(r"^(?:(?:County|City|Town|Village) of\s+)+", "", osc_name.strip(), flags=re.IGNORECASE).strip()
+
+
+def osc_units(osc: dict, expected: dict[str, int] = EXPECTED_OSC_UNITS) -> tuple[list[dict], dict]:
+    """OSC rows -> place units. NYC (the 'City of New York City' row) is skipped; OSC has no rows
+    for NYC's five counties. Raises on a count mismatch or a repeated municipal code."""
+    units = []
+    for tier in TIERS:
+        for row in osc[LAYER[tier]]:
+            place = osc_place(tier, row["name"])
+            if tier == "city" and name_key(place) in ("newyork", "newyorkcity"):
+                continue
+            units.append({"tier": tier, "place": place,
+                          "county": place if tier == "county" else row["county"], "osc": row,
+                          "swis": None, "its_swis": None, "gnis": None, "fips": None,
+                          "county_fips": None, "spine": "osc"})
+    got = {t: sum(u["tier"] == t for u in units) for t in TIERS}
+    if got != expected:
+        raise ValueError(f"OSC places {got}, expected {expected}")
+    codes = [u["osc"]["municipal_code"] for u in units]
+    if len(set(codes)) != len(codes):
+        raise ValueError("OSC: a municipal code repeats")
+    return units, {"units": got}
+
+
+def match_its(units: list[dict], its: list[dict], review: list[dict], stale_swis: dict[str, str]) -> dict:
+    """Attach ITS codes (SWIS, GNIS, county FIPS) on a single unambiguous match of type + county +
+    normalized name, both ways. ITS lists a second county for villages that cross a county line;
+    a match on either county counts (it is the ITS row's own data). A SWIS in `stale_swis`
+    (curation: known to have changed since 2023) is not attached. Returns match counts."""
+    rows = [r for r in its if ITS_TYPE.get(r.get("type")) and not _is_nyc_its(r)]
+    index: dict[tuple, list[int]] = {}
+    for i, r in enumerate(rows):
+        tier = ITS_TYPE[r["type"]]
+        name = r.get("county") if tier == "county" else r.get("municipality")
+        for c in {r.get("county"), r.get("_2nd_county")} - {None, ""}:
+            index.setdefault((tier, name_key(c), name_key(name)), []).append(i)
+    keyed: dict[tuple, list[dict]] = {}
+    for u in units:
+        keyed.setdefault((u["tier"], name_key(u["county"]), name_key(u["place"])), []).append(u)
+
+    claims: dict[int, list[dict]] = {}
+    for k, members in keyed.items():
+        hits = index.get(k, [])
+        for u in members:
+            u["_its_hits"] = hits if len(members) == 1 else hits + [-1]  # -1: shared key, ambiguous
+            if len(members) == 1 and len(hits) == 1:
+                claims.setdefault(hits[0], []).append(u)
+    counts = {"matched": 0, "via_second_county": 0, "no_match": 0, "ambiguous": 0, "swis_held_stale": 0}
+    used: set[int] = set()
+
+    def brief(r):
+        return {k: r.get(k) for k in _ITS_KEEP if r.get(k) is not None}
+
+    for u in units:
+        hits = u.pop("_its_hits")
+        if len(hits) == 1 and len(claims.get(hits[0], [])) == 1:
+            r = rows[hits[0]]
+            used.add(hits[0])
+            counts["matched"] += 1
+            if name_key(r.get("county")) != name_key(u["county"]):
+                counts["via_second_county"] += 1
+            u["its_swis"] = _digits(r["swis_code"], 6)
+            u["gnis"] = _digits(r.get("gnis_id"))
+            u["county_fips"] = r.get("county_fips")
+            if u["tier"] == "county":
+                u["fips"] = r.get("county_fips")
+            if u["its_swis"] in stale_swis:
+                counts["swis_held_stale"] += 1
+                review.append(_item(u, "its_swis_known_stale", its_row=brief(r), note=stale_swis[u["its_swis"]]))
+            else:
+                u["swis"] = u["its_swis"]
+        elif not hits:
+            counts["no_match"] += 1
+            review.append(_item(u, "its_no_match", note="No row in ITS 55k6-h6qq (2023) with this type, county "
+                                "and name; no SWIS or GNIS attached."))
+        else:
+            counts["ambiguous"] += 1
+            review.append(_item(u, "its_match_ambiguous",
+                                its_rows=[brief(rows[i]) for i in hits if i >= 0],
+                                note="More than one ITS row or place shares this type, county and name; no "
+                                     "code attached."))
+    unmatched = [rows[i] for i in range(len(rows)) if i not in used]
+    for r in unmatched:
+        review.append({"tier": ITS_TYPE[r["type"]], "reason": "its_row_unmatched", "its_row": brief(r),
+                       "note": "No OSC place takes this ITS row (dissolved, renamed or respelled since 2023)."})
+    counts["its_rows_unmatched"] = len(unmatched)
+    counts["its_rows"] = len(rows)
+    return counts
+
+
+def build_records_osc(osc: dict, its: list[dict], dotgov: list[dict], grounding: list[dict],
+                      base: list[dict], stale_swis: dict[str, str] | None = None,
+                      tlds: set[str] | None = None, psl=None,
+                      expected: dict[str, int] = EXPECTED_OSC_UNITS,
+                      checks: list[dict] | None = None) -> tuple[list[dict], list[dict], dict]:
+    """Pure, OSC spine: OSC places + ITS codes + website leads -> (records, review, summary)."""
+    if psl is None:
+        import ai_readability_export as ex
+        psl = ex.load_psl()
+    units, summary = osc_units(osc, expected)
+    review: list[dict] = []
+    assign_ids(units, {e["id"] for e in base})
+    summary["its"] = match_its(units, its, review, stale_swis or {})
+    # A code ITS gives to two places identifies neither (ITS gives 24 towns their city's GNIS id).
+    # build_registry also matches on any shared identifier, so a repeat would merge two places.
+    summary["its"]["codes_shared_not_attached"] = {}
+    for scheme, key in (("nys_swis", "swis"), ("us_gnis", "gnis")):
+        seen: dict[str, list[dict]] = {}
+        for u in units:
+            if u[key]:
+                seen.setdefault(u[key], []).append(u)
+        shared = {v: us for v, us in seen.items() if len(us) > 1}
+        for v, us in shared.items():
+            for u in us:
+                u[key] = None
+                review.append(_item(u, "its_code_shared_by_places", scheme=scheme, value=v,
+                                    shared_with=sorted(o["id"] for o in us if o is not u),
+                                    note="ITS gives this code to more than one place; attached to none."))
+        summary["its"]["codes_shared_not_attached"][scheme] = sum(len(us) for us in shared.values())
+    return _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its=False, checks=checks)
 
 
 def base_registry() -> list[dict]:
@@ -491,27 +725,49 @@ def base_registry() -> list[dict]:
     return br.apply_entity_curation(entities, curation)
 
 
-def main() -> int:
-    missing = [p for p in [*GIS_FILES.values(), OSC, ITS, DOTGOV, GROUNDING] if not p.exists()]
+def main(argv: list[str] | None = None) -> int:
+    import argparse
+    ap = argparse.ArgumentParser(description="NY counties, cities, towns and villages -> registry records")
+    ap.add_argument("--spine", choices=("osc", "gis"), default="osc",
+                    help="osc (default since 2026-11-13: OSC entity tables, ITS codes) or gis (NYS Civil "
+                         "Boundaries, once a GIS snapshot exists)")
+    args = ap.parse_args(argv)
+    needed = [OSC, ITS, DOTGOV, GROUNDING] + (list(GIS_FILES.values()) if args.spine == "gis" else [])
+    missing = [p for p in needed if not p.exists()]
     if missing:
         print("[gated] missing input(s) in data/cache/:\n  " + "\n  ".join(p.name for p in missing)
               + "\n  See data/ai-readability/sources/2026-11-13/README.md for where each comes from.",
               file=sys.stderr)
         return 2
-    gis = {t: gis_rows(json.loads(GIS_FILES[t].read_text(encoding="utf-8"))) for t in TIERS}
     osc = json.loads(OSC.read_text(encoding="utf-8"))
     its = json.loads(ITS.read_text(encoding="utf-8"))
     dotgov = json.loads(DOTGOV.read_text(encoding="utf-8"))["leads"]
     grounding = json.loads(GROUNDING.read_text(encoding="utf-8"))["rows"]
     import ai_readability_export as ex
     psl = ex.load_psl()
-    records, review, summary = build_records(gis, osc, its, dotgov, grounding, base_registry(),
-                                             sc.psl_tlds(), psl)
+    checks = json.loads(CHECKS.read_text(encoding="utf-8"))["checks"] if CHECKS.exists() else []
+    if args.spine == "gis":
+        gis = {t: gis_rows(json.loads(GIS_FILES[t].read_text(encoding="utf-8"))) for t in TIERS}
+        records, review, summary = build_records(gis, osc, its, dotgov, grounding, base_registry(),
+                                                 sc.psl_tlds(), psl, checks=checks)
+    else:
+        stale = {h["swis_code"]: h["note"] for h in sc.load_curation().get("locality_its_swis_stale", [])}
+        records, review, summary = build_records_osc(osc, its, dotgov, grounding, base_registry(),
+                                                     stale, sc.psl_tlds(), psl, checks=checks)
     OUT.write_text(json.dumps({"records": records}, indent=2, ensure_ascii=False), encoding="utf-8")
+    rows = summary.pop("lead_rows")
+    import csv
+    with LEADS_CSV.open("w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=LEADS_CSV_COLUMNS, lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+    summary["leads_csv_rows"] = len(rows)
+    summary["leads_csv_places"] = len({r["entity_id"] for r in rows})
     sc.write_review_section(
         "localities", review,
-        "Counties, cities, towns and villages (sync_nys_localities.py): OSC rows that did not match "
-        "one-to-one, and website leads not applied (single lead, disagreeing, shared, path-only).")
+        "Counties, cities, towns and villages (sync_nys_localities.py): places whose codes did not "
+        "match one-to-one (OSC or ITS), ITS rows no place took, and website leads not applied "
+        "(single lead, disagreeing, shared, path-only).")
     print(json.dumps(summary, indent=1))
     print(f"{len(records)} locality records, {len(review)} review item(s) -> {OUT}")
     return 0

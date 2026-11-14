@@ -1104,5 +1104,13 @@
       "The New York Racing Association, Inc. (NYRA)*NOT A STATE AGENCY": "authority / existing entity / not a state agency",
       "State University of New York (SUNY)": "authority / existing entity / not a state agency"
     }
-  }
+  },
+  "_comment_localities": "Localities (issue #25, Noel 2026-11-13: mint from the OSC entity tables while the NYS Civil Boundaries GIS service is down). locality_its_swis_stale is read by sync_nys_localities.py: an ITS 55k6-h6qq SWIS code known to have changed since that list's 2023 update is not attached; the place goes to data/statewide_web_review.json § localities until GIS confirms the current code.",
+  "locality_its_swis_stale": [
+    {
+      "swis_code": "334005",
+      "place": "Village of Kiryas Joel (Orange)",
+      "note": "ITS carries Kiryas Joel under its old SWIS 334005; the March 2026 GIS Villages layer gives 336001 (docs/sources-statewide.md § 1, verified 2026-11-06). Not attached; confirm against GIS."
+    }
+  ]
 }

@@ -1,0 +1,839 @@
+entity_id,name,county,level,host,source
+broome-county,Broome County,Broome,county,broomecountyda.gov,dotgov
+broome-county,Broome County,Broome,county,broomecountyny.gov,dotgov
+broome-county,Broome County,Broome,county,www.gobroomecounty.com,its
+cayuga-county,Cayuga County,Cayuga,county,cayugacounty.gov,dotgov
+cayuga-county,Cayuga County,Cayuga,county,www.cayugacounty.us,its
+chenango-county,Chenango County,Chenango,county,chenangocountyny.gov,dotgov
+chenango-county,Chenango County,Chenango,county,www.co.chenango.ny.us,its
+city-of-albany,City of Albany,Albany,city,www.albanyny.org,its
+city-of-batavia,City of Batavia,Genesee,city,cityofbataviany.gov,dotgov
+city-of-batavia,City of Batavia,Genesee,city,www.batavianewyork.com,its
+city-of-binghamton,City of Binghamton,Broome,city,binghamton-ny.gov,dotgov
+city-of-binghamton,City of Binghamton,Broome,city,cityofbinghamton.gov,dotgov
+city-of-binghamton,City of Binghamton,Broome,city,www.cityofbinghamton.com,its
+city-of-geneva,City of Geneva,Ontario,city,cityofgenevany.gov,dotgov
+city-of-geneva,City of Geneva,Ontario,city,visitgenevany.com,its
+city-of-hornell,City of Hornell,Steuben,city,www.cityofhornell.com,its
+city-of-ithaca,City of Ithaca,Tompkins,city,cityofithacany.gov,dotgov
+city-of-ithaca,City of Ithaca,Tompkins,city,www.ci.ithaca.ny.us,its
+city-of-jamestown,City of Jamestown,Chautauqua,city,jamestownny.gov,dotgov
+city-of-jamestown,City of Jamestown,Chautauqua,city,www.jamestownny.net,its
+city-of-niagara-falls,City of Niagara Falls,Niagara,city,niagarafallsny.gov,dotgov
+city-of-niagara-falls,City of Niagara Falls,Niagara,city,niagarafallsnycarts.gov,dotgov
+city-of-niagara-falls,City of Niagara Falls,Niagara,city,www.niagarafallsusa.org,its
+city-of-ogdensburg,City of Ogdensburg,St. Lawrence,city,ogdensburgny.gov,dotgov
+city-of-ogdensburg,City of Ogdensburg,St. Lawrence,city,ogdensburgpdny.gov,dotgov
+city-of-ogdensburg,City of Ogdensburg,St. Lawrence,city,www.ogdensburg.org,its
+city-of-oneida,City of Oneida,Madison,city,oneidacityny.gov,dotgov
+city-of-oneida,City of Oneida,Madison,city,www.oneidacity.com,its
+city-of-poughkeepsie,City of Poughkeepsie,Dutchess,city,cityofpoughkeepsie.gov,dotgov
+city-of-poughkeepsie,City of Poughkeepsie,Dutchess,city,www.cityofpoughkeepsie.com,its
+city-of-schenectady,City of Schenectady,Schenectady,city,cityofschenectady.gov,dotgov
+city-of-schenectady,City of Schenectady,Schenectady,city,schenectadyny.gov,dotgov
+city-of-schenectady,City of Schenectady,Schenectady,city,www.cityofschenectady.com,its
+city-of-syracuse,City of Syracuse,Onondaga,city,syr.gov,dotgov
+city-of-syracuse,City of Syracuse,Onondaga,city,www.syrgov.net,its
+city-of-tonawanda,City of Tonawanda,Erie,city,tonawandacity.gov,dotgov
+city-of-tonawanda,City of Tonawanda,Erie,city,www.ci.tonawanda.ny.us,its
+city-of-tonawanda,City of Tonawanda,Erie,city,www.tonawandacity.com,grounding
+city-of-utica,City of Utica,Oneida,city,uticany.gov,dotgov
+city-of-utica,City of Utica,Oneida,city,www.cityofutica.com,its
+franklin-county,Franklin County,Franklin,county,franklincountyny.gov,dotgov
+franklin-county,Franklin County,Franklin,county,www.franklincony.org,its
+genesee-county,Genesee County,Genesee,county,geneseeny.gov,dotgov
+genesee-county,Genesee County,Genesee,county,www.co.genesee.ny.us,its
+greene-county,Greene County,Greene,county,greenecountyny.gov,dotgov
+greene-county,Greene County,Greene,county,www.discovergreene.com,its
+madison-county,Madison County,Madison,county,www.madisoncounty.ny.gov,its
+niagara-county,Niagara County,Niagara,county,niagaracounty.gov,dotgov
+niagara-county,Niagara County,Niagara,county,www.niagaracounty.com,its
+orange-county,Orange County,Orange,county,www.co.orange.ny.us,its
+orleans-county,Orleans County,Orleans,county,orleanscountyny.gov,dotgov
+orleans-county,Orleans County,Orleans,county,www.orleansny.com,its
+otsego-county,Otsego County,Otsego,county,otsegocountyny.gov,dotgov
+otsego-county,Otsego County,Otsego,county,www.otsegocounty.com,its
+rockland-county,Rockland County,Rockland,county,rocklandcountyny.gov,dotgov
+rockland-county,Rockland County,Rockland,county,rocklandgov.com,its
+schenectady-county,Schenectady County,Schenectady,county,schenectadycountyny.gov,dotgov
+schenectady-county,Schenectady County,Schenectady,county,www.schenectadycounty.com,its
+tioga-county,Tioga County,Tioga,county,tiogacountyny.gov,dotgov
+tioga-county,Tioga County,Tioga,county,www.tiogacountyny.com,its
+town-of-adams,Town of Adams,Jefferson,town,townofadamsny.gov,dotgov
+town-of-adams,Town of Adams,Jefferson,town,www.townofadams.com,its
+town-of-afton,Town of Afton,Chenango,town,townofafton.com,its
+town-of-afton,Town of Afton,Chenango,town,townofaftonny.gov,dotgov
+town-of-albion-orleans-county,Town of Albion,Orleans,town,townofalbionnyorco.gov,dotgov
+town-of-albion-orleans-county,Town of Albion,Orleans,town,www.townofalbion.com,its
+town-of-albion-oswego-county,Town of Albion,Oswego,town,townofalbionnyorco.gov,dotgov
+town-of-albion-oswego-county,Town of Albion,Oswego,town,www.townofalbion-ny.us,its
+town-of-alden,Town of Alden,Erie,town,www.alden.erie.gov,its
+town-of-allegany,Town of Allegany,Cattaraugus,town,www.allegany.org,its
+town-of-amboy,Town of Amboy,Oswego,town,www.townofamboy-ny.us,its
+town-of-amherst,Town of Amherst,Erie,town,amherstny.gov,dotgov
+town-of-amherst,Town of Amherst,Erie,town,www.amherst.ny.us,its
+town-of-amsterdam,Town of Amsterdam,Montgomery,town,www.townofamsterdam.org,its
+town-of-annsville,Town of Annsville,Oneida,town,townofannsville.org,its
+town-of-arcadia,Town of Arcadia,Wayne,town,townofarcadiany.gov,dotgov
+town-of-arietta,Town of Arietta,Hamilton,town,townofarietta.gov,dotgov
+town-of-arietta,Town of Arietta,Hamilton,town,www.townofarietta.com,its
+town-of-ashford,Town of Ashford,Cattaraugus,town,ashfordny.gov,dotgov
+town-of-ashford,Town of Ashford,Cattaraugus,town,ashfordny.org,its
+town-of-attica,Town of Attica,Wyoming,town,townofatticany.gov,dotgov
+town-of-attica,Town of Attica,Wyoming,town,www.townofattica.net,its
+town-of-austerlitz,Town of Austerlitz,Columbia,town,austerlitzny.gov,dotgov
+town-of-austerlitz,Town of Austerlitz,Columbia,town,www.austerlitzny.com,its
+town-of-ava,Town of Ava,Oneida,town,townofava.org,its
+town-of-avon,Town of Avon,Livingston,town,avon-ny.gov,dotgov
+town-of-babylon,Town of Babylon,Suffolk,town,townofbabylonny.gov,dotgov
+town-of-babylon,Town of Babylon,Suffolk,town,www.townofbabylon.com,its
+town-of-baldwin,Town of Baldwin,Chemung,town,www.chemungcounty.com,its
+town-of-batavia,Town of Batavia,Genesee,town,townofbatavia.gov,dotgov
+town-of-batavia,Town of Batavia,Genesee,town,www.townofbatavia.com,its
+town-of-bath,Town of Bath,Steuben,town,townofbathny.gov,dotgov
+town-of-bath,Town of Bath,Steuben,town,www.townofbathny.org,its
+town-of-bellmont,Town of Bellmont,Franklin,town,townofbellmontny.gov,dotgov
+town-of-berlin,Town of Berlin,Rensselaer,town,berlin-ny.us,its
+town-of-berlin,Town of Berlin,Rensselaer,town,berlinnyus.gov,dotgov
+town-of-berne,Town of Berne,Albany,town,berneny.org,its
+town-of-bethlehem,Town of Bethlehem,Albany,town,bethlehemny.gov,dotgov
+town-of-bethlehem,Town of Bethlehem,Albany,town,www.townofbethlehem.org,its
+town-of-birdsall,Town of Birdsall,Allegany,town,birdsallny.gov,dotgov
+town-of-blenheim,Town of Blenheim,Schoharie,town,blenheimtown-ny.gov,dotgov
+town-of-bolivar,Town of Bolivar,Allegany,town,www.townofbolivar.com,its
+town-of-bolton,Town of Bolton,Warren,town,boltonny.gov,dotgov
+town-of-bolton,Town of Bolton,Warren,town,www.boltonnewyork.com,its
+town-of-boston,Town of Boston,Erie,town,bostonny.gov,dotgov
+town-of-boston,Town of Boston,Erie,town,www.townofboston.com,its
+town-of-brant,Town of Brant,Erie,town,brantny.com,its
+town-of-brant,Town of Brant,Erie,town,brantny.gov,dotgov
+town-of-brighton-monroe-county,Town of Brighton,Monroe,town,brightonny.gov,dotgov
+town-of-brighton-monroe-county,Town of Brighton,Monroe,town,brightonnypolice.gov,dotgov
+town-of-brighton-monroe-county,Town of Brighton,Monroe,town,www.townofbrighton.org,its
+town-of-bristol,Town of Bristol,Ontario,town,townofbristolny.gov,dotgov
+town-of-bristol,Town of Bristol,Ontario,town,www.townofbristol.org,its
+town-of-broadalbin,Town of Broadalbin,Fulton,town,townofbroadalbinny.gov,dotgov
+town-of-broadalbin,Town of Broadalbin,Fulton,town,www.townofbroadalbin.org,its
+town-of-brookfield,Town of Brookfield,Madison,town,www.brookfieldny.com,its
+town-of-broome,Town of Broome,Schoharie,town,broometown-ny.gov,dotgov
+town-of-brunswick,Town of Brunswick,Rensselaer,town,brunswickny.gov,dotgov
+town-of-brunswick,Town of Brunswick,Rensselaer,town,www.townofbrunswick.org,its
+town-of-brutus,Town of Brutus,Cayuga,town,townofbrutus.org,its
+town-of-burns,Town of Burns,Allegany,town,townofburnsny.gov,dotgov
+town-of-burns,Town of Burns,Allegany,town,www.townofburnsny.com,its
+town-of-byron,Town of Byron,Genesee,town,townofbyronny.gov,dotgov
+town-of-byron,Town of Byron,Genesee,town,www.byronny.com,its
+town-of-callicoon,Town of Callicoon,Sullivan,town,townofcallicoon.gov,dotgov
+town-of-callicoon,Town of Callicoon,Sullivan,town,townofcallicoon.org,its
+town-of-campbell,Town of Campbell,Steuben,town,campbellny.gov,dotgov
+town-of-campbell,Town of Campbell,Steuben,town,www.campbellny.com,its
+town-of-canaan,Town of Canaan,Columbia,town,canaanny.gov,dotgov
+town-of-canaan,Town of Canaan,Columbia,town,www.canaannewyork.org,its
+town-of-canadice,Town of Canadice,Ontario,town,canadiceny.gov,dotgov
+town-of-canadice,Town of Canadice,Ontario,town,www.canadice.org,its
+town-of-canandaigua,Town of Canandaigua,Ontario,town,townofcanandaigua.gov,dotgov
+town-of-canandaigua,Town of Canandaigua,Ontario,town,www.townofcanandaigua.org,its
+town-of-candor,Town of Candor,Tioga,town,townofcandorny.gov,dotgov
+town-of-candor,Town of Candor,Tioga,town,www.candorny.us,its
+town-of-canton,Town of Canton,St. Lawrence,town,www.cantonnewyork.us,its
+town-of-cape-vincent,Town of Cape Vincent,Jefferson,town,townofcapevincent.gov,dotgov
+town-of-cape-vincent,Town of Cape Vincent,Jefferson,town,townofcapevincent.org,its
+town-of-carlisle,Town of Carlisle,Schoharie,town,carlisletown-ny.gov,dotgov
+town-of-caroga,Town of Caroga,Fulton,town,www.carogalakeny.com,its
+town-of-caroline,Town of Caroline,Tompkins,town,townofcarolineny.gov,dotgov
+town-of-caroline,Town of Caroline,Tompkins,town,www.townofcaroline.org,its
+town-of-castile,Town of Castile,Wyoming,town,castileny.gov,dotgov
+town-of-castile,Town of Castile,Wyoming,town,www.castileny.com,its
+town-of-catlin,Town of Catlin,Chemung,town,townofcatlin.com,its
+town-of-catlin,Town of Catlin,Chemung,town,townofcatlin.gov,dotgov
+town-of-caton,Town of Caton,Steuben,town,townofcaton.gov,dotgov
+town-of-caton,Town of Caton,Steuben,town,www.townofcaton.com,its
+town-of-cayuta,Town of Cayuta,Schuyler,town,www.townofcayuta.org,its
+town-of-cazenovia,Town of Cazenovia,Madison,town,townofcazenoviany.gov,dotgov
+town-of-cazenovia,Town of Cazenovia,Madison,town,www.townofcazenovia.org,its
+town-of-centerville,Town of Centerville,Allegany,town,centerville.wordpress.com,its
+town-of-champion,Town of Champion,Jefferson,town,townofchampionny.gov,dotgov
+town-of-champion,Town of Champion,Jefferson,town,www.racog.org,its
+town-of-chautauqua,Town of Chautauqua,Chautauqua,town,townofchautauqua.gov,dotgov
+town-of-chautauqua,Town of Chautauqua,Chautauqua,town,www.townofchautauqua.com,its
+town-of-cheektowaga,Town of Cheektowaga,Erie,town,cheektowaga.gov,dotgov
+town-of-cheektowaga,Town of Cheektowaga,Erie,town,tocny.org,its
+town-of-cherry-valley,Town of Cherry Valley,Otsego,town,cherryvalleyny.us,its
+town-of-cherry-valley,Town of Cherry Valley,Otsego,town,townofcherryvalleyny.gov,dotgov
+town-of-chester-orange-county,Town of Chester,Orange,town,chester-ny.gov,dotgov
+town-of-chester-orange-county,Town of Chester,Orange,town,chesterwcny.gov,dotgov
+town-of-chester-orange-county,Town of Chester,Orange,town,thetownofchester.org,its
+town-of-cicero,Town of Cicero,Onondaga,town,ciceronewyork.net,its
+town-of-cicero,Town of Cicero,Onondaga,town,cicerony.gov,dotgov
+town-of-cicero,Town of Cicero,Onondaga,town,ciceronypd.gov,dotgov
+town-of-clarkson,Town of Clarkson,Monroe,town,townofclarksonny.gov,dotgov
+town-of-clarkson,Town of Clarkson,Monroe,town,www.clarksonny.org,its
+town-of-clarksville,Town of Clarksville,Allegany,town,clarksvilleny.gov,dotgov
+town-of-clifton,Town of Clifton,St. Lawrence,town,townofcliftonny.org,its
+town-of-clinton-clinton-county,Town of Clinton,Clinton,town,clintondcny.gov,dotgov
+town-of-clinton-clinton-county,Town of Clinton,Clinton,town,www.townofclinton.com,its
+town-of-clinton-dutchess-county,Town of Clinton,Dutchess,town,clintondcny.gov,dotgov
+town-of-clinton-dutchess-county,Town of Clinton,Dutchess,town,www.townofclinton.com,its
+town-of-cobleskill,Town of Cobleskill,Schoharie,town,cobleskilltown-ny.gov,dotgov
+town-of-colesville,Town of Colesville,Broome,town,townofcolesville.org,its
+town-of-colonie,Town of Colonie,Albany,town,townofcolonie.gov,dotgov
+town-of-colonie,Town of Colonie,Albany,town,www.colonie.org,its
+town-of-columbia,Town of Columbia,Herkimer,town,townofcolumbiany.gov,dotgov
+town-of-columbia,Town of Columbia,Herkimer,town,www.townofcolumbia.org,its
+town-of-columbus,Town of Columbus,Chenango,town,www.columbusny.us,its
+town-of-conesville,Town of Conesville,Schoharie,town,conesvilletown-ny.gov,dotgov
+town-of-conquest,Town of Conquest,Cayuga,town,townofconquestny.gov,dotgov
+town-of-copake,Town of Copake,Columbia,town,townofcopake.org,its
+town-of-copake,Town of Copake,Columbia,town,townofcopakeny.gov,dotgov
+town-of-corinth,Town of Corinth,Saratoga,town,townofcorinthny.gov,dotgov
+town-of-corinth,Town of Corinth,Saratoga,town,townofcorinthny.org,its
+town-of-cortlandt,Town of Cortlandt,Westchester,town,townofcortlandtny.gov,dotgov
+town-of-cortlandt,Town of Cortlandt,Westchester,town,www.townofcortlandt.com,its
+town-of-coventry,Town of Coventry,Chenango,town,townofcoventryny.com,its
+town-of-covert,Town of Covert,Seneca,town,townofcovertny.gov,dotgov
+town-of-covert,Town of Covert,Seneca,town,www.townofcovert.org,its
+town-of-coxsackie,Town of Coxsackie,Greene,town,coxsackie.gov,dotgov
+town-of-coxsackie,Town of Coxsackie,Greene,town,www.coxsackie.org,its
+town-of-crawford,Town of Crawford,Orange,town,townofcrawford.org,its
+town-of-crawford,Town of Crawford,Orange,town,townofcrawfordny.gov,dotgov
+town-of-croghan,Town of Croghan,Lewis,town,townofcroghan.gov,dotgov
+town-of-croghan,Town of Croghan,Lewis,town,www.townofcroghan.com,its
+town-of-cuba,Town of Cuba,Allegany,town,cubany.gov,dotgov
+town-of-cuba,Town of Cuba,Allegany,town,www.cubany.org,its
+town-of-danby,Town of Danby,Tompkins,town,town.danby.ny.us,its
+town-of-dansville,Town of Dansville,Steuben,town,townofdansvilleny.com,its
+town-of-dansville,Town of Dansville,Steuben,town,townofdansvilleny.gov,dotgov
+town-of-danube,Town of Danube,Herkimer,town,www.townofdanube.com,its
+town-of-dayton,Town of Dayton,Cattaraugus,town,daytonny.org,its
+town-of-dayton,Town of Dayton,Cattaraugus,town,townofdaytonny.gov,dotgov
+town-of-de-ruyter,Town of De Ruyter,Madison,town,www.deruyternygov.us,its
+town-of-denmark,Town of Denmark,Lewis,town,townofdenmarkny.com,its
+town-of-denmark,Town of Denmark,Lewis,town,townofdenmarkny.gov,dotgov
+town-of-deposit,Town of Deposit,Delaware,town,townofdepositny.gov,dotgov
+town-of-dewitt,Town of DeWitt,Onondaga,town,dewittny.gov,dotgov
+town-of-dewitt,Town of DeWitt,Onondaga,town,www.townofdewitt.com,its
+town-of-dickinson-broome-county,Town of Dickinson,Broome,town,townofdickinsonnybc.gov,dotgov
+town-of-dickinson-broome-county,Town of Dickinson,Broome,town,www.townofdickinson.com,its
+town-of-dickinson-franklin-county,Town of Dickinson,Franklin,town,townofdickinsonnybc.gov,dotgov
+town-of-dickinson-franklin-county,Town of Dickinson,Franklin,town,www.townofdickinson.com,its
+town-of-dryden,Town of Dryden,Tompkins,town,townofdrydenny.gov,dotgov
+town-of-dryden,Town of Dryden,Tompkins,town,www.dryden.ny.us,its
+town-of-duane,Town of Duane,Franklin,town,www.duaneny.com,its
+town-of-duanesburg,Town of Duanesburg,Schenectady,town,duanesburg.gov,dotgov
+town-of-duanesburg,Town of Duanesburg,Schenectady,town,www.duanesburg.net,its
+town-of-durham,Town of Durham,Greene,town,durhamny.gov,dotgov
+town-of-durham,Town of Durham,Greene,town,www.durhamny.com,its
+town-of-east-bloomfield,Town of East Bloomfield,Ontario,town,townofeastbloomfieldny.gov,dotgov
+town-of-east-bloomfield,Town of East Bloomfield,Ontario,town,www.townofeastbloomfield.com,its
+town-of-east-rochester,Town of East Rochester,Monroe,town,www.eastrochester.org,its
+town-of-eastchester,Town of Eastchester,Westchester,town,eastchester.gov,dotgov
+town-of-eastchester,Town of Eastchester,Westchester,town,www.eastchester.org,its
+town-of-easton,Town of Easton,Washington,town,eastonny.gov,dotgov
+town-of-easton,Town of Easton,Washington,town,eastonny.org,its
+town-of-eaton,Town of Eaton,Madison,town,townofeaton.com,its
+town-of-eaton,Town of Eaton,Madison,town,townofeatonny.gov,dotgov
+town-of-edinburg,Town of Edinburg,Saratoga,town,edinburgny.gov,dotgov
+town-of-edinburg,Town of Edinburg,Saratoga,town,www.edinburgny.com,its
+town-of-edmeston,Town of Edmeston,Otsego,town,www.edmestonny.org,its
+town-of-elba,Town of Elba,Genesee,town,townofelbany.gov,dotgov
+town-of-elba,Town of Elba,Genesee,town,www.elbanewyork.com,its
+town-of-elbridge,Town of Elbridge,Onondaga,town,townofelbridge.gov,dotgov
+town-of-elbridge,Town of Elbridge,Onondaga,town,www.townofelbridge.com,its
+town-of-ellery,Town of Ellery,Chautauqua,town,elleryny.gov,dotgov
+town-of-ellery,Town of Ellery,Chautauqua,town,www.elleryny.org,its
+town-of-esperance,Town of Esperance,Schoharie,town,esperancetown-ny.gov,dotgov
+town-of-esperance,Town of Esperance,Schoharie,town,www.townofesperance.org,its
+town-of-essex,Town of Essex,Essex,town,townofessexny.gov,dotgov
+town-of-essex,Town of Essex,Essex,town,www.essexnewyork.org,its
+town-of-fabius,Town of Fabius,Onondaga,town,www.fabius-ny.gov,its
+town-of-fenton,Town of Fenton,Broome,town,townoffentonny.gov,dotgov
+town-of-fenton,Town of Fenton,Broome,town,www.townoffenton.com,its
+town-of-florence,Town of Florence,Oneida,town,florenceny.gov,dotgov
+town-of-floyd,Town of Floyd,Oneida,town,floydny.gov,dotgov
+town-of-floyd,Town of Floyd,Oneida,town,town.floyd.ny.us,its
+town-of-forestburgh,Town of Forestburgh,Sullivan,town,forestburghny.gov,dotgov
+town-of-forestburgh,Town of Forestburgh,Sullivan,town,www.forestburgh.net,its
+town-of-franklin-delaware-county,Town of Franklin,Delaware,town,www.townoffranklin.com,its
+town-of-franklin-franklin-county,Town of Franklin,Franklin,town,www.townoffranklin.com,its
+town-of-franklinville,Town of Franklinville,Cattaraugus,town,franklinvilleny.org,its
+town-of-franklinville,Town of Franklinville,Cattaraugus,town,townoffranklinvilleny.gov,dotgov
+town-of-freedom,Town of Freedom,Cattaraugus,town,freedomny.gov,dotgov
+town-of-freedom,Town of Freedom,Cattaraugus,town,www.freedomny.org,its
+town-of-fremont-steuben-county,Town of Fremont,Steuben,town,www.fremontnewyork.us,its
+town-of-fremont-sullivan-county,Town of Fremont,Sullivan,town,www.fremontnewyork.us,its
+town-of-fulton,Town of Fulton,Schoharie,town,fultontown-ny.gov,dotgov
+town-of-gallatin,Town of Gallatin,Columbia,town,gallatinny.gov,dotgov
+town-of-gallatin,Town of Gallatin,Columbia,town,www.gallatin-ny.org,its
+town-of-geneseo,Town of Geneseo,Livingston,town,geneseony.gov,dotgov
+town-of-geneseo,Town of Geneseo,Livingston,town,www.geneseony.org,its
+town-of-german-flatts,Town of German Flatts,Herkimer,town,germanflatts.gov,dotgov
+town-of-gilboa,Town of Gilboa,Schoharie,town,gilboatown-ny.gov,dotgov
+town-of-gorham,Town of Gorham,Ontario,town,townofgorhamny.gov,dotgov
+town-of-gorham,Town of Gorham,Ontario,town,www.gorham-ny.com,its
+town-of-granby,Town of Granby,Oswego,town,granbyny.gov,dotgov
+town-of-granby,Town of Granby,Oswego,town,www.towngranby.org,its
+town-of-grand-island,Town of Grand Island,Erie,town,grandislandny.gov,dotgov
+town-of-grand-island,Town of Grand Island,Erie,town,www.grand-island.ny.us,its
+town-of-greene,Town of Greene,Chenango,town,nygreene.gov,dotgov
+town-of-greene,Town of Greene,Chenango,town,townofgreeneny.gov,dotgov
+town-of-greene,Town of Greene,Chenango,town,www.nygreene.com,its
+town-of-greenport,Town of Greenport,Columbia,town,townofgreenportny.gov,dotgov
+town-of-greenport,Town of Greenport,Columbia,town,www.townofgreenport.com,its
+town-of-greenville-greene-county,Town of Greenville,Greene,town,greenvilleocny.gov,dotgov
+town-of-greenville-greene-county,Town of Greenville,Greene,town,towngreenvillegreenecony.gov,dotgov
+town-of-greenville-greene-county,Town of Greenville,Greene,town,www.townofgreenvilleny.com,its
+town-of-greenville-orange-county,Town of Greenville,Orange,town,greenvilleocny.gov,dotgov
+town-of-greenville-orange-county,Town of Greenville,Orange,town,towngreenvillegreenecony.gov,dotgov
+town-of-greenville-orange-county,Town of Greenville,Orange,town,www.townofgreenvilleny.com,its
+town-of-greig,Town of Greig,Lewis,town,townofgreig.gov,dotgov
+town-of-greig,Town of Greig,Lewis,town,townofgreig.org,its
+town-of-groveland,Town of Groveland,Livingston,town,grovelandny.gov,dotgov
+town-of-groveland,Town of Groveland,Livingston,town,www.grovelandny.org,its
+town-of-hadley,Town of Hadley,Saratoga,town,townofhadleyny.gov,dotgov
+town-of-hadley,Town of Hadley,Saratoga,town,www.townofhadley.org,its
+town-of-hamburg,Town of Hamburg,Erie,town,townofhamburgny.gov,dotgov
+town-of-hamburg,Town of Hamburg,Erie,town,www.townofhamburgny.com,its
+town-of-hamilton,Town of Hamilton,Madison,town,townofhamiltonny.gov,dotgov
+town-of-hamilton,Town of Hamilton,Madison,town,www.townofhamiltonny.org,its
+town-of-hamptonburgh,Town of Hamptonburgh,Orange,town,townofhamptonburgh.gov,dotgov
+town-of-hamptonburgh,Town of Hamptonburgh,Orange,town,townofhamptonburgh.org,its
+town-of-hannibal,Town of Hannibal,Oswego,town,hannibalny.gov,dotgov
+town-of-hannibal,Town of Hannibal,Oswego,town,hannibalny.org,its
+town-of-harmony,Town of Harmony,Chautauqua,town,thetownofharmony.com,its
+town-of-harrison,Town of Harrison,Westchester,town,harrison-ny.gov,dotgov
+town-of-harrison,Town of Harrison,Westchester,town,www.harrison-ny.gov,its
+town-of-hartland,Town of Hartland,Niagara,town,townofhartland.org,its
+town-of-hartland,Town of Hartland,Niagara,town,townofhartlandny.gov,dotgov
+town-of-hopkinton,Town of Hopkinton,St. Lawrence,town,townofhopkintonny.gov,dotgov
+town-of-hopkinton,Town of Hopkinton,St. Lawrence,town,www.townofhopkinton.com,its
+town-of-hornby,Town of Hornby,Steuben,town,hornbyny.gov,dotgov
+town-of-horseheads,Town of Horseheads,Chemung,town,townofhorseheads.gov,dotgov
+town-of-horseheads,Town of Horseheads,Chemung,town,www.townofhorseheads.org,its
+town-of-humphrey,Town of Humphrey,Cattaraugus,town,humphreytownship.com,its
+town-of-indian-lake,Town of Indian Lake,Hamilton,town,townofindianlake.org,its
+town-of-inlet,Town of Inlet,Hamilton,town,inletny.gov,dotgov
+town-of-inlet,Town of Inlet,Hamilton,town,www.townofinlet.org,its
+town-of-ira,Town of Ira,Cayuga,town,irany.gov,dotgov
+town-of-jasper,Town of Jasper,Steuben,town,townofjasperny.gov,dotgov
+town-of-jefferson,Town of Jefferson,Schoharie,town,jeffersontown-ny.gov,dotgov
+town-of-kingston,Town of Kingston,Ulster,town,www.townkingstonny.us,its
+town-of-la-grange,Town of La Grange,Dutchess,town,lagrangeny.gov,dotgov
+town-of-la-grange,Town of La Grange,Dutchess,town,www.lagrangeny.org,its
+town-of-lafayette,Town of LaFayette,Onondaga,town,townoflafayetteny.gov,dotgov
+town-of-lafayette,Town of LaFayette,Onondaga,town,www.townoflafayette.com,its
+town-of-lake-george,Town of Lake George,Warren,town,townoflakegeorge.gov,dotgov
+town-of-lake-george,Town of Lake George,Warren,town,www.town.lakegeorge.ny.us,its
+town-of-lansing,Town of Lansing,Tompkins,town,lansingtownny.gov,dotgov
+town-of-lansing,Town of Lansing,Tompkins,town,www.lansingtown.com,its
+town-of-laurens,Town of Laurens,Otsego,town,townoflaurensny.gov,dotgov
+town-of-laurens,Town of Laurens,Otsego,town,twnlaurensny.gov,dotgov
+town-of-lawrence,Town of Lawrence,St. Lawrence,town,townoflawrenceny.gov,dotgov
+town-of-le-ray,Town of Le Ray,Jefferson,town,townofleray.gov,dotgov
+town-of-le-ray,Town of Le Ray,Jefferson,town,www.townofleray.org,its
+town-of-le-roy,Town of Le Roy,Genesee,town,townofleroyny.gov,dotgov
+town-of-le-roy,Town of Le Roy,Genesee,town,www.leroyny.org,its
+town-of-ledyard,Town of Ledyard,Cayuga,town,townofledyardny.gov,dotgov
+town-of-lenox,Town of Lenox,Madison,town,lenoxny.gov,dotgov
+town-of-lenox,Town of Lenox,Madison,town,www.lenoxny.com,its
+town-of-lewis-essex-county,Town of Lewis,Essex,town,townoflewislcny.gov,dotgov
+town-of-lewis-essex-county,Town of Lewis,Essex,town,www.lewisny.com,its
+town-of-lewis-lewis-county,Town of Lewis,Lewis,town,townoflewislcny.gov,dotgov
+town-of-lewis-lewis-county,Town of Lewis,Lewis,town,www.lewisny.com,its
+town-of-leyden,Town of Leyden,Lewis,town,townofleyden.org,its
+town-of-leyden,Town of Leyden,Lewis,town,townofleydenny.gov,dotgov
+town-of-lima,Town of Lima,Livingston,town,townoflimany.gov,dotgov
+town-of-lima,Town of Lima,Livingston,town,www.townoflima.org,its
+town-of-litchfield,Town of Litchfield,Herkimer,town,www.townoflitchfield.com,its
+town-of-little-falls,Town of Little Falls,Herkimer,town,townoflittlefalls.com,its
+town-of-livingston,Town of Livingston,Columbia,town,livingstonny.gov,dotgov
+town-of-livingston,Town of Livingston,Columbia,town,livingstontown.com,its
+town-of-livonia,Town of Livonia,Livingston,town,www.livoniany.com,its
+town-of-lloyd,Town of Lloyd,Ulster,town,townoflloyd.gov,dotgov
+town-of-lloyd,Town of Lloyd,Ulster,town,www.townoflloyd.com,its
+town-of-locke,Town of Locke,Cayuga,town,townoflockeny.gov,dotgov
+town-of-lodi,Town of Lodi,Seneca,town,lodiny.com,its
+town-of-lorraine,Town of Lorraine,Jefferson,town,townoflorraine.com,its
+town-of-lowville,Town of Lowville,Lewis,town,townoflowvilleny.gov,dotgov
+town-of-lowville,Town of Lowville,Lewis,town,www.lowville.ny.us,its
+town-of-lyme,Town of Lyme,Jefferson,town,townoflyme.com,its
+town-of-lyme,Town of Lyme,Jefferson,town,townoflymeny.gov,dotgov
+town-of-macedon,Town of Macedon,Wayne,town,macedontown.gov,dotgov
+town-of-macedon,Town of Macedon,Wayne,town,macedontown.net,its
+town-of-madison,Town of Madison,Madison,town,townofmadisonny.org,its
+town-of-madrid,Town of Madrid,St. Lawrence,town,townofmadrid.org,its
+town-of-madrid,Town of Madrid,St. Lawrence,town,townofmadridny.gov,dotgov
+town-of-malone,Town of Malone,Franklin,town,malonetownny.gov,dotgov
+town-of-malone,Town of Malone,Franklin,town,townofmaloneny.gov,dotgov
+town-of-malone,Town of Malone,Franklin,town,www.malonetown.com,its
+town-of-mamaroneck,Town of Mamaroneck,Westchester,town,townofmamaroneckny.gov,dotgov
+town-of-mamaroneck,Town of Mamaroneck,Westchester,town,www.townofmamaroneck.org,its
+town-of-manheim,Town of Manheim,Herkimer,town,townofmanheim.gov,dotgov
+town-of-manheim,Town of Manheim,Herkimer,town,www.townofmanheim.org,its
+town-of-manlius,Town of Manlius,Onondaga,town,townofmanlius.gov,dotgov
+town-of-manlius,Town of Manlius,Onondaga,town,www.townofmanlius.org,its
+town-of-marcy,Town of Marcy,Oneida,town,www.townofmarcy.org,its
+town-of-marshall,Town of Marshall,Oneida,town,townofmarshall.com,its
+town-of-marshall,Town of Marshall,Oneida,town,townofmarshallny.gov,dotgov
+town-of-masonville,Town of Masonville,Delaware,town,www.masonville-ny.us,its
+town-of-massena,Town of Massena,St. Lawrence,town,massenany.gov,dotgov
+town-of-mayfield,Town of Mayfield,Fulton,town,townofmayfieldny.gov,dotgov
+town-of-mayfield,Town of Mayfield,Fulton,town,www.mayfieldny.org,its
+town-of-mc-donough,Town of Mc Donough,Chenango,town,mcdonoughny.com,its
+town-of-mc-donough,Town of Mc Donough,Chenango,town,mcdonoughny.gov,dotgov
+town-of-mentz,Town of Mentz,Cayuga,town,www.townofmentz.com,its
+town-of-meredith,Town of Meredith,Delaware,town,townofmeredith.com,its
+town-of-mexico,Town of Mexico,Oswego,town,town.mexicony.net,its
+town-of-mexico,Town of Mexico,Oswego,town,townofmexicony.gov,dotgov
+town-of-middleburgh,Town of Middleburgh,Schoharie,town,middleburghtown-ny.gov,dotgov
+town-of-middlesex,Town of Middlesex,Yates,town,www.middlesexny.org,its
+town-of-middletown,Town of Middletown,Delaware,town,middletowndelawarecountyny.org,its
+town-of-middletown,Town of Middletown,Delaware,town,townofmiddletowndelcony.gov,dotgov
+town-of-milton,Town of Milton,Saratoga,town,miltonny.gov,dotgov
+town-of-milton,Town of Milton,Saratoga,town,www.townofmiltonny.org,its
+town-of-monroe,Town of Monroe,Orange,town,townofmonroeny.gov,dotgov
+town-of-monroe,Town of Monroe,Orange,town,www.monroeny.org,its
+town-of-morehouse,Town of Morehouse,Hamilton,town,www.townofmorehouse.com,its
+town-of-morristown,Town of Morristown,St. Lawrence,town,townofmorristownny.gov,dotgov
+town-of-morristown,Town of Morristown,St. Lawrence,town,www.townofmorristownny.org,its
+town-of-mount-kisco,Town of Mount Kisco,Westchester,town,www.mountkisco.org,its
+town-of-naples,Town of Naples,Ontario,town,www.naplesny.us,its
+town-of-nassau,Town of Nassau,Rensselaer,town,townofnassau.gov,dotgov
+town-of-nassau,Town of Nassau,Rensselaer,town,townofnassau.org,its
+town-of-nelson,Town of Nelson,Madison,town,nelson-ny.gov,dotgov
+town-of-nelson,Town of Nelson,Madison,town,www.townofnelson-ny.com,its
+town-of-new-baltimore,Town of New Baltimore,Greene,town,townofnewbaltimore.gov,dotgov
+town-of-new-baltimore,Town of New Baltimore,Greene,town,www.townofnewbaltimore.org,its
+town-of-new-bremen,Town of New Bremen,Lewis,town,townofnewbremen.gov,dotgov
+town-of-new-bremen,Town of New Bremen,Lewis,town,townofnewbremen.weebly.com,its
+town-of-new-hudson,Town of New Hudson,Allegany,town,www.newhudsonny.org,its
+town-of-new-lisbon,Town of New Lisbon,Otsego,town,townofnewlisbon.com,its
+town-of-new-lisbon,Town of New Lisbon,Otsego,town,townofnewlisbonny.gov,dotgov
+town-of-new-paltz,Town of New Paltz,Ulster,town,townofnewpaltzny.gov,dotgov
+town-of-new-paltz,Town of New Paltz,Ulster,town,www.townofnewpaltz.org,its
+town-of-newburgh,Town of Newburgh,Orange,town,townofnewburgh.org,its
+town-of-newburgh,Town of Newburgh,Orange,town,townofnewburghny.gov,dotgov
+town-of-newcomb,Town of Newcomb,Essex,town,newcombny.gov,dotgov
+town-of-newcomb,Town of Newcomb,Essex,town,www.newcombny.com,its
+town-of-newfane,Town of Newfane,Niagara,town,townofnewfaneny.gov,dotgov
+town-of-newfane,Town of Newfane,Niagara,town,www.olcott-newfane.com,its
+town-of-niskayuna,Town of Niskayuna,Schenectady,town,niskayuna.gov,dotgov
+town-of-niskayuna,Town of Niskayuna,Schenectady,town,www.niskayuna.org,its
+town-of-norfolk,Town of Norfolk,St. Lawrence,town,www.norfolkny.us,its
+town-of-north-norwich,Town of North Norwich,Chenango,town,northnorwich.gov,dotgov
+town-of-northampton,Town of Northampton,Fulton,town,townofnorthamptonny.gov,dotgov
+town-of-northampton,Town of Northampton,Fulton,town,www.townofnorthampton.com,its
+town-of-northumberland,Town of Northumberland,Saratoga,town,northumberlandny.gov,dotgov
+town-of-northumberland,Town of Northumberland,Saratoga,town,www.townofnorthumberland.org,its
+town-of-oakfield,Town of Oakfield,Genesee,town,townofoakfieldny.gov,dotgov
+town-of-oakfield,Town of Oakfield,Genesee,town,www.townofoakfieldny.com,its
+town-of-ohio,Town of Ohio,Herkimer,town,www.ohiony.us,its
+town-of-ontario,Town of Ontario,Wayne,town,ontariotown.gov,dotgov
+town-of-ontario,Town of Ontario,Wayne,town,www.ontariotown.org,its
+town-of-oppenheim,Town of Oppenheim,Fulton,town,townofoppenheim.gov,dotgov
+town-of-orange,Town of Orange,Schuyler,town,townoforangeny.org,its
+town-of-orleans,Town of Orleans,Jefferson,town,townoforleansny.gov,dotgov
+town-of-orleans,Town of Orleans,Jefferson,town,www.townoforleans.com,its
+town-of-owego,Town of Owego,Tioga,town,townofowegony.gov,dotgov
+town-of-owego,Town of Owego,Tioga,town,www.townofowego.com,its
+town-of-palmyra,Town of Palmyra,Wayne,town,palmyrany.gov,dotgov
+town-of-pavilion,Town of Pavilion,Genesee,town,townofpavilion.gov,dotgov
+town-of-pavilion,Town of Pavilion,Genesee,town,www.townofpavilion.com,its
+town-of-pawling,Town of Pawling,Dutchess,town,www.pawling.org,its
+town-of-penfield,Town of Penfield,Monroe,town,penfieldny.gov,dotgov
+town-of-penfield,Town of Penfield,Monroe,town,www.penfield.org,its
+town-of-perry,Town of Perry,Wyoming,town,www.townofperryny.com,its
+town-of-peru,Town of Peru,Clinton,town,perutownny.gov,dotgov
+town-of-peru,Town of Peru,Clinton,town,www.perutown.com,its
+town-of-philipstown,Town of Philipstown,Putnam,town,philipstown.gov,dotgov
+town-of-philipstown,Town of Philipstown,Putnam,town,www.philipstown.com,its
+town-of-piercefield,Town of Piercefield,St. Lawrence,town,townofpiercefield.gov,dotgov
+town-of-pierrepont,Town of Pierrepont,St. Lawrence,town,townofpierrepont.gov,dotgov
+town-of-pierrepont,Town of Pierrepont,St. Lawrence,town,www.townofpierrepont.com,its
+town-of-poestenkill,Town of Poestenkill,Rensselaer,town,poestenkillny.gov,dotgov
+town-of-poestenkill,Town of Poestenkill,Rensselaer,town,www.poestenkillny.com,its
+town-of-pomfret,Town of Pomfret,Chautauqua,town,townofpomfretny.gov,dotgov
+town-of-pomfret,Town of Pomfret,Chautauqua,town,www.townofpomfretny.com,its
+town-of-pompey,Town of Pompey,Onondaga,town,pompeyny.gov,dotgov
+town-of-pompey,Town of Pompey,Onondaga,town,townofpompey.com,its
+town-of-portville,Town of Portville,Cattaraugus,town,www.portville-ny.org,its
+town-of-potsdam,Town of Potsdam,St. Lawrence,town,townofpotsdamny.gov,dotgov
+town-of-potsdam,Town of Potsdam,St. Lawrence,town,www.potsdamny.us,its
+town-of-poughkeepsie,Town of Poughkeepsie,Dutchess,town,townofpoughkeepsie-ny.gov,dotgov
+town-of-poughkeepsie,Town of Poughkeepsie,Dutchess,town,www.townofpoughkeepsie.com,its
+town-of-pound-ridge,Town of Pound Ridge,Westchester,town,townofpoundridge.gov,dotgov
+town-of-pound-ridge,Town of Pound Ridge,Westchester,town,www.townofpoundridge.com,its
+town-of-prattsville,Town of Prattsville,Greene,town,www.prattsville.org,its
+town-of-princetown,Town of Princetown,Schenectady,town,princetown.gov,dotgov
+town-of-princetown,Town of Princetown,Schenectady,town,princetown.net,its
+town-of-providence,Town of Providence,Saratoga,town,townofprovidence.org,its
+town-of-providence,Town of Providence,Saratoga,town,townofprovidenceny.gov,dotgov
+town-of-queensbury,Town of Queensbury,Warren,town,queensburyny.gov,dotgov
+town-of-queensbury,Town of Queensbury,Warren,town,www.queensbury.net,its
+town-of-randolph,Town of Randolph,Cattaraugus,town,randolphny.gov,dotgov
+town-of-randolph,Town of Randolph,Cattaraugus,town,randolphny.net,its
+town-of-red-hook,Town of Red Hook,Dutchess,town,redhookny.gov,dotgov
+town-of-red-hook,Town of Red Hook,Dutchess,town,www.redhook.org,its
+town-of-remsen,Town of Remsen,Oneida,town,remsenny.gov,dotgov
+town-of-remsen,Town of Remsen,Oneida,town,town.remsen.ny.us,its
+town-of-rensselaerville,Town of Rensselaerville,Albany,town,rensselaerville.gov,dotgov
+town-of-rensselaerville,Town of Rensselaerville,Albany,town,www.rensselaerville.com,its
+town-of-richland,Town of Richland,Oswego,town,townofrichlandny.gov,dotgov
+town-of-richland,Town of Richland,Oswego,town,www.townofrichland.org,its
+town-of-richmondville,Town of Richmondville,Schoharie,town,richmondvilletown-ny.gov,dotgov
+town-of-riga,Town of Riga,Monroe,town,www.townofriga.org,its
+town-of-rochester,Town of Rochester,Ulster,town,www.townofrochester.net,its
+town-of-rockland,Town of Rockland,Sullivan,town,townofrocklandny.gov,dotgov
+town-of-rockland,Town of Rockland,Sullivan,town,www.townofrocklandny.com,its
+town-of-roseboom,Town of Roseboom,Otsego,town,www.townofroseboom.com,its
+town-of-rossie,Town of Rossie,St. Lawrence,town,rossieny.gov,dotgov
+town-of-roxbury,Town of Roxbury,Delaware,town,roxburyny.gov,dotgov
+town-of-roxbury,Town of Roxbury,Delaware,town,www.roxburyny.com,its
+town-of-rush,Town of Rush,Monroe,town,townofrushny.gov,dotgov
+town-of-rush,Town of Rush,Monroe,town,www.townofrush.com,its
+town-of-rushford,Town of Rushford,Allegany,town,townofrushford.gov,dotgov
+town-of-rushford,Town of Rushford,Allegany,town,www.rushfordny.org,its
+town-of-salamanca,Town of Salamanca,Cattaraugus,town,townofsalamanca.org,its
+town-of-salina,Town of Salina,Onondaga,town,salinany.gov,dotgov
+town-of-salina,Town of Salina,Onondaga,town,www.salina.ny.us,its
+town-of-sangerfield,Town of Sangerfield,Oneida,town,sangerfieldny.gov,dotgov
+town-of-sangerfield,Town of Sangerfield,Oneida,town,www.sangerfieldny.com,its
+town-of-saugerties,Town of Saugerties,Ulster,town,www.saugerties.ny.us,its
+town-of-scarsdale,Town of Scarsdale,Westchester,town,www.scarsdale.com,its
+town-of-schaghticoke,Town of Schaghticoke,Rensselaer,town,townofschaghticoke.gov,dotgov
+town-of-schaghticoke,Town of Schaghticoke,Rensselaer,town,www.townofschaghticoke.org,its
+town-of-schoharie,Town of Schoharie,Schoharie,town,schoharietown-ny.gov,dotgov
+town-of-schroeppel,Town of Schroeppel,Oswego,town,schroeppelny.gov,dotgov
+town-of-schroeppel,Town of Schroeppel,Oswego,town,www.townofschroeppel.com,its
+town-of-schroon,Town of Schroon,Essex,town,townofschroonny.gov,dotgov
+town-of-schroon,Town of Schroon,Essex,town,www.schroon.net,its
+town-of-schuyler,Town of Schuyler,Herkimer,town,townofschuyler.com,its
+town-of-schuyler,Town of Schuyler,Herkimer,town,townofschuylerny.gov,dotgov
+town-of-scio,Town of Scio,Allegany,town,townofsciony.gov,dotgov
+town-of-scio,Town of Scio,Allegany,town,townofsciony.org,its
+town-of-scott,Town of Scott,Cortland,town,scott-ny.gov,dotgov
+town-of-scott,Town of Scott,Cortland,town,townofscott.org,its
+town-of-seward,Town of Seward,Schoharie,town,sewardtown-ny.gov,dotgov
+town-of-sharon,Town of Sharon,Schoharie,town,sharontown-ny.gov,dotgov
+town-of-shelby,Town of Shelby,Orleans,town,townofshelbyny.gov,dotgov
+town-of-shelby,Town of Shelby,Orleans,town,www.townofshelbyny.org,its
+town-of-sheldon,Town of Sheldon,Wyoming,town,townofsheldonny.gov,dotgov
+town-of-sheldon,Town of Sheldon,Wyoming,town,www.townofsheldon.com,its
+town-of-sodus,Town of Sodus,Wayne,town,sodusny.gov,dotgov
+town-of-sodus,Town of Sodus,Wayne,town,sodusny.org,its
+town-of-south-valley,Town of South Valley,Cattaraugus,town,southvalleyny.org,its
+town-of-steuben,Town of Steuben,Oneida,town,www.town.steuben.ny.us,its
+town-of-stillwater,Town of Stillwater,Saratoga,town,stillwaterny.org,its
+town-of-stillwater,Town of Stillwater,Saratoga,town,townofstillwaterny.gov,dotgov
+town-of-stockholm,Town of Stockholm,St. Lawrence,town,stockholm-ny.com,its
+town-of-stockholm,Town of Stockholm,St. Lawrence,town,stockholmny.gov,dotgov
+town-of-stockport,Town of Stockport,Columbia,town,stockportny.gov,dotgov
+town-of-stockport,Town of Stockport,Columbia,town,townofstockport.org,its
+town-of-stockton,Town of Stockton,Chautauqua,town,townofstocktonny.gov,dotgov
+town-of-sullivan,Town of Sullivan,Madison,town,townofsullivan.org,its
+town-of-sullivan,Town of Sullivan,Madison,town,townofsullivanny.gov,dotgov
+town-of-summit,Town of Summit,Schoharie,town,summittown-ny.gov,dotgov
+town-of-sweden,Town of Sweden,Monroe,town,townofswedenny.gov,dotgov
+town-of-sweden,Town of Sweden,Monroe,town,www.townofsweden.org,its
+town-of-theresa,Town of Theresa,Jefferson,town,townoftheresany.gov,dotgov
+town-of-theresa,Town of Theresa,Jefferson,town,www.townoftheresany.com,its
+town-of-thompson,Town of Thompson,Sullivan,town,thompsonny.gov,dotgov
+town-of-thompson,Town of Thompson,Sullivan,town,www.townofthompson.com,its
+town-of-tonawanda,Town of Tonawanda,Erie,town,tonawanda.gov,dotgov
+town-of-tonawanda,Town of Tonawanda,Erie,town,www.tonawanda.ny.us,its
+town-of-truxton,Town of Truxton,Cortland,town,townoftruxton.com,its
+town-of-tully,Town of Tully,Onondaga,town,townoftully.org,its
+town-of-tyrone,Town of Tyrone,Schuyler,town,townoftyrone.org,its
+town-of-ulster,Town of Ulster,Ulster,town,ulsterpolice.gov,dotgov
+town-of-ulster,Town of Ulster,Ulster,town,www.townofulster.org,its
+town-of-unadilla,Town of Unadilla,Otsego,town,townofunadilla.gov,dotgov
+town-of-union,Town of Union,Broome,town,townofunionny.gov,dotgov
+town-of-union,Town of Union,Broome,town,www.townofunion.com,its
+town-of-urbana,Town of Urbana,Steuben,town,townofurbana.gov,dotgov
+town-of-urbana,Town of Urbana,Steuben,town,www.townofurbana.com,its
+town-of-venice,Town of Venice,Cayuga,town,veniceny.gov,dotgov
+town-of-vernon,Town of Vernon,Oneida,town,townofvernonny.gov,dotgov
+town-of-vernon,Town of Vernon,Oneida,town,www.townofvernon.com,its
+town-of-verona,Town of Verona,Oneida,town,townverona.org,its
+town-of-verona,Town of Verona,Oneida,town,veronany.gov,dotgov
+town-of-vestal,Town of Vestal,Broome,town,vestalny.gov,dotgov
+town-of-vestal,Town of Vestal,Broome,town,www.vestalny.com,its
+town-of-victor,Town of Victor,Ontario,town,townofvictorny.gov,dotgov
+town-of-victor,Town of Victor,Ontario,town,www.victorny.org,its
+town-of-virgil,Town of Virgil,Cortland,town,virgilny.gov,dotgov
+town-of-virgil,Town of Virgil,Cortland,town,www.virgilny.com,its
+town-of-waddington,Town of Waddington,St. Lawrence,town,townofwaddington.gov,dotgov
+town-of-waddington,Town of Waddington,St. Lawrence,town,www.waddingtonny.us,its
+town-of-wallkill,Town of Wallkill,Orange,town,townofwallkill.gov,dotgov
+town-of-wallkill,Town of Wallkill,Orange,town,www.townofwallkill.com,its
+town-of-walton,Town of Walton,Delaware,town,townofwaltonny.gov,dotgov
+town-of-walton,Town of Walton,Delaware,town,www.townofwalton.org,its
+town-of-warwick,Town of Warwick,Orange,town,townofwarwickny.gov,dotgov
+town-of-warwick,Town of Warwick,Orange,town,www.townofwarwick.org,its
+town-of-washington,Town of Washington,Dutchess,town,washingtonny.gov,dotgov
+town-of-washington,Town of Washington,Dutchess,town,www.washingtonny.org,its
+town-of-waterford,Town of Waterford,Saratoga,town,townofwaterfordny.gov,dotgov
+town-of-waterford,Town of Waterford,Saratoga,town,www.town.waterford.ny.us,its
+town-of-wayland,Town of Wayland,Steuben,town,townofwayland.org,its
+town-of-wayland,Town of Wayland,Steuben,town,townofwaylandny.gov,dotgov
+town-of-wayne,Town of Wayne,Steuben,town,townofwayneny.gov,dotgov
+town-of-wayne,Town of Wayne,Steuben,town,www.townofwayneny.com,its
+town-of-webster,Town of Webster,Monroe,town,websterny.gov,dotgov
+town-of-webster,Town of Webster,Monroe,town,websternytoday.gov,dotgov
+town-of-webster,Town of Webster,Monroe,town,www.ci.webster.ny.us,its
+town-of-west-bloomfield,Town of West Bloomfield,Ontario,town,townofwestbloomfield.org,its
+town-of-west-bloomfield,Town of West Bloomfield,Ontario,town,westbloomfieldny.gov,dotgov
+town-of-west-monroe,Town of West Monroe,Oswego,town,westmonroeny.gov,dotgov
+town-of-west-monroe,Town of West Monroe,Oswego,town,www.townofwestmonroe-ny.us,its
+town-of-west-sparta,Town of West Sparta,Livingston,town,townofwestsparta.org,its
+town-of-western,Town of Western,Oneida,town,townofwestern-ny.org,its
+town-of-westfield,Town of Westfield,Chautauqua,town,townofwestfieldny.gov,dotgov
+town-of-westfield,Town of Westfield,Chautauqua,town,www.townofwestfield.org,its
+town-of-wheatland,Town of Wheatland,Monroe,town,townofwheatlandny.gov,dotgov
+town-of-wheatland,Town of Wheatland,Monroe,town,www.townofwheatland.org,its
+town-of-whitehall,Town of Whitehall,Washington,town,townofwhitehallny.gov,dotgov
+town-of-whitestown,Town of Whitestown,Oneida,town,whitestownny.gov,dotgov
+town-of-whitestown,Town of Whitestown,Oneida,town,www.town.whitestown.ny.us,its
+town-of-wilna,Town of Wilna,Jefferson,town,townofwilnany.gov,dotgov
+town-of-wilson,Town of Wilson,Niagara,town,townofwilsonny.gov,dotgov
+town-of-wilson,Town of Wilson,Niagara,town,www.wilsonnewyork.com,its
+town-of-wilton,Town of Wilton,Saratoga,town,www.townofwilton.com,its
+town-of-winfield,Town of Winfield,Herkimer,town,townofwinfieldny.gov,dotgov
+town-of-woodbury,Town of Woodbury,Orange,town,townofwoodburyny.gov,dotgov
+town-of-woodbury,Town of Woodbury,Orange,town,www.townofwoodbury.com,its
+town-of-woodstock,Town of Woodstock,Ulster,town,woodstockny.gov,dotgov
+town-of-woodstock,Town of Woodstock,Ulster,town,www.woodstockny.org,its
+town-of-wright,Town of Wright,Schoharie,town,wrighttown-ny.gov,dotgov
+town-of-wright,Town of Wright,Schoharie,town,www.townofwright.com,its
+town-of-yates,Town of Yates,Orleans,town,townofyates.gov,dotgov
+town-of-yates,Town of Yates,Orleans,town,townofyates.org,its
+town-of-yorkshire,Town of Yorkshire,Cattaraugus,town,yorkshireny.gov,dotgov
+town-of-yorkshire,Town of Yorkshire,Cattaraugus,town,yorkshireny.org,its
+ulster-county,Ulster County,Ulster,county,ulstercountyny.gov,dotgov
+ulster-county,Ulster County,Ulster,county,www.co.ulster.ny.us,its
+village-of-alden,Village of Alden,Erie,village,villageofaldenny.gov,dotgov
+village-of-alexandria-bay,Village of Alexandria Bay,Jefferson,village,www.alexandria-bay.ny.us,its
+village-of-allegany,Village of Allegany,Cattaraugus,village,www.allegany.org,its
+village-of-argyle,Village of Argyle,Washington,village,argylevillageny.gov,dotgov
+village-of-argyle,Village of Argyle,Washington,village,www.argyle-village.org,its
+village-of-arkport,Village of Arkport,Steuben,village,www.arkportvillage.com,its
+village-of-ateres,Village of Ateres,Sullivan,village,ateres.gov,dotgov
+village-of-ateres,Village of Ateres,Sullivan,village,ateresny.gov,dotgov
+village-of-atlantic-beach,Village of Atlantic Beach,Nassau,village,atlanticbeachny.gov,dotgov
+village-of-atlantic-beach,Village of Atlantic Beach,Nassau,village,www.villageofatlanticbeach.com,its
+village-of-bainbridge,Village of Bainbridge,Chenango,village,bainbridgeny.org,its
+village-of-bainbridge,Village of Bainbridge,Chenango,village,villageofbainbridgeny.gov,dotgov
+village-of-bellerose,Village of Bellerose,Nassau,village,bellerosevillage.gov,dotgov
+village-of-bellerose,Village of Bellerose,Nassau,village,www.bellerosevillage.org,its
+village-of-black-river,Village of Black River,Jefferson,village,blackriverny.gov,dotgov
+village-of-black-river,Village of Black River,Jefferson,village,www.blackriverny.org,its
+village-of-bloomfield,Village of Bloomfield,Ontario,village,villageofbloomfieldny.gov,dotgov
+village-of-bloomfield,Village of Bloomfield,Ontario,village,www.bloomfieldny.org,its
+village-of-brocton,Village of Brocton,Chautauqua,village,www.villageofbrocton.com,its
+village-of-buchanan,Village of Buchanan,Westchester,village,buchananny.gov,dotgov
+village-of-buchanan,Village of Buchanan,Westchester,village,www.villageofbuchanan.com,its
+village-of-burdett,Village of Burdett,Schuyler,village,burdettny.us,its
+village-of-cambridge,Village of Cambridge,Washington,village,www.cambridgeny.gov,its
+village-of-canajoharie,Village of Canajoharie,Montgomery,village,canjo.gov,dotgov
+village-of-canajoharie,Village of Canajoharie,Montgomery,village,villageofcanajoharie.org,its
+village-of-canton,Village of Canton,St. Lawrence,village,cantonny.gov,dotgov
+village-of-cape-vincent,Village of Cape Vincent,Jefferson,village,villageofcapevincent.gov,dotgov
+village-of-cape-vincent,Village of Cape Vincent,Jefferson,village,www.villageofcapevincent.org,its
+village-of-cassadaga,Village of Cassadaga,Chautauqua,village,www.cassadaganewyork.org,its
+village-of-castile,Village of Castile,Wyoming,village,villageofcastile.gov,dotgov
+village-of-castile,Village of Castile,Wyoming,village,www.castileny.com,its
+village-of-castorland,Village of Castorland,Lewis,village,villageofcastorlandny.gov,dotgov
+village-of-castorland,Village of Castorland,Lewis,village,villageofcastorlandny.org,its
+village-of-cattaraugus,Village of Cattaraugus,Cattaraugus,village,villageofcattaraugus.gov,dotgov
+village-of-cayuga,Village of Cayuga,Cayuga,village,villagecayugany.gov,dotgov
+village-of-central-square,Village of Central Square,Oswego,village,centralsquareny.gov,dotgov
+village-of-central-square,Village of Central Square,Oswego,village,www.villageofcentralsquare-ny.us,its
+village-of-champlain,Village of Champlain,Clinton,village,villageofchamplainny.gov,dotgov
+village-of-champlain,Village of Champlain,Clinton,village,www.vchamplain.com,its
+village-of-chatham,Village of Chatham,Columbia,village,villageofchathamny.gov,dotgov
+village-of-chatham,Village of Chatham,Columbia,village,www.villageofchatham.com,its
+village-of-chaumont,Village of Chaumont,Jefferson,village,villageofchaumont.gov,dotgov
+village-of-chittenango,Village of Chittenango,Madison,village,chittenango.gov,dotgov
+village-of-chittenango,Village of Chittenango,Madison,village,www.chittenango.org,its
+village-of-clifton-springs,Village of Clifton Springs,Ontario,village,cliftonspringsny.gov,dotgov
+village-of-clifton-springs,Village of Clifton Springs,Ontario,village,cliftonspringsny.org,its
+village-of-clinton,Village of Clinton,Oneida,village,village.clinton.ny.us,its
+village-of-clinton,Village of Clinton,Oneida,village,villageofclintonny.gov,dotgov
+village-of-clyde,Village of Clyde,Wayne,village,clydeny.gov,dotgov
+village-of-clyde,Village of Clyde,Wayne,village,www.clydeny.com,its
+village-of-cobleskill,Village of Cobleskill,Schoharie,village,cobleskillvillage-ny.gov,dotgov
+village-of-cohocton,Village of Cohocton,Steuben,village,www.cohoctonny.com,its
+village-of-copenhagen,Village of Copenhagen,Lewis,village,villageofcopenhagen.org,its
+village-of-croghan,Village of Croghan,Lewis,village,croghanny.org,its
+village-of-croghan,Village of Croghan,Lewis,village,villageofcroghanny.gov,dotgov
+village-of-dansville,Village of Dansville,Livingston,village,villageofdansvilleny.gov,dotgov
+village-of-dansville,Village of Dansville,Livingston,village,www.dansvilleny.org,its
+village-of-de-ruyter,Village of De Ruyter,Madison,village,deruyter.gov,dotgov
+village-of-de-ruyter,Village of De Ruyter,Madison,village,www.deruyteronline.com,its
+village-of-deferiet,Village of Deferiet,Jefferson,village,www.villageofdeferiet.com,its
+village-of-delanson,Village of Delanson,Schenectady,village,www.delanson.net,its
+village-of-dering-harbor,Village of Dering Harbor,Suffolk,village,www.deringharborcommunity.org,its
+village-of-dexter,Village of Dexter,Jefferson,village,villageofdexterny.gov,dotgov
+village-of-dexter,Village of Dexter,Jefferson,village,www.villageofdexterny.com,its
+village-of-dobbs-ferry,Village of Dobbs Ferry,Westchester,village,dobbsferry.gov,dotgov
+village-of-dobbs-ferry,Village of Dobbs Ferry,Westchester,village,dobbsferrypolice.gov,dotgov
+village-of-dobbs-ferry,Village of Dobbs Ferry,Westchester,village,www.dobbsferry.com,its
+village-of-dresden,Village of Dresden,Yates,village,www.dresdenny.org,its
+village-of-earlville,Village of Earlville,Chenango,village,villageofearlville.gov,dotgov
+village-of-east-hills,Village of East Hills,Nassau,village,www.villageofeasthills.org,its
+village-of-east-nassau,Village of East Nassau,Rensselaer,village,villageofeastnassau.gov,dotgov
+village-of-east-nassau,Village of East Nassau,Rensselaer,village,villageofeastnassau.org,its
+village-of-endicott,Village of Endicott,Broome,village,endicottny.gov,dotgov
+village-of-endicott,Village of Endicott,Broome,village,www.endicottny.com,its
+village-of-esperance,Village of Esperance,Schoharie,village,esperancevillage-ny.gov,dotgov
+village-of-fonda,Village of Fonda,Montgomery,village,villageoffonda.ny.gov,its
+village-of-fort-plain,Village of Fort Plain,Montgomery,village,villageoffortplain.com,its
+village-of-fort-plain,Village of Fort Plain,Montgomery,village,villageoffortplain.gov,dotgov
+village-of-freeport,Village of Freeport,Nassau,village,freeportny.gov,dotgov
+village-of-freeport,Village of Freeport,Nassau,village,www.freeportny.com,its
+village-of-geneseo,Village of Geneseo,Livingston,village,www.geneseony.org,its
+village-of-grand-view-on-hudson,Village of Grand View-On-Hudson,Rockland,village,www.gvoh.net,its
+village-of-great-neck,Village of Great Neck,Nassau,village,greatneckvillage.gov,dotgov
+village-of-great-neck,Village of Great Neck,Nassau,village,www.greatneckvillage.org,its
+village-of-greenport,Village of Greenport,Suffolk,village,villageofgreenport.gov,dotgov
+village-of-greenport,Village of Greenport,Suffolk,village,www.greenport.com,its
+village-of-groton,Village of Groton,Tompkins,village,grotonny.gov,dotgov
+village-of-groton,Village of Groton,Tompkins,village,www.grotonny.org,its
+village-of-harrison,Village of Harrison,Westchester,village,www.harrison-ny.gov,its
+village-of-haverstraw,Village of Haverstraw,Rockland,village,villageofhaverstraw.gov,dotgov
+village-of-haverstraw,Village of Haverstraw,Rockland,village,www.voh-ny.com,its
+village-of-hempstead,Village of Hempstead,Nassau,village,www.villageofhempstead.org,its
+village-of-herkimer,Village of Herkimer,Herkimer,village,village.herkimer.ny.us,its
+village-of-hewlett-harbor,Village of Hewlett Harbor,Nassau,village,hewlettharbor.gov,dotgov
+village-of-hewlett-harbor,Village of Hewlett Harbor,Nassau,village,www.hewlettharbor.org,its
+village-of-hewlett-neck,Village of Hewlett Neck,Nassau,village,hewlettneck.gov,dotgov
+village-of-highland-falls,Village of Highland Falls,Orange,village,highlandfallsny.gov,dotgov
+village-of-highland-falls,Village of Highland Falls,Orange,village,www.highlandfallsny.org,its
+village-of-hillburn,Village of Hillburn,Rockland,village,www.hillburn.org,its
+village-of-hoosick-falls,Village of Hoosick Falls,Rensselaer,village,www.hoosickfalls.com,its
+village-of-kaser,Village of Kaser,Rockland,village,kaser.gov,dotgov
+village-of-kensington,Village of Kensington,Nassau,village,www.villageofkensingtonny.gov,its
+village-of-kinderhook,Village of Kinderhook,Columbia,village,villageofkinderhook.org,its
+village-of-kinderhook,Village of Kinderhook,Columbia,village,villageofkinderhookny.gov,dotgov
+village-of-kiryas-joel,Village of Kiryas Joel,Orange,village,kiryasjoel.gov,dotgov
+village-of-lake-george,Village of Lake George,Warren,village,lakegeorgevillage.gov,dotgov
+village-of-lake-george,Village of Lake George,Warren,village,www.lakegeorgevillage.com,its
+village-of-lake-placid,Village of Lake Placid,Essex,village,villageoflakeplacid.ny.gov,its
+village-of-lansing,Village of Lansing,Tompkins,village,villageoflansingny.gov,dotgov
+village-of-lansing,Village of Lansing,Tompkins,village,www.vlansing.org,its
+village-of-larchmont,Village of Larchmont,Westchester,village,larchmontny.gov,dotgov
+village-of-larchmont,Village of Larchmont,Westchester,village,www.villageoflarchmont.org,its
+village-of-lattingtown,Village of Lattingtown,Nassau,village,lattingtown.gov,dotgov
+village-of-lattingtown,Village of Lattingtown,Nassau,village,lattingtownny.gov,dotgov
+village-of-lattingtown,Village of Lattingtown,Nassau,village,villageoflattingtown.org,its
+village-of-leicester,Village of Leicester,Livingston,village,www.villageofleicester.org,its
+village-of-lewiston,Village of Lewiston,Niagara,village,villageoflewistonny.gov,dotgov
+village-of-lewiston,Village of Lewiston,Niagara,village,www.villageoflewiston.net,its
+village-of-lyndonville,Village of Lyndonville,Orleans,village,villageoflyndonville.gov,dotgov
+village-of-malone,Village of Malone,Franklin,village,villageofmaloneny.gov,dotgov
+village-of-marcellus,Village of Marcellus,Onondaga,village,villageofmarcellus.com,its
+village-of-marcellus,Village of Marcellus,Onondaga,village,villageofmarcellusny.gov,dotgov
+village-of-massapequa-park,Village of Massapequa Park,Nassau,village,masspk.com,its
+village-of-massapequa-park,Village of Massapequa Park,Nassau,village,masspkny.gov,dotgov
+village-of-mayfield,Village of Mayfield,Fulton,village,www.villageofmayfield.com,its
+village-of-menands,Village of Menands,Albany,village,menandsny.gov,dotgov
+village-of-menands,Village of Menands,Albany,village,www.villageofmenands.com,its
+village-of-mexico,Village of Mexico,Oswego,village,mexicovillage.net,its
+village-of-mexico,Village of Mexico,Oswego,village,villageofmexico.gov,dotgov
+village-of-middleburgh,Village of Middleburgh,Schoharie,village,villageofmiddleburgh.gov,dotgov
+village-of-middleville,Village of Middleville,Herkimer,village,villageofmiddlevilleny.gov,dotgov
+village-of-milford,Village of Milford,Otsego,village,villagemilfordny.gov,dotgov
+village-of-millerton,Village of Millerton,Dutchess,village,villageofmillerton-ny.gov,dotgov
+village-of-millerton,Village of Millerton,Dutchess,village,www.villageofmillerton.com,its
+village-of-mohawk,Village of Mohawk,Herkimer,village,villageofmohawk.gov,dotgov
+village-of-montour-falls,Village of Montour Falls,Schuyler,village,villageofmontourfalls.com,its
+village-of-montour-falls,Village of Montour Falls,Schuyler,village,villageofmontourfalls.gov,dotgov
+village-of-moravia,Village of Moravia,Cayuga,village,villageofmoravia.gov,dotgov
+village-of-munsey-park,Village of Munsey Park,Nassau,village,www.munseypark.org,its
+village-of-new-berlin,Village of New Berlin,Chenango,village,thevillageofnewberlin.org,its
+village-of-new-berlin,Village of New Berlin,Chenango,village,villageofnewberlinny.gov,dotgov
+village-of-newark,Village of Newark,Wayne,village,villageofnewarkny.gov,dotgov
+village-of-newark,Village of Newark,Wayne,village,www.villageofnewark.com,its
+village-of-north-collins,Village of North Collins,Erie,village,www.northcollinsny.org,its
+village-of-norwood,Village of Norwood,St. Lawrence,village,norwoodny.gov,dotgov
+village-of-norwood,Village of Norwood,St. Lawrence,village,www.norwoodny.org,its
+village-of-orchard-park,Village of Orchard Park,Erie,village,orchardparkvillageny.gov,dotgov
+village-of-orchard-park,Village of Orchard Park,Erie,village,www.orchardparkvillage.org,its
+village-of-oriskany,Village of Oriskany,Oneida,village,villageoforiskany.org,its
+village-of-oriskany-falls,Village of Oriskany Falls,Oneida,village,villageoforiskanyfalls.org,its
+village-of-ossining,Village of Ossining,Westchester,village,www.villageofossining.org,its
+village-of-painted-post,Village of Painted Post,Steuben,village,villageofpaintedpost.gov,dotgov
+village-of-painted-post,Village of Painted Post,Steuben,village,www.paintedpostny.com,its
+village-of-panama,Village of Panama,Chautauqua,village,www.panamany.org,its
+village-of-pawling,Village of Pawling,Dutchess,village,villageofpawling.gov,dotgov
+village-of-pawling,Village of Pawling,Dutchess,village,www.villageofpawling.org,its
+village-of-pelham,Village of Pelham,Westchester,village,pelhamny.gov,dotgov
+village-of-pelham,Village of Pelham,Westchester,village,www.pelhamgov.com,its
+village-of-pittsford,Village of Pittsford,Monroe,village,villageofpittsfordny.gov,dotgov
+village-of-pittsford,Village of Pittsford,Monroe,village,www.villageofpittsford.org,its
+village-of-plandome,Village of Plandome,Nassau,village,www.plandomevillage.com,its
+village-of-poland,Village of Poland,Herkimer,village,villageofpolandny.org,its
+village-of-pomona,Village of Pomona,Rockland,village,pomonavillage.gov,dotgov
+village-of-pomona,Village of Pomona,Rockland,village,www.pomonavillage.com,its
+village-of-poquott,Village of Poquott,Suffolk,village,www.poquott.org,its
+village-of-port-chester,Village of Port Chester,Westchester,village,portchesterny.gov,dotgov
+village-of-port-chester,Village of Port Chester,Westchester,village,portchestervotes.gov,dotgov
+village-of-port-chester,Village of Port Chester,Westchester,village,www.portchesterny.com,its
+village-of-portville,Village of Portville,Cattaraugus,village,www.portvilleny.net,its
+village-of-pulaski,Village of Pulaski,Oswego,village,www.villagepulaski.org,its
+village-of-quogue,Village of Quogue,Suffolk,village,quoguefiredeptny.gov,dotgov
+village-of-quogue,Village of Quogue,Suffolk,village,villageofquogueny.gov,dotgov
+village-of-quogue,Village of Quogue,Suffolk,village,www.villageofquogue.com,its
+village-of-red-creek,Village of Red Creek,Wayne,village,redcreekny.gov,dotgov
+village-of-remsen,Village of Remsen,Oneida,village,villageofremsen.org,its
+village-of-rensselaer-falls,Village of Rensselaer Falls,St. Lawrence,village,www.cantonnewyork.us,its
+village-of-round-lake,Village of Round Lake,Saratoga,village,www.roundlakevillage.org,its
+village-of-russell-gardens,Village of Russell Gardens,Nassau,village,www.russellgardens.com,its
+village-of-sagaponack,Village of Sagaponack,Suffolk,village,sagaponackvillageny.gov,dotgov
+village-of-sagaponack,Village of Sagaponack,Suffolk,village,www.sagaponackvillage.org,its
+village-of-saltaire,Village of Saltaire,Suffolk,village,www.saltaire.org,its
+village-of-sands-point,Village of Sands Point,Nassau,village,sandspoint.gov,dotgov
+village-of-sands-point,Village of Sands Point,Nassau,village,www.sandspoint.org,its
+village-of-saugerties,Village of Saugerties,Ulster,village,village.saugerties.ny.us,its
+village-of-saugerties,Village of Saugerties,Ulster,village,villageofsaugerties.gov,dotgov
+village-of-scarsdale,Village of Scarsdale,Westchester,village,www.scarsdale.com,its
+village-of-schoharie,Village of Schoharie,Schoharie,village,schoharievillage-ny.gov,dotgov
+village-of-scotia,Village of Scotia,Schenectady,village,villageofscotiany.gov,dotgov
+village-of-scotia,Village of Scotia,Schenectady,village,www.villageofscotia.org,its
+village-of-sharon-springs,Village of Sharon Springs,Schoharie,village,sharonspringsvillage-ny.gov,dotgov
+village-of-sherman,Village of Sherman,Chautauqua,village,shermanny.gov,dotgov
+village-of-shortsville,Village of Shortsville,Ontario,village,www.villageofshortsvilleny.us,its
+village-of-silver-creek,Village of Silver Creek,Chautauqua,village,silvercreekny.gov,dotgov
+village-of-silver-creek,Village of Silver Creek,Chautauqua,village,www.silvercreekny.com,its
+village-of-silver-springs,Village of Silver Springs,Wyoming,village,silverspringsny.gov,dotgov
+village-of-skaneateles,Village of Skaneateles,Onondaga,village,skanpoliceny.gov,dotgov
+village-of-skaneateles,Village of Skaneateles,Onondaga,village,villageofskaneateles.gov,dotgov
+village-of-skaneateles,Village of Skaneateles,Onondaga,village,www.villageofskaneateles.com,its
+village-of-stewart-manor,Village of Stewart Manor,Nassau,village,stewartmanorny.gov,dotgov
+village-of-stewart-manor,Village of Stewart Manor,Nassau,village,www.stewartmanor.us,its
+village-of-tully,Village of Tully,Onondaga,village,www.tullyny.org,its
+village-of-tupper-lake,Village of Tupper Lake,Franklin,village,tupperlakeny.gov,dotgov
+village-of-unadilla,Village of Unadilla,Otsego,village,villageofunadillany.gov,dotgov
+village-of-unionville,Village of Unionville,Orange,village,www.unionvilleny.org,its
+village-of-valley-falls,Village of Valley Falls,Rensselaer,village,villageofvalleyfallsny.gov,dotgov
+village-of-victory,Village of Victory,Saratoga,village,www.villageofvictory.org,its
+village-of-waddington,Village of Waddington,St. Lawrence,village,www.villageofwaddington.org,its
+village-of-walden,Village of Walden,Orange,village,www.villageofwalden.org,its
+village-of-wampsville,Village of Wampsville,Madison,village,wampsvillecny.com,its
+village-of-warwick,Village of Warwick,Orange,village,villageofwarwickny.gov,dotgov
+village-of-warwick,Village of Warwick,Orange,village,www.villageofwarwick.org,its
+village-of-waterloo,Village of Waterloo,Seneca,village,villageofwaterloony.gov,dotgov
+village-of-waterloo,Village of Waterloo,Seneca,village,www.waterloony.com,its
+village-of-wayland,Village of Wayland,Steuben,village,villageofwaylandny.gov,dotgov
+village-of-west-carthage,Village of West Carthage,Jefferson,village,villageofwestcarthage.org,its
+village-of-whitehall,Village of Whitehall,Washington,village,villageofwhitehallny.gov,dotgov
+village-of-whitehall,Village of Whitehall,Washington,village,www.whitehallny.info,its
+village-of-whitesboro,Village of Whitesboro,Oneida,village,www.village.whitesboro.ny.us,its
+village-of-williston-park,Village of Williston Park,Nassau,village,willistonparkny.gov,dotgov
+village-of-williston-park,Village of Williston Park,Nassau,village,www.villageofwillistonpark.org,its
+village-of-wilson,Village of Wilson,Niagara,village,villageofwilson.org,its
+village-of-wolcott,Village of Wolcott,Wayne,village,villageofwolcottny.gov,dotgov
+village-of-woodbury,Village of Woodbury,Orange,village,villageofwoodbury.com,its
+village-of-woodbury,Village of Woodbury,Orange,village,villageofwoodbury.gov,dotgov
+yates-county,Yates County,Yates,county,www.yatescounty.org,its
+yates-county,Yates County,Yates,county,yatescountyny.gov,dotgov
+yates-county,Yates County,Yates,county,yatescountysheriff.gov,dotgov

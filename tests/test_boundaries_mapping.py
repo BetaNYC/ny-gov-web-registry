@@ -145,7 +145,8 @@ def test_committed_registry_bp_county_geoids():
 def test_committed_registry_entity_count_unchanged():
     # Phase 4 attaches areas; it must not mint entities. The count moves only when a batch is
     # minted on purpose:
-    assert len(_registry()) == 567  # 317 (seed 17 + MODA 300) + 59 community boards (#21) + 138 ABO authorities + 53 state agencies (#24)
+    assert len(_registry()) == 2151  # 317 (seed 17 + MODA 300) + 59 community boards (#21) + 138 ABO authorities + 53 state agencies (#24)
+    # + 1,583 counties, cities, towns and villages (#25) + suny (#58)
 
 
 def test_mapping_covers_all_22_layers_exactly_once():
