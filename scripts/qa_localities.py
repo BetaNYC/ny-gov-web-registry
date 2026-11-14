@@ -252,7 +252,7 @@ def report(qa: dict, review_counts: dict[str, int], web: dict) -> str:
         f"- Primary site auto-accepted (two independent leads agree): {web['primary']} of {web['places']}.",
         (f"- Places without a primary: {web['places'] - web['primary']}; of those, {web['csv_places']} have at "
         f"least one lead host in `data/ai-readability/localities-website-leads-2026-11-13.csv` "
-        f"({web['csv_rows']} rows, one per host and source) and the rest have no lead at all."),
+        f"({web['csv_rows']} rows, one per host and source) and the rest have no host lead (some only a path-only page, which stays in the review file)."),
         "- No municipal site was fetched. The AI-readability scan checks the hosts in the CSV.", "",
         "## Review file, § localities", "",
         "| Reason | Items |", "|---|---|",

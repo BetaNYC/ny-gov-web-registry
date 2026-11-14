@@ -113,7 +113,7 @@ No county column and no codes, so the match is level + name, counting duplicates
 ## Websites
 
 - Primary site auto-accepted (two independent leads agree): 83 of 1583.
-- Places without a primary: 1500; of those, 1333 have at least one lead host in `data/ai-readability/localities-website-leads-2026-11-13.csv` (2261 rows, one per host and source) and the rest have no lead at all.
+- Places without a primary: 1500; of those, 1333 have at least one lead host in `data/ai-readability/localities-website-leads-2026-11-13.csv` (2261 rows, one per host and source) and the rest have no host lead (some only a path-only page, which stays in the review file).
 - No municipal site was fetched. The AI-readability scan checks the hosts in the CSV.
 
 ## Review file, § localities
