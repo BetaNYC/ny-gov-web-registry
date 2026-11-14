@@ -249,11 +249,16 @@ def report(qa: dict, review_counts: dict[str, int], web: dict) -> str:
         "those 48 places get no `us_gnis` (review reason `its_code_shared_by_places`). They keep their SWIS."),
         "",
         "## Websites", "",
-        f"- Primary site auto-accepted (two independent leads agree): {web['primary']} of {web['places']}.",
+        f"- Places with a primary site: {web['primary']} of {web['places']}.",
+        f"  - {web['two_lead']} because two independent leads named the same host (no live check).",
+        (f"  - {web['scan']} confirmed by the BetaNYC AI-readability scan: the site's page title names the "
+        "place (growth plan rule 4). The address, its role and the scan date are in "
+        f"`data/locality_website_checks.json`, which also records {web['legacy']} former addresses (`legacy`)."),
         (f"- Places without a primary: {web['places'] - web['primary']}; of those, {web['csv_places']} have at "
-        f"least one lead host in `data/ai-readability/localities-website-leads-2026-11-13.csv` "
-        f"({web['csv_rows']} rows, one per host and source) and the rest have no host lead (some only a path-only page, which stays in the review file)."),
-        "- No municipal site was fetched. The AI-readability scan checks the hosts in the CSV.", "",
+         "least one lead host in `data/ai-readability/localities-website-leads-2026-11-13.csv` "
+         f"({web['csv_rows']} rows, one per host and source) and the rest have no host lead (some only a "
+         "path-only page, which stays in the review file)."),
+        "- No municipal site was fetched for this work; the scan's 2026-11-10 results were reused.", "",
         "## Review file, § localities", "",
         "| Reason | Items |", "|---|---|",
         *[f"| `{k}` | {v} |" for k, v in sorted(review_counts.items())], "",
@@ -281,7 +286,11 @@ def main(argv: list[str] | None = None) -> int:
                 if e["government_level"] in LEVELS]
         leads = (ROOT / "data" / "ai-readability" / "localities-website-leads-2026-11-13.csv").read_text(
             encoding="utf-8").splitlines()[1:]
-        web = {"places": len(ents), "primary": sum(1 for e in ents if e["web_properties"]),
+        prim = [w for e in ents for w in e["web_properties"] if w["role"] == "primary"]
+        web = {"places": len(ents), "primary": len(prim),
+               "two_lead": sum(1 for w in prim if w["notes"].startswith("Auto-accepted")),
+               "scan": sum(1 for w in prim if w["notes"].startswith("Confirmed:")),
+               "legacy": sum(1 for e in ents for w in e["web_properties"] if w["role"] == "legacy"),
                "csv_rows": len(leads), "csv_places": len({ln.split(",", 1)[0] for ln in leads})}
         REPORT.parent.mkdir(parents=True, exist_ok=True)
         REPORT.write_text(report(qa, dict(counts), web), encoding="utf-8")

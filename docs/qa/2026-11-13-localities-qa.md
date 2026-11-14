@@ -112,9 +112,11 @@ No county column and no codes, so the match is level + name, counting duplicates
 
 ## Websites
 
-- Primary site auto-accepted (two independent leads agree): 83 of 1583.
-- Places without a primary: 1500; of those, 1333 have at least one lead host in `data/ai-readability/localities-website-leads-2026-11-13.csv` (2261 rows, one per host and source) and the rest have no host lead (some only a path-only page, which stays in the review file).
-- No municipal site was fetched. The AI-readability scan checks the hosts in the CSV.
+- Places with a primary site: 909 of 1583.
+  - 83 because two independent leads named the same host (no live check).
+  - 826 confirmed by the BetaNYC AI-readability scan: the site's page title names the place (growth plan rule 4). The address, its role and the scan date are in `data/locality_website_checks.json`, which also records 286 former addresses (`legacy`).
+- Places without a primary: 674; of those, 507 have at least one lead host in `data/ai-readability/localities-website-leads-2026-11-13.csv` (838 rows, one per host and source) and the rest have no host lead (some only a path-only page, which stays in the review file).
+- No municipal site was fetched for this work; the scan's 2026-11-10 results were reused.
 
 ## Review file, § localities
 
@@ -126,7 +128,7 @@ No county column and no codes, so the match is level + name, counting duplicates
 | `its_row_unmatched` | 20 |
 | `its_swis_known_stale` | 1 |
 | `path_only_presence` | 212 |
-| `website_additional_leads_not_applied` | 24 |
+| `website_additional_leads_not_applied` | 347 |
 | `website_host_shared` | 1 |
-| `website_leads_disagree` | 892 |
-| `website_single_lead` | 440 |
+| `website_leads_disagree` | 308 |
+| `website_single_lead` | 198 |

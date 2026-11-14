@@ -78,6 +78,8 @@ OSC = CACHE / "osc_entity_tables.json"
 ITS = CACHE / "its_55k6-h6qq.json"
 DOTGOV = CACHE / "leads_dotgov.json"
 GROUNDING = CACHE / "grounding_ny_data_portal_localities.json"
+# Websites confirmed by the AI-readability scan (tracked; written by confirm_locality_websites.py).
+CHECKS = sc.ROOT / "data" / "locality_website_checks.json"
 OUT = CACHE / "records_localities.json"
 LEADS_CSV = sc.ROOT / "data" / "ai-readability" / "localities-website-leads-2026-11-13.csv"
 
@@ -401,6 +403,49 @@ def decide_websites(units: list[dict], owner: dict[str, str], review: list[dict]
 
 # --- records -------------------------------------------------------------------------------
 
+def apply_checks(units: list[dict], checks: list[dict], owner: dict[str, str], review: list[dict]) -> None:
+    """Apply data/locality_website_checks.json: a place with no two-lead primary takes the host the
+    AI-readability scan confirmed (its page title names the place; growth plan rule 4), plus any
+    `legacy` hosts. Never overrides a two-lead primary. Its website review items are replaced by one
+    item listing the root-lead hosts that were not applied, if any."""
+    by_id = {u["id"]: u for u in units}
+    taken: dict[str, str] = {u["primary"]["host"]: u["id"] for u in units if u["primary"]}
+    for c in checks:
+        u = by_id.get(c["entity_id"])
+        if u is None:
+            raise ValueError(f"website check names unknown entity {c['entity_id']!r}")
+        if c["role"] not in ("primary", "legacy"):
+            raise ValueError(f"website check {c['entity_id']}: role {c['role']!r}")
+        if u["primary"]:
+            raise ValueError(f"website check {c['entity_id']}: the place already has a primary from two "
+                             "agreeing leads; checks never override it")
+        h = sc.norm_host(c["host"])
+        if h in owner or h in taken:
+            raise ValueError(f"website check {c['entity_id']}: host {c['host']} is already "
+                             f"{owner.get(h) or taken.get(h)}'s")
+        taken[h] = c["entity_id"]
+        chk = u.setdefault("checked", {"primary": None, "legacy": [], "checked_on": c["checked_on"]})
+        if c["role"] == "primary":
+            if chk["primary"]:
+                raise ValueError(f"website check {c['entity_id']}: two primary hosts")
+            chk["primary"] = c["host"]
+        else:
+            chk["legacy"].append(c["host"])
+    for u in units:
+        chk = u.get("checked")
+        if not chk:
+            continue
+        if not chk["primary"]:
+            raise ValueError(f"website check {u['id']}: legacy host without a primary")
+        review[:] = [i for i in review if not (i.get("proposed_id") == u["id"] and i["reason"].startswith("website_"))]
+        done = {sc.norm_host(h) for h in [chk["primary"], *chk["legacy"]]}
+        other = sorted(h for h in u["hosts"] if h not in done)
+        if other:
+            review.append(_item(u, "website_additional_leads_not_applied", hosts=other, primary=chk["primary"],
+                                note="The primary was confirmed by the AI-readability scan; these lead hosts "
+                                     "were not applied."))
+
+
 LEADS_CSV_COLUMNS = ("entity_id", "name", "county", "level", "host", "source")
 
 
@@ -411,7 +456,7 @@ def lead_rows(units: list[dict]) -> list[dict]:
     source gave them (www. kept). A place with no host lead has no row."""
     rows = []
     for u in units:
-        if u["primary"]:
+        if u["primary"] or u.get("checked"):
             continue
         seen = set()
         for lead in u["leads"]:
@@ -468,6 +513,14 @@ def to_record(u: dict) -> dict:
                     "notes": f"Auto-accepted {BUILD_DATE}: {len(p['sources'])} independent leads agree on "
                              f"this host [{', '.join(p['sources'])}]. {why}. Not live-checked."})
         sources += [PROVENANCE[s] for s in p["sources"] if s in PROVENANCE and PROVENANCE[s] not in sources]
+    elif u.get("checked"):
+        c = u["checked"]
+        wps.append({"domain": c["primary"], "role": "primary", "valid_from": None, "valid_to": None,
+                    "notes": f"Confirmed: the site's page title names the place (BetaNYC scan, {c['checked_on']})."})
+        for h in c["legacy"]:
+            wps.append({"domain": h, "role": "legacy", "valid_from": None, "valid_to": None,
+                        "notes": f"Former address: listed for this place in ITS 55k6-h6qq (2023); its site is now "
+                                 f"{c['primary']} (BetaNYC scan, {c['checked_on']})."})
     return {
         "name": u["name"], "short_name": None, "other_names": other_names,
         "government_level": u["tier"], "classification": None,
@@ -480,8 +533,8 @@ def to_record(u: dict) -> dict:
 
 def build_records(gis: dict[str, list[dict]], osc: dict, its: list[dict], dotgov: list[dict],
                   grounding: list[dict], base: list[dict], tlds: set[str] | None = None,
-                  psl=None, expected_rows: dict[str, int] = EXPECTED_GIS_ROWS
-                  ) -> tuple[list[dict], list[dict], dict]:
+                  psl=None, expected_rows: dict[str, int] = EXPECTED_GIS_ROWS,
+                  checks: list[dict] | None = None) -> tuple[list[dict], list[dict], dict]:
     """Pure: source snapshots + the existing registry -> (records, review items, summary)."""
     if psl is None:
         import ai_readability_export as ex
@@ -490,10 +543,10 @@ def build_records(gis: dict[str, list[dict]], osc: dict, its: list[dict], dotgov
     review: list[dict] = []
     assign_ids(units, {e["id"] for e in base})
     match_osc(units, osc, review)
-    return _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its=True)
+    return _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its=True, checks=checks)
 
 
-def _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its):
+def _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its, checks=None):
     """Shared by both spines: name clash check, website leads and rule, records, summary."""
     base_names = {br._norm(e["name"]): e["id"] for e in base}
     clash = sorted((u["name"], base_names[br._norm(u["name"])]) for u in units if br._norm(u["name"]) in base_names)
@@ -505,6 +558,7 @@ def _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, rep
             owner.setdefault(sc.norm_host(w["domain"]), e["id"])
     collect_leads(units, its, dotgov, grounding, review, tlds, psl, report_unjoined_its)
     decide_websites(units, owner, review)
+    apply_checks(units, checks or [], owner, review)
     order = {t: i for i, t in enumerate(TIERS)}
     units.sort(key=lambda u: (order[u["tier"]], u["id"]))
     records = [to_record(u) for u in units]
@@ -516,6 +570,8 @@ def _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, rep
                         "us_gnis": sum(1 for u in units if u["gnis"]),
                         "nys_osc_muni_code": summary["osc_matched"], "places": len(units)}
     summary["primary_website"] = {t: sum(1 for u in units if u["tier"] == t and u["primary"]) for t in TIERS}
+    summary["primary_confirmed_by_scan"] = {t: sum(1 for u in units if u["tier"] == t and u.get("checked"))
+                                            for t in TIERS}
     summary["name_collisions"] = sorted(u["id"] for u in units if u["name_collision"])
     reasons: dict[str, int] = {}
     for i in review:
@@ -628,7 +684,8 @@ def match_its(units: list[dict], its: list[dict], review: list[dict], stale_swis
 def build_records_osc(osc: dict, its: list[dict], dotgov: list[dict], grounding: list[dict],
                       base: list[dict], stale_swis: dict[str, str] | None = None,
                       tlds: set[str] | None = None, psl=None,
-                      expected: dict[str, int] = EXPECTED_OSC_UNITS) -> tuple[list[dict], list[dict], dict]:
+                      expected: dict[str, int] = EXPECTED_OSC_UNITS,
+                      checks: list[dict] | None = None) -> tuple[list[dict], list[dict], dict]:
     """Pure, OSC spine: OSC places + ITS codes + website leads -> (records, review, summary)."""
     if psl is None:
         import ai_readability_export as ex
@@ -653,7 +710,7 @@ def build_records_osc(osc: dict, its: list[dict], dotgov: list[dict], grounding:
                                     shared_with=sorted(o["id"] for o in us if o is not u),
                                     note="ITS gives this code to more than one place; attached to none."))
         summary["its"]["codes_shared_not_attached"][scheme] = sum(len(us) for us in shared.values())
-    return _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its=False)
+    return _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its=False, checks=checks)
 
 
 def base_registry() -> list[dict]:
@@ -688,14 +745,15 @@ def main(argv: list[str] | None = None) -> int:
     grounding = json.loads(GROUNDING.read_text(encoding="utf-8"))["rows"]
     import ai_readability_export as ex
     psl = ex.load_psl()
+    checks = json.loads(CHECKS.read_text(encoding="utf-8"))["checks"] if CHECKS.exists() else []
     if args.spine == "gis":
         gis = {t: gis_rows(json.loads(GIS_FILES[t].read_text(encoding="utf-8"))) for t in TIERS}
         records, review, summary = build_records(gis, osc, its, dotgov, grounding, base_registry(),
-                                                 sc.psl_tlds(), psl)
+                                                 sc.psl_tlds(), psl, checks=checks)
     else:
         stale = {h["swis_code"]: h["note"] for h in sc.load_curation().get("locality_its_swis_stale", [])}
         records, review, summary = build_records_osc(osc, its, dotgov, grounding, base_registry(),
-                                                     stale, sc.psl_tlds(), psl)
+                                                     stale, sc.psl_tlds(), psl, checks=checks)
     OUT.write_text(json.dumps({"records": records}, indent=2, ensure_ascii=False), encoding="utf-8")
     rows = summary.pop("lead_rows")
     import csv

@@ -456,3 +456,107 @@ def test_lead_rows_one_host_per_row_only_without_primary():
     assert greene == [("greenecountyny.gov", "dotgov"), ("www.greenegovernment.com", "its")]
     # A path-only lead (a page on the county's site) is not a host lead.
     assert not [r for r in rows if r["entity_id"] == "village-of-deruyter"]
+
+
+# --- website checks from the AI-readability scan (growth plan rule 4) ------------------------------
+
+import confirm_locality_websites as clw  # noqa: E402
+
+
+def _check(eid, host, role="primary"):
+    return {"entity_id": eid, "host": host, "role": role, "checked_on": "2026-11-10",
+            "method": clw.METHOD}
+
+
+def test_checks_give_a_primary_and_legacy_to_places_without_one():
+    recs, review, summary = build_records_osc(
+        OSC2, ITS2, DOTGOV, GROUNDING, BASE, STALE, TLDS, PSL, OSC_EXPECTED,
+        checks=[_check("greene-county", "www.greenecountyny.gov"),
+                _check("greene-county", "www.greenegovernment.com", "legacy")])
+    wps = by_id(recs)["greene-county"]["web_properties"]
+    assert [(w["domain"], w["role"]) for w in wps] == [("www.greenecountyny.gov", "primary"),
+                                                       ("www.greenegovernment.com", "legacy")]
+    assert wps[0]["notes"] == "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-10)."
+    assert not review_for(review, "greene-county", "website_leads_disagree")
+    assert summary["primary_confirmed_by_scan"]["county"] == 1
+    assert "greene-county" not in {r["entity_id"] for r in summary["lead_rows"]}
+
+
+def test_checks_never_override_a_two_lead_primary_or_share_a_host():
+    with pytest.raises(ValueError, match="already has a primary"):
+        build_records_osc(OSC2, ITS2, DOTGOV, GROUNDING, BASE, STALE, TLDS, PSL, OSC_EXPECTED,
+                          checks=[_check("orange-county", "elsewhere.gov")])
+    with pytest.raises(ValueError, match="already"):
+        build_records_osc(OSC2, ITS2, DOTGOV, GROUNDING, BASE, STALE, TLDS, PSL, OSC_EXPECTED,
+                          checks=[_check("greene-county", "orangecountygov.com")])
+    with pytest.raises(ValueError, match="two primary"):
+        build_records_osc(OSC2, ITS2, DOTGOV, GROUNDING, BASE, STALE, TLDS, PSL, OSC_EXPECTED,
+                          checks=[_check("greene-county", "a.gov"), _check("greene-county", "b.gov")])
+    with pytest.raises(ValueError, match="unknown entity"):
+        build_records_osc(OSC2, ITS2, DOTGOV, GROUNDING, BASE, STALE, TLDS, PSL, OSC_EXPECTED,
+                          checks=[_check("nowhere", "a.gov")])
+
+
+ALL = {"greenville": {"town"}, "rye": {"city"}, "rye brook": {"village"}, "hamburg": {"town", "village"},
+       "madison": {"town", "county"}, "fairport": {"village"}}
+
+
+@pytest.mark.parametrize("title,level,place,county,count,want", [
+    ("Guilderland, NY | Official Website", "town", "guilderland", "Albany", 1, True),
+    ("Welcome to Fairport, NY", "village", "fairport", "Monroe", 1, True),
+    ("Village of Rye Brook - Home", "city", "rye", "Westchester", 1, False),     # a longer place
+    ("City of Rye, NY", "city", "rye", "Westchester", 1, True),
+    ("Hamburg, NY", "town", "hamburg", "Erie", 1, False),                         # level needed
+    ("Town of Hamburg", "town", "hamburg", "Erie", 1, True),
+    ("Town and Village of Hamburg", "town", "hamburg", "Erie", 1, False),          # names both
+    ("Town of Greenville", "town", "greenville", "Orange", 2, False),               # county needed
+    ("Town of Greenville, Greene County, NY", "town", "greenville", "Greene", 2, True),
+    ("Madison County, NY", "county", "madison", "Madison", 1, True),
+    ("Town of Madison, Madison County", "town", "madison", "Madison", 1, True),
+    ("Madison County, NY", "town", "madison", "Madison", 1, False),
+    ("Home", "town", "guilderland", "Albany", 1, False),
+    ("", "town", "guilderland", "Albany", 1, False),
+])
+def test_title_names_the_place(title, level, place, county, count, want):
+    assert clw.title_names(title, level, place, county, set(ALL) | {"guilderland"},
+                           ALL.get(place, {level}), count) is want
+
+
+def _ent(eid, name, level, wps=()):
+    return {"id": eid, "name": name, "government_level": level, "web_properties": list(wps)}
+
+
+def _row(eid, name, level, county, host, source, title, body="content", final="", chrome="", cfinal=""):
+    return {"entity_id": eid, "name": name, "county": county, "level": level, "host": host, "source": source,
+            "default_body": body, "default_final_host": final, "chrome_body": chrome,
+            "chrome_final_host": cfinal, "title": title}
+
+
+def test_decide_rules():
+    ents = [_ent("town-of-a", "Town of Alpha", "town"), _ent("town-of-b", "Town of Beta", "town"),
+            _ent("town-of-c", "Town of Gamma", "town"), _ent("town-of-d", "Town of Delta", "town"),
+            _ent("town-of-e", "Town of Epsilon", "town",
+                 [{"domain": "e.gov", "role": "primary", "notes": "Auto-accepted 2026-11-13: ..."}]),
+            _ent("x", "Other Body", "authority", [{"domain": "taken.gov", "role": "primary"}])]
+    rows = [
+        # live in Chrome only, redirected: final host is primary, the ITS host is legacy
+        _row("town-of-a", "Town of Alpha", "town", "C", "old-alpha.org", "its", "Town of Alpha, NY",
+             body="cloudflare_challenge", chrome="content", cfinal="alphany.gov"),
+        _row("town-of-a", "Town of Alpha", "town", "C", "alphany.gov", "dotgov", "Town of Alpha, NY"),
+        # two different passing hosts -> not confirmed
+        _row("town-of-b", "Town of Beta", "town", "C", "beta1.gov", "dotgov", "Town of Beta"),
+        _row("town-of-b", "Town of Beta", "town", "C", "beta2.org", "its", "Town of Beta"),
+        # a 200 that is a challenge page does not count
+        _row("town-of-c", "Town of Gamma", "town", "C", "gamma.gov", "dotgov", "Town of Gamma",
+             body="cloudflare_challenge", chrome="near_empty"),
+        # another entity's host -> not confirmed
+        _row("town-of-d", "Town of Delta", "town", "C", "taken.gov", "dotgov", "Town of Delta"),
+        # a two-lead primary is never touched
+        _row("town-of-e", "Town of Epsilon", "town", "C", "other.gov", "dotgov", "Town of Epsilon"),
+    ]
+    checks, counts = clw.decide(rows, ents, PSL, "2026-11-10")
+    assert [(c["entity_id"], c["host"], c["role"]) for c in checks] == [
+        ("town-of-a", "alphany.gov", "primary"), ("town-of-a", "old-alpha.org", "legacy")]
+    assert counts["several_hosts"] == 1 and counts["host_owned_elsewhere"] == 1
+    assert counts["no_live_lead"] == 1 and counts["confirmed"] == 1
+    assert all(set(c) == {"entity_id", "host", "role", "checked_on", "method"} for c in checks)

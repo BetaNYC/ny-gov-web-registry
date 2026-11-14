@@ -51,12 +51,12 @@ those codes (`scripts/sync_nys_localities.py --spine gis` once a snapshot exists
 | `us_gnis` (from ITS) | 1,531; also not attached to 48 places where ITS gives a city and its town the same id |
 | ITS match | counties 57/57, cities 61/61, towns 931/933, villages 529/532; 20 ITS rows match no place (18 villages OSC no longer lists, plus the two h spellings) |
 | Census list `sxhg-qquj` (names only) | counties 57/57, cities 60/61, towns 930/933, villages 531/532 |
-| Primary website (two sources agree) | 83 (9 counties, 33 cities, 22 towns, 19 villages) |
-| Held for review | 1,692 items in `data/statewide_web_review.json` § localities; 1,438 places have a website item |
+| Primary website | 909: 83 where two sources agree on the host (9 counties, 33 cities, 22 towns, 19 villages), and 826 confirmed by the AI-readability scan because the site's page title names the place (rule 4; 30 counties, 13 cities, 489 towns, 294 villages), listed in `data/locality_website_checks.json` with 286 former (`legacy`) addresses |
+| Still without a primary | 674 places (in `data/statewide_web_review.json` § localities when they have a lead) |
 
 Full QA, with every mismatch named: [`qa/2026-11-13-localities-qa.md`](qa/2026-11-13-localities-qa.md).
-Website leads for the 1,500 places without a primary, one row per host, for the AI-readability
-scan to check: `data/ai-readability/localities-website-leads-2026-11-13.csv`.
+Website leads for the places still without a primary, one row per host:
+`data/ai-readability/localities-website-leads-2026-11-13.csv` (838 rows, 507 places).
 
 Choices made while building, for review:
 

@@ -179,18 +179,29 @@ def test_every_mismatch_is_in_the_review_file():
         assert all(i.get("reason") for i in REVIEW[section]["items"])
 
 
-def test_no_primary_without_two_agreeing_sources_named_in_notes():
+CHECKS = json.loads((ROOT / "data" / "locality_website_checks.json").read_text(encoding="utf-8"))["checks"]
+
+
+def test_no_primary_without_two_agreeing_sources_or_a_scan_check():
     cisa = {}
     with open(SRC06 / "cisa-dotgov-current-full.csv", newline="", encoding="utf-8") as fh:
         for r in csv.DictReader(fh):
             if r["State"] == "NY":
                 cisa[r["Domain name"].lower()] = r["Organization name"]
+    checked = {(c["entity_id"], c["host"], c["role"]) for c in CHECKS}
     for e in NEW:
         prim = [w for w in e["web_properties"] if w["role"] == "primary"]
-        assert len(prim) <= 1 and len(e["web_properties"]) == len(prim), e["id"]
+        assert len(prim) <= 1, e["id"]
+        for w in e["web_properties"]:
+            if w["role"] == "legacy":
+                assert (e["id"], w["domain"], "legacy") in checked, e["id"]
         if not prim:
+            assert e["web_properties"] == [], e["id"]
             continue
         notes = prim[0]["notes"]
+        if notes.startswith("Confirmed:"):
+            assert (e["id"], prim[0]["domain"], "primary") in checked, e["id"]
+            continue
         srcs = re.search(r"\[([a-z, ]+)\]", notes).group(1).split(", ")
         assert len(set(srcs)) >= 2 and set(srcs) <= {"its", "dotgov", "grounding"}, e["id"]
         host = re.sub(r"^www\d*\.", "", prim[0]["domain"])
@@ -200,6 +211,40 @@ def test_no_primary_without_two_agreeing_sources_named_in_notes():
             assert "55k6-h6qq" in notes and host in notes, e["id"]
         if "grounding" in srcs:
             assert "grounding-ai-with-ny-open-data" in notes, e["id"]
+
+
+def test_checks_file_names_only_real_entities_and_hosts_and_nothing_else():
+    by_id = {e["id"]: e for e in NEW}
+    allowed = {"entity_id", "host", "role", "checked_on", "method"}
+    primaries = collections.Counter()
+    for c in CHECKS:
+        assert set(c) == allowed, c
+        assert c["role"] in ("primary", "legacy")
+        assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", c["checked_on"])
+        assert c["method"] == "page title names the place (BetaNYC AI-readability scan)"
+        e = by_id[c["entity_id"]]
+        assert {"domain": c["host"], "role": c["role"]}.items() <= next(
+            w for w in e["web_properties"] if w["domain"] == c["host"]).items()
+        primaries[c["entity_id"]] += c["role"] == "primary"
+    assert max(primaries.values()) == 1
+    hosts = [re.sub(r"^www\d*\.", "", w["domain"]) for e in REGISTRY for w in e["web_properties"]
+             if w["role"] == "primary" and e["government_level"] in LEVELS]
+    assert len(hosts) == len(set(hosts)), "a primary host is shared between places"
+
+
+def test_scan_results_are_not_referenced_or_committed():
+    import subprocess
+    tracked = subprocess.run(["git", "ls-files"], cwd=ROOT, capture_output=True, text=True, check=True).stdout.split()
+    # Built from parts so this file does not match itself.
+    needles = ("ai-readability-" + "private", "leads-with-" + "scan-results")
+    for f in tracked:
+        assert not any(n in f for n in needles), f
+        p = ROOT / f
+        if p.suffix in {".py", ".md", ".json", ".csv", ".txt", ".toml", ".yml", ".yaml"} and p.is_file():
+            text = p.read_text(encoding="utf-8", errors="ignore")
+            assert not any(n in text for n in needles), f
+    for c in CHECKS:  # only the address and how it was confirmed: no scan outcome
+        assert not ({"title", "status", "default_body", "chrome_body", "error"} & set(c))
 
 
 def test_leads_csv_one_host_per_row_and_only_places_without_a_primary():
