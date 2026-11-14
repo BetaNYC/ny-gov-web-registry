@@ -56,3 +56,19 @@ def test_no_fabricated_verified_identifiers_in_seed():
         for ident in e["identifiers"]:
             assert ident["scheme"] == "betanyc_org_legacy", (
                 f"{e['id']} carries an unverified identifier {ident} — seed must not invent ids")
+
+
+def test_suny_exists_once_as_the_system_not_its_campuses():
+    # Noel's decision on epic #58: public universities link to the master list as the system.
+    suny = [e for e in ENTITIES if e["id"] == "suny"]
+    assert len(suny) == 1
+    e = suny[0]
+    assert (e["name"], e["short_name"]) == ("State University of New York", "SUNY")
+    assert [(w["domain"], w["role"]) for w in e["web_properties"]] == [("suny.edu", "primary")]
+    # Modeled like cuny (the closest existing pattern; see the PR for #25).
+    cuny = next(x for x in ENTITIES if x["id"] == "cuny")
+    assert (e["government_level"], e["classification"]) == (cuny["government_level"], cuny["classification"])
+    registry = json.loads((ROOT / "data" / "registry.json").read_text(encoding="utf-8"))["entities"]
+    names = [x["name"] for x in registry if "state university of new york" in x["name"].lower()
+             or x["id"].startswith("suny")]
+    assert names == ["State University of New York"], names

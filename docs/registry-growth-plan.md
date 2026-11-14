@@ -34,7 +34,7 @@ proposed `nygov_contacts`; `state_listing` is new). No `government_level` value 
 ## Status of steps 3–6 (2026-11-13): minted
 
 **Minted 2026-11-13 (issues #23 and #25, epic #58): 57 counties, 61 cities, 933 towns and 532
-villages, 1,583 entities**, for **2,150** in the registry. NYC's five counties and the City of
+villages, 1,583 entities**, for **2,150** in the registry (2,151 with SUNY, added the same day: public universities link to the master list as the system, Noel on epic #58). NYC's five counties and the City of
 New York were not minted; the five district attorneys gained their county `jurisdiction` area.
 
 **Spine changed for this mint (Noel, 2026-11-13).** The NYS Civil Boundaries GIS service was down

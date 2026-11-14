@@ -123,9 +123,9 @@ def test_registry_esd_variants_present_and_distinct(registry):
                for e in registry)
 
 
-def test_registry_entity_count_is_2150(registry):
-    assert len(registry) == 2150  # 317 (seed 17 + MODA 300) + 59 community boards (#21) + 138 ABO authorities + 53 state agencies (#24)
-    # + 1,583 counties, cities, towns and villages (#25)
+def test_registry_entity_count_is_2151(registry):
+    assert len(registry) == 2151  # 317 (seed 17 + MODA 300) + 59 community boards (#21) + 138 ABO authorities + 53 state agencies (#24)
+    # + 1,583 counties, cities, towns and villages (#25) + suny (#58)
 
 
 def test_registry_all_valid(registry):

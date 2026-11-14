@@ -4,13 +4,13 @@
 
 Built and stewarded by [BetaNYC](https://beta.nyc). Free to use, reuse, and build on — with credit, and with improvements shared back (see [License](#license)).
 
-> 🚧 **Work in progress.** The registry is live and usable (2,150 entities), but coverage is still growing and the schema may evolve. [Issues](../../issues) and contributions welcome.
+> 🚧 **Work in progress.** The registry is live and usable (2,151 entities), but coverage is still growing and the schema may evolve. [Issues](../../issues) and contributions welcome.
 
 ## Why this exists
 
 Not all government lives on `.gov`. The MTA is on `mta.info`, the Economic Development Corporation on `nycedc.com`, Health + Hospitals on `nychealthandhospitals.org`, CUNY on `cuny.edu` — while more than 150 city agencies share `nyc.gov`. Agencies get renamed, merged, and reorganized; their old websites disappear without notice. Anyone who wants to archive government on the web, cite it, monitor it, or simply join two datasets that each spell "Department of Finance" differently first needs an authoritative list of *which entities exist and how to identify them*. No single official source provides that across city government, public authorities, and the web domains they've used over time.
 
-This registry is that list — **2,150 entities and growing** (New York City, plus, since 2026-11-06, 53 state executive agencies and the 156 state and local public authorities, and since 2026-11-13, New York's 57 counties, 61 cities, 933 towns and 532 villages outside NYC), each carrying its official name and acronym, former names, canonical government identifiers, boundary relationships, web domains, legal context, and (for 207 of them so far) the agency's own self-description, captured verbatim from its website.
+This registry is that list — **2,151 entities and growing** (New York City, plus, since 2026-11-06, 53 state executive agencies and the 156 state and local public authorities, and since 2026-11-13, New York's 57 counties, 61 cities, 933 towns and 532 villages outside NYC, and the State University of New York), each carrying its official name and acronym, former names, canonical government identifiers, boundary relationships, web domains, legal context, and (for 207 of them so far) the agency's own self-description, captured verbatim from its website.
 
 ## Who it's for
 
@@ -76,7 +76,7 @@ Every fact traces to a named source; identifiers are only ever filled when verif
 Consuming the data is just reading two committed, schema-validated JSON files:
 
 ```
-data/registry.json        # 2,150 entities
+data/registry.json        # 2,151 entities
 data/descriptions.json    # per-entity self-descriptions + coverage records
 ```
 

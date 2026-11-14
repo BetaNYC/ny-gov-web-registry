@@ -29,7 +29,7 @@ with open(ROOT / "data" / "ai-readability" / "localities-website-leads-2026-11-1
 LEVELS = ("county", "city", "town", "village")
 SHEET = {"county": "counties", "city": "cities", "town": "towns", "village": "villages"}
 NEW = [e for e in REGISTRY if e["government_level"] in LEVELS]
-OLD = [e for e in REGISTRY if e["government_level"] not in LEVELS]
+OLD = [e for e in REGISTRY if e["government_level"] not in LEVELS and e["id"] != "suny"]
 ID_RE = re.compile(r"^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")
 DAS = {"manhattan-district-attorney-s-office": "36061", "bronx-district-attorney-s-office": "36005",
        "brooklyn-district-attorney-s-office": "36047", "queens-district-attorney-s-office": "36081",
@@ -65,7 +65,7 @@ def expected_name(level, osc_name):
 def test_counts_by_level_and_total():
     assert collections.Counter(e["government_level"] for e in NEW) == {"county": 57, "city": 61,
                                                                         "town": 933, "village": 532}
-    assert len(OLD) == 567 and len(REGISTRY) == 567 + 1583
+    assert len(OLD) == 567 and len(REGISTRY) == 567 + 1583 + 1  # + suny
 
 
 def test_osc_snapshot_counts():

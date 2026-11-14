@@ -367,6 +367,47 @@
       }
     },
     {
+      "id": "suny",
+      "name": "State University of New York",
+      "short_name": "SUNY",
+      "other_names": [
+        {
+          "name": "State University of New York (SUNY)",
+          "note": "Name in the ny.gov agency directory and in Agency Contacts (data.ny.gov kjw8-pupa), snapshots 2026-11-06."
+        }
+      ],
+      "government_level": "authority",
+      "classification": "public-university",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "suny.edu",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": ".edu, state university system. Host of SUNY's contact URL in Agency Contacts (kjw8-pupa, https://www.suny.edu/contact/, snapshot 2026-11-06), www. dropped as for cuny.edu. Not live-checked."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [],
+      "area_note": "coverage: statewide. Campus points, not a polygon. The campuses are not separate entities (Noel's decision on epic #58: public universities link to the master list as the system).",
+      "mandates": [],
+      "relations": [],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual",
+          "nygov",
+          "nygov_contacts"
+        ],
+        "last_verified": null
+      }
+    },
+    {
       "id": "nycha",
       "name": "New York City Housing Authority",
       "short_name": "NYCHA",
