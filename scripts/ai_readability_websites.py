@@ -36,9 +36,10 @@ KIND (`ny_kind`, issue #41)
 
 CORRECTIONS (data/ai-readability/website-corrections.csv, checked by hand)
   A host a source lists that is no longer the body's website: a lookalike site, a domain for
-  sale, or a redirect to an unrelated site. The source row is kept as the source states it; the
-  host gets `ny_host_issue` and `ny_superseded_by` (the body's real host, already in the list),
-  and probe_bot_access.py --targets-file skips it.
+  sale, a redirect to an unrelated site, or spam (an old address now serving gambling or similar).
+  The source row is kept as the source states it; the host gets `ny_host_issue` and
+  `ny_superseded_by` (the body's real host, already in the list; blank when the body has no site
+  in the list yet), and probe_bot_access.py --targets-file skips it.
 
   One row per host (a leading `www.` is kept in `initial_url` but ignored for matching). When
   a source lists a page rather than a host (a town hosted on its county's site), the page goes
@@ -88,7 +89,7 @@ PATHS = {
     "corrections": AIR / "website-corrections.csv",
     "portal_registry": AIR / "sources" / "2026-11-10" / "ny-data-portal-registry.json",
 }
-HOST_ISSUES = ("lookalike", "for_sale", "redirects_offsite")
+HOST_ISSUES = ("lookalike", "for_sale", "redirects_offsite", "spam")
 OUT_CSV, OUT_JSON = AIR / "websites.csv", AIR / "websites.json"
 OUT_DICT = AIR / "target-list-dictionary.csv"
 
@@ -520,8 +521,9 @@ def dictionary_rows() -> list:
          "description": "How many of the six sources list this host"},
         {"name": "NY - Host Issue", "field id": "ny_host_issue", "data type": "string",
          "description": "Set when a hand check (website-corrections.csv) found the host is no longer "
-                        "the body's website: `lookalike` (a third-party site), `for_sale`, or "
-                        "`redirects_offsite`. Probe runs skip these hosts. Blank otherwise"},
+                        "the body's website: `lookalike` (a third-party site), `for_sale`, "
+                        "`redirects_offsite`, or `spam` (gambling or similar). Probe runs skip these "
+                        "hosts. Blank otherwise"},
         {"name": "NY - Superseded By", "field id": "ny_superseded_by", "data type": "string",
          "description": "The body's real host when `ny_host_issue` is set (also a row in this list)"},
         {"name": "NY - Kind", "field id": "ny_kind", "data type": "string",

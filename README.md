@@ -161,7 +161,7 @@ statewide lists in the table above. It uses the layout of GSA's Federal Website 
 [`target-list-dictionary.csv`](data/ai-readability/target-list-dictionary.csv). A row means a
 public list names the host, not that it is a registry entity. Test results stay private.
 A host a list still names but that is no longer the body's site (a lookalike, a domain for
-sale, a redirect elsewhere) is recorded by hand in
+sale, a redirect elsewhere, spam) is recorded by hand in
 [`website-corrections.csv`](data/ai-readability/website-corrections.csv). Its row stays, with
 `ny_host_issue` and `ny_superseded_by` set, and probe runs skip it.
 Pages that are not in the registry but belong in the deep-page run (the community boards whose
