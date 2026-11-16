@@ -222,30 +222,6 @@
         "note": "Applied to this agency; check whether the other entity's claim is a page-only presence that belongs in url_conventions[]."
       },
       {
-        "reason": "judiciary",
-        "listing_codes": [
-          "NYCOURTS"
-        ],
-        "hosts": [
-          "nycourts.gov"
-        ],
-        "code_notes": {
-          "NYCOURTS": "The Unified Court System is the judicial branch; courts are out of scope (growth plan)."
-        }
-      },
-      {
-        "reason": "legislature",
-        "listing_codes": [
-          "NYS Assembly"
-        ],
-        "hosts": [
-          "assembly.ny.gov"
-        ],
-        "code_notes": {
-          "NYS Assembly": "The Legislature is out of scope for nys (executive agencies)."
-        }
-      },
-      {
         "reason": "legislature_or_defunct",
         "listing_codes": [
           "JCOPE"
@@ -284,18 +260,6 @@
         }
       },
       {
-        "reason": "name_unverified",
-        "listing_codes": [
-          "CC&F"
-        ],
-        "hosts": [
-          "ccf.ny.gov"
-        ],
-        "code_notes": {
-          "CC&F": "ccf.ny.gov. The ny.gov directory names 'Council on Children and Families Services'; kjw8-pupa has no entry. Confirm the official name before minting."
-        }
-      },
-      {
         "reason": "not_government",
         "listing_codes": [
           "LIAFCU",
@@ -311,25 +275,34 @@
         }
       },
       {
+        "reason": "program_hosts_unverified",
+        "listing_codes": [
+          "OSC"
+        ],
+        "hosts": [
+          "grantsmanagement.ny.gov",
+          "opengovernment.ny.gov",
+          "sfs.ny.gov"
+        ],
+        "code_notes": {
+          "OSC": "Office of the State Comptroller, in the seed since 2026-11-16 (office-of-the-new-york-state-comptroller). Its listed hosts are program sites, held until each owner is checked (grants management, open government, SFS); ecfsa.ny.gov is filed with the Erie County Fiscal Stability Authority instead."
+        }
+      },
+      {
         "reason": "statewide_elected_office",
         "listing_codes": [
           "Department of Law",
-          "Governor",
-          "OSC"
+          "Governor"
         ],
         "hosts": [
           "ag.ny.gov",
           "broadband.ny.gov",
           "governor.ny.gov",
-          "grantsmanagement.ny.gov",
-          "newyorkersvolunteer.ny.gov",
-          "opengovernment.ny.gov",
-          "sfs.ny.gov"
+          "newyorkersvolunteer.ny.gov"
         ],
         "code_notes": {
           "Department of Law": "Office of the Attorney General (ag.ny.gov): statewide elected.",
-          "Governor": "Office of the Governor: a statewide elected office, not an executive agency. No government_level fits it yet.",
-          "OSC": "Office of the State Comptroller: statewide elected. Its listed hosts are program sites (grants management, open government, SFS); ecfsa.ny.gov is filed with the Erie County Fiscal Stability Authority instead."
+          "Governor": "Office of the Governor: a statewide elected office, not an executive agency. No government_level fits it yet."
         }
       },
       {

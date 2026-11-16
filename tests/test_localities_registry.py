@@ -29,7 +29,10 @@ with open(ROOT / "data" / "ai-readability" / "localities-website-leads-2026-11-1
 LEVELS = ("county", "city", "town", "village")
 SHEET = {"county": "counties", "city": "cities", "town": "towns", "village": "villages"}
 NEW = [e for e in REGISTRY if e["government_level"] in LEVELS]
-OLD = [e for e in REGISTRY if e["government_level"] not in LEVELS and e["id"] != "suny"]
+STATE_BODIES = {"new-york-state-assembly", "new-york-state-senate", "new-york-state-unified-court-system",
+                "office-of-the-new-york-state-comptroller", "new-york-state-council-on-children-and-families"}
+OLD = [e for e in REGISTRY if e["government_level"] not in LEVELS and e["id"] != "suny"
+       and e["id"] not in STATE_BODIES]  # added after the hash, 2026-11-16
 ID_RE = re.compile(r"^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")
 DAS = {"manhattan-district-attorney-s-office": "36061", "bronx-district-attorney-s-office": "36005",
        "brooklyn-district-attorney-s-office": "36047", "queens-district-attorney-s-office": "36081",
@@ -65,7 +68,7 @@ def expected_name(level, osc_name):
 def test_counts_by_level_and_total():
     assert collections.Counter(e["government_level"] for e in NEW) == {"county": 57, "city": 61,
                                                                         "town": 933, "village": 532}
-    assert len(OLD) == 567 and len(REGISTRY) == 567 + 1583 + 1  # + suny
+    assert len(OLD) == 567 and len(REGISTRY) == 567 + 1583 + 1 + 5  # + suny + 5 state bodies
 
 
 def test_osc_snapshot_counts():
@@ -271,3 +274,16 @@ def test_existing_entities_unchanged_except_the_five_da_areas():
         stripped.append(e)
     digest = hashlib.sha256(json.dumps(stripped, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
     assert digest == OLD_HASH
+
+
+def test_five_state_bodies_are_nys_with_their_branch():
+    by = {e["id"]: e for e in REGISTRY}
+    got = {i: (by[i]["government_level"], by[i]["classification"],
+               next(w["domain"] for w in by[i]["web_properties"] if w["role"] == "primary")) for i in STATE_BODIES}
+    assert got == {
+        "new-york-state-assembly": ("nys", "legislature", "nyassembly.gov"),
+        "new-york-state-senate": ("nys", "legislature", "nysenate.gov"),
+        "new-york-state-unified-court-system": ("nys", "judiciary", "nycourts.gov"),
+        "office-of-the-new-york-state-comptroller": ("nys", "statewide-elected-office", "osc.ny.gov"),
+        "new-york-state-council-on-children-and-families": ("nys", "state-agency", "ccf.ny.gov"),
+    }

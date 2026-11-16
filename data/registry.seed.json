@@ -378,6 +378,249 @@
       }
     },
     {
+      "id": "new-york-state-assembly",
+      "name": "New York State Assembly",
+      "short_name": null,
+      "other_names": [
+        {
+          "name": "New York Assembly",
+          "note": "Name in the ny.gov agency directory, snapshot 2026-11-06."
+        }
+      ],
+      "government_level": "nys",
+      "classification": "legislature",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "nyassembly.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Page title 'Assembly Home | New York State Assembly' (one homepage read, robots.txt honored (BetaNYC, 2026-11-16)). Its bill search is in the grounding-ai-with-ny-open-data portal registry, verified 2026-11-05."
+        },
+        {
+          "domain": "assembly.ny.gov",
+          "role": "microsite",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Filed under the Assembly in the state agency listing (2026-11-06); did not answer on 2026-11-16. Not verified."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [],
+      "area_note": "coverage: statewide.",
+      "mandates": [],
+      "relations": [],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual",
+          "nygov",
+          "state_listing"
+        ],
+        "last_verified": null
+      },
+      "links": [
+        {
+          "url": "https://www.ny.gov/agencies/new-york-assembly",
+          "note": "Entry in the ny.gov agency directory (2026-11-06)."
+        }
+      ]
+    },
+    {
+      "id": "new-york-state-senate",
+      "name": "New York State Senate",
+      "short_name": null,
+      "other_names": [],
+      "government_level": "nys",
+      "classification": "legislature",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "nysenate.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Host of the Senate's Open Legislation API, legislation.nysenate.gov (grounding-ai-with-ny-open-data portal registry, verified 2026-11-05). The homepage showed a bot check to our one homepage read on 2026-11-16, so its title was not read."
+        },
+        {
+          "domain": "legislation.nysenate.gov",
+          "role": "microsite",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Open Legislation API (bills, laws, calendars; API key required), grounding-ai-with-ny-open-data portal registry, verified 2026-11-05."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [],
+      "area_note": "coverage: statewide.",
+      "mandates": [],
+      "relations": [],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual",
+          "nygov"
+        ],
+        "last_verified": null
+      },
+      "links": [
+        {
+          "url": "https://www.ny.gov/agencies/new-york-state-senate",
+          "note": "Entry in the ny.gov agency directory (2026-11-06)."
+        }
+      ]
+    },
+    {
+      "id": "new-york-state-unified-court-system",
+      "name": "New York State Unified Court System",
+      "short_name": "UCS",
+      "other_names": [
+        {
+          "name": "Office of Court Administration",
+          "note": "The court system's administrative office (OCA); the grounding-ai-with-ny-open-data portal registry, verified 2026-11-05 names its data pages under both."
+        }
+      ],
+      "government_level": "nys",
+      "classification": "judiciary",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "nycourts.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Filed under the court system (code NYCOURTS) in the state agency listing (2026-11-06); its court data and statistics pages are in the grounding-ai-with-ny-open-data portal registry, verified 2026-11-05 (read in a browser). The homepage showed a bot check to our one homepage read on 2026-11-16, so its title was not read."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [],
+      "area_note": "coverage: statewide.",
+      "mandates": [],
+      "relations": [],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual",
+          "state_listing"
+        ],
+        "last_verified": null
+      }
+    },
+    {
+      "id": "office-of-the-new-york-state-comptroller",
+      "name": "Office of the New York State Comptroller",
+      "short_name": "OSC",
+      "other_names": [
+        {
+          "name": "Office of State Comptroller",
+          "note": "Name in the ny.gov agency directory, snapshot 2026-11-06."
+        }
+      ],
+      "government_level": "nys",
+      "classification": "statewide-elected-office",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "osc.ny.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Page title 'Office of the New York State Comptroller | Thomas P. DiNapoli' (one homepage read, robots.txt honored (BetaNYC, 2026-11-16)). Open Book New York is at osc.ny.gov/open-book-new-york (grounding-ai-with-ny-open-data portal registry, verified 2026-11-05)."
+        },
+        {
+          "domain": "wwe1.osc.state.ny.us",
+          "role": "microsite",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Financial data for local governments (bulk CSV downloads), grounding-ai-with-ny-open-data portal registry, verified 2026-11-05."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [],
+      "area_note": "coverage: statewide.",
+      "mandates": [],
+      "relations": [],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual",
+          "nygov",
+          "state_listing"
+        ],
+        "last_verified": null
+      },
+      "links": [
+        {
+          "url": "https://www.ny.gov/agencies/office-state-comptroller",
+          "note": "Entry in the ny.gov agency directory (2026-11-06)."
+        }
+      ]
+    },
+    {
+      "id": "new-york-state-council-on-children-and-families",
+      "name": "New York State Council on Children and Families",
+      "short_name": "CCF",
+      "other_names": [
+        {
+          "name": "Council on Children and Families Services",
+          "note": "Name in the ny.gov agency directory, snapshot 2026-11-06. The council's own site says 'Council on Children and Families'."
+        }
+      ],
+      "government_level": "nys",
+      "classification": "state-agency",
+      "parent_id": null,
+      "child_ids": [],
+      "identifiers": [],
+      "web_properties": [
+        {
+          "domain": "ccf.ny.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Filed under the council (code CC&F) in the state agency listing (2026-11-06); page title 'Home - Council on Children and Families' (one homepage read, robots.txt honored (BetaNYC, 2026-11-16))."
+        }
+      ],
+      "url_conventions": [],
+      "areas": [],
+      "area_note": "coverage: statewide.",
+      "mandates": [],
+      "relations": [],
+      "status": "active",
+      "founding_date": null,
+      "dissolution_date": null,
+      "provenance": {
+        "sources": [
+          "manual",
+          "nygov",
+          "state_listing"
+        ],
+        "last_verified": null
+      },
+      "links": [
+        {
+          "url": "https://www.ny.gov/agencies/council-children-and-families-services",
+          "note": "Entry in the ny.gov agency directory (2026-11-06)."
+        }
+      ]
+    },
+    {
       "id": "nycha",
       "name": "New York City Housing Authority",
       "short_name": "NYCHA",
