@@ -61,10 +61,6 @@ def test_build_merges_sources_one_row_per_host(tmp_path):
     assert "secret@example.test" not in json.dumps(list(rows.values()))
 
 
-@pytest.mark.xfail(strict=True, reason=(
-    "Issue #25 minted 1,583 localities into data/registry.json; the AI-readability scan session "
-    "owns websites.csv/websites.json and regenerates them after that PR merges. Remove this mark "
-    "then (strict: it fails as soon as the list is back in sync)."))
 def test_published_list_is_in_sync_with_registry_and_pool():
     pub = json.loads((AIR / "websites.json").read_text())
     assert pub == json.loads(json.dumps(ws.build())), "run: python scripts/ai_readability_websites.py"
@@ -153,7 +149,10 @@ def test_corrections_file_hosts_have_their_real_site_in_the_list():
     rows = json.loads((AIR / "websites.json").read_text())
     have = {_key(r["ny_initial_domain"]) for r in rows}
     for k, r in ws.read_corrections(AIR / "website-corrections.csv").items():
-        assert k in have and _key(r["superseded_by"]) in have, k
+        assert k in have, k
+        # spam may have no successor yet (the place has no site in the list); every other issue must
+        if r["superseded_by"] or r["issue"] != "spam":
+            assert _key(r["superseded_by"]) in have, k
 
 
 def test_host_path_keeps_trailing_slash_and_query():
@@ -167,3 +166,18 @@ def test_host_path_keeps_trailing_slash_and_query():
         "www.nyc.gov", "/assets/mwbe/?page=mwbe-advisory-council")
     assert hp("https://www.nyc.gov/") == ("www.nyc.gov", None)
     assert hp("www.nyc.gov") == ("www.nyc.gov", None)
+
+
+def test_a_spam_correction_may_have_no_successor(tmp_path):
+    f = tmp_path / "c.csv"
+    f.write_text("host,issue,superseded_by,checked,evidence\n"
+                 "oldtown.org,spam,,2026-11-16,serves a gambling site\n")
+    assert ws.read_corrections(f)[_key("oldtown.org")]["issue"] == "spam"
+
+
+def test_shipped_spam_corrections_point_only_at_listed_hosts():
+    pub = {_key(r["ny_initial_domain"]): r for r in json.loads((AIR / "websites.json").read_text())}
+    spam = [r for r in pub.values() if r["ny_host_issue"] == "spam"]
+    assert len(spam) == 11
+    for r in spam:
+        assert r["ny_superseded_by"] is None or _key(r["ny_superseded_by"]) in pub, r
