@@ -5,6 +5,8 @@ Pipeline:
     data/cache/records_moda.json    (optional)   (from sync_moda.py)
     data/cache/records_abo.json     (optional)   (from sync_abo.py)
     data/cache/records_nygov.json   (optional)   (from sync_nygov.py — state executive agencies)
+    data/cache/records_localities.json (optional) (from sync_nys_localities.py — counties, cities,
+                                                   towns, villages)
         |
         v
     data/registry.json  +  schema validation
@@ -39,7 +41,7 @@ WIKIDATA_ENRICHMENT = ROOT / "data" / "wikidata_enrichment.json"
 BOUNDARIES_MAPPING = ROOT / "data" / "boundaries_mapping.json"
 BOUNDARIES_VOCAB = ROOT / "data" / "nyc_boundaries_layers.json"
 
-SOURCE_FILES = ("records_moda.json", "records_abo.json", "records_nygov.json")
+SOURCE_FILES = ("records_moda.json", "records_abo.json", "records_nygov.json", "records_localities.json")
 
 
 def _norm(name: str) -> str:
@@ -72,8 +74,9 @@ def build_entities(seed_entities: list[dict], source_batches: list[list[dict]]) 
     Existing records keep their id; unmatched source records are minted a new neutral id.
     Never deletes; enrichment and additions are recorded as proposals.
 
-    Three optional private keys (leading underscore; never written to the registry) let a sync
-    script state a decision it already made against curation (sync_abo / sync_nygov):
+    Four optional private keys (leading underscore; never written to the registry) let a sync
+    script state a decision it already made against curation (sync_abo / sync_nygov /
+    sync_nys_localities):
       _match_entity_id  match this existing id directly (an operator-confirmed match). An unknown
                         id raises: a stale curation entry is a build error, not a silent mint.
       _expect_new       this record must NOT match anything; a match raises (so a name collision
@@ -81,6 +84,11 @@ def build_entities(seed_entities: list[dict], source_batches: list[list[dict]]) 
       _on_match         additive enrichment applied when the record matches: add_provenance_source,
                         other_name_note (adds the record's name to other_names[] if new), and
                         add_web_properties (skipped when the www-normalized host is already owned).
+      _mint_id          the id a NEW record gets, chosen by the sync (locality ids carry a county
+                        suffix when a name repeats). Such a record is matched by identifiers only,
+                        never by name, because place names repeat (two Towns of Greenville). Its name
+                        may still not equal an entity that did not come in with a `_mint_id` (that
+                        raises), and an id already in use raises.
     """
     entities = [dict(e) for e in seed_entities]
     by_pair: dict[tuple[str, str], dict] = {}
@@ -90,6 +98,7 @@ def build_entities(seed_entities: list[dict], source_batches: list[list[dict]]) 
     by_name = {_norm(e["name"]): e for e in entities}
     by_id = {e["id"]: e for e in entities}
     used_ids = {e["id"] for e in entities}
+    stated_ids: set[str] = set()  # entities minted from a record carrying _mint_id
     proposals: list[dict] = []
 
     for batch in source_batches:
@@ -106,14 +115,25 @@ def build_entities(seed_entities: list[dict], source_batches: list[list[dict]]) 
                 if pair in by_pair:
                     match = by_pair[pair]
             if match is None:
-                match = by_name.get(_norm(rec.get("name", "")))
+                same_name = by_name.get(_norm(rec.get("name", "")))
+                if not rec.get("_mint_id"):
+                    match = same_name
+                elif same_name is not None and same_name["id"] not in stated_ids:
+                    raise ValueError(f"source record {rec.get('name')!r} ({rec['_mint_id']}) has the "
+                                     f"name of existing entity {same_name['id']!r}")
             if match is not None and rec.get("_expect_new"):
                 raise ValueError(f"source record {rec.get('name')!r} is marked _expect_new but "
                                  f"matches existing entity {match['id']!r}; curate the match "
                                  "or rename before building")
 
             if match is None:
-                new_id = _mint_id(rec.get("name", ""), used_ids)
+                if rec.get("_mint_id"):
+                    new_id = rec["_mint_id"]
+                    if new_id in used_ids:
+                        raise ValueError(f"_mint_id {new_id!r} ({rec.get('name')!r}) is already in use")
+                    stated_ids.add(new_id)
+                else:
+                    new_id = _mint_id(rec.get("name", ""), used_ids)
                 used_ids.add(new_id)
                 new_rec = {k: v for k, v in rec.items() if k != "id" and not k.startswith("_")}
                 new_rec["id"] = new_id

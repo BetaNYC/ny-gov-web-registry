@@ -1,0 +1,1093 @@
+{
+ "_source": {
+  "repo": "BetaNYC/grounding-ai-with-ny-open-data",
+  "path": "resources/ny-data-portal-registry.json",
+  "commit": "610659835fdb1ce90fe78028a984881c4af13c5b",
+  "commit_note": "merge of PR #35 on main, 2026-11-13",
+  "generated": "2026-11-13",
+  "filter": "entity_type in (city, county)",
+  "fields": [
+   "entity",
+   "entity_type",
+   "region",
+   "url",
+   "status",
+   "platform",
+   "last_verified"
+  ],
+  "note": "Hand-checked data-site rows for NY cities and counties. A row's url is where the place publishes data, often a portal or vendor host, not the government's website; sync_nys_localities.py uses a row only as a website lead under its own host rule."
+ },
+ "rows": [
+  {
+   "entity": "Albany County",
+   "entity_type": "county",
+   "region": "Capital Region",
+   "url": "https://albany-county-ny-open-data-albcountygis.hub.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Albany",
+   "entity_type": "city",
+   "region": "Capital Region",
+   "url": null,
+   "status": "dead",
+   "platform": "Socrata (retired)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Cohoes",
+   "entity_type": "city",
+   "region": "Capital Region",
+   "url": "https://cityofcohoes.prosgar.com/",
+   "status": "no-portal",
+   "platform": "PROS assessment search (vendor) + CivicPlus city site",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Glens Falls",
+   "entity_type": "city",
+   "region": "Capital Region",
+   "url": "https://cityofglensfalls.sdgnys.com/index.aspx",
+   "status": "no-portal",
+   "platform": "ImageMate (SDG) property locator; ArcGIS Online user in Warren County org (Fg3XpDIUTR3JZZES)",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Hudson",
+   "entity_type": "city",
+   "region": "Capital Region",
+   "url": "https://www.hudsonny.gov/",
+   "status": "no-portal",
+   "platform": "City website",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Mechanicville",
+   "entity_type": "city",
+   "region": "Capital Region",
+   "url": "https://www.mechanicvilleny.gov/",
+   "status": "no-portal",
+   "platform": null,
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Rensselaer",
+   "entity_type": "city",
+   "region": "Capital Region",
+   "url": "https://www.rensselaerny.gov/",
+   "status": "no-portal",
+   "platform": null,
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Saratoga Springs",
+   "entity_type": "city",
+   "region": "Capital Region",
+   "url": "https://www.saratogaspringsny.gov/",
+   "status": "no-portal",
+   "platform": "SDG property search, Laserfiche WebLink",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Schenectady",
+   "entity_type": "city",
+   "region": "Capital Region",
+   "url": "https://www.cityofschenectady.gov/605/Open-Data-Portal",
+   "status": "no-portal",
+   "platform": "City web page (CivicPlus), PDF reports",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Troy",
+   "entity_type": "city",
+   "region": "Capital Region",
+   "url": null,
+   "status": "no-portal",
+   "platform": null,
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Watervliet",
+   "entity_type": "city",
+   "region": "Capital Region",
+   "url": "https://www.watervliet.com/",
+   "status": "no-portal",
+   "platform": null,
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "Columbia County",
+   "entity_type": "county",
+   "region": "Capital Region",
+   "url": "https://geodata-cc-ny.opendata.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Greene County",
+   "entity_type": "county",
+   "region": "Capital Region",
+   "url": "https://gis.gcgovny.com/greenewebmap/",
+   "status": "no-portal",
+   "platform": "Esri web map (viewer) on ArcGIS Server 10.91",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Rensselaer County",
+   "entity_type": "county",
+   "region": "Capital Region",
+   "url": "https://www.rensco.com/487/Geographic-Information-System-GIS---Mapp",
+   "status": "no-portal",
+   "platform": "County web page (links out)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Saratoga County",
+   "entity_type": "county",
+   "region": "Capital Region",
+   "url": "https://www.saratogacountyny.gov/departments/real-property-tax-service/",
+   "status": "no-portal",
+   "platform": "Vendor map viewer (VHB) + assessment database",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Schenectady County",
+   "entity_type": "county",
+   "region": "Capital Region",
+   "url": "https://www.schenectadycountyny.gov/taxmaps",
+   "status": "no-portal",
+   "platform": "Schneider Beacon (parcel search); SIMS (login-gated)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Schoharie County",
+   "entity_type": "county",
+   "region": "Capital Region",
+   "url": "https://spatial.vhb.com/SchoharieMapViewer/",
+   "status": "no-portal",
+   "platform": "Vendor map viewer (VHB) + Schneider Beacon",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Warren County",
+   "entity_type": "county",
+   "region": "Capital Region",
+   "url": "https://warren-county-gis-warrencountyny.hub.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Washington County",
+   "entity_type": "county",
+   "region": "Capital Region",
+   "url": "https://gis.washingtoncountyny.gov/webmap/",
+   "status": "no-portal",
+   "platform": "Esri web map (viewer) on ArcGIS Server 10.9",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Cayuga County",
+   "entity_type": "county",
+   "region": "Central NY",
+   "url": "https://www.cayugacounty.gov/687/Interactive-GIS",
+   "status": "no-portal",
+   "platform": "ArcGIS Experience Builder viewer + ArcGIS Server (county-hosted)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Auburn",
+   "entity_type": "city",
+   "region": "Central NY",
+   "url": "https://www.auburnny.gov/957/City-County-Maps",
+   "status": "no-portal",
+   "platform": "ArcGIS Online org 'auburnny' (FkeHS98Kus6Rs7rG) + CivicPlus static PDF maps",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Cortland",
+   "entity_type": "city",
+   "region": "Central NY",
+   "url": "https://www.cortlandny.gov/",
+   "status": "no-portal",
+   "platform": "CivicPlus city site, PDF maps",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Fulton",
+   "entity_type": "city",
+   "region": "Central NY",
+   "url": "https://cityoffultonny.gov/budget/",
+   "status": "no-portal",
+   "platform": "WordPress city site + ClearGov budget book",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Little Falls",
+   "entity_type": "city",
+   "region": "Central NY",
+   "url": "https://thisislittlefalls.com/services/",
+   "status": "no-portal",
+   "platform": "WordPress city site",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Oneida",
+   "entity_type": "city",
+   "region": "Central NY",
+   "url": "https://www.oneidacityny.gov/departments/planning_development/maps.php",
+   "status": "no-portal",
+   "platform": "City web page; Madison County ArcGIS Online viewer; Schneider Beacon (county)",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Oswego",
+   "entity_type": "city",
+   "region": "Central NY",
+   "url": "https://www.oswegony.gov/",
+   "status": "no-portal",
+   "platform": "Documents On-Demand (PDF library)",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Rome",
+   "entity_type": "city",
+   "region": "Central NY",
+   "url": "https://romeny.gov/",
+   "status": "no-portal",
+   "platform": "ArcGIS Online feature services; Schneider Beacon; Image Mate Online",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Sherrill",
+   "entity_type": "city",
+   "region": "Central NY",
+   "url": "https://www.sherrillny.gov/",
+   "status": "no-portal",
+   "platform": null,
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Syracuse",
+   "entity_type": "city",
+   "region": "Central NY",
+   "url": "https://data.syr.gov/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Utica",
+   "entity_type": "city",
+   "region": "Central NY",
+   "url": "https://www.cityofutica.com/maps/gis-maps/index",
+   "status": "no-portal",
+   "platform": "ArcGIS Experience Builder viewer + Schneider Beacon",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Cortland County",
+   "entity_type": "county",
+   "region": "Central NY",
+   "url": "https://cortland-county-gis-portal-cortlandplanning.hub.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Herkimer County",
+   "entity_type": "county",
+   "region": "Central NY",
+   "url": "https://www.herkimercountyny.gov/county-maps/",
+   "status": "no-portal",
+   "platform": "Schneider Beacon (property) + static map pages",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Madison County",
+   "entity_type": "county",
+   "region": "Central NY",
+   "url": "https://www.madisoncounty.ny.gov/254/Prices-for-Map-Copies-GIS-Data",
+   "status": "no-portal",
+   "platform": "Static map pages + paid data request; Schneider Beacon (property)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Oneida County",
+   "entity_type": "county",
+   "region": "Central NY",
+   "url": "https://oneidacountyny.gov/departments/planning/gis-servicesmapping-resources/",
+   "status": "no-portal",
+   "platform": "ArcGIS Enterprise 11.5 (county-hosted, maps.oneidacountyny.gov)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Onondaga County",
+   "entity_type": "county",
+   "region": "Central NY",
+   "url": "https://onondaga.gov/planning/gis/",
+   "status": "no-portal",
+   "platform": "Hosted web viewer (spatial.vhb.com) + Map Gallery",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Oswego County",
+   "entity_type": "county",
+   "region": "Central NY",
+   "url": "https://data-oswegogis.hub.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Beacon",
+   "entity_type": "city",
+   "region": "Hudson Valley",
+   "url": "https://beaconny.gov/",
+   "status": "no-portal",
+   "platform": "WordPress city site",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Kingston",
+   "entity_type": "city",
+   "region": "Hudson Valley",
+   "url": "https://kingston-ny.gov/Assessor",
+   "status": "no-portal",
+   "platform": "City site (QScend-built CMS); ArcGIS Online org 'City Of Kingston' (lURKWeSyTPF2wvVs)",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Middletown",
+   "entity_type": "city",
+   "region": "Hudson Valley",
+   "url": "https://www.middletownny.gov/",
+   "status": "no-portal",
+   "platform": null,
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Newburgh",
+   "entity_type": "city",
+   "region": "Hudson Valley",
+   "url": "https://www.cityofnewburgh-ny.gov/286/GIS-Mapping",
+   "status": "no-portal",
+   "platform": "City web page (CivicPlus); PROS property search (prosgar.com)",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Port Jervis",
+   "entity_type": "city",
+   "region": "Hudson Valley",
+   "url": "https://www.portjervisny.gov/",
+   "status": "no-portal",
+   "platform": null,
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Poughkeepsie",
+   "entity_type": "city",
+   "region": "Hudson Valley",
+   "url": "https://experience.arcgis.com/experience/492d9fd72f3f43c48837b4e99a5a4b8a",
+   "status": "no-portal",
+   "platform": "ArcGIS Online; ClearGov budget book; Flock transparency page",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "Dutchess County",
+   "entity_type": "county",
+   "region": "Hudson Valley",
+   "url": "https://opendata-dcny.hub.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Orange County",
+   "entity_type": "county",
+   "region": "Hudson Valley",
+   "url": "https://gis.orangecountygov.com/portal/apps/sites/#/ocgis",
+   "status": "live",
+   "platform": "ArcGIS Enterprise (self-hosted Sites) + ArcGIS Server 10.91",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Sullivan County",
+   "entity_type": "county",
+   "region": "Hudson Valley",
+   "url": "https://gis2017-04-13t155717567z-sullconygiso.opendata.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub (older Hub Basic site)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Ulster County",
+   "entity_type": "county",
+   "region": "Hudson Valley",
+   "url": "https://www.ulstercountyny.gov/Departments/Information-Services/GIS-Services/GIS-Data",
+   "status": "live",
+   "platform": "County web page with direct downloads + ArcGIS Server 11.5 REST",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Amsterdam",
+   "entity_type": "city",
+   "region": "Mohawk Valley",
+   "url": "https://www.amsterdamny.gov/",
+   "status": "no-portal",
+   "platform": "ArcGIS Online org 'cityofamsterdam' (noD0cpEjsFkxcXuR) + CivicPlus city site",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Gloversville",
+   "entity_type": "city",
+   "region": "Mohawk Valley",
+   "url": "https://cityofgloversvilleny.gov/",
+   "status": "no-portal",
+   "platform": "WordPress city site",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Johnstown",
+   "entity_type": "city",
+   "region": "Mohawk Valley",
+   "url": "https://cityofjohnstown.ny.gov/city-maps.html",
+   "status": "no-portal",
+   "platform": "Weebly city site, PDF/JPG maps",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "Fulton County",
+   "entity_type": "county",
+   "region": "Mohawk Valley",
+   "url": "https://www.fultoncountyny.gov/real-property-tax-service-agency",
+   "status": "no-portal",
+   "platform": "Schneider Beacon / Image Mate Online (parcel viewer)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Montgomery County",
+   "entity_type": "county",
+   "region": "Mohawk Valley",
+   "url": "https://www.montgomerycountyny.gov/web/sites/departments/realproperty/gis.asp",
+   "status": "no-portal",
+   "platform": "Static page; parcels hosted on the NYS GIS Clearinghouse",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Glen Cove",
+   "entity_type": "city",
+   "region": "NYC Metro / Long Island",
+   "url": "https://glencoveny.gov/assessment-department",
+   "status": "no-portal",
+   "platform": "WordPress city site",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Long Beach",
+   "entity_type": "city",
+   "region": "NYC Metro / Long Island",
+   "url": "https://www.longbeachny.gov/transparency",
+   "status": "no-portal",
+   "platform": "Catalis (vertical) city site + ClearGov",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Mount Vernon",
+   "entity_type": "city",
+   "region": "NYC Metro / Long Island",
+   "url": "https://gis.cmvny.com/server/rest/services",
+   "status": "no-portal",
+   "platform": "ArcGIS Enterprise 11.3 (self-hosted; no Sites/Hub catalog)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of New Rochelle",
+   "entity_type": "city",
+   "region": "NYC Metro / Long Island",
+   "url": null,
+   "status": "no-portal",
+   "platform": null,
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Peekskill",
+   "entity_type": "city",
+   "region": "NYC Metro / Long Island",
+   "url": "https://www.cityofpeekskillny.gov/",
+   "status": "no-portal",
+   "platform": null,
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Rye",
+   "entity_type": "city",
+   "region": "NYC Metro / Long Island",
+   "url": "https://www.ryeny.gov/",
+   "status": "no-portal",
+   "platform": "CitySquared map viewer; ArcGIS Online feature services; Granicus city site",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of White Plains",
+   "entity_type": "city",
+   "region": "NYC Metro / Long Island",
+   "url": null,
+   "status": "no-portal",
+   "platform": null,
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Yonkers",
+   "entity_type": "city",
+   "region": "NYC Metro / Long Island",
+   "url": "https://imo.yonkersny.gov/index.aspx",
+   "status": "no-portal",
+   "platform": "Image Mate Online (assessment records)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Nassau County",
+   "entity_type": "county",
+   "region": "NYC Metro / Long Island",
+   "url": "https://opendata.nassaucountyny.gov/",
+   "status": "live",
+   "platform": "Socrata (Tyler Technologies)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "New York City",
+   "entity_type": "city",
+   "region": "NYC Metro / Long Island",
+   "url": "https://data.cityofnewyork.us/",
+   "status": "live",
+   "platform": "Socrata (Tyler Technologies)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Putnam County",
+   "entity_type": "county",
+   "region": "NYC Metro / Long Island",
+   "url": "https://data-pcny.opendata.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Rockland County",
+   "entity_type": "county",
+   "region": "NYC Metro / Long Island",
+   "url": "https://www.rocklandgis.com/portal/apps/sites/#/data",
+   "status": "live",
+   "platform": "ArcGIS Enterprise 11.3 (self-hosted Portal + Sites)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Suffolk County",
+   "entity_type": "county",
+   "region": "NYC Metro / Long Island",
+   "url": "https://opendata.suffolkcountyny.gov/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Westchester County",
+   "entity_type": "county",
+   "region": "NYC Metro / Long Island",
+   "url": "https://gis.westchestercountyny.gov/",
+   "status": "live",
+   "platform": "ArcGIS Hub (custom domain) + county ArcGIS Server",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Ogdensburg",
+   "entity_type": "city",
+   "region": "North Country",
+   "url": "https://www.ogdensburgny.gov/362/City-of-Ogdensburg-Digital-Tax-Map",
+   "status": "no-portal",
+   "platform": "City web page (CivicPlus), PDF maps",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Plattsburgh",
+   "entity_type": "city",
+   "region": "North Country",
+   "url": "https://www.cityofplattsburgh-ny.gov/",
+   "status": "no-portal",
+   "platform": "ArcGIS Online (Clinton County viewer; city org services secured); ClearGov",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Watertown",
+   "entity_type": "city",
+   "region": "North Country",
+   "url": "https://maps.watertown-ny.gov/portal/home/",
+   "status": "live",
+   "platform": "ArcGIS Enterprise (self-hosted Portal, no Sites catalog seen)",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "entity": "Clinton County",
+   "entity_type": "county",
+   "region": "North Country",
+   "url": "https://www.clintoncountyny.gov/planning/gis-map",
+   "status": "no-portal",
+   "platform": "ArcGIS Online (Experience Builder app)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Essex County",
+   "entity_type": "county",
+   "region": "North Country",
+   "url": "https://essex-gis.co.essex.ny.us/",
+   "status": "no-portal",
+   "platform": "Esri ArcGIS Server 11.3 (parcel viewer)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Franklin County",
+   "entity_type": "county",
+   "region": "North Country",
+   "url": "https://beacon.schneidercorp.com/Application.aspx?App=FranklinCountyNY&PageType=Search",
+   "status": "no-portal",
+   "platform": "Schneider Beacon",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Hamilton County",
+   "entity_type": "county",
+   "region": "North Country",
+   "url": "https://beacon.schneidercorp.com/Application.aspx?App=HamiltonCountyNY&PageType=Map",
+   "status": "no-portal",
+   "platform": "Schneider Beacon",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Jefferson County",
+   "entity_type": "county",
+   "region": "North Country",
+   "url": "https://www.jeffersoncountyny.gov/gis-maps-property-search",
+   "status": "no-portal",
+   "platform": "Schneider Beacon (parcel search)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Lewis County",
+   "entity_type": "county",
+   "region": "North Country",
+   "url": "https://lewiscountyny.gov/departments/real-property/gis-mapping-web-application/",
+   "status": "no-portal",
+   "platform": "Schneider Beacon",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "St. Lawrence County",
+   "entity_type": "county",
+   "region": "North Country",
+   "url": "https://maps.dancgis.org/ima/?IMA=St.+Lawrence",
+   "status": "no-portal",
+   "platform": "DANC Internet Mapping Application (custom/Esri)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Broome County",
+   "entity_type": "county",
+   "region": "Southern Tier",
+   "url": "https://gis.broomecountyny.gov/website/gisweb/portal.htm",
+   "status": "live",
+   "platform": "Esri ArcGIS Server 10.61 + custom JS viewer page (not Hub)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Chemung County",
+   "entity_type": "county",
+   "region": "Southern Tier",
+   "url": "https://chemungcountyny.gov/1382/GIS-Mapping-Data",
+   "status": "live",
+   "platform": "CivicPlus static page with Document Center downloads",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Chenango County",
+   "entity_type": "county",
+   "region": "Southern Tier",
+   "url": "https://www.chenangocountyny.gov/323/Online-GIS-Information",
+   "status": "no-portal",
+   "platform": "Schneider Geospatial (paid subscription)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Binghamton",
+   "entity_type": "city",
+   "region": "Southern Tier",
+   "url": "https://www.binghamton-ny.gov/government/departments/assessment-grievance",
+   "status": "no-portal",
+   "platform": "City site (Granicus) links county tools; city planning layers live in Broome County's ArcGIS org",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Corning",
+   "entity_type": "city",
+   "region": "Southern Tier",
+   "url": "https://cityofcorningny.gov/assessor",
+   "status": "no-portal",
+   "platform": "Catalis (vertical) city site; Schneider Beacon (county)",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Elmira",
+   "entity_type": "city",
+   "region": "Southern Tier",
+   "url": "https://www.cityofelmirany.gov/",
+   "status": "no-portal",
+   "platform": "CivicPlus city site; Scribble Maps parks map",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Hornell",
+   "entity_type": "city",
+   "region": "Southern Tier",
+   "url": "https://www.cityofhornell.gov/city-assessors-page",
+   "status": "no-portal",
+   "platform": "Duda (multiscreensite) city site",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Ithaca",
+   "entity_type": "city",
+   "region": "Southern Tier",
+   "url": "https://data-ithacany.opendata.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "entity": "City of Norwich",
+   "entity_type": "city",
+   "region": "Southern Tier",
+   "url": "https://www.norwichnewyork.gov/",
+   "status": "no-portal",
+   "platform": null,
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Oneonta",
+   "entity_type": "city",
+   "region": "Southern Tier",
+   "url": "https://www.oneonta.ny.us/",
+   "status": "no-portal",
+   "platform": "ArcGIS Online feature services; Revize city site",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "Delaware County",
+   "entity_type": "county",
+   "region": "Southern Tier",
+   "url": "https://www.delcony.gov/",
+   "status": "no-portal",
+   "platform": "—",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Otsego County",
+   "entity_type": "county",
+   "region": "Southern Tier",
+   "url": "https://otsego-county-gis-otsegocountyny.hub.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Schuyler County",
+   "entity_type": "county",
+   "region": "Southern Tier",
+   "url": "https://www.schuylercountyny.gov/1066/GIS-Shapefile",
+   "status": "live",
+   "platform": "CivicPlus static page + ArcGIS Online web viewer",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Steuben County",
+   "entity_type": "county",
+   "region": "Southern Tier",
+   "url": "https://steubencounty-scnygis.opendata.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Tioga County",
+   "entity_type": "county",
+   "region": "Southern Tier",
+   "url": "https://tioga-county-one-map-tiogacountyny.hub.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Tompkins County",
+   "entity_type": "county",
+   "region": "Southern Tier",
+   "url": "https://tcdata-tompkinscounty.opendata.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Allegany County",
+   "entity_type": "county",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://beacon.schneidercorp.com/Application.aspx?App=AlleganyCountyNY&PageType=Search",
+   "status": "no-portal",
+   "platform": "Schneider Beacon",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Cattaraugus County",
+   "entity_type": "county",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://cattaraugus-county-gis-hub-cattco.hub.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Chautauqua County",
+   "entity_type": "county",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://maps.chautauquacounty.com/server/rest/services",
+   "status": "no-portal",
+   "platform": "ArcGIS Server 10.91 (REST directory, no Hub front end)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Batavia",
+   "entity_type": "city",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://cityofbatavia.prosgar.com/",
+   "status": "no-portal",
+   "platform": "PROS assessment search (vendor) + CivicPlus city site",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Buffalo",
+   "entity_type": "city",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://data.buffalony.gov/",
+   "status": "live",
+   "platform": "Socrata",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Canandaigua",
+   "entity_type": "city",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://www.canandaiguanewyork.gov/",
+   "status": "no-portal",
+   "platform": "CivicPlus city site, PDF maps",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Dunkirk",
+   "entity_type": "city",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://www.cityofdunkirkny.gov/",
+   "status": "no-portal",
+   "platform": "Revize city site",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Geneva",
+   "entity_type": "city",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://www.cityofgenevany.gov/333/Maps",
+   "status": "no-portal",
+   "platform": "CivicPlus city site, PDF maps",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Jamestown",
+   "entity_type": "city",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://www.jamestownny.gov/assessor/",
+   "status": "no-portal",
+   "platform": "WordPress city site; ArcGIS Online org 'City of Jamestown, New York' (CQ6l69A0aVx5okSo)",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Lackawanna",
+   "entity_type": "city",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://lackawannany.gov/assessor/",
+   "status": "no-portal",
+   "platform": "WordPress city site",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Lockport",
+   "entity_type": "city",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://lockportny.gov/lockports-open-financial-data-portal/",
+   "status": "live",
+   "platform": "City web page (WordPress) with XLSX downloads",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Niagara Falls",
+   "entity_type": "city",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://experience.arcgis.com/experience/fcb1971b5fa54e86bac0cf96e6fe6e75",
+   "status": "no-portal",
+   "platform": "ArcGIS Experience Builder viewer + ArcGIS Online feature services; PROS property search",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of North Tonawanda",
+   "entity_type": "city",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://www.northtonawanda.gov/",
+   "status": "no-portal",
+   "platform": null,
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Olean",
+   "entity_type": "city",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://cityofolean.gov/",
+   "status": "no-portal",
+   "platform": "OpenGov Stories (budget), county Image Mate",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Rochester",
+   "entity_type": "city",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://data.cityofrochester.gov/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "City of Salamanca",
+   "entity_type": "city",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://www.salamancany.gov/",
+   "status": "no-portal",
+   "platform": null,
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "City of Tonawanda",
+   "entity_type": "city",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://www.tonawandacity.com/",
+   "status": "no-portal",
+   "platform": "Revize city site",
+   "last_verified": "2026-11-13"
+  },
+  {
+   "entity": "Erie County",
+   "entity_type": "county",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://www3.erie.gov/gis/",
+   "status": "no-portal",
+   "platform": "Custom site + ArcGIS Online viewers",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Genesee County",
+   "entity_type": "county",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://gis-data-cogeneseeny.hub.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Livingston County",
+   "entity_type": "county",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://gis.livingstoncountyny.gov/portal/home/index.html",
+   "status": "live",
+   "platform": "ArcGIS Enterprise (self-hosted Portal, no Sites catalog)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Monroe County",
+   "entity_type": "county",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://maps.monroecounty.gov/portal/apps/sites/#/mcgis",
+   "status": "live",
+   "platform": "ArcGIS Enterprise (self-hosted Sites)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Niagara County",
+   "entity_type": "county",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://niagara-county.maps.arcgis.com/apps/webappviewer/index.html?id=b5be67cf0e05477e8f4ad3161ab51422",
+   "status": "no-portal",
+   "platform": "ArcGIS Online (Web AppViewer)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Ontario County",
+   "entity_type": "county",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://ontario-county-gis-mapping-center-ontariocony.hub.arcgis.com/",
+   "status": "live",
+   "platform": "ArcGIS Hub",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Orleans County",
+   "entity_type": "county",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://www.orleanscountyny.gov/departments/planning/geographic_information_systems_(gis).php",
+   "status": "no-portal",
+   "platform": "County GIS page (PDF maps, viewer user guide)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Seneca County",
+   "entity_type": "county",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://beacon.schneidercorp.com/Application.aspx?App=SenecaCountyNY&PageType=Search",
+   "status": "no-portal",
+   "platform": "Schneider Beacon",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Wayne County",
+   "entity_type": "county",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://gis.co.wayne.ny.us/portal/apps/sites/#/wcgis/search?collection=Dataset",
+   "status": "live",
+   "platform": "ArcGIS Enterprise (self-hosted Sites)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Wyoming County",
+   "entity_type": "county",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://www.wyomingcountyny.gov/645/Geographic-Information-Systems-GIS",
+   "status": "no-portal",
+   "platform": "ArcGIS Online (individual apps)",
+   "last_verified": "2026-11-05"
+  },
+  {
+   "entity": "Yates County",
+   "entity_type": "county",
+   "region": "Western NY (Finger Lakes + WNY)",
+   "url": "https://gisportal.yatescounty.org/portal/home/",
+   "status": "live",
+   "platform": "ArcGIS Enterprise (self-hosted Portal, no Sites catalog)",
+   "last_verified": "2026-11-05"
+  }
+ ]
+}

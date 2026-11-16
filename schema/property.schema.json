@@ -41,8 +41,8 @@
     },
     "government_level": {
       "type": "string",
-      "enum": ["nyc", "nys", "bi-state", "authority", "pbc"],
-      "description": "Coarse classification. This enum is part of the NYC/NYS CONFIGURATION layer (a fork adjusts the values); it is not steward-branded. nyc = NYC city entity; nys = NYS state executive agency; bi-state = jurisdiction spans NY and another state (e.g. PANYNJ); authority = public authority (state/local/IDA/LDC); pbc = public-benefit corporation. authority and pbc overlap by design; `classification` carries the finer legal-instrument detail. See docs/schema.md."
+      "enum": ["nyc", "nys", "bi-state", "authority", "pbc", "county", "city", "town", "village"],
+      "description": "Coarse classification. This enum is part of the NYC/NYS CONFIGURATION layer (a fork adjusts the values); it is not steward-branded. nyc = NYC city entity; nys = NYS state executive agency; bi-state = jurisdiction spans NY and another state (e.g. PANYNJ); authority = public authority (state/local/IDA/LDC); pbc = public-benefit corporation; county / city / town / village = a New York county, city, town or village government outside New York City (NYC's five counties have no county government, and the City of New York is `nyc`). authority and pbc overlap by design; `classification` carries the finer legal-instrument detail. See docs/schema.md."
     },
     "classification": {
       "type": ["string", "null"],
@@ -269,9 +269,9 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["moda", "abo", "nygov", "nygov_contacts", "state_listing", "greenbook", "wikidata", "manual"]
+            "enum": ["moda", "abo", "nygov", "nygov_contacts", "state_listing", "greenbook", "wikidata", "manual", "nys_gis", "osc", "its_localities", "dotgov"]
           },
-          "description": "Upstream(s) that asserted this record. This enum is part of the NYC/NYS configuration layer (a fork adjusts it). `greenbook` marks a record carrying Greenbook-derived contact scaffolding (staleness flagged in the contact_details note). `nygov` = the ny.gov agency directory; `nygov_contacts` = the Governor's office Agency Contacts dataset (data.ny.gov kjw8-pupa); `state_listing` = a state agency listing of state websites (shared privately; see docs/sources.md)."
+          "description": "Upstream(s) that asserted this record. This enum is part of the NYC/NYS configuration layer (a fork adjusts it). `greenbook` marks a record carrying Greenbook-derived contact scaffolding (staleness flagged in the contact_details note). `nygov` = the ny.gov agency directory; `nygov_contacts` = the Governor's office Agency Contacts dataset (data.ny.gov kjw8-pupa); `state_listing` = a state agency listing of state websites (shared privately; see docs/sources.md); `nys_gis` = the NYS Civil Boundaries GIS service (counties, cities, towns, villages); `osc` = the Office of the State Comptroller's local government entity tables; `its_localities` = ITS Locality Hierarchy with Websites (data.ny.gov 55k6-h6qq); `dotgov` = CISA's .gov domain list."
         },
         "last_verified": {
           "type": ["string", "null"],
