@@ -1037,6 +1037,10 @@
       "note": "The listing files ecfsa.ny.gov under OSC; the host is the Erie County Fiscal Stability Authority's.",
       "primary": true
     },
+    "health.data.ny.gov": {
+      "target": "agency:health",
+      "note": "The listing files health.data.ny.gov under ITS; it is Health Data NY, the Department of Health's own open data catalog (its dataset metadata names the New York State Department of Health; grounding-ai-with-ny-open-data portal registry, verified 2026-11-05)."
+    },
     "my.ny.gov": {
       "target": "review:listing_attribution_doubtful",
       "note": "The listing files my.ny.gov (the NY.gov ID login) under DOH."
