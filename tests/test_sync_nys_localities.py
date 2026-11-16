@@ -461,6 +461,7 @@ def test_lead_rows_one_host_per_row_only_without_primary():
 # --- website checks from the AI-readability scan (growth plan rule 4) ------------------------------
 
 import confirm_locality_websites as clw  # noqa: E402
+import sync_nys_localities as sync  # noqa: E402
 
 
 def _check(eid, host, role="primary"):
@@ -480,6 +481,22 @@ def test_checks_give_a_primary_and_legacy_to_places_without_one():
     assert not review_for(review, "greene-county", "website_leads_disagree")
     assert summary["primary_confirmed_by_scan"]["county"] == 1
     assert "greene-county" not in {r["entity_id"] for r in summary["lead_rows"]}
+
+
+def test_check_notes_name_how_the_page_was_read():
+    live = dict(_check("greene-county", "www.greenecountyny.gov"), method=clw.LIVE_METHOD,
+                checked_on="2026-11-16")
+    recs, _, _ = build_records_osc(OSC2, ITS2, DOTGOV, GROUNDING, BASE, STALE, TLDS, PSL, OSC_EXPECTED,
+                                   checks=[live])
+    assert by_id(recs)["greene-county"]["web_properties"][0]["notes"] == (
+        "Confirmed: the site's page title names the place (BetaNYC live homepage check, 2026-11-16).")
+
+
+def test_every_check_method_has_a_label_and_unknown_methods_stop():
+    assert set(sync.CHECK_LABEL) == set(clw.METHODS)
+    bad = dict(_check("greene-county", "www.greenecountyny.gov"), method="guessed")
+    with pytest.raises(ValueError, match="unknown method"):
+        build_records_osc(OSC2, ITS2, DOTGOV, GROUNDING, BASE, STALE, TLDS, PSL, OSC_EXPECTED, checks=[bad])
 
 
 def test_checks_never_override_a_two_lead_primary_or_share_a_host():
