@@ -8603,6 +8603,181 @@
    "role": "legacy",
    "checked_on": "2026-11-10",
    "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-amsterdam",
+   "host": "www.townofamsterdam.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-birdsall",
+   "host": "www.birdsallny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-broadalbin",
+   "host": "townofbroadalbin.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-conquest",
+   "host": "townofconquestny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-copake",
+   "host": "townofcopakeny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-copake",
+   "host": "townofcopake.org",
+   "role": "legacy",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-deposit",
+   "host": "townofdepositny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-forestburgh",
+   "host": "forestburgh.net",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-greenport",
+   "host": "www.townofgreenportny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-jasper",
+   "host": "townofjasperny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-lodi",
+   "host": "lodiny.com",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-middlesex",
+   "host": "middlesexny.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-new-lisbon",
+   "host": "townofnewlisbonny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-peru",
+   "host": "perutown.com",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-poughkeepsie",
+   "host": "www.townofpoughkeepsie-ny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-randolph",
+   "host": "www.randolphny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-shelby",
+   "host": "townofshelbyny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-unadilla",
+   "host": "townofunadilla.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-warwick",
+   "host": "townofwarwickny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-croghan",
+   "host": "croghanny.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-lyndonville",
+   "host": "villageoflyndonville.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-munsey-park",
+   "host": "munseypark.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-new-berlin",
+   "host": "villageofnewberlinny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-shortsville",
+   "host": "villageofshortsvilleny.us",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-walden",
+   "host": "villageofwaldenny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
   }
  ]
 }
