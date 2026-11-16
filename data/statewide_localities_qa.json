@@ -1,0 +1,301 @@
+{
+ "_about": "QA of the minted counties, cities, towns and villages (scripts/qa_localities.py). Report: docs/qa/2026-11-13-localities-qa.md.",
+ "entities_by_level": {
+  "county": 57,
+  "city": 61,
+  "town": 933,
+  "village": 532
+ },
+ "osc": {
+  "osc_rows": 1583,
+  "entities": 1583,
+  "problems": [],
+  "osc_rows_not_minted": [],
+  "osc_codes_minted_twice": []
+ },
+ "its": {
+  "its_rows": 1599,
+  "by_level": {
+   "county": {
+    "entities": 57,
+    "matched": 57,
+    "rate": 1.0
+   },
+   "city": {
+    "entities": 61,
+    "matched": 61,
+    "rate": 1.0
+   },
+   "town": {
+    "entities": 933,
+    "matched": 931,
+    "rate": 0.9979
+   },
+   "village": {
+    "entities": 532,
+    "matched": 529,
+    "rate": 0.9944
+   }
+  },
+  "entities_unmatched": [
+   {
+    "entity_id": "town-of-fallsburg",
+    "level": "town",
+    "name": "Town of Fallsburg",
+    "county": "Sullivan"
+   },
+   {
+    "entity_id": "town-of-palm-tree",
+    "level": "town",
+    "name": "Town of Palm Tree",
+    "county": "Orange"
+   },
+   {
+    "entity_id": "village-of-ateres",
+    "level": "village",
+    "name": "Village of Ateres",
+    "county": "Sullivan"
+   },
+   {
+    "entity_id": "village-of-bloomingburg",
+    "level": "village",
+    "name": "Village of Bloomingburg",
+    "county": "Sullivan"
+   },
+   {
+    "entity_id": "village-of-kiryas-joel",
+    "level": "village",
+    "name": "Village of Kiryas Joel",
+    "county": "Orange"
+   }
+  ],
+  "its_rows_unmatched": [
+   {
+    "swis_code": "063001",
+    "level": "village",
+    "name": "Cherry Creek",
+    "county": "Chautauqua"
+   },
+   {
+    "swis_code": "064601",
+    "level": "village",
+    "name": "Forestville",
+    "county": "Chautauqua"
+   },
+   {
+    "swis_code": "073801",
+    "level": "village",
+    "name": "Van Etten",
+    "county": "Chemung"
+   },
+   {
+    "swis_code": "092201",
+    "level": "village",
+    "name": "Keeseville",
+    "county": "Clinton"
+   },
+   {
+    "swis_code": "153601",
+    "level": "village",
+    "name": "Port Henry",
+    "county": "Essex"
+   },
+   {
+    "swis_code": "226005",
+    "level": "village",
+    "name": "Herrings",
+    "county": "Jefferson"
+   },
+   {
+    "swis_code": "232401",
+    "level": "village",
+    "name": "Harrisville",
+    "county": "Lewis"
+   },
+   {
+    "swis_code": "272001",
+    "level": "village",
+    "name": "Fort Johnson",
+    "county": "Montgomery"
+   },
+   {
+    "swis_code": "302801",
+    "level": "village",
+    "name": "Bridgewater",
+    "county": "Oneida"
+   },
+   {
+    "swis_code": "305805",
+    "level": "village",
+    "name": "Barneveld",
+    "county": "Oneida"
+   },
+   {
+    "swis_code": "305803",
+    "level": "village",
+    "name": "Prospect",
+    "county": "Oneida"
+   },
+   {
+    "swis_code": "334005",
+    "level": "village",
+    "name": "Kiryas Joel",
+    "county": "Orange"
+   },
+   {
+    "swis_code": "392407",
+    "level": "village",
+    "name": "South Nyack",
+    "county": "Rockland"
+   },
+   {
+    "swis_code": "404401",
+    "level": "village",
+    "name": "Hermon",
+    "county": "St Lawrence"
+   },
+   {
+    "swis_code": "406001",
+    "level": "village",
+    "name": "Morristown",
+    "county": "St Lawrence"
+   },
+   {
+    "swis_code": "472219",
+    "level": "village",
+    "name": "Mastic Beach",
+    "county": "Suffolk"
+   },
+   {
+    "swis_code": "482800",
+    "level": "town",
+    "name": "Fallsburgh",
+    "county": "Sullivan"
+   },
+   {
+    "swis_code": "484001",
+    "level": "village",
+    "name": "Bloomingburgh",
+    "county": "Sullivan"
+   },
+   {
+    "swis_code": "534801",
+    "level": "village",
+    "name": "Salem",
+    "county": "Washington"
+   },
+   {
+    "swis_code": "542801",
+    "level": "village",
+    "name": "Lyons",
+    "county": "Wayne"
+   },
+   {
+    "swis_code": "543001",
+    "level": "village",
+    "name": "Macedon",
+    "county": "Wayne"
+   }
+  ]
+ },
+ "census": {
+  "census_rows": 1582,
+  "excluded_nyc": [
+   "city: New York City",
+   "county: Bronx County",
+   "county: Kings County",
+   "county: New York County",
+   "county: Queens County",
+   "county: Richmond County"
+  ],
+  "by_level": {
+   "county": {
+    "entities": 57,
+    "matched": 57,
+    "census_rows": 57,
+    "rate": 1.0
+   },
+   "city": {
+    "entities": 61,
+    "matched": 60,
+    "census_rows": 60,
+    "rate": 0.9836
+   },
+   "town": {
+    "entities": 933,
+    "matched": 930,
+    "census_rows": 930,
+    "rate": 0.9968
+   },
+   "village": {
+    "entities": 532,
+    "matched": 531,
+    "census_rows": 535,
+    "rate": 0.9981
+   }
+  },
+  "entities_unmatched": [
+   {
+    "entity_id": "city-of-sherrill",
+    "level": "city",
+    "name": "City of Sherrill",
+    "entities_with_this_name": 1,
+    "census_rows_with_this_name": 0
+   },
+   {
+    "entity_id": "town-of-east-rochester",
+    "level": "town",
+    "name": "Town of East Rochester",
+    "entities_with_this_name": 1,
+    "census_rows_with_this_name": 0
+   },
+   {
+    "entity_id": "town-of-mount-kisco",
+    "level": "town",
+    "name": "Town of Mount Kisco",
+    "entities_with_this_name": 1,
+    "census_rows_with_this_name": 0
+   },
+   {
+    "entity_id": "town-of-scarsdale",
+    "level": "town",
+    "name": "Town of Scarsdale",
+    "entities_with_this_name": 1,
+    "census_rows_with_this_name": 0
+   },
+   {
+    "entity_id": "village-of-ateres",
+    "level": "village",
+    "name": "Village of Ateres",
+    "entities_with_this_name": 1,
+    "census_rows_with_this_name": 0
+   }
+  ],
+  "census_rows_unmatched": [
+   {
+    "level": "village",
+    "census_name": "Fort Johnson village",
+    "entities_with_this_name": 0,
+    "census_rows_with_this_name": 1
+   },
+   {
+    "level": "village",
+    "census_name": "Harrisville village",
+    "entities_with_this_name": 0,
+    "census_rows_with_this_name": 1
+   },
+   {
+    "level": "village",
+    "census_name": "Morristown village",
+    "entities_with_this_name": 0,
+    "census_rows_with_this_name": 1
+   },
+   {
+    "level": "village",
+    "census_name": "South Nyack village",
+    "entities_with_this_name": 0,
+    "census_rows_with_this_name": 1
+   }
+  ]
+ }
+}
