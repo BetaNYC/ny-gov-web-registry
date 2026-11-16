@@ -112,10 +112,11 @@ No county column and no codes, so the match is level + name, counting duplicates
 
 ## Websites
 
-- Places with a primary site: 1026 of 1583 (909 on 2026-11-13; 117 added 2026-11-15).
+- Places with a primary site: 1203 of 1583 (909 on 2026-11-13; 117, then 177 more, added 2026-11-15).
   - 83 because two independent leads named the same host (no live check).
-  - 943 confirmed by the BetaNYC AI-readability scan (826, then 117 more on 2026-11-15 where an old address forwards to the place's own site): the site's page title names the place (growth plan rule 4). The address, its role and the scan date are in `data/locality_website_checks.json`, which also records 286 former addresses (`legacy`).
-- Places without a primary: 557; of those, 394 have at least one lead host in `data/ai-readability/localities-website-leads-2026-11-13.csv` (617 rows, one per host and source) and the rest have no host lead (some only a path-only page, which stays in the review file).
+  - 943 confirmed by the BetaNYC AI-readability scan (826, then 117 more on 2026-11-15 where an old address forwards to the place's own site): the site's page title names the place (growth plan rule 4). The address, its role and the scan date are in `data/locality_website_checks.json`, which also records 287 former addresses (`legacy`).
+  - 177 confirmed by a BetaNYC live homepage check on 2026-11-15 (dated 2026-11-16 UTC in the file): one homepage read per host, robots.txt honored, same title rule and same script. 24 hosts came from the lead file and 153 from web searches; each search-found site was also a top-three result in a second search engine.
+- Places without a primary: 380; of those, 288 have at least one lead host in `data/ai-readability/localities-website-leads-2026-11-13.csv` (460 rows, one per host and source) and the rest have no host lead (some only a path-only page, which stays in the review file).
 - No municipal site was fetched for this work; the scan's 2026-11-10 results were reused.
 
 ## Review file, § localities

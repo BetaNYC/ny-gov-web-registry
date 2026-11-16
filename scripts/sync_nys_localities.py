@@ -403,9 +403,17 @@ def decide_websites(units: list[dict], owner: dict[str, str], review: list[dict]
 
 # --- records -------------------------------------------------------------------------------
 
+# How each check's method is named in a web property's notes. Keys are the only methods a check
+# may carry (confirm_locality_websites.METHODS); the label says truthfully how the page was read.
+CHECK_LABEL = {
+    "page title names the place (BetaNYC AI-readability scan)": "BetaNYC scan",
+    "page title names the place (BetaNYC live homepage check)": "BetaNYC live homepage check",
+}
+
+
 def apply_checks(units: list[dict], checks: list[dict], owner: dict[str, str], review: list[dict]) -> None:
-    """Apply data/locality_website_checks.json: a place with no two-lead primary takes the host the
-    AI-readability scan confirmed (its page title names the place; growth plan rule 4), plus any
+    """Apply data/locality_website_checks.json: a place with no two-lead primary takes the host a
+    check confirmed (its page title names the place; growth plan rule 4), plus any
     `legacy` hosts. Never overrides a two-lead primary. Its website review items are replaced by one
     item listing the root-lead hosts that were not applied, if any."""
     by_id = {u["id"]: u for u in units}
@@ -419,12 +427,15 @@ def apply_checks(units: list[dict], checks: list[dict], owner: dict[str, str], r
         if u["primary"]:
             raise ValueError(f"website check {c['entity_id']}: the place already has a primary from two "
                              "agreeing leads; checks never override it")
+        if c.get("method") not in CHECK_LABEL:
+            raise ValueError(f"website check {c['entity_id']}: unknown method {c.get('method')!r}")
         h = sc.norm_host(c["host"])
         if h in owner or h in taken:
             raise ValueError(f"website check {c['entity_id']}: host {c['host']} is already "
                              f"{owner.get(h) or taken.get(h)}'s")
         taken[h] = c["entity_id"]
-        chk = u.setdefault("checked", {"primary": None, "legacy": [], "checked_on": c["checked_on"]})
+        chk = u.setdefault("checked", {"primary": None, "legacy": [], "checked_on": c["checked_on"],
+                                       "label": CHECK_LABEL[c["method"]]})
         if c["role"] == "primary":
             if chk["primary"]:
                 raise ValueError(f"website check {c['entity_id']}: two primary hosts")
@@ -516,11 +527,11 @@ def to_record(u: dict) -> dict:
     elif u.get("checked"):
         c = u["checked"]
         wps.append({"domain": c["primary"], "role": "primary", "valid_from": None, "valid_to": None,
-                    "notes": f"Confirmed: the site's page title names the place (BetaNYC scan, {c['checked_on']})."})
+                    "notes": f"Confirmed: the site's page title names the place ({c['label']}, {c['checked_on']})."})
         for h in c["legacy"]:
             wps.append({"domain": h, "role": "legacy", "valid_from": None, "valid_to": None,
                         "notes": f"Former address: listed for this place in ITS 55k6-h6qq (2023); its site is now "
-                                 f"{c['primary']} (BetaNYC scan, {c['checked_on']})."})
+                                 f"{c['primary']} ({c['label']}, {c['checked_on']})."})
     return {
         "name": u["name"], "short_name": None, "other_names": other_names,
         "government_level": u["tier"], "classification": None,

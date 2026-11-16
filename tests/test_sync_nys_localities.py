@@ -461,6 +461,7 @@ def test_lead_rows_one_host_per_row_only_without_primary():
 # --- website checks from the AI-readability scan (growth plan rule 4) ------------------------------
 
 import confirm_locality_websites as clw  # noqa: E402
+import sync_nys_localities as sync  # noqa: E402
 
 
 def _check(eid, host, role="primary"):
@@ -480,6 +481,22 @@ def test_checks_give_a_primary_and_legacy_to_places_without_one():
     assert not review_for(review, "greene-county", "website_leads_disagree")
     assert summary["primary_confirmed_by_scan"]["county"] == 1
     assert "greene-county" not in {r["entity_id"] for r in summary["lead_rows"]}
+
+
+def test_check_notes_name_how_the_page_was_read():
+    live = dict(_check("greene-county", "www.greenecountyny.gov"), method=clw.LIVE_METHOD,
+                checked_on="2026-11-16")
+    recs, _, _ = build_records_osc(OSC2, ITS2, DOTGOV, GROUNDING, BASE, STALE, TLDS, PSL, OSC_EXPECTED,
+                                   checks=[live])
+    assert by_id(recs)["greene-county"]["web_properties"][0]["notes"] == (
+        "Confirmed: the site's page title names the place (BetaNYC live homepage check, 2026-11-16).")
+
+
+def test_every_check_method_has_a_label_and_unknown_methods_stop():
+    assert set(sync.CHECK_LABEL) == set(clw.METHODS)
+    bad = dict(_check("greene-county", "www.greenecountyny.gov"), method="guessed")
+    with pytest.raises(ValueError, match="unknown method"):
+        build_records_osc(OSC2, ITS2, DOTGOV, GROUNDING, BASE, STALE, TLDS, PSL, OSC_EXPECTED, checks=[bad])
 
 
 def test_checks_never_override_a_two_lead_primary_or_share_a_host():
@@ -560,3 +577,32 @@ def test_decide_rules():
     assert counts["several_hosts"] == 1 and counts["host_owned_elsewhere"] == 1
     assert counts["no_live_lead"] == 1 and counts["confirmed"] == 1
     assert all(set(c) == {"entity_id", "host", "role", "checked_on", "method"} for c in checks)
+
+
+# --- merging a later check into the existing file --------------------------------------------------
+
+def test_merge_keeps_earlier_checks_and_adds_only_new_places():
+    old = [_check("town-a", "towna.gov"), _check("town-b", "townb.gov")]
+    new = [_check("town-a", "other.gov"),                 # place already checked: skipped
+           _check("town-c", "townb.gov"),                 # host already another place's: skipped
+           _check("town-d", "townd.gov"), _check("town-d", "old-d.us", "legacy")]
+    checks, counts = clw.merge(old, new)
+    assert checks == old + [_check("town-d", "townd.gov"), _check("town-d", "old-d.us", "legacy")]
+    assert counts == {"kept": 2, "added_primary": 1, "added_legacy": 1,
+                      "skipped_already_checked": 1, "skipped_host_taken": 1}
+
+
+def test_merge_treats_www_as_the_same_host():
+    checks, counts = clw.merge([_check("town-a", "www.towna.gov")], [_check("town-b", "towna.gov")])
+    assert checks == [_check("town-a", "www.towna.gov")] and counts["skipped_host_taken"] == 1
+
+
+def test_decide_writes_the_given_method():
+    entities = [{"id": "town-of-zed", "name": "Town of Zed", "government_level": "town", "web_properties": []}]
+    row = {"entity_id": "town-of-zed", "name": "Town of Zed", "county": "Erie", "level": "town",
+           "host": "townofzed.gov", "source": "", "default_body": "content", "default_final_host": "townofzed.gov",
+           "chrome_body": "", "chrome_final_host": "", "title": "Town of Zed"}
+    import ai_readability_export as ex
+    checks, _ = clw.decide([row], entities, ex.load_psl(), "2026-11-16", method="live check")
+    assert checks == [{"entity_id": "town-of-zed", "host": "townofzed.gov", "role": "primary",
+                       "checked_on": "2026-11-16", "method": "live check"}]

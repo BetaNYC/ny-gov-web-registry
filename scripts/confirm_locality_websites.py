@@ -27,6 +27,12 @@ Rule:
   - An ITS lead host (the place's 2023 address) that led to the confirmed host is recorded as
     `legacy`. Any other differing lead host is dropped.
   - Places that already have a primary from two agreeing leads are not touched.
+
+Merging (default since 2026-11-15): the checks already in the output file are kept. A new check is
+added only for a place with no primary check yet, and only if no other place's check already uses
+its host. `--replace` rebuilds the file from this one scan instead, which drops earlier checks.
+`--method` records how the page was read (default: the AI-readability scan); a later live check
+names itself so the file says which look confirmed each address.
 """
 from __future__ import annotations
 
@@ -48,6 +54,8 @@ LEVELS = ("county", "city", "town", "village")
 REQUIRED = ("entity_id", "name", "county", "level", "host", "source", "default_body",
             "default_final_host", "chrome_body", "chrome_final_host", "title")
 METHOD = "page title names the place (BetaNYC AI-readability scan)"
+LIVE_METHOD = "page title names the place (BetaNYC live homepage check)"
+METHODS = (METHOD, LIVE_METHOD)   # the only values a check's method may take
 SOCIAL = {"facebook.com", "twitter.com", "x.com", "instagram.com", "linkedin.com", "youtube.com",
           "nextdoor.com", "tiktok.com"}
 
@@ -101,7 +109,8 @@ def host_ok(host: str, psl) -> bool:
     return bool(bare) and ex.base_domain(bare, psl) == bare and bare not in SOCIAL
 
 
-def decide(rows: list[dict], entities: list[dict], psl, checked_on: str) -> tuple[list[dict], dict]:
+def decide(rows: list[dict], entities: list[dict], psl, checked_on: str,
+           method: str = METHOD) -> tuple[list[dict], dict]:
     """Pure: scan rows + the registry -> (checks, aggregate counts). No scan outcome is returned."""
     loc = [e for e in entities if e["government_level"] in LEVELS]
     # Only a primary from two agreeing leads counts here; one this script confirmed earlier (and the
@@ -162,13 +171,13 @@ def decide(rows: list[dict], entities: list[dict], psl, checked_on: str) -> tupl
         if sc.norm_host(host) in owner:
             counts["host_owned_elsewhere"] += 1
             continue
-        checks.append({"entity_id": eid, "host": host, "role": "primary", "checked_on": checked_on, "method": METHOD})
+        checks.append({"entity_id": eid, "host": host, "role": "primary", "checked_on": checked_on, "method": method})
         legacy = {h for hs in hosts.values() for h in hs}
         for lh in sorted(legacy):
             if sc.norm_host(lh) in owner or sc.norm_host(lh) in by_host:
                 continue
             checks.append({"entity_id": eid, "host": lh, "role": "legacy", "checked_on": checked_on,
-                           "method": METHOD})
+                           "method": method})
     without = {e["id"] for e in loc} - with_primary
     confirmed = {c["entity_id"] for c in checks if c["role"] == "primary"}
     counts.update({"places_without_two_lead_primary": len(without), "confirmed": len(confirmed),
@@ -179,11 +188,38 @@ def decide(rows: list[dict], entities: list[dict], psl, checked_on: str) -> tupl
     return checks, counts
 
 
+def merge(existing: list[dict], new: list[dict]) -> tuple[list[dict], dict]:
+    """Pure: keep every existing check; add new ones for places with no primary yet.
+
+    A new check is skipped when its place already has a primary, or when another place's existing
+    check already uses the same host. Order: existing checks first, then additions, each as given.
+    """
+    have_primary = {c["entity_id"] for c in existing if c["role"] == "primary"}
+    host_owner = {}
+    for c in existing:
+        host_owner.setdefault(sc.norm_host(c["host"]), c["entity_id"])
+    added_primary = {c["entity_id"] for c in new if c["role"] == "primary"
+                     and c["entity_id"] not in have_primary
+                     and host_owner.get(sc.norm_host(c["host"]), c["entity_id"]) == c["entity_id"]}
+    added = [c for c in new if c["entity_id"] in added_primary
+             and host_owner.get(sc.norm_host(c["host"]), c["entity_id"]) == c["entity_id"]]
+    new_primary = {c["entity_id"] for c in new if c["role"] == "primary"}
+    return existing + added, {
+        "kept": len(existing), "added_primary": len(added_primary),
+        "added_legacy": sum(c["role"] == "legacy" for c in added),
+        "skipped_already_checked": len(new_primary & have_primary),
+        "skipped_host_taken": len(new_primary - have_primary - added_primary)}
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--scan-results", type=pathlib.Path, required=True,
                     help="the scan session's private per-lead results CSV (never commit it)")
     ap.add_argument("--checked-on", required=True, help="date of the scan run, YYYY-MM-DD")
+    ap.add_argument("--method", default=METHOD, choices=METHODS,
+                    help="how the pages were read (written into each new check)")
+    ap.add_argument("--replace", action="store_true",
+                    help="rebuild the file from this scan alone (drops every earlier check)")
     args = ap.parse_args(argv)
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", args.checked_on):
         print("error: --checked-on must be YYYY-MM-DD", file=sys.stderr)
@@ -200,13 +236,18 @@ def main(argv: list[str] | None = None) -> int:
         rows = [{k: (r.get(k) or "") for k in REQUIRED} for r in reader]
     import ai_readability_export as ex
     entities = json.loads(REGISTRY.read_text(encoding="utf-8"))["entities"]
-    checks, counts = decide(rows, entities, ex.load_psl(), args.checked_on)
-    OUT.write_text(json.dumps({
-        "_about": ("Locality websites confirmed by the BetaNYC AI-readability scan: the page title names "
-                   "the place (growth plan rule 4). Only the address, its role, the scan date and the method "
-                   "are kept. Read by scripts/sync_nys_localities.py; written by "
-                   "scripts/confirm_locality_websites.py."),
-        "checks": checks}, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    checks, counts = decide(rows, entities, ex.load_psl(), args.checked_on, args.method)
+    about = ("Locality websites confirmed by the BetaNYC AI-readability scan: the page title names "
+             "the place (growth plan rule 4). Only the address, its role, the scan date and the method "
+             "are kept. Read by scripts/sync_nys_localities.py; written by "
+             "scripts/confirm_locality_websites.py.")
+    if not args.replace and OUT.exists():
+        old = json.loads(OUT.read_text(encoding="utf-8"))
+        about = old.get("_about", about)
+        checks, merged = merge(old.get("checks", []), checks)
+        counts.update(merged)
+    OUT.write_text(json.dumps({"_about": about, "checks": checks}, indent=1, ensure_ascii=False) + "\n",
+                   encoding="utf-8")
     print(json.dumps({"lead_rows": len(rows), **counts}, indent=1))
     return 0
 

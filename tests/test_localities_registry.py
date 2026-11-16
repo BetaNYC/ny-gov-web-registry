@@ -221,7 +221,8 @@ def test_checks_file_names_only_real_entities_and_hosts_and_nothing_else():
         assert set(c) == allowed, c
         assert c["role"] in ("primary", "legacy")
         assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", c["checked_on"])
-        assert c["method"] == "page title names the place (BetaNYC AI-readability scan)"
+        assert c["method"] in ("page title names the place (BetaNYC AI-readability scan)",
+                               "page title names the place (BetaNYC live homepage check)")
         e = by_id[c["entity_id"]]
         assert {"domain": c["host"], "role": c["role"]}.items() <= next(
             w for w in e["web_properties"] if w["domain"] == c["host"]).items()
