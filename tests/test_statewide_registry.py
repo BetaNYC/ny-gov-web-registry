@@ -66,13 +66,17 @@ def test_matched_authorities_kept_their_level():
         assert sum(_norm(name) in _names(e) for e in REGISTRY) == 1, name
 
 
+STATE_BODIES = {"new-york-state-assembly", "new-york-state-senate", "new-york-state-unified-court-system",
+                "office-of-the-new-york-state-comptroller", "new-york-state-council-on-children-and-families"}
+
+
 def test_counts_by_level():
     c = collections.Counter(e["government_level"] for e in REGISTRY)
-    assert c["nys"] == 53
+    assert c["nys"] == 58  # 53 executive agencies + 5 state bodies in the seed (2026-11-16)
     assert c["authority"] == 151  # 12 before + 138 minted from ABO + suny (seed, epic #58)
-    # 567 before the localities, + suny; the 1,583 counties, cities, towns and villages (issue #25)
+    # 567 before the localities, + suny, + the 5 state bodies; the 1,583 counties, cities, towns and villages (issue #25)
     # are checked in test_localities_registry.py.
-    assert len(REGISTRY) - sum(c[lv] for lv in ("county", "city", "town", "village")) == 568
+    assert len(REGISTRY) - sum(c[lv] for lv in ("county", "city", "town", "village")) == 573
 
 
 def test_every_entity_is_schema_valid_and_ids_unique():
@@ -104,7 +108,8 @@ def test_every_agency_has_one_primary_and_no_verified_identifier_invented():
             continue
         assert [w["role"] for w in e["web_properties"]].count("primary") == 1, e["id"]
         assert e["identifiers"] == []
-        assert e["provenance"]["sources"][0] == "state_listing"
+        if e["id"] not in STATE_BODIES:  # the seed's state bodies carry `manual` first
+            assert e["provenance"]["sources"][0] == "state_listing"
 
 
 def test_every_listing_code_is_curated_and_every_host_accounted_for():
@@ -123,7 +128,10 @@ def test_review_file_items_all_carry_a_reason():
             assert item.get("reason"), item
 
 
-def test_legislature_elected_offices_and_courts_are_not_minted():
+def test_governor_ag_and_legislative_ethics_are_not_minted_but_courts_and_legislature_are():
     hosts = {w["domain"] for e in REGISTRY for w in e["web_properties"]}
-    for h in ("assembly.ny.gov", "governor.ny.gov", "ag.ny.gov", "nycourts.gov", "legethics.ny.gov"):
+    for h in ("governor.ny.gov", "ag.ny.gov", "legethics.ny.gov"):
         assert h not in hosts, h
+    owner = {w["domain"]: e["id"] for e in REGISTRY for w in e["web_properties"]}
+    assert owner["nycourts.gov"] == "new-york-state-unified-court-system"   # Noel, 2026-11-16
+    assert owner["assembly.ny.gov"] == "new-york-state-assembly"

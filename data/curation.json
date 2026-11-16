@@ -753,8 +753,8 @@
       "primary": "bpca.ny.gov"
     },
     "CC&F": {
-      "target": "review:name_unverified",
-      "note": "ccf.ny.gov. The ny.gov directory names 'Council on Children and Families Services'; kjw8-pupa has no entry. Confirm the official name before minting."
+      "target": "entity:new-york-state-council-on-children-and-families",
+      "note": "ccf.ny.gov. The ny.gov directory names 'Council on Children and Families Services'; the council's own homepage title says 'Council on Children and Families' (2026-11-16). In the seed since 2026-11-16."
     },
     "CJC": {
       "target": "review:level_unclear",
@@ -921,16 +921,16 @@
       "primary": "naturalheritagetrust.org"
     },
     "NYCOURTS": {
-      "target": "review:judiciary",
-      "note": "The Unified Court System is the judicial branch; courts are out of scope (growth plan)."
+      "target": "entity:new-york-state-unified-court-system",
+      "note": "The Unified Court System, the judicial branch; in the seed since 2026-11-16 (courts are in scope as a source of government data)."
     },
     "NYPA": {
       "target": "abo:Power Authority of the State of New York",
       "primary": "nypa.gov"
     },
     "NYS Assembly": {
-      "target": "review:legislature",
-      "note": "The Legislature is out of scope for nys (executive agencies)."
+      "target": "entity:new-york-state-assembly",
+      "note": "The New York State Assembly; in the seed since 2026-11-16 (the Legislature is in scope as a source of government data)."
     },
     "NYSBA": {
       "target": "abo:New York State Bridge Authority",
@@ -991,8 +991,8 @@
       "target": "agency:opwdd"
     },
     "OSC": {
-      "target": "review:statewide_elected_office",
-      "note": "Office of the State Comptroller: statewide elected. Its listed hosts are program sites (grants management, open government, SFS); ecfsa.ny.gov is filed with the Erie County Fiscal Stability Authority instead."
+      "target": "review:program_hosts_unverified",
+      "note": "Office of the State Comptroller, in the seed since 2026-11-16 (office-of-the-new-york-state-comptroller). Its listed hosts are program sites, held until each owner is checked (grants management, open government, SFS); ecfsa.ny.gov is filed with the Erie County Fiscal Stability Authority instead."
     },
     "OTDA": {
       "target": "agency:otda"

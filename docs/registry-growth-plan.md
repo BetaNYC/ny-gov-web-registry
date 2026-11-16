@@ -101,7 +101,10 @@ website and they would double the registry on their own.
 
 **Out of scope for now** (note only): school districts (689), fire districts (904), other special
 districts, Indian nations (10 territories in GIS; sovereign governments, not NYS local government,
-so they need their own decision), courts, and the Legislature's member sites.
+so they need their own decision), and the Legislature's member sites. **Courts and the Legislature
+are in scope (Noel, 2026-11-16):** they publish government data. The Unified Court System, the
+Assembly, the Senate, the State Comptroller and the Council on Children and Families were added to
+the seed at `nys` that day (2,156 entities); single courts are not minted.
 
 ## NYC: five counties, no county governments
 
