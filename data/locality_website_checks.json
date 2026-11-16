@@ -9576,6 +9576,279 @@
    "role": "primary",
    "checked_on": "2026-11-16",
    "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "city-of-jamestown",
+   "host": "www.jamestownny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "city-of-ogdensburg",
+   "host": "ogdensburgny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "city-of-tonawanda",
+   "host": "tonawandacity.com",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-amboy",
+   "host": "amboyny.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-amherst",
+   "host": "amherst.ny.us",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-blenheim",
+   "host": "www.blenheimny.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-brant",
+   "host": "brantny.com",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-bristol",
+   "host": "townofbristol.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-brunswick",
+   "host": "brunswickny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-cheektowaga",
+   "host": "tocny.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-crawford",
+   "host": "townofcrawford.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-edmeston",
+   "host": "www.townofedmeston.com",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-franklinville",
+   "host": "www.townoffranklinvilleny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-gorham",
+   "host": "gorham-ny.com",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-hector",
+   "host": "hectorny.us",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-hopkinton",
+   "host": "www.townofhopkintonny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-humphrey",
+   "host": "www.humphreyny.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-lincklaen",
+   "host": "townoflincklaen.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-monroe",
+   "host": "monroeny.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-morehouse",
+   "host": "morehousenewyork.com",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-rensselaerville",
+   "host": "rensselaerville.com",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-savannah",
+   "host": "savannahny.com",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-wayne",
+   "host": "townofwayneny.com",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-west-bloomfield",
+   "host": "westbloomfieldny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "town-of-yates",
+   "host": "townofyates.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-argyle",
+   "host": "www.argyle-village.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-canajoharie",
+   "host": "villageofcanajoharie.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-fleischmanns",
+   "host": "www.fleischmannsny.com",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-freeport",
+   "host": "freeportny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-great-neck",
+   "host": "www.greatneckvillage.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-green-island",
+   "host": "villageofgreenisland.com",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-greenport",
+   "host": "villageofgreenport.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-hewlett-harbor",
+   "host": "hewlettharbor.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-kensington",
+   "host": "vok-ny.com",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-painted-post",
+   "host": "www.villageofpaintedpost.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-port-chester",
+   "host": "portchesterny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-quogue",
+   "host": "villageofquogueny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-scotia",
+   "host": "villageofscotia.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
+  },
+  {
+   "entity_id": "village-of-sinclairville",
+   "host": "www.villageofsinclairvilleny.org",
+   "role": "primary",
+   "checked_on": "2026-11-16",
+   "method": "page title names the place (BetaNYC live homepage check)"
   }
  ]
 }

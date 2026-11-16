@@ -28148,7 +28148,15 @@
           "identifier": "060222000000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "www.jamestownny.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -28774,7 +28782,15 @@
           "identifier": "400238000000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "ogdensburgny.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -29477,7 +29493,15 @@
           "identifier": "140256000000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "tonawandacity.com",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -30335,7 +30359,15 @@
           "identifier": "350301700000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "amboyny.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -30412,7 +30444,15 @@
           "identifier": "140301900000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "amherst.ny.us",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -32825,7 +32865,15 @@
           "identifier": "430307700000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "www.blenheimny.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -33254,7 +33302,15 @@
           "identifier": "140308800000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "brantny.com",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -33448,7 +33504,15 @@
           "identifier": "320309300000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "townofbristol.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -33683,7 +33747,15 @@
           "identifier": "380309900000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "brunswickny.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -35811,7 +35883,15 @@
           "identifier": "140315200000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "tocny.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -38208,7 +38288,15 @@
           "identifier": "330320900000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "townofcrawford.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -40112,7 +40200,15 @@
           "identifier": "360325600000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "www.townofedmeston.com",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -41981,7 +42077,15 @@
           "identifier": "040330200000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "www.townoffranklinvilleny.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -43215,7 +43319,15 @@
           "identifier": "320333200000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "gorham-ny.com",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -45413,7 +45525,15 @@
           "identifier": "440338500000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "hectorny.us",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -46041,7 +46161,15 @@
           "identifier": "400340100000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "www.townofhopkintonny.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -46361,7 +46489,15 @@
           "identifier": "040340900000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "www.humphreyny.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -48935,7 +49071,15 @@
           "identifier": "080346900000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "townoflincklaen.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -51853,7 +51997,15 @@
           "identifier": "330354200000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "monroeny.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -52164,7 +52316,15 @@
           "identifier": "200355000000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "morehousenewyork.com",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -58711,7 +58871,15 @@
           "identifier": "010370600000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "rensselaerville.com",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -60390,7 +60558,15 @@
           "identifier": "540375000000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "savannahny.com",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -65929,7 +66105,15 @@
           "identifier": "460388300000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "townofwayneny.com",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -66179,7 +66363,15 @@
           "identifier": "320388900000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "westbloomfieldny.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -67735,7 +67927,15 @@
           "identifier": "340392900000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "townofyates.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -68778,7 +68978,15 @@
           "identifier": "530403000230"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "www.argyle-village.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -70692,7 +70900,15 @@
           "identifier": "270412000690"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "villageofcanajoharie.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -74650,7 +74866,15 @@
           "identifier": "120453001700"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "www.fleischmannsny.com",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -75150,7 +75374,15 @@
           "identifier": "280438601850"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "freeportny.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -75730,7 +75962,15 @@
           "identifier": "280459702000"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "www.greatneckvillage.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -75862,7 +76102,15 @@
           "identifier": "010434502040"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "villageofgreenisland.com",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -75930,7 +76178,15 @@
           "identifier": "470479002050"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "villageofgreenport.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -76735,7 +76991,15 @@
           "identifier": "280438602270"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "hewlettharbor.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -77782,7 +78046,15 @@
           "identifier": "280459702520"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "vok-ny.com",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -82866,7 +83138,15 @@
           "identifier": "460427303750"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "www.villageofpaintedpost.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -83877,7 +84157,15 @@
           "identifier": "550473404020"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "portchesterny.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -84195,7 +84483,15 @@
           "identifier": "470478704120"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "villageofquogueny.gov",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -85600,7 +85896,15 @@
           "identifier": "420433104500"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "villageofscotia.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
@@ -86037,7 +86341,15 @@
           "identifier": "060414604620"
         }
       ],
-      "web_properties": [],
+      "web_properties": [
+        {
+          "domain": "www.villageofsinclairvilleny.org",
+          "role": "primary",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Confirmed: the site's page title names the place (BetaNYC scan, 2026-11-16)."
+        }
+      ],
       "url_conventions": [],
       "areas": [],
       "area_note": null,
