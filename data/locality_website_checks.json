@@ -37,6 +37,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "cayuga-county",
+   "host": "cayugacounty.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "chautauqua-county",
    "host": "chautauquacountyny.gov",
    "role": "primary",
@@ -177,6 +184,20 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "city-of-niagara-falls",
+   "host": "niagarafallsny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "city-of-syracuse",
+   "host": "syr.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "city-of-white-plains",
    "host": "www.cityofwhiteplains.com",
    "role": "primary",
@@ -244,6 +265,27 @@
    "host": "www.co.essex.ny.us",
    "role": "legacy",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "franklin-county",
+   "host": "franklincountyny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "genesee-county",
+   "host": "geneseeny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "greene-county",
+   "host": "greenecountyny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -317,6 +359,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "niagara-county",
+   "host": "niagaracounty.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "oneida-county",
    "host": "oneidacountyny.gov",
    "role": "primary",
@@ -352,10 +401,31 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "orleans-county",
+   "host": "orleanscountyny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "oswego-county",
+   "host": "oswegocountyny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "rensselaer-county",
    "host": "www.rensco.com",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "schenectady-county",
+   "host": "schenectadycountyny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -412,6 +482,13 @@
    "host": "www.sullivanny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "tompkins-county",
+   "host": "tompkinscountyny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -513,6 +590,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-annsville",
+   "host": "annsvilleny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-arcade",
    "host": "townofarcadeny.gov",
    "role": "primary",
@@ -531,6 +615,13 @@
    "host": "arkwrightny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-ashford",
+   "host": "ashfordny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -667,6 +758,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-batavia",
+   "host": "townofbatavia.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-beekman",
    "host": "townofbeekman.gov",
    "role": "primary",
@@ -744,6 +842,20 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-berlin",
+   "host": "berlinnyus.gov",
+   "role": "primary",
+   "checked_on": "2026-11-13",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-berne",
+   "host": "berneny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-13",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-bethany",
    "host": "www.townofbethany.com",
    "role": "primary",
@@ -793,6 +905,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-bolivar",
+   "host": "townofbolivarny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-13",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-bombay",
    "host": "www.bombayny.us",
    "role": "primary",
@@ -804,6 +923,13 @@
    "host": "townofboonvilleny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-boston",
+   "host": "bostonny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -856,10 +982,24 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-burns",
+   "host": "townofburnsny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-busti",
    "host": "townofbustiny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-byron",
+   "host": "townofbyronny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -881,6 +1021,13 @@
    "host": "caledoniany.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-callicoon",
+   "host": "townofcallicoon.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -926,6 +1073,20 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-campbell",
+   "host": "campbellny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-13",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-canadice",
+   "host": "canadiceny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-canajoharie",
    "host": "townofcanajoharie.gov",
    "role": "primary",
@@ -933,10 +1094,31 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-canandaigua",
+   "host": "townofcanandaigua.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-caneadea",
    "host": "caneadeatown.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-canisteo",
+   "host": "townofcanisteony.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-cape-vincent",
+   "host": "townofcapevincent.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -961,6 +1143,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-caroline",
+   "host": "townofcarolineny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-carroll",
    "host": "carrollny.org",
    "role": "primary",
@@ -979,6 +1168,27 @@
    "host": "townofcatharine.com",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-catlin",
+   "host": "townofcatlin.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-caton",
+   "host": "townofcaton.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-champion",
+   "host": "townofchampionny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -1028,6 +1238,13 @@
    "host": "www.chathamnewyork.us",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-chautauqua",
+   "host": "townofchautauqua.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -1115,10 +1332,24 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-cicero",
+   "host": "cicerony.gov",
+   "role": "primary",
+   "checked_on": "2026-11-13",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-clarendon",
    "host": "townofclarendonny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-clarkson",
+   "host": "townofclarksonny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -1262,6 +1493,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-colonie",
+   "host": "townofcolonie.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-colton",
    "host": "townofcoltonny.gov",
    "role": "primary",
@@ -1374,6 +1612,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-coxsackie",
+   "host": "coxsackie.org",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-crown-point",
    "host": "townofcrownpointny.gov",
    "role": "primary",
@@ -1385,6 +1630,13 @@
    "host": "www.townofdannemora.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-dansville",
+   "host": "townofdansvilleny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -1413,6 +1665,20 @@
    "host": "www.townofday.com",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-dayton",
+   "host": "townofdaytonny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-de-kalb",
+   "host": "townofdekalb.com",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -1465,10 +1731,24 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-denmark",
+   "host": "townofdenmarkny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-denning",
    "host": "www.denningny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-dewitt",
+   "host": "dewittny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -1490,6 +1770,13 @@
    "host": "www.townofdoverny.us",
    "role": "legacy",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-duanesburg",
+   "host": "duanesburg.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -1528,6 +1815,27 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-eastchester",
+   "host": "eastchester.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-easton",
+   "host": "eastonny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-elbridge",
+   "host": "townofelbridge.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-elizabethtown",
    "host": "www.elizabethtown-ny.gov",
    "role": "primary",
@@ -1539,6 +1847,13 @@
    "host": "townofellenburgny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-ellery",
+   "host": "elleryny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -1717,6 +2032,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-fenton",
+   "host": "townoffentonny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-fine",
    "host": "finetownny.gov",
    "role": "primary",
@@ -1787,6 +2109,20 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-franklin-delaware-county",
+   "host": "franklindelco-ny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-freedom",
+   "host": "freedomny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-13",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-french-creek",
    "host": "frenchcreekny.org",
    "role": "primary",
@@ -1826,6 +2162,13 @@
    "host": "galenny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-gallatin",
+   "host": "gallatinny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -2158,6 +2501,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-harmony",
+   "host": "harmonyny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-harpersfield",
    "host": "townofharpersfield.gov",
    "role": "primary",
@@ -2190,6 +2540,13 @@
    "host": "www.hartfordny.com",
    "role": "legacy",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-hartland",
+   "host": "townofhartlandny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -2613,6 +2970,20 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-la-grange",
+   "host": "lagrangeny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-13",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-lafayette",
+   "host": "townoflafayetteny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-lake-luzerne",
    "host": "www.lakeluzerneny.gov",
    "role": "primary",
@@ -2631,6 +3002,13 @@
    "host": "www.lakepleasantny.org",
    "role": "legacy",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-le-ray",
+   "host": "townofleray.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -2659,6 +3037,13 @@
    "host": "www.townofleicester.org",
    "role": "legacy",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-lenox",
+   "host": "lenoxny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -2739,6 +3124,20 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-livingston",
+   "host": "townoflivingston.org",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-lloyd",
+   "host": "townoflloyd.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-lockport",
    "host": "elockport.gov",
    "role": "primary",
@@ -2760,10 +3159,24 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-lowville",
+   "host": "townoflowvilleny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-lumberland",
    "host": "townoflumberland.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-lyme",
+   "host": "townoflymeny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -2949,6 +3362,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-masonville",
+   "host": "masonville-ny.us",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-mendon",
    "host": "townofmendonny.gov",
    "role": "primary",
@@ -2974,6 +3394,13 @@
    "host": "middlefieldny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-middletown",
+   "host": "townofmiddletowndelcony.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -3096,6 +3523,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-morristown",
+   "host": "townofmorristownny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-mount-hope",
    "host": "mounthopeny.gov",
    "role": "primary",
@@ -3163,6 +3597,13 @@
    "host": "newalbionny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-new-baltimore",
+   "host": "townofnewbaltimore.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -3250,6 +3691,20 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-newburgh",
+   "host": "townofnewburghny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-newcomb",
+   "host": "newcombny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-newfield",
    "host": "newfieldny.org",
    "role": "primary",
@@ -3289,6 +3744,13 @@
    "host": "townofnilesny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-niskayuna",
+   "host": "niskayuna.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -3425,6 +3887,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-oakfield",
+   "host": "townofoakfieldny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-ogden",
    "host": "ogdenny.gov",
    "role": "primary",
@@ -3485,6 +3954,13 @@
    "host": "www.orchardparkny.org",
    "role": "legacy",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-orleans",
+   "host": "townoforleansny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -3628,6 +4104,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-palmyra",
+   "host": "palmyrany.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-pamelia",
    "host": "townofpamelia.gov",
    "role": "primary",
@@ -3670,6 +4153,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-pavilion",
+   "host": "townofpavilion.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-pelham",
    "host": "townofpelhamny.gov",
    "role": "primary",
@@ -3702,6 +4192,13 @@
    "host": "www.pendletonny.us",
    "role": "legacy",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-penfield",
+   "host": "penfieldny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -3751,6 +4248,20 @@
    "host": "townofphelpsny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-philipstown",
+   "host": "philipstown.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-pierrepont",
+   "host": "townofpierrepont.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -3835,6 +4346,13 @@
    "host": "www.townofplymouthny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-poestenkill",
+   "host": "poestenkillny.com",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -4048,6 +4566,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-roxbury",
+   "host": "roxburyny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-13",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-royalton",
    "host": "townofroyaltonny.gov",
    "role": "primary",
@@ -4094,6 +4619,13 @@
    "host": "townofsalemny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-salina",
+   "host": "salinany.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -4167,6 +4699,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-scio",
+   "host": "townofsciony.gov",
+   "role": "primary",
+   "checked_on": "2026-11-13",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-scipio",
    "host": "www.townofscipiony.gov",
    "role": "primary",
@@ -4234,6 +4773,13 @@
    "host": "www.shawangunk.org",
    "role": "legacy",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-sheldon",
+   "host": "townofsheldonny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -4468,6 +5014,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-stockholm",
+   "host": "stockholmny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-stony-creek",
    "host": "stonycreekny.gov",
    "role": "primary",
@@ -4514,6 +5067,20 @@
    "host": "www.taghkanic.org",
    "role": "legacy",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-theresa",
+   "host": "townoftheresany.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-thompson",
+   "host": "thompsonny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -4657,6 +5224,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-urbana",
+   "host": "townofurbana.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-van-buren",
    "host": "vanburenny.gov",
    "role": "primary",
@@ -4678,6 +5252,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-vestal",
+   "host": "vestalny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-veteran",
    "host": "townofveteranny.gov",
    "role": "primary",
@@ -4689,6 +5270,13 @@
    "host": "viennany.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-virgil",
+   "host": "virgilny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -4717,6 +5305,13 @@
    "host": "www.townofwales.com",
    "role": "legacy",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "town-of-walton",
+   "host": "townofwaltonny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -4937,6 +5532,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "town-of-wilna",
+   "host": "townofwilnany.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "town-of-windham",
    "host": "townofwindhamny.gov",
    "role": "primary",
@@ -5018,6 +5620,13 @@
    "host": "www.yorktownny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "ulster-county",
+   "host": "ulstercountyny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -5175,6 +5784,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "village-of-atlantic-beach",
+   "host": "atlanticbeachny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "village-of-attica",
    "host": "villageofatticany.gov",
    "role": "primary",
@@ -5280,10 +5896,24 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "village-of-black-river",
+   "host": "blackriverny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "village-of-blasdell",
    "host": "villageofblasdell.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-bloomfield",
+   "host": "villageofbloomfieldny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -5378,6 +6008,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "village-of-buchanan",
+   "host": "buchananny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "village-of-caledonia",
    "host": "villageofcaledoniany.gov",
    "role": "primary",
@@ -5413,6 +6050,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "village-of-cape-vincent",
+   "host": "villageofcapevincent.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "village-of-carthage",
    "host": "villageofcarthageny.gov",
    "role": "primary",
@@ -5431,6 +6075,13 @@
    "host": "www.castleton-on-hudson.org",
    "role": "legacy",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-castorland",
+   "host": "villageofcastorlandny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -5490,10 +6141,24 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "village-of-central-square",
+   "host": "villageofcentralsquare.org",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "village-of-centre-island",
    "host": "centreisland.org",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-chatham",
+   "host": "villageofchathamny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -5518,6 +6183,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "village-of-chittenango",
+   "host": "chittenango.gov",
+   "role": "primary",
+   "checked_on": "2026-11-13",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "village-of-churchville",
    "host": "churchvilleny.gov",
    "role": "primary",
@@ -5536,6 +6208,13 @@
    "host": "www.villageofclaytonny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-clyde",
+   "host": "clydeny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -5651,6 +6330,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "village-of-dansville",
+   "host": "villageofdansvilleny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "village-of-delhi",
    "host": "villageofdelhiny.gov",
    "role": "primary",
@@ -5676,6 +6362,20 @@
    "host": "www.villageofdeposit.org",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-dexter",
+   "host": "villageofdexterny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-dobbs-ferry",
+   "host": "dobbsferry.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -5830,6 +6530,13 @@
    "host": "www.elmsfordny.org",
    "role": "legacy",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-endicott",
+   "host": "endicottny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -6141,6 +6848,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "village-of-highland-falls",
+   "host": "highlandfallsny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "village-of-hilton",
    "host": "hiltonny.gov",
    "role": "primary",
@@ -6281,6 +6995,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "village-of-kinderhook",
+   "host": "villageofkinderhookny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "village-of-kings-point",
    "host": "www.villageofkingspoint.gov",
    "role": "primary",
@@ -6330,6 +7051,20 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "village-of-lansing",
+   "host": "villageoflansingny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-lattingtown",
+   "host": "lattingtown.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "village-of-laurel-hollow",
    "host": "www.laurelhollowny.gov",
    "role": "primary",
@@ -6362,6 +7097,13 @@
    "host": "www.villageoflawrence.org",
    "role": "legacy",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-lewiston",
+   "host": "villageoflewistonny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -6512,6 +7254,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "village-of-marcellus",
+   "host": "villageofmarcellusny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "village-of-matinecock",
    "host": "www.matinecockvillage.gov",
    "role": "primary",
@@ -6582,6 +7331,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "village-of-millerton",
+   "host": "villageofmillerton-ny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "village-of-millport",
    "host": "millportny.gov",
    "role": "primary",
@@ -6642,6 +7398,13 @@
    "host": "www.villageofmonticello.com",
    "role": "legacy",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-montour-falls",
+   "host": "villageofmontourfalls.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -6747,6 +7510,13 @@
    "host": "newyorkmillsny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-newark",
+   "host": "villageofnewarkny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -6859,6 +7629,20 @@
    "host": "villageofoldwestbury.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-orchard-park",
+   "host": "orchardparkvillageny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-oriskany",
+   "host": "oriskany.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -7149,6 +7933,20 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "village-of-sagaponack",
+   "host": "sagaponackvillageny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-sands-point",
+   "host": "sandspoint.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "village-of-saranac-lake",
    "host": "www.saranaclakeny.gov",
    "role": "primary",
@@ -7202,6 +8000,13 @@
    "host": "www.shorehamvillage.org",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-silver-creek",
+   "host": "silvercreekny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
@@ -7548,6 +8353,13 @@
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
+   "entity_id": "village-of-warwick",
+   "host": "villageofwarwickny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-11",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
    "entity_id": "village-of-washingtonville",
    "host": "washingtonville-ny.gov",
    "role": "primary",
@@ -7699,6 +8511,13 @@
    "host": "williamsvilleny.gov",
    "role": "primary",
    "checked_on": "2026-11-10",
+   "method": "page title names the place (BetaNYC AI-readability scan)"
+  },
+  {
+   "entity_id": "village-of-williston-park",
+   "host": "willistonparkny.gov",
+   "role": "primary",
+   "checked_on": "2026-11-12",
    "method": "page title names the place (BetaNYC AI-readability scan)"
   },
   {
