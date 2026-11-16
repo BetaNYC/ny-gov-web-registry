@@ -3530,14 +3530,12 @@
         "tier": "town",
         "county": "Chemung",
         "swis": "072200",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.chemungcounty.com/index.asp?pageId=231",
-            "detail": "SWIS 072200"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "chemungcounty.com"
+        ],
+        "primary": "tobaldwin.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-barker",
@@ -3641,19 +3639,12 @@
         "tier": "town",
         "county": "Franklin",
         "swis": "162400",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.nnyacgs.com/town_of_belmont.html",
-            "detail": "SWIS 162400"
-          },
-          {
-            "source": "dotgov",
-            "url": "townofbellmontny.gov",
-            "detail": "organization 'Town of Bellmont'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "townofbellmontny.gov"
+        ],
+        "primary": "townofbellmontny.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-benson",
@@ -4491,14 +4482,12 @@
         "tier": "town",
         "county": "Allegany",
         "swis": "024400",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://centerville.wordpress.com/",
-            "detail": "SWIS 024400"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "centerville.wordpress.com"
+        ],
+        "primary": "www.centervilleny.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-champion",
@@ -4798,14 +4787,12 @@
         "tier": "town",
         "county": "St. Lawrence",
         "swis": "402600",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://townofcliftonny.org",
-            "detail": "SWIS 402600"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "townofcliftonny.org"
+        ],
+        "primary": "www.townofcliftonny.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-clinton-clinton-county",
@@ -5000,14 +4987,12 @@
         "tier": "town",
         "county": "Chenango",
         "swis": "082400",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.columbusny.us/",
-            "detail": "SWIS 082400"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "columbusny.us"
+        ],
+        "primary": "townofcolumbusny.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-conesus",
@@ -5040,19 +5025,12 @@
         "tier": "town",
         "county": "Schoharie",
         "swis": "432800",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.schohariecounty-ny.gov/CountyWebSite/towncon/index.jsp",
-            "detail": "SWIS 432800"
-          },
-          {
-            "source": "dotgov",
-            "url": "conesvilletown-ny.gov",
-            "detail": "organization 'Town of Conesville'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "conesvilletown-ny.gov"
+        ],
+        "primary": "www.conesvilleny.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-conquest",
@@ -5139,14 +5117,12 @@
         "tier": "town",
         "county": "Chenango",
         "swis": "082600",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://townofcoventryny.com/",
-            "detail": "SWIS 082600"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "townofcoventryny.com"
+        ],
+        "primary": "coventryny.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-covert",
@@ -5606,19 +5582,13 @@
         "tier": "town",
         "county": "Ontario",
         "swis": "322600",
-        "reason": "website_leads_disagree",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.townofeastbloomfield.com",
-            "detail": "SWIS 322600"
-          },
-          {
-            "source": "dotgov",
-            "url": "townofeastbloomfieldny.gov",
-            "detail": "organization 'Town of East Bloomfield'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "townofeastbloomfield.com",
+          "townofeastbloomfieldny.gov"
+        ],
+        "primary": "townofeastbloomfield.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-east-fishkill",
@@ -5905,19 +5875,13 @@
         "tier": "town",
         "county": "Essex",
         "swis": "152600",
-        "reason": "website_leads_disagree",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.essexnewyork.org",
-            "detail": "SWIS 152600"
-          },
-          {
-            "source": "dotgov",
-            "url": "townofessexny.gov",
-            "detail": "organization 'Town of Essex'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "essexnewyork.org",
+          "townofessexny.gov"
+        ],
+        "primary": "www.essexnewyork.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-fabius",
@@ -5925,14 +5889,12 @@
         "tier": "town",
         "county": "Onondaga",
         "swis": "313000",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.fabius-ny.gov",
-            "detail": "SWIS 313000"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "fabius-ny.gov"
+        ],
+        "primary": "townoffabius.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-fairfield",
@@ -6185,14 +6147,12 @@
         "tier": "town",
         "county": "Steuben",
         "swis": "464400",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.fremontnewyork.us/",
-            "detail": "SWIS 464400"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "fremontnewyork.us"
+        ],
+        "primary": "www.townoffremontny.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-fremont-sullivan-county",
@@ -6200,14 +6160,12 @@
         "tier": "town",
         "county": "Sullivan",
         "swis": "483200",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.fremontnewyork.us",
-            "detail": "SWIS 483200"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "fremontnewyork.us"
+        ],
+        "primary": "www.fremontny.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-fulton",
@@ -6641,26 +6599,14 @@
         "tier": "town",
         "county": "Orange",
         "swis": "333200",
-        "reason": "website_leads_disagree",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.townofgreenvilleny.com",
-            "detail": "SWIS 333200"
-          },
-          {
-            "source": "dotgov",
-            "url": "greenvilleocny.gov",
-            "detail": "organization 'Town of Greenville'",
-            "name_shared_by_several_places": true
-          },
-          {
-            "source": "dotgov",
-            "url": "towngreenvillegreenecony.gov",
-            "detail": "organization 'Town of Greenville'",
-            "name_shared_by_several_places": true
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "greenvilleocny.gov",
+          "towngreenvillegreenecony.gov",
+          "townofgreenvilleny.com"
+        ],
+        "primary": "www.greenvilleny.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-greenwood",
@@ -7469,14 +7415,12 @@
         "tier": "town",
         "county": "Ulster",
         "swis": "513000",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.townkingstonny.us",
-            "detail": "SWIS 513000"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "townkingstonny.us"
+        ],
+        "primary": "www.tokny.us",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-kortright",
@@ -7888,14 +7832,12 @@
         "tier": "town",
         "county": "Herkimer",
         "swis": "213400",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://townoflittlefalls.com",
-            "detail": "SWIS 213400"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "townoflittlefalls.com"
+        ],
+        "primary": "townoflittlefallsny.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-little-valley",
@@ -8041,14 +7983,12 @@
         "tier": "town",
         "county": "Jefferson",
         "swis": "224200",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://townoflorraine.com",
-            "detail": "SWIS 224200"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "townoflorraine.com"
+        ],
+        "primary": "www.townoflorraineny.us",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-louisville",
@@ -8851,19 +8791,13 @@
         "tier": "town",
         "county": "Madison",
         "swis": "254200",
-        "reason": "website_leads_disagree",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.townofnelson-ny.com/",
-            "detail": "SWIS 254200"
-          },
-          {
-            "source": "dotgov",
-            "url": "nelson-ny.gov",
-            "detail": "organization 'Town of Nelson, NY'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "nelson-ny.gov",
+          "townofnelson-ny.com"
+        ],
+        "primary": "www.nelson-ny.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-neversink",
@@ -9163,14 +9097,12 @@
         "tier": "town",
         "county": "St. Lawrence",
         "swis": "406200",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.norfolkny.us",
-            "detail": "SWIS 406200"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "norfolkny.us"
+        ],
+        "primary": "norfolkny.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-north-collins",
@@ -9286,14 +9218,12 @@
         "tier": "town",
         "county": "Herkimer",
         "swis": "214200",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.ohiony.us/",
-            "detail": "SWIS 214200"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "ohiony.us"
+        ],
+        "primary": "www.townofohionewyork.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-olean",
@@ -9375,14 +9305,12 @@
         "tier": "town",
         "county": "Fulton",
         "swis": "173400",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "dotgov",
-            "url": "townofoppenheim.gov",
-            "detail": "organization 'Town of Oppenheim'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "townofoppenheim.gov"
+        ],
+        "primary": "townofoppenheim.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-orange",
@@ -9786,14 +9714,12 @@
         "tier": "town",
         "county": "St. Lawrence",
         "swis": "406800",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "dotgov",
-            "url": "townofpiercefield.gov",
-            "detail": "organization 'Town of Piercefield'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "townofpiercefield.gov"
+        ],
+        "primary": "www.piercefield.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-pierrepont",
@@ -9899,19 +9825,13 @@
         "tier": "town",
         "county": "Onondaga",
         "swis": "314600",
-        "reason": "website_leads_disagree",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://townofpompey.com",
-            "detail": "SWIS 314600"
-          },
-          {
-            "source": "dotgov",
-            "url": "pompeyny.gov",
-            "detail": "organization 'Town of Pompey, NY'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "pompeyny.gov",
+          "townofpompey.com"
+        ],
+        "primary": "www.townofpompey.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-portland",
@@ -10027,14 +9947,12 @@
         "tier": "town",
         "county": "Greene",
         "swis": "194400",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.prattsville.org",
-            "detail": "SWIS 194400"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "prattsville.org"
+        ],
+        "primary": "www.townofprattsville.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-preble",
@@ -10291,14 +10209,12 @@
         "tier": "town",
         "county": "Monroe",
         "swis": "264800",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.townofriga.org",
-            "detail": "SWIS 264800"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "townofriga.org"
+        ],
+        "primary": "www.townofriga.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-ripley",
@@ -11013,14 +10929,12 @@
         "tier": "town",
         "county": "Cattaraugus",
         "swis": "048200",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://southvalleyny.org",
-            "detail": "SWIS 048200"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "southvalleyny.org"
+        ],
+        "primary": "southvalleyny.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-southampton",
@@ -11536,14 +11450,12 @@
         "tier": "town",
         "county": "Onondaga",
         "swis": "315400",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://townoftully.org",
-            "detail": "SWIS 315400"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "townoftully.org"
+        ],
+        "primary": "townoftully.us",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "town-of-tupper-lake",
@@ -12983,14 +12895,12 @@
         "tier": "village",
         "county": "Jefferson",
         "swis": "222201",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.alexandria-bay.ny.us/",
-            "detail": "SWIS 222201"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "alexandria-bay.ny.us"
+        ],
+        "primary": "www.villageofalexandriabay.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-allegany",
@@ -13082,14 +12992,12 @@
         "tier": "village",
         "county": "Steuben",
         "swis": "465203",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.arkportvillage.com/",
-            "detail": "SWIS 465203"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "arkportvillage.com"
+        ],
+        "primary": "www.villageofarkport.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-ateres",
@@ -13164,19 +13072,13 @@
         "tier": "village",
         "county": "Chenango",
         "swis": "082201",
-        "reason": "website_leads_disagree",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://bainbridgeny.org/",
-            "detail": "SWIS 082201"
-          },
-          {
-            "source": "dotgov",
-            "url": "villageofbainbridgeny.gov",
-            "detail": "organization 'Village of Bainbridge'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "bainbridgeny.org",
+          "villageofbainbridgeny.gov"
+        ],
+        "primary": "www.villageofbainbridgeny.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-ballston-spa",
@@ -13631,19 +13533,12 @@
         "tier": "village",
         "county": "Cayuga",
         "swis": "052001",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.cayugacounty.us/towns/A-G/VillageofCayuga.aspx",
-            "detail": "SWIS 052001"
-          },
-          {
-            "source": "dotgov",
-            "url": "villagecayugany.gov",
-            "detail": "organization 'Village of Cayuga New York'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "villagecayugany.gov"
+        ],
+        "primary": "villagecayugany.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-central-square",
@@ -13862,14 +13757,12 @@
         "tier": "village",
         "county": "Steuben",
         "swis": "463601",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.cohoctonny.com/",
-            "detail": "SWIS 463601"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "cohoctonny.com"
+        ],
+        "primary": "www.villageofcohocton.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-cold-spring",
@@ -14056,14 +13949,12 @@
         "tier": "village",
         "county": "Suffolk",
         "swis": "473201",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.deringharborcommunity.org",
-            "detail": "SWIS 473201"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "deringharborcommunity.org"
+        ],
+        "primary": "deringharborvillage.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-dexter",
@@ -14533,14 +14424,12 @@
         "tier": "village",
         "county": "Rockland",
         "swis": "392401",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.gvoh.net/",
-            "detail": "SWIS 392401"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "gvoh.net"
+        ],
+        "primary": "www.gvoh-ny.gov",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-great-neck",
@@ -14779,14 +14668,12 @@
         "tier": "village",
         "county": "Nassau",
         "swis": "282019",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "dotgov",
-            "url": "hewlettneck.gov",
-            "detail": "organization 'Village of Hewlett Neck'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "hewlettneck.gov"
+        ],
+        "primary": "hewlettneck.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-highland-falls",
@@ -14886,14 +14773,12 @@
         "tier": "village",
         "county": "Rensselaer",
         "swis": "382801",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.hoosickfalls.com/",
-            "detail": "SWIS 382801"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "hoosickfalls.com"
+        ],
+        "primary": "hfvillage.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-horseheads",
@@ -15057,19 +14942,13 @@
         "tier": "village",
         "county": "Warren",
         "swis": "522201",
-        "reason": "website_leads_disagree",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.lakegeorgevillage.com",
-            "detail": "SWIS 522201"
-          },
-          {
-            "source": "dotgov",
-            "url": "lakegeorgevillage.gov",
-            "detail": "organization 'Village of Lake George'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "lakegeorgevillage.com",
+          "lakegeorgevillage.gov"
+        ],
+        "primary": "lgvillage.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-lake-placid",
@@ -15460,19 +15339,12 @@
         "tier": "village",
         "county": "Schoharie",
         "swis": "433801",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.schohariecounty-ny.gov/CountyWebSite/villmid/index.jsp",
-            "detail": "SWIS 433801"
-          },
-          {
-            "source": "dotgov",
-            "url": "villageofmiddleburgh.gov",
-            "detail": "organization 'Village of Middleburgh'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "villageofmiddleburgh.gov"
+        ],
+        "primary": "www.villageofmiddleburgh.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-middleville",
@@ -15627,19 +15499,12 @@
         "tier": "village",
         "county": "Cayuga",
         "swis": "054201",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.cayugacounty.us/portals/1//villageofmoravia",
-            "detail": "SWIS 054201"
-          },
-          {
-            "source": "dotgov",
-            "url": "villageofmoravia.gov",
-            "detail": "organization 'Village of Moravia'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "villageofmoravia.gov"
+        ],
+        "primary": "www.villageofmoravia.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-morrisville",
@@ -15825,14 +15690,12 @@
         "tier": "village",
         "county": "Erie",
         "swis": "145801",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.northcollinsny.org/",
-            "detail": "SWIS 145801"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "northcollinsny.org"
+        ],
+        "primary": "www.villageofnorthcollins.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-north-haven",
@@ -16076,14 +15939,12 @@
         "tier": "village",
         "county": "Chautauqua",
         "swis": "064801",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.panamany.org/",
-            "detail": "SWIS 064801"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "panamany.org"
+        ],
+        "primary": "www.panamany.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-patchogue",
@@ -16176,14 +16037,12 @@
         "tier": "village",
         "county": "Nassau",
         "swis": "282233",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.plandomevillage.com/",
-            "detail": "SWIS 282233"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "plandomevillage.com"
+        ],
+        "primary": "www.villageofplandome.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-plandome-manor",
@@ -16373,14 +16232,12 @@
         "tier": "village",
         "county": "Wayne",
         "swis": "544801",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "dotgov",
-            "url": "redcreekny.gov",
-            "detail": "organization 'Village of Red Creek'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "redcreekny.gov"
+        ],
+        "primary": "redcreekny.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-red-hook",
@@ -16417,14 +16274,12 @@
         "tier": "village",
         "county": "St. Lawrence",
         "swis": "402203",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.cantonnewyork.us/",
-            "detail": "SWIS 402203"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "cantonnewyork.us"
+        ],
+        "primary": "www.rensselaerfallsny.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-rhinebeck",
@@ -16652,19 +16507,12 @@
         "tier": "village",
         "county": "Schoharie",
         "swis": "434201",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.schohariecounty-ny.gov/CountyWebSite/villsch/index.jsp",
-            "detail": "SWIS 434201"
-          },
-          {
-            "source": "dotgov",
-            "url": "schoharievillage-ny.gov",
-            "detail": "organization 'Village of Schoharie'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "schoharievillage-ny.gov"
+        ],
+        "primary": "www.schoharievillage.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-scotia",
@@ -17021,14 +16869,12 @@
         "tier": "village",
         "county": "Onondaga",
         "swis": "315401",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.tullyny.org",
-            "detail": "SWIS 315401"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "tullyny.org"
+        ],
+        "primary": "villageoftully.us",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-tupper-lake",
@@ -17068,14 +16914,12 @@
         "tier": "village",
         "county": "Otsego",
         "swis": "366201",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "dotgov",
-            "url": "villageofunadillany.gov",
-            "detail": "organization 'Village of Unadilla'"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "villageofunadillany.gov"
+        ],
+        "primary": "villageofunadilla.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-union-springs",
@@ -17182,14 +17026,12 @@
         "tier": "village",
         "county": "Saratoga",
         "swis": "415003",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.villageofvictory.org",
-            "detail": "SWIS 415003"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "villageofvictory.org"
+        ],
+        "primary": "www.villageofvictory.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-waddington",
@@ -17197,14 +17039,12 @@
         "tier": "village",
         "county": "St. Lawrence",
         "swis": "408201",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://www.villageofwaddington.org",
-            "detail": "SWIS 408201"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "villageofwaddington.org"
+        ],
+        "primary": "villageofwaddington.com",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-walden",
@@ -17238,14 +17078,12 @@
         "tier": "village",
         "county": "Madison",
         "swis": "253603",
-        "reason": "website_single_lead",
-        "leads": [
-          {
-            "source": "its",
-            "url": "http://wampsvillecny.com/",
-            "detail": "SWIS 253603"
-          }
-        ]
+        "reason": "website_additional_leads_not_applied",
+        "hosts": [
+          "wampsvillecny.com"
+        ],
+        "primary": "wampsvillecny.org",
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
       },
       {
         "proposed_id": "village-of-warsaw",
