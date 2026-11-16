@@ -737,7 +737,7 @@
       "short_name": "OTI",
       "other_names": [],
       "government_level": "nyc",
-      "classification": "mayoral-agency",
+      "classification": "Mayoral Office",
       "parent_id": null,
       "child_ids": [],
       "identifiers": [
@@ -793,7 +793,7 @@
       "short_name": "DOE",
       "other_names": [],
       "government_level": "nyc",
-      "classification": "mayoral-agency",
+      "classification": "Mayoral Agency",
       "parent_id": null,
       "child_ids": [],
       "identifiers": [
@@ -21480,6 +21480,13 @@
           "notes": "Additional host attributed to this agency in a state agency listing (2026-11-06); sub-site or application host, not verified."
         },
         {
+          "domain": "health.data.ny.gov",
+          "role": "microsite",
+          "valid_from": null,
+          "valid_to": null,
+          "notes": "Additional host attributed to this agency in a state agency listing (2026-11-06); sub-site or application host, not verified. The listing files health.data.ny.gov under ITS; it is Health Data NY, the Department of Health's own open data catalog (its dataset metadata names the New York State Department of Health; grounding-ai-with-ny-open-data portal registry, verified 2026-11-05)."
+        },
+        {
           "domain": "healthdata.ny.gov",
           "role": "microsite",
           "valid_from": null,
@@ -22627,13 +22634,6 @@
         },
         {
           "domain": "gis.ny.gov",
-          "role": "microsite",
-          "valid_from": null,
-          "valid_to": null,
-          "notes": "Additional host attributed to this agency in a state agency listing (2026-11-06); sub-site or application host, not verified."
-        },
-        {
-          "domain": "health.data.ny.gov",
           "role": "microsite",
           "valid_from": null,
           "valid_to": null,

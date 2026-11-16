@@ -34,6 +34,15 @@ ID_RE = re.compile(r"^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")
 DAS = {"manhattan-district-attorney-s-office": "36061", "bronx-district-attorney-s-office": "36005",
        "brooklyn-district-attorney-s-office": "36047", "queens-district-attorney-s-office": "36081",
        "staten-island-district-attorney-s-office": "36085"}
+# Deliberate edits to existing entities since the hash was taken; the test undoes them before
+# hashing, so every other existing entity is still checked byte for byte.
+#  2026-11-16: OTI and DOE took the City's own types (t3jq-9nkf) instead of "mayoral-agency";
+#  health.data.ny.gov moved from ITS to DOH (curation state_listing_host_overrides).
+RETYPED = {"oti": "mayoral-agency", "nyc-doe": "mayoral-agency"}
+HEALTH_DATA = {"domain": "health.data.ny.gov", "role": "microsite", "valid_from": None, "valid_to": None,
+               "notes": "Additional host attributed to this agency in a state agency listing (2026-11-06); "
+                        "sub-site or application host, not verified."}
+ITS_ID, DOH_ID = "new-york-state-office-of-information-technology-services", "new-york-state-department-of-health"
 # SHA-256 of the 567 entities on main before this mint (canonical JSON, sort_keys), 2026-11-13.
 OLD_HASH = "deceeec9fe88777e957490fe359238b2e920499bce03c4fbb839922f33a9f583"
 
@@ -268,6 +277,21 @@ def test_existing_entities_unchanged_except_the_five_da_areas():
                                    "role": "jurisdiction"}]
             e["areas"] = []
             e["provenance"]["sources"].remove("manual")
+        if e["id"] in RETYPED:
+            e["classification"] = RETYPED[e["id"]]
+        if e["id"] == DOH_ID:
+            e["web_properties"] = [w for w in e["web_properties"] if w["domain"] != "health.data.ny.gov"]
+        if e["id"] == ITS_ID:
+            assert all(w["domain"] != "health.data.ny.gov" for w in e["web_properties"])
+            e["web_properties"].insert(5, HEALTH_DATA)
         stripped.append(e)
     digest = hashlib.sha256(json.dumps(stripped, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
     assert digest == OLD_HASH
+
+
+def test_health_data_ny_gov_belongs_to_doh_and_oti_doe_use_the_citys_types():
+    by = {e["id"]: e for e in REGISTRY}
+    owners = [e["id"] for e in REGISTRY for w in e["web_properties"] if w["domain"] == "health.data.ny.gov"]
+    assert owners == [DOH_ID]
+    assert (by["oti"]["classification"], by["nyc-doe"]["classification"]) == ("Mayoral Office", "Mayoral Agency")
+    assert not [e["id"] for e in REGISTRY if e.get("classification") == "mayoral-agency"]

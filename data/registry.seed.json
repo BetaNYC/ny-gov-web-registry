@@ -578,7 +578,7 @@
       "short_name": "OTI",
       "other_names": [],
       "government_level": "nyc",
-      "classification": "mayoral-agency",
+      "classification": "Mayoral Office",
       "parent_id": null,
       "child_ids": [],
       "identifiers": [
@@ -617,7 +617,7 @@
       "short_name": "DOE",
       "other_names": [],
       "government_level": "nyc",
-      "classification": "mayoral-agency",
+      "classification": "Mayoral Agency",
       "parent_id": null,
       "child_ids": [],
       "identifiers": [
