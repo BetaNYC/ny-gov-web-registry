@@ -178,6 +178,6 @@ def test_a_spam_correction_may_have_no_successor(tmp_path):
 def test_shipped_spam_corrections_point_only_at_listed_hosts():
     pub = {_key(r["ny_initial_domain"]): r for r in json.loads((AIR / "websites.json").read_text())}
     spam = [r for r in pub.values() if r["ny_host_issue"] == "spam"]
-    assert len(spam) == 21
+    assert len(spam) == 33
     for r in spam:
         assert r["ny_superseded_by"] is None or _key(r["ny_superseded_by"]) in pub, r
