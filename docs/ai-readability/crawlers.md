@@ -13,14 +13,14 @@ the next statewide run (epic #47, issue #42). Since issue #44 the scanner reads 
 | `name` | The crawler's name (its robots.txt token) |
 | `purpose` | What it does, in a few plain words the company's page supports |
 | `ua_exact` | The User-Agent label, copied word for word from the company's page. Several labels are joined with ` \|\| `. `token only` means the company publishes the name but no full label. |
-| `send` | `yes`: sent to sites as a User-Agent. `rules-only`: read in robots.txt, never sent. |
+| `send` | `yes`: sent to sites as a User-Agent, when the company publishes a label that can be sent. A `yes` row whose every label carries a version stand-in is not sent (rule 4 below), and its `reason_not_sent` says so. `rules-only`: read in robots.txt, never sent. |
 | `follows_robots_per_vendor` | `yes`, `no`, `partly` or `not stated`, strictly as the company's page says for this name |
 | `publishes_ips` | `yes` if the company publishes its crawler's addresses or a way to verify them |
 | `ip_list_url` | Where, when given. Several are joined with ` \|\| `. |
 | `doc_url` | The company page the row was checked against |
 | `checked` | The date the row was checked |
 | `proof_quote` | Under 15 words, word for word from the page |
-| `reason_not_sent` | Required for `rules-only` rows |
+| `reason_not_sent` | Required for `rules-only` rows. Also filled for a `yes` row the scanner does not send: today Google-Agent, Amazonbot, Amzn-SearchBot and Amzn-User |
 
 ## Rules
 
