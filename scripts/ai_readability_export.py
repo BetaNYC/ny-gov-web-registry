@@ -916,6 +916,21 @@ def run_hosts(results) -> set:
     return {r["host"] for r in results if r.get("scope") != "page"}
 
 
+def _url_then_host(records):
+    """A lookup for one-record-per-site files (reach.jsonl, headed.jsonl): the record for the
+    target's own URL, else the first record on its host. The two can differ: the export reads a
+    host at the address plan_targets picks (a data portal before the main site, a page if that is
+    all the list has, http rewritten to https), while the check may have been given another
+    address on the host, such as https://host/. reach_check.py only ever checks the host and
+    GET /, so its record is the host's whatever path it was given."""
+    by_url, by_host = {}, {}
+    for r in records:
+        by_url[r["url"]] = r
+        host = r.get("host") or urllib.parse.urlparse(r["url"]).hostname
+        by_host.setdefault((host or "").lower(), r)
+    return lambda url, host: by_url.get(url) or by_host.get(host)
+
+
 def build_rows(targets, results, v1_rows, review_rows, psl, gsa=None, tenants=None, reach_rows=(),
                retest_results=(), person_rows=(), person_results=(), run=None) -> list:
     gsa = gsa or gsa_dictionary()
@@ -923,11 +938,11 @@ def build_rows(targets, results, v1_rows, review_rows, psl, gsa=None, tenants=No
     ours = _ours(run_identities(run))
     tenants = tenants or {}
     by_host, rev_by_host, v1_by_url = {}, {}, {}
-    reach_by_url = {r["url"]: r for r in reach_rows}
+    reach_for = _url_then_host(reach_rows)
     retest_by_host = {}
     for r in retest_results:
         retest_by_host.setdefault(r["host"], []).append(r)
-    person_by_url = {r["url"]: r for r in person_rows}
+    person_for = _url_then_host(person_rows)
     person_by_host = {}
     for r in person_results:
         person_by_host.setdefault(r["host"], []).append(r)
@@ -945,8 +960,8 @@ def build_rows(targets, results, v1_rows, review_rows, psl, gsa=None, tenants=No
     for t in targets:
         host = urllib.parse.urlparse(t["url"]).hostname
         h = Host(t, by_host.get(host, []), v1_by_url.get(t["url"], {}), rev_by_host.get(host, []), psl,
-                 tenants.get(host, ()), reach_by_url.get(t["url"]), retest_by_host.get(host, ()),
-                 person_by_url.get(t["url"]), person_by_host.get(host, ()), run)
+                 tenants.get(host, ()), reach_for(t["url"], host), retest_by_host.get(host, ()),
+                 person_for(t["url"], host), person_by_host.get(host, ()), run)
         row = {}
         for g in gsa:
             fid = g["field id"]

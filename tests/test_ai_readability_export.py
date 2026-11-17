@@ -108,6 +108,35 @@ def test_reach_and_retest_columns():
     assert rows[1]["ai_reach_checked"] is None and rows[1]["ai_retest_w4_verdict"] is None
 
 
+def test_reach_joins_by_host_when_target_url_has_a_path():
+    # The scanner reads a host at the address plan_targets picks, which can be a page; the reach
+    # check is run on https://host/. Its record still belongs to that site's row.
+    t = [{"url": "https://down.example.gov/data/portal/", "entity_id": None, "entity_name": "D", "pool": "city"},
+         {"url": "http://plain.example.gov/about", "entity_id": None, "entity_name": "P", "pool": "city"},
+         {"url": "https://www.example.gov/", "entity_id": "ex", "entity_name": "E", "pool": "county"}]
+    reach = [{"test": "reach", "url": "https://down.example.gov/", "host": "down.example.gov",
+              "dns_resolves": True, "tls": "bad_cert", "diagnosis": "bad_certificate_http_ok"},
+             {"test": "reach", "url": "https://plain.example.gov/", "host": "plain.example.gov",
+              "dns_resolves": True, "diagnosis": "http_only"},
+             # an exact URL match wins over another record on the same host
+             {"test": "reach", "url": "https://www.example.gov/other", "host": "www.example.gov",
+              "dns_resolves": True, "diagnosis": "refuses"},
+             {"test": "reach", "url": "https://www.example.gov/", "host": "www.example.gov",
+              "dns_resolves": True, "diagnosis": "answers_now"}]
+    rows = ex.build_rows(t, _rows(), [], [], PSL, reach_rows=reach)
+    assert rows[0]["ai_reach_checked"] is True and rows[0]["ai_reach_diagnosis"] == "bad_certificate_http_ok"
+    assert rows[1]["ai_reach_diagnosis"] == "http_only"
+    assert rows[2]["ai_reach_diagnosis"] == "answers_now"
+
+
+def test_person_joins_by_host_when_target_url_has_a_path():
+    t = [{"url": "https://walled.example.gov/section/", "entity_id": None, "entity_name": "W", "pool": "city"}]
+    person = [{"test": "headed", "url": "https://walled.example.gov/", "host": "walled.example.gov",
+               "status": 200, "challenge": False, "verdict": "pass", "vantage": "home-hearth"}]
+    rows = ex.build_rows(t, _rows(), [], [], PSL, person_rows=person)
+    assert rows[0]["ai_person_checked"] is True and rows[0]["ai_person_verdict"] == "pass"
+
+
 def test_person_columns():
     t = [{"url": "https://walled.example.gov/", "entity_id": None, "entity_name": "W", "pool": "city"},
          {"url": "https://www.example.gov/", "entity_id": "ex", "entity_name": "E", "pool": "county"}]
