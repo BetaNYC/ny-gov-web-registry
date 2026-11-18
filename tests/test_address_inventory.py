@@ -54,6 +54,79 @@ def test_a_corrected_cert_log_address_is_left_out(tmp_path):
     assert unmarked == {"https://spamhost.example.ny.us/", "https://fine.example.ny.us/"}
 
 
+def test_below_marked_host_walks_only_the_sub_sites_own_parents():
+    marked = {"boltonnewyork.com", "mtaig.state.ny.us", "catskill.net"}
+    # below a marked registered domain (the mark is on the domain or its www. form)
+    assert ai.below_marked_host("slot.boltonnewyork.com", "boltonnewyork.com", marked) == "boltonnewyork.com"
+    assert ai.below_marked_host("a.b.boltonnewyork.com", "boltonnewyork.com", marked) == "boltonnewyork.com"
+    assert ai.below_marked_host("userportal.catskill.net", "catskill.net", marked) == "catskill.net"
+    # below a marked host on a shared registered domain: only its own sub-sites
+    assert ai.below_marked_host("x.mtaig.state.ny.us", "state.ny.us", marked) == "mtaig.state.ny.us"
+    # shared-domain guard: a sibling of a marked host stays, so does the domain itself
+    assert ai.below_marked_host("dot.state.ny.us", "state.ny.us", marked) is None
+    assert ai.below_marked_host("www.dot.state.ny.us", "state.ny.us", marked) is None
+    # the host itself is not "below" itself (step 6 drops a marked host on its own), nor is the
+    # domain, nor a host outside the registered domain
+    assert ai.below_marked_host("boltonnewyork.com", "boltonnewyork.com", marked) is None
+    assert ai.below_marked_host("www.boltonnewyork.com", "boltonnewyork.com", marked) is None
+    assert ai.below_marked_host("slot.other.com", "boltonnewyork.com", marked) is None
+    # never above the registered domain: a mark on a public suffix reaches nothing
+    assert ai.below_marked_host("dot.ny.gov", "dot.ny.gov", {"ny.gov"}) is None
+    assert ai.below_marked_host("able.dot.ny.gov", "dot.ny.gov", {"ny.gov"}) is None
+
+
+def test_cert_log_addresses_below_a_marked_host_are_left_out(tmp_path):
+    """slot.boltonnewyork.com hangs off boltonnewyork.com, marked spam: left out. On a shared
+    domain only the marked host's own sub-sites go; its siblings stay."""
+    (tmp_path / "cert.csv").write_text(
+        "address,registered_domain,found\n"
+        "https://slot.spamtown.example.org/,spamtown.example.org,2026-11-11\n"
+        "https://deep.www.spamtown.example.org/,spamtown.example.org,2026-11-11\n"
+        "https://sub.spamhost.example.ny.us/,example.ny.us,2026-11-11\n"
+        "https://sibling.example.ny.us/,example.ny.us,2026-11-11\n")
+    (tmp_path / "fix.csv").write_text(
+        "host,issue,superseded_by,checked,evidence\n"
+        "www.spamtown.example.org,spam,,2026-11-16,serves a gambling page\n"
+        "spamhost.example.ny.us,spam,,2026-11-17,serves a gambling page\n")
+    paths = {**ai.PATHS, "cert_logs": tmp_path / "cert.csv", "corrections": tmp_path / "fix.csv"}
+    got = {r["address"] for r in ai.build(paths) if r["source"] == "certificate logs"}
+    assert got == {"https://sibling.example.ny.us/"}
+    unmarked = {r["address"] for r in ai.build({**paths, "corrections": None})
+                if r["source"] == "certificate logs"}
+    assert len(unmarked) == 4
+
+
+def test_fetched_addresses_below_a_marked_host_are_left_out(tmp_path):
+    (tmp_path / "fetched.csv").write_text(
+        "address,listed_host\n"
+        "https://portal.spamtown.example.org/,www.spamtown.example.org\n"
+        "https://portal.goodtown.example.org/,www.goodtown.example.org\n")
+    (tmp_path / "fix.csv").write_text(
+        "host,issue,superseded_by,checked,evidence\n"
+        "spamtown.example.org,spam,,2026-11-16,serves a gambling page\n")
+    paths = {**ai.PATHS, "fetched": tmp_path / "fetched.csv", "cert_logs": None,
+             "corrections": tmp_path / "fix.csv"}
+    got = {r["address"] for r in ai.build(paths) if r["source"] == "linked from fetched files"}
+    assert got == {"https://portal.goodtown.example.org/"}
+
+
+def test_no_published_address_sits_at_or_below_a_marked_host():
+    """The six certificate-log sub-sites left out on 2026-11-18, and the shared-domain guard: other
+    *.state.ny.us addresses stay although mtaig.state.ny.us is marked."""
+    marked = ws.read_corrections(AIR / "website-corrections.csv")
+    published = _published()
+    for r in published:
+        host = ai.addr_key(r["address"])[0]
+        assert host not in marked, r["address"]
+        labels = host.split(".")
+        assert not any(".".join(labels[i:]) in marked for i in range(1, len(labels) - 1)), r["address"]
+    keys = {ai.addr_key(r["address"]) for r in published}
+    for gone in ("julie.townofindianlake.org", "site.scribany.org", "slot.boltonnewyork.com",
+                 "slot777.boltonnewyork.com", "tri.townofwellsvilleny.org", "userportal.catskill.net"):
+        assert ai.addr_key(f"https://{gone}/") not in keys
+    assert sum(1 for k in keys if k[0].endswith(".state.ny.us")) > 0
+
+
 def test_mtaig_state_ny_us_is_not_an_address():
     """Marked spam 2026-11-17 (website-corrections.csv); the body's site is mtaig.ny.gov."""
     keys = {ai.addr_key(r["address"]) for r in _published()}

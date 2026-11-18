@@ -17,12 +17,21 @@ SOURCES, in order (the first source to name an address is its `source`; later on
   linked from fetched files
                          sources/2026-11-10/linked-from-fetched-files.csv, written by
                          `--fetched RUN_DIR` from a private run's results.jsonl. Only the
-                         address and the listed host it belongs to are kept
+                         address and the listed host it belongs to are kept; an address below
+                         a marked host is left out (below)
   BetaNYC contact files  sources/2026-11-10/contact-websites.csv, written by `--contacts DIR`
                          from BetaNYC's private contact files. Only the "Website:" address and
                          the registry id are kept; nothing else is copied
   certificate logs       cert-log-addresses.csv, written by cert_log_names.py --export; a host
-                         in website-corrections.csv is left out, as for websites.json
+                         in website-corrections.csv is left out, as for websites.json, and so
+                         is an address below a marked host (below)
+
+BELOW A MARKED HOST
+  A sub-site whose parent host is marked in website-corrections.csv hangs off a name that is no
+  longer the body's (slot.boltonnewyork.com under boltonnewyork.com, marked spam), so it is left
+  out too. Only the sub-site's own parents count, from the host up to its registered domain and
+  never above it, `www.` ignored: mtaig.state.ny.us is marked, state.ny.us is not, so every other
+  *.state.ny.us address stays (below_marked_host()).
 
 KIND  main site | sub-site | section | data portal | API (see docs/ai-readability/addresses.md)
 
@@ -77,6 +86,23 @@ def addr_key(url: str):
     """Same address: `www.` ignored, trailing `/` ignored, fragment ignored, scheme ignored."""
     p = urllib.parse.urlparse(url if "//" in url else "https://" + url)
     return ws._key((p.hostname or "").lower().rstrip(".")), (p.path or "").rstrip("/"), p.query
+
+
+def below_marked_host(host: str, registered_domain: str, marked) -> str | None:
+    """The marked host `host` sits below, or None. `marked` holds host keys (ws._key: `www.`
+    dropped), as ws.read_corrections() returns them. The parents tried are the host's own, from
+    its parent up to `registered_domain` inclusive, never above it: a mark on one host of a shared
+    registered domain (mtaig.state.ny.us) never reaches its siblings (other *.state.ny.us)."""
+    host = ws._key((host or "").lower().rstrip("."))
+    rd = ws._key((registered_domain or "").lower().rstrip("."))
+    if not rd or host == rd or not host.endswith("." + rd):
+        return None
+    labels = host.split(".")
+    for i in range(1, len(labels) - rd.count(".")):
+        parent = ".".join(labels[i:])
+        if parent in marked:
+            return parent
+    return None
 
 
 def board_registry_id(code: str):
@@ -191,10 +217,17 @@ def build(paths=PATHS) -> list:
                 level=rec.get("entity_type"), notes="; ".join(notes),
                 platform=(rec.get("platform") or "").strip())
 
-    # 4. linked from fetched files (same registered domain as the listed host)
+    corrected = ws.read_corrections(paths.get("corrections"))
+
+    # 4. linked from fetched files (same registered domain as the listed host); an address below
+    #    a marked host is left out, as in step 6
     if paths.get("fetched") and pathlib.Path(paths["fetched"]).exists():
+        psl = ex.load_psl()
         with open(paths["fetched"], newline="", encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
+                host = urllib.parse.urlparse(r["address"]).hostname or ""
+                if below_marked_host(host, ex.base_domain(r["listed_host"].lower(), psl) or "", corrected):
+                    continue
                 parent = by_host.get(ws._key(r["listed_host"].lower())) or {}
                 inv.add(r["address"], "sub-site", "linked from fetched files", SCAN_DATE,
                         ids=parent.get("ny_entity_ids") or [],
@@ -211,9 +244,9 @@ def build(paths=PATHS) -> list:
                         ids=[r["owning_body_id"]], notes=r.get("notes") or "")
 
     # 6. certificate logs (a host in website-corrections.csv is left out, as in step 1: it is
-    #    no longer the body's site; matched on the host key, so `www.` is ignored)
+    #    no longer the body's site; matched on the host key, so `www.` is ignored). An address
+    #    below a marked host is left out too (below_marked_host: its own parents only)
     if paths.get("cert_logs") and pathlib.Path(paths["cert_logs"]).exists():
-        corrected = ws.read_corrections(paths.get("corrections"))
         owners_by_domain = {}
         for r in live:
             if r.get("ny_government") is False:
@@ -221,7 +254,8 @@ def build(paths=PATHS) -> list:
             owners_by_domain.setdefault(r["base_domain"], []).append(r)
         with open(paths["cert_logs"], newline="", encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
-                if addr_key(r["address"])[0] in corrected:
+                host = addr_key(r["address"])[0]
+                if host in corrected or below_marked_host(host, r["registered_domain"], corrected):
                     continue
                 rows = owners_by_domain.get(r["registered_domain"], [])
                 apex = [x for x in rows if ws._key(x["ny_initial_domain"].lower()) == r["registered_domain"]]

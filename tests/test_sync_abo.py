@@ -187,6 +187,47 @@ def test_held_malformed_and_shared_hosts_are_reviewed_never_applied():
             "abo_host_differs_from_existing_entity") in reasons
 
 
+MARKED = {"buffalosewer.org": {"host": "www.buffalosewer.org", "issue": "spam", "superseded_by": "",
+                               "checked": "2026-11-17", "evidence": "fixture"},
+          "nyserda.org": {"host": "nyserda.org", "issue": "for_sale", "superseded_by": "nyserda.ny.gov",
+                          "checked": "2026-11-17", "evidence": "fixture"}}
+
+
+def test_a_marked_abo_host_is_reviewed_never_applied():
+    """Regression (2026-11-18): www.buffalowaterauthority.com, marked spam in
+    website-corrections.csv, was still the authority's primary site in registry.json."""
+    records, review = build_records(ROWS, LISTING, CURATION, BASE, TLDS, MARKED)
+    rec = _by_name(records)["Buffalo Sewer Authority"]
+    assert rec["web_properties"] == [] and rec["_expect_new"]  # still minted, with no site
+    item = next(i for i in review if i["abo_name"] == "Buffalo Sewer Authority")
+    assert item["reason"] == "abo_host_marked_in_website_corrections"
+    assert item["marked_hosts"] == [{"host": "www.buffalosewer.org", "issue": "spam",
+                                     "superseded_by": None, "checked": "2026-11-17"}]
+    # an item already held for another reason that names a marked host is tagged too
+    other = next(i for i in review if i["reason"] == "abo_host_differs_from_existing_entity")
+    assert [m["host"] for m in other["marked_hosts"]] == ["nyserda.org"]
+    assert other["marked_hosts"][0]["superseded_by"] == "nyserda.ny.gov"
+    # without a mark the host is applied as before, and nothing is tagged
+    records, review = _run()
+    assert _by_name(records)["Buffalo Sewer Authority"]["web_properties"][0]["domain"] == "buffalosewer.org"
+    assert not any("marked_hosts" in i for i in review)
+
+
+def test_committed_registry_has_no_marked_host_as_a_current_site():
+    """No registry entity names a host marked in website-corrections.csv as primary or
+    microsite: a marked host is no longer the body's website."""
+    import statewide_common as sc
+    marked = sc.load_corrections()
+    entities = json.loads((ROOT / "data" / "registry.json").read_text(encoding="utf-8"))["entities"]
+    bad = [(e["id"], w["domain"]) for e in entities for w in e.get("web_properties", [])
+           if w["role"] != "legacy" and sc.norm_host(w["domain"]) in marked]
+    assert bad == []
+    review = json.loads((ROOT / "data" / "statewide_web_review.json").read_text(encoding="utf-8"))
+    held = [i for i in review["authorities"]["items"] if i["reason"] == "abo_host_marked_in_website_corrections"]
+    assert [(i["abo_name"], i["host"]) for i in held] == [
+        ("Buffalo Municipal Water Finance Authority", "www.buffalowaterauthority.com")]
+
+
 def test_no_website_still_mints_with_no_property():
     rec = _by_name(_run()[0])["Albany County Pine Hills Land Authority"]
     assert rec["web_properties"] == [] and rec["url_conventions"] == []

@@ -19585,15 +19585,7 @@
       "government_level": "authority",
       "classification": "local-authority",
       "identifiers": [],
-      "web_properties": [
-        {
-          "domain": "www.buffalowaterauthority.com",
-          "role": "primary",
-          "valid_from": null,
-          "valid_to": null,
-          "notes": "From the `website` field of the ABO Directory of Public Authorities (data.ny.gov 4vym-q77x), snapshot 2026-11-06 (self-reported by the authority)."
-        }
-      ],
+      "web_properties": [],
       "url_conventions": [],
       "areas": [],
       "area_note": null,

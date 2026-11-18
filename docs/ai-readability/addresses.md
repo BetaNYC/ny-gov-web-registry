@@ -3,6 +3,7 @@ title: The address inventory
 created: 2026-11-10
 type: reference
 status: active
+updated: 2026-11-18
 tags: [ai-readability, addresses, inventory]
 ---
 
@@ -67,7 +68,8 @@ row takes the portal's kind and adds its `entity_type`.
 4. **Linked from fetched files** — sub-sites the earlier scan (2026-11-06, office) already
    fetched, with no new request: a `Sitemap:` line in a robots.txt, or a homepage redirect,
    that points at another host on the same registered domain. Vendor platforms and
-   infrastructure names (the certificate-log filter, below) are left out. The owner is the
+   infrastructure names (the certificate-log filter, below) are left out, and so is an address
+   below a marked host (below). The owner is the
    owner of the listed host, which holds the domain; a sub-site may serve a partner body.
    **Two parts of this source were skipped:** the scan did not store the links on each
    homepage, and it stored a hash of each sitemap but not the URLs in it, so neither could be
@@ -82,6 +84,22 @@ row takes the portal's kind and adds its `entity_type`.
    here may also be marked in `website-corrections.csv` (its `superseded_by` must still be a
    `websites.json` host); a marked one is left out, as in source 1, `www.` or not. One is:
    `mtaig.state.ny.us` (spam, 2026-11-17; the MTA Inspector General's site is `mtaig.ny.gov`).
+
+## Below a marked host
+
+A sub-site whose parent host is marked in `website-corrections.csv` hangs off a name that is no
+longer the body's, so sources 4 and 6 leave it out too. Only the sub-site's own parents count,
+from its parent host up to its registered domain and never above it, `www.` ignored
+(`below_marked_host()` in the script). `boltonnewyork.com` is marked spam, so
+`slot.boltonnewyork.com` goes. `mtaig.state.ny.us` is marked but `state.ny.us` is not, so every
+other `*.state.ny.us` address stays: a mark on one host of a shared registered domain (`ny.gov`,
+`nyc.gov`, `state.ny.us`, a vendor platform) never reaches its siblings.
+
+Six certificate-log addresses were left out by this rule on 2026-11-18:
+`julie.townofindianlake.org`, `site.scribany.org`, `slot.boltonnewyork.com`,
+`slot777.boltonnewyork.com` and `tri.townofwellsvilleny.org` (under hosts marked spam), and
+`userportal.catskill.net` (under `www.catskill.net`, marked `redirects_offsite`). No address from
+fetched files was below a marked host.
 
 ## Count of addresses per source
 
@@ -101,7 +119,9 @@ By kind: main site 3,178 · sub-site 1,988 · section 552 · data portal 90 · A
 
 `python3 scripts/address_inventory.py` prints both counts. Since this table: one certificate-log
 address, `mtaig.state.ny.us`, was marked in `website-corrections.csv` on 2026-11-17 and left
-out (certificate logs 1,851; sub-site one fewer).
+out (certificate logs 1,851; sub-site one fewer). On 2026-11-18 six more certificate-log
+addresses below marked hosts were left out (above): certificate logs 1,845, sub-site 1,981, total
+5,902 with the hosts and portals added to `websites.json` since the table.
 
 ## The portals in `websites.json`
 

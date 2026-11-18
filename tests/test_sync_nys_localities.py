@@ -458,6 +458,59 @@ def test_lead_rows_one_host_per_row_only_without_primary():
     assert not [r for r in rows if r["entity_id"] == "village-of-deruyter"]
 
 
+def _marked(*hosts):
+    return {h.removeprefix("www."): {"host": h, "issue": "spam", "superseded_by": "",
+                                     "checked": "2026-11-16", "evidence": "fixture"} for h in hosts}
+
+
+def test_marked_hosts_never_agree_never_reach_the_leads_csv_and_are_tagged_in_review():
+    """A host marked in website-corrections.csv is no longer the place's site (regression,
+    2026-11-18: seven marked hosts were still rows of the leads CSV, untagged in the review file)."""
+    corrections = _marked("orangecountygov.com", "www.greenegovernment.com")
+    recs, review, summary = build_records_osc(OSC2, ITS2, DOTGOV, GROUNDING, BASE, STALE, TLDS, PSL,
+                                              OSC_EXPECTED, corrections=corrections)
+    ids = by_id(recs)
+    assert ids["orange-county"]["web_properties"] == []          # two sources agree, but it is marked
+    rows = summary["lead_rows"]
+    assert not [r for r in rows if r["host"].removeprefix("www.") in corrections]
+    assert [(r["host"], r["source"]) for r in rows if r["entity_id"] == "greene-county"] == [
+        ("greenecountyny.gov", "dotgov")]
+    tagged = [i for i in review if "marked_hosts" in i]
+    # village-of-deruyter's path-only lead is a page on a marked host: tagged too
+    assert {i["proposed_id"] for i in tagged} == {"orange-county", "greene-county", "village-of-deruyter"}
+    assert summary["review_items_with_marked_hosts"] == len(tagged)
+    greene = next(i for i in tagged if i["proposed_id"] == "greene-county")
+    assert greene["marked_hosts"] == [{"host": "www.greenegovernment.com", "issue": "spam",
+                                       "superseded_by": None, "checked": "2026-11-16"}]
+    assert any("greenegovernment.com" in lead["url"] for lead in greene["leads"])  # kept as given
+    # unmarked: unchanged from before
+    plain = run_osc()
+    assert [w["domain"] for w in by_id(plain[0])["orange-county"]["web_properties"]] == ["orangecountygov.com"]
+    assert not any("marked_hosts" in i for i in plain[1])
+
+
+def test_committed_leads_csv_and_review_honor_website_corrections():
+    import statewide_common as sc
+    marked = sc.load_corrections()
+    leads_csv = sync.LEADS_CSV.read_text(encoding="utf-8").splitlines()[1:]
+    assert not [ln for ln in leads_csv if sc.norm_host(ln.split(",")[4]) in marked]
+    review = json.loads(sc.REVIEW.read_text(encoding="utf-8"))
+    for section in ("authorities", "localities"):
+        for item in review[section]["items"]:
+            named = {sc.norm_host(h) for h in sc._hosts_named({k: v for k, v in item.items()
+                                                              if k != "marked_hosts"})}
+            want = sorted(h for h in named if h in marked)
+            got = sorted(sc.norm_host(m["host"]) for m in item.get("marked_hosts", []))
+            assert got == want, item.get("proposed_id") or item.get("abo_name")
+
+
+def test_hosts_named_reads_urls_and_hosts_not_notes():
+    import statewide_common as sc
+    item = {"host": "www.a.org", "leads": [{"url": "http://b.org/x", "detail": "SWIS 1"}],
+            "hosts": ["c.org"], "note": "d.org looks like the town's site", "bad": "http://[x"}
+    assert sc._hosts_named(item) == {"www.a.org", "b.org", "c.org"}
+
+
 # --- website checks from the AI-readability scan (growth plan rule 4) ------------------------------
 
 import confirm_locality_websites as clw  # noqa: E402
