@@ -14,7 +14,8 @@ websites, so this sync joins three dated snapshots through a hand-curated table:
       Snapshot: data/ai-readability/sources/2026-11-06/kjw8-pupa-agency-contacts-agencies.json
   websites
     - a state agency listing (shared with BetaNYC privately; link private): domain, url, agency
-      code. Snapshot: data/ai-readability/sources/2026-11-06/state-agency-listing-websites.csv
+      code. Read from a private local copy, data/cache/state_agency_listing_websites.csv
+      (2026-11-06). It is not committed; without it this script stops with exit 2.
 
   curation (data/curation.json)
     - state_agencies: one entry per agency minted — official name, which directory names it,
@@ -240,7 +241,11 @@ def _load_list(path: pathlib.Path, key: str) -> list[dict]:
 
 
 def main() -> int:
-    for p in (sc.LISTING, NYGOV, KJW8):
+    if not sc.LISTING.exists():
+        print(f"[gated] no state agency listing at {sc.LISTING}. It is a private local copy and is "
+              "not in the repo; only a maintainer who holds it can run this sync.", file=sys.stderr)
+        return 2
+    for p in (NYGOV, KJW8):
         if not p.exists():
             print(f"[gated] missing {p}; copy it from data/ai-readability/sources/<date>/ and retry.",
                   file=sys.stderr)

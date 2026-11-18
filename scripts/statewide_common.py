@@ -7,7 +7,8 @@ Pure helpers plus two small IO conveniences. Nothing here fetches.
     the MODA batch), i.e. what an ABO row or a state agency must be checked against so it
     enriches an existing entity instead of duplicating it. Built from the same functions as
     build_registry.py (the sync_greenbook precedent), so the sync and the build cannot disagree.
-  - The state agency listing reader (`data/cache/state_agency_listing_websites.csv`).
+  - The state agency listing reader (`data/cache/state_agency_listing_websites.csv`, a private
+    local copy that is not committed; the sync scripts stop with exit 2 when it is absent).
   - `write_review_section()`: data/statewide_web_review.json carries one section per sync
     script; each script rewrites only its own section, so re-running either is idempotent.
   - `load_corrections()` / `tag_marked_hosts()`: hosts marked in

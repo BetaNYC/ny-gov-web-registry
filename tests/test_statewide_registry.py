@@ -1,6 +1,8 @@
 """Outcome tests on the COMMITTED statewide mint (issue #24): data/registry.json,
 data/curation.json, data/statewide_web_review.json, against the dated source snapshots in
-data/ai-readability/sources/2026-11-06/. Offline; reads committed files only."""
+data/ai-readability/sources/2026-11-06/. Offline. Reads committed files, plus the state agency
+listing's private local copy (data/cache/state_agency_listing_websites.csv) when it is present;
+the test that needs it is skipped when it is absent."""
 import collections
 import csv
 import json
@@ -18,8 +20,15 @@ REGISTRY = json.loads((ROOT / "data" / "registry.json").read_text(encoding="utf-
 CURATION = json.loads((ROOT / "data" / "curation.json").read_text(encoding="utf-8"))
 REVIEW = json.loads((ROOT / "data" / "statewide_web_review.json").read_text(encoding="utf-8"))
 ABO = json.loads((SRC / "abo-directory-4vym-q77x.json").read_text(encoding="utf-8"))
-with open(SRC / "state-agency-listing-websites.csv", newline="", encoding="utf-8") as _fh:
-    LISTING = list(csv.DictReader(_fh))
+# The listing is not committed (shared with BetaNYC privately). Only a maintainer's local copy.
+LISTING_PATH = ROOT / "data" / "cache" / "state_agency_listing_websites.csv"
+LISTING = None
+if LISTING_PATH.exists():
+    with open(LISTING_PATH, newline="", encoding="utf-8") as _fh:
+        LISTING = list(csv.DictReader(_fh))
+needs_listing = pytest.mark.skipif(
+    LISTING is None, reason="state agency listing not present (private local copy, "
+                            "data/cache/state_agency_listing_websites.csv)")
 
 STATE_LOCAL = [r["public_authority_name"].strip() for r in ABO if r["public_authority_type"] in ("State", "Local")]
 IDA_LDC = [r["public_authority_name"].strip() for r in ABO if r["public_authority_type"] in ("IDA", "LDC")]
@@ -112,6 +121,7 @@ def test_every_agency_has_one_primary_and_no_verified_identifier_invented():
             assert e["provenance"]["sources"][0] == "state_listing"
 
 
+@needs_listing
 def test_every_listing_code_is_curated_and_every_host_accounted_for():
     codes = CURATION["state_listing_codes"]
     assert {r["agency"] for r in LISTING} == set(codes)
