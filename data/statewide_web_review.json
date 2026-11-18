@@ -220,7 +220,7 @@
     ]
   },
   "state_agencies": {
-    "_about": "State agency listing codes and hosts (sync_nygov.py) not minted or not applied.",
+    "_about": "State agency listing codes and hosts (sync_nygov.py) not minted or not applied. An item naming a host marked in data/ai-readability/website-corrections.csv carries `marked_hosts`: that host is no longer the body's website.",
     "items": [
       {
         "agency_key": "dos",

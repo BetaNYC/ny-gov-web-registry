@@ -26,9 +26,19 @@ websites, so this sync joins three dated snapshots through a hand-curated table:
         review:<why>   not minted; held in data/statewide_web_review.json
     - state_listing_host_overrides: a host the listing files under the wrong code.
 
+  marked hosts (data/ai-readability/website-corrections.csv, committed)
+    - A host checked by hand and found no longer the body's website (spam, for sale, a
+      lookalike, a redirect to an unrelated site) is never applied as a web property, even
+      when the listing or curation names it. It goes to review with reason
+      `listing_host_marked_in_website_corrections`. If it is an agency's curated `primary`, the
+      agency is still minted, with no primary site, until curation.json names a new one. Every
+      review item that names a marked host carries `marked_hosts`
+      (statewide_common.tag_marked_hosts).
+
 INPUT (this script never fetches): data/cache/state_agency_listing_websites.csv,
 data/cache/nygov_state_agencies.json, data/cache/kjw8-pupa_agencies.json,
-data/cache/records_moda.json (+ records_abo.json if present), data/curation.json.
+data/cache/records_moda.json (+ records_abo.json if present), data/curation.json,
+data/ai-readability/website-corrections.csv.
 OUTPUT: data/cache/records_nygov.json; data/statewide_web_review.json § state_agencies.
 
 Every agency record is `_expect_new`: if its name ever collides with an existing entity the build
@@ -61,9 +71,25 @@ def _wp(domain: str, role: str, notes: str) -> dict:
     return {"domain": domain, "role": role, "valid_from": None, "valid_to": None, "notes": notes}
 
 
+MARKED_REASON = "listing_host_marked_in_website_corrections"
+
+
+def _marked_item(host: str, role: str, **who) -> dict:
+    """A review item for a marked host the listing names for an agency or entity (`who`), in the
+    `role` it would have had. tag_marked_hosts adds the correction's issue and superseded_by."""
+    return {**who, "reason": MARKED_REASON, "host": host, "role": role,
+            "note": "Marked in data/ai-readability/website-corrections.csv as no longer this body's "
+                    "website; not applied."}
+
+
 def build_records(listing: list[dict], nygov: list[dict], kjw8: list[dict], curation: dict,
-                  base: list[dict], abo_records: list[dict] | None = None) -> tuple[list[dict], list[dict]]:
-    """Pure: snapshots + curation + base registry -> (records, review items)."""
+                  base: list[dict], abo_records: list[dict] | None = None,
+                  corrections: dict[str, dict] | None = None) -> tuple[list[dict], list[dict]]:
+    """Pure: snapshots + curation + base registry -> (records, review items).
+
+    `corrections` ({norm_host: row}, statewide_common.load_corrections) holds back marked hosts:
+    never applied, reviewed instead. A marked curated primary leaves the agency with no primary."""
+    corrections = corrections or {}
     agencies = curation.get("state_agencies", [])
     codes = curation.get("state_listing_codes", {})
     overrides = curation.get("state_listing_host_overrides", {})
@@ -112,6 +138,10 @@ def build_records(listing: list[dict], nygov: list[dict], kjw8: list[dict], cura
 
         wps: list[dict] = []
         for h in [a["primary"]] + [h for h in hosts if h != a["primary"]]:
+            if sc.norm_host(h) in corrections:
+                review.append(_marked_item(h, "primary" if h == a["primary"] else "microsite",
+                                           agency_key=a["key"]))
+                continue
             other = owner.get(sc.norm_host(h))
             if other is not None:
                 # Applied anyway (the listing names this agency as the host's owner), but flagged:
@@ -166,8 +196,11 @@ def build_records(listing: list[dict], nygov: list[dict], kjw8: list[dict], cura
         ent = next((e for e in base if e["id"] == value), None)
         if ent is None:
             raise ValueError(f"listing target entity:{value} is not in the registry")
+        missing = [h for h in hosts if sc.norm_host(h) not in sc.owned_hosts(ent)]
+        review.extend(_marked_item(h, "microsite", entity_id=value)
+                      for h in missing if sc.norm_host(h) in corrections)
         add = [_wp(h, "microsite", f"Additional host attributed to this body in {_LISTING}; not verified.")
-               for h in hosts if sc.norm_host(h) not in sc.owned_hosts(ent)]
+               for h in missing if sc.norm_host(h) not in corrections]
         records.append({"name": ent["name"], "_match_entity_id": value,
                         "_on_match": {"add_provenance_source": "state_listing" if add else None,
                                       "add_web_properties": add}})
@@ -198,6 +231,7 @@ def build_records(listing: list[dict], nygov: list[dict], kjw8: list[dict], cura
                                "this batch: no host of its own in the state agency listing. Some are "
                                "sub-units whose hosts the listing files under a parent agency (kept "
                                "there as microsites, with a note)."})
+    sc.tag_marked_hosts(review, corrections)
     return records, review
 
 
@@ -214,11 +248,14 @@ def main() -> int:
     abo = json.loads(RECORDS_ABO.read_text(encoding="utf-8"))["records"] if RECORDS_ABO.exists() else []
     records, review = build_records(sc.read_listing(), _load_list(NYGOV, "agencies"),
                                     _load_list(KJW8, "agencies"), sc.load_curation(),
-                                    sc.base_entities(), [r for r in abo if r.get("_expect_new")])
+                                    sc.base_entities(), [r for r in abo if r.get("_expect_new")],
+                                    sc.load_corrections())
     OUT.write_text(json.dumps({"records": records}, indent=2, ensure_ascii=False), encoding="utf-8")
     sc.write_review_section(
         "state_agencies", review,
-        "State agency listing codes and hosts (sync_nygov.py) not minted or not applied.")
+        "State agency listing codes and hosts (sync_nygov.py) not minted or not applied. An item "
+        "naming a host marked in data/ai-readability/website-corrections.csv carries `marked_hosts`: "
+        "that host is no longer the body's website.")
     minted = sum(1 for r in records if r.get("_expect_new"))
     print(f"{minted} state agency records, {len(records) - minted} existing-entity enrichments, "
           f"{len(review)} review item(s) -> {OUT}")
