@@ -151,10 +151,15 @@ def test_corrections_file_hosts_have_their_real_site_in_the_list():
     # a corrected host is a websites.json row, or an address found only in certificate logs
     with open(AIR / "cert-log-addresses.csv", newline="", encoding="utf-8") as fh:
         cert = {_key(urllib.parse.urlparse(r["address"]).hostname) for r in csv.DictReader(fh)}
+    # ... or a registry `legacy` web property (an old address kept as history, never scanned)
+    reg = json.loads((ROOT / "data" / "registry.json").read_text())["entities"]
+    legacy = {_key(w["domain"]) for e in reg for w in e.get("web_properties", [])
+              if w.get("role") == "legacy"}
     for k, r in ws.read_corrections(AIR / "website-corrections.csv").items():
-        assert k in have or k in cert, k
-        # spam may have no successor yet (the place has no site in the list); every other issue must
-        if r["superseded_by"] or r["issue"] != "spam":
+        assert k in have or k in cert or k in legacy, k
+        # spam may have no successor yet (the place has no site in the list), nor may a legacy
+        # host that several bodies used (bronxmall.com); every other row must name one
+        if r["superseded_by"] or (r["issue"] != "spam" and k not in legacy):
             assert _key(r["superseded_by"]) in have, k
 
 

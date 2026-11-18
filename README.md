@@ -168,6 +168,10 @@ certificate logs can be marked the same way; it is left out of the address inven
 any sub-site below a marked host (`slot.boltonnewyork.com`). A marked host is never applied as a
 registry web property: the statewide syncs hold it in `data/statewide_web_review.json`, where
 every item that names one carries `marked_hosts`, and the locality website-lead file leaves it out.
+An old address that `data/registry.json` keeps as a `legacy` web property (history only,
+never scanned) can be marked the same way: nine former community board domains were added on
+2026-11-18. The `legacy` row stays in the registry as history; join it to the corrections file
+before you link to or email that domain.
 Pages that are not in the registry but belong in the deep-page run (the community boards whose
 only site is a `www.nyc.gov/site/<board>/` page) are listed by hand in
 [`deep-pages-extra.csv`](data/ai-readability/deep-pages-extra.csv) (`url`, `name`, `source`,
