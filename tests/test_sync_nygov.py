@@ -150,3 +150,80 @@ def test_bad_curation_fails_loud():
         mutate(bad)
         with pytest.raises(ValueError):
             _run(bad)
+
+
+def _marked(*rows):
+    """{norm_host: row}, as statewide_common.load_corrections returns it."""
+    import statewide_common as sc
+    return {sc.norm_host(r["host"]): dict({"superseded_by": "", "checked": "2026-11-18",
+                                           "evidence": "fixture"}, **r) for r in rows}
+
+
+def _hosts(records):
+    return {w["domain"] for r in records for w in r.get("web_properties", [])
+            + r.get("_on_match", {}).get("add_web_properties", [])}
+
+
+def test_a_marked_primary_host_is_reviewed_never_applied():
+    """A curated primary marked in website-corrections.csv is not applied: the agency is still
+    minted, with no primary, and the host goes to review with the correction attached."""
+    marked = _marked({"host": "www.dot.ny.gov", "issue": "lookalike", "superseded_by": "dot.gov.example"})
+    records, review = build_records(LISTING, NYGOV, KJW8, CURATION, BASE, corrections=marked)
+    dot = _agencies(records)["New York State Department of Transportation"]
+    assert dot["_expect_new"]
+    assert [(w["domain"], w["role"]) for w in dot["web_properties"]] == [("nymtc.org", "microsite")]
+    item = next(i for i in review if i["reason"] == "listing_host_marked_in_website_corrections")
+    assert (item["agency_key"], item["host"], item["role"]) == ("dot", "dot.ny.gov", "primary")
+    assert item["marked_hosts"] == [{"host": "www.dot.ny.gov", "issue": "lookalike",
+                                     "superseded_by": "dot.gov.example", "checked": "2026-11-18"}]
+
+
+def test_a_marked_extra_host_is_reviewed_never_applied():
+    marked = _marked({"host": "nymtc.org", "issue": "for_sale"},
+                     {"host": "governor.ny.gov", "issue": "spam"})
+    records, review = build_records(LISTING, NYGOV, KJW8, CURATION, BASE, corrections=marked)
+    dot = _agencies(records)["New York State Department of Transportation"]
+    assert [(w["domain"], w["role"]) for w in dot["web_properties"]] == [("dot.ny.gov", "primary")]
+    assert "nymtc.org" not in _hosts(records)
+    held = [i for i in review if i["reason"] == "listing_host_marked_in_website_corrections"]
+    assert [(i["agency_key"], i["host"], i["role"]) for i in held] == [("dot", "nymtc.org", "microsite")]
+    assert held[0]["marked_hosts"][0]["issue"] == "for_sale"
+    assert held[0]["marked_hosts"][0]["superseded_by"] is None
+    # an item already held for another reason that names a marked host is tagged too
+    gov = next(i for i in review if i["reason"] == "statewide_elected_office")
+    assert [m["host"] for m in gov["marked_hosts"]] == ["governor.ny.gov"]
+
+
+def test_a_marked_host_for_an_existing_entity_is_not_added():
+    listing = LISTING + [{"domain": "www.panynj-old.example", "url": "", "agency": "PANYNJ"},
+                         {"domain": "panynj.info", "url": "", "agency": "PANYNJ"}]
+    marked = _marked({"host": "panynj-old.example", "issue": "redirects_offsite"})
+    records, review = build_records(listing, NYGOV, KJW8, CURATION, BASE, corrections=marked)
+    pan = next(r for r in records if r.get("_match_entity_id") == "panynj")
+    assert [w["domain"] for w in pan["_on_match"]["add_web_properties"]] == ["panynj.info"]
+    item = next(i for i in review if i["reason"] == "listing_host_marked_in_website_corrections")
+    assert (item["entity_id"], item["host"]) == ("panynj", "www.panynj-old.example")
+    assert item["marked_hosts"][0]["issue"] == "redirects_offsite"
+
+
+def test_unmarked_hosts_are_unaffected_by_corrections():
+    """A correction for a host the listing never names changes nothing, and no item is tagged."""
+    marked = _marked({"host": "unrelated.example", "issue": "spam"})
+    assert build_records(LISTING, NYGOV, KJW8, CURATION, BASE, corrections=marked) == _run()
+    _, review = _run()
+    assert not any("marked_hosts" in i for i in review)
+
+
+def test_committed_state_agencies_review_matches_the_corrections():
+    """Every host held by sync_nygov for a mark is still marked, and no state agency in the
+    committed registry has a marked host as a current site."""
+    import statewide_common as sc
+    marked = sc.load_corrections()
+    review = json.loads((ROOT / "data" / "statewide_web_review.json").read_text(encoding="utf-8"))
+    held = [i for i in review["state_agencies"]["items"]
+            if i["reason"] == "listing_host_marked_in_website_corrections"]
+    assert all(sc.norm_host(i["host"]) in marked for i in held)
+    entities = json.loads((ROOT / "data" / "registry.json").read_text(encoding="utf-8"))["entities"]
+    bad = [(e["id"], w["domain"]) for e in entities if e.get("government_level") == "nys"
+           for w in e.get("web_properties", []) if w["role"] != "legacy" and sc.norm_host(w["domain"]) in marked]
+    assert bad == []

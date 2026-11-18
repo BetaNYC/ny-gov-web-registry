@@ -166,8 +166,10 @@ sale, a redirect elsewhere, spam) is recorded by hand in
 `ny_host_issue` and `ny_superseded_by` set, and probe runs skip it. A host found only in
 certificate logs can be marked the same way; it is left out of the address inventory, and so is
 any sub-site below a marked host (`slot.boltonnewyork.com`). A marked host is never applied as a
-registry web property: the statewide syncs hold it in `data/statewide_web_review.json`, where
-every item that names one carries `marked_hosts`, and the locality website-lead file leaves it out.
+registry web property: the statewide syncs (`sync_abo.py`, `sync_nygov.py`,
+`sync_nys_localities.py`) hold it in `data/statewide_web_review.json`, where every item that names
+one carries `marked_hosts`, and the locality website-lead file leaves it out. `crawl_targets.py`
+never uses a marked host as a start URL either.
 An old address that `data/registry.json` keeps as a `legacy` web property (history only,
 never scanned) can be marked the same way: nine former community board domains were added on
 2026-11-18. The `legacy` row stays in the registry as history; join it to the corrections file

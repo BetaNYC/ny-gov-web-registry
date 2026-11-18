@@ -8385,7 +8385,7 @@
   ],
   "ny_page_urls": null,
   "ny_source_count": 1,
-  "ny_host_issue": null,
+  "ny_host_issue": "spam",
   "ny_superseded_by": null,
   "ny_kind": "main site",
   "ny_government": true,
@@ -47267,7 +47267,7 @@
    "https://www.nnyacgs.com/town_of_ellenburgh.html"
   ],
   "ny_source_count": 1,
-  "ny_host_issue": null,
+  "ny_host_issue": "spam",
   "ny_superseded_by": null,
   "ny_kind": "main site",
   "ny_government": true,
