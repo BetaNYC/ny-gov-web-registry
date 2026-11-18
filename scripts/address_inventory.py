@@ -21,7 +21,8 @@ SOURCES, in order (the first source to name an address is its `source`; later on
   BetaNYC contact files  sources/2026-11-10/contact-websites.csv, written by `--contacts DIR`
                          from BetaNYC's private contact files. Only the "Website:" address and
                          the registry id are kept; nothing else is copied
-  certificate logs       cert-log-addresses.csv, written by cert_log_names.py --export
+  certificate logs       cert-log-addresses.csv, written by cert_log_names.py --export; a host
+                         in website-corrections.csv is left out, as for websites.json
 
 KIND  main site | sub-site | section | data portal | API (see docs/ai-readability/addresses.md)
 
@@ -58,6 +59,7 @@ PATHS = {
     "fetched": SRC / "linked-from-fetched-files.csv",
     "contacts": SRC / "contact-websites.csv",
     "cert_logs": AIR / "cert-log-addresses.csv",
+    "corrections": AIR / "website-corrections.csv",
 }
 OUT = AIR / "addresses.csv"
 COLUMNS = ("address", "owning_body_id", "owning_body", "kind", "level_or_entity_type", "source",
@@ -208,8 +210,10 @@ def build(paths=PATHS) -> list:
                 inv.add(r["address"], kind, "BetaNYC contact files", NEW_SOURCES_DATE,
                         ids=[r["owning_body_id"]], notes=r.get("notes") or "")
 
-    # 6. certificate logs
+    # 6. certificate logs (a host in website-corrections.csv is left out, as in step 1: it is
+    #    no longer the body's site; matched on the host key, so `www.` is ignored)
     if paths.get("cert_logs") and pathlib.Path(paths["cert_logs"]).exists():
+        corrected = ws.read_corrections(paths.get("corrections"))
         owners_by_domain = {}
         for r in live:
             if r.get("ny_government") is False:
@@ -217,6 +221,8 @@ def build(paths=PATHS) -> list:
             owners_by_domain.setdefault(r["base_domain"], []).append(r)
         with open(paths["cert_logs"], newline="", encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
+                if addr_key(r["address"])[0] in corrected:
+                    continue
                 rows = owners_by_domain.get(r["registered_domain"], [])
                 apex = [x for x in rows if ws._key(x["ny_initial_domain"].lower()) == r["registered_domain"]]
                 pick = apex or (rows if len({tuple(x.get("ny_entity_ids") or []) + (x.get("agency"),)

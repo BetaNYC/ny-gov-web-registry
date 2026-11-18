@@ -163,7 +163,8 @@ public list names the host, not that it is a registry entity. Test results stay 
 A host a list still names but that is no longer the body's site (a lookalike, a domain for
 sale, a redirect elsewhere, spam) is recorded by hand in
 [`website-corrections.csv`](data/ai-readability/website-corrections.csv). Its row stays, with
-`ny_host_issue` and `ny_superseded_by` set, and probe runs skip it.
+`ny_host_issue` and `ny_superseded_by` set, and probe runs skip it. A host found only in
+certificate logs can be marked the same way; it is left out of the address inventory.
 Pages that are not in the registry but belong in the deep-page run (the community boards whose
 only site is a `www.nyc.gov/site/<board>/` page) are listed by hand in
 [`deep-pages-extra.csv`](data/ai-readability/deep-pages-extra.csv) (`url`, `name`, `source`,

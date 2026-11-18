@@ -35,6 +35,32 @@ def test_addresses_csv_is_in_sync_with_the_builder():
     assert _published() == ai.build(), "run: python3 scripts/address_inventory.py"
 
 
+def test_a_corrected_cert_log_address_is_left_out(tmp_path):
+    """A certificate-log host marked in website-corrections.csv is no longer the body's site,
+    so it is left out of addresses.csv, `www.` or not, like a marked websites.json host."""
+    (tmp_path / "cert.csv").write_text(
+        "address,registered_domain,found\n"
+        "https://spamhost.example.ny.us/,example.ny.us,2026-11-11\n"
+        "https://www.spamhost.example.ny.us/,example.ny.us,2026-11-11\n"
+        "https://fine.example.ny.us/,example.ny.us,2026-11-11\n")
+    (tmp_path / "fix.csv").write_text(
+        "host,issue,superseded_by,checked,evidence\n"
+        "spamhost.example.ny.us,spam,mtaig.ny.gov,2026-11-17,serves a gambling page\n")
+    paths = {**ai.PATHS, "cert_logs": tmp_path / "cert.csv", "corrections": tmp_path / "fix.csv"}
+    got = {r["address"] for r in ai.build(paths) if r["source"] == "certificate logs"}
+    assert got == {"https://fine.example.ny.us/"}
+    unmarked = {r["address"] for r in ai.build({**paths, "corrections": None})
+                if r["source"] == "certificate logs"}
+    assert unmarked == {"https://spamhost.example.ny.us/", "https://fine.example.ny.us/"}
+
+
+def test_mtaig_state_ny_us_is_not_an_address():
+    """Marked spam 2026-11-17 (website-corrections.csv); the body's site is mtaig.ny.gov."""
+    keys = {ai.addr_key(r["address"]) for r in _published()}
+    assert ai.addr_key("https://mtaig.state.ny.us/") not in keys
+    assert ai.addr_key("https://mtaig.ny.gov/") in keys
+
+
 def test_addresses_are_unique():
     keys = [ai.addr_key(r["address"]) for r in _published()]
     assert len(keys) == len(set(keys))

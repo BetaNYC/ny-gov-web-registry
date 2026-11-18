@@ -78,7 +78,10 @@ row takes the portal's kind and adds its `entity_type`.
    registry id are copied (`sources/2026-11-10/contact-websites.csv`). Today only the
    community-board files and one Council district file carry a `Website:` line.
 6. **Certificate logs** — see below. Written to `cert-log-addresses.csv`
-   (`address`, `registered_domain`, `found`) by `scripts/cert_log_names.py --export`.
+   (`address`, `registered_domain`, `found`) by `scripts/cert_log_names.py --export`. A host
+   here may also be marked in `website-corrections.csv` (its `superseded_by` must still be a
+   `websites.json` host); a marked one is left out, as in source 1, `www.` or not. One is:
+   `mtaig.state.ny.us` (spam, 2026-11-17; the MTA Inspector General's site is `mtaig.ny.gov`).
 
 ## Count of addresses per source
 
@@ -96,7 +99,9 @@ Built 2026-11-10; certificate logs added 2026-11-12. Counted by first source.
 
 By kind: main site 3,178 · sub-site 1,988 · section 552 · data portal 90 · API 8.
 
-`python3 scripts/address_inventory.py` prints both counts.
+`python3 scripts/address_inventory.py` prints both counts. Since this table: one certificate-log
+address, `mtaig.state.ny.us`, was marked in `website-corrections.csv` on 2026-11-17 and left
+out (certificate logs 1,851; sub-site one fewer).
 
 ## The portals in `websites.json`
 

@@ -148,8 +148,11 @@ def test_corrections_reject_unknown_issue(tmp_path):
 def test_corrections_file_hosts_have_their_real_site_in_the_list():
     rows = json.loads((AIR / "websites.json").read_text())
     have = {_key(r["ny_initial_domain"]) for r in rows}
+    # a corrected host is a websites.json row, or an address found only in certificate logs
+    with open(AIR / "cert-log-addresses.csv", newline="", encoding="utf-8") as fh:
+        cert = {_key(urllib.parse.urlparse(r["address"]).hostname) for r in csv.DictReader(fh)}
     for k, r in ws.read_corrections(AIR / "website-corrections.csv").items():
-        assert k in have, k
+        assert k in have or k in cert, k
         # spam may have no successor yet (the place has no site in the list); every other issue must
         if r["superseded_by"] or r["issue"] != "spam":
             assert _key(r["superseded_by"]) in have, k
