@@ -123,6 +123,11 @@ out (certificate logs 1,851; sub-site one fewer). On 2026-11-18 six more certifi
 addresses below marked hosts were left out (above): certificate logs 1,845, sub-site 1,981, total
 5,902 with the hosts and portals added to `websites.json` since the table.
 
+Also on 2026-11-18, 21 certificate-log sub-sites of `steubencony.org` with casino-style names
+(for example `casino.steubencony.org`) were marked `spam` in `website-corrections.csv` and left
+out: certificate logs 1,824, sub-site 1,960, total 5,881. They were marked by name alone. All 21
+refused the study scan (403), so no page was seen, and the evidence column says so.
+
 ## The portals in `websites.json`
 
 `scripts/ai_readability_websites.py` reads the portal registry snapshot as a sixth source
