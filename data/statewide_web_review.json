@@ -1,7 +1,7 @@
 {
   "_about": "Statewide items held for human review, never applied to data/registry.json. One section per sync script (each rewrites only its own). Every item names its reason. Growth plan: docs/registry-growth-plan.md.",
   "authorities": {
-    "_about": "ABO State + Local rows (sync_abo.py): possible duplicates held back, and hosts not applied.",
+    "_about": "ABO State + Local rows (sync_abo.py): possible duplicates held back, and hosts not applied. An item naming a host marked in data/ai-readability/website-corrections.csv carries `marked_hosts`: that host is no longer the body's website.",
     "items": [
       {
         "abo_name": "Port Jervis Community Development Agency",
@@ -164,6 +164,21 @@
         "host": "www.elmiraheightsvillage.com",
         "abo_website": "http://www.elmiraheightsvillage.com",
         "note": "elmiraheightsvillage.com is the Village of Elmira Heights's site."
+      },
+      {
+        "abo_name": "Buffalo Municipal Water Finance Authority",
+        "reason": "abo_host_marked_in_website_corrections",
+        "host": "www.buffalowaterauthority.com",
+        "abo_website": "http://www.buffalowaterauthority.com/",
+        "note": "Marked in data/ai-readability/website-corrections.csv as no longer this body's website; not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.buffalowaterauthority.com",
+            "issue": "spam",
+            "superseded_by": null,
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "abo_name": "Gloversville Community Development Agency",
@@ -366,7 +381,7 @@
     ]
   },
   "localities": {
-    "_about": "Counties, cities, towns and villages (sync_nys_localities.py): places whose codes did not match one-to-one (OSC or ITS), ITS rows no place took, and website leads not applied (single lead, disagreeing, shared, path-only).",
+    "_about": "Counties, cities, towns and villages (sync_nys_localities.py): places whose codes did not match one-to-one (OSC or ITS), ITS rows no place took, and website leads not applied (single lead, disagreeing, shared, path-only). An item naming a host marked in data/ai-readability/website-corrections.csv carries `marked_hosts`: that host is no longer the place's website, so it is not a lead.",
     "items": [
       {
         "proposed_id": "albany-county",
@@ -657,7 +672,15 @@
           "lewiscountyny.org"
         ],
         "primary": "lewiscountyny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.lewiscountyny.org",
+            "issue": "lookalike",
+            "superseded_by": "lewiscountyny.gov",
+            "checked": "2026-11-09"
+          }
+        ]
       },
       {
         "proposed_id": "madison-county",
@@ -3717,7 +3740,15 @@
           "townofbolivar.com"
         ],
         "primary": "townofbolivarny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "townofbolivar.com",
+            "issue": "spam",
+            "superseded_by": "townofbolivarny.gov",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-bolton",
@@ -3736,6 +3767,14 @@
             "source": "dotgov",
             "url": "boltonny.gov",
             "detail": "organization 'Town of Bolton'"
+          }
+        ],
+        "marked_hosts": [
+          {
+            "host": "boltonnewyork.com",
+            "issue": "spam",
+            "superseded_by": null,
+            "checked": "2026-11-16"
           }
         ]
       },
@@ -4164,7 +4203,15 @@
           "townofcaneadea.org"
         ],
         "primary": "caneadeatown.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "townofcaneadea.org",
+            "issue": "spam",
+            "superseded_by": "caneadeatown.gov",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-canton",
@@ -4278,7 +4325,15 @@
           "carrolltonny.org"
         ],
         "primary": "carrolltonny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.carrolltonny.org",
+            "issue": "spam",
+            "superseded_by": "carrolltonny.gov",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-castile",
@@ -4945,7 +5000,15 @@
           "townconstantia.org"
         ],
         "primary": "constantiany.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.townconstantia.org",
+            "issue": "spam",
+            "superseded_by": "constantiany.gov",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-corinth",
@@ -5012,7 +5075,15 @@
           "townofcoventryny.com"
         ],
         "primary": "coventryny.com",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "townofcoventryny.com",
+            "issue": "spam",
+            "superseded_by": "coventryny.com",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-covert",
@@ -5091,7 +5162,15 @@
           "townofcrownpoint.com"
         ],
         "primary": "townofcrownpointny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "townofcrownpoint.com",
+            "issue": "lookalike",
+            "superseded_by": "townofcrownpointny.gov",
+            "checked": "2026-11-09"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-cuba",
@@ -5471,7 +5550,15 @@
           "townofeastbloomfieldny.gov"
         ],
         "primary": "townofeastbloomfield.org",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.townofeastbloomfield.com",
+            "issue": "for_sale",
+            "superseded_by": "townofeastbloomfieldny.gov",
+            "checked": "2026-11-09"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-east-fishkill",
@@ -5510,7 +5597,15 @@
           "eastottony.org"
         ],
         "primary": "townofeastotto.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.eastottony.org",
+            "issue": "spam",
+            "superseded_by": "townofeastotto.gov",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-east-rochester",
@@ -5604,7 +5699,15 @@
           "edmestonny.org"
         ],
         "primary": "www.townofedmeston.com",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.edmestonny.org",
+            "issue": "spam",
+            "superseded_by": "www.townofedmeston.com",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-elba",
@@ -6730,7 +6833,15 @@
           "townofhardenburgh.org"
         ],
         "primary": "hardenburghny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.townofhardenburgh.org",
+            "issue": "lookalike",
+            "superseded_by": "hardenburghny.gov",
+            "checked": "2026-11-09"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-harford",
@@ -6830,7 +6941,15 @@
           "townofhartwick.org"
         ],
         "primary": "hartwickny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "townofhartwick.org",
+            "issue": "spam",
+            "superseded_by": "hartwickny.gov",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-hector",
@@ -6855,7 +6974,15 @@
           "townofhempstead.org"
         ],
         "primary": "hempsteadny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.townofhempstead.org",
+            "issue": "redirects_offsite",
+            "superseded_by": "hempsteadny.gov",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-henrietta",
@@ -7032,6 +7159,14 @@
             "source": "its",
             "url": "http://townofindianlake.org",
             "detail": "SWIS 202600"
+          }
+        ],
+        "marked_hosts": [
+          {
+            "host": "townofindianlake.org",
+            "issue": "spam",
+            "superseded_by": null,
+            "checked": "2026-11-16"
           }
         ]
       },
@@ -7278,7 +7413,15 @@
           "townkingstonny.us"
         ],
         "primary": "www.tokny.us",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "townkingstonny.us",
+            "issue": "spam",
+            "superseded_by": "www.tokny.us",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-kortright",
@@ -7349,7 +7492,15 @@
           "townoflakeluzerne.com"
         ],
         "primary": "www.lakeluzerneny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "townoflakeluzerne.com",
+            "issue": "spam",
+            "superseded_by": "www.lakeluzerneny.gov",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-lansing",
@@ -7628,7 +7779,15 @@
           "townoflincoln.org"
         ],
         "primary": "www.lincolnny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "townoflincoln.org",
+            "issue": "spam",
+            "superseded_by": "www.lincolnny.gov",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-lisbon",
@@ -7695,7 +7854,15 @@
           "townoflittlefalls.com"
         ],
         "primary": "townoflittlefallsny.com",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "townoflittlefalls.com",
+            "issue": "spam",
+            "superseded_by": "townoflittlefallsny.com",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-little-valley",
@@ -7708,7 +7875,15 @@
           "littlevalleyny.org"
         ],
         "primary": "littlevalleyny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "littlevalleyny.org",
+            "issue": "spam",
+            "superseded_by": "littlevalleyny.gov",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-livingston",
@@ -8043,6 +8218,14 @@
             "source": "dotgov",
             "url": "townofmanheim.gov",
             "detail": "organization 'Town of Manheim'"
+          }
+        ],
+        "marked_hosts": [
+          {
+            "host": "townofmanheim.org",
+            "issue": "spam",
+            "superseded_by": null,
+            "checked": "2026-11-16"
           }
         ]
       },
@@ -9504,7 +9687,15 @@
           "persiany.org"
         ],
         "primary": "townofpersiany.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.persiany.org",
+            "issue": "spam",
+            "superseded_by": "townofpersiany.gov",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-perth",
@@ -10069,7 +10260,15 @@
           "ripley-ny.com"
         ],
         "primary": "ripleyny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.ripley-ny.com",
+            "issue": "redirects_offsite",
+            "superseded_by": "ripleyny.gov",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-rochester",
@@ -10083,6 +10282,14 @@
             "source": "its",
             "url": "http://www.townofrochester.net",
             "detail": "SWIS 514400"
+          }
+        ],
+        "marked_hosts": [
+          {
+            "host": "www.townofrochester.net",
+            "issue": "spam",
+            "superseded_by": null,
+            "checked": "2026-11-17"
           }
         ]
       },
@@ -10267,6 +10474,14 @@
             "source": "its",
             "url": "http://townofsalamanca.org",
             "detail": "SWIS 048000"
+          }
+        ],
+        "marked_hosts": [
+          {
+            "host": "townofsalamanca.org",
+            "issue": "spam",
+            "superseded_by": null,
+            "checked": "2026-11-16"
           }
         ]
       },
@@ -10565,7 +10780,15 @@
           "scribany.org"
         ],
         "primary": "scribany.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "scribany.org",
+            "issue": "spam",
+            "superseded_by": "scribany.gov",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-sempronius",
@@ -10855,7 +11078,15 @@
           "townofspringwaterny.org"
         ],
         "primary": "www.springwaterny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.townofspringwaterny.org",
+            "issue": "redirects_offsite",
+            "superseded_by": "www.springwaterny.gov",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-st-armand",
@@ -11769,7 +12000,15 @@
           "townofwawarsing.net"
         ],
         "primary": "www.wawarsingny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.townofwawarsing.net",
+            "issue": "redirects_offsite",
+            "superseded_by": "wawarsingny.gov",
+            "checked": "2026-11-09"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-wayland",
@@ -11840,7 +12079,15 @@
           "townofwellsvilleny.org"
         ],
         "primary": "wellsvilletown.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "townofwellsvilleny.org",
+            "issue": "spam",
+            "superseded_by": "wellsvilletown.gov",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-west-almond",
@@ -11898,7 +12145,15 @@
           "westseneca.net"
         ],
         "primary": "www.westseneca.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "westseneca.net",
+            "issue": "spam",
+            "superseded_by": "www.westseneca.gov",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-west-sparta",
@@ -12092,7 +12347,15 @@
           "willingny.org"
         ],
         "primary": "willingny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "willingny.org",
+            "issue": "redirects_offsite",
+            "superseded_by": "willingny.gov",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-willsboro",
@@ -13089,7 +13352,15 @@
           "villageofbrownvilleny.org"
         ],
         "primary": "villageofbrownvilleny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.villageofbrownvilleny.org",
+            "issue": "for_sale",
+            "superseded_by": "villageofbrownvilleny.gov",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "village-of-buchanan",
@@ -13130,7 +13401,15 @@
           "villageofcaledoniany.org"
         ],
         "primary": "villageofcaledoniany.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "villageofcaledoniany.org",
+            "issue": "spam",
+            "superseded_by": "villageofcaledoniany.gov",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "village-of-cambridge",
@@ -14000,7 +14279,15 @@
           "falconerny.org"
         ],
         "primary": "www.falconerny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "falconerny.org",
+            "issue": "spam",
+            "superseded_by": "www.falconerny.gov",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "village-of-farmingdale",
@@ -14051,7 +14338,15 @@
         "source": "its",
         "url": "http://www.catskill.net/fleisch",
         "proposed_url_convention": "www.catskill.net/fleisch",
-        "note": "A page on a host, from a single source; not applied."
+        "note": "A page on a host, from a single source; not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.catskill.net",
+            "issue": "redirects_offsite",
+            "superseded_by": "www.fleischmannsny.com",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "village-of-fonda",
@@ -14279,7 +14574,15 @@
           "greenport.com"
         ],
         "primary": "villageofgreenport.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.greenport.com",
+            "issue": "redirects_offsite",
+            "superseded_by": "villageofgreenport.gov",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "village-of-greenwood-lake",
@@ -14854,7 +15157,15 @@
           "villageoflindenhurst.com"
         ],
         "primary": "villageoflindenhurstny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "villageoflindenhurst.com",
+            "issue": "lookalike",
+            "superseded_by": "villageoflindenhurstny.gov",
+            "checked": "2026-11-09"
+          }
+        ]
       },
       {
         "proposed_id": "village-of-little-valley",
@@ -14867,7 +15178,15 @@
           "villageoflittlevalley.org"
         ],
         "primary": "villageoflittlevalley.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "villageoflittlevalley.org",
+            "issue": "spam",
+            "superseded_by": "villageoflittlevalley.gov",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "village-of-livonia",
@@ -15498,7 +15817,15 @@
           "northsyracuse.org"
         ],
         "primary": "northsyracuseny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "northsyracuse.org",
+            "issue": "spam",
+            "superseded_by": "northsyracuseny.gov",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "village-of-norwood",
@@ -15544,7 +15871,15 @@
           "nyack.org"
         ],
         "primary": "www.nyack.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.nyack.org",
+            "issue": "for_sale",
+            "superseded_by": "www.nyack.gov",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "village-of-oakfield",
@@ -15889,7 +16224,15 @@
           "portchestervotes.gov"
         ],
         "primary": "portchesterny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "portchesterny.com",
+            "issue": "spam",
+            "superseded_by": "portchesterny.gov",
+            "checked": "2026-11-16"
+          }
+        ]
       },
       {
         "proposed_id": "village-of-port-washington-north",
@@ -15916,6 +16259,14 @@
             "source": "its",
             "url": "http://www.portvilleny.net/",
             "detail": "SWIS 047401"
+          }
+        ],
+        "marked_hosts": [
+          {
+            "host": "portvilleny.net",
+            "issue": "spam",
+            "superseded_by": null,
+            "checked": "2026-11-16"
           }
         ]
       },
@@ -15944,6 +16295,14 @@
             "source": "its",
             "url": "http://www.villagepulaski.org",
             "detail": "SWIS 355001"
+          }
+        ],
+        "marked_hosts": [
+          {
+            "host": "villagepulaski.org",
+            "issue": "spam",
+            "superseded_by": null,
+            "checked": "2026-11-16"
           }
         ]
       },
@@ -16146,7 +16505,15 @@
           "sacketsharborny.com"
         ],
         "primary": "sacketsharbor-ny.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "sacketsharborny.com",
+            "issue": "spam",
+            "superseded_by": "sacketsharbor-ny.gov",
+            "checked": "2026-11-17"
+          }
+        ]
       },
       {
         "proposed_id": "village-of-saddle-rock",
@@ -16907,7 +17274,15 @@
           "waverlybarton.com"
         ],
         "primary": "villageofwaverly.gov",
-        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied."
+        "note": "The primary was confirmed by the AI-readability scan; these lead hosts were not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.waverlybarton.com",
+            "issue": "for_sale",
+            "superseded_by": "villageofwaverly.gov",
+            "checked": "2026-11-09"
+          }
+        ]
       },
       {
         "proposed_id": "village-of-wayland",

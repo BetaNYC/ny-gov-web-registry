@@ -23,6 +23,8 @@ INPUT (this script never fetches; the operator places the files in data/cache/):
     data/cache/records_moda.json             (the base registry this matches against)
     data/curation.json                       (abo_matches, abo_holds, abo_website_holds,
                                               state_listing_codes, state_listing_host_overrides)
+    data/ai-readability/website-corrections.csv   (hosts checked by hand and found no longer the
+                                              body's website; committed)
 OUTPUT:
     data/cache/records_abo.json              (read by build_registry.py)
     data/statewide_web_review.json § authorities   (committed; nothing in it is applied)
@@ -41,6 +43,10 @@ WEBSITE RULES (a web property is a host, never a URL or path — docs/registry-g
   - If the state agency listing names hosts for the authority, the curated listing primary wins;
     a differing ABO host goes to review. The listing's other hosts become `microsite`s.
   - Held, malformed, or shared-by-several-authorities hosts go to review, never applied.
+  - A host marked in website-corrections.csv (spam, for sale, a lookalike, a redirect to an
+    unrelated site) is no longer the authority's site: it goes to review with reason
+    `abo_host_marked_in_website_corrections`, never applied. Every review item that names a
+    marked host carries `marked_hosts` (statewide_common.tag_marked_hosts).
 """
 from __future__ import annotations
 
@@ -85,10 +91,13 @@ def _wp(domain: str, role: str, notes: str) -> dict:
 
 
 def build_records(rows: list[dict], listing: list[dict], curation: dict,
-                  base: list[dict], tlds: set[str] | None = None) -> tuple[list[dict], list[dict]]:
+                  base: list[dict], tlds: set[str] | None = None,
+                  corrections: dict[str, dict] | None = None) -> tuple[list[dict], list[dict]]:
     """Pure: ABO rows (+ listing + curation + base registry) -> (records, review items).
 
-    `tlds` (Public Suffix List top-level rules) tightens the host sanity check; None skips it."""
+    `tlds` (Public Suffix List top-level rules) tightens the host sanity check; None skips it.
+    `corrections` ({norm_host: row}, statewide_common.load_corrections) holds back marked hosts."""
+    corrections = corrections or {}
     rows = [r for r in rows if (r.get("public_authority_type") or "").strip() in MINT_TYPES]
     by_id = {e["id"]: e for e in base}
     by_name = {br._norm(e["name"]): e for e in base}
@@ -202,6 +211,11 @@ def build_records(rows: list[dict], listing: list[dict], curation: dict,
             elif name in web_holds:
                 review.append({"abo_name": name, "reason": web_holds[name]["reason"], "host": host,
                                "abo_website": url, "note": web_holds[name].get("note")})
+            elif sc.norm_host(host) in corrections:
+                review.append({"abo_name": name, "reason": "abo_host_marked_in_website_corrections",
+                               "host": host, "abo_website": url,
+                               "note": "Marked in data/ai-readability/website-corrections.csv as no longer "
+                                       "this body's website; not applied."})
             elif len(root_claims.get(sc.norm_host(host), [])) > 1:
                 review.append({"abo_name": name, "reason": "abo_host_shared_by_several_authorities",
                                "host": host, "abo_website": url,
@@ -240,6 +254,7 @@ def build_records(rows: list[dict], listing: list[dict], curation: dict,
         if addr:
             rec["contact_details"] = [{"type": "address", "value": addr, "note": f"Office address in the {_ABO}."}]
         records.append(rec)
+    sc.tag_marked_hosts(review, corrections)
     return records, review
 
 
@@ -261,11 +276,13 @@ def main() -> int:
         return 2
     rows = read_rows()
     records, review = build_records(rows, sc.read_listing(), sc.load_curation(), sc.base_entities(),
-                                    sc.psl_tlds())
+                                    sc.psl_tlds(), sc.load_corrections())
     OUT.write_text(json.dumps({"records": records}, indent=2, ensure_ascii=False), encoding="utf-8")
     sc.write_review_section(
         "authorities", review,
-        "ABO State + Local rows (sync_abo.py): possible duplicates held back, and hosts not applied.")
+        "ABO State + Local rows (sync_abo.py): possible duplicates held back, and hosts not applied. "
+        "An item naming a host marked in data/ai-readability/website-corrections.csv carries "
+        "`marked_hosts`: that host is no longer the body's website.")
     minted = sum(1 for r in records if r.get("_expect_new"))
     print(f"read {len(rows)} ABO rows; {len(records)} State/Local records "
           f"({minted} new, {len(records) - minted} enrich existing); {len(review)} review item(s) -> {OUT}")

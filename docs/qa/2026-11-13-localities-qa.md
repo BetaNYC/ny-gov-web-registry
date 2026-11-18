@@ -116,7 +116,7 @@ No county column and no codes, so the match is level + name, counting duplicates
   - 83 because two independent leads named the same host (no live check).
   - 943 confirmed by the BetaNYC AI-readability scan (826, then 117 more on 2026-11-15 where an old address forwards to the place's own site): the site's page title names the place (growth plan rule 4). The address, its role and the scan date are in `data/locality_website_checks.json`, which also records 287 former addresses (`legacy`).
   - 177 confirmed by a BetaNYC live homepage check on 2026-11-15 (dated 2026-11-16 UTC in the file): one homepage read per host, robots.txt honored, same title rule and same script. 24 hosts came from the lead file and 153 from web searches; each search-found site was also a top-three result in a second search engine.
-- Places without a primary: 380; of those, 288 have at least one lead host in `data/ai-readability/localities-website-leads-2026-11-13.csv` (460 rows, one per host and source) and the rest have no host lead (some only a path-only page, which stays in the review file).
+- Places without a primary: 380; of those, 288 have at least one lead host in `data/ai-readability/localities-website-leads-2026-11-13.csv` (460 rows, one per host and source) and the rest have no host lead (some only a path-only page, which stays in the review file). Since 2026-11-18 a host marked in `data/ai-readability/website-corrections.csv` is left out of that file (7 rows, so 453 rows for 283 places); it stays in the review file with `marked_hosts`.
 - No municipal site was fetched for this work; the scan's 2026-11-10 results were reused.
 
 ## Review file, § localities

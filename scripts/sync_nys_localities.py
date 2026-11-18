@@ -32,6 +32,11 @@ Website leads (never a web property on their own):
     localities. A lead with a path (a page on someone's site) is a path-only presence; it is
     proposed in review as a url_conventions[] entry, not applied, because every such lead here is
     single-source. No lead is live-checked (the optional live check is not authorized).
+    Marked hosts: a host in data/ai-readability/website-corrections.csv (checked by hand and found
+    no longer the place's website: spam, for sale, a lookalike, a redirect to an unrelated site)
+    never counts toward two agreeing sources, is left out of the leads CSV, and every review item
+    that names it carries `marked_hosts` (statewide_common.tag_marked_hosts). The lead itself
+    stays in the review item, as the source gave it.
 
 Ids (growth plan § Ids): `albany-county`, `city-of-albany`, `town-of-colonie`,
 `village-of-menands`. When two places in one tier share a name, EVERY member gets the county slug
@@ -48,11 +53,13 @@ INPUT (never fetches; all in data/cache/):
     leads_dotgov.json                  (scripts/sync_dotgov.py)
     grounding_ny_data_portal_localities.json   (copy of the 2026-11-13 snapshot)
     records_moda.json, records_abo.json, records_nygov.json   (the registry this checks against)
+    data/ai-readability/website-corrections.csv   (committed; marked hosts, above)
 OUTPUT:
     data/cache/records_localities.json            (read by build_registry.py)
     data/statewide_web_review.json § localities   (committed; nothing in it is applied)
     data/ai-readability/localities-website-leads-2026-11-13.csv   (one row per lead host, for every
-        place without a primary site; the AI-readability scan checks those hosts, this script does not)
+        place without a primary site, marked hosts left out; the AI-readability scan checks those
+        hosts, this script does not)
 
 SPINE (`--spine`): `osc` (default since 2026-11-13, Noel's decision while the GIS service is
 down): OSC entity tables are who exists (57 / 61 / 933 / 532 outside NYC), and SWIS, GNIS and
@@ -346,9 +353,13 @@ def _is_nyc_its(r: dict) -> bool:
                                                  and name_key(r.get("municipality")) in ("newyork", "newyorkcity"))
 
 
-def decide_websites(units: list[dict], owner: dict[str, str], review: list[dict]) -> None:
+def decide_websites(units: list[dict], owner: dict[str, str], review: list[dict],
+                    corrections: dict[str, dict] | None = None) -> None:
     """Apply rule 2 (two sources agree on a host) and route everything else to review.
+    A host marked in website-corrections.csv (`corrections`, keyed by norm_host) never counts as
+    agreed: it is no longer the place's site, however many sources still name it.
     Sets u['primary'] = {host, sources} or None, and u['used_sources']."""
+    corrections = corrections or {}
     agreed: dict[str, dict] = {}
     root_claims: dict[str, set[str]] = {}
     for u in units:
@@ -358,7 +369,7 @@ def decide_websites(units: list[dict], owner: dict[str, str], review: list[dict]
                 continue
             hosts.setdefault(sc.norm_host(lead["host"]), set()).add(lead["source"])
             root_claims.setdefault(sc.norm_host(lead["host"]), set()).add(u["id"])
-        both = sorted(h for h, srcs in hosts.items() if len(srcs) >= 2)
+        both = sorted(h for h, srcs in hosts.items() if len(srcs) >= 2 and h not in corrections)
         u["hosts"] = hosts
         u["agreed"] = both
         if len(both) == 1:
@@ -460,11 +471,14 @@ def apply_checks(units: list[dict], checks: list[dict], owner: dict[str, str], r
 LEADS_CSV_COLUMNS = ("entity_id", "name", "county", "level", "host", "source")
 
 
-def lead_rows(units: list[dict]) -> list[dict]:
+def lead_rows(units: list[dict], corrections: dict[str, dict] | None = None) -> list[dict]:
     """One row per (place, lead host, source) for every place WITHOUT a primary site, for the
     AI-readability scan to check. Hosts only: a path-only lead (a page on someone else's host,
-    usually the county's) is not a host lead and stays in the review file. Hosts are as the
-    source gave them (www. kept). A place with no host lead has no row."""
+    usually the county's) is not a host lead and stays in the review file. A host marked in
+    website-corrections.csv (`corrections`, keyed by norm_host) is not a usable lead and is left
+    out; it stays in the review file with `marked_hosts`. Hosts are as the source gave them
+    (www. kept). A place with no host lead has no row."""
+    corrections = corrections or {}
     rows = []
     for u in units:
         if u["primary"] or u.get("checked"):
@@ -472,7 +486,7 @@ def lead_rows(units: list[dict]) -> list[dict]:
         seen = set()
         for lead in u["leads"]:
             key = (lead["host"], lead["source"])
-            if lead["path"] or key in seen:
+            if lead["path"] or key in seen or sc.norm_host(lead["host"]) in corrections:
                 continue
             seen.add(key)
             rows.append({"entity_id": u["id"], "name": u["name"], "county": u["county"],
@@ -545,7 +559,8 @@ def to_record(u: dict) -> dict:
 def build_records(gis: dict[str, list[dict]], osc: dict, its: list[dict], dotgov: list[dict],
                   grounding: list[dict], base: list[dict], tlds: set[str] | None = None,
                   psl=None, expected_rows: dict[str, int] = EXPECTED_GIS_ROWS,
-                  checks: list[dict] | None = None) -> tuple[list[dict], list[dict], dict]:
+                  checks: list[dict] | None = None,
+                  corrections: dict[str, dict] | None = None) -> tuple[list[dict], list[dict], dict]:
     """Pure: source snapshots + the existing registry -> (records, review items, summary)."""
     if psl is None:
         import ai_readability_export as ex
@@ -554,11 +569,15 @@ def build_records(gis: dict[str, list[dict]], osc: dict, its: list[dict], dotgov
     review: list[dict] = []
     assign_ids(units, {e["id"] for e in base})
     match_osc(units, osc, review)
-    return _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its=True, checks=checks)
+    return _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its=True,
+                   checks=checks, corrections=corrections)
 
 
-def _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its, checks=None):
-    """Shared by both spines: name clash check, website leads and rule, records, summary."""
+def _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its, checks=None,
+            corrections=None):
+    """Shared by both spines: name clash check, website leads and rule, records, summary.
+    `corrections` ({norm_host: row}, statewide_common.load_corrections): marked hosts."""
+    corrections = corrections or {}
     base_names = {br._norm(e["name"]): e["id"] for e in base}
     clash = sorted((u["name"], base_names[br._norm(u["name"])]) for u in units if br._norm(u["name"]) in base_names)
     if clash:
@@ -568,14 +587,15 @@ def _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, rep
         for w in e.get("web_properties", []):
             owner.setdefault(sc.norm_host(w["domain"]), e["id"])
     collect_leads(units, its, dotgov, grounding, review, tlds, psl, report_unjoined_its)
-    decide_websites(units, owner, review)
+    decide_websites(units, owner, review, corrections)
     apply_checks(units, checks or [], owner, review)
     order = {t: i for i, t in enumerate(TIERS)}
     units.sort(key=lambda u: (order[u["tier"]], u["id"]))
     records = [to_record(u) for u in units]
-    summary["lead_rows"] = lead_rows(units)
+    summary["lead_rows"] = lead_rows(units, corrections)
     review.sort(key=lambda i: (order.get(i["tier"], 9), i.get("proposed_id") or "", i["reason"],
                                json.dumps(i, sort_keys=True)))
+    summary["review_items_with_marked_hosts"] = sc.tag_marked_hosts(review, corrections)
     summary["osc_matched"] = sum(1 for u in units if u.get("osc"))
     summary["codes"] = {"nys_swis": sum(1 for u in units if u["swis"]),
                         "us_gnis": sum(1 for u in units if u["gnis"]),
@@ -696,7 +716,8 @@ def build_records_osc(osc: dict, its: list[dict], dotgov: list[dict], grounding:
                       base: list[dict], stale_swis: dict[str, str] | None = None,
                       tlds: set[str] | None = None, psl=None,
                       expected: dict[str, int] = EXPECTED_OSC_UNITS,
-                      checks: list[dict] | None = None) -> tuple[list[dict], list[dict], dict]:
+                      checks: list[dict] | None = None,
+                      corrections: dict[str, dict] | None = None) -> tuple[list[dict], list[dict], dict]:
     """Pure, OSC spine: OSC places + ITS codes + website leads -> (records, review, summary)."""
     if psl is None:
         import ai_readability_export as ex
@@ -721,7 +742,8 @@ def build_records_osc(osc: dict, its: list[dict], dotgov: list[dict], grounding:
                                     shared_with=sorted(o["id"] for o in us if o is not u),
                                     note="ITS gives this code to more than one place; attached to none."))
         summary["its"]["codes_shared_not_attached"][scheme] = sum(len(us) for us in shared.values())
-    return _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its=False, checks=checks)
+    return _finish(units, summary, review, its, dotgov, grounding, base, tlds, psl, report_unjoined_its=False,
+                   checks=checks, corrections=corrections)
 
 
 def base_registry() -> list[dict]:
@@ -757,14 +779,16 @@ def main(argv: list[str] | None = None) -> int:
     import ai_readability_export as ex
     psl = ex.load_psl()
     checks = json.loads(CHECKS.read_text(encoding="utf-8"))["checks"] if CHECKS.exists() else []
+    corrections = sc.load_corrections()
     if args.spine == "gis":
         gis = {t: gis_rows(json.loads(GIS_FILES[t].read_text(encoding="utf-8"))) for t in TIERS}
         records, review, summary = build_records(gis, osc, its, dotgov, grounding, base_registry(),
-                                                 sc.psl_tlds(), psl, checks=checks)
+                                                 sc.psl_tlds(), psl, checks=checks, corrections=corrections)
     else:
         stale = {h["swis_code"]: h["note"] for h in sc.load_curation().get("locality_its_swis_stale", [])}
         records, review, summary = build_records_osc(osc, its, dotgov, grounding, base_registry(),
-                                                     stale, sc.psl_tlds(), psl, checks=checks)
+                                                     stale, sc.psl_tlds(), psl, checks=checks,
+                                                     corrections=corrections)
     OUT.write_text(json.dumps({"records": records}, indent=2, ensure_ascii=False), encoding="utf-8")
     rows = summary.pop("lead_rows")
     import csv
@@ -778,7 +802,9 @@ def main(argv: list[str] | None = None) -> int:
         "localities", review,
         "Counties, cities, towns and villages (sync_nys_localities.py): places whose codes did not "
         "match one-to-one (OSC or ITS), ITS rows no place took, and website leads not applied "
-        "(single lead, disagreeing, shared, path-only).")
+        "(single lead, disagreeing, shared, path-only). An item naming a host marked in "
+        "data/ai-readability/website-corrections.csv carries `marked_hosts`: that host is no longer "
+        "the place's website, so it is not a lead.")
     print(json.dumps(summary, indent=1))
     print(f"{len(records)} locality records, {len(review)} review item(s) -> {OUT}")
     return 0

@@ -3,7 +3,7 @@ title: Growing the registry statewide (plan; steps 1–2 done)
 created: 2026-11-06
 type: plan
 status: active
-updated: 2026-11-13
+updated: 2026-11-18
 tags: [registry, nys, counties, municipalities, plan]
 ---
 
@@ -21,7 +21,7 @@ tags: [registry, nys, counties, municipalities, plan]
 | Step | Result | Held for review (`data/statewide_web_review.json`) |
 |---|---|---|
 | 1 State executive agencies | **53 minted** (`nys`), from the state agency listing's 87 codes, named from ny.gov and `kjw8-pupa`. Hosts of authority codes (NYPA, ESD, NYSERDA, BPCA, EFC, BFSA, Thruway…) went to the authority, not a new agency | Governor, Comptroller, Attorney General (statewide elected), Assembly, courts, unknown codes (CJN, DCB, VDC, PCFB, IOLA), CC&F (name unverified), CJC and Waterfront Commission (level unclear), two credit unions; 24 directory names with no listing host |
-| 2 Public authorities, State + Local | **156 of 156 present**: 138 minted (`authority`), 18 matched to existing entities and enriched (`curation.json § abo_matches`). No IDA or LDC minted | 24 hosts not applied: 11 municipal sites, 7 shared hosts, 3 ABO hosts that differ from the listing, 2 malformed, 1 differing from an existing entity |
+| 2 Public authorities, State + Local | **156 of 156 present**: 138 minted (`authority`), 18 matched to existing entities and enriched (`curation.json § abo_matches`). No IDA or LDC minted | 25 hosts not applied: 11 municipal sites, 7 shared hosts, 3 ABO hosts that differ from the listing, 2 malformed, 1 differing from an existing entity, 1 marked in `website-corrections.csv` (2026-11-18) |
 
 **Website rule used for authorities.** For this batch the operator's instruction was "primary =
 the ABO `website` host", which is one self-reported lead, not the two agreeing leads of rule 2
@@ -56,7 +56,10 @@ those codes (`scripts/sync_nys_localities.py --spine gis` once a snapshot exists
 
 Full QA, with every mismatch named: [`qa/2026-11-13-localities-qa.md`](qa/2026-11-13-localities-qa.md).
 Website leads for the places still without a primary, one row per host:
-`data/ai-readability/localities-website-leads-2026-11-13.csv` (838 rows, 507 places).
+`data/ai-readability/localities-website-leads-2026-11-13.csv` (453 rows, 283 places on
+2026-11-18). A host marked in `data/ai-readability/website-corrections.csv` (no longer the
+place's site) is left out of it, never counts as one of two agreeing leads, and is tagged
+`marked_hosts` wherever a review item in `data/statewide_web_review.json` names it.
 
 Choices made while building, for review:
 

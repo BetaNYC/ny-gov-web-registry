@@ -8300,26 +8300,23 @@
   "branch": null,
   "agency": "Buffalo Municipal Water Finance Authority",
   "bureau": null,
-  "source_list_registry": true,
+  "source_list_registry": false,
   "source_list_state_agency": false,
   "source_list_abo": true,
   "source_list_cisa": false,
   "source_list_its_2023": false,
   "source_list_portal_registry": false,
   "ny_initial_domain": "www.buffalowaterauthority.com",
-  "ny_entity_ids": [
-   "buffalo-municipal-water-finance-authority"
-  ],
+  "ny_entity_ids": null,
   "ny_names": [
    "Buffalo Municipal Water Finance Authority"
   ],
   "ny_levels": [
-   "authority",
    "authority (Local)"
   ],
   "ny_counties": null,
   "ny_page_urls": null,
-  "ny_source_count": 2,
+  "ny_source_count": 1,
   "ny_host_issue": "spam",
   "ny_superseded_by": null,
   "ny_kind": "main site",

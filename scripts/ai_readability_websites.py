@@ -40,6 +40,9 @@ CORRECTIONS (data/ai-readability/website-corrections.csv, checked by hand)
   The source row is kept as the source states it; the host gets `ny_host_issue` and
   `ny_superseded_by` (the body's real host, already in the list; blank when the body has no site
   in the list yet), and probe_bot_access.py --targets-file skips it.
+  A host found only in certificate logs (cert-log-addresses.csv) may be marked too: it gets no
+  row here, its `superseded_by` must still be a listed host, and address_inventory.py leaves it
+  out of addresses.csv.
 
   One row per host (a leading `www.` is kept in `initial_url` but ignored for matching). When
   a source lists a page rather than a host (a town hosted on its county's site), the page goes

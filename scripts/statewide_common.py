@@ -10,6 +10,9 @@ Pure helpers plus two small IO conveniences. Nothing here fetches.
   - The state agency listing reader (`data/cache/state_agency_listing_websites.csv`).
   - `write_review_section()`: data/statewide_web_review.json carries one section per sync
     script; each script rewrites only its own section, so re-running either is idempotent.
+  - `load_corrections()` / `tag_marked_hosts()`: hosts marked in
+    data/ai-readability/website-corrections.csv (no longer the body's website) are never applied
+    as a web property, and a review item that names one carries `marked_hosts`.
 """
 from __future__ import annotations
 
@@ -29,6 +32,8 @@ CACHE = ROOT / "data" / "cache"
 CURATION = ROOT / "data" / "curation.json"
 REVIEW = ROOT / "data" / "statewide_web_review.json"
 LISTING = CACHE / "state_agency_listing_websites.csv"
+# Hosts checked by hand and found no longer the body's website (committed; see load_corrections).
+CORRECTIONS = ROOT / "data" / "ai-readability" / "website-corrections.csv"
 
 # The dated snapshot the cache copies came from (data/ai-readability/sources/<date>/).
 SNAPSHOT_DATE = "2026-11-06"
@@ -96,6 +101,51 @@ def base_entities() -> list[dict]:
     moda = br._load(moda_path, "records")
     entities, _ = br.build_entities(seed, [moda])
     return br.apply_entity_curation(entities, curation)
+
+
+def load_corrections(path: pathlib.Path = CORRECTIONS) -> dict[str, dict]:
+    """{norm_host: row} from data/ai-readability/website-corrections.csv: hosts a hand check found
+    are no longer the body's website (lookalike, for_sale, redirects_offsite, spam). Read through
+    ai_readability_websites.read_corrections, so the issue vocabulary is checked in one place.
+    {} when the file is absent."""
+    import ai_readability_websites as ws  # local import: only the sync scripts need it
+    return {norm_host(r["host"].strip()): r for r in ws.read_corrections(path).values()}
+
+
+def _hosts_named(value) -> set[str]:
+    """Every host a review item names: in a URL, a bare host, or a list or dict of them. Free text
+    (anything with a space, such as a note) is not read."""
+    if isinstance(value, dict):
+        return set().union(*(_hosts_named(v) for v in value.values())) if value else set()
+    if isinstance(value, list):
+        return set().union(*(_hosts_named(v) for v in value)) if value else set()
+    if not isinstance(value, str) or not value or any(c.isspace() for c in value):
+        return set()
+    try:
+        host, _ = split_url(value)
+    except ValueError:                      # urllib rejects some malformed source URLs
+        return set()
+    return {host} if host else set()
+
+
+def tag_marked_hosts(items: list[dict], corrections: dict[str, dict]) -> int:
+    """Add `marked_hosts` to every review item that names a host marked in website-corrections.csv:
+    [{host, issue, superseded_by, checked}], sorted by host. The item is kept as written; the tag
+    says the host is no longer the body's website, so a reviewer does not take it as a lead.
+    Returns the number of items tagged."""
+    n = 0
+    for item in items:
+        found = {}
+        for host in _hosts_named({k: v for k, v in item.items() if k != "marked_hosts"}):
+            row = corrections.get(norm_host(host))
+            if row:
+                found[norm_host(host)] = {"host": row["host"].strip(), "issue": row["issue"],
+                                          "superseded_by": (row.get("superseded_by") or "").strip() or None,
+                                          "checked": row["checked"]}
+        if found:
+            item["marked_hosts"] = [found[k] for k in sorted(found)]
+            n += 1
+    return n
 
 
 def read_listing(path: pathlib.Path = LISTING) -> list[dict]:
