@@ -3579,7 +3579,15 @@
         "source": "its",
         "url": "http://www.nnyacgs.com/town_of_belmont.html",
         "proposed_url_convention": "www.nnyacgs.com/town_of_belmont.html",
-        "note": "A page on a host, from a single source; not applied."
+        "note": "A page on a host, from a single source; not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.nnyacgs.com",
+            "issue": "spam",
+            "superseded_by": null,
+            "checked": "2026-11-18"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-bellmont",
@@ -3814,7 +3822,15 @@
         "source": "its",
         "url": "http://www.nnyacgs.com/town_of_brandon.html",
         "proposed_url_convention": "www.nnyacgs.com/town_of_brandon.html",
-        "note": "A page on a host, from a single source; not applied."
+        "note": "A page on a host, from a single source; not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.nnyacgs.com",
+            "issue": "spam",
+            "superseded_by": null,
+            "checked": "2026-11-18"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-brant",
@@ -5765,7 +5781,15 @@
         "source": "its",
         "url": "http://www.nnyacgs.com/town_of_ellenburgh.html",
         "proposed_url_convention": "www.nnyacgs.com/town_of_ellenburgh.html",
-        "note": "A page on a host, from a single source; not applied."
+        "note": "A page on a host, from a single source; not applied.",
+        "marked_hosts": [
+          {
+            "host": "www.nnyacgs.com",
+            "issue": "spam",
+            "superseded_by": null,
+            "checked": "2026-11-18"
+          }
+        ]
       },
       {
         "proposed_id": "town-of-ellery",
@@ -13387,6 +13411,14 @@
             "source": "its",
             "url": "http://burdettny.us/",
             "detail": "SWIS 442601"
+          }
+        ],
+        "marked_hosts": [
+          {
+            "host": "burdettny.us",
+            "issue": "spam",
+            "superseded_by": null,
+            "checked": "2026-11-18"
           }
         ]
       },
