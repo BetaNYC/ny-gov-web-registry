@@ -61,6 +61,32 @@ def test_build_merges_sources_one_row_per_host(tmp_path):
     assert "secret@example.test" not in json.dumps(list(rows.values()))
 
 
+def test_without_the_listing_its_hosts_are_carried_forward_from_the_published_list(tmp_path, capsys):
+    """The state agency listing is a private local copy (not committed). A clone without it must
+    rebuild the same rows from the committed websites.json, not silently drop the flag."""
+    paths = _fixture(tmp_path)
+    (tmp_path / "state.csv").write_text(
+        "domain,url,agency\n"
+        "health.ny.gov,https://health.ny.gov,DOH\n"            # a host only the listing names
+        "www.authx.org,https://www.authx.org/apply,AX\n"       # a page on a host ABO also names
+        "townofz.gov,https://townofz.gov,Town of Z\n")          # a name another source also gives
+    full = ws.build(paths, PSL)
+    owners = ws.page_owners(paths)
+    assert sum(r["source_list_state_agency"] for r in full) == 3
+    pub = tmp_path / "websites.json"
+    ws.write(full, tmp_path / "websites.csv", pub)
+    capsys.readouterr()
+
+    carried = {**paths, "state_agency": tmp_path / "absent.csv", "published": pub}
+    assert json.loads(json.dumps(ws.build(carried, PSL))) == json.loads(pub.read_text())
+    assert "carried 3 hosts flagged source_list_state_agency forward" in capsys.readouterr().err
+    assert ws.page_owners(carried) == owners
+
+    # With neither the listing nor a published list, the build still runs, without the flag.
+    bare = ws.build({**paths, "state_agency": tmp_path / "absent.csv"}, PSL)
+    assert not any(r["source_list_state_agency"] for r in bare)
+
+
 def test_published_list_is_in_sync_with_registry_and_pool():
     pub = json.loads((AIR / "websites.json").read_text())
     assert pub == json.loads(json.dumps(ws.build())), "run: python scripts/ai_readability_websites.py"

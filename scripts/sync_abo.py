@@ -19,7 +19,8 @@ the stretch goal and are deliberately skipped (MINT_TYPES).
 INPUT (this script never fetches; the operator places the files in data/cache/):
     data/cache/abo_4vym-q77x.json            (preferred; a copy of the dated snapshot)
     data/cache/abo_4vym-q77x.csv             (fallback; a CSV export of the same dataset)
-    data/cache/state_agency_listing_websites.csv   (hosts some authorities carry; see sync_nygov)
+    data/cache/state_agency_listing_websites.csv   (hosts some authorities carry; see sync_nygov;
+                                              a private local copy, not committed)
     data/cache/records_moda.json             (the base registry this matches against)
     data/curation.json                       (abo_matches, abo_holds, abo_website_holds,
                                               state_listing_codes, state_listing_host_overrides)
@@ -272,7 +273,8 @@ def main() -> int:
               f"there and retry.", file=sys.stderr)
         return 2
     if not sc.LISTING.exists():
-        print(f"[gated] no state agency listing at {sc.LISTING}", file=sys.stderr)
+        print(f"[gated] no state agency listing at {sc.LISTING}. It is a private local copy and is "
+              "not in the repo; only a maintainer who holds it can run this sync.", file=sys.stderr)
         return 2
     rows = read_rows()
     records, review = build_records(rows, sc.read_listing(), sc.load_curation(), sc.base_entities(),

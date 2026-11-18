@@ -13,7 +13,7 @@ The registry is designed to **stay current**, not be a one-time dump (design doc
 | About-page crawl (live agency sites) | *(no cache — `data/descriptions.json` is the output)* | **2026-07-15** | 285 targets crawled + 32 `no_url` |
 | WAF recovery (human-context browser, operator-authorized) | `data/cache/waf_captures_raw/` + `waf_capture_meta.json` (git-ignored) | **2026-07-16** | **COMPLETE — 152 of 152** (116 `ok`, 36 `no_about_found`). Batches 1–6 via the app's Browser pane; the final 43 (entities 110–152) via the operator's personal Chrome (`claude-in-chrome` MCP) after the pane's cookie jar 400'd |
 | ABO Directory of Public Authorities `4vym-q77x` | `data/cache/abo_4vym-q77x.json` (copy of `data/ai-readability/sources/2026-11-06/abo-directory-4vym-q77x.json`) | **2026-11-06** | 608 (State 45, Local 111, IDA 106, LDC 346); **156 State + Local used** |
-| A state agency listing (private) | `data/cache/state_agency_listing_websites.csv` (copy of `sources/2026-11-06/state-agency-listing-websites.csv`) | **2026-11-06** | 307 hosts, 87 agency codes |
+| A state agency listing (private) | `data/cache/state_agency_listing_websites.csv` (a private local copy; not committed, and no copy is in `sources/` since 2026-11-18) | **2026-11-06** | 307 hosts, 87 agency codes |
 | Agency Contacts `kjw8-pupa` (`agency`, `agency_contact_url` only) | `data/cache/kjw8-pupa_agencies.json` (copy of `sources/2026-11-06/kjw8-pupa-agency-contacts-agencies.json`) | **2026-11-06** (dataset rows last updated **2025-04-11**) | 623 rows → 79 agencies |
 | ny.gov agency directory | `data/cache/nygov_state_agencies.json` (copy of `sources/2026-11-06/nygov-state-agencies-and-departments.json`) | **2026-11-06** | 98 entries |
 

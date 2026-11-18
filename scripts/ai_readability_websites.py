@@ -12,8 +12,11 @@ SOURCES (all read from the repo; this script never fetches)
   registry        data/registry.json web_properties (role primary; legacy domains left out),
                   plus the start URLs in data/crawl_targets.json (derived from the registry; they
                   can name a subdomain, e.g. new.mta.info, that web_properties does not)
-  state_agency    data/ai-readability/sources/2026-11-06/state-agency-listing-websites.csv
-                  ("a state agency listing", shared privately; domain, URL and agency only)
+  state_agency    data/cache/state_agency_listing_websites.csv, a private local copy that is
+                  not committed ("a state agency listing", shared privately; domain, URL and
+                  agency only). When it is absent (any clone but the maintainer's), the
+                  listing's hosts are carried forward from the committed websites.json: see
+                  carried_state_agency()
   abo             ABO Directory of Public Authorities, data.ny.gov 4vym-q77x (`website`)
   cisa            CISA .gov list, NY rows only (`Security contact email` is never read)
   its_2023        NYS ITS Locality Hierarchy with Websites, data.ny.gov 55k6-h6qq (stale, 2023)
@@ -85,12 +88,14 @@ SRC = AIR / "sources" / "2026-11-06"
 PATHS = {
     "registry": ROOT / "data" / "registry.json",
     "crawl_targets": ROOT / "data" / "crawl_targets.json",
-    "state_agency": SRC / "state-agency-listing-websites.csv",
+    "state_agency": ROOT / "data" / "cache" / "state_agency_listing_websites.csv",
     "abo": SRC / "abo-directory-4vym-q77x.json",
     "cisa": SRC / "cisa-dotgov-current-full.csv",
     "its_2023": SRC / "its-locality-websites-55k6-h6qq.json",
     "corrections": AIR / "website-corrections.csv",
     "portal_registry": AIR / "sources" / "2026-11-10" / "ny-data-portal-registry.json",
+    # Read only when the state agency listing above is absent (carried_state_agency()).
+    "published": AIR / "websites.json",
 }
 HOST_ISSUES = ("lookalike", "for_sale", "redirects_offsite", "spam")
 OUT_CSV, OUT_JSON = AIR / "websites.csv", AIR / "websites.json"
@@ -251,6 +256,67 @@ READERS = {"registry": read_registry, "state_agency": read_state_agency, "abo": 
            "cisa": read_cisa, "its_2023": read_its, "portal_registry": read_portal_registry}
 
 
+def carried_state_agency(published, others: dict) -> list:
+    """The state agency listing's records, rebuilt from the committed websites.json, for a run
+    without the private listing file. `others` is {source: [records]} from every other source.
+
+    One record per published row with `source_list_state_agency` TRUE (the listing names each
+    host once): host = `ny_initial_domain`; name = the one name in `ny_names` that no other
+    source gives for the host; path = the one page in `ny_page_urls` no other source lists.
+    Either is None when there is not exactly one such value. [] when `published` is absent."""
+    published = pathlib.Path(published) if published else None
+    if not published or not published.exists():
+        return []
+    names, pages = {}, {}
+    for recs in others.values():
+        for rec in recs:
+            k = _key(rec["host"])
+            if rec.get("name"):
+                names.setdefault(k, set()).add(rec["name"])
+            if rec.get("path") and not rec.get("portal"):
+                pages.setdefault(k, set()).add("https://{}{}".format(rec["host"], rec["path"]))
+    out = []
+    for r in json.loads(published.read_text(encoding="utf-8")):
+        if not r.get("source_list_state_agency"):
+            continue
+        host = r["ny_initial_domain"]
+        k = _key(host)
+        own = [n for n in r.get("ny_names") or [] if n not in names.get(k, set())]
+        page = [u for u in r.get("ny_page_urls") or [] if u not in pages.get(k, set())]
+        path = None
+        if len(page) == 1:
+            p = urllib.parse.urlparse(page[0])
+            path = p.path + ("?" + p.query if p.query else "")
+            host = p.hostname
+        out.append({"host": host, "path": path, "name": own[0] if len(own) == 1 else None,
+                    "level": "state agency"})
+    return out
+
+
+def source_records(paths=PATHS) -> dict:
+    """{source: [records]} for every source in `paths` (a fixture may leave one out). A
+    `state_agency` path that does not exist is replaced by carried_state_agency(), with one line
+    on stderr saying so."""
+    out = {}
+    for src, _, _ in SOURCES:
+        if not paths.get(src):
+            continue
+        if src == "state_agency" and not pathlib.Path(paths[src]).exists():
+            continue
+        reader = READERS[src]
+        out[src] = list(reader(paths[src], paths.get("crawl_targets")) if src == "registry"
+                        else reader(paths[src]))
+    sa = paths.get("state_agency")
+    if sa and not pathlib.Path(sa).exists():
+        recs = carried_state_agency(paths.get("published"), out)
+        if recs:
+            out["state_agency"] = recs
+            print("note: no state agency listing at {}; carried {} hosts flagged "
+                  "source_list_state_agency forward from {}".format(
+                      sa, len(recs), paths.get("published")), file=sys.stderr)
+    return out
+
+
 # ------------------------------------------------------------------------------ build
 COLUMNS = (["initial_url", "base_domain", "top_level_domain", "branch", "agency", "bureau"]
            + ["source_list_" + s for s, _, _ in SOURCES]
@@ -263,12 +329,9 @@ COLUMNS = (["initial_url", "base_domain", "top_level_domain", "branch", "agency"
 def build(paths=PATHS, psl=None) -> list:
     psl = psl or ex.load_psl()
     hosts = {}
+    by_src = source_records(paths)
     for src, _, _ in SOURCES:
-        if not paths.get(src):                 # a fixture may leave a source out
-            continue
-        reader = READERS[src]
-        recs = reader(paths[src], paths.get("crawl_targets")) if src == "registry" else reader(paths[src])
-        for rec in recs:
+        for rec in by_src.get(src, []):
             k = _key(rec["host"])
             h = hosts.setdefault(k, {"host": rec["host"], "by": {}, "entity_ids": set(), "names": [],
                                      "levels": set(), "counties": set(), "pages": set()})
@@ -368,12 +431,13 @@ def page_owners(paths=PATHS) -> dict:
     `ny_page_urls`, so every listed page can be paired with the body (or bodies) the source
     names for it. CISA lists hosts only, so it never contributes a page."""
     out = {}
+    by_src = source_records({k: v for k, v in paths.items()
+                             if k in ("published", "crawl_targets", "state_agency")
+                             or (v and pathlib.Path(v).exists())})
     for src, _, _ in SOURCES:
-        if src in ("cisa", "portal_registry") or not paths.get(src) or not pathlib.Path(paths[src]).exists():
+        if src in ("cisa", "portal_registry"):
             continue
-        reader = READERS[src]
-        recs = reader(paths[src], paths.get("crawl_targets")) if src == "registry" else reader(paths[src])
-        for rec in recs:
+        for rec in by_src.get(src, []):
             if not rec.get("path"):
                 continue
             url = "https://{}{}".format(rec["host"], rec["path"])
